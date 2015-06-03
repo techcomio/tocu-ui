@@ -1,0 +1,60 @@
+{
+	"posts": [
+		{
+			"title": "Tin Tổ Cú",
+			"postCount": "45 Post",
+			"type": "post",
+			"list-posts": [
+				{"id": 1, "img_url": "/img/404.jpg", "text": "Khui nog kien Cardigan day va kien"},
+				{"id": 2, "img_url": "/img/404.jpg", "text": "Khui nog kien Cardigan day va kien"}
+			]
+		}, {
+			"title": "Chăn đơn",
+			"postCount": "15 SP",
+			"type": "SP",
+			"list-posts": [
+				{"id": 3, "img_url": "/img/404.jpg", "text": {"title_SP": "Chăn đơn CD01", "cost": "150.000đ"}},
+				{"id": 4, "img_url": "/img/404.jpg", "text": {"title_SP": "Chăn đơn CD02", "cost": "180.000đ"}}
+			]
+		}, {
+			"title": "Cardigan",
+			"postCount": "156 SP",
+			"type": "SP",
+			"list-posts": [
+				{"id": 5, "img_url": "/img/404.jpg", "text": {"title_SP": "Cardigan rainbow", "cost": "220.000đ"}},
+				{"id": 6, "img_url": "/img/404.jpg", "text": {"title_SP": "Cardigan dày", "cost": "300.000đ"}}
+			]
+		}, {
+			"title": "Street Smart DENIM",
+			"postCount": "12 Ảnh",
+			"type": "IMG",
+			"list-posts": [
+				{"id": 7, "img_url": "/img/404.jpg", "text": "Diện Denim trên phố"},
+				{"id": 8, "img_url": "/img/404.jpg", "text": "Diện Denim trên phố"}
+			]
+		}, {
+			"title": "Mori mori girls",
+			"postCount": "76 Ảnh",
+			"type": "IMG",
+			"list-posts": [
+				{"id": 7, "img_url": "/img/404.jpg", "text": "Diện Denim trên phố"},
+				{"id": 8, "img_url": "/img/404.jpg", "text": "Diện Denim trên phố"}
+			]
+		}, {
+			"title": "Tuyển dụng",
+			"postCount": "1 Post",
+			"type": "post",
+			"list-posts": [
+				{"id": 9, "img_url": "/img/404.jpg", "text": "Cần tuyển nguyên một đàn Cú em"}
+			]
+		}, {
+			"title": "Giầy - Boot",
+			"postCount": "156 SP",
+			"type": "SP",
+			"list-posts": [
+				{"id": 11, "img_url": "/img/404.jpg", "text": {"title_SP": "Giầy đỏ", "cost": "220.000đ"}},
+				{"id": 12, "img_url": "/img/404.jpg", "text": {"title_SP": "Dép da thật", "cost": "200.000đ"}}
+			]
+		}
+	]
+}
