@@ -1,6 +1,6 @@
 import { Actions } from 'flummox';
 import HttpRequest from './../utils/HttpRequest';
-// import { PromiseUtils } from  './../utils/performRouteHandlerStaticMethod';
+import { Api_Url } from '../utils/config';
 
 function fakePromise(res) {
   return new Promise((resolve, reject) => {
@@ -25,20 +25,29 @@ function fakeLoadUser({token, user}) {
 
 class AuthActions extends Actions {
 
+  constructor(flux) {
+    super();
+
+    this.flux = flux;
+  }
+
   async CreateUser(auth) {
+    let self = this;
     return await HttpRequest
-      .post('/createAuth')
+      .post(`${Api_Url}/user`)
       .send(auth)
       .exec()
-      .then((data) => (data.body));
+      .then((data) =>  (data))
+      .catch((data) =>  (data));
   }
 
   async LoginActions(account) {    
     return await HttpRequest
-      .post('/login')
+      .post(`${Api_Url}/token`)
       .send(account)
       .exec()
-      .then((val) => (val.body));
+      .then((res) => (res.body))
+      .catch((data) => (data));
   }
 
   async LoginStart() {

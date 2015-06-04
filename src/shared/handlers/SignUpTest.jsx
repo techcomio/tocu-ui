@@ -1,130 +1,158 @@
 var React = require('react');
-var Formsy = require('formsy-react');
+/*var t = require('tcomb-form');
+var Form = t.form.Form;*/
 
 
 export default React.createClass({
-  getInitialState: function () {
+  render() {
+    return (
+      <div> test </div>
+    );
+  }
+});
+
+/*
+export default React.createClass({
+
+  contextTypes: {
+    flux: React.PropTypes.object.isRequired,
+  },
+
+  getInitialState() {
+    this.CityActions = this.context.flux.getActions('cityActions');
+    this.CityStore = this.context.flux.getStore('cityStore');
+
+    return this.getFromStore();
+  },
+
+  getFromStore () {
     return {
-      validationErrors: {}
+      city: this.CityStore.getCity(),
+      district: this.CityStore.getDistrict(),
+      firstSelectCity: null,
     };
   },
-  validateForm: function (values) {
-    if (!values.foo) {
-      this.setState({
-        validationErrors: {
-          foo: 'Has no value'
-        }
-      });
-    } else {
-      this.setState({
-        validationErrors: {}
-      });
-    }
+
+  componentDidMount() {
+    this.CityStore.addListener('change', this.onStoreChange);
+    this.CityActions.getCityActions();
   },
-  sendToServer(data) {
-    console.log(data)
+
+  componentWillUnmount() {
+    this.CityStore.removeListener('change', this.onStoreChange);
   },
-  Submit(model, reset, invalidate) {
-    console.log(invalidate);
-  /*  invalidate({
-      foo: "error"
-    })*/
+
+  onStoreChange() {
+    this.setState({
+      city: this.CityStore.getCity(),
+      district: this.CityStore.getDistrict()
+    });
   },
-  render: function () {
-    return (
-      <div className="container">
-        <div className="form-signup">
-          <Formsy.Form  className="form-body" onSubmit={this.Submit} preventExternalInvalidation onValidSubmit={this.sendToServer} onChange={this.validateForm} validationErrors={this.state.validationErrors}>
-            <MyInput name="foo" />
-            <input type="submit" value="submit" />
-          </Formsy.Form>
+
+  render() {
+    let city = this.state.city || [];
+    let district = this.state.district || [];
+    let firstSelectCity = this.state.firstSelectCity || null;
+ 
+    var formLayout = function(locals){
+      return (
+        <div>
+          {locals.inputs.name}
+          {locals.inputs.phone}
+          <div className="row">
+            <div className="col-xs-6">
+              {locals.inputs.cityname}
+            </div>
+            <div className="col-xs-6">
+              {locals.inputs.district}
+            </div>
+          </div>
+          {locals.inputs.password}
         </div>
-      </div>
-    );
-  }
-});
+      );
+    };
 
-var MyInput = React.createClass({
-  mixins: [Formsy.Mixin],
-  changeValue: function (event) {
-    this.setValue(event.currentTarget.value);
-  },
-  render: function () {
-    var className = this.props.className + ' ' + (this.showRequired() ? 'required' : this.showError() ? 'error' : null);
-    var errorMessage = this.getErrorMessage();
-    return (
-      <div className='form-group has-error'>
-        <label htmlFor={this.props.name}>{this.props.title}</label>
-        <input type={this.props.type || 'text'} name={this.props.name} onChange={this.changeValue} value={this.getValue()}/>
-        <span className='validation-error'>{errorMessage}</span>
-      </div>
-    );
-  }
-});
+    var Person = t.struct({
+      name: t.Str,
+      phone: t.Num, // a numeric field
+      cityname: t.Str,
+      district: t.Str,
+      password: t.Str,
+    });
 
-/*export default  React.createClass({
-  getInitialState: function() {
-    return { canSubmit: false };
-  },
-  submit: function (data) {
-    alert(JSON.stringify(data, null, 4));
-  },
-  enableButton: function () {
-    this.setState({
-      canSubmit: true
-    });
-  },
-  disableButton: function () {
-    this.setState({
-      canSubmit: false
-    });
-  },
-  render: function () {
+    var options = {
+      template: formLayout,
+      auto: 'placeholders',
+      order: ['name', 'phone', 'cityname', 'district', 'password'],
+      fields: {
+        name: {
+          error: null,
+          attrs: {
+            autoFocus: true
+          }
+        },
+        cityname: {
+          order: 'asc', // or desc
+          nullOption: {value: 'dsf', text: 'City'},
+          options: city.map(function(name) {
+            return {value: name, text: name};
+          }),
+          factory: t.form.Select
+        },
+        district: {
+          order: 'asc', // or desc
+          nullOption: {value: '', text: 'district'},
+          factory: t.form.Select,
+          options: district.map(function(name) {
+            return {value: name, text: name};
+          }),
+        }
+      },
+    };
+
+      console.log(this.state.firstSelectCity);
     return (
       <div className="container">
         <div className="form-signup">
           <div className="form-body">
-            <Formsy.Form onSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton} >
-              <MyOwnInput name="email" validations="isEmail" validationError="This is not a valid email" required />
-              <MyOwnInput name="password" type="password" required />
-              <button type="submit" disabled={!this.state.canSubmit}>Submit</button>
-            </Formsy.Form>
+            <div className="form-group">
+              <div className="logo">
+                <img src="/img/logo.png" style={{width: 50, height: 50}} />
+              </div>
+            </div>
+
+            <Form
+              ref="form"
+              type={Person}
+              options={options}
+              onChange={this.TestChange} />
+
+            <button className="btn btn-primary btn-block" onClick={this.save}>Save</button>
+
+          </div>
+            
+          <div className="form-footer text-center">
+            <a href="/signin">Sign In</a>
           </div>
         </div>
       </div>
     );
+  },
+
+  save() {
+    var value = this.refs.form.getValue();
+    // if validation fails, value will be null
+    if (value) {
+      // value here is an instance of Person
+      console.log(value);
+    }
+  },
+
+  TestChange(val, path) {
+    this.state.firstSelectCity = { text: val.cityname, value: val.cityname};
+    if(path[0] === "cityname") {
+      this.CityActions.getDistrictActions(val.cityname);
+    }
   }
 });
-
-var MyOwnInput = React.createClass({
-
-  // Add the Formsy Mixin
-  mixins: [Formsy.Mixin],
-
-  // setValue() will set the value of the component, which in
-  // turn will validate it and the rest of the form
-  changeValue: function (event) {
-    this.setValue(event.currentTarget.value);
-  },
-  render: function () {
-
-    // Set a specific className based on the validation
-    // state of this component. showRequired() is true
-    // when the value is empty and the required prop is
-    // passed to the input. showError() is true when the
-    // value typed is invalid
-    var className = this.props.className + ' ' + (this.showRequired() ? 'required' : this.showError() ? 'error' : null);
-
-    // An error message is returned ONLY if the component is invalid
-    // or the server has returned an error message
-    var errorMessage = this.getErrorMessage();
-
-    return (
-      <div className='form-group has-error'>
-        <label htmlFor={this.props.name}>{this.props.title}</label>
-        <input type={this.props.type || 'text'} name={this.props.name} onChange={this.changeValue} value={this.getValue()}/>
-        <span className='validation-error'>{errorMessage}</span>
-      </div>
-    );
-  }
-});*/
+*/

@@ -6,7 +6,59 @@ import { Link } from 'react-router';
 import { ButtonInput, Input } from 'react-bootstrap';
 
 export default React.createClass({
+  contextTypes: {
+    flux: React.PropTypes.object.isRequired,
+	  router: React.PropTypes.func.isRequired,
+  },
+
+  getInitialState() {
+    this.AuthActions = this.context.flux.getActions('authActions');
+    this.AuthStore = this.context.flux.getStore('authStore');
+
+   	return {
+      logInState: this.AuthStore.getLogInState(),
+	  };
+  },
+
+  componentDidMount() {
+    this.AuthStore.addListener('change', this.onSotreAuthChange);
+
+    if(this.AuthStore.getToken()) {
+    	var { router } = this.context;
+  		var nextPath = router.getCurrentQuery().nextPath;
+  		if (nextPath) {
+        router.replaceWith(nextPath);
+      } else {
+	     	router.replaceWith('home');
+      }
+    }
+
+  },
+
+  componentWillUnmount() {
+    this.AuthStore.removeListener('change', this.onSotreAuthChange);
+  },
+
+  componentDidUpdate() {
+  	if (this.state.logInState === 'success') {
+  		var { router } = this.context;
+  		var nextPath = router.getCurrentQuery().nextPath;
+  		if (nextPath) {
+        router.replaceWith(nextPath);
+      } else {
+	     	router.replaceWith('home');
+      }
+    }
+  },
+
+  onSotreAuthChange() {
+    this.setState({
+    	logInState: this.AuthStore.getLogInState()
+   	});
+  },
+
   render() {
+  	console.log(this.state);
 		return (
 			<div className="container">
 	  		<div className="form-signin">
@@ -16,10 +68,17 @@ export default React.createClass({
 							  <img src="/img/logo.png" style={{width: 50, height: 50}} />
 					  	</div>
 	    			</div>
+	    			{this.state.logInState === "errors" && (
+	    				<p className="text-danger">so dien thoat hoac password ko dung</p>
+	    			)}
 
-			      <Input type='email' className='input-lg' placeholder='Phone' />
-			      <Input type='password' className='input-lg' placeholder='Password' />
-			      <ButtonInput type='submit' bsStyle='success' className="form-control" value='Log In' />
+	    			<p className="text-center title-form">dang nhap to cu</p>
+
+	    			<form name="signIn" onSubmit={this.Submit}>
+				      <Input ref="phone" type='text' className='input-lg' placeholder='Phone' />
+				      <Input ref="pass" type='password' className='input-lg' placeholder='Password' />
+				      <ButtonInput type='submit' onClick={this.handleLogin} bsStyle='primary' className="form-control" value='Log In' />
+			      </form>
 				  </div>
 
 				  <div className="form-footer">
@@ -35,6 +94,17 @@ export default React.createClass({
 			  </div>
 		  </div>
 		)
+  },
+  Submit(e) {
+  	e.preventDefault();
+  },
+  handleLogin() {
+  	let mobilePhone = this.refs.phone.getValue();
+  	let password = this.refs.pass.getValue();
+  	this.AuthActions.LoginActions({mobilePhone, password});
+  	this.setState({
+  		logInState: 'loading'
+  	});
   }
 });
 

@@ -1,0 +1,494 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/iojs',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'i',
+1 verbose cli   'string-validator' ]
+2 info using npm@2.11.0
+3 info using node@v2.2.2
+4 verbose install initial load of /home/unix/Public/tocu-ui/package.json
+5 warn package.json tocu.vn@0.0.1 No description
+6 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/babel/package.json
+7 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/babel-core/package.json
+8 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/babel-loader/package.json
+9 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/babel-runtime/package.json
+10 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/body-parser/package.json
+11 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/classnames/package.json
+12 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/compression/package.json
+13 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/contra/package.json
+14 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/css-loader/package.json
+15 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/debug/package.json
+16 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/express/package.json
+17 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/extract-text-webpack-plugin/package.json
+18 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/flummox/package.json
+19 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/flux/package.json
+20 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/formsy-react/package.json
+21 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/immutable/package.json
+22 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/lodash/package.json
+23 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/morgan/package.json
+24 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/node-libs-browser/package.json
+25 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/node-sass/package.json
+26 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/node-schema/package.json
+27 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/object-assign/package.json
+28 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/react/package.json
+29 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/react-bootstrap/package.json
+30 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/react-forms/package.json
+31 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/react-router/package.json
+32 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/react-tap-event-plugin/package.json
+33 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/run-parallel/package.json
+34 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/sass-loader/package.json
+35 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/style-loader/package.json
+36 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/superagent/package.json
+37 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/tcomb/package.json
+38 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/tcomb-form/package.json
+39 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/tcomb-validation/package.json
+40 verbose installManyTop reading scoped package data from /home/unix/Public/tocu-ui/node_modules/webpack/package.json
+41 info package.json css-loader@0.13.1 No license field.
+42 info package.json flux@2.0.3 license should be a valid SPDX license expression
+43 info package.json react-tap-event-plugin@0.1.7 No license field.
+44 info package.json superagent@1.2.0 No license field.
+45 verbose readDependencies loading dependencies from /home/unix/Public/tocu-ui/package.json
+46 silly cache add args [ 'string-validator', null ]
+47 verbose cache add spec string-validator
+48 silly cache add parsed spec { raw: 'string-validator',
+48 silly cache add   scope: null,
+48 silly cache add   name: 'string-validator',
+48 silly cache add   rawSpec: '',
+48 silly cache add   spec: '*',
+48 silly cache add   type: 'range' }
+49 silly addNamed string-validator@*
+50 verbose addNamed "*" is a valid semver range for string-validator
+51 silly addNameRange { name: 'string-validator', range: '*', hasData: false }
+52 silly mapToRegistry name string-validator
+53 silly mapToRegistry using default registry
+54 silly mapToRegistry registry https://registry.npmjs.org/
+55 silly mapToRegistry uri https://registry.npmjs.org/string-validator
+56 verbose addNameRange registry:https://registry.npmjs.org/string-validator not in flight; fetching
+57 verbose request uri https://registry.npmjs.org/string-validator
+58 verbose request no auth needed
+59 info attempt registry request try #1 at 06:01:19
+60 verbose request id 18b4c384351ddb4e
+61 http request GET https://registry.npmjs.org/string-validator
+62 http 200 https://registry.npmjs.org/string-validator
+63 silly get cb [ 200,
+63 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+63 silly get     etag: '"93SCMKIIB22G2CSIHK3Z1NLLI"',
+63 silly get     'content-type': 'application/json',
+63 silly get     'cache-control': 'max-age=60',
+63 silly get     'content-length': '13048',
+63 silly get     'accept-ranges': 'bytes',
+63 silly get     date: 'Thu, 04 Jun 2015 11:01:20 GMT',
+63 silly get     via: '1.1 varnish',
+63 silly get     age: '0',
+63 silly get     connection: 'keep-alive',
+63 silly get     'x-served-by': 'cache-lax1426-LAX',
+63 silly get     'x-cache': 'MISS',
+63 silly get     'x-cache-hits': '0',
+63 silly get     'x-timer': 'S1433415680.029020,VS0,VE336',
+63 silly get     vary: 'Accept' } ]
+64 verbose get saving string-validator to /home/unix/.npm/registry.npmjs.org/string-validator/.cache.json
+65 silly addNameRange number 2 { name: 'string-validator', range: '*', hasData: true }
+66 silly addNameRange versions [ 'string-validator',
+66 silly addNameRange   [ '1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5' ] ]
+67 silly addNamed string-validator@1.0.5
+68 verbose addNamed "1.0.5" is a plain semver version for string-validator
+69 silly mapToRegistry name string-validator
+70 silly mapToRegistry using default registry
+71 silly mapToRegistry registry https://registry.npmjs.org/
+72 silly mapToRegistry uri https://registry.npmjs.org/string-validator
+73 verbose addRemoteTarball https://registry.npmjs.org/string-validator/-/string-validator-1.0.5.tgz not in flight; adding
+74 verbose addRemoteTarball [ 'https://registry.npmjs.org/string-validator/-/string-validator-1.0.5.tgz',
+74 verbose addRemoteTarball   'af185b514fde51d64c952ad740e72ea10ca848a3' ]
+75 info retry fetch attempt 1 at 06:01:20
+76 info attempt registry request try #1 at 06:01:20
+77 http fetch GET https://registry.npmjs.org/string-validator/-/string-validator-1.0.5.tgz
+78 http fetch 200 https://registry.npmjs.org/string-validator/-/string-validator-1.0.5.tgz
+79 silly fetchAndShaCheck shasum af185b514fde51d64c952ad740e72ea10ca848a3
+80 verbose addTmpTarball /tmp/npm-28428-a7afd678/registry.npmjs.org/string-validator/-/string-validator-1.0.5.tgz not in flight; adding
+81 verbose addTmpTarball already have metadata; skipping unpack for string-validator@1.0.5
+82 silly cache afterAdd string-validator@1.0.5
+83 verbose afterAdd /home/unix/.npm/string-validator/1.0.5/package/package.json not in flight; writing
+84 verbose afterAdd /home/unix/.npm/string-validator/1.0.5/package/package.json written
+85 silly install resolved [ { name: 'string-validator',
+85 silly install resolved     description: 'Converts node-validator validators to work with node-schema',
+85 silly install resolved     author: { name: 'Adam Nalisnick', email: 'theadam4257@gmail.com' },
+85 silly install resolved     version: '1.0.5',
+85 silly install resolved     license: 'MIT',
+85 silly install resolved     main: 'index.js',
+85 silly install resolved     repository:
+85 silly install resolved      { type: 'git',
+85 silly install resolved        url: 'https://github.com/theadam/string-validator.git' },
+85 silly install resolved     bugs: { url: 'https://github.com/theadam/string-validator/issues' },
+85 silly install resolved     keywords: [ 'validation' ],
+85 silly install resolved     dependencies: { validator: '^3.17.0' },
+85 silly install resolved     devDependencies:
+85 silly install resolved      { chai: '^1.9.1',
+85 silly install resolved        istanbul: '^0.3.0',
+85 silly install resolved        mocha: '^1.20.1',
+85 silly install resolved        sinomocha: '^0.2.2' },
+85 silly install resolved     scripts:
+85 silly install resolved      { test: 'istanbul cover node_modules/.bin/_mocha -- --reporter Spec --ui bdd --require ./test/support/pretest',
+85 silly install resolved        coverage: 'npm test && open coverage/lcov-report/index.html' },
+85 silly install resolved     homepage: 'https://github.com/theadam/string-validator',
+85 silly install resolved     _id: 'string-validator@1.0.5',
+85 silly install resolved     _shasum: 'af185b514fde51d64c952ad740e72ea10ca848a3',
+85 silly install resolved     _from: 'string-validator@*',
+85 silly install resolved     _npmVersion: '1.4.10',
+85 silly install resolved     _npmUser: { name: 'theadam', email: 'theadam4257@gmail.com' },
+85 silly install resolved     maintainers: [ [Object] ],
+85 silly install resolved     dist:
+85 silly install resolved      { shasum: 'af185b514fde51d64c952ad740e72ea10ca848a3',
+85 silly install resolved        tarball: 'http://registry.npmjs.org/string-validator/-/string-validator-1.0.5.tgz' },
+85 silly install resolved     directories: {},
+85 silly install resolved     _resolved: 'https://registry.npmjs.org/string-validator/-/string-validator-1.0.5.tgz' } ]
+86 info install string-validator@1.0.5 into /home/unix/Public/tocu-ui
+87 info installOne string-validator@1.0.5
+88 verbose installOne of string-validator to /home/unix/Public/tocu-ui not in flight; installing
+89 verbose lock using /home/unix/.npm/_locks/string-validator-cf2278ec3531301f.lock for /home/unix/Public/tocu-ui/node_modules/string-validator
+90 silly install write writing string-validator 1.0.5 to /home/unix/Public/tocu-ui/node_modules/string-validator
+91 verbose unbuild node_modules/string-validator
+92 silly gentlyRm /home/unix/Public/tocu-ui/node_modules/string-validator is being purged from base /home/unix/Public/tocu-ui
+93 verbose gentlyRm don't care about contents; nuking /home/unix/Public/tocu-ui/node_modules/string-validator
+94 verbose tar unpack /home/unix/.npm/string-validator/1.0.5/package.tgz
+95 verbose tar unpacking to /home/unix/Public/tocu-ui/node_modules/string-validator
+96 silly gentlyRm /home/unix/Public/tocu-ui/node_modules/string-validator is being purged
+97 verbose gentlyRm don't care about contents; nuking /home/unix/Public/tocu-ui/node_modules/string-validator
+98 silly gunzTarPerm modes [ '775', '664' ]
+99 silly gunzTarPerm extractEntry package.json
+100 silly gunzTarPerm modified mode [ 'package.json', 420, 436 ]
+101 silly gunzTarPerm extractEntry .npmignore
+102 silly gunzTarPerm modified mode [ '.npmignore', 420, 436 ]
+103 silly gunzTarPerm extractEntry LICENSE
+104 silly gunzTarPerm modified mode [ 'LICENSE', 420, 436 ]
+105 silly gunzTarPerm extractEntry index.js
+106 silly gunzTarPerm modified mode [ 'index.js', 420, 436 ]
+107 silly gunzTarPerm extractEntry Readme.md
+108 silly gunzTarPerm modified mode [ 'Readme.md', 420, 436 ]
+109 silly gunzTarPerm extractEntry src/validator.js
+110 silly gunzTarPerm modified mode [ 'src/validator.js', 420, 436 ]
+111 verbose write writing to /home/unix/Public/tocu-ui/node_modules/string-validator/package.json
+112 info preinstall string-validator@1.0.5
+113 verbose readDependencies loading dependencies from /home/unix/Public/tocu-ui/node_modules/string-validator/package.json
+114 silly prepareForInstallMany adding validator@^3.17.0 from string-validator dependencies
+115 verbose readDependencies loading dependencies from /home/unix/Public/tocu-ui/node_modules/string-validator/package.json
+116 silly cache add args [ 'validator@^3.17.0', null ]
+117 verbose cache add spec validator@^3.17.0
+118 silly cache add parsed spec { raw: 'validator@^3.17.0',
+118 silly cache add   scope: null,
+118 silly cache add   name: 'validator',
+118 silly cache add   rawSpec: '^3.17.0',
+118 silly cache add   spec: '>=3.17.0 <4.0.0',
+118 silly cache add   type: 'range' }
+119 silly addNamed validator@>=3.17.0 <4.0.0
+120 verbose addNamed ">=3.17.0 <4.0.0" is a valid semver range for validator
+121 silly addNameRange { name: 'validator', range: '>=3.17.0 <4.0.0', hasData: false }
+122 silly mapToRegistry name validator
+123 silly mapToRegistry using default registry
+124 silly mapToRegistry registry https://registry.npmjs.org/
+125 silly mapToRegistry uri https://registry.npmjs.org/validator
+126 verbose addNameRange registry:https://registry.npmjs.org/validator not in flight; fetching
+127 verbose request uri https://registry.npmjs.org/validator
+128 verbose request no auth needed
+129 info attempt registry request try #1 at 06:01:21
+130 http request GET https://registry.npmjs.org/validator
+131 http 200 https://registry.npmjs.org/validator
+132 silly get cb [ 200,
+132 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+132 silly get     etag: '"AUTINU1RMPADXI4ZLFJ7KXNEK"',
+132 silly get     'content-type': 'application/json',
+132 silly get     'cache-control': 'max-age=60',
+132 silly get     'content-length': '167141',
+132 silly get     'accept-ranges': 'bytes',
+132 silly get     date: 'Thu, 04 Jun 2015 11:01:22 GMT',
+132 silly get     via: '1.1 varnish',
+132 silly get     age: '46',
+132 silly get     connection: 'keep-alive',
+132 silly get     'x-served-by': 'cache-lax1420-LAX',
+132 silly get     'x-cache': 'HIT',
+132 silly get     'x-cache-hits': '1',
+132 silly get     'x-timer': 'S1433415682.339963,VS0,VE0',
+132 silly get     vary: 'Accept' } ]
+133 verbose get saving validator to /home/unix/.npm/registry.npmjs.org/validator/.cache.json
+134 silly addNameRange number 2 { name: 'validator', range: '>=3.17.0 <4.0.0', hasData: true }
+135 silly addNameRange versions [ 'validator',
+135 silly addNameRange   [ '0.1.0',
+135 silly addNameRange     '0.1.1',
+135 silly addNameRange     '0.1.2',
+135 silly addNameRange     '0.1.3',
+135 silly addNameRange     '0.1.4',
+135 silly addNameRange     '0.1.5',
+135 silly addNameRange     '0.1.6',
+135 silly addNameRange     '0.1.7',
+135 silly addNameRange     '0.1.8',
+135 silly addNameRange     '0.1.9',
+135 silly addNameRange     '0.2.0',
+135 silly addNameRange     '0.2.1',
+135 silly addNameRange     '0.2.2',
+135 silly addNameRange     '0.2.3',
+135 silly addNameRange     '0.2.4',
+135 silly addNameRange     '0.2.5',
+135 silly addNameRange     '0.2.6',
+135 silly addNameRange     '0.2.7',
+135 silly addNameRange     '0.2.8',
+135 silly addNameRange     '0.2.9',
+135 silly addNameRange     '0.3.0',
+135 silly addNameRange     '0.3.1',
+135 silly addNameRange     '0.3.2',
+135 silly addNameRange     '0.3.4',
+135 silly addNameRange     '0.3.5',
+135 silly addNameRange     '0.3.6',
+135 silly addNameRange     '0.3.7',
+135 silly addNameRange     '0.3.8',
+135 silly addNameRange     '0.3.9',
+135 silly addNameRange     '0.4.0',
+135 silly addNameRange     '0.4.1',
+135 silly addNameRange     '0.4.2',
+135 silly addNameRange     '0.4.3',
+135 silly addNameRange     '0.4.4',
+135 silly addNameRange     '0.4.5',
+135 silly addNameRange     '0.4.6',
+135 silly addNameRange     '0.4.6-1',
+135 silly addNameRange     '0.4.6-2',
+135 silly addNameRange     '0.4.6-3',
+135 silly addNameRange     '0.4.7',
+135 silly addNameRange     '0.4.8',
+135 silly addNameRange     '0.4.9',
+135 silly addNameRange     '0.4.10',
+135 silly addNameRange     '0.4.11',
+135 silly addNameRange     '0.4.12',
+135 silly addNameRange     '0.4.13',
+135 silly addNameRange     '0.4.15',
+135 silly addNameRange     '0.4.16',
+135 silly addNameRange     '0.4.17',
+135 silly addNameRange     '0.4.18',
+135 silly addNameRange     '0.4.19',
+135 silly addNameRange     '0.4.20',
+135 silly addNameRange     '0.4.21',
+135 silly addNameRange     '0.4.22',
+135 silly addNameRange     '0.4.23',
+135 silly addNameRange     '0.4.24',
+135 silly addNameRange     '0.4.25',
+135 silly addNameRange     '0.4.27',
+135 silly addNameRange     '0.4.28',
+135 silly addNameRange     '0.5.0',
+135 silly addNameRange     '1.0.0',
+135 silly addNameRange     '1.1.0',
+135 silly addNameRange     '1.1.1',
+135 silly addNameRange     '1.1.2',
+135 silly addNameRange     '1.1.3',
+135 silly addNameRange     '1.2.0',
+135 silly addNameRange     '1.2.1',
+135 silly addNameRange     '1.2.2',
+135 silly addNameRange     '1.3.0',
+135 silly addNameRange     '1.4.0',
+135 silly addNameRange     '1.5.0',
+135 silly addNameRange     '1.5.1',
+135 silly addNameRange     '2.0.0',
+135 silly addNameRange     '2.1.0',
+135 silly addNameRange     '3.0.0',
+135 silly addNameRange     '3.1.0',
+135 silly addNameRange     '3.2.0',
+135 silly addNameRange     '3.2.1',
+135 silly addNameRange     '3.3.0',
+135 silly addNameRange     '3.4.0',
+135 silly addNameRange     '3.5.0',
+135 silly addNameRange     '3.5.1',
+135 silly addNameRange     '3.6.0',
+135 silly addNameRange     '3.7.0',
+135 silly addNameRange     '3.8.0',
+135 silly addNameRange     '3.9.0',
+135 silly addNameRange     '3.10.0',
+135 silly addNameRange     '3.11.0',
+135 silly addNameRange     '3.11.1',
+135 silly addNameRange     '3.11.2',
+135 silly addNameRange     '3.12.0',
+135 silly addNameRange     '3.13.0',
+135 silly addNameRange     '3.14.0',
+135 silly addNameRange     '3.14.1',
+135 silly addNameRange     '3.15.0',
+135 silly addNameRange     '3.16.0',
+135 silly addNameRange     '3.16.1',
+135 silly addNameRange     '3.17.0',
+135 silly addNameRange     '3.17.1',
+135 silly addNameRange     '3.17.2',
+135 silly addNameRange     '3.18.0',
+135 silly addNameRange     '3.18.1',
+135 silly addNameRange     '3.19.0',
+135 silly addNameRange     '3.19.1',
+135 silly addNameRange     '3.20.0',
+135 silly addNameRange     '3.21.0',
+135 silly addNameRange     '3.22.0',
+135 silly addNameRange     '3.22.1',
+135 silly addNameRange     '3.22.2',
+135 silly addNameRange     '3.23.0',
+135 silly addNameRange     '3.24.0',
+135 silly addNameRange     '3.25.0',
+135 silly addNameRange     '3.26.0',
+135 silly addNameRange     '3.27.0',
+135 silly addNameRange     '3.28.0',
+135 silly addNameRange     '3.29.0',
+135 silly addNameRange     '3.30.0',
+135 silly addNameRange     '3.32.0',
+135 silly addNameRange     '3.33.0',
+135 silly addNameRange     '3.34.0',
+135 silly addNameRange     '3.35.0',
+135 silly addNameRange     '3.36.0',
+135 silly addNameRange     '3.37.0',
+135 silly addNameRange     '3.38.0',
+135 silly addNameRange     '3.39.0',
+135 silly addNameRange     '3.40.0' ] ]
+136 silly addNamed validator@3.40.0
+137 verbose addNamed "3.40.0" is a plain semver version for validator
+138 silly mapToRegistry name validator
+139 silly mapToRegistry using default registry
+140 silly mapToRegistry registry https://registry.npmjs.org/
+141 silly mapToRegistry uri https://registry.npmjs.org/validator
+142 verbose addRemoteTarball https://registry.npmjs.org/validator/-/validator-3.40.0.tgz not in flight; adding
+143 verbose addRemoteTarball [ 'https://registry.npmjs.org/validator/-/validator-3.40.0.tgz',
+143 verbose addRemoteTarball   '6bd1c0be3deadc954b09f7e3ed29b17aaaac3d65' ]
+144 info retry fetch attempt 1 at 06:01:23
+145 info attempt registry request try #1 at 06:01:23
+146 http fetch GET https://registry.npmjs.org/validator/-/validator-3.40.0.tgz
+147 http fetch 200 https://registry.npmjs.org/validator/-/validator-3.40.0.tgz
+148 silly fetchAndShaCheck shasum 6bd1c0be3deadc954b09f7e3ed29b17aaaac3d65
+149 verbose addTmpTarball /tmp/npm-28428-a7afd678/registry.npmjs.org/validator/-/validator-3.40.0.tgz not in flight; adding
+150 verbose addTmpTarball already have metadata; skipping unpack for validator@3.40.0
+151 silly cache afterAdd validator@3.40.0
+152 verbose afterAdd /home/unix/.npm/validator/3.40.0/package/package.json not in flight; writing
+153 verbose afterAdd /home/unix/.npm/validator/3.40.0/package/package.json written
+154 silly install resolved [ { name: 'validator',
+154 silly install resolved     description: 'String validation and sanitization',
+154 silly install resolved     version: '3.40.0',
+154 silly install resolved     homepage: 'http://github.com/chriso/validator.js',
+154 silly install resolved     keywords:
+154 silly install resolved      [ 'validator',
+154 silly install resolved        'validation',
+154 silly install resolved        'validate',
+154 silly install resolved        'sanitization',
+154 silly install resolved        'sanitize',
+154 silly install resolved        'sanitisation',
+154 silly install resolved        'sanitise',
+154 silly install resolved        'assert' ],
+154 silly install resolved     author: { name: 'Chris O\'Hara', email: 'cohara87@gmail.com' },
+154 silly install resolved     main: 'validator.js',
+154 silly install resolved     bugs: { url: 'http://github.com/chriso/validator.js/issues' },
+154 silly install resolved     repository:
+154 silly install resolved      { type: 'git',
+154 silly install resolved        url: 'http://github.com/chriso/validator.js.git' },
+154 silly install resolved     devDependencies:
+154 silly install resolved      { mocha: 'latest',
+154 silly install resolved        istanbul: 'latest',
+154 silly install resolved        jshint: 'latest',
+154 silly install resolved        'uglify-js': 'latest',
+154 silly install resolved        coveralls: 'latest',
+154 silly install resolved        contextify: 'latest' },
+154 silly install resolved     scripts:
+154 silly install resolved      { test: 'node ./node_modules/.bin/_mocha --reporter spec',
+154 silly install resolved        coveralls: 'istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage' },
+154 silly install resolved     engines: { node: '>= 0.10' },
+154 silly install resolved     license: 'MIT',
+154 silly install resolved     gitHead: 'd2d1d3932a5432ccda052e855b13d756c2d6ee17',
+154 silly install resolved     _id: 'validator@3.40.0',
+154 silly install resolved     _shasum: '6bd1c0be3deadc954b09f7e3ed29b17aaaac3d65',
+154 silly install resolved     _from: 'validator@>=3.17.0 <4.0.0',
+154 silly install resolved     _npmVersion: '2.7.5',
+154 silly install resolved     _nodeVersion: '0.12.2',
+154 silly install resolved     _npmUser: { name: 'cohara87', email: 'cohara87@gmail.com' },
+154 silly install resolved     dist:
+154 silly install resolved      { shasum: '6bd1c0be3deadc954b09f7e3ed29b17aaaac3d65',
+154 silly install resolved        tarball: 'http://registry.npmjs.org/validator/-/validator-3.40.0.tgz' },
+154 silly install resolved     maintainers: [ [Object] ],
+154 silly install resolved     directories: {},
+154 silly install resolved     _resolved: 'https://registry.npmjs.org/validator/-/validator-3.40.0.tgz' } ]
+155 info install validator@3.40.0 into /home/unix/Public/tocu-ui/node_modules/string-validator
+156 info installOne validator@3.40.0
+157 verbose installOne of validator to /home/unix/Public/tocu-ui/node_modules/string-validator not in flight; installing
+158 verbose lock using /home/unix/.npm/_locks/validator-061d3977c0fbc489.lock for /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator
+159 silly install write writing validator 3.40.0 to /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator
+160 verbose unbuild node_modules/string-validator/node_modules/validator
+161 silly gentlyRm /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator is being purged from base /home/unix/Public/tocu-ui
+162 verbose gentlyRm don't care about contents; nuking /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator
+163 verbose tar unpack /home/unix/.npm/validator/3.40.0/package.tgz
+164 verbose tar unpacking to /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator
+165 silly gentlyRm /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator is being purged
+166 verbose gentlyRm don't care about contents; nuking /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator
+167 silly gunzTarPerm modes [ '775', '664' ]
+168 silly gunzTarPerm extractEntry package.json
+169 silly gunzTarPerm modified mode [ 'package.json', 420, 436 ]
+170 silly gunzTarPerm extractEntry .npmignore
+171 silly gunzTarPerm modified mode [ '.npmignore', 420, 436 ]
+172 silly gunzTarPerm extractEntry README.md
+173 silly gunzTarPerm modified mode [ 'README.md', 420, 436 ]
+174 silly gunzTarPerm extractEntry LICENSE
+175 silly gunzTarPerm modified mode [ 'LICENSE', 420, 436 ]
+176 silly gunzTarPerm extractEntry validator.js
+177 silly gunzTarPerm modified mode [ 'validator.js', 420, 436 ]
+178 silly gunzTarPerm extractEntry validator.min.js
+179 silly gunzTarPerm modified mode [ 'validator.min.js', 420, 436 ]
+180 silly gunzTarPerm extractEntry Makefile
+181 silly gunzTarPerm modified mode [ 'Makefile', 420, 436 ]
+182 silly gunzTarPerm extractEntry bower.json
+183 silly gunzTarPerm modified mode [ 'bower.json', 420, 436 ]
+184 silly gunzTarPerm extractEntry .travis.yml
+185 silly gunzTarPerm modified mode [ '.travis.yml', 420, 436 ]
+186 silly gunzTarPerm extractEntry test/client-side.js
+187 silly gunzTarPerm modified mode [ 'test/client-side.js', 420, 436 ]
+188 silly gunzTarPerm extractEntry test/exports.js
+189 silly gunzTarPerm modified mode [ 'test/exports.js', 420, 436 ]
+190 silly gunzTarPerm extractEntry test/sanitizers.js
+191 silly gunzTarPerm modified mode [ 'test/sanitizers.js', 420, 436 ]
+192 silly gunzTarPerm extractEntry test/validators.js
+193 silly gunzTarPerm modified mode [ 'test/validators.js', 420, 436 ]
+194 silly gunzTarPerm extractEntry .jshintrc
+195 silly gunzTarPerm modified mode [ '.jshintrc', 420, 436 ]
+196 verbose write writing to /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator/package.json
+197 info preinstall validator@3.40.0
+198 verbose readDependencies loading dependencies from /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator/package.json
+199 verbose readDependencies loading dependencies from /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator/package.json
+200 silly install resolved []
+201 verbose about to build /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator
+202 info build /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator
+203 info linkStuff validator@3.40.0
+204 silly linkStuff validator@3.40.0 has /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules as its parent node_modules
+205 verbose linkBins validator@3.40.0
+206 verbose linkMans validator@3.40.0
+207 verbose rebuildBundles validator@3.40.0
+208 info install validator@3.40.0
+209 info postinstall validator@3.40.0
+210 verbose unlock done using /home/unix/.npm/_locks/validator-061d3977c0fbc489.lock for /home/unix/Public/tocu-ui/node_modules/string-validator/node_modules/validator
+211 verbose about to build /home/unix/Public/tocu-ui/node_modules/string-validator
+212 info build /home/unix/Public/tocu-ui/node_modules/string-validator
+213 info linkStuff string-validator@1.0.5
+214 silly linkStuff string-validator@1.0.5 has /home/unix/Public/tocu-ui/node_modules as its parent node_modules
+215 verbose linkBins string-validator@1.0.5
+216 verbose linkMans string-validator@1.0.5
+217 verbose rebuildBundles string-validator@1.0.5
+218 verbose rebuildBundles [ 'validator' ]
+219 info install string-validator@1.0.5
+220 info postinstall string-validator@1.0.5
+221 verbose unlock done using /home/unix/.npm/_locks/string-validator-cf2278ec3531301f.lock for /home/unix/Public/tocu-ui/node_modules/string-validator
+222 verbose validateInstall loading /home/unix/Public/tocu-ui/package.json for validation
+223 verbose stack Error: The package react does not satisfy its siblings' peerDependencies requirements!
+223 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:125:32
+223 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:267:7
+223 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:138:5
+223 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
+223 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+223 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
+223 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+223 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
+223 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+223 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
+224 verbose cwd /home/unix/Public/tocu-ui
+225 error Linux 4.1.0-040100rc2-generic
+226 error argv "/usr/local/bin/iojs" "/usr/local/bin/npm" "i" "string-validator"
+227 error node v2.2.2
+228 error npm  v2.11.0
+229 error code EPEERINVALID
+230 error peerinvalid The package react does not satisfy its siblings' peerDependencies requirements!
+230 error peerinvalid Peer formsy-react@0.14.1 wants react@^0.13.1
+230 error peerinvalid Peer react-bootstrap@0.23.1 wants react@>=0.13
+230 error peerinvalid Peer react-tap-event-plugin@0.1.7 wants react@~0.13.x || ~0.12.x
+230 error peerinvalid Peer react-router@0.13.3 wants react@0.13.x
+230 error peerinvalid Peer tcomb-form@0.5.4 wants react@^0.13.0
+230 error peerinvalid Peer react-forms@0.6.3 wants react@^0.11.0
+231 verbose exit [ 1, true ]

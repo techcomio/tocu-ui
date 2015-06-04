@@ -26,15 +26,15 @@ webpackJsonp([2],[
 
 	var _sharedRouters2 = _interopRequireDefault(_sharedRouters);
 
-	var _sharedLibHeadParams = __webpack_require__(462);
+	var _sharedLibHeadParams = __webpack_require__(494);
 
 	var _sharedLibHeadParams2 = _interopRequireDefault(_sharedLibHeadParams);
 
-	var _sharedFlux = __webpack_require__(464);
+	var _sharedFlux = __webpack_require__(496);
 
 	var _sharedFlux2 = _interopRequireDefault(_sharedFlux);
 
-	var _sharedUtilsPerformRouteHandlerStaticMethod = __webpack_require__(474);
+	var _sharedUtilsPerformRouteHandlerStaticMethod = __webpack_require__(510);
 
 	var headParams = new _sharedLibHeadParams2['default']();
 	var flux = new _sharedFlux2['default']();
@@ -6435,7 +6435,7 @@ webpackJsonp([2],[
 
 	var _handlersSignUp2 = _interopRequireDefault(_handlersSignUp);
 
-	var _handlersSignUpTest = __webpack_require__(457);
+	var _handlersSignUpTest = __webpack_require__(459);
 
 	var _handlersSignUpTest2 = _interopRequireDefault(_handlersSignUpTest);
 
@@ -7562,7 +7562,7 @@ webpackJsonp([2],[
 	var _interopRequireDefault = __webpack_require__(269)['default'];
 
 	_Object$defineProperty(exports, '__esModule', {
-			value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(180);
@@ -7574,60 +7574,136 @@ webpackJsonp([2],[
 	var _reactBootstrap = __webpack_require__(388);
 
 	exports['default'] = _react2['default'].createClass({
-			displayName: 'SignIn',
+	  displayName: 'SignIn',
 
-			render: function render() {
-					return _react2['default'].createElement(
-							'div',
-							{ className: 'container' },
-							_react2['default'].createElement(
-									'div',
-									{ className: 'form-signin' },
-									_react2['default'].createElement(
-											'div',
-											{ className: 'form-body' },
-											_react2['default'].createElement(
-													'div',
-													{ className: 'form-group' },
-													_react2['default'].createElement(
-															'div',
-															{ className: 'logo' },
-															_react2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
-													)
-											),
-											_react2['default'].createElement(_reactBootstrap.Input, { type: 'email', className: 'input-lg', placeholder: 'Phone' }),
-											_react2['default'].createElement(_reactBootstrap.Input, { type: 'password', className: 'input-lg', placeholder: 'Password' }),
-											_react2['default'].createElement(_reactBootstrap.ButtonInput, { type: 'submit', bsStyle: 'success', className: 'form-control', value: 'Log In' })
-									),
-									_react2['default'].createElement(
-											'div',
-											{ className: 'form-footer' },
-											_react2['default'].createElement(
-													'div',
-													{ className: 'row' },
-													_react2['default'].createElement(
-															'div',
-															{ className: 'col-xs-8 col-md-8' },
-															_react2['default'].createElement(
-																	'a',
-																	{ href: '/password/reset/' },
-																	'Forgot password?'
-															)
-													),
-													_react2['default'].createElement(
-															'div',
-															{ className: 'col-xs-4 col-md-4' },
-															_react2['default'].createElement(
-																	_reactRouter.Link,
-																	{ to: 'signup', className: 'pull-right' },
-																	'Sign Up'
-															)
-													)
-											)
-									)
-							)
-					);
-			}
+	  contextTypes: {
+	    flux: _react2['default'].PropTypes.object.isRequired,
+	    router: _react2['default'].PropTypes.func.isRequired },
+
+	  getInitialState: function getInitialState() {
+	    this.AuthActions = this.context.flux.getActions('authActions');
+	    this.AuthStore = this.context.flux.getStore('authStore');
+
+	    return {
+	      logInState: this.AuthStore.getLogInState() };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    this.AuthStore.addListener('change', this.onSotreAuthChange);
+
+	    if (this.AuthStore.getToken()) {
+	      var router = this.context.router;
+
+	      var nextPath = router.getCurrentQuery().nextPath;
+	      if (nextPath) {
+	        router.replaceWith(nextPath);
+	      } else {
+	        router.replaceWith('home');
+	      }
+	    }
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    this.AuthStore.removeListener('change', this.onSotreAuthChange);
+	  },
+
+	  componentDidUpdate: function componentDidUpdate() {
+	    if (this.state.logInState === 'success') {
+	      var router = this.context.router;
+
+	      var nextPath = router.getCurrentQuery().nextPath;
+	      if (nextPath) {
+	        router.replaceWith(nextPath);
+	      } else {
+	        router.replaceWith('home');
+	      }
+	    }
+	  },
+
+	  onSotreAuthChange: function onSotreAuthChange() {
+	    this.setState({
+	      logInState: this.AuthStore.getLogInState()
+	    });
+	  },
+
+	  render: function render() {
+	    console.log(this.state);
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'container' },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'form-signin' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'form-body' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'logo' },
+	              _react2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
+	            )
+	          ),
+	          this.state.logInState === 'errors' && _react2['default'].createElement(
+	            'p',
+	            { className: 'text-danger' },
+	            'so dien thoat hoac password ko dung'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            { className: 'text-center title-form' },
+	            'dang nhap to cu'
+	          ),
+	          _react2['default'].createElement(
+	            'form',
+	            { name: 'signIn', onSubmit: this.Submit },
+	            _react2['default'].createElement(_reactBootstrap.Input, { ref: 'phone', type: 'text', className: 'input-lg', placeholder: 'Phone' }),
+	            _react2['default'].createElement(_reactBootstrap.Input, { ref: 'pass', type: 'password', className: 'input-lg', placeholder: 'Password' }),
+	            _react2['default'].createElement(_reactBootstrap.ButtonInput, { type: 'submit', onClick: this.handleLogin, bsStyle: 'primary', className: 'form-control', value: 'Log In' })
+	          )
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'form-footer' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'col-xs-8 col-md-8' },
+	              _react2['default'].createElement(
+	                'a',
+	                { href: '/password/reset/' },
+	                'Forgot password?'
+	              )
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'col-xs-4 col-md-4' },
+	              _react2['default'].createElement(
+	                _reactRouter.Link,
+	                { to: 'signup', className: 'pull-right' },
+	                'Sign Up'
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  },
+	  Submit: function Submit(e) {
+	    e.preventDefault();
+	  },
+	  handleLogin: function handleLogin() {
+	    var mobilePhone = this.refs.phone.getValue();
+	    var password = this.refs.pass.getValue();
+	    this.AuthActions.LoginActions({ mobilePhone: mobilePhone, password: password });
+	    this.setState({
+	      logInState: 'loading'
+	    });
+	  }
 	});
 	module.exports = exports['default'];
 
@@ -14994,7 +15070,7 @@ webpackJsonp([2],[
 	var _interopRequireDefault = __webpack_require__(269)['default'];
 
 	_Object$defineProperty(exports, '__esModule', {
-		value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(180);
@@ -15005,103 +15081,277 @@ webpackJsonp([2],[
 
 	var _reactBootstrap = __webpack_require__(388);
 
+	/* @jsx */
+
+	var _componentsSignUpSelectCity = __webpack_require__(457);
+
+	var _componentsSignUpSelectCity2 = _interopRequireDefault(_componentsSignUpSelectCity);
+
+	var _componentsSignUpSelectDistrict = __webpack_require__(458);
+
+	var _componentsSignUpSelectDistrict2 = _interopRequireDefault(_componentsSignUpSelectDistrict);
+
 	exports['default'] = _react2['default'].createClass({
-		displayName: 'SignUp',
+	  displayName: 'SignUp',
+
+	  contextTypes: {
+	    flux: _react2['default'].PropTypes.object.isRequired },
+
+	  getInitialState: function getInitialState() {
+	    this.CityActions = this.context.flux.getActions('cityActions');
+	    this.AuthActions = this.context.flux.getActions('authActions');
+	    this.CityStore = this.context.flux.getStore('cityStore');
+	    this.AuthStore = this.context.flux.getStore('authStore');
+
+	    return {
+	      city: this.CityStore.getCity(),
+	      district: this.CityStore.getDistrict(),
+	      errCreateUse: this.AuthStore.getErrCreateUse(),
+	      error: {} };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    this.CityStore.addListener('change', this.onStoreCityChange);
+	    this.AuthStore.addListener('change', this.onSotreAuthChange);
+	    this.CityActions.getCityActions();
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    this.CityStore.removeListener('change', this.onStoreCityChange);
+	    this.AuthStore.removeListener('change', this.onSotreAuthChange);
+	  },
+
+	  onStoreCityChange: function onStoreCityChange() {
+	    this.setState({
+	      city: this.CityStore.getCity(),
+	      district: this.CityStore.getDistrict() });
+	  },
+
+	  onSotreAuthChange: function onSotreAuthChange() {
+	    this.setState({
+	      errCreateUse: this.AuthStore.getErrCreateUse() });
+	  },
+
+	  render: function render() {
+	    var InputPhone = undefined;
+	    if (!this.state.errCreateUse.mobilePhone) {
+	      InputPhone = _react2['default'].createElement(_reactBootstrap.Input, { ref: 'phone', type: 'tel', placeholder: 'Phone' });
+	    } else {
+	      var label = null;
+	      if (this.state.errCreateUse.mobilePhone.properties.type === 'regexp') {
+	        label = 'not number phone';
+	      }
+	      if (this.state.errCreateUse.mobilePhone.properties.type === 'user defined') {
+	        label = this.state.errCreateUse.mobilePhone.message;
+	      }
+	      InputPhone = _react2['default'].createElement(_reactBootstrap.Input, { ref: 'phone', bsStyle: 'error', label: label, type: 'tel', placeholder: 'Phone' });
+	    }
+
+	    console.log(this.state.errCreateUse);
+
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'container' },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'form-signup' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'form-body' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'logo' },
+	              _react2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
+	            )
+	          ),
+	          _react2['default'].createElement(
+	            'form',
+	            null,
+	            !this.state.errCreateUse.name && _react2['default'].createElement(_reactBootstrap.Input, { ref: 'name', type: 'text', placeholder: 'name' }),
+	            this.state.errCreateUse.name && _react2['default'].createElement(_reactBootstrap.Input, { ref: 'name', type: 'text', bsStyle: 'error', placeholder: 'name' }),
+	            InputPhone,
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-6' },
+	                _react2['default'].createElement(
+	                  _reactBootstrap.Input,
+	                  { onChange: this.CityOnChange, ref: 'city', type: 'select', placeholder: 'select' },
+	                  _react2['default'].createElement(
+	                    'option',
+	                    { value: '' },
+	                    'City'
+	                  ),
+	                  this.state.city && this.state.city.map(function (city, i) {
+	                    return _react2['default'].createElement(
+	                      'option',
+	                      { key: i, value: city },
+	                      city
+	                    );
+	                  })
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-6' },
+	                _react2['default'].createElement(
+	                  _reactBootstrap.Input,
+	                  { type: 'select', ref: 'district', placeholder: 'select' },
+	                  _react2['default'].createElement(
+	                    'option',
+	                    { value: '' },
+	                    'District'
+	                  ),
+	                  this.state.district && this.state.district.map(function (district, i) {
+	                    return _react2['default'].createElement(
+	                      'option',
+	                      { key: i, value: district.name },
+	                      district.name
+	                    );
+	                  })
+	                )
+	              )
+	            ),
+	            !this.state.errCreateUse.password && _react2['default'].createElement(_reactBootstrap.Input, { ref: 'password', type: 'password', name: 'password', placeholder: 'Password', required: true }),
+	            this.state.errCreateUse.password && _react2['default'].createElement(_reactBootstrap.Input, { ref: 'password', type: 'password', bsStyle: 'error', name: 'password', placeholder: 'Password', required: true }),
+	            _react2['default'].createElement(_reactBootstrap.ButtonInput, { onClick: this.CreateAuth, type: 'submit', bsStyle: 'primary', className: 'form-control', value: 'Create account' })
+	          )
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'form-footer text-center' },
+	          _react2['default'].createElement(
+	            _reactRouter.Link,
+	            { to: 'signin' },
+	            'Sign In'
+	          )
+	        )
+	      )
+	    );
+	  },
+
+	  CreateAuth: function CreateAuth(e) {
+	    e.preventDefault();
+	    var name = this.refs.name.getValue();
+	    var mobilePhone = this.refs.phone.getValue();
+	    var city = this.refs.city.getValue();
+	    var district = this.refs.district.getValue();
+	    var password = this.refs.password.getValue();
+
+	    this.AuthActions.CreateUser({ name: name, mobilePhone: mobilePhone, city: city, district: district, password: password });
+	  },
+
+	  CityOnChange: function CityOnChange(citySelect) {
+	    var citySelect = this.refs.city.getValue();
+	    this.CityActions.getDistrictActions({ city: citySelect });
+	  } });
+	module.exports = exports['default'];
+
+/***/ },
+/* 457 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _Object$defineProperty = __webpack_require__(362)['default'];
+
+	var _interopRequireDefault = __webpack_require__(269)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	var _react = __webpack_require__(180);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(388);
+
+	exports['default'] = _react2['default'].createClass({
+		displayName: 'SelectCity',
+
+		contextTypes: {
+			flux: _react2['default'].PropTypes.object.isRequired },
 
 		render: function render() {
 			return _react2['default'].createElement(
-				'div',
-				{ className: 'container' },
+				_reactBootstrap.Input,
+				{ onChange: this.handleOnChange, ref: 'city', type: 'select', placeholder: 'select' },
 				_react2['default'].createElement(
-					'div',
-					{ className: 'form-signup' },
-					_react2['default'].createElement(
-						'div',
-						{ className: 'form-body' },
-						_react2['default'].createElement(
-							'div',
-							{ className: 'form-group' },
-							_react2['default'].createElement(
-								'div',
-								{ className: 'logo' },
-								_react2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
-							)
-						),
-						_react2['default'].createElement(_reactBootstrap.Input, { ref: 'name', type: 'text', placeholder: 'name' }),
-						_react2['default'].createElement(_reactBootstrap.Input, { ref: 'phone', type: 'text', placeholder: 'Phone' }),
-						_react2['default'].createElement(
-							'div',
-							{ className: 'row' },
-							_react2['default'].createElement(
-								'div',
-								{ className: 'col-xs-6' },
-								_react2['default'].createElement(
-									_reactBootstrap.Input,
-									{ ref: 'city', type: 'select', placeholder: 'select' },
-									_react2['default'].createElement(
-										'option',
-										{ value: 'select' },
-										'City'
-									),
-									_react2['default'].createElement(
-										'option',
-										{ value: 'other' },
-										'Hanoi'
-									)
-								)
-							),
-							_react2['default'].createElement(
-								'div',
-								{ className: 'col-xs-6' },
-								_react2['default'].createElement(
-									_reactBootstrap.Input,
-									{ ref: 'district', type: 'select', placeholder: 'select' },
-									_react2['default'].createElement(
-										'option',
-										{ value: 'select' },
-										'District'
-									),
-									_react2['default'].createElement(
-										'option',
-										{ value: 'other' },
-										'1'
-									),
-									_react2['default'].createElement(
-										'option',
-										{ value: 'other' },
-										'2'
-									),
-									_react2['default'].createElement(
-										'option',
-										{ value: 'other' },
-										'3'
-									)
-								)
-							)
-						),
-						_react2['default'].createElement(_reactBootstrap.Input, { ref: 'password', type: 'password', placeholder: 'Password' }),
-						_react2['default'].createElement(_reactBootstrap.ButtonInput, { onClick: this.CreateAuth, type: 'submit', bsStyle: 'success', className: 'form-control', value: 'Create account' })
-					),
-					_react2['default'].createElement(
-						'div',
-						{ className: 'form-footer text-center' },
-						_react2['default'].createElement(
-							_reactRouter.Link,
-							{ to: 'signin' },
-							'Sign In'
-						)
-					)
-				)
+					'option',
+					{ value: '' },
+					'City'
+				),
+				this.props.city && this.props.city.map(function (city, i) {
+					return _react2['default'].createElement(
+						'option',
+						{ key: i, value: city },
+						city
+					);
+				})
 			);
 		},
-		CreateAuth: function CreateAuth() {
-			console.log(this.refs.name.getValue());
+		handleOnChange: function handleOnChange() {
+			var CitySelect = this.refs.city.getValue();
+			if (CitySelect !== '') {
+				this.props.onChange(CitySelect);
+			}
 		}
 	});
 	module.exports = exports['default'];
 
 /***/ },
-/* 457 */
+/* 458 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _Object$defineProperty = __webpack_require__(362)['default'];
+
+	var _interopRequireDefault = __webpack_require__(269)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(180);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(388);
+
+	exports['default'] = _react2['default'].createClass({
+	  displayName: 'SelectDistrict',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      _reactBootstrap.Input,
+	      { type: 'select', placeholder: 'select' },
+	      _react2['default'].createElement(
+	        'option',
+	        { value: '' },
+	        'District'
+	      ),
+	      this.props.district && this.props.district.map(function (district, i) {
+	        return _react2['default'].createElement(
+	          'option',
+	          { key: i, value: district },
+	          district
+	        );
+	      })
+	    );
+	  }
+
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 459 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15113,905 +15363,211 @@ webpackJsonp([2],[
 	});
 
 	var React = __webpack_require__(180);
-	var Formsy = __webpack_require__(458);
+	/*var t = require('tcomb-form');
+	var Form = t.form.Form;*/
 
 	exports['default'] = React.createClass({
 	  displayName: 'SignUpTest',
 
-	  getInitialState: function getInitialState() {
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      ' test '
+	    );
+	  }
+	});
+
+	/*
+	export default React.createClass({
+
+	  contextTypes: {
+	    flux: React.PropTypes.object.isRequired,
+	  },
+
+	  getInitialState() {
+	    this.CityActions = this.context.flux.getActions('cityActions');
+	    this.CityStore = this.context.flux.getStore('cityStore');
+
+	    return this.getFromStore();
+	  },
+
+	  getFromStore () {
 	    return {
-	      validationErrors: {}
+	      city: this.CityStore.getCity(),
+	      district: this.CityStore.getDistrict(),
+	      firstSelectCity: null,
 	    };
 	  },
-	  validateForm: function validateForm(values) {
-	    if (!values.foo) {
-	      this.setState({
-	        validationErrors: {
-	          foo: 'Has no value'
+
+	  componentDidMount() {
+	    this.CityStore.addListener('change', this.onStoreChange);
+	    this.CityActions.getCityActions();
+	  },
+
+	  componentWillUnmount() {
+	    this.CityStore.removeListener('change', this.onStoreChange);
+	  },
+
+	  onStoreChange() {
+	    this.setState({
+	      city: this.CityStore.getCity(),
+	      district: this.CityStore.getDistrict()
+	    });
+	  },
+
+	  render() {
+	    let city = this.state.city || [];
+	    let district = this.state.district || [];
+	    let firstSelectCity = this.state.firstSelectCity || null;
+	 
+	    var formLayout = function(locals){
+	      return (
+	        <div>
+	          {locals.inputs.name}
+	          {locals.inputs.phone}
+	          <div className="row">
+	            <div className="col-xs-6">
+	              {locals.inputs.cityname}
+	            </div>
+	            <div className="col-xs-6">
+	              {locals.inputs.district}
+	            </div>
+	          </div>
+	          {locals.inputs.password}
+	        </div>
+	      );
+	    };
+
+	    var Person = t.struct({
+	      name: t.Str,
+	      phone: t.Num, // a numeric field
+	      cityname: t.Str,
+	      district: t.Str,
+	      password: t.Str,
+	    });
+
+	    var options = {
+	      template: formLayout,
+	      auto: 'placeholders',
+	      order: ['name', 'phone', 'cityname', 'district', 'password'],
+	      fields: {
+	        name: {
+	          error: null,
+	          attrs: {
+	            autoFocus: true
+	          }
+	        },
+	        cityname: {
+	          order: 'asc', // or desc
+	          nullOption: {value: 'dsf', text: 'City'},
+	          options: city.map(function(name) {
+	            return {value: name, text: name};
+	          }),
+	          factory: t.form.Select
+	        },
+	        district: {
+	          order: 'asc', // or desc
+	          nullOption: {value: '', text: 'district'},
+	          factory: t.form.Select,
+	          options: district.map(function(name) {
+	            return {value: name, text: name};
+	          }),
 	        }
-	      });
-	    } else {
-	      this.setState({
-	        validationErrors: {}
-	      });
-	    }
-	  },
-	  sendToServer: function sendToServer(data) {
-	    console.log(data);
-	  },
-	  Submit: function Submit(model, reset, invalidate) {
-	    console.log(invalidate);
-	    /*  invalidate({
-	        foo: "error"
-	      })*/
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      { className: 'container' },
-	      React.createElement(
-	        'div',
-	        { className: 'form-signup' },
-	        React.createElement(
-	          Formsy.Form,
-	          { className: 'form-body', onSubmit: this.Submit, preventExternalInvalidation: true, onValidSubmit: this.sendToServer, onChange: this.validateForm, validationErrors: this.state.validationErrors },
-	          React.createElement(MyInput, { name: 'foo' }),
-	          React.createElement('input', { type: 'submit', value: 'submit' })
-	        )
-	      )
-	    );
-	  }
-	});
+	      },
+	    };
 
-	var MyInput = React.createClass({
-	  displayName: 'MyInput',
-
-	  mixins: [Formsy.Mixin],
-	  changeValue: function changeValue(event) {
-	    this.setValue(event.currentTarget.value);
-	  },
-	  render: function render() {
-	    var className = this.props.className + ' ' + (this.showRequired() ? 'required' : this.showError() ? 'error' : null);
-	    var errorMessage = this.getErrorMessage();
-	    return React.createElement(
-	      'div',
-	      { className: 'form-group has-error' },
-	      React.createElement(
-	        'label',
-	        { htmlFor: this.props.name },
-	        this.props.title
-	      ),
-	      React.createElement('input', { type: this.props.type || 'text', name: this.props.name, onChange: this.changeValue, value: this.getValue() }),
-	      React.createElement(
-	        'span',
-	        { className: 'validation-error' },
-	        errorMessage
-	      )
-	    );
-	  }
-	});
-
-	/*export default  React.createClass({
-	  getInitialState: function() {
-	    return { canSubmit: false };
-	  },
-	  submit: function (data) {
-	    alert(JSON.stringify(data, null, 4));
-	  },
-	  enableButton: function () {
-	    this.setState({
-	      canSubmit: true
-	    });
-	  },
-	  disableButton: function () {
-	    this.setState({
-	      canSubmit: false
-	    });
-	  },
-	  render: function () {
+	      console.log(this.state.firstSelectCity);
 	    return (
 	      <div className="container">
 	        <div className="form-signup">
 	          <div className="form-body">
-	            <Formsy.Form onSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton} >
-	              <MyOwnInput name="email" validations="isEmail" validationError="This is not a valid email" required />
-	              <MyOwnInput name="password" type="password" required />
-	              <button type="submit" disabled={!this.state.canSubmit}>Submit</button>
-	            </Formsy.Form>
+	            <div className="form-group">
+	              <div className="logo">
+	                <img src="/img/logo.png" style={{width: 50, height: 50}} />
+	              </div>
+	            </div>
+
+	            <Form
+	              ref="form"
+	              type={Person}
+	              options={options}
+	              onChange={this.TestChange} />
+
+	            <button className="btn btn-primary btn-block" onClick={this.save}>Save</button>
+
+	          </div>
+	            
+	          <div className="form-footer text-center">
+	            <a href="/signin">Sign In</a>
 	          </div>
 	        </div>
 	      </div>
 	    );
+	  },
+
+	  save() {
+	    var value = this.refs.form.getValue();
+	    // if validation fails, value will be null
+	    if (value) {
+	      // value here is an instance of Person
+	      console.log(value);
+	    }
+	  },
+
+	  TestChange(val, path) {
+	    this.state.firstSelectCity = { text: val.cityname, value: val.cityname};
+	    if(path[0] === "cityname") {
+	      this.CityActions.getDistrictActions(val.cityname);
+	    }
 	  }
 	});
-
-	var MyOwnInput = React.createClass({
-
-	  // Add the Formsy Mixin
-	  mixins: [Formsy.Mixin],
-
-	  // setValue() will set the value of the component, which in
-	  // turn will validate it and the rest of the form
-	  changeValue: function (event) {
-	    this.setValue(event.currentTarget.value);
-	  },
-	  render: function () {
-
-	    // Set a specific className based on the validation
-	    // state of this component. showRequired() is true
-	    // when the value is empty and the required prop is
-	    // passed to the input. showError() is true when the
-	    // value typed is invalid
-	    var className = this.props.className + ' ' + (this.showRequired() ? 'required' : this.showError() ? 'error' : null);
-
-	    // An error message is returned ONLY if the component is invalid
-	    // or the server has returned an error message
-	    var errorMessage = this.getErrorMessage();
-
-	    return (
-	      <div className='form-group has-error'>
-	        <label htmlFor={this.props.name}>{this.props.title}</label>
-	        <input type={this.props.type || 'text'} name={this.props.name} onChange={this.changeValue} value={this.getValue()}/>
-	        <span className='validation-error'>{errorMessage}</span>
-	      </div>
-	    );
-	  }
-	});*/
+	*/
 	module.exports = exports['default'];
 
 /***/ },
-/* 458 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {var React = global.React || __webpack_require__(180);
-	var Formsy = {};
-	var validationRules = __webpack_require__(459);
-	var utils = __webpack_require__(460);
-	var Mixin = __webpack_require__(461);
-	var options = {};
-
-	Formsy.Mixin = Mixin;
-
-	Formsy.defaults = function (passedOptions) {
-	  options = passedOptions;
-	};
-
-	Formsy.addValidationRule = function (name, func) {
-	  validationRules[name] = func;
-	};
-
-	Formsy.Form = React.createClass({
-	  getInitialState: function () {
-	    return {
-	      isValid: true,
-	      isSubmitting: false,
-	      canChange: false
-	    };
-	  },
-	  getDefaultProps: function () {
-	    return {
-	      onSuccess: function () {},
-	      onError: function () {},
-	      onSubmit: function () {},
-	      onValidSubmit: function () {},
-	      onInvalidSubmit: function () {},
-	      onSubmitted: function () {},
-	      onValid: function () {},
-	      onInvalid: function () {},
-	      onChange: function () {},
-	      validationErrors: null,
-	      preventExternalInvalidation: false
-	    };
-	  },
-
-	  // Add a map to store the inputs of the form, a model to store
-	  // the values of the form and register child inputs
-	  componentWillMount: function () {
-	    this.inputs = {};
-	    this.model = {};
-	  },
-
-	  componentDidMount: function () {
-	    this.validateForm();
-	  },
-
-	  componentWillUpdate: function () {
-
-	    // Keep a reference to input keys before form updates,
-	    // to check if inputs has changed after render
-	    this.prevInputKeys = Object.keys(this.inputs);
-
-	  },
-
-	  componentDidUpdate: function () {
-
-	    if (this.props.validationErrors) {
-	      this.setInputValidationErrors(this.props.validationErrors);
-	    }
-
-	    var newInputKeys = Object.keys(this.inputs);
-	    if (utils.arraysDiffer(this.prevInputKeys, newInputKeys)) {
-	      this.validateForm();
-	    }
-
-	  },
-
-	  // Allow resetting to specified data
-	  reset: function (data) {
-	    this.setFormPristine(true);
-	    this.resetModel(data);
-	  },
-
-	  // Update model, submit to url prop and send the model
-	  submit: function (event) {
-
-	    event && event.preventDefault();
-
-	    // Trigger form as not pristine.
-	    // If any inputs have not been touched yet this will make them dirty
-	    // so validation becomes visible (if based on isPristine)
-	    this.setFormPristine(false);
-	    this.updateModel();
-	    var model = this.mapModel();
-	    this.props.onSubmit(model, this.resetModel, this.updateInputsWithError);
-	    this.state.isValid ? this.props.onValidSubmit(model, this.resetModel, this.updateInputsWithError) : this.props.onInvalidSubmit(model, this.resetModel, this.updateInputsWithError);
-
-	  },
-
-	  mapModel: function () {
-	    if (this.props.mapping) {
-	      return this.props.mapping(this.model)
-	    } else {
-	      return Object.keys(this.model).reduce(function (mappedModel, key) {
-	        
-	        var keyArray = key.split('.');
-	        while (keyArray.length) {
-	          var currentKey = keyArray.shift();
-	          mappedModel[currentKey] = keyArray.length ? mappedModel[currentKey] || {} : this.model[key];
-	        }
-
-	        return mappedModel;
-
-	      }.bind(this), {});
-	    }
-	  },
-
-	  // Goes through all registered components and
-	  // updates the model values
-	  updateModel: function () {
-	    Object.keys(this.inputs).forEach(function (name) {
-	      var component = this.inputs[name];
-	      this.model[name] = component.state._value;
-	    }.bind(this));
-	  },
-
-	  // Reset each key in the model to the original / initial / specified value
-	  resetModel: function (data) {
-	    Object.keys(this.inputs).forEach(function (name) {
-	      if (data && data[name]) {
-	        this.inputs[name].setValue(data[name]);
-	      } else {
-	        this.inputs[name].resetValue();
-	      }
-	    }.bind(this));
-	    this.validateForm();
-	  },
-
-	  setInputValidationErrors: function (errors) {
-	    Object.keys(this.inputs).forEach(function (name, index) {
-	      var component = this.inputs[name];
-	      var args = [{
-	        _isValid: !(name in errors),
-	        _validationError: errors[name]
-	      }];
-	      component.setState.apply(component, args);
-	    }.bind(this));
-	  },
-
-	  // Checks if the values have changed from their initial value
-	  isChanged: function() {
-	    return !utils.isSame(this.getPristineValues(), this.getCurrentValues());
-	  },
-
-	   getPristineValues: function() {
-	    var inputs = this.inputs;
-	    return Object.keys(inputs).reduce(function (data, name) {
-	      var component = inputs[name];
-	      data[name] = component.props.value;
-	      return data;
-	    }, {});
-	  },
-
-	  // Go through errors from server and grab the components
-	  // stored in the inputs map. Change their state to invalid
-	  // and set the serverError message
-	  updateInputsWithError: function (errors) {
-	    Object.keys(errors).forEach(function (name, index) {
-	      var component = this.inputs[name];
-
-	      if (!component) {
-	        throw new Error('You are trying to update an input that does not exist. Verify errors object with input names. ' + JSON.stringify(errors));
-	      }
-	      var args = [{
-	        _isValid: this.props.preventExternalInvalidation || false,
-	        _externalError: errors[name]
-	      }];
-	      component.setState.apply(component, args);
-	    }.bind(this));
-	  },
-
-	  // Traverse the children and children of children to find
-	  // all inputs by checking the name prop. Maybe do a better
-	  // check here
-	  traverseChildrenAndRegisterInputs: function (children) {
-
-	    if (typeof children !== 'object' || children === null) {
-	      return children;
-	    }
-	    return React.Children.map(children, function (child) {
-
-	      if (typeof child !== 'object' || child === null) {
-	        return child;
-	      }
-
-	      if (child.props && child.props.name) {
-
-	        return React.cloneElement(child, {
-	          _attachToForm: this.attachToForm,
-	          _detachFromForm: this.detachFromForm,
-	          _validate: this.validate,
-	          _isFormDisabled: this.isFormDisabled,
-	          _isValidValue: function (component, value) {
-	            return this.runValidation(component, value).isValid;
-	          }.bind(this)
-	        }, child.props && child.props.children);
-	      } else {
-	        return React.cloneElement(child, {}, this.traverseChildrenAndRegisterInputs(child.props && child.props.children));
-	      }
-
-	    }, this);
-
-	  },
-
-	  isFormDisabled: function () {
-	    return this.props.disabled;
-	  },
-
-	  getCurrentValues: function () {
-	    return Object.keys(this.inputs).reduce(function (data, name) {
-	      var component = this.inputs[name];
-	      data[name] = component.state._value;
-	      return data;
-	    }.bind(this), {});
-	  },
-
-	  setFormPristine: function (isPristine) {
-	    var inputs = this.inputs;
-	    var inputKeys = Object.keys(inputs);
-
-	    this.setState({
-	        _formSubmitted: !isPristine
-	    })
-
-	    // Iterate through each component and set it as pristine
-	    // or "dirty".
-	    inputKeys.forEach(function (name, index) {
-	      var component = inputs[name];
-	      component.setState({
-	        _formSubmitted: !isPristine,
-	        _isPristine: isPristine
-	      });
-	    }.bind(this));
-	  },
-
-	  // Use the binded values and the actual input value to
-	  // validate the input and set its state. Then check the
-	  // state of the form itself
-	  validate: function (component) {
-
-	    // Trigger onChange
-	    if (this.state.canChange) {
-	      this.props.onChange(this.getCurrentValues(), this.isChanged());
-	    }
-
-	    var validation = this.runValidation(component);
-	    // Run through the validations, split them up and call
-	    // the validator IF there is a value or it is required
-	    component.setState({
-	      _isValid: validation.isValid,
-	      _isRequired: validation.isRequired,
-	      _validationError: validation.error,
-	      _externalError: null
-	    }, this.validateForm);
-
-	  },
-
-	  // Checks validation on current value or a passed value
-	  runValidation: function (component, value) {
-
-	    var currentValues = this.getCurrentValues();
-	    var validationErrors = component.props.validationErrors;
-	    var validationError = component.props.validationError;
-	    value = arguments.length === 2 ? value : component.state._value;
-
-	    var validationResults = this.runRules(value, currentValues, component._validations);
-	    var requiredResults = this.runRules(value, currentValues, component._requiredValidations);
-
-	    // the component defines an explicit validate function
-	    if (typeof component.validate === "function") {
-	      validationResults.failed = component.validate() ? [] : ['failed'];
-	    }
-
-	    var isRequired = Object.keys(component._requiredValidations).length ? !!requiredResults.success.length : false;
-	    var isValid = !validationResults.failed.length && !(this.props.validationErrors && this.props.validationErrors[component.props.name]);
-
-	    return {
-	      isRequired: isRequired,
-	      isValid: isRequired ? false : isValid,
-	      error: (function () {
-
-	        if (isValid && !isRequired) {
-	          return '';
-	        }
-
-	        if (validationResults.errors.length) {
-	          return validationResults.errors[0];
-	        }
-
-	        if (this.props.validationErrors && this.props.validationErrors[component.props.name]) {
-	          return this.props.validationErrors[component.props.name];
-	        }
-
-	        if (isRequired) {
-	          return validationErrors[requiredResults.success[0]] || null;
-	        }
-
-	        if (!isValid) {
-	          return validationErrors[validationResults.failed[0]] || validationError;
-	        }
-
-	      }.call(this))
-	    };
-
-	  },
-
-	  runRules: function (value, currentValues, validations) {
-
-	    var results = {
-	      errors: [],
-	      failed: [],
-	      success: []
-	    };
-	    if (Object.keys(validations).length) {
-	      Object.keys(validations).forEach(function (validationMethod) {
-
-	        if (validationRules[validationMethod] && typeof validations[validationMethod] === 'function') {
-	          throw new Error('Formsy does not allow you to override default validations: ' + validationMethod);
-	        }
-
-	        if (!validationRules[validationMethod] && typeof validations[validationMethod] !== 'function') {
-	          throw new Error('Formsy does not have the validation rule: ' + validationMethod);
-	        }
-
-	        if (typeof validations[validationMethod] === 'function') {
-	          var validation = validations[validationMethod](currentValues, value);
-	          if (typeof validation === 'string') {
-	            results.errors.push(validation);
-	            results.failed.push(validationMethod);
-	          } else if (!validation) {
-	            results.failed.push(validationMethod);
-	          }
-	          return;
-
-	        } else if (typeof validations[validationMethod] !== 'function') {
-	          var validation = validationRules[validationMethod](currentValues, value, validations[validationMethod]);
-	          if (typeof validation === 'string') {
-	            results.errors.push(validation);
-	            results.failed.push(validationMethod);
-	          } else if (!validation) {
-	            results.failed.push(validationMethod);
-	          } else {
-	            results.success.push(validationMethod);
-	          }
-	          return;
-
-	        }
-
-	        return results.success.push(validationMethod);
-
-	      });
-	    }
-
-	    return results;
-
-	  },
-
-	  // Validate the form by going through all child input components
-	  // and check their state
-	  validateForm: function () {
-	    var allIsValid = true;
-	    var inputs = this.inputs;
-	    var inputKeys = Object.keys(inputs);
-
-	    // We need a callback as we are validating all inputs again. This will
-	    // run when the last component has set its state
-	    var onValidationComplete = function () {
-	      inputKeys.forEach(function (name) {
-	        if (!inputs[name].state._isValid) {
-	          allIsValid = false;
-	        }
-	      }.bind(this));
-
-	      this.setState({
-	        isValid: allIsValid
-	      });
-
-	      if (allIsValid) {
-	        this.props.onValid();
-	      } else {
-	        this.props.onInvalid();
-	      }
-
-	      // Tell the form that it can start to trigger change events
-	      this.setState({
-	        canChange: true
-	      });
-
-	    }.bind(this);
-
-	    // Run validation again in case affected by other inputs. The
-	    // last component validated will run the onValidationComplete callback
-	    inputKeys.forEach(function (name, index) {
-	      var component = inputs[name];
-	      var validation = this.runValidation(component);
-	      if (validation.isValid && component.state._externalError) {
-	        validation.isValid = false;
-	      }
-	      component.setState({
-	        _isValid: validation.isValid,
-	        _isRequired: validation.isRequired,
-	        _validationError: validation.error,
-	        _externalError: !validation.isValid && component.state._externalError ? component.state._externalError : null
-	      }, index === inputKeys.length - 1 ? onValidationComplete : null);
-	    }.bind(this));
-
-	    // If there are no inputs, set state where form is ready to trigger
-	    // change event. New inputs might be added later
-	    if (!inputKeys.length && this.isMounted()) {
-	      this.setState({
-	        canChange: true
-	      });
-	    }
-	  },
-
-	  // Method put on each input component to register
-	  // itself to the form
-	  attachToForm: function (component) {
-	    this.inputs[component.props.name] = component;
-	    this.model[component.props.name] = component.state._value;
-	    this.validate(component);
-	  },
-
-	  // Method put on each input component to unregister
-	  // itself from the form
-	  detachFromForm: function (component) {
-	    delete this.inputs[component.props.name];
-	    delete this.model[component.props.name];
-	  },
-	  render: function () {
-
-	    return React.DOM.form({
-	        onSubmit: this.submit,
-	        className: this.props.className,
-	        autoComplete: this.props.autoComplete
-	      },
-	      this.traverseChildrenAndRegisterInputs(this.props.children)
-	    );
-
-	  }
-	});
-
-	if (!global.exports && !global.module && (!global.define || !global.define.amd)) {
-	  global.Formsy = Formsy;
-	}
-
-	module.exports = Formsy;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 459 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isExisty = function (value) {
-	  return value !== null && value !== undefined;
-	};
-
-	var validations = {
-	  isDefaultRequiredValue: function (values, value) {
-	    return value === undefined || value === '';
-	  },
-	  isExisty: function (values, value) {
-	    return isExisty(value);
-	  },
-	  matchRegexp: function (values, value, regexp) {
-	    return isExisty(value) && regexp.test(value);
-	  },
-	  isUndefined: function (values, value) {
-	    return value === undefined;
-	  },
-	  isEmptyString: function (values, value) {
-	    return value === '';
-	  },
-	  isEmail: function (values, value) {
-	    return validations.matchRegexp(values, value, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i);
-	  },
-	  isUrl: function (values, value) {
-	    return validations.matchRegexp(values, value, /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i);
-	  },
-	  isTrue: function (values, value) {
-	    return value === true;
-	  },
-	  isFalse: function (values, value) {
-	    return value === false;
-	  },
-	  isNumeric: function (values, value) {
-	    if (!isExisty(value)) {
-	        return false;
-	    }
-	    if (typeof value === 'number') {
-	      return true;
-	    } else {
-	      var matchResults = value.match(/[-+]?(\d*[.])?\d+/);
-	      if (!!matchResults) {
-	        return matchResults[0] == value;
-	      } else {
-	        return false;
-	      }
-	    }
-	  },
-	  isAlpha: function (values, value) {
-	    return value && /^[a-zA-Z]+$/.test(value);
-	  },
-	  isWords: function (values, value) {
-	    return value && /^[a-zA-Z\s]+$/.test(value);
-	  },
-	  isSpecialWords: function (values, value) {
-	    return !value || /^[a-zA-Z\s\u00C0-\u017F]+$/.test(value);
-	  },
-	  isLength: function (values, value, length) {
-	    return isExisty(value) && value.length === length;
-	  },
-	  equals: function (values, value, eql) {
-	    return value == eql;
-	  },
-	  equalsField: function (values, value, field) {
-	    return value == values[field];
-	  },
-	  maxLength: function (values, value, length) {
-	    return isExisty(value) && value.length <= length;
-	  },
-	  minLength: function (values, value, length) {
-	    return isExisty(value) && value.length >= length;
-	  }
-	};
-
-	module.exports = validations;
-
-
-/***/ },
-/* 460 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  arraysDiffer: function (a, b) {
-	    var isDifferent = false;
-	    if (a.length !== b.length) {
-	      isDifferent = true;
-	    } else {
-	      a.forEach(function (item, index) {
-	        if (!this.isSame(item, b[index])) {
-	          isDifferent = true;
-	        }
-	      }, this);
-	    }
-	    return isDifferent;
-	  },
-
-	  objectsDiffer: function (a, b) {
-	    var isDifferent = false;
-	    if (Object.keys(a).length !== Object.keys(b).length) {
-	      isDifferent = true;
-	    } else {
-	      Object.keys(a).forEach(function (key) {
-	        if (!this.isSame(a[key], b[key])) {
-	          isDifferent = true;
-	        }
-	      }, this);
-	    }
-	    return isDifferent;
-	  },
-
-	  isSame: function (a, b) {
-	    if (typeof a !== typeof b) {
-	      return false;
-	    } else if (Array.isArray(a)) {
-	      return !this.arraysDiffer(a, b);
-	    } else if (typeof a === 'object' && a !== null && b !== null) {
-	      return !this.objectsDiffer(a, b);
-	    }
-
-	    return a === b;
-	  }
-	};
-
-
-/***/ },
-/* 461 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var utils = __webpack_require__(460);
-
-	var convertValidationsToObject = function (validations) {
-
-	  if (typeof validations === 'string') {
-
-	    return validations.split(/\,(?![^{\[]*[}\]])/g).reduce(function (validations, validation) {
-	      var args = validation.split(':');
-	      var validateMethod = args.shift();
-
-	      args = args.map(function (arg) {
-	        try {
-	          return JSON.parse(arg);
-	        } catch (e) {
-	          return arg; // It is a string if it can not parse it
-	        }
-	      });
-
-	      if (args.length > 1) {
-	        throw new Error('Formsy does not support multiple args on string validations. Use object format of validations instead.');
-	      }
-
-	      validations[validateMethod] = args.length ? args[0] : true;
-	      return validations;
-	    }, {});
-
-	  }
-
-	  return validations || {};
-	};
-
-	module.exports = {
-	  getInitialState: function () {
-	    return {
-	      _value: this.props.value,
-	      _isRequired: false,
-	      _isValid: true,
-	      _isPristine: true,
-	      _pristineValue: this.props.value,
-	      _validationError: '',
-	      _externalError: null,
-	      _formSubmitted: false
-	    };
-	  },
-	  getDefaultProps: function () {
-	    return {
-	      validationError: '',
-	      validationErrors: {}
-	    };
-	  },
-
-	  componentWillMount: function () {
-	    var configure = function () {
-	      this.setValidations(this.props.validations, this.props.required);
-	      this.props._attachToForm(this);
-	    }.bind(this);
-
-	    if (!this.props.name) {
-	      throw new Error('Form Input requires a name property when used');
-	    }
-
-	    if (!this.props._attachToForm) {
-	      return setTimeout(function () {
-	        if (!this.isMounted()) return;
-	        if (!this.props._attachToForm) {
-	          throw new Error('Form Mixin requires component to be nested in a Form');
-	        }
-	        configure();
-	      }.bind(this), 0);
-	    }
-	    configure();
-	  },
-
-	  // We have to make the validate method is kept when new props are added
-	  componentWillReceiveProps: function (nextProps) {
-	    this.setValidations(nextProps.validations, nextProps.required);
-	  },
-
-	  componentDidUpdate: function (prevProps) {
-
-	    // If the value passed has changed, set it. If value is not passed it will
-	    // internally update, and this will never run
-	    if (!utils.isSame(this.props.value, prevProps.value)) {
-	      this.setValue(this.props.value);
-	    }
-	  },
-
-	  // Detach it when component unmounts
-	  componentWillUnmount: function () {
-	    this.props._detachFromForm(this);
-	  },
-
-	  setValidations: function (validations, required) {
-
-	    // Add validations to the store itself as the props object can not be modified
-	    this._validations = convertValidationsToObject(validations) || {};
-	    this._requiredValidations = required === true ? {isDefaultRequiredValue: true} : convertValidationsToObject(required);
-
-	  },
-
-	  // We validate after the value has been set
-	  setValue: function (value) {
-	    this.setState({
-	      _value: value,
-	      _isPristine: false
-	    }, function () {
-	      this.props._validate(this);
-	    }.bind(this));
-	  },
-	  resetValue: function () {
-	    this.setState({
-	      _value: this.state._pristineValue,
-	      _isPristine: true
-	    }, function () {
-	      this.props._validate(this);
-	    });
-	  },
-	  getValue: function () {
-	    return this.state._value;
-	  },
-	  hasValue: function () {
-	    return this.state._value !== '';
-	  },
-	  getErrorMessage: function () {
-	    return !this.isValid() || this.showRequired() ? (this.state._externalError || this.state._validationError) : null;
-	  },
-	  isFormDisabled: function () {
-	    return this.props._isFormDisabled();
-	  },
-	  isValid: function () {
-	    return this.state._isValid;
-	  },
-	  isPristine: function () {
-	    return this.state._isPristine;
-	  },
-	  isFormSubmitted: function () {
-	    return this.state._formSubmitted;
-	  },
-	  isRequired: function () {
-	    return !!this.props.required;
-	  },
-	  showRequired: function () {
-	    return this.state._isRequired;
-	  },
-	  showError: function () {
-	    return !this.showRequired() && !this.isValid();
-	  },
-	  isValidValue: function (value) {
-	    return this.props._isValidValue.call(null, this, value);
-	  }
-	};
-
-
-/***/ },
-/* 462 */
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _interopRequireDefault = __webpack_require__(269)['default'];
 
-	var _env = __webpack_require__(463);
+	var _env = __webpack_require__(495);
 
 	var _env2 = _interopRequireDefault(_env);
 
@@ -16044,7 +15600,7 @@ webpackJsonp([2],[
 	module.exports = HeadParams;
 
 /***/ },
-/* 463 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16055,7 +15611,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 464 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16076,21 +15632,37 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _actionsAppActions = __webpack_require__(465);
+	var _actionsAppActions = __webpack_require__(503);
 
 	var _actionsAppActions2 = _interopRequireDefault(_actionsAppActions);
 
-	var _actionsTestActions = __webpack_require__(471);
+	var _actionsTestActions = __webpack_require__(497);
 
 	var _actionsTestActions2 = _interopRequireDefault(_actionsTestActions);
 
-	var _storeAppStore = __webpack_require__(472);
+	var _actionsCityActions = __webpack_require__(504);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	var _actionsAuthActions = __webpack_require__(505);
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
+
+	var _storeAppStore = __webpack_require__(506);
 
 	var _storeAppStore2 = _interopRequireDefault(_storeAppStore);
 
-	var _storeTestStore = __webpack_require__(473);
+	var _storeTestStore = __webpack_require__(507);
 
 	var _storeTestStore2 = _interopRequireDefault(_storeTestStore);
+
+	var _storeCityStore = __webpack_require__(508);
+
+	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
+
+	var _storeAuthStore = __webpack_require__(509);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
 	var Flux = (function (_Flummox) {
 	  function Flux() {
@@ -16098,11 +15670,15 @@ webpackJsonp([2],[
 
 	    _get(Object.getPrototypeOf(Flux.prototype), 'constructor', this).call(this);
 
-	    this.createActions('appActions', _actionsAppActions2['default']);
+	    this.createActions('appActions', _actionsAppActions2['default'], this);
 	    this.createActions('testActions', _actionsTestActions2['default']);
+	    this.createActions('cityActions', _actionsCityActions2['default']);
+	    this.createActions('authActions', _actionsAuthActions2['default'], this);
 
 	    this.createStore('appStore', _storeAppStore2['default'], this);
 	    this.createStore('testStore', _storeTestStore2['default'], this);
+	    this.createStore('cityStore', _storeCityStore2['default'], this);
+	    this.createStore('authStore', _storeAuthStore2['default'], this);
 	  }
 
 	  _inherits(Flux, _Flummox);
@@ -16114,7 +15690,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 465 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16137,11 +15713,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(466);
+	var _utilsHttpRequest = __webpack_require__(498);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(470);
+	var _utilsConfig = __webpack_require__(502);
 
 	var StargazerActions = (function (_Actions) {
 	  function StargazerActions() {
@@ -16155,9 +15731,9 @@ webpackJsonp([2],[
 	  _inherits(StargazerActions, _Actions);
 
 	  _createClass(StargazerActions, [{
-	    key: 'dataActions',
-	    value: function dataActions() {
-	      return _regeneratorRuntime.async(function dataActions$(context$2$0) {
+	    key: 'TestAction',
+	    value: function TestAction() {
+	      return _regeneratorRuntime.async(function TestAction$(context$2$0) {
 	        while (1) switch (context$2$0.prev = context$2$0.next) {
 	          case 0:
 	            context$2$0.next = 2;
@@ -16183,7 +15759,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 466 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16198,7 +15774,7 @@ webpackJsonp([2],[
 	  value: true
 	});
 
-	var _superagent = __webpack_require__(467);
+	var _superagent = __webpack_require__(499);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -16219,15 +15795,15 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 467 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Emitter = __webpack_require__(468);
-	var reduce = __webpack_require__(469);
+	var Emitter = __webpack_require__(500);
+	var reduce = __webpack_require__(501);
 
 	/**
 	 * Root reference for iframes.
@@ -17348,7 +16924,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 468 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -17518,7 +17094,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 469 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -17547,7 +17123,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 470 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17559,12 +17135,83 @@ webpackJsonp([2],[
 	});
 
 	exports['default'] = {
-		Api_Url: 'http://localhost:8080'
+		Api_Url: 'http://tocu-api-tranduchieu.c9.io/api'
 	};
 	module.exports = exports['default'];
 
 /***/ },
-/* 471 */
+/* 503 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(365)['default'];
+
+	var _get = __webpack_require__(380)['default'];
+
+	var _createClass = __webpack_require__(366)['default'];
+
+	var _classCallCheck = __webpack_require__(367)['default'];
+
+	var _Object$defineProperty = __webpack_require__(362)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(228)['default'];
+
+	var _interopRequireDefault = __webpack_require__(269)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _flummox = __webpack_require__(217);
+
+	var _utilsHttpRequest = __webpack_require__(498);
+
+	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
+
+	var _utilsConfig = __webpack_require__(502);
+
+	var StargazerActions = (function (_Actions) {
+	  function StargazerActions(flux) {
+	    _classCallCheck(this, StargazerActions);
+
+	    _get(Object.getPrototypeOf(StargazerActions.prototype), 'constructor', this).call(this);
+
+	    this.flux = flux;
+	  }
+
+	  _inherits(StargazerActions, _Actions);
+
+	  _createClass(StargazerActions, [{
+	    key: 'dataActions',
+	    value: function dataActions() {
+	      return _regeneratorRuntime.async(function dataActions$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            context$2$0.next = 2;
+	            return _utilsHttpRequest2['default'].get('http://localhost:8080/data').exec().then(function (val) {
+	              return val.body;
+	            });
+
+	          case 2:
+	            return context$2$0.abrupt('return', context$2$0.sent);
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }]);
+
+	  return StargazerActions;
+	})(_flummox.Actions);
+
+	exports['default'] = StargazerActions;
+	module.exports = exports['default'];
+
+/***/ },
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17587,11 +17234,15 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(466);
+	var _utilsHttpRequest = __webpack_require__(498);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(470);
+	var _utilsConfig = __webpack_require__(502);
+
+	var _superagent = __webpack_require__(499);
+
+	var _superagent2 = _interopRequireDefault(_superagent);
 
 	var StargazerActions = (function (_Actions) {
 	  function StargazerActions() {
@@ -17605,13 +17256,33 @@ webpackJsonp([2],[
 	  _inherits(StargazerActions, _Actions);
 
 	  _createClass(StargazerActions, [{
-	    key: 'TestAction',
-	    value: function TestAction() {
-	      return _regeneratorRuntime.async(function TestAction$(context$2$0) {
+	    key: 'getCityActions',
+	    value: function getCityActions() {
+	      return _regeneratorRuntime.async(function getCityActions$(context$2$0) {
 	        while (1) switch (context$2$0.prev = context$2$0.next) {
 	          case 0:
 	            context$2$0.next = 2;
-	            return _utilsHttpRequest2['default'].get('' + _utilsConfig.Api_Url + '/data').exec().then(function (val) {
+	            return _utilsHttpRequest2['default'].get('' + _utilsConfig.Api_Url + '/city').exec().then(function (val) {
+	              return val.body;
+	            });
+
+	          case 2:
+	            return context$2$0.abrupt('return', context$2$0.sent);
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }, {
+	    key: 'getDistrictActions',
+	    value: function getDistrictActions(citySelect) {
+	      return _regeneratorRuntime.async(function getDistrictActions$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            context$2$0.next = 2;
+	            return _superagent2['default'].post('' + _utilsConfig.Api_Url + '/district').send(citySelect).exec().then(function (val) {
 	              return val.body;
 	            });
 
@@ -17633,7 +17304,165 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 472 */
+/* 505 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(365)['default'];
+
+	var _get = __webpack_require__(380)['default'];
+
+	var _createClass = __webpack_require__(366)['default'];
+
+	var _classCallCheck = __webpack_require__(367)['default'];
+
+	var _Object$defineProperty = __webpack_require__(362)['default'];
+
+	var _Promise = __webpack_require__(255)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(228)['default'];
+
+	var _interopRequireDefault = __webpack_require__(269)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _flummox = __webpack_require__(217);
+
+	var _utilsHttpRequest = __webpack_require__(498);
+
+	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
+
+	var _utilsConfig = __webpack_require__(502);
+
+	function fakePromise(res) {
+	  return new _Promise(function (resolve, reject) {
+	    setTimeout(function () {
+	      resolve(res);
+	    }, 0);
+	  });
+	}
+
+	function fakeLoadUser(_ref) {
+	  var token = _ref.token;
+	  var user = _ref.user;
+
+	  if (token) {
+	    return fakePromise({
+	      username: user,
+	      token: token
+	    });
+	  } else {
+	    return fakePromise({
+	      status: 401
+	    });
+	  }
+	}
+
+	var AuthActions = (function (_Actions) {
+	  function AuthActions(flux) {
+	    _classCallCheck(this, AuthActions);
+
+	    _get(Object.getPrototypeOf(AuthActions.prototype), 'constructor', this).call(this);
+
+	    this.flux = flux;
+	  }
+
+	  _inherits(AuthActions, _Actions);
+
+	  _createClass(AuthActions, [{
+	    key: 'CreateUser',
+	    value: function CreateUser(auth) {
+	      var self;
+	      return _regeneratorRuntime.async(function CreateUser$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            self = this;
+	            context$2$0.next = 3;
+	            return _utilsHttpRequest2['default'].post('' + _utilsConfig.Api_Url + '/user').send(auth).exec().then(function (data) {
+	              return data;
+	            })['catch'](function (data) {
+	              return data;
+	            });
+
+	          case 3:
+	            return context$2$0.abrupt('return', context$2$0.sent);
+
+	          case 4:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }, {
+	    key: 'LoginActions',
+	    value: function LoginActions(account) {
+	      return _regeneratorRuntime.async(function LoginActions$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            context$2$0.next = 2;
+	            return _utilsHttpRequest2['default'].post('' + _utilsConfig.Api_Url + '/token').send(account).exec().then(function (res) {
+	              return res.body;
+	            })['catch'](function (data) {
+	              return data;
+	            });
+
+	          case 2:
+	            return context$2$0.abrupt('return', context$2$0.sent);
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }, {
+	    key: 'LoginStart',
+	    value: function LoginStart() {
+	      return _regeneratorRuntime.async(function LoginStart$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            return context$2$0.abrupt('return');
+
+	          case 1:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }, {
+	    key: 'loadUser',
+	    value: function loadUser() {
+	      return _regeneratorRuntime.async(function loadUser$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            context$2$0.next = 2;
+	            return fakeLoadUser({
+	              token: localStorage.token,
+	              user: localStorage.user
+	            });
+
+	          case 2:
+	            return context$2$0.abrupt('return', context$2$0.sent);
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }]);
+
+	  return AuthActions;
+	})(_flummox.Actions);
+
+	exports['default'] = AuthActions;
+	module.exports = exports['default'];
+
+/***/ },
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17696,7 +17525,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 473 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17751,7 +17580,160 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 474 */
+/* 508 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(365)['default'];
+
+	var _get = __webpack_require__(380)['default'];
+
+	var _createClass = __webpack_require__(366)['default'];
+
+	var _classCallCheck = __webpack_require__(367)['default'];
+
+	var _Object$defineProperty = __webpack_require__(362)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _flummox = __webpack_require__(217);
+
+	var AppStore = (function (_Store) {
+	  function AppStore(flux) {
+	    _classCallCheck(this, AppStore);
+
+	    _get(Object.getPrototypeOf(AppStore.prototype), 'constructor', this).call(this);
+
+	    var cityActions = flux.getActions('cityActions');
+	    this.register(cityActions.getCityActions, this.handleGetCity);
+	    this.register(cityActions.getDistrictActions, this.handleGetDistrict);
+
+	    this.state = {};
+	  }
+
+	  _inherits(AppStore, _Store);
+
+	  _createClass(AppStore, [{
+	    key: 'handleGetCity',
+	    value: function handleGetCity(city) {
+	      this.state.city = city;
+	      this.emit('change');
+	    }
+	  }, {
+	    key: 'handleGetDistrict',
+	    value: function handleGetDistrict(district) {
+	      this.state.district = district;
+	      this.emit('change');
+	    }
+	  }, {
+	    key: 'getCity',
+	    value: function getCity() {
+	      return this.state.city || null;
+	    }
+	  }, {
+	    key: 'getDistrict',
+	    value: function getDistrict() {
+	      return this.state.district || null;
+	    }
+	  }]);
+
+	  return AppStore;
+	})(_flummox.Store);
+
+	exports['default'] = AppStore;
+	module.exports = exports['default'];
+
+/***/ },
+/* 509 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(365)['default'];
+
+	var _get = __webpack_require__(380)['default'];
+
+	var _createClass = __webpack_require__(366)['default'];
+
+	var _classCallCheck = __webpack_require__(367)['default'];
+
+	var _Object$defineProperty = __webpack_require__(362)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _flummox = __webpack_require__(217);
+
+	var AppStore = (function (_Store) {
+	  function AppStore(flux) {
+	    _classCallCheck(this, AppStore);
+
+	    _get(Object.getPrototypeOf(AppStore.prototype), 'constructor', this).call(this);
+
+	    var AuthActions = flux.getActions('authActions');
+	    this.register(AuthActions.CreateUser, this.handleCreateUser);
+	    this.register(AuthActions.LoginActions, this.handleLogin);
+
+	    this.state = {};
+	  }
+
+	  _inherits(AppStore, _Store);
+
+	  _createClass(AppStore, [{
+	    key: 'handleCreateUser',
+	    value: function handleCreateUser(res) {
+	      if (res.status === 201) {
+	        localStorage.auth = JSON.stringify(res.body);
+	      } else if (res.response.status === 400) {
+	        this.state.errCreateUse = res.response.body.errors;
+	      }
+	      this.emit('change');
+	    }
+	  }, {
+	    key: 'handleLogin',
+	    value: function handleLogin(res) {
+	      if (res.token) {
+	        this.state.logInState = 'success';
+
+	        localStorage.auth = JSON.stringify(res);
+	        localStorage.token = res.token;
+	        this.emit('change');
+	      } else {
+	        this.state.logInState = 'errors';
+	        this.emit('change');
+	      }
+	    }
+	  }, {
+	    key: 'getLogInState',
+	    value: function getLogInState() {
+	      return this.state.logInState;
+	    }
+	  }, {
+	    key: 'getErrCreateUse',
+	    value: function getErrCreateUse() {
+	      return this.state.errCreateUse || {};
+	    }
+	  }, {
+	    key: 'getToken',
+	    value: function getToken() {
+	      return localStorage.token;
+	    }
+	  }]);
+
+	  return AppStore;
+	})(_flummox.Store);
+
+	exports['default'] = AppStore;
+	module.exports = exports['default'];
+
+	// "{"message":"User validation failed","name":"ValidationError","errors":{"mobilePhone":{"properties":{"type":"regexp","message":"Path `{PATH}` is invalid ({VALUE}).","path":"mobilePhone","value":"1234"},"message":"Path `mobilePhone` is invalid (1234).","name":"ValidatorError","kind":"regexp","path":"mobilePhone","value":"1234"}}}"
+
+/***/ },
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
