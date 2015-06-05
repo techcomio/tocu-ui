@@ -1,5 +1,5 @@
 # Tổ Cú UI
-mã nguồn phần UI trang [tocu.vn](http://tocu.vn), tương tác với API [tocu-api](https://github.com/techcomio/tocu-api)
+mã nguồn phần UI website [tocu.vn](http://tocu.vn), tương tác với API [tocu-api](https://github.com/techcomio/tocu-api)
 
 ## Tech stack:
 - [react](http://facebook.github.io/react/)
