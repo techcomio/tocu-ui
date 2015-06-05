@@ -8,5 +8,7 @@ mã nguồn phần UI website [tocu.vn](http://tocu.vn), tương tác với API 
 - [bootstrap](http://getbootstrap.com)
 - [superagent](https://github.com/visionmedia/superagent)
 - [immutable](https://facebook.github.io/immutable-js)
+- [webpack](http://webpack.github.io)
+- [babel](https://babeljs.io)
 
 ...and more
