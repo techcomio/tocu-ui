@@ -64,11 +64,15 @@ header { height: 300px; background-color: #fff;  box-shadow: 0 0 2px #999;  }
 
 
 /* Sign In / Sign Up */
-.form-signin, .form-signup { font-size: 14px; width: 340px; height: auto; margin: auto; margin-top: 60px; background-color: #fff; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0, 0.2); }
+.form-signin, .form-signup { font-size: 14px; height: auto; margin: auto; margin-top: 60px; background-color: #fff; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0, 0.2); }
 .form-body { padding: 20px 40px 20px 40px;
 	.logo { text-align: center; }
 	.title-form { font-size: 22px; font-weight: 400; padding-bottom: 20px; }
 }
 .form-footer { padding: 20px 40px; border-top: 1px solid #ccc;
 	a { color: #8B8B8B; }
+}
+.col-centered {
+  float: none;
+  margin: 0 auto;
 }

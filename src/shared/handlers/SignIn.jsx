@@ -60,38 +60,43 @@ export default React.createClass({
   render() {
 		return (
 			<div className="container">
-	  		<div className="form-signin">
-	    		<div className="form-body">
-					  <div className="form-group">
-					  	<div className="logo">
-							  <img src="/img/logo.png" style={{width: 50, height: 50}} />
-					  	</div>
-	    			</div>
+        <div className="row">
+          <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
 
-            <p className="text-center title-form">đăng nhập tổ cú</p>
+    	  		<div className="form-signin">
+    	    		<div className="form-body">
+    					  <div className="form-group">
+    					  	<div className="logo">
+    							  <img src="/img/logo.png" style={{width: 50, height: 50}} />
+    					  	</div>
+    	    			</div>
 
-	    			{this.state.logInState === "errors" && (
-	    				<p className="text-danger">so dien thoat hoac password ko dung</p>
-	    			)}
+                <p className="text-center title-form">Đăng Nhập Tổ Cú</p>
 
-	    			<form name="signIn" onSubmit={this.Submit}>
-				      <Input ref="phone" type='text' className='input-lg' placeholder='Phone' />
-				      <Input ref="pass" type='password' className='input-lg' placeholder='Password' />
-				      <ButtonInput type='submit' onClick={this.handleLogin} bsStyle='primary' className="form-control" value='Log In' />
-			      </form>
-				  </div>
+    	    			{this.state.logInState === "errors" && (
+    	    				<p className="text-danger">số điện thoại hoặc mật khẩu không đúng</p>
+    	    			)}
 
-				  <div className="form-footer">
-				  	<div className="row">
-				    	<div className="col-xs-8 col-md-8">
-						    <a href="/password/reset/" >Forgot password?</a>
-						  </div>
-				    	<div className="col-xs-4 col-md-4">
-							  <Link to="signup" className="pull-right" >Sign Up</Link>
-						  </div>
-					  </div>
-		    	</div>
-			  </div>
+    	    			<form name="signIn" onSubmit={this.Submit}>
+    				      <Input ref="phone" onBlur={this.Test} type='text' className='input-lg' placeholder='số điện thoại' />
+    				      <Input ref="pass" type='password' className='input-lg' placeholder='mật khẩu' />
+    				      <ButtonInput type='submit' onClick={this.handleLogin} bsStyle='primary' className="form-control" value='Đăng Nhập' />
+    			      </form>
+    				  </div>
+
+    				  <div className="form-footer">
+    				  	<div className="row">
+    				    	<div className="col-xs-8 col-md-8">
+    						    <a href="/password/reset/" >quên mật khẩu?</a>
+    						  </div>
+    				    	<div className="col-xs-4 col-md-4">
+    							  <Link to="signup" className="pull-right" >Đăng Ký</Link>
+    						  </div>
+    					  </div>
+    		    	</div>
+    			  </div>
+          </div>
+        </div>
 		  </div>
 		)
   },
@@ -105,6 +110,9 @@ export default React.createClass({
   	this.setState({
   		logInState: 'loading'
   	});
+  },
+  Test() {
+    console.log('test');
   }
 });
 
