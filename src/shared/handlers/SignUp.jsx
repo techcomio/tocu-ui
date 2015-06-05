@@ -70,8 +70,6 @@ export default React.createClass({
   		InputPhone = <Input ref="phone" bsStyle='error' label={label} type='tel' placeholder='Phone' />
   	}
 
-  	console.log(this.state.errCreateUse);
-
 		return (
 			<div className="container">
 	  		<div className="form-signup">
@@ -81,6 +79,9 @@ export default React.createClass({
 							  <img src="/img/logo.png" style={{width: 50, height: 50}} />
 					  	</div>
 	    			</div>
+
+            <p className="text-center title-form">đăng ký tổ cú</p>
+
 	    			<form>
 				      {!this.state.errCreateUse.name && (
 					      <Input ref="name" type='text' placeholder='name' />

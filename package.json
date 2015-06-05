@@ -32,8 +32,6 @@
     "css-loader": "^0.13.1",
     "extract-text-webpack-plugin": "^0.8.1",
     "flummox": "^3.5.2",
-    "flux": "^2.0.3",
-    "formsy-react": "^0.14.1",
     "immutable": "^3.7.3",
     "lodash": "^3.9.1",
     "node-libs-browser": "^0.5.0",

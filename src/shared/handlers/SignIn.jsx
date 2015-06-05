@@ -58,7 +58,6 @@ export default React.createClass({
   },
 
   render() {
-  	console.log(this.state);
 		return (
 			<div className="container">
 	  		<div className="form-signin">
@@ -68,11 +67,12 @@ export default React.createClass({
 							  <img src="/img/logo.png" style={{width: 50, height: 50}} />
 					  	</div>
 	    			</div>
+
+            <p className="text-center title-form">đăng nhập tổ cú</p>
+
 	    			{this.state.logInState === "errors" && (
 	    				<p className="text-danger">so dien thoat hoac password ko dung</p>
 	    			)}
-
-	    			<p className="text-center title-form">dang nhap to cu</p>
 
 	    			<form name="signIn" onSubmit={this.Submit}>
 				      <Input ref="phone" type='text' className='input-lg' placeholder='Phone' />

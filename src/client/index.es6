@@ -8,7 +8,7 @@ import FluxComponent from 'flummox/component';
 import routes from '../shared/routers';
 import HeadParams from '../shared/lib/HeadParams';
 import Flux from '../shared/Flux';
-import {performRouteHandlerStaticMethod} from '../shared/utils/performRouteHandlerStaticMethod';
+import { performRouteHandlerStaticMethod } from '../shared/utils/performRouteHandlerStaticMethod';
 
 let headParams = new HeadParams();
 let flux = new Flux();

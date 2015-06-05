@@ -28,6 +28,5 @@ app.use(render);
 
 
 app.listen(app.get('port'), function() {
-  console.log('tectcom.io server listening on port ' + app.get('port'));
-  console.log('http://localhost:' + app.get('port'));
+  console.log('tocu.vn server listening on port ' + app.get('port'));
 });
