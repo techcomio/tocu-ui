@@ -12,3 +12,11 @@ mã nguồn phần UI website [tocu.vn](http://tocu.vn), tương tác với API 
 - [babel](https://babeljs.io)
 
 ...and more
+
+## Start the app
+```
+$ npm install
+$ npm install -g nodemon
+$ npm install -g webpack
+$ npm start
+```
