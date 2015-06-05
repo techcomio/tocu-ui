@@ -1,19 +1,22 @@
 import { Actions } from 'flummox';
 import httpRequest from './../utils/HttpRequest';
 import { Api_Url } from '../utils/config';
+import request from 'superagent';
 
 
 export default class StargazerActions extends Actions {
-	
-  constructor(flux) {
-    super();
 
-    this.flux = flux;
+  async getCityActions() {
+    return await httpRequest
+      .get(`${Api_Url}/city`)
+      .exec()
+      .then((val) => (val.body));
   }
 
-  async dataActions() {
-    return await httpRequest
-      .get(`http://localhost:8080/data`)
+  async getDistrictActions(citySelect) {
+    return await request
+      .post(`${Api_Url}/district`)
+      .send(citySelect)
       .exec()
       .then((val) => (val.body));
   }

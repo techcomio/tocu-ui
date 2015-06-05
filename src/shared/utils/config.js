@@ -1,5 +1,5 @@
 'use strict';
 
 export default {
-	Api_Url: 'http://localhost:8080'
+	Api_Url: 'https://tocu-api-tranduchieu.c9.io/api'
 }
