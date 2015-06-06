@@ -17,7 +17,7 @@ export default React.createClass({
 			<html>
         <head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
           <title>{this.props.headParams.title}</title>
           <meta name="description" content={this.props.headParams.description} />
           <meta name="keywords" content={this.props.headParams.keywords} />

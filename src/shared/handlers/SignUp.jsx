@@ -82,7 +82,7 @@ export default React.createClass({
     					  	</div>
     	    			</div>
 
-                <p className="text-center title-form">đăng ký tổ cú</p>
+                <p className="text-center title-form">Đăng Ký Tổ Cú</p>
 
     	    			<form>
     				      {!this.state.errCreateUse.name && (

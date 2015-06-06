@@ -86,10 +86,10 @@ export default React.createClass({
 
     				  <div className="form-footer">
     				  	<div className="row">
-    				    	<div className="col-xs-8 col-md-8">
+    				    	<div className="col-xs-7 col-md-8">
     						    <a href="/password/reset/" >quên mật khẩu?</a>
     						  </div>
-    				    	<div className="col-xs-4 col-md-4">
+    				    	<div className="col-xs-5 col-md-4">
     							  <Link to="signup" className="pull-right" >Đăng Ký</Link>
     						  </div>
     					  </div>
