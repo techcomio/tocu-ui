@@ -14,6 +14,7 @@ export default class AppStore extends Store {
   handleCreateUser(res) {
     if(res.status === 201) {
       localStorage.auth = JSON.stringify(res.body);
+      this.state.createUseState = "success";
     } else if (res.response.status === 400) {
       this.state.errCreateUse = res.response.body.errors;
     }
@@ -41,15 +42,13 @@ export default class AppStore extends Store {
     return this.state.errCreateUse || {};
   }
 
+  getCreateUseState() {
+    return this.state.createUseState || null;
+  }
+
   getToken() {
     return localStorage.token;
   }
 
 }
 
-
-
-
-
-
-// "{"message":"User validation failed","name":"ValidationError","errors":{"mobilePhone":{"properties":{"type":"regexp","message":"Path `{PATH}` is invalid ({VALUE}).","path":"mobilePhone","value":"1234"},"message":"Path `mobilePhone` is invalid (1234).","name":"ValidatorError","kind":"regexp","path":"mobilePhone","value":"1234"}}}"

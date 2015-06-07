@@ -13,14 +13,14 @@ import Sanpham from './handlers/Sanpham';
 import Album from './handlers/Album';
 import SignIn from './handlers/SignIn';
 import SignUp from './handlers/SignUp';
-import SignUpTest from './handlers/SignUpTest';
+import SignInTest from './handlers/SignInTest';
 
 
 const routers = (
   <Route handler={App}>
 		<Route name="signin" path="/signin" handler={SignIn} />
 		<Route name="signup" path="/signup" handler={SignUp} />
-		<Route name="signuptest" path="/signuptest" handler={SignUpTest} />
+		<Route name="signintest" path="/signintest" handler={SignInTest} />
 		<Route name="home" path="/" handler={Home} />
 		<Route name="posts" path="/posts/:id" handler={Posts} />
 		<Route name="sp" path="/sp/:id" handler={Sanpham} />
