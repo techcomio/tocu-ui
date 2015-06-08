@@ -26,15 +26,15 @@ webpackJsonp([2],[
 
 	var _sharedRouters2 = _interopRequireDefault(_sharedRouters);
 
-	var _sharedLibHeadParams = __webpack_require__(464);
+	var _sharedLibHeadParams = __webpack_require__(399);
 
 	var _sharedLibHeadParams2 = _interopRequireDefault(_sharedLibHeadParams);
 
-	var _sharedFlux = __webpack_require__(466);
+	var _sharedFlux = __webpack_require__(401);
 
 	var _sharedFlux2 = _interopRequireDefault(_sharedFlux);
 
-	var _sharedUtilsPerformRouteHandlerStaticMethod = __webpack_require__(480);
+	var _sharedUtilsPerformRouteHandlerStaticMethod = __webpack_require__(415);
 
 	var headParams = new _sharedLibHeadParams2['default']();
 	var flux = new _sharedFlux2['default']();
@@ -6667,11 +6667,11 @@ webpackJsonp([2],[
 
 	var _handlersSignIn2 = _interopRequireDefault(_handlersSignIn);
 
-	var _handlersSignUp = __webpack_require__(460);
+	var _handlersSignUp = __webpack_require__(397);
 
 	var _handlersSignUp2 = _interopRequireDefault(_handlersSignUp);
 
-	var _handlersSignInTest = __webpack_require__(481);
+	var _handlersSignInTest = __webpack_require__(398);
 
 	var _handlersSignInTest2 = _interopRequireDefault(_handlersSignInTest);
 
@@ -7801,7 +7801,7 @@ webpackJsonp([2],[
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
-	var _Object$keys = __webpack_require__(482)['default'];
+	var _Object$keys = __webpack_require__(392)['default'];
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
@@ -7815,17 +7815,17 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _validatorjs = __webpack_require__(487);
+	var _validatorjs = __webpack_require__(394);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	/* @jsx */
 
-	var _componentsFormInputValidation = __webpack_require__(484);
+	var _componentsFormInputValidation = __webpack_require__(395);
 
 	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
 
-	var _componentsFormSelect = __webpack_require__(486);
+	var _componentsFormSelect = __webpack_require__(396);
 
 	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
 
@@ -8059,75 +8059,539 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
-/* 398 */,
-/* 399 */,
-/* 400 */,
-/* 401 */,
-/* 402 */,
-/* 403 */,
-/* 404 */,
-/* 405 */,
-/* 406 */,
-/* 407 */,
-/* 408 */,
-/* 409 */,
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */,
-/* 414 */,
-/* 415 */,
-/* 416 */,
-/* 417 */,
-/* 418 */,
-/* 419 */,
-/* 420 */,
-/* 421 */,
-/* 422 */,
-/* 423 */,
-/* 424 */,
-/* 425 */,
-/* 426 */,
-/* 427 */,
-/* 428 */,
-/* 429 */,
-/* 430 */,
-/* 431 */,
-/* 432 */,
-/* 433 */,
-/* 434 */,
-/* 435 */,
-/* 436 */,
-/* 437 */,
-/* 438 */,
-/* 439 */,
-/* 440 */,
-/* 441 */,
-/* 442 */,
-/* 443 */,
-/* 444 */,
-/* 445 */,
-/* 446 */,
-/* 447 */,
-/* 448 */,
-/* 449 */,
-/* 450 */,
-/* 451 */,
-/* 452 */,
-/* 453 */,
-/* 454 */,
-/* 455 */,
-/* 456 */,
-/* 457 */,
-/* 458 */,
-/* 459 */,
-/* 460 */
+/* 392 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(393), __esModule: true };
+
+/***/ },
+/* 393 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(387);
+	module.exports = __webpack_require__(233).core.Object.keys;
+
+/***/ },
+/* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! validatorjs - v1.3.2 - https://github.com/skaterdav85/validatorjs - 2015-02-11 */
+	(function() {
+
+	var messages = {
+		accepted: 'The :attribute must be accepted.',
+		alpha: 'The :attribute field must contain only alphabetic characters.',
+		alpha_dash: 'The :attribute field may only contain alpha-numeric characters, as well as dashes and underscores.',
+		alpha_num: 'The :attribute field must be alphanumeric.',
+		confirmed: 'The :attribute confirmation does not match.',
+		email: 'The :attribute format is invalid.',
+		def: 'The :attribute attribute has errors.',
+		digits: 'The :attribute must be :digits digits.',
+		different: 'The :attribute and :different must be different.',
+		'in': 'The selected :attribute is invalid.',
+		integer: 'The :attribute must be an integer.',
+		min: {
+			numeric: 'The :attribute must be at least :min.',
+			string: 'The :attribute must be at least :min characters.'
+		},
+		max: {
+			numeric: 'The :attribute must be less than :max.',
+			string: 'The :attribute must be less than :max characters.'
+		},
+		not_in: 'The selected :attribute is invalid.',
+		numeric: 'The :attribute must be a number.',
+		required: 'The :attribute field is required.',
+		same: 'The :attribute and :same fields must match.',
+		size: {
+			numeric: 'The :attribute must be :size.',
+			string: 'The :attribute must be :size characters.'
+		},
+		url: 'The :attribute format is invalid.',
+		regex: 'The :attribute format is invalid'
+	};
+
+	// Shim taken from MDN site
+	if (!Array.prototype.forEach) {
+	    Array.prototype.forEach = function (fn, scope) {
+	        'use strict';
+	        var i, len;
+	        for (i = 0, len = this.length; i < len; ++i) {
+	            if (i in this) {
+	                fn.call(scope, this[i], i, this);
+	            }
+	        }
+	    };
+	}
+
+	// Based on jquery's extend function
+	function extend() {
+		var src, copy, name, options, clone;
+		var target = arguments[0] || {};
+		var i = 1;
+		var length = arguments.length;
+
+		for ( ; i < length; i++ ) {
+			// Only deal with non-null/undefined values
+			if ( (options = arguments[ i ]) != null ) {
+				// Extend the base object
+				for ( name in options ) {
+					src = target[ name ];
+					copy = options[ name ];
+
+					// Prevent never-ending loop
+					if ( target === copy ) {
+						continue;
+					}
+
+					// Recurse if we're merging plain objects or arrays
+					if ( copy && typeof copy === "object" ) {
+						clone = src && typeof src === "object" ? src : {};
+
+						// Never move original objects, clone them
+						target[ name ] = extend( clone, copy );
+
+					// Don't bring in undefined values
+					} else if ( copy !== undefined ) {
+						target[ name ] = copy;
+					}
+				}
+			}
+		}
+
+		// Return the modified object
+		return target;
+	}
+
+	var ValidatorErrors = function() {};
+
+	ValidatorErrors.prototype = {
+		constructor: ValidatorErrors,
+
+		/**
+		 * returns an array of error messages for an attribute, or an empty array
+		 * @param  {String} attribute A key in the data object being validated
+		 * @return {Array}           	An array of error messages
+		 */
+		get: function(attribute) {
+			if (this[attribute]) {
+				return this[attribute];
+			}
+
+			return [];
+		},
+
+		/**
+		 * returns the first error message for an attribute, false otherwise
+		 * @param  {String} attribute A key in the data object being validated
+		 * @return {String}           First error message or false
+		 */
+		first: function(attribute) {
+			if (this[attribute]) {
+				return this[attribute][0];
+			}
+
+			return false;
+		},
+
+		/**
+		 * Get all error messages from all failing attributes
+		 * @return {Object} Failed attribute names for keys and an array of messages for values
+		 */
+		all: function() {
+			return this;
+		},
+
+		/**
+		 * checks if there are error messages for an attribute
+		 * @param  {String}  attribute A key in the data object being validated
+		 * @return {Boolean}           True if there are error messages. Otherwise false
+		 */
+		has: function(attribute) {
+			if (this[attribute] && this[attribute].length > 0) {
+				return true;
+			}
+
+			return false;
+		}
+	};
+
+	var Validator = function(input, rules, customMessages) {
+		this.input = input;
+		this.rules = rules;
+		this.messages = extend({}, messages, customMessages || {});
+
+		this.errors = new ValidatorErrors();
+
+		this.errorCount = 0;
+		this.check();
+	};
+
+	Validator.prototype = {
+		constructor: Validator,
+
+		// replaces placeholders in tmpl with actual data
+		_createMessage: function(tmpl, data) {
+			var message, key;
+
+			if (typeof tmpl === 'string' && typeof data === 'object') {
+				message = tmpl;
+
+				for (key in data) {
+					if (data.hasOwnProperty(key)) {
+						message = message.replace(':' + key, data[key]);
+					}
+				}
+			}
+
+			return message;
+		},
+
+		check: function() {
+			var self = this;
+
+			this._each(this.rules, function(attributeToValidate) {
+
+				var rulesArray = this.rules[attributeToValidate];
+				if( typeof rulesArray === "string" ) {
+	        rulesArray = this.rules[attributeToValidate].split('|');
+	      }
+
+				var inputValue = this.input[attributeToValidate]; // if it doesnt exist in input, it will be undefined
+
+				rulesArray.forEach(function(ruleString) {
+					var ruleExtraction = self._extractRuleAndRuleValue(ruleString);
+					var rule = ruleExtraction.rule;
+					var ruleValue = ruleExtraction.ruleValue;
+					var passes, dataForMessageTemplate, msgTmpl, msg;
+
+					passes = self.validate[rule].call(self, inputValue, ruleValue, attributeToValidate);
+
+					if (!passes) {
+						if ( !self.errors.hasOwnProperty(attributeToValidate) ) {
+							self.errors[attributeToValidate] = [];
+						}
+
+						dataForMessageTemplate = self._createErrorMessageTemplateData(attributeToValidate, rule, ruleValue);
+						msgTmpl = self._selectMessageTemplate(rule, inputValue, attributeToValidate);
+						msg = self._createMessage(msgTmpl, dataForMessageTemplate);
+						self._addErrorMessage(attributeToValidate, msg);
+					}
+				});
+			}, this); // end of _each()
+		},
+
+		_each: function(obj, cb, context) {
+			for (var key in obj) {
+				cb.call(context, key);
+			}
+		},
+
+		/**
+		 * Extract a rule and a rule value from a ruleString (i.e. min:3), rule = min, ruleValue = 3
+		 * @param  {string} ruleString min:3
+		 * @return {object} object containing the rule and ruleValue
+		 */
+		_extractRuleAndRuleValue: function(ruleString) {
+			var obj = {}, ruleArray;
+
+			obj.rule = ruleString;
+
+			if (ruleString.indexOf(':') >= 0) {
+				ruleArray = ruleString.split(':');
+				obj.rule = ruleArray[0];
+				obj.ruleValue = ruleArray.slice(1).join(":");
+			}
+
+			return obj;
+		},
+
+		_addErrorMessage: function(key, msg) {
+			this.errors[key].push(msg);
+			this.errorCount++;
+		},
+
+		_createErrorMessageTemplateData: function(key, rule, ruleVal) {
+			var dataForMessageTemplate = { attribute: key };
+			dataForMessageTemplate[rule] = ruleVal; // if no rule value, then this will equal to null
+
+			return dataForMessageTemplate;
+		},
+
+		// selects the correct message template from the messages variable based on the rule and the value
+		_selectMessageTemplate: function(rule, val, key) {
+			var msgTmpl, messages = this.messages;
+
+			// if the custom error message template exists in messages variable
+			if (messages.hasOwnProperty(rule + '.' + key)) {
+				msgTmpl = messages[rule + '.' + key];
+			} else if (messages.hasOwnProperty(rule)) {
+				msgTmpl = messages[rule];
+
+				if (typeof msgTmpl === 'object') {
+					switch (typeof val) {
+						case 'number':
+							msgTmpl = msgTmpl['numeric'];
+							break;
+						case 'string':
+							msgTmpl = msgTmpl['string'];
+							break;
+					}
+				}
+			} else { // default error message
+				msgTmpl = messages.def;
+			}
+
+			return msgTmpl;
+		},
+
+		passes: function() {
+			return this.errorCount === 0 ? true : false;
+		},
+
+		fails: function() {
+			return this.errorCount > 0 ? true : false;
+		},
+
+		// validate functions should return T/F
+		validate: {
+			required: function(val) {
+				var str;
+
+				if (val === undefined || val === null) {
+					return false;
+				}
+
+				str = String(val).replace(/\s/g, "");
+				return str.length > 0 ? true : false;
+			},
+
+			// compares the size of strings
+			// with numbers, compares the value
+			size: function(val, req) {
+				if (val) {
+					req = parseFloat(req);
+
+					if (typeof val === 'number') {
+						return val === req ? true : false;
+					}
+
+					return val.length === req ? true : false;
+				}
+
+				return true;
+			},
+
+			/**
+			 * Compares the size of strings or the value of numbers if there is a truthy value
+			 */
+			min: function(val, req) {
+				if (val === undefined || val === '') { return true; }
+
+				if (typeof val === 'number') {
+					return val >= req ? true : false;
+				} else {
+					return val.length >= req ? true : false;
+				}
+			},
+
+			/**
+			 * Compares the size of strings or the value of numbers if there is a truthy value
+			 */
+			max: function(val, req) {
+				if (val === undefined || val === '') { return true; }
+
+				if (typeof val === 'number') {
+					return val <= req ? true : false;
+				} else {
+					return val.length <= req ? true : false;
+				}
+			},
+
+			email: function(val) {
+				var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+				if (val === undefined || val === '') {
+					return true;
+				}
+
+				return re.test(val);
+			},
+
+			numeric: function(val) {
+				var num;
+
+				if (val === undefined || val === '') { return true; }
+
+				num = Number(val); // tries to convert value to a number. useful if value is coming from form element
+
+				if (typeof num === 'number' && !isNaN(num) && typeof val !== 'boolean') {
+					return true;
+				} else {
+					return false;
+				}
+			},
+
+			url: function(url) {
+				if (url === undefined || url === '') { return true; }
+
+				return (/^https?:\/\/\S+/).test(url);
+			},
+
+			alpha: function(val) {
+				if (val === undefined || val === '') { return true; }
+
+				return (/^[a-zA-Z]+$/).test(val);
+			},
+
+			alpha_dash: function(val) {
+				if (val === undefined || val === '') { return true; }
+				return (/^[a-zA-Z0-9_\-]+$/).test(val);
+			},
+
+			alpha_num: function(val) {
+				if (val === undefined || val === '') { return true; }
+
+				return (/^[a-zA-Z0-9]+$/).test(val);
+			},
+
+			same: function(val, req) {
+				var val1 = this.input[req];
+				var val2 = val;
+
+				if (val1 === val2) {
+					return true;
+				}
+
+				return false;
+			},
+
+			different: function(val, req) {
+				var val1 = this.input[req];
+				var val2 = val;
+
+				if (val1 !== val2) {
+					return true;
+				}
+
+				return false;
+			},
+
+			"in": function(val, req) {
+				var list, len, returnVal;
+
+				if (val) {
+					list = req.split(',');
+					len = list.length;
+					returnVal = false;
+
+					val = String(val); // convert val to a string if it is a number
+
+					for (var i = 0; i < len; i++) {
+						if (val === list[i]) {
+							returnVal = true;
+							break;
+						}
+					}
+
+					return returnVal;
+				}
+
+				return true;
+			},
+
+			not_in: function(val, req) {
+				var list = req.split(',');
+				var len = list.length;
+				var returnVal = true;
+
+				val = String(val); // convert val to a string if it is a number
+
+				for (var i = 0; i < len; i++) {
+					if (val === list[i]) {
+						returnVal = false;
+						break;
+					}
+				}
+
+				return returnVal;
+			},
+
+			accepted: function(val) {
+				if (val === 'on' || val === 'yes' || val === 1 || val === '1') {
+					return true;
+				}
+
+				return false;
+			},
+
+			confirmed: function(val, req, key) {
+				var confirmedKey = key + '_confirmation';
+
+				if (this.input[confirmedKey] === val) {
+					return true;
+				}
+
+				return false;
+			},
+
+			integer: function(val) {
+				if (val === undefined || val === '') { return true; }
+
+				val = String(val);
+
+				if ( (/^\d+$/).test(val) ) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+
+			digits: function(val, req) {
+				if (this.validate.numeric(val) && String(val).length === parseInt(req)) {
+					return true;
+				}
+
+				return false;
+			},
+
+	    regex: function(val, req) {
+	    	var mod = /[g|i|m]{1,3}$/;
+				var flag = req.match(mod);
+				flag = flag ? flag[0] : "i";
+				req = req.replace(mod,"").slice(1,-1);
+				req = new RegExp(req,flag);
+	      return !!val.match(req);
+	    }
+		}
+	};
+
+	// static methods
+	Validator.register = function(rule, fn, errMsg) {
+		this.prototype.validate[rule] = fn;
+		messages[rule] = (typeof errMsg === 'string') ? errMsg : messages['def'];
+	};
+
+	Validator.make = function(input, rules, customMessages) {
+		return new Validator(input, rules, customMessages);
+	};
+
+	// Node environment
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = Validator;
+	} else { // browser environment
+		if (true) {
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+				return Validator;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.Validator = Validator;
+		}
+	}
+
+	})();
+
+/***/ },
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -8135,7 +8599,210 @@ webpackJsonp([2],[
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
-	var _Object$keys = __webpack_require__(482)['default'];
+	var _interopRequireDefault = __webpack_require__(271)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(180);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(379);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _react2['default'].createClass({
+	  displayName: 'InputValidation',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      value: this.props.defaultValue
+	    };
+	  },
+	  propTypes: {
+	    validation: _react2['default'].PropTypes.object,
+	    onChange: _react2['default'].PropTypes.func,
+	    placeholder: _react2['default'].PropTypes.string,
+	    name: _react2['default'].PropTypes.string,
+	    type: _react2['default'].PropTypes.string
+	  },
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      validation: { hasError: false },
+	      placeholder: '',
+	      type: 'text'
+	    };
+	  },
+	  render: function render() {
+	    var classes = (0, _classnames2['default'])({
+	      'form-group': true,
+	      'has-error': this.props.validator.hasError
+	    });
+	    var classesInput = (0, _classnames2['default'])({
+	      'form-control': true,
+	      'input-lg': this.props.size === 'lg'
+	    });
+
+	    var erros;
+
+	    if (this.props.validator.errorTextRequest !== '') {
+	      erros = _react2['default'].createElement(
+	        'label',
+	        { className: 'control-label', htmlFor: this.props.name },
+	        this.props.validator.errorTextRequest
+	      );
+	    } else {
+	      erros = _react2['default'].createElement(
+	        'label',
+	        { className: 'control-label', htmlFor: this.props.name },
+	        this.props.validator.errorMessage
+	      );
+	    }
+
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: classes },
+	      this.props.validator.hasError && erros,
+	      _react2['default'].createElement('input', {
+	        className: classesInput,
+	        type: this.props.type,
+	        value: this.state.value,
+	        name: this.props.name,
+	        onChange: this._onChange,
+	        onBlur: this._onBlur,
+	        placeholder: this.props.placeholder })
+	    );
+	  },
+	  _onChange: function _onChange(e) {
+	    var value = e.target.value;
+	    this.setValue(value);
+	    this.props.onChange(this.props.name, value);
+	  },
+	  _onBlur: function _onBlur(e) {
+	    var value = e.target.value;
+	    this.props.onChange(this.props.name, value);
+	  },
+	  setValue: function setValue(txt) {
+	    this.setState({ value: txt });
+	  },
+	  getValue: function getValue() {
+	    return this.state.value;
+	  }
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 396 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _Object$defineProperty = __webpack_require__(366)['default'];
+
+	var _interopRequireDefault = __webpack_require__(271)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	var _react = __webpack_require__(180);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(379);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _react2['default'].createClass({
+		displayName: 'Select',
+
+		getInitialState: function getInitialState() {
+			return {
+				value: ''
+			};
+		},
+		propTypes: {
+			firstValue: _react2['default'].PropTypes.string,
+			List: _react2['default'].PropTypes.array
+		},
+		getDefaultProps: function getDefaultProps() {
+			return {
+				firstValue: ''
+			};
+		},
+		render: function render() {
+			if (this.props.type === 'district') {
+				return _react2['default'].createElement(
+					'div',
+					{ className: 'form-group' },
+					_react2['default'].createElement(
+						'select',
+						{ className: 'form-control', onChange: this._onChange },
+						_react2['default'].createElement(
+							'option',
+							{ value: '' },
+							this.props.firstValue
+						),
+						this.props.List && this.props.List.map(function (city, i) {
+							return _react2['default'].createElement(
+								'option',
+								{ key: i, value: city.name },
+								city.name
+							);
+						})
+					)
+				);
+			} else {
+				return _react2['default'].createElement(
+					'div',
+					{ className: 'form-group' },
+					_react2['default'].createElement(
+						'select',
+						{ className: 'form-control', onChange: this._onChange },
+						_react2['default'].createElement(
+							'option',
+							{ value: '' },
+							this.props.firstValue
+						),
+						this.props.List && this.props.List.map(function (city, i) {
+							return _react2['default'].createElement(
+								'option',
+								{ key: i, value: city },
+								city
+							);
+						})
+					)
+				);
+			}
+		},
+		_onChange: function _onChange(e) {
+			var value = e.target.value;
+			this.setValue(value);
+			if (this.props.onChange) {
+				this.props.onChange(value);
+			}
+		},
+		setValue: function setValue(txt) {
+			this.setState({ value: txt });
+		},
+		getValue: function getValue() {
+			return this.state.value;
+		}
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 397 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* @jsx React.DOM */
+	'use strict';
+
+	var _Object$defineProperty = __webpack_require__(366)['default'];
+
+	var _Object$keys = __webpack_require__(392)['default'];
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
@@ -8149,17 +8816,17 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _validatorjs = __webpack_require__(487);
+	var _validatorjs = __webpack_require__(394);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	/* @jsx */
 
-	var _componentsFormInputValidation = __webpack_require__(484);
+	var _componentsFormInputValidation = __webpack_require__(395);
 
 	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
 
-	var _componentsFormSelect = __webpack_require__(486);
+	var _componentsFormSelect = __webpack_require__(396);
 
 	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
 
@@ -8428,17 +9095,280 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 461 */,
-/* 462 */,
-/* 463 */,
-/* 464 */
+/* 398 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* @jsx React.DOM */
+	'use strict';
+
+	var _Object$defineProperty = __webpack_require__(366)['default'];
+
+	var _Object$keys = __webpack_require__(392)['default'];
+
+	var _interopRequireDefault = __webpack_require__(271)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(180);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(177);
+
+	var _validatorjs = __webpack_require__(394);
+
+	var _validatorjs2 = _interopRequireDefault(_validatorjs);
+
+	/* @jsx */
+
+	var _componentsFormInputValidation = __webpack_require__(395);
+
+	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
+
+	var _componentsFormSelect = __webpack_require__(396);
+
+	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
+
+	var Validations = {
+	  mobilePhone: {
+	    rules: { mobilePhone: ['required', 'regex:/^([0-9]{10,11})$/'] },
+	    messages: { 'required.mobilePhone': 'nhập số điện thoại của bạn!', 'regex.mobilePhone': 'số điện thoại không hợp lệ!' },
+	    hasError: false,
+	    errorMessage: '',
+	    errorTextRequest: ''
+	  },
+	  password: {
+	    rules: { password: ['required'] },
+	    messages: { 'required.password': 'nhập password của bạn!' },
+	    hasError: false,
+	    errorMessage: '',
+	    errorTextRequest: ''
+	  }
+	};
+
+	exports['default'] = _react2['default'].createClass({
+	  displayName: 'SignInTest',
+
+	  contextTypes: {
+	    flux: _react2['default'].PropTypes.object.isRequired,
+	    router: _react2['default'].PropTypes.func.isRequired
+	  },
+
+	  getInitialState: function getInitialState() {
+	    this.AuthActions = this.context.flux.getActions('authActions');
+	    this.AuthStore = this.context.flux.getStore('authStore');
+
+	    return {
+	      disabled: true,
+	      ValidationData: Validations,
+	      logInState: this.AuthStore.getLogInState()
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    this.AuthStore.addListener('change', this.onSotreAuthChange);
+
+	    if (this.AuthStore.getToken()) {
+	      var router = this.context.router;
+
+	      var nextPath = router.getCurrentQuery().nextPath;
+	      if (nextPath) {
+	        router.replaceWith(nextPath);
+	      } else {
+	        router.replaceWith('home');
+	      }
+	    }
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    this.AuthStore.removeListener('change', this.onSotreAuthChange);
+	  },
+
+	  componentDidUpdate: function componentDidUpdate() {
+	    if (this.state.logInState === 'success') {
+	      var router = this.context.router;
+
+	      var nextPath = router.getCurrentQuery().nextPath;
+	      if (nextPath) {
+	        router.replaceWith(nextPath);
+	      } else {
+	        router.replaceWith('home');
+	      }
+	    }
+	  },
+
+	  onSotreAuthChange: function onSotreAuthChange() {
+	    this.setState({
+	      logInState: this.AuthStore.getLogInState()
+	    });
+	  },
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'container' },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'form-signup' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'form-body' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'form-group' },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'logo' },
+	                  _react2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'p',
+	                { className: 'text-center title-form' },
+	                'Đăng Nhập Tổ Cú'
+	              ),
+	              this.state.logInState === 'errors' && _react2['default'].createElement(
+	                'p',
+	                { className: 'text-danger' },
+	                'số điện thoại hoặc mật khẩu không đúng'
+	              ),
+	              _react2['default'].createElement(
+	                'form',
+	                null,
+	                _react2['default'].createElement(_componentsFormInputValidation2['default'], {
+	                  ref: 'mobilePhone',
+	                  size: 'lg',
+	                  type: 'mobilePhone',
+	                  placeholder: 'số điện thoại',
+	                  name: 'mobilePhone',
+	                  validator: this.state.ValidationData.mobilePhone,
+	                  onChange: this._onChangeInputHandler }),
+	                _react2['default'].createElement(_componentsFormInputValidation2['default'], {
+	                  ref: 'password',
+	                  size: 'lg',
+	                  type: 'password',
+	                  placeholder: 'mật khẩu',
+	                  name: 'password',
+	                  validator: this.state.ValidationData.password,
+	                  onChange: this._onChangeInputHandler }),
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'form-group' },
+	                  _react2['default'].createElement('input', { className: 'form-control btn btn-primary',
+	                    onClick: this.handleLogin,
+	                    value: 'Đăng Nhập',
+	                    type: 'submit',
+	                    disabled: this.state.disabled })
+	                )
+	              )
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'form-footer' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'col-xs-7 col-md-8' },
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { href: '/password/reset/' },
+	                    'quên mật khẩu?'
+	                  )
+	                ),
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'col-xs-5 col-md-4' },
+	                  _react2['default'].createElement(
+	                    _reactRouter.Link,
+	                    { to: 'signup', className: 'pull-right' },
+	                    'Đăng Ký'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  },
+
+	  _setAndValidateInput: function _setAndValidateInput(name, value) {
+	    var ValidationData = this.state.ValidationData;
+	    var data = {};
+	    var _ValidationData$name = ValidationData[name];
+	    var rules = _ValidationData$name.rules;
+	    var messages = _ValidationData$name.messages;
+
+	    ValidationData[name].hasFocus = true;
+	    ValidationData[name].hasError = false;
+	    ValidationData[name].errorMessage = '';
+	    ValidationData[name].errorTextRequest = '';
+
+	    data[name] = value || '';
+
+	    var validation = new _validatorjs2['default'](data, rules, messages);
+
+	    if (validation.fails()) {
+	      ValidationData[name].hasError = true;
+	      ValidationData[name].errorMessage = validation.errors.first(name);
+	    }
+
+	    this.setState({ ValidationData: ValidationData });
+	  },
+
+	  _setDisabledSubmit: function _setDisabledSubmit() {
+	    var ValidationData = this.state.ValidationData,
+	        total = _Object$keys(ValidationData).length,
+	        done = 0,
+	        disabled = undefined;
+
+	    _Object$keys(ValidationData).forEach(function (key) {
+	      if (ValidationData[key].hasFocus && ValidationData[key].hasError === false) {
+	        done += 1;
+	      }
+	    });
+
+	    disabled = done === total ? false : true;
+	    this.setState({ disabled: disabled });
+	  },
+
+	  _onChangeInputHandler: function _onChangeInputHandler(name, value) {
+	    this._setAndValidateInput(name, value);
+	    this._setDisabledSubmit();
+	  },
+
+	  handleLogin: function handleLogin(e) {
+	    e.preventDefault();
+	    var mobilePhone = this.refs.mobilePhone.getValue();
+	    var password = this.refs.password.getValue();
+	    this.AuthActions.LoginActions({ mobilePhone: mobilePhone, password: password });
+	    this.setState({
+	      logInState: 'loading'
+	    });
+	  }
+
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
-	var _env = __webpack_require__(465);
+	var _env = __webpack_require__(400);
 
 	var _env2 = _interopRequireDefault(_env);
 
@@ -8471,7 +9401,7 @@ webpackJsonp([2],[
 	module.exports = HeadParams;
 
 /***/ },
-/* 465 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8482,7 +9412,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 466 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8503,35 +9433,35 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _actionsAppActions = __webpack_require__(473);
+	var _actionsAppActions = __webpack_require__(408);
 
 	var _actionsAppActions2 = _interopRequireDefault(_actionsAppActions);
 
-	var _actionsTestActions = __webpack_require__(467);
+	var _actionsTestActions = __webpack_require__(402);
 
 	var _actionsTestActions2 = _interopRequireDefault(_actionsTestActions);
 
-	var _actionsCityActions = __webpack_require__(474);
+	var _actionsCityActions = __webpack_require__(409);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _actionsAuthActions = __webpack_require__(475);
+	var _actionsAuthActions = __webpack_require__(410);
 
 	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
-	var _storeAppStore = __webpack_require__(476);
+	var _storeAppStore = __webpack_require__(411);
 
 	var _storeAppStore2 = _interopRequireDefault(_storeAppStore);
 
-	var _storeTestStore = __webpack_require__(477);
+	var _storeTestStore = __webpack_require__(412);
 
 	var _storeTestStore2 = _interopRequireDefault(_storeTestStore);
 
-	var _storeCityStore = __webpack_require__(478);
+	var _storeCityStore = __webpack_require__(413);
 
 	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
 
-	var _storeAuthStore = __webpack_require__(479);
+	var _storeAuthStore = __webpack_require__(414);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
@@ -8561,7 +9491,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 467 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8584,11 +9514,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(468);
+	var _utilsHttpRequest = __webpack_require__(403);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(472);
+	var _utilsConfig = __webpack_require__(407);
 
 	var StargazerActions = (function (_Actions) {
 	  function StargazerActions() {
@@ -8630,7 +9560,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 468 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8645,7 +9575,7 @@ webpackJsonp([2],[
 	  value: true
 	});
 
-	var _superagent = __webpack_require__(469);
+	var _superagent = __webpack_require__(404);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -8666,15 +9596,15 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 469 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Emitter = __webpack_require__(470);
-	var reduce = __webpack_require__(471);
+	var Emitter = __webpack_require__(405);
+	var reduce = __webpack_require__(406);
 
 	/**
 	 * Root reference for iframes.
@@ -9795,7 +10725,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 470 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -9965,7 +10895,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 471 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -9994,7 +10924,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 472 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10011,7 +10941,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 473 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10036,11 +10966,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(468);
+	var _utilsHttpRequest = __webpack_require__(403);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(472);
+	var _utilsConfig = __webpack_require__(407);
 
 	var StargazerActions = (function (_Actions) {
 	  function StargazerActions(flux) {
@@ -10082,7 +11012,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 474 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10105,13 +11035,13 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(468);
+	var _utilsHttpRequest = __webpack_require__(403);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(472);
+	var _utilsConfig = __webpack_require__(407);
 
-	var _superagent = __webpack_require__(469);
+	var _superagent = __webpack_require__(404);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -10175,7 +11105,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 475 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10202,11 +11132,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(468);
+	var _utilsHttpRequest = __webpack_require__(403);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(472);
+	var _utilsConfig = __webpack_require__(407);
 
 	function fakePromise(res) {
 	  return new _Promise(function (resolve, reject) {
@@ -10333,7 +11263,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 476 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10396,7 +11326,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 477 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10451,7 +11381,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 478 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10518,7 +11448,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 479 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10608,7 +11538,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 480 */
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10696,1030 +11626,6 @@ webpackJsonp([2],[
 	})();
 
 	exports.PromiseUtils = PromiseUtils;
-
-/***/ },
-/* 481 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* @jsx React.DOM */
-	'use strict';
-
-	var _Object$defineProperty = __webpack_require__(366)['default'];
-
-	var _Object$keys = __webpack_require__(482)['default'];
-
-	var _interopRequireDefault = __webpack_require__(271)['default'];
-
-	_Object$defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(180);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(177);
-
-	var _validatorjs = __webpack_require__(487);
-
-	var _validatorjs2 = _interopRequireDefault(_validatorjs);
-
-	/* @jsx */
-
-	var _componentsFormInputValidation = __webpack_require__(484);
-
-	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
-
-	var _componentsFormSelect = __webpack_require__(486);
-
-	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
-
-	var Validations = {
-	  mobilePhone: {
-	    rules: { mobilePhone: ['required', 'regex:/^([0-9]{10,11})$/'] },
-	    messages: { 'required.mobilePhone': 'nhập số điện thoại của bạn!', 'regex.mobilePhone': 'số điện thoại không hợp lệ!' },
-	    hasError: false,
-	    errorMessage: '',
-	    errorTextRequest: ''
-	  },
-	  password: {
-	    rules: { password: ['required'] },
-	    messages: { 'required.password': 'nhập password của bạn!' },
-	    hasError: false,
-	    errorMessage: '',
-	    errorTextRequest: ''
-	  }
-	};
-
-	exports['default'] = _react2['default'].createClass({
-	  displayName: 'SignInTest',
-
-	  contextTypes: {
-	    flux: _react2['default'].PropTypes.object.isRequired,
-	    router: _react2['default'].PropTypes.func.isRequired
-	  },
-
-	  getInitialState: function getInitialState() {
-	    this.AuthActions = this.context.flux.getActions('authActions');
-	    this.AuthStore = this.context.flux.getStore('authStore');
-
-	    return {
-	      disabled: true,
-	      ValidationData: Validations,
-	      logInState: this.AuthStore.getLogInState()
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    this.AuthStore.addListener('change', this.onSotreAuthChange);
-
-	    if (this.AuthStore.getToken()) {
-	      var router = this.context.router;
-
-	      var nextPath = router.getCurrentQuery().nextPath;
-	      if (nextPath) {
-	        router.replaceWith(nextPath);
-	      } else {
-	        router.replaceWith('home');
-	      }
-	    }
-	  },
-
-	  componentWillUnmount: function componentWillUnmount() {
-	    this.AuthStore.removeListener('change', this.onSotreAuthChange);
-	  },
-
-	  componentDidUpdate: function componentDidUpdate() {
-	    if (this.state.logInState === 'success') {
-	      var router = this.context.router;
-
-	      var nextPath = router.getCurrentQuery().nextPath;
-	      if (nextPath) {
-	        router.replaceWith(nextPath);
-	      } else {
-	        router.replaceWith('home');
-	      }
-	    }
-	  },
-
-	  onSotreAuthChange: function onSotreAuthChange() {
-	    this.setState({
-	      logInState: this.AuthStore.getLogInState()
-	    });
-	  },
-
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'container' },
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'row' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'form-signup' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'form-body' },
-	              _react2['default'].createElement(
-	                'div',
-	                { className: 'form-group' },
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'logo' },
-	                  _react2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
-	                )
-	              ),
-	              _react2['default'].createElement(
-	                'p',
-	                { className: 'text-center title-form' },
-	                'Đăng Nhập Tổ Cú'
-	              ),
-	              this.state.logInState === 'errors' && _react2['default'].createElement(
-	                'p',
-	                { className: 'text-danger' },
-	                'số điện thoại hoặc mật khẩu không đúng'
-	              ),
-	              _react2['default'].createElement(
-	                'form',
-	                null,
-	                _react2['default'].createElement(_componentsFormInputValidation2['default'], {
-	                  ref: 'mobilePhone',
-	                  size: 'lg',
-	                  type: 'mobilePhone',
-	                  placeholder: 'số điện thoại',
-	                  name: 'mobilePhone',
-	                  validator: this.state.ValidationData.mobilePhone,
-	                  onChange: this._onChangeInputHandler }),
-	                _react2['default'].createElement(_componentsFormInputValidation2['default'], {
-	                  ref: 'password',
-	                  size: 'lg',
-	                  type: 'password',
-	                  placeholder: 'mật khẩu',
-	                  name: 'password',
-	                  validator: this.state.ValidationData.password,
-	                  onChange: this._onChangeInputHandler }),
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  _react2['default'].createElement('input', { className: 'form-control btn btn-primary',
-	                    onClick: this.handleLogin,
-	                    value: 'Đăng Nhập',
-	                    type: 'submit',
-	                    disabled: this.state.disabled })
-	                )
-	              )
-	            ),
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'form-footer' },
-	              _react2['default'].createElement(
-	                'div',
-	                { className: 'row' },
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'col-xs-7 col-md-8' },
-	                  _react2['default'].createElement(
-	                    'a',
-	                    { href: '/password/reset/' },
-	                    'quên mật khẩu?'
-	                  )
-	                ),
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'col-xs-5 col-md-4' },
-	                  _react2['default'].createElement(
-	                    _reactRouter.Link,
-	                    { to: 'signup', className: 'pull-right' },
-	                    'Đăng Ký'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      )
-	    );
-	  },
-
-	  _setAndValidateInput: function _setAndValidateInput(name, value) {
-	    var ValidationData = this.state.ValidationData;
-	    var data = {};
-	    var _ValidationData$name = ValidationData[name];
-	    var rules = _ValidationData$name.rules;
-	    var messages = _ValidationData$name.messages;
-
-	    ValidationData[name].hasFocus = true;
-	    ValidationData[name].hasError = false;
-	    ValidationData[name].errorMessage = '';
-	    ValidationData[name].errorTextRequest = '';
-
-	    data[name] = value || '';
-
-	    var validation = new _validatorjs2['default'](data, rules, messages);
-
-	    if (validation.fails()) {
-	      ValidationData[name].hasError = true;
-	      ValidationData[name].errorMessage = validation.errors.first(name);
-	    }
-
-	    this.setState({ ValidationData: ValidationData });
-	  },
-
-	  _setDisabledSubmit: function _setDisabledSubmit() {
-	    var ValidationData = this.state.ValidationData,
-	        total = _Object$keys(ValidationData).length,
-	        done = 0,
-	        disabled = undefined;
-
-	    _Object$keys(ValidationData).forEach(function (key) {
-	      if (ValidationData[key].hasFocus && ValidationData[key].hasError === false) {
-	        done += 1;
-	      }
-	    });
-
-	    disabled = done === total ? false : true;
-	    this.setState({ disabled: disabled });
-	  },
-
-	  _onChangeInputHandler: function _onChangeInputHandler(name, value) {
-	    this._setAndValidateInput(name, value);
-	    this._setDisabledSubmit();
-	  },
-
-	  handleLogin: function handleLogin(e) {
-	    e.preventDefault();
-	    var mobilePhone = this.refs.mobilePhone.getValue();
-	    var password = this.refs.password.getValue();
-	    this.AuthActions.LoginActions({ mobilePhone: mobilePhone, password: password });
-	    this.setState({
-	      logInState: 'loading'
-	    });
-	  }
-
-	});
-	module.exports = exports['default'];
-
-/***/ },
-/* 482 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(483), __esModule: true };
-
-/***/ },
-/* 483 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(387);
-	module.exports = __webpack_require__(233).core.Object.keys;
-
-/***/ },
-/* 484 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* @jsx React.DOM */
-	'use strict';
-
-	var _Object$defineProperty = __webpack_require__(366)['default'];
-
-	var _interopRequireDefault = __webpack_require__(271)['default'];
-
-	_Object$defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(180);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _utilsClassSet = __webpack_require__(485);
-
-	var _utilsClassSet2 = _interopRequireDefault(_utilsClassSet);
-
-	exports['default'] = _react2['default'].createClass({
-	  displayName: 'InputValidation',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      value: this.props.defaultValue
-	    };
-	  },
-	  propTypes: {
-	    validation: _react2['default'].PropTypes.object,
-	    onChange: _react2['default'].PropTypes.func,
-	    placeholder: _react2['default'].PropTypes.string,
-	    name: _react2['default'].PropTypes.string,
-	    type: _react2['default'].PropTypes.string
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      validation: { hasError: false },
-	      placeholder: '',
-	      type: 'text'
-	    };
-	  },
-	  render: function render() {
-	    var classes = (0, _utilsClassSet2['default'])({
-	      'form-group': true,
-	      'has-error': this.props.validator.hasError
-	    });
-	    var classesInput = (0, _utilsClassSet2['default'])({
-	      'form-control': true,
-	      'input-lg': this.props.size === 'lg'
-	    });
-
-	    var erros;
-
-	    if (this.props.validator.errorTextRequest !== '') {
-	      erros = _react2['default'].createElement(
-	        'label',
-	        { className: 'control-label', htmlFor: this.props.name },
-	        this.props.validator.errorTextRequest
-	      );
-	    } else {
-	      erros = _react2['default'].createElement(
-	        'label',
-	        { className: 'control-label', htmlFor: this.props.name },
-	        this.props.validator.errorMessage
-	      );
-	    }
-
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: classes },
-	      this.props.validator.hasError && erros,
-	      _react2['default'].createElement('input', {
-	        className: classesInput,
-	        type: this.props.type,
-	        value: this.state.value,
-	        name: this.props.name,
-	        onChange: this._onChange,
-	        onBlur: this._onBlur,
-	        placeholder: this.props.placeholder })
-	    );
-	  },
-	  _onChange: function _onChange(e) {
-	    var value = e.target.value;
-	    this.setValue(value);
-	    this.props.onChange(this.props.name, value);
-	  },
-	  _onBlur: function _onBlur(e) {
-	    var value = e.target.value;
-	    this.props.onChange(this.props.name, value);
-	  },
-	  setValue: function setValue(txt) {
-	    this.setState({ value: txt });
-	  },
-	  getValue: function getValue() {
-	    return this.state.value;
-	  }
-	});
-	module.exports = exports['default'];
-
-/***/ },
-/* 485 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _Object$defineProperty = __webpack_require__(366)['default'];
-
-	var _Object$keys = __webpack_require__(482)['default'];
-
-	_Object$defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	function classSet(classes) {
-	  return typeof classes !== 'object' ? Array.prototype.join.call(arguments, ' ') : _Object$keys(classes).filter(function (className) {
-	    return classes[className];
-	  }).join(' ');
-	}
-
-	exports['default'] = classSet;
-	module.exports = exports['default'];
-
-/***/ },
-/* 486 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _Object$defineProperty = __webpack_require__(366)['default'];
-
-	var _interopRequireDefault = __webpack_require__(271)['default'];
-
-	_Object$defineProperty(exports, '__esModule', {
-		value: true
-	});
-
-	var _react = __webpack_require__(180);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _utilsClassSet = __webpack_require__(485);
-
-	var _utilsClassSet2 = _interopRequireDefault(_utilsClassSet);
-
-	exports['default'] = _react2['default'].createClass({
-		displayName: 'Select',
-
-		getInitialState: function getInitialState() {
-			return {
-				value: ''
-			};
-		},
-		propTypes: {
-			firstValue: _react2['default'].PropTypes.string,
-			List: _react2['default'].PropTypes.array
-		},
-		getDefaultProps: function getDefaultProps() {
-			return {
-				firstValue: ''
-			};
-		},
-		render: function render() {
-			if (this.props.type === 'district') {
-				return _react2['default'].createElement(
-					'div',
-					{ className: 'form-group' },
-					_react2['default'].createElement(
-						'select',
-						{ className: 'form-control', onChange: this._onChange },
-						_react2['default'].createElement(
-							'option',
-							{ value: '' },
-							this.props.firstValue
-						),
-						this.props.List && this.props.List.map(function (city, i) {
-							return _react2['default'].createElement(
-								'option',
-								{ key: i, value: city.name },
-								city.name
-							);
-						})
-					)
-				);
-			} else {
-				return _react2['default'].createElement(
-					'div',
-					{ className: 'form-group' },
-					_react2['default'].createElement(
-						'select',
-						{ className: 'form-control', onChange: this._onChange },
-						_react2['default'].createElement(
-							'option',
-							{ value: '' },
-							this.props.firstValue
-						),
-						this.props.List && this.props.List.map(function (city, i) {
-							return _react2['default'].createElement(
-								'option',
-								{ key: i, value: city },
-								city
-							);
-						})
-					)
-				);
-			}
-		},
-		_onChange: function _onChange(e) {
-			var value = e.target.value;
-			this.setValue(value);
-			if (this.props.onChange) {
-				this.props.onChange(value);
-			}
-		},
-		setValue: function setValue(txt) {
-			this.setState({ value: txt });
-		},
-		getValue: function getValue() {
-			return this.state.value;
-		}
-	});
-	module.exports = exports['default'];
-
-/***/ },
-/* 487 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! validatorjs - v1.3.2 - https://github.com/skaterdav85/validatorjs - 2015-02-11 */
-	(function() {
-
-	var messages = {
-		accepted: 'The :attribute must be accepted.',
-		alpha: 'The :attribute field must contain only alphabetic characters.',
-		alpha_dash: 'The :attribute field may only contain alpha-numeric characters, as well as dashes and underscores.',
-		alpha_num: 'The :attribute field must be alphanumeric.',
-		confirmed: 'The :attribute confirmation does not match.',
-		email: 'The :attribute format is invalid.',
-		def: 'The :attribute attribute has errors.',
-		digits: 'The :attribute must be :digits digits.',
-		different: 'The :attribute and :different must be different.',
-		'in': 'The selected :attribute is invalid.',
-		integer: 'The :attribute must be an integer.',
-		min: {
-			numeric: 'The :attribute must be at least :min.',
-			string: 'The :attribute must be at least :min characters.'
-		},
-		max: {
-			numeric: 'The :attribute must be less than :max.',
-			string: 'The :attribute must be less than :max characters.'
-		},
-		not_in: 'The selected :attribute is invalid.',
-		numeric: 'The :attribute must be a number.',
-		required: 'The :attribute field is required.',
-		same: 'The :attribute and :same fields must match.',
-		size: {
-			numeric: 'The :attribute must be :size.',
-			string: 'The :attribute must be :size characters.'
-		},
-		url: 'The :attribute format is invalid.',
-		regex: 'The :attribute format is invalid'
-	};
-
-	// Shim taken from MDN site
-	if (!Array.prototype.forEach) {
-	    Array.prototype.forEach = function (fn, scope) {
-	        'use strict';
-	        var i, len;
-	        for (i = 0, len = this.length; i < len; ++i) {
-	            if (i in this) {
-	                fn.call(scope, this[i], i, this);
-	            }
-	        }
-	    };
-	}
-
-	// Based on jquery's extend function
-	function extend() {
-		var src, copy, name, options, clone;
-		var target = arguments[0] || {};
-		var i = 1;
-		var length = arguments.length;
-
-		for ( ; i < length; i++ ) {
-			// Only deal with non-null/undefined values
-			if ( (options = arguments[ i ]) != null ) {
-				// Extend the base object
-				for ( name in options ) {
-					src = target[ name ];
-					copy = options[ name ];
-
-					// Prevent never-ending loop
-					if ( target === copy ) {
-						continue;
-					}
-
-					// Recurse if we're merging plain objects or arrays
-					if ( copy && typeof copy === "object" ) {
-						clone = src && typeof src === "object" ? src : {};
-
-						// Never move original objects, clone them
-						target[ name ] = extend( clone, copy );
-
-					// Don't bring in undefined values
-					} else if ( copy !== undefined ) {
-						target[ name ] = copy;
-					}
-				}
-			}
-		}
-
-		// Return the modified object
-		return target;
-	}
-
-	var ValidatorErrors = function() {};
-
-	ValidatorErrors.prototype = {
-		constructor: ValidatorErrors,
-
-		/**
-		 * returns an array of error messages for an attribute, or an empty array
-		 * @param  {String} attribute A key in the data object being validated
-		 * @return {Array}           	An array of error messages
-		 */
-		get: function(attribute) {
-			if (this[attribute]) {
-				return this[attribute];
-			}
-
-			return [];
-		},
-
-		/**
-		 * returns the first error message for an attribute, false otherwise
-		 * @param  {String} attribute A key in the data object being validated
-		 * @return {String}           First error message or false
-		 */
-		first: function(attribute) {
-			if (this[attribute]) {
-				return this[attribute][0];
-			}
-
-			return false;
-		},
-
-		/**
-		 * Get all error messages from all failing attributes
-		 * @return {Object} Failed attribute names for keys and an array of messages for values
-		 */
-		all: function() {
-			return this;
-		},
-
-		/**
-		 * checks if there are error messages for an attribute
-		 * @param  {String}  attribute A key in the data object being validated
-		 * @return {Boolean}           True if there are error messages. Otherwise false
-		 */
-		has: function(attribute) {
-			if (this[attribute] && this[attribute].length > 0) {
-				return true;
-			}
-
-			return false;
-		}
-	};
-
-	var Validator = function(input, rules, customMessages) {
-		this.input = input;
-		this.rules = rules;
-		this.messages = extend({}, messages, customMessages || {});
-
-		this.errors = new ValidatorErrors();
-
-		this.errorCount = 0;
-		this.check();
-	};
-
-	Validator.prototype = {
-		constructor: Validator,
-
-		// replaces placeholders in tmpl with actual data
-		_createMessage: function(tmpl, data) {
-			var message, key;
-
-			if (typeof tmpl === 'string' && typeof data === 'object') {
-				message = tmpl;
-
-				for (key in data) {
-					if (data.hasOwnProperty(key)) {
-						message = message.replace(':' + key, data[key]);
-					}
-				}
-			}
-
-			return message;
-		},
-
-		check: function() {
-			var self = this;
-
-			this._each(this.rules, function(attributeToValidate) {
-
-				var rulesArray = this.rules[attributeToValidate];
-				if( typeof rulesArray === "string" ) {
-	        rulesArray = this.rules[attributeToValidate].split('|');
-	      }
-
-				var inputValue = this.input[attributeToValidate]; // if it doesnt exist in input, it will be undefined
-
-				rulesArray.forEach(function(ruleString) {
-					var ruleExtraction = self._extractRuleAndRuleValue(ruleString);
-					var rule = ruleExtraction.rule;
-					var ruleValue = ruleExtraction.ruleValue;
-					var passes, dataForMessageTemplate, msgTmpl, msg;
-
-					passes = self.validate[rule].call(self, inputValue, ruleValue, attributeToValidate);
-
-					if (!passes) {
-						if ( !self.errors.hasOwnProperty(attributeToValidate) ) {
-							self.errors[attributeToValidate] = [];
-						}
-
-						dataForMessageTemplate = self._createErrorMessageTemplateData(attributeToValidate, rule, ruleValue);
-						msgTmpl = self._selectMessageTemplate(rule, inputValue, attributeToValidate);
-						msg = self._createMessage(msgTmpl, dataForMessageTemplate);
-						self._addErrorMessage(attributeToValidate, msg);
-					}
-				});
-			}, this); // end of _each()
-		},
-
-		_each: function(obj, cb, context) {
-			for (var key in obj) {
-				cb.call(context, key);
-			}
-		},
-
-		/**
-		 * Extract a rule and a rule value from a ruleString (i.e. min:3), rule = min, ruleValue = 3
-		 * @param  {string} ruleString min:3
-		 * @return {object} object containing the rule and ruleValue
-		 */
-		_extractRuleAndRuleValue: function(ruleString) {
-			var obj = {}, ruleArray;
-
-			obj.rule = ruleString;
-
-			if (ruleString.indexOf(':') >= 0) {
-				ruleArray = ruleString.split(':');
-				obj.rule = ruleArray[0];
-				obj.ruleValue = ruleArray.slice(1).join(":");
-			}
-
-			return obj;
-		},
-
-		_addErrorMessage: function(key, msg) {
-			this.errors[key].push(msg);
-			this.errorCount++;
-		},
-
-		_createErrorMessageTemplateData: function(key, rule, ruleVal) {
-			var dataForMessageTemplate = { attribute: key };
-			dataForMessageTemplate[rule] = ruleVal; // if no rule value, then this will equal to null
-
-			return dataForMessageTemplate;
-		},
-
-		// selects the correct message template from the messages variable based on the rule and the value
-		_selectMessageTemplate: function(rule, val, key) {
-			var msgTmpl, messages = this.messages;
-
-			// if the custom error message template exists in messages variable
-			if (messages.hasOwnProperty(rule + '.' + key)) {
-				msgTmpl = messages[rule + '.' + key];
-			} else if (messages.hasOwnProperty(rule)) {
-				msgTmpl = messages[rule];
-
-				if (typeof msgTmpl === 'object') {
-					switch (typeof val) {
-						case 'number':
-							msgTmpl = msgTmpl['numeric'];
-							break;
-						case 'string':
-							msgTmpl = msgTmpl['string'];
-							break;
-					}
-				}
-			} else { // default error message
-				msgTmpl = messages.def;
-			}
-
-			return msgTmpl;
-		},
-
-		passes: function() {
-			return this.errorCount === 0 ? true : false;
-		},
-
-		fails: function() {
-			return this.errorCount > 0 ? true : false;
-		},
-
-		// validate functions should return T/F
-		validate: {
-			required: function(val) {
-				var str;
-
-				if (val === undefined || val === null) {
-					return false;
-				}
-
-				str = String(val).replace(/\s/g, "");
-				return str.length > 0 ? true : false;
-			},
-
-			// compares the size of strings
-			// with numbers, compares the value
-			size: function(val, req) {
-				if (val) {
-					req = parseFloat(req);
-
-					if (typeof val === 'number') {
-						return val === req ? true : false;
-					}
-
-					return val.length === req ? true : false;
-				}
-
-				return true;
-			},
-
-			/**
-			 * Compares the size of strings or the value of numbers if there is a truthy value
-			 */
-			min: function(val, req) {
-				if (val === undefined || val === '') { return true; }
-
-				if (typeof val === 'number') {
-					return val >= req ? true : false;
-				} else {
-					return val.length >= req ? true : false;
-				}
-			},
-
-			/**
-			 * Compares the size of strings or the value of numbers if there is a truthy value
-			 */
-			max: function(val, req) {
-				if (val === undefined || val === '') { return true; }
-
-				if (typeof val === 'number') {
-					return val <= req ? true : false;
-				} else {
-					return val.length <= req ? true : false;
-				}
-			},
-
-			email: function(val) {
-				var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-				if (val === undefined || val === '') {
-					return true;
-				}
-
-				return re.test(val);
-			},
-
-			numeric: function(val) {
-				var num;
-
-				if (val === undefined || val === '') { return true; }
-
-				num = Number(val); // tries to convert value to a number. useful if value is coming from form element
-
-				if (typeof num === 'number' && !isNaN(num) && typeof val !== 'boolean') {
-					return true;
-				} else {
-					return false;
-				}
-			},
-
-			url: function(url) {
-				if (url === undefined || url === '') { return true; }
-
-				return (/^https?:\/\/\S+/).test(url);
-			},
-
-			alpha: function(val) {
-				if (val === undefined || val === '') { return true; }
-
-				return (/^[a-zA-Z]+$/).test(val);
-			},
-
-			alpha_dash: function(val) {
-				if (val === undefined || val === '') { return true; }
-				return (/^[a-zA-Z0-9_\-]+$/).test(val);
-			},
-
-			alpha_num: function(val) {
-				if (val === undefined || val === '') { return true; }
-
-				return (/^[a-zA-Z0-9]+$/).test(val);
-			},
-
-			same: function(val, req) {
-				var val1 = this.input[req];
-				var val2 = val;
-
-				if (val1 === val2) {
-					return true;
-				}
-
-				return false;
-			},
-
-			different: function(val, req) {
-				var val1 = this.input[req];
-				var val2 = val;
-
-				if (val1 !== val2) {
-					return true;
-				}
-
-				return false;
-			},
-
-			"in": function(val, req) {
-				var list, len, returnVal;
-
-				if (val) {
-					list = req.split(',');
-					len = list.length;
-					returnVal = false;
-
-					val = String(val); // convert val to a string if it is a number
-
-					for (var i = 0; i < len; i++) {
-						if (val === list[i]) {
-							returnVal = true;
-							break;
-						}
-					}
-
-					return returnVal;
-				}
-
-				return true;
-			},
-
-			not_in: function(val, req) {
-				var list = req.split(',');
-				var len = list.length;
-				var returnVal = true;
-
-				val = String(val); // convert val to a string if it is a number
-
-				for (var i = 0; i < len; i++) {
-					if (val === list[i]) {
-						returnVal = false;
-						break;
-					}
-				}
-
-				return returnVal;
-			},
-
-			accepted: function(val) {
-				if (val === 'on' || val === 'yes' || val === 1 || val === '1') {
-					return true;
-				}
-
-				return false;
-			},
-
-			confirmed: function(val, req, key) {
-				var confirmedKey = key + '_confirmation';
-
-				if (this.input[confirmedKey] === val) {
-					return true;
-				}
-
-				return false;
-			},
-
-			integer: function(val) {
-				if (val === undefined || val === '') { return true; }
-
-				val = String(val);
-
-				if ( (/^\d+$/).test(val) ) {
-					return true;
-				} else {
-					return false;
-				}
-			},
-
-			digits: function(val, req) {
-				if (this.validate.numeric(val) && String(val).length === parseInt(req)) {
-					return true;
-				}
-
-				return false;
-			},
-
-	    regex: function(val, req) {
-	    	var mod = /[g|i|m]{1,3}$/;
-				var flag = req.match(mod);
-				flag = flag ? flag[0] : "i";
-				req = req.replace(mod,"").slice(1,-1);
-				req = new RegExp(req,flag);
-	      return !!val.match(req);
-	    }
-		}
-	};
-
-	// static methods
-	Validator.register = function(rule, fn, errMsg) {
-		this.prototype.validate[rule] = fn;
-		messages[rule] = (typeof errMsg === 'string') ? errMsg : messages['def'];
-	};
-
-	Validator.make = function(input, rules, customMessages) {
-		return new Validator(input, rules, customMessages);
-	};
-
-	// Node environment
-	if (typeof module !== 'undefined' && module.exports) {
-		module.exports = Validator;
-	} else { // browser environment
-		if (true) {
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
-				return Validator;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.Validator = Validator;
-		}
-	}
-
-	})();
 
 /***/ }
 ]);

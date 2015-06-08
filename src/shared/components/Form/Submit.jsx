@@ -1,7 +1,8 @@
 'use strict';
 
 import React from 'react';
-import classSet from '../../utils/classSet';
+import classNames from 'classnames';
+
 
 export default React.createClass({
 
@@ -12,7 +13,7 @@ export default React.createClass({
 	},
 	
 	render() {
-		var classes = classSet({
+		var classes = classNames({
       "form-control": true,
       "btn-primary": true,
       "btn": true,

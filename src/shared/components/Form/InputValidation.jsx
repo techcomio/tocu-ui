@@ -2,7 +2,8 @@
 'use strict';
 
 import React from 'react';
-import classSet from '../../utils/classSet';
+import classNames from 'classnames';
+
 
 export default React.createClass({
 	getInitialState() {
@@ -25,11 +26,11 @@ export default React.createClass({
     };
 	},
 	render() {
-		var classes = classSet({
+		var classes = classNames({
       "form-group": true,
       "has-error": this.props.validator.hasError,
     });
-    var classesInput = classSet({
+    var classesInput = classNames({
       "form-control": true,
       "input-lg": this.props.size === "lg",
     });

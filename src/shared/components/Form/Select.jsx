@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import classSet from '../../utils/classSet';
+import classNames from 'classnames';
 
 
 export default React.createClass({
