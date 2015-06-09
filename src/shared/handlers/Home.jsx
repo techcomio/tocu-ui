@@ -13,7 +13,7 @@ export default React.createClass({
   statics: {
   	async routerWillRunOnServer(state, flux) {
       let AppActions = flux.getActions('appActions');
-      // return await AppActions.dataActions();
+      return await AppActions.dataActions();
     },
   },
 
@@ -42,7 +42,7 @@ export default React.createClass({
 
   componentDidMount() {
     this.AppStore.addListener('change', this.onStoreChange);
-		// this.AppActions.dataActions();
+		this.AppActions.dataActions();
   },
 
   componentWillUnmount() {
@@ -53,47 +53,32 @@ export default React.createClass({
     this.setState(this.getFromStore());
   },
 
-/*  render() {
-    if(!this.state.posts) {
-      return (<div>...loading!</div>);
-    } else {
-      let {posts} = this.state;
-      var ThumbList = posts.map(function(post, i) {
-        return (
-          <div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-            <Thumbnail {...post} />
-          </div>
-        );
-      });
-      return (
-        <div onClick={this.TestActions}>
+  render() {
+  	if(!this.state.posts) {
+  		return (<div>...loading!</div>);
+  	} else {
+  		let {posts} = this.state;
+	    var ThumbList = posts.map(function(post, i) {
+				return (
+					<div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+						<Thumbnail {...post} />
+					</div>
+				);
+			});
+			return (
+				<div onClick={this.TestActions}>
           <Header />
 
-          <section id="content">
-            <div className="container">
-              <div className="row">
-                {ThumbList}
-              </div>
-            </div>
-          </section>
-        </div>
-      )
-    }
-  },*/
-  render() {
-		return (
-			<div onClick={this.TestActions}>
-        <Header />
-
-				<section id="content">
-			    <div className="container">
-				    <div className="row" style={{height: 700}}>
-	  	     		test 
+					<section id="content">
+				    <div className="container">
+					    <div className="row">
+		  	     		{ThumbList}
+						  </div>
 					  </div>
-				  </div>
-			  </section>
-		  </div>
-		)
+				  </section>
+			  </div>
+			)
+  	}
   },
 });
 

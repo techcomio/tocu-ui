@@ -6856,7 +6856,7 @@ webpackJsonp([2],[
 
 	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
 
-	var _componentsThumbnail = __webpack_require__(374);
+	var _componentsThumbnail = __webpack_require__(375);
 
 	var _componentsThumbnail2 = _interopRequireDefault(_componentsThumbnail);
 
@@ -6870,8 +6870,13 @@ webpackJsonp([2],[
 	        while (1) switch (context$1$0.prev = context$1$0.next) {
 	          case 0:
 	            AppActions = flux.getActions('appActions');
+	            context$1$0.next = 3;
+	            return _regeneratorRuntime.awrap(AppActions.dataActions());
 
-	          case 1:
+	          case 3:
+	            return context$1$0.abrupt('return', context$1$0.sent);
+
+	          case 4:
 	          case 'end':
 	            return context$1$0.stop();
 	        }
@@ -6904,7 +6909,7 @@ webpackJsonp([2],[
 
 	  componentDidMount: function componentDidMount() {
 	    this.AppStore.addListener('change', this.onStoreChange);
-	    // this.AppActions.dataActions();
+	    this.AppActions.dataActions();
 	  },
 
 	  componentWillUnmount: function componentWillUnmount() {
@@ -6915,57 +6920,45 @@ webpackJsonp([2],[
 	    this.setState(this.getFromStore());
 	  },
 
-	  /*  render() {
-	      if(!this.state.posts) {
-	        return (<div>...loading!</div>);
-	      } else {
-	        let {posts} = this.state;
-	        var ThumbList = posts.map(function(post, i) {
-	          return (
-	            <div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-	              <Thumbnail {...post} />
-	            </div>
-	          );
-	        });
-	        return (
-	          <div onClick={this.TestActions}>
-	            <Header />
-	  
-	            <section id="content">
-	              <div className="container">
-	                <div className="row">
-	                  {ThumbList}
-	                </div>
-	              </div>
-	            </section>
-	          </div>
-	        )
-	      }
-	    },*/
 	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      { onClick: this.TestActions },
-	      _react2['default'].createElement(_componentsHeader2['default'], null),
-	      _react2['default'].createElement(
-	        'section',
-	        { id: 'content' },
-	        _react2['default'].createElement(
+	    if (!this.state.posts) {
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        '...loading!'
+	      );
+	    } else {
+	      var posts = this.state.posts;
+
+	      var ThumbList = posts.map(function (post, i) {
+	        return _react2['default'].createElement(
 	          'div',
-	          { className: 'container' },
+	          { key: i, className: 'col-xs-6 col-sm-4 col-md-4 col-lg-3' },
+	          _react2['default'].createElement(_componentsThumbnail2['default'], post)
+	        );
+	      });
+	      return _react2['default'].createElement(
+	        'div',
+	        { onClick: this.TestActions },
+	        _react2['default'].createElement(_componentsHeader2['default'], null),
+	        _react2['default'].createElement(
+	          'section',
+	          { id: 'content' },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'row', style: { height: 700 } },
-	            'test'
+	            { className: 'container' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'row' },
+	              ThumbList
+	            )
 	          )
 	        )
-	      )
-	    );
+	      );
+	    }
 	  }
 	});
 	module.exports = exports['default'];
-
-	// return await AppActions.dataActions();
 
 /***/ },
 /* 373 */
@@ -6986,7 +6979,7 @@ webpackJsonp([2],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(380);
+	var _classnames = __webpack_require__(374);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -7273,6 +7266,61 @@ webpackJsonp([2],[
 /* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+
+	(function () {
+		'use strict';
+
+		function classNames () {
+
+			var classes = '';
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if ('string' === argType || 'number' === argType) {
+					classes += ' ' + arg;
+
+				} else if (Array.isArray(arg)) {
+					classes += ' ' + classNames.apply(null, arg);
+
+				} else if ('object' === argType) {
+					for (var key in arg) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
+							classes += ' ' + key;
+						}
+					}
+				}
+			}
+
+			return classes.substr(1);
+		}
+
+		if (true) {
+			// AMD. Register as an anonymous module.
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else {
+			window.classNames = classNames;
+		}
+
+	}());
+
+
+/***/ },
+/* 375 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* @jsx React.DOM */
 	'use strict';
 
@@ -7282,7 +7330,7 @@ webpackJsonp([2],[
 
 	var _classCallCheck = __webpack_require__(371)['default'];
 
-	var _extends = __webpack_require__(375)['default'];
+	var _extends = __webpack_require__(376)['default'];
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
@@ -7298,7 +7346,7 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _classnames = __webpack_require__(380);
+	var _classnames = __webpack_require__(374);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -7400,12 +7448,12 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 375 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _Object$assign = __webpack_require__(376)["default"];
+	var _Object$assign = __webpack_require__(377)["default"];
 
 	exports["default"] = _Object$assign || function (target) {
 	  for (var i = 1; i < arguments.length; i++) {
@@ -7424,28 +7472,28 @@ webpackJsonp([2],[
 	exports.__esModule = true;
 
 /***/ },
-/* 376 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(377), __esModule: true };
-
-/***/ },
 /* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(378);
-	module.exports = __webpack_require__(233).core.Object.assign;
+	module.exports = { "default": __webpack_require__(378), __esModule: true };
 
 /***/ },
 /* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// 19.1.3.1 Object.assign(target, source)
-	var $def = __webpack_require__(239);
-	$def($def.S, 'Object', {assign: __webpack_require__(379)});
+	__webpack_require__(379);
+	module.exports = __webpack_require__(233).core.Object.assign;
 
 /***/ },
 /* 379 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.3.1 Object.assign(target, source)
+	var $def = __webpack_require__(239);
+	$def($def.S, 'Object', {assign: __webpack_require__(380)});
+
+/***/ },
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $        = __webpack_require__(233)
@@ -7467,61 +7515,6 @@ webpackJsonp([2],[
 	  }
 	  return T;
 	};
-
-/***/ },
-/* 380 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-
-	(function () {
-		'use strict';
-
-		function classNames () {
-
-			var classes = '';
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg;
-
-				if ('string' === argType || 'number' === argType) {
-					classes += ' ' + arg;
-
-				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
-
-				} else if ('object' === argType) {
-					for (var key in arg) {
-						if (arg.hasOwnProperty(key) && arg[key]) {
-							classes += ' ' + key;
-						}
-					}
-				}
-			}
-
-			return classes.substr(1);
-		}
-
-		if (true) {
-			// AMD. Register as an anonymous module.
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else {
-			window.classNames = classNames;
-		}
-
-	}());
-
 
 /***/ },
 /* 381 */
@@ -8920,7 +8913,7 @@ webpackJsonp([2],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(380);
+	var _classnames = __webpack_require__(374);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -9022,7 +9015,7 @@ webpackJsonp([2],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(380);
+	var _classnames = __webpack_require__(374);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
