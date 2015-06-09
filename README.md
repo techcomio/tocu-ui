@@ -50,6 +50,6 @@ $ npm start
 │
 ├── server.js       # Run the express server
 │
-└── webpack.config.js     # Webpack config for the build task
+└── webpack.config.js    # Webpack config for the build task
 
 ```
