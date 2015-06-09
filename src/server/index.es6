@@ -50,9 +50,11 @@ export default async function (req, res, next) {
 			      })
 			    });
 
+					// get data Store của tất cả các Store sử dụng func serialize. (chỉ get dữ liệu phần this.state)
+					// https://github.com/acdlite/flummox/blob/master/docs/docs/api/store.md#serializestate
 					let test = flux.serialize();
 
-			    let dehydratedState ="window.__STATE__=" + test +";";
+			    let dehydratedState ="window.__STATE__=" + test +";";	// set data suống client
 
 			    let html = React.renderToStaticMarkup(HtmlComponent({
 			      headParams: headParams,

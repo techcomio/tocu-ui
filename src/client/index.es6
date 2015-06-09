@@ -27,6 +27,8 @@ router.run((Handler, state) => {
     
       await performRouteHandlerStaticMethod(state.routes, 'routerWillRunOnClient', state, flux);
 
+      // merge data Store, data trên server gửi xuống. của các Store sử dụng func deserialize. 
+      // https://github.com/acdlite/flummox/blob/master/docs/docs/api/store.md#deserializestate
       flux.deserialize(JSON.stringify(dehydratedState));
 
     	let bodyElement = React.createFactory(FluxComponent)({
