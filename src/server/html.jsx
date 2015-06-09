@@ -24,6 +24,7 @@ export default React.createClass({
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 64x64 128x128 256x256" />
           <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
           <link rel="stylesheet" type="text/css" href="/css/main.css" />
+          <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
         </head>
         <body>
         

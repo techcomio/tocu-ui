@@ -26,15 +26,15 @@ webpackJsonp([2],[
 
 	var _sharedRouters2 = _interopRequireDefault(_sharedRouters);
 
-	var _sharedLibHeadParams = __webpack_require__(399);
+	var _sharedLibHeadParams = __webpack_require__(400);
 
 	var _sharedLibHeadParams2 = _interopRequireDefault(_sharedLibHeadParams);
 
-	var _sharedFlux = __webpack_require__(401);
+	var _sharedFlux = __webpack_require__(402);
 
 	var _sharedFlux2 = _interopRequireDefault(_sharedFlux);
 
-	var _sharedUtilsPerformRouteHandlerStaticMethod = __webpack_require__(415);
+	var _sharedUtilsPerformRouteHandlerStaticMethod = __webpack_require__(416);
 
 	var headParams = new _sharedLibHeadParams2['default']();
 	var flux = new _sharedFlux2['default']();
@@ -59,6 +59,8 @@ webpackJsonp([2],[
 
 	        case 2:
 
+	          // merge data Store, data trên server gửi xuống. của các Store sử dụng func deserialize.
+	          // https://github.com/acdlite/flummox/blob/master/docs/docs/api/store.md#deserializestate
 	          flux.deserialize(JSON.stringify(dehydratedState));
 
 	          bodyElement = _react2['default'].createFactory(_flummoxComponent2['default'])({
@@ -6647,31 +6649,31 @@ webpackJsonp([2],[
 
 	var _handlersHome2 = _interopRequireDefault(_handlersHome);
 
-	var _handlersNotFound = __webpack_require__(383);
+	var _handlersNotFound = __webpack_require__(384);
 
 	var _handlersNotFound2 = _interopRequireDefault(_handlersNotFound);
 
-	var _handlersPosts = __webpack_require__(388);
+	var _handlersPosts = __webpack_require__(389);
 
 	var _handlersPosts2 = _interopRequireDefault(_handlersPosts);
 
-	var _handlersSanpham = __webpack_require__(389);
+	var _handlersSanpham = __webpack_require__(390);
 
 	var _handlersSanpham2 = _interopRequireDefault(_handlersSanpham);
 
-	var _handlersAlbum = __webpack_require__(390);
+	var _handlersAlbum = __webpack_require__(391);
 
 	var _handlersAlbum2 = _interopRequireDefault(_handlersAlbum);
 
-	var _handlersSignIn = __webpack_require__(391);
+	var _handlersSignIn = __webpack_require__(392);
 
 	var _handlersSignIn2 = _interopRequireDefault(_handlersSignIn);
 
-	var _handlersSignUp = __webpack_require__(397);
+	var _handlersSignUp = __webpack_require__(398);
 
 	var _handlersSignUp2 = _interopRequireDefault(_handlersSignUp);
 
-	var _handlersSignInTest = __webpack_require__(398);
+	var _handlersSignInTest = __webpack_require__(399);
 
 	var _handlersSignInTest2 = _interopRequireDefault(_handlersSignInTest);
 
@@ -6850,7 +6852,11 @@ webpackJsonp([2],[
 
 	/* @jsx */
 
-	var _componentsThumbnail = __webpack_require__(373);
+	var _componentsHeader = __webpack_require__(373);
+
+	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
+
+	var _componentsThumbnail = __webpack_require__(374);
 
 	var _componentsThumbnail2 = _interopRequireDefault(_componentsThumbnail);
 
@@ -6864,13 +6870,8 @@ webpackJsonp([2],[
 	        while (1) switch (context$1$0.prev = context$1$0.next) {
 	          case 0:
 	            AppActions = flux.getActions('appActions');
-	            context$1$0.next = 3;
-	            return _regeneratorRuntime.awrap(AppActions.dataActions());
 
-	          case 3:
-	            return context$1$0.abrupt('return', context$1$0.sent);
-
-	          case 4:
+	          case 1:
 	          case 'end':
 	            return context$1$0.stop();
 	        }
@@ -6903,7 +6904,7 @@ webpackJsonp([2],[
 
 	  componentDidMount: function componentDidMount() {
 	    this.AppStore.addListener('change', this.onStoreChange);
-	    this.AppActions.dataActions();
+	    // this.AppActions.dataActions();
 	  },
 
 	  componentWillUnmount: function componentWillUnmount() {
@@ -6914,52 +6915,362 @@ webpackJsonp([2],[
 	    this.setState(this.getFromStore());
 	  },
 
+	  /*  render() {
+	      if(!this.state.posts) {
+	        return (<div>...loading!</div>);
+	      } else {
+	        let {posts} = this.state;
+	        var ThumbList = posts.map(function(post, i) {
+	          return (
+	            <div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+	              <Thumbnail {...post} />
+	            </div>
+	          );
+	        });
+	        return (
+	          <div onClick={this.TestActions}>
+	            <Header />
+	  
+	            <section id="content">
+	              <div className="container">
+	                <div className="row">
+	                  {ThumbList}
+	                </div>
+	              </div>
+	            </section>
+	          </div>
+	        )
+	      }
+	    },*/
 	  render: function render() {
-	    if (!this.state.posts) {
-	      return _react2['default'].createElement(
-	        'div',
-	        null,
-	        '...loading!'
-	      );
-	    } else {
-	      var posts = this.state.posts;
-
-	      var ThumbList = posts.map(function (post, i) {
-	        return _react2['default'].createElement(
+	    return _react2['default'].createElement(
+	      'div',
+	      { onClick: this.TestActions },
+	      _react2['default'].createElement(_componentsHeader2['default'], null),
+	      _react2['default'].createElement(
+	        'section',
+	        { id: 'content' },
+	        _react2['default'].createElement(
 	          'div',
-	          { key: i, className: 'col-xs-6 col-sm-4 col-md-4 col-lg-3' },
-	          _react2['default'].createElement(_componentsThumbnail2['default'], post)
-	        );
-	      });
-	      return _react2['default'].createElement(
-	        'div',
-	        { onClick: this.TestActions },
-	        _react2['default'].createElement(
-	          'header',
-	          null,
-	          _react2['default'].createElement('div', { className: 'container' })
-	        ),
-	        _react2['default'].createElement(
-	          'section',
-	          { id: 'content' },
+	          { className: 'container' },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'container' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'row' },
-	              ThumbList
-	            )
+	            { className: 'row', style: { height: 700 } },
+	            'test'
 	          )
 	        )
-	      );
-	    }
+	      )
+	    );
+	  }
+	});
+	module.exports = exports['default'];
+
+	// return await AppActions.dataActions();
+
+/***/ },
+/* 373 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* @jsx React.DOM */
+	'use strict';
+
+	var _Object$defineProperty = __webpack_require__(366)['default'];
+
+	var _interopRequireDefault = __webpack_require__(271)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(180);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(380);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _react2['default'].createClass({
+	  displayName: 'index',
+
+	  contextTypes: {
+	    flux: _react2['default'].PropTypes.object.isRequired,
+	    router: _react2['default'].PropTypes.func.isRequired
+	  },
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      transform: false
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    window.addEventListener('scroll', this.handleScroll);
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    window.removeEventListener('scroll', this.handleScroll);
+	  },
+
+	  handleScroll: function handleScroll(event) {
+	    var scrollTop = window.scrollY;
+	    var transform = scrollTop >= 70;
+	    this.setState({
+	      transform: transform
+	    });
+	  },
+
+	  render: function render() {
+	    var classesNavbar = (0, _classnames2['default'])({
+	      navbar: true,
+	      'navbar-default': true,
+	      'navbar-fixed-top': true,
+	      test: !this.state.transform
+	    });
+	    var classesHeaderNameAndImg = (0, _classnames2['default'])({
+	      fixedHeaderNameAndImage: true,
+	      hiden: !this.state.transform,
+	      show: this.state.transform
+	    });
+
+	    return _react2['default'].createElement(
+	      'header',
+	      null,
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'container-fluid' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'profileImage' },
+	          _react2['default'].createElement('img', { src: '/img/logo.png', alt: 'MongoDB', itemprop: 'image' })
+	        ),
+	        _react2['default'].createElement(
+	          'nav',
+	          { className: classesNavbar },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'container-fluid' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'navbar-header' },
+	              _react2['default'].createElement(
+	                'button',
+	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
+	                _react2['default'].createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  'Toggle navigation'
+	                ),
+	                _react2['default'].createElement('span', { className: 'icon-bar' }),
+	                _react2['default'].createElement('span', { className: 'icon-bar' }),
+	                _react2['default'].createElement('span', { className: 'icon-bar' })
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: classesHeaderNameAndImg },
+	                _react2['default'].createElement(
+	                  'a',
+	                  { className: 'navbar-brand', href: '#' },
+	                  _react2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
+	                ),
+	                _react2['default'].createElement(
+	                  'p',
+	                  { className: 'navbar-text pull-left' },
+	                  'Tổ Cú'
+	                )
+	              )
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'nav navbar-nav navbar-right' },
+	                _react2['default'].createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-sm btn-default navbar-btn' },
+	                  'Sign in'
+	                ),
+	                _react2['default'].createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-sm btn-primary navbar-btn' },
+	                  'Sign up'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'container-fluid profileInfo' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'aboutBar' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'about' },
+	              _react2['default'].createElement(
+	                'h1',
+	                { className: 'name' },
+	                'Tổ Cú'
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'iconsLinksEtc' },
+	                _react2['default'].createElement(
+	                  'ul',
+	                  null,
+	                  _react2['default'].createElement(
+	                    'li',
+	                    { className: 'websiteWrapper' },
+	                    _react2['default'].createElement(
+	                      'a',
+	                      { href: '#', target: '_blank' },
+	                      _react2['default'].createElement(
+	                        'i',
+	                        { className: 'fa fa-map-marker gray' },
+	                        '  Hà Nội'
+	                      )
+	                    )
+	                  ),
+	                  _react2['default'].createElement(
+	                    'li',
+	                    null,
+	                    _react2['default'].createElement(
+	                      'a',
+	                      { href: '#', target: '_blank' },
+	                      _react2['default'].createElement(
+	                        'i',
+	                        { className: 'fa fa-facebook-square gray' },
+	                        '  facebook'
+	                      )
+	                    )
+	                  ),
+	                  _react2['default'].createElement(
+	                    'li',
+	                    null,
+	                    _react2['default'].createElement(
+	                      'a',
+	                      { href: '#', target: '_blank' },
+	                      _react2['default'].createElement(
+	                        'i',
+	                        { className: 'fa fa-twitter gray' },
+	                        '  twitter'
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'p',
+	                { className: 'aboutText', itemprop: 'description' },
+	                'Nơi chúng ta thỏa sức với niềm đam mê đồ cũ & handmade :x'
+	              )
+	            )
+	          )
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'container-fluid infoBar' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2['default'].createElement('div', { className: 'col-md-3 col-lg-3' }),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'col-md-6 col-lg-6' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'col-xs-3' },
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { href: '#', className: 'active' },
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: 'value' },
+	                      '7'
+	                    ),
+	                    ' ',
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: 'labels' },
+	                      'Box'
+	                    )
+	                  )
+	                ),
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'col-xs-3' },
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { href: '#', className: '' },
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: 'value' },
+	                      '88'
+	                    ),
+	                    ' ',
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: 'labels' },
+	                      'Sản phẩm'
+	                    )
+	                  )
+	                ),
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'col-xs-3' },
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { href: '#', className: '' },
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: 'value' },
+	                      '325'
+	                    ),
+	                    ' ',
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: 'labels' },
+	                      'Ảnh'
+	                    )
+	                  )
+	                ),
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'col-xs-3' },
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { href: '#', className: '' },
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: 'value' },
+	                      '213'
+	                    ),
+	                    ' ',
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: 'labels' },
+	                      'Bài Viết'
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            _react2['default'].createElement('div', { className: 'col-md-3 col-lg-3' })
+	          )
+	        )
+	      )
+	    );
 	  }
 	});
 	module.exports = exports['default'];
 
 /***/ },
-/* 373 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -6971,7 +7282,7 @@ webpackJsonp([2],[
 
 	var _classCallCheck = __webpack_require__(371)['default'];
 
-	var _extends = __webpack_require__(374)['default'];
+	var _extends = __webpack_require__(375)['default'];
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
@@ -6987,19 +7298,19 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _classnames = __webpack_require__(379);
+	var _classnames = __webpack_require__(380);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _PostItem = __webpack_require__(380);
+	var _PostItem = __webpack_require__(381);
 
 	var _PostItem2 = _interopRequireDefault(_PostItem);
 
-	var _AlbumItem = __webpack_require__(381);
+	var _AlbumItem = __webpack_require__(382);
 
 	var _AlbumItem2 = _interopRequireDefault(_AlbumItem);
 
-	var _CreditItem = __webpack_require__(382);
+	var _CreditItem = __webpack_require__(383);
 
 	var _CreditItem2 = _interopRequireDefault(_CreditItem);
 
@@ -7089,12 +7400,12 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 374 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _Object$assign = __webpack_require__(375)["default"];
+	var _Object$assign = __webpack_require__(376)["default"];
 
 	exports["default"] = _Object$assign || function (target) {
 	  for (var i = 1; i < arguments.length; i++) {
@@ -7113,28 +7424,28 @@ webpackJsonp([2],[
 	exports.__esModule = true;
 
 /***/ },
-/* 375 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(376), __esModule: true };
-
-/***/ },
 /* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(377);
-	module.exports = __webpack_require__(233).core.Object.assign;
+	module.exports = { "default": __webpack_require__(377), __esModule: true };
 
 /***/ },
 /* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// 19.1.3.1 Object.assign(target, source)
-	var $def = __webpack_require__(239);
-	$def($def.S, 'Object', {assign: __webpack_require__(378)});
+	__webpack_require__(378);
+	module.exports = __webpack_require__(233).core.Object.assign;
 
 /***/ },
 /* 378 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.3.1 Object.assign(target, source)
+	var $def = __webpack_require__(239);
+	$def($def.S, 'Object', {assign: __webpack_require__(379)});
+
+/***/ },
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $        = __webpack_require__(233)
@@ -7158,7 +7469,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 379 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -7213,7 +7524,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 380 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -7277,7 +7588,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 381 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -7341,7 +7652,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 382 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -7418,7 +7729,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 383 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -7426,7 +7737,7 @@ webpackJsonp([2],[
 
 	var _inherits = __webpack_require__(369)["default"];
 
-	var _get = __webpack_require__(384)["default"];
+	var _get = __webpack_require__(385)["default"];
 
 	var _createClass = __webpack_require__(370)["default"];
 
@@ -7499,12 +7810,12 @@ webpackJsonp([2],[
 	module.exports = exports["default"];
 
 /***/ },
-/* 384 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _Object$getOwnPropertyDescriptor = __webpack_require__(385)["default"];
+	var _Object$getOwnPropertyDescriptor = __webpack_require__(386)["default"];
 
 	exports["default"] = function get(_x, _x2, _x3) {
 	  var _again = true;
@@ -7547,23 +7858,23 @@ webpackJsonp([2],[
 	exports.__esModule = true;
 
 /***/ },
-/* 385 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(386), __esModule: true };
-
-/***/ },
 /* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = { "default": __webpack_require__(387), __esModule: true };
+
+/***/ },
+/* 387 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var $ = __webpack_require__(233);
-	__webpack_require__(387);
+	__webpack_require__(388);
 	module.exports = function getOwnPropertyDescriptor(it, key){
 	  return $.getDesc(it, key);
 	};
 
 /***/ },
-/* 387 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $        = __webpack_require__(233)
@@ -7604,7 +7915,7 @@ webpackJsonp([2],[
 	});
 
 /***/ },
-/* 388 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -7673,7 +7984,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 389 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -7733,7 +8044,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 390 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -7793,7 +8104,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 391 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -7801,7 +8112,7 @@ webpackJsonp([2],[
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
-	var _Object$keys = __webpack_require__(392)['default'];
+	var _Object$keys = __webpack_require__(393)['default'];
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
@@ -7815,17 +8126,17 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _validatorjs = __webpack_require__(394);
+	var _validatorjs = __webpack_require__(395);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	/* @jsx */
 
-	var _componentsFormInputValidation = __webpack_require__(395);
+	var _componentsFormInputValidation = __webpack_require__(396);
 
 	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
 
-	var _componentsFormSelect = __webpack_require__(396);
+	var _componentsFormSelect = __webpack_require__(397);
 
 	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
 
@@ -8059,20 +8370,20 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 392 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(393), __esModule: true };
-
-/***/ },
 /* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(387);
-	module.exports = __webpack_require__(233).core.Object.keys;
+	module.exports = { "default": __webpack_require__(394), __esModule: true };
 
 /***/ },
 /* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(388);
+	module.exports = __webpack_require__(233).core.Object.keys;
+
+/***/ },
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! validatorjs - v1.3.2 - https://github.com/skaterdav85/validatorjs - 2015-02-11 */
@@ -8591,7 +8902,7 @@ webpackJsonp([2],[
 	})();
 
 /***/ },
-/* 395 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -8609,7 +8920,7 @@ webpackJsonp([2],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(379);
+	var _classnames = __webpack_require__(380);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -8694,7 +9005,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 396 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8711,7 +9022,7 @@ webpackJsonp([2],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(379);
+	var _classnames = __webpack_require__(380);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -8794,7 +9105,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 397 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -8802,7 +9113,7 @@ webpackJsonp([2],[
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
-	var _Object$keys = __webpack_require__(392)['default'];
+	var _Object$keys = __webpack_require__(393)['default'];
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
@@ -8816,17 +9127,17 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _validatorjs = __webpack_require__(394);
+	var _validatorjs = __webpack_require__(395);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	/* @jsx */
 
-	var _componentsFormInputValidation = __webpack_require__(395);
+	var _componentsFormInputValidation = __webpack_require__(396);
 
 	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
 
-	var _componentsFormSelect = __webpack_require__(396);
+	var _componentsFormSelect = __webpack_require__(397);
 
 	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
 
@@ -9095,7 +9406,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 398 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -9103,7 +9414,7 @@ webpackJsonp([2],[
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
-	var _Object$keys = __webpack_require__(392)['default'];
+	var _Object$keys = __webpack_require__(393)['default'];
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
@@ -9117,17 +9428,17 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _validatorjs = __webpack_require__(394);
+	var _validatorjs = __webpack_require__(395);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	/* @jsx */
 
-	var _componentsFormInputValidation = __webpack_require__(395);
+	var _componentsFormInputValidation = __webpack_require__(396);
 
 	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
 
-	var _componentsFormSelect = __webpack_require__(396);
+	var _componentsFormSelect = __webpack_require__(397);
 
 	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
 
@@ -9361,14 +9672,14 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 399 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
-	var _env = __webpack_require__(400);
+	var _env = __webpack_require__(401);
 
 	var _env2 = _interopRequireDefault(_env);
 
@@ -9401,7 +9712,7 @@ webpackJsonp([2],[
 	module.exports = HeadParams;
 
 /***/ },
-/* 400 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9412,14 +9723,14 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 401 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _inherits = __webpack_require__(369)['default'];
 
-	var _get = __webpack_require__(384)['default'];
+	var _get = __webpack_require__(385)['default'];
 
 	var _classCallCheck = __webpack_require__(371)['default'];
 
@@ -9433,35 +9744,35 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _actionsAppActions = __webpack_require__(408);
+	var _actionsAppActions = __webpack_require__(409);
 
 	var _actionsAppActions2 = _interopRequireDefault(_actionsAppActions);
 
-	var _actionsTestActions = __webpack_require__(402);
+	var _actionsTestActions = __webpack_require__(403);
 
 	var _actionsTestActions2 = _interopRequireDefault(_actionsTestActions);
 
-	var _actionsCityActions = __webpack_require__(409);
+	var _actionsCityActions = __webpack_require__(410);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _actionsAuthActions = __webpack_require__(410);
+	var _actionsAuthActions = __webpack_require__(411);
 
 	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
-	var _storeAppStore = __webpack_require__(411);
+	var _storeAppStore = __webpack_require__(412);
 
 	var _storeAppStore2 = _interopRequireDefault(_storeAppStore);
 
-	var _storeTestStore = __webpack_require__(412);
+	var _storeTestStore = __webpack_require__(413);
 
 	var _storeTestStore2 = _interopRequireDefault(_storeTestStore);
 
-	var _storeCityStore = __webpack_require__(413);
+	var _storeCityStore = __webpack_require__(414);
 
 	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
 
-	var _storeAuthStore = __webpack_require__(414);
+	var _storeAuthStore = __webpack_require__(415);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
@@ -9491,7 +9802,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 402 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9514,11 +9825,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(403);
+	var _utilsHttpRequest = __webpack_require__(404);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(407);
+	var _utilsConfig = __webpack_require__(408);
 
 	var StargazerActions = (function (_Actions) {
 	  function StargazerActions() {
@@ -9560,7 +9871,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 403 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9575,7 +9886,7 @@ webpackJsonp([2],[
 	  value: true
 	});
 
-	var _superagent = __webpack_require__(404);
+	var _superagent = __webpack_require__(405);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -9596,15 +9907,15 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 404 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Emitter = __webpack_require__(405);
-	var reduce = __webpack_require__(406);
+	var Emitter = __webpack_require__(406);
+	var reduce = __webpack_require__(407);
 
 	/**
 	 * Root reference for iframes.
@@ -10725,7 +11036,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 405 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -10895,7 +11206,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 406 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -10924,7 +11235,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 407 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10941,14 +11252,14 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 408 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _inherits = __webpack_require__(369)['default'];
 
-	var _get = __webpack_require__(384)['default'];
+	var _get = __webpack_require__(385)['default'];
 
 	var _createClass = __webpack_require__(370)['default'];
 
@@ -10966,11 +11277,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(403);
+	var _utilsHttpRequest = __webpack_require__(404);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(407);
+	var _utilsConfig = __webpack_require__(408);
 
 	var StargazerActions = (function (_Actions) {
 	  function StargazerActions(flux) {
@@ -11012,7 +11323,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 409 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11035,13 +11346,13 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(403);
+	var _utilsHttpRequest = __webpack_require__(404);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(407);
+	var _utilsConfig = __webpack_require__(408);
 
-	var _superagent = __webpack_require__(404);
+	var _superagent = __webpack_require__(405);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -11105,14 +11416,14 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 410 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _inherits = __webpack_require__(369)['default'];
 
-	var _get = __webpack_require__(384)['default'];
+	var _get = __webpack_require__(385)['default'];
 
 	var _createClass = __webpack_require__(370)['default'];
 
@@ -11132,11 +11443,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(403);
+	var _utilsHttpRequest = __webpack_require__(404);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(407);
+	var _utilsConfig = __webpack_require__(408);
 
 	function fakePromise(res) {
 	  return new _Promise(function (resolve, reject) {
@@ -11263,14 +11574,14 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 411 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _inherits = __webpack_require__(369)['default'];
 
-	var _get = __webpack_require__(384)['default'];
+	var _get = __webpack_require__(385)['default'];
 
 	var _createClass = __webpack_require__(370)['default'];
 
@@ -11326,14 +11637,14 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 412 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _inherits = __webpack_require__(369)['default'];
 
-	var _get = __webpack_require__(384)['default'];
+	var _get = __webpack_require__(385)['default'];
 
 	var _createClass = __webpack_require__(370)['default'];
 
@@ -11381,14 +11692,14 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 413 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _inherits = __webpack_require__(369)['default'];
 
-	var _get = __webpack_require__(384)['default'];
+	var _get = __webpack_require__(385)['default'];
 
 	var _createClass = __webpack_require__(370)['default'];
 
@@ -11448,14 +11759,14 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 414 */
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _inherits = __webpack_require__(369)['default'];
 
-	var _get = __webpack_require__(384)['default'];
+	var _get = __webpack_require__(385)['default'];
 
 	var _createClass = __webpack_require__(370)['default'];
 
@@ -11538,7 +11849,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 415 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
