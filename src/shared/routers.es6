@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import Router from 'react-router';
 import {Route, Routes, DefaultRoute, NotFoundRoute, RouteHandler, Link} from 'react-router';
 
 /* @jsx */

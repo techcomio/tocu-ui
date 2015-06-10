@@ -6637,8 +6637,6 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _reactRouter2 = _interopRequireDefault(_reactRouter);
-
 	/* @jsx */
 
 	var _handlersApp = __webpack_require__(368);
@@ -6979,6 +6977,8 @@ webpackJsonp([2],[
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(177);
+
 	var _classnames = __webpack_require__(374);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -7031,230 +7031,226 @@ webpackJsonp([2],[
 	      null,
 	      _react2['default'].createElement(
 	        'div',
-	        { className: 'container-fluid' },
+	        { className: 'profileImage' },
+	        _react2['default'].createElement('img', { src: '/img/logo.png', alt: 'MongoDB', itemprop: 'image' })
+	      ),
+	      _react2['default'].createElement(
+	        'nav',
+	        { className: classesNavbar },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'profileImage' },
-	          _react2['default'].createElement('img', { src: '/img/logo.png', alt: 'MongoDB', itemprop: 'image' })
-	        ),
-	        _react2['default'].createElement(
-	          'nav',
-	          { className: classesNavbar },
+	          { className: 'container' },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'container-fluid' },
+	            { className: 'navbar-header' },
 	            _react2['default'].createElement(
-	              'div',
-	              { className: 'navbar-header' },
+	              'button',
+	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
 	              _react2['default'].createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
-	                _react2['default'].createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                _react2['default'].createElement('span', { className: 'icon-bar' }),
-	                _react2['default'].createElement('span', { className: 'icon-bar' }),
-	                _react2['default'].createElement('span', { className: 'icon-bar' })
+	                'span',
+	                { className: 'sr-only' },
+	                'Toggle navigation'
 	              ),
-	              _react2['default'].createElement(
-	                'div',
-	                { className: classesHeaderNameAndImg },
-	                _react2['default'].createElement(
-	                  'a',
-	                  { className: 'navbar-brand', href: '#' },
-	                  _react2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
-	                ),
-	                _react2['default'].createElement(
-	                  'p',
-	                  { className: 'navbar-text pull-left' },
-	                  'Tổ Cú'
-	                )
-	              )
+	              _react2['default'].createElement('span', { className: 'icon-bar' }),
+	              _react2['default'].createElement('span', { className: 'icon-bar' }),
+	              _react2['default'].createElement('span', { className: 'icon-bar' })
 	            ),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	              { className: classesHeaderNameAndImg },
 	              _react2['default'].createElement(
-	                'div',
-	                { className: 'nav navbar-nav navbar-right' },
-	                _react2['default'].createElement(
-	                  'button',
-	                  { type: 'button', className: 'btn btn-sm btn-default navbar-btn' },
-	                  'Sign in'
-	                ),
-	                _react2['default'].createElement(
-	                  'button',
-	                  { type: 'button', className: 'btn btn-sm btn-primary navbar-btn' },
-	                  'Sign up'
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'container-fluid profileInfo' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'aboutBar' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'about' },
-	              _react2['default'].createElement(
-	                'h1',
-	                { className: 'name' },
-	                'Tổ Cú'
-	              ),
-	              _react2['default'].createElement(
-	                'div',
-	                { className: 'iconsLinksEtc' },
-	                _react2['default'].createElement(
-	                  'ul',
-	                  null,
-	                  _react2['default'].createElement(
-	                    'li',
-	                    { className: 'websiteWrapper' },
-	                    _react2['default'].createElement(
-	                      'a',
-	                      { href: '#', target: '_blank' },
-	                      _react2['default'].createElement(
-	                        'i',
-	                        { className: 'fa fa-map-marker gray' },
-	                        '  Hà Nội'
-	                      )
-	                    )
-	                  ),
-	                  _react2['default'].createElement(
-	                    'li',
-	                    null,
-	                    _react2['default'].createElement(
-	                      'a',
-	                      { href: '#', target: '_blank' },
-	                      _react2['default'].createElement(
-	                        'i',
-	                        { className: 'fa fa-facebook-square gray' },
-	                        '  facebook'
-	                      )
-	                    )
-	                  ),
-	                  _react2['default'].createElement(
-	                    'li',
-	                    null,
-	                    _react2['default'].createElement(
-	                      'a',
-	                      { href: '#', target: '_blank' },
-	                      _react2['default'].createElement(
-	                        'i',
-	                        { className: 'fa fa-twitter gray' },
-	                        '  twitter'
-	                      )
-	                    )
-	                  )
-	                )
+	                _reactRouter.Link,
+	                { to: 'home', className: 'navbar-brand' },
+	                _react2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
 	              ),
 	              _react2['default'].createElement(
 	                'p',
-	                { className: 'aboutText', itemprop: 'description' },
-	                'Nơi chúng ta thỏa sức với niềm đam mê đồ cũ & handmade :x'
+	                { className: 'navbar-text pull-left' },
+	                'Tổ Cú'
+	              )
+	            )
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'nav navbar-nav navbar-right' },
+	              _react2['default'].createElement(
+	                _reactRouter.Link,
+	                { to: 'signin', className: 'btn btn-sm btn-default navbar-btn' },
+	                'Sign in'
+	              ),
+	              _react2['default'].createElement(
+	                _reactRouter.Link,
+	                { to: 'signup', className: 'btn btn-sm btn-primary navbar-btn' },
+	                'Sign up'
 	              )
 	            )
 	          )
-	        ),
+	        )
+	      ),
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'container profileInfo' },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'container-fluid infoBar' },
+	          { className: 'aboutBar' },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'row' },
-	            _react2['default'].createElement('div', { className: 'col-md-3 col-lg-3' }),
+	            { className: 'about' },
+	            _react2['default'].createElement(
+	              'h1',
+	              { className: 'name' },
+	              'Tổ Cú'
+	            ),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'col-md-6 col-lg-6' },
+	              { className: 'iconsLinksEtc' },
 	              _react2['default'].createElement(
-	                'div',
-	                { className: 'row' },
+	                'ul',
+	                null,
 	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'col-xs-3' },
+	                  'li',
+	                  { className: 'websiteWrapper' },
 	                  _react2['default'].createElement(
 	                    'a',
-	                    { href: '#', className: 'active' },
+	                    { href: '#', target: '_blank' },
 	                    _react2['default'].createElement(
-	                      'span',
-	                      { className: 'value' },
-	                      '7'
-	                    ),
-	                    ' ',
-	                    _react2['default'].createElement(
-	                      'span',
-	                      { className: 'labels' },
-	                      'Box'
+	                      'i',
+	                      { className: 'fa fa-map-marker gray' },
+	                      '  Hà Nội'
 	                    )
 	                  )
 	                ),
 	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'col-xs-3' },
+	                  'li',
+	                  null,
 	                  _react2['default'].createElement(
 	                    'a',
-	                    { href: '#', className: '' },
+	                    { href: '#', target: '_blank' },
 	                    _react2['default'].createElement(
-	                      'span',
-	                      { className: 'value' },
-	                      '88'
-	                    ),
-	                    ' ',
-	                    _react2['default'].createElement(
-	                      'span',
-	                      { className: 'labels' },
-	                      'Sản phẩm'
+	                      'i',
+	                      { className: 'fa fa-facebook-square gray' },
+	                      '  facebook'
 	                    )
 	                  )
 	                ),
 	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'col-xs-3' },
+	                  'li',
+	                  null,
 	                  _react2['default'].createElement(
 	                    'a',
-	                    { href: '#', className: '' },
+	                    { href: '#', target: '_blank' },
 	                    _react2['default'].createElement(
-	                      'span',
-	                      { className: 'value' },
-	                      '325'
-	                    ),
-	                    ' ',
-	                    _react2['default'].createElement(
-	                      'span',
-	                      { className: 'labels' },
-	                      'Ảnh'
-	                    )
-	                  )
-	                ),
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'col-xs-3' },
-	                  _react2['default'].createElement(
-	                    'a',
-	                    { href: '#', className: '' },
-	                    _react2['default'].createElement(
-	                      'span',
-	                      { className: 'value' },
-	                      '213'
-	                    ),
-	                    ' ',
-	                    _react2['default'].createElement(
-	                      'span',
-	                      { className: 'labels' },
-	                      'Bài Viết'
+	                      'i',
+	                      { className: 'fa fa-twitter gray' },
+	                      '  twitter'
 	                    )
 	                  )
 	                )
 	              )
 	            ),
-	            _react2['default'].createElement('div', { className: 'col-md-3 col-lg-3' })
+	            _react2['default'].createElement(
+	              'p',
+	              { className: 'aboutText', itemprop: 'description' },
+	              'Nơi chúng ta thỏa sức với niềm đam mê đồ cũ & handmade :x'
+	            )
 	          )
+	        )
+	      ),
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'container infoBar' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2['default'].createElement('div', { className: 'col-sm-2 col-md-3 col-lg-3' }),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-8 col-md-6 col-lg-6' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-3' },
+	                _react2['default'].createElement(
+	                  'a',
+	                  { href: '#', className: 'active' },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'value' },
+	                    '7'
+	                  ),
+	                  ' ',
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'labels' },
+	                    'Box'
+	                  )
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-3' },
+	                _react2['default'].createElement(
+	                  'a',
+	                  { href: '#', className: '' },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'value' },
+	                    '88'
+	                  ),
+	                  ' ',
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'labels' },
+	                    'Sản phẩm'
+	                  )
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-3' },
+	                _react2['default'].createElement(
+	                  'a',
+	                  { href: '#', className: '' },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'value' },
+	                    '325'
+	                  ),
+	                  ' ',
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'labels' },
+	                    'Ảnh'
+	                  )
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-3' },
+	                _react2['default'].createElement(
+	                  'a',
+	                  { href: '#', className: '' },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'value' },
+	                    '213'
+	                  ),
+	                  ' ',
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'labels' },
+	                    'Bài Viết'
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          _react2['default'].createElement('div', { className: 'col-sm-2 col-md-3 col-lg-3' })
 	        )
 	      )
 	    );
@@ -11660,7 +11656,7 @@ webpackJsonp([2],[
 	    var testActions = flux.getActions('testActions');
 	    this.register(testActions.TestAction, this.handleTest);
 
-	    this.state = {};
+	    this.state = { test: 'hihi' };
 	  }
 
 	  _inherits(AppStore, _Store);

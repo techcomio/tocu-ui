@@ -7,7 +7,7 @@ export default class AppStore extends Store {
     let testActions = flux.getActions('testActions');
     this.register(testActions.TestAction, this.handleTest);
 
-    this.state = {};
+    this.state = {test: 'hihi'};
   }
   
   handleTest(val) {
