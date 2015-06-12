@@ -1,4 +1,6 @@
 import { Flummox, Actions, Store } from 'flummox';
+import Immutable from 'immutable';
+
 
 export default class AppStore extends Store { 
 	constructor(flux) {
@@ -7,16 +9,22 @@ export default class AppStore extends Store {
     let appActions = flux.getActions('appActions');
     this.register(appActions.dataActions, this.handleData);
 
-    this.state = {};
+    this.state = Immutable.fromJS({
+      posts: Immutable.List(),
+    });
   }
-  
+
   handleData(val) {
-  	this.state.posts = val.posts;
+    this.state = this.state.update('posts', list => list.merge(val.posts));
     this.emit('change');
   }
 
   getData() {
-  	return this.state.posts || null;
+  	return this.state.get('posts');
+  }
+
+  replaceState(_state_) {
+    this.state = Immutable.fromJS(_state_);
   }
 
 }

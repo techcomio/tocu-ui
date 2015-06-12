@@ -9,7 +9,7 @@ Request.prototype.exec = function() {
     setTimeout(() => {
      	req.end((error, res) => {
 	      if (error) return reject(error);
-	      resolve(res);
+	      return resolve(res);
 	    });
     }, 0);
   });

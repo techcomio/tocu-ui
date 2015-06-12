@@ -4,12 +4,19 @@ import { Api_Url } from '../utils/config';
 
 
 export default class StargazerActions extends Actions {
+	
+  constructor(flux) {
+    super();
 
-  async TestAction() {
+    this.flux = flux;
+  }
+
+  async TestActions() {
     return await httpRequest
-      .get(`${Api_Url}/data`)
+      .get(`http://localhost:8080/data`)
       .exec()
-      .then((val) => (val.body));
+      .then((val) => (val.body))
+      .catch((err) => (err));
   }
 
 }

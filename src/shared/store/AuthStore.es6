@@ -8,12 +8,16 @@ export default class AppStore extends Store {
     this.register(AuthActions.CreateUser, this.handleCreateUser);
     this.register(AuthActions.LoginActions, this.handleLogin);
 
-    this.state = {};
+    this.state = {
+      createUseState: null,
+      errCreateUse: {},
+    };
   }
   
   handleCreateUser(res) {
-    if(res.status === 201) {
+    if(res.status === 201 && res.body.token) {
       localStorage.auth = JSON.stringify(res.body);
+      localStorage.token = res.body.token;
       this.state.createUseState = "success";
     } else if (res.response.status === 400) {
       this.state.errCreateUse = res.response.body.errors;
@@ -39,11 +43,11 @@ export default class AppStore extends Store {
   }
 
   getErrCreateUse() {
-    return this.state.errCreateUse || {};
+    return this.state.errCreateUse;
   }
 
   getCreateUseState() {
-    return this.state.createUseState || null;
+    return this.state.createUseState;
   }
 
   getToken() {

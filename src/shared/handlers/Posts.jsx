@@ -28,7 +28,7 @@ export default React.createClass({
 
   componentDidMount() {
     this.TestStore.addListener('change', this.onStoreChange);
-    this.TestActions.TestAction();
+    // this.TestActions.TestActions();
   },
 
   componentWillUnmount() {

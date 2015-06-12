@@ -2,27 +2,6 @@ import { Actions } from 'flummox';
 import HttpRequest from './../utils/HttpRequest';
 import { Api_Url } from '../utils/config';
 
-function fakePromise(res) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(res);
-    }, 0);
-  });
-}
-
-function fakeLoadUser({token, user}) {
-  if (token) {
-    return fakePromise({
-      username: user,
-      token: token
-    });
-  } else {
-    return fakePromise({
-      status: 401
-    });
-  }
-}
-
 class AuthActions extends Actions {
 
   constructor(flux) {
@@ -38,7 +17,7 @@ class AuthActions extends Actions {
       .send(auth)
       .exec()
       .then((data) =>  (data))
-      .catch((data) =>  (data));
+      .catch((err) =>  (err));
   }
 
   async LoginActions(account) {    
@@ -47,19 +26,9 @@ class AuthActions extends Actions {
       .send(account)
       .exec()
       .then((res) => (res.body))
-      .catch((data) => (data));
+      .catch((err) => (err));
   }
 
-  async LoginStart() {
-    return;
-  }
-
-  async loadUser() {
-    return await fakeLoadUser({
-      token: localStorage.token,
-      user: localStorage.user
-    });
-  }
 }
 
 export default AuthActions;

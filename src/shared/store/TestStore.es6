@@ -1,22 +1,34 @@
 import { Store } from 'flummox';
+import Immutable from 'immutable';
 
 export default class AppStore extends Store { 
-	constructor(flux) {
+  constructor(flux) {
     super();
 
-    let testActions = flux.getActions('testActions');
-    this.register(testActions.TestAction, this.handleTest);
+    let appActions = flux.getActions('testActions');
+    this.register(appActions.TestActions, this.handleData);
 
-    this.state = {test: 'hihi'};
+    this.state = {
+      posts: Immutable.List(),
+    };
   }
   
-  handleTest(val) {
-  	this.state.posts = val.posts;
+  handleData(val) {
+    this.state.posts = Immutable.List(val.posts);
     this.emit('change');
   }
 
   getData() {
-  	return this.state.posts || null;
+    return this.state.posts;
   }
 
 }
+
+/*
+AppStore.serialize = function (state) {
+  return JSON.stringify(state);
+}
+
+AppStore.deserialize = function(state) {
+  return JSON.parse(state);
+}*/

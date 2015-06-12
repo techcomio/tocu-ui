@@ -13,9 +13,10 @@ export default class StargazerActions extends Actions {
 
   async dataActions() {
     return await httpRequest
-      .get(`https://tocu-tranduchieu.c9.io/data`)
+      .get(`http://tocu-tranduchieu.c9.io/data`)
       .exec()
-      .then((val) => (val.body));
+      .then((val) => (val.body))
+      .catch((err) => (err));
   }
 
 }

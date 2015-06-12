@@ -5,54 +5,52 @@ import React from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 
+export default class Home extends React.Component {
 
-export default React.createClass({
+  constructor(props) {
+    super(props);
 
-  contextTypes: {
-    flux: React.PropTypes.object.isRequired,
-	  router: React.PropTypes.func.isRequired,
-  },
+    this.handleScroll = this.handleScroll.bind(this);
 
-  getInitialState() {
-    return {
+    this.state = {
       transform: false
-    }
-  },
+    };
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-  },
+  }
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
-  },
+  }
 
-  handleScroll: function(event) {
+  handleScroll(e) {
     var scrollTop = window.scrollY;
     var transform = scrollTop >= 70;
     this.setState({
       transform: transform
     });
-  },
+  }
 
   render() {
-    let classesNavbar = classNames({
-      navbar: true,
-      "navbar-default": true,
-      "navbar-fixed-top": true,
-      test: !this.state.transform,
-    });
-    let classesHeaderNameAndImg = classNames({
-      fixedHeaderNameAndImage: true,
-      hiden: !this.state.transform,
-      show: this.state.transform,
-    });
+      let classesNavbar = classNames({
+        navbar: true,
+        "navbar-default": true,
+        "navbar-fixed-top": true,
+        test: !this.state.transform,
+      });
+      let classesHeaderNameAndImg = classNames({
+        fixedHeaderNameAndImage: true,
+        hiden: !this.state.transform,
+        show: this.state.transform,
+      });
 
-		return (
+    return (
       <header>
         <div className="container-fluid">
           <div className="profileImage">
-            <img src="/img/logo.png" alt="MongoDB" itemprop="image" />
+            <img src="/img/logo.png" alt="MongoDB" />
           </div>
           <nav className={classesNavbar}>
             <div className="container-fluid">
@@ -103,7 +101,7 @@ export default React.createClass({
                   </ul>
                 </div>
 
-                <p className="aboutText" itemprop="description">
+                <p className="aboutText" >
                   Nơi chúng ta thỏa sức với niềm đam mê đồ cũ & handmade :x
                 </p>
               </div>
@@ -142,7 +140,12 @@ export default React.createClass({
           </div>
         </div>
       </header>
-		)
-  },
-});
+    );
+  }
+  
+};
 
+Home.contextTypes = {
+  flux: React.PropTypes.object.isRequired,
+  router: React.PropTypes.func.isRequired,
+};

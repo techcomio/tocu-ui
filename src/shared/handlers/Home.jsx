@@ -1,84 +1,61 @@
- /* @jsx React.DOM */
-'use strict';
+/* @jsx React.DOM */
+"use strict";
 
 import React from 'react';
+import FluxComponent from 'flummox/component';
 
 /* @jsx */
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 
 
-export default React.createClass({
-  
-  statics: {
-  	async routerWillRunOnServer(state, flux) {
-      let AppActions = flux.getActions('appActions');
-      return await AppActions.dataActions();
-    },
-  },
+export default class Home extends React.Component {
 
-  contextTypes: {
-    flux: React.PropTypes.object.isRequired,
-	  router: React.PropTypes.func.isRequired,
-  },
+  constructor(props) {
+    super(props);
 
-  getInitialState() {
-  	this.AppActions = this.context.flux.getActions('appActions');
-    this.AppStore = this.context.flux.getStore('appStore');
+    this.AppActions = props.flux.getActions('appActions');
 
-   	return this.getFromStore();
-  },
+    this.state = {};
+  }
 
-  getFromStore () {
-  	return {
-      posts: this.AppStore.getData(),
-	  };
-  },
+  static async routerWillRunOnServer(state, flux) {
+    let AppActions = flux.getActions('appActions');
+    return await AppActions.dataActions();
+  }
 
   componentWillMount() {
-  	this.props.headParams.setTitle("Home | tocu.vn");
+    this.props.headParams.setTitle("HomeTest | tocu.vn");
     this.props.headParams.setDescription("home Description");
-  },
+  }
 
   componentDidMount() {
-    this.AppStore.addListener('change', this.onStoreChange);
-		this.AppActions.dataActions();
-  },
-
-  componentWillUnmount() {
-    this.AppStore.removeListener('change', this.onStoreChange);
-  },
-
-  onStoreChange() {
-    this.setState(this.getFromStore());
-  },
+    this.AppActions.dataActions();
+  }
 
   render() {
-  	if(!this.state.posts) {
-  		return (<div>...loading!</div>);
-  	} else {
-  		let {posts} = this.state;
-	    var ThumbList = posts.map(function(post, i) {
-				return (
-					<div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-						<Thumbnail {...post} />
-					</div>
-				);
-			});
-			return (
-				<div onClick={this.TestActions}>
+    return (
+      <div >
+        <FluxComponent>
           <Header />
+        </FluxComponent>
 
-					<section id="content">
-				    <div className="container">
-					    <div className="row">
-		  	     		{ThumbList}
-						  </div>
-					  </div>
-				  </section>
-			  </div>
-			)
-  	}
-  },
-});
+        <section id="content">
+          <div className="container">
+            <FluxComponent connectToStores={{
+                appStore: store => ({ posts: store.getData() }), 
+              }} >
+              <Thumbnail />
+            </FluxComponent>
+          </div>
+        </section>
+      </div>
+    );
+  }
+  
+};
 
+Home.contextTypes = {
+  flux: React.PropTypes.object.isRequired,
+  router: React.PropTypes.func.isRequired,
+};

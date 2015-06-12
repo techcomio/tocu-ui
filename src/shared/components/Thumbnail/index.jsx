@@ -2,20 +2,16 @@
 "use strict";
 
 import React from 'react';
-import {Link} from 'react-router';
-import classNames from 'classnames';
 
 import PostItem from './PostItem';
 import AlbumItem from './AlbumItem';
 import CreditItem from './CreditItem';
 
 
-export default class Thumbnail extends React.Component {
+class ThumbItem extends React.Component {
 
   render() {
-      let ListPost;
-
-      ListPost = this.props['list-posts'].map((post, i) => {
+      let ListPost = this.props['list-posts'].map((post, i) => {
         switch(this.props.type) {
           case "SP":
             return <CreditItem key={i} {...post} />
@@ -50,3 +46,23 @@ export default class Thumbnail extends React.Component {
   }
   
 }
+
+class ThumbNail extends React.Component {
+
+  render() {
+    return (
+      <div className="row">
+        {this.props.posts.map(function(post, i) {
+          return (
+            <div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+              <ThumbItem {...post.toJS()} />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+  
+};
+
+export default ThumbNail;
