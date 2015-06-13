@@ -13,4 +13,8 @@ router.get('/signup', function(req, res) {
 	res.sendfile('./views/signup.html');
 });
 
+router.get('/sanpham', function(req, res) {
+	res.sendfile('./views/sanpham.html');
+});
+
 export default router;
