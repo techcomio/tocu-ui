@@ -22,9 +22,7 @@ export default React.createClass({
           <meta name="description" content={this.props.headParams.description} />
           <meta name="keywords" content={this.props.headParams.keywords} />
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 64x64 128x128 256x256" />
-          <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
-          <link rel="stylesheet" type="text/css" href="/css/main.css" />
-          <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+          <link rel="stylesheet" type="text/css" href="/css/style.css" />
         </head>
         <body>
         
@@ -34,8 +32,7 @@ export default React.createClass({
           
           <script src="/js/commons.bundle.js"></script>
           <script src="/js/bundle.js"></script>
-          <script src="/js/jquery-2.1.4.min.js"></script>
-          <script src="/js/bootstrap.min.js"></script>
+          <script src="/js/app.js"></script>
         </body>
       </html>
     );

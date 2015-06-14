@@ -25,8 +25,8 @@ export default class lightBoxSlideImg extends React.Component {
     var translateX = phantram * this.state.current;
     var PanesStyle = {
       width: `${length * 100}%`,
-      WebkitTransform: ` translate3d(-${translateX}%, 0px, 0px) `, // 'ms' is the only lowercase vendor prefix
-      transform: ` translate3d(-${translateX}%, 0px, 0px) ` // 'ms' is the only lowercase vendor prefix
+      WebkitTransform: ` translate3d(-${translateX}%, 0px, 0px) `,
+      transform: ` translate3d(-${translateX}%, 0px, 0px) `,
     };
 
     var PaneStyle = {
