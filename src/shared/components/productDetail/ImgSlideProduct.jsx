@@ -25,7 +25,7 @@ export default class ImgSlideProduct extends React.Component {
     return (
       <div className="imgProduct">
         <div className="imageContainer">
-          <div className="gallerySlide">
+          <div ref="test" className="gallerySlide">
             <ul>
               {this.props.dataUrlImg.map((url, i) => {
                 var classSes = "";
@@ -66,15 +66,19 @@ export default class ImgSlideProduct extends React.Component {
           </ul>
         </div>
 
-        <LightBoxSlideImg 
-          current={this.state.current}
-          showLightBox={this.state.showLightBox}
-          HideLightBox={this.HideLightBox}
-        />
+        {this.state.showLightBox && (
+          <LightBoxSlideImg 
+            dataUrlImg={this.props.dataUrlImg}
+            current={this.state.current}
+            showLightBox={this.state.showLightBox}
+            HideLightBox={this.HideLightBox}
+          />
+        )}
+
       </div>
     );
   }
-  
+
   ShowLightBox(i, e) {
     this.setState({
       showLightBox: true,

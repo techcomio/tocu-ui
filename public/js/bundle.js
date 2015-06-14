@@ -26,15 +26,15 @@ webpackJsonp([2],[
 
 	var _sharedRouters2 = _interopRequireDefault(_sharedRouters);
 
-	var _sharedLibHeadParams = __webpack_require__(401);
+	var _sharedLibHeadParams = __webpack_require__(402);
 
 	var _sharedLibHeadParams2 = _interopRequireDefault(_sharedLibHeadParams);
 
-	var _sharedFlux = __webpack_require__(403);
+	var _sharedFlux = __webpack_require__(404);
 
 	var _sharedFlux2 = _interopRequireDefault(_sharedFlux);
 
-	var _sharedUtilsPerformRouteHandlerStaticMethod = __webpack_require__(418);
+	var _sharedUtilsPerformRouteHandlerStaticMethod = __webpack_require__(419);
 
 	var headParams = new _sharedLibHeadParams2['default']();
 	var flux = new _sharedFlux2['default']();
@@ -6659,19 +6659,19 @@ webpackJsonp([2],[
 
 	var _handlersSanpham2 = _interopRequireDefault(_handlersSanpham);
 
-	var _handlersAlbum = __webpack_require__(392);
+	var _handlersAlbum = __webpack_require__(393);
 
 	var _handlersAlbum2 = _interopRequireDefault(_handlersAlbum);
 
-	var _handlersSignIn = __webpack_require__(393);
+	var _handlersSignIn = __webpack_require__(394);
 
 	var _handlersSignIn2 = _interopRequireDefault(_handlersSignIn);
 
-	var _handlersSignUp = __webpack_require__(399);
+	var _handlersSignUp = __webpack_require__(400);
 
 	var _handlersSignUp2 = _interopRequireDefault(_handlersSignUp);
 
-	var _handlersSignInTest = __webpack_require__(400);
+	var _handlersSignInTest = __webpack_require__(401);
 
 	var _handlersSignInTest2 = _interopRequireDefault(_handlersSignInTest);
 
@@ -8257,7 +8257,7 @@ webpackJsonp([2],[
 											'div',
 											{ className: 'product' },
 											_react2['default'].createElement(_componentsProductDetailImgSlideProduct2['default'], {
-												dataUrlImg: ['http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_b?$medium$&defaultImage=', 'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_g?$medium$&defaultImage=', 'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_d?$medium$&defaultImage='],
+												dataUrlImg: ['/img/404.jpg', 'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_g?$medium$&defaultImage=', 'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_d?$medium$&defaultImage='],
 												dataUrlImgTab: ['http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_b?$medium$&defaultImage=', 'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_g?$medium$&defaultImage=', 'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_d?$medium$&defaultImage=']
 											}),
 											_react2['default'].createElement(
@@ -8627,7 +8627,7 @@ webpackJsonp([2],[
 
 	/* @jsx */
 
-	var _lightBoxSlideImg = __webpack_require__(419);
+	var _lightBoxSlideImg = __webpack_require__(392);
 
 	var _lightBoxSlideImg2 = _interopRequireDefault(_lightBoxSlideImg);
 
@@ -8662,7 +8662,7 @@ webpackJsonp([2],[
 	          { className: 'imageContainer' },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'gallerySlide' },
+	            { ref: 'test', className: 'gallerySlide' },
 	            _react2['default'].createElement(
 	              'ul',
 	              null,
@@ -8722,7 +8722,8 @@ webpackJsonp([2],[
 	            })
 	          )
 	        ),
-	        _react2['default'].createElement(_lightBoxSlideImg2['default'], {
+	        this.state.showLightBox && _react2['default'].createElement(_lightBoxSlideImg2['default'], {
+	          dataUrlImg: this.props.dataUrlImg,
 	          current: this.state.current,
 	          showLightBox: this.state.showLightBox,
 	          HideLightBox: this.HideLightBox
@@ -8762,6 +8763,155 @@ webpackJsonp([2],[
 
 /***/ },
 /* 392 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* @jsx React.DOM */
+	'use strict';
+
+	var _inherits = __webpack_require__(369)['default'];
+
+	var _get = __webpack_require__(373)['default'];
+
+	var _createClass = __webpack_require__(370)['default'];
+
+	var _classCallCheck = __webpack_require__(371)['default'];
+
+	var _Object$defineProperty = __webpack_require__(366)['default'];
+
+	var _interopRequireDefault = __webpack_require__(271)['default'];
+
+	_Object$defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(180);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(378);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var lightBoxSlideImg = (function (_React$Component) {
+	  function lightBoxSlideImg(props) {
+	    _classCallCheck(this, lightBoxSlideImg);
+
+	    _get(Object.getPrototypeOf(lightBoxSlideImg.prototype), 'constructor', this).call(this, props);
+
+	    this.HideLightBox = this.HideLightBox.bind(this);
+	    this.Prev = this.Prev.bind(this);
+	    this.Next = this.Next.bind(this);
+
+	    this.state = {
+	      current: this.props.current
+	    };
+	  }
+
+	  _inherits(lightBoxSlideImg, _React$Component);
+
+	  _createClass(lightBoxSlideImg, [{
+	    key: 'render',
+	    value: function render() {
+	      var length = this.props.dataUrlImg.length;
+	      var phantram = 100 / length;
+	      var translateX = phantram * this.state.current;
+	      var PanesStyle = {
+	        width: '' + length * 100 + '%',
+	        WebkitTransform: ' translate3d(-' + translateX + '%, 0px, 0px) ', // 'ms' is the only lowercase vendor prefix
+	        transform: ' translate3d(-' + translateX + '%, 0px, 0px) ' // 'ms' is the only lowercase vendor prefix
+	      };
+
+	      var PaneStyle = {
+	        width: '' + phantram + '%'
+	      };
+
+	      var classes = (0, _classnames2['default'])({
+	        lightBoxSlideImg: true
+	      });
+
+	      var classesPrev = (0, _classnames2['default'])({
+	        'next-prev': true,
+	        'prev': true,
+	        'hide': this.state.current === 0
+	      });
+
+	      var classesNext = (0, _classnames2['default'])({
+	        'next-prev': true,
+	        'next': true,
+	        'hide': this.state.current === length - 1
+	      });
+
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'lightBoxSlideImg' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'panes', style: PanesStyle },
+	          this.props.dataUrlImg.map(function (url, i) {
+	            return _react2['default'].createElement(
+	              'div',
+	              { key: i, className: 'pane', style: PaneStyle },
+	              _react2['default'].createElement(
+	                'figure',
+	                null,
+	                _react2['default'].createElement('img', { src: url })
+	              )
+	            );
+	          })
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'paneNextPrev' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: classesPrev, onClick: this.Prev },
+	            _react2['default'].createElement('i', { className: 'fa fa-angle-left' })
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: classesNext, onClick: this.Next },
+	            _react2['default'].createElement('i', { className: 'fa fa-angle-right' })
+	          )
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'closeBox', onClick: this.HideLightBox },
+	          _react2['default'].createElement('i', { className: 'fa fa-times' })
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'HideLightBox',
+	    value: function HideLightBox() {
+	      this.props.HideLightBox();
+	    }
+	  }, {
+	    key: 'Prev',
+	    value: function Prev() {
+	      var current = this.state.current - 1;
+	      this.setState({
+	        current: current
+	      });
+	    }
+	  }, {
+	    key: 'Next',
+	    value: function Next() {
+	      var current = this.state.current + 1;
+	      this.setState({
+	        current: current
+	      });
+	    }
+	  }]);
+
+	  return lightBoxSlideImg;
+	})(_react2['default'].Component);
+
+	exports['default'] = lightBoxSlideImg;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -8821,7 +8971,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 393 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -8829,7 +8979,7 @@ webpackJsonp([2],[
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
-	var _Object$keys = __webpack_require__(394)['default'];
+	var _Object$keys = __webpack_require__(395)['default'];
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
@@ -8843,17 +8993,17 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _validatorjs = __webpack_require__(396);
+	var _validatorjs = __webpack_require__(397);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	/* @jsx */
 
-	var _componentsFormInputValidation = __webpack_require__(397);
+	var _componentsFormInputValidation = __webpack_require__(398);
 
 	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
 
-	var _componentsFormSelect = __webpack_require__(398);
+	var _componentsFormSelect = __webpack_require__(399);
 
 	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
 
@@ -9087,20 +9237,20 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 394 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(395), __esModule: true };
+	module.exports = { "default": __webpack_require__(396), __esModule: true };
 
 /***/ },
-/* 395 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(376);
 	module.exports = __webpack_require__(233).core.Object.keys;
 
 /***/ },
-/* 396 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! validatorjs - v1.3.2 - https://github.com/skaterdav85/validatorjs - 2015-02-11 */
@@ -9619,7 +9769,7 @@ webpackJsonp([2],[
 	})();
 
 /***/ },
-/* 397 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -9722,7 +9872,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 398 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9822,7 +9972,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 399 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -9830,7 +9980,7 @@ webpackJsonp([2],[
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
-	var _Object$keys = __webpack_require__(394)['default'];
+	var _Object$keys = __webpack_require__(395)['default'];
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
@@ -9844,17 +9994,17 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _validatorjs = __webpack_require__(396);
+	var _validatorjs = __webpack_require__(397);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	/* @jsx */
 
-	var _componentsFormInputValidation = __webpack_require__(397);
+	var _componentsFormInputValidation = __webpack_require__(398);
 
 	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
 
-	var _componentsFormSelect = __webpack_require__(398);
+	var _componentsFormSelect = __webpack_require__(399);
 
 	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
 
@@ -10123,7 +10273,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 400 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -10131,7 +10281,7 @@ webpackJsonp([2],[
 
 	var _Object$defineProperty = __webpack_require__(366)['default'];
 
-	var _Object$keys = __webpack_require__(394)['default'];
+	var _Object$keys = __webpack_require__(395)['default'];
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
@@ -10145,17 +10295,17 @@ webpackJsonp([2],[
 
 	var _reactRouter = __webpack_require__(177);
 
-	var _validatorjs = __webpack_require__(396);
+	var _validatorjs = __webpack_require__(397);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	/* @jsx */
 
-	var _componentsFormInputValidation = __webpack_require__(397);
+	var _componentsFormInputValidation = __webpack_require__(398);
 
 	var _componentsFormInputValidation2 = _interopRequireDefault(_componentsFormInputValidation);
 
-	var _componentsFormSelect = __webpack_require__(398);
+	var _componentsFormSelect = __webpack_require__(399);
 
 	var _componentsFormSelect2 = _interopRequireDefault(_componentsFormSelect);
 
@@ -10389,14 +10539,14 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 401 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _interopRequireDefault = __webpack_require__(271)['default'];
 
-	var _env = __webpack_require__(402);
+	var _env = __webpack_require__(403);
 
 	var _env2 = _interopRequireDefault(_env);
 
@@ -10429,7 +10579,7 @@ webpackJsonp([2],[
 	module.exports = HeadParams;
 
 /***/ },
-/* 402 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10440,7 +10590,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 403 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10461,35 +10611,35 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _actionsAppActions = __webpack_require__(410);
+	var _actionsAppActions = __webpack_require__(411);
 
 	var _actionsAppActions2 = _interopRequireDefault(_actionsAppActions);
 
-	var _actionsTestActions = __webpack_require__(404);
+	var _actionsTestActions = __webpack_require__(405);
 
 	var _actionsTestActions2 = _interopRequireDefault(_actionsTestActions);
 
-	var _actionsCityActions = __webpack_require__(411);
+	var _actionsCityActions = __webpack_require__(412);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _actionsAuthActions = __webpack_require__(412);
+	var _actionsAuthActions = __webpack_require__(413);
 
 	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
-	var _storeAppStore = __webpack_require__(413);
+	var _storeAppStore = __webpack_require__(414);
 
 	var _storeAppStore2 = _interopRequireDefault(_storeAppStore);
 
-	var _storeTestStore = __webpack_require__(415);
+	var _storeTestStore = __webpack_require__(416);
 
 	var _storeTestStore2 = _interopRequireDefault(_storeTestStore);
 
-	var _storeCityStore = __webpack_require__(416);
+	var _storeCityStore = __webpack_require__(417);
 
 	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
 
-	var _storeAuthStore = __webpack_require__(417);
+	var _storeAuthStore = __webpack_require__(418);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
@@ -10519,7 +10669,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 404 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10544,11 +10694,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(405);
+	var _utilsHttpRequest = __webpack_require__(406);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(409);
+	var _utilsConfig = __webpack_require__(410);
 
 	var StargazerActions = (function (_Actions) {
 	  function StargazerActions(flux) {
@@ -10592,7 +10742,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 405 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10607,7 +10757,7 @@ webpackJsonp([2],[
 	  value: true
 	});
 
-	var _superagent = __webpack_require__(406);
+	var _superagent = __webpack_require__(407);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -10628,15 +10778,15 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 406 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Emitter = __webpack_require__(407);
-	var reduce = __webpack_require__(408);
+	var Emitter = __webpack_require__(408);
+	var reduce = __webpack_require__(409);
 
 	/**
 	 * Root reference for iframes.
@@ -11757,7 +11907,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 407 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -11927,7 +12077,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 408 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -11956,7 +12106,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 409 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11973,7 +12123,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 410 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11998,11 +12148,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(405);
+	var _utilsHttpRequest = __webpack_require__(406);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(409);
+	var _utilsConfig = __webpack_require__(410);
 
 	var StargazerActions = (function (_Actions) {
 	  function StargazerActions(flux) {
@@ -12046,7 +12196,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 411 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12069,13 +12219,13 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(405);
+	var _utilsHttpRequest = __webpack_require__(406);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(409);
+	var _utilsConfig = __webpack_require__(410);
 
-	var _superagent = __webpack_require__(406);
+	var _superagent = __webpack_require__(407);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -12139,7 +12289,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 412 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12164,11 +12314,11 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _utilsHttpRequest = __webpack_require__(405);
+	var _utilsHttpRequest = __webpack_require__(406);
 
 	var _utilsHttpRequest2 = _interopRequireDefault(_utilsHttpRequest);
 
-	var _utilsConfig = __webpack_require__(409);
+	var _utilsConfig = __webpack_require__(410);
 
 	var AuthActions = (function (_Actions) {
 	  function AuthActions(flux) {
@@ -12236,7 +12386,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 413 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12259,7 +12409,7 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _immutable = __webpack_require__(414);
+	var _immutable = __webpack_require__(415);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -12314,7 +12464,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 414 */
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17245,7 +17395,7 @@ webpackJsonp([2],[
 	}));
 
 /***/ },
-/* 415 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17268,7 +17418,7 @@ webpackJsonp([2],[
 
 	var _flummox = __webpack_require__(217);
 
-	var _immutable = __webpack_require__(414);
+	var _immutable = __webpack_require__(415);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -17317,7 +17467,7 @@ webpackJsonp([2],[
 	}*/
 
 /***/ },
-/* 416 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17384,7 +17534,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 417 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17478,7 +17628,7 @@ webpackJsonp([2],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 418 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17566,76 +17716,6 @@ webpackJsonp([2],[
 	})();
 
 	exports.PromiseUtils = PromiseUtils;
-
-/***/ },
-/* 419 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* @jsx React.DOM */
-	'use strict';
-
-	var _inherits = __webpack_require__(369)['default'];
-
-	var _get = __webpack_require__(373)['default'];
-
-	var _createClass = __webpack_require__(370)['default'];
-
-	var _classCallCheck = __webpack_require__(371)['default'];
-
-	var _Object$defineProperty = __webpack_require__(366)['default'];
-
-	var _interopRequireDefault = __webpack_require__(271)['default'];
-
-	_Object$defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(180);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(378);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var lightBoxSlideImg = (function (_React$Component) {
-	  function lightBoxSlideImg(props) {
-	    _classCallCheck(this, lightBoxSlideImg);
-
-	    _get(Object.getPrototypeOf(lightBoxSlideImg.prototype), 'constructor', this).call(this, props);
-
-	    this.HideLightBox = this.HideLightBox.bind(this);
-	  }
-
-	  _inherits(lightBoxSlideImg, _React$Component);
-
-	  _createClass(lightBoxSlideImg, [{
-	    key: 'render',
-	    value: function render() {
-	      var classes = (0, _classnames2['default'])({
-	        lightBoxSlideImg: true,
-	        show: this.props.showLightBox
-	      });
-
-	      return _react2['default'].createElement(
-	        'div',
-	        { className: classes, onClick: this.HideLightBox },
-	        this.props.current
-	      );
-	    }
-	  }, {
-	    key: 'HideLightBox',
-	    value: function HideLightBox() {
-	      this.props.HideLightBox();
-	    }
-	  }]);
-
-	  return lightBoxSlideImg;
-	})(_react2['default'].Component);
-
-	exports['default'] = lightBoxSlideImg;
-	;
-	module.exports = exports['default'];
 
 /***/ }
 ]);

@@ -105,7 +105,7 @@ export default class Sanpham extends React.Component {
 
 							    	<ImgSlideProduct 
 							    		dataUrlImg={[
-							    			'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_b?$medium$&defaultImage=',
+							    			'/img/404.jpg',
 							    			'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_g?$medium$&defaultImage=',
 							    			'http://images.urbanoutfitters.com/is/image/UrbanOutfitters/35405885_014_d?$medium$&defaultImage=',
 							    			]}
