@@ -1,4 +1,4 @@
-import { Flummox, Actions, Store } from 'flummox';
+import { Store } from 'flummox';
 import Immutable from 'immutable';
 
 
@@ -20,7 +20,7 @@ export default class AppStore extends Store {
   }
 
   getData() {
-  	return this.state.get('posts');
+  	return this.state.get('posts').toJS();
   }
 
   replaceState(_state_) {

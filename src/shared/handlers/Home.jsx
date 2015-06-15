@@ -1,11 +1,11 @@
 /* @jsx React.DOM */
 "use strict";
 
-import React from 'react';
+import React         from 'react';
 import FluxComponent from 'flummox/component';
 
 /* @jsx */
-import Header from '../components/Header';
+import Header    from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 
 

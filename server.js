@@ -1,12 +1,12 @@
 'use strict';
 
-import logger from 'morgan';
-import express from 'express';
-import compress from 'compression';
+import logger     from 'morgan';
+import express    from 'express';
+import compress   from 'compression';
 import bodyParser from 'body-parser';
 
 import render from './src/server';
-import html from './html';
+import html   from './html';
 
 let app = express();
 

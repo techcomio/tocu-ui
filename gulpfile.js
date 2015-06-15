@@ -1,7 +1,7 @@
-var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
-    concat = require('gulp-concat'),
-    uglify = require("gulp-uglify");
+var gulp   = require('gulp');
+var sass   = require('gulp-ruby-sass');
+var concat = require('gulp-concat');
+var uglify = require("gulp-uglify");
 
 var config = {
   sassPath: './src/assets/scss',
@@ -70,11 +70,11 @@ gulp.task('scripts', function(){
 });
 
 // Rerun the task when a file changes
- gulp.task('watch', function() {
-  gulp.watch(config.sassPath + '/app/**/*.scss', ['css']);
-  gulp.watch(config.sassPath + '/test/**/*.scss', ['testcss']);
+gulp.task('watch', function() {
+  gulp.watch(config.sassPath + '/app/**/**/*.scss', ['css']);
+  gulp.watch(config.sassPath + '/test/**/**/*.scss', ['testcss']);
   gulp.watch(config.imgPath + '/**/*.*', ['img']);
 });
 
 
- gulp.task('default', ['fonts', 'icons', 'img', 'css', 'scripts']);
+gulp.task('default', ['fonts', 'icons', 'img', 'css', 'scripts']);

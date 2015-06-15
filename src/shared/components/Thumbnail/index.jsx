@@ -3,8 +3,8 @@
 
 import React from 'react';
 
-import PostItem from './PostItem';
-import AlbumItem from './AlbumItem';
+import PostItem   from './PostItem';
+import AlbumItem  from './AlbumItem';
 import CreditItem from './CreditItem';
 
 
@@ -52,10 +52,10 @@ class ThumbNail extends React.Component {
   render() {
     return (
       <div className="row">
-        {this.props.posts.map(function(post, i) {
+        {this.props.posts.map((post, i) => {
           return (
             <div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-              <ThumbItem {...post.toJS()} />
+              <ThumbItem {...post} />
             </div>
           );
         })}

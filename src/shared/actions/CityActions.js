@@ -1,7 +1,6 @@
 import { Actions } from 'flummox';
 import httpRequest from './../utils/HttpRequest';
 import { Api_Url } from '../utils/config';
-import request from 'superagent';
 
 
 export default class StargazerActions extends Actions {
@@ -14,7 +13,7 @@ export default class StargazerActions extends Actions {
   }
 
   async getDistrictActions(citySelect) {
-    return await request
+    return await httpRequest
       .post(`${Api_Url}/district`)
       .send(citySelect)
       .exec()

@@ -1,8 +1,8 @@
 /* @jsx React.DOM */
 'use strict';
 
-import React from 'react';
-var HeadParams = require('../shared/lib/HeadParams');
+import React      from 'react';
+import HeadParams from '../shared/lib/HeadParams';
 
 export default React.createClass({
   propTypes: {

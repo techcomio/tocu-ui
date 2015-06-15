@@ -1,17 +1,17 @@
 "use strict";
 
 import 'babel/polyfill';
-import React from 'react';
-import Router from 'react-router';
+import React         from 'react';
+import Router        from 'react-router';
 import FluxComponent from 'flummox/component';
 
-import routes from '../shared/routers';
+import routes     from '../shared/routers';
 import HeadParams from '../shared/lib/HeadParams';
-import Flux from '../shared/Flux';
+import Flux       from '../shared/Flux';
 import { performRouteHandlerStaticMethod } from '../shared/utils/performRouteHandlerStaticMethod';
 
 let headParams = new HeadParams();
-let flux = new Flux();
+let flux       = new Flux();
 
 let dehydratedState = window.__STATE__;
 

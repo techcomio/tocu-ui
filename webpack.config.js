@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+var webpack           = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
         // loader: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!sass-loader"),
       },
       {
-      	test: /\.(png|jpg)$/, loader: "url-loader"
+      	test: /\.(png|jpg|gif)$/, loader: "url-loader"
       },
       {
       	test: /\.(eot|woff2|woff|ttf|svg)$/, loader: "url-loader"

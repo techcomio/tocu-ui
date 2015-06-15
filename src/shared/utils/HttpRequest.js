@@ -1,5 +1,5 @@
 import { Request } from 'superagent';
-import request from 'superagent';
+import request     from 'superagent';
 
 
 Request.prototype.exec = function() {

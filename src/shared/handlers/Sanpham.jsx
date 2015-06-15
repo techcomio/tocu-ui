@@ -1,8 +1,8 @@
 /* @jsx React.DOM */
 'use strict';
 
-import React from 'react';
-import { Link } from 'react-router';
+import React      from 'react';
+import { Link }   from 'react-router';
 import classNames from 'classnames';
 
 /* @jsx */

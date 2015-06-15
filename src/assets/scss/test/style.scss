@@ -5,13 +5,13 @@
 @import 'bootstrap';
 @import "font-awesome";
 
-/* defined */
+/* use defined */
 @import 'defined/variables';
 @import 'defined/mixin';
 
 
 * { outline-style: none !important; }
-body { line-height: 1.4; background-color: $bg-body; color: $color; font-size: 16px; font-weight: 400;  width: 100%; height: 100%; position: relative; font-family: $font-family; }
+body { line-height: 1.4; background-color: $bg-body; color: $color; font-size: 16px; width: 100%; height: 100%; position: relative; font-family: $font-family; }
 
 ul, li { list-style: none; }
 
@@ -111,9 +111,9 @@ header { height: auto; background-color: #fff; box-shadow: 0px 1px 2px 0px rgba(
 		}
 	}
 	/* button follow */
-	.btn-follow { background-color: #FCFCFC; border: 1px solid #eee;
+	.btn-follow {
 		background: #FCFCFC;
-		border: 1px solid #EEEEEE;
+		border: 1px solid #eee;
 		box-shadow: 0px 1px 1px 0px #BABABA;
 		border-radius: 4px;
 		&:hover { background-color: #f5f5f5; }
@@ -238,7 +238,7 @@ header { height: auto; background-color: #fff; box-shadow: 0px 1px 2px 0px rgba(
 		}
 
 /* lightBox */
-		.lightBoxSlideImg { position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(37,43,51,.8); 
+		.lightBoxSlideImg { position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(37,43,51,.9); 
 			.panes { width: 100%; height: 100%; @include transition-all(0.4s);
 				.pane { width: 20%; height: 100%; display: block; float: left; position: relative;
 					figure { width: 90%; height: 90%; display: block; position: absolute; top: -100%; bottom: -100%; left: -100%; right: -100%; margin: auto; 

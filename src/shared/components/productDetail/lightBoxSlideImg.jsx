@@ -1,7 +1,7 @@
 /* @jsx React.DOM */
 "use strict";
 
-import React from 'react';
+import React      from 'react';
 import classNames from 'classnames';
 
 
@@ -25,8 +25,10 @@ export default class lightBoxSlideImg extends React.Component {
     var translateX = phantram * this.state.current;
     var PanesStyle = {
       width: `${length * 100}%`,
-      WebkitTransform: ` translate3d(-${translateX}%, 0px, 0px) `,
-      transform: ` translate3d(-${translateX}%, 0px, 0px) `,
+      WebkitTransform: `translate3d(-${translateX}%, 0px, 0px)`,
+      MsTransform: `translate3d(-${translateX}%, 0px, 0px)`,
+      OTransform: `translate3d(-${translateX}%, 0px, 0px)`,
+      transform: `translate3d(-${translateX}%, 0px, 0px)`,
     };
 
     var PaneStyle = {
