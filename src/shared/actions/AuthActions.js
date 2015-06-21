@@ -29,6 +29,16 @@ class AuthActions extends Actions {
       .catch((err) => (err));
   }
 
+  async cookieActions(token) {
+    console.log('cookieActions', token);
+    console.log('cookieActions');
+    return await token;
+  }
+
+  async logoutActions() {
+    return;
+  }
+
 }
 
 export default AuthActions;

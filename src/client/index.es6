@@ -4,6 +4,7 @@ import 'babel/polyfill';
 import React         from 'react';
 import Router        from 'react-router';
 import FluxComponent from 'flummox/component';
+import Cookies       from 'cookies-js';
 
 import routes     from '../shared/routers';
 import HeadParams from '../shared/lib/HeadParams';
@@ -12,6 +13,10 @@ import { performRouteHandlerStaticMethod } from '../shared/utils/performRouteHan
 
 let headParams = new HeadParams();
 let flux       = new Flux();
+
+// console.log(Cookies.get('token'));
+// let token = Cookies.get('token');
+// flux.getActions('authActions').cookieActions(token);
 
 let dehydratedState = window.__STATE__;
 
@@ -31,16 +36,10 @@ router.run((Handler, state) => {
       // https://github.com/acdlite/flummox/blob/master/docs/docs/api/store.md#deserializestate
       flux.deserialize(JSON.stringify(dehydratedState));
 
-    	let bodyElement = React.createFactory(FluxComponent)({
-        flux: flux,
-        children: React.createFactory(Handler)({
-          query: state.query,
-          params: state.params,
-          headParams: headParams,
-        })
-      });
-
-      React.render(bodyElement, document.body);
+      React.render(
+        <FluxComponent flux={flux} >
+          <Handler query={state.query} params={state.params} headParams={headParams} />
+        </FluxComponent>, document.body);
   }
 
   run().catch(error => {

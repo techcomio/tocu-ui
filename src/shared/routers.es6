@@ -13,6 +13,7 @@ import Album      from './handlers/Album';
 import SignIn     from './handlers/SignIn';
 import SignUp     from './handlers/SignUp';
 import SignInTest from './handlers/SignInTest';
+import Test from './handlers/test';
 
 
 const routers = (
@@ -24,6 +25,7 @@ const routers = (
 		<Route         name="posts"      path="/posts/:id"  handler={Posts}      />
 		<Route         name="sp"         path="/sp/:id"     handler={Sanpham}    />
 		<Route         name="album"      path="/album/:id"  handler={Album}      />
+		<Route         name="test"       path="/test"       handler={Test}       />
 		<NotFoundRoute name="notFound"   handler={NotFound} />
   </Route>
 );
