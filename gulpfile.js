@@ -58,13 +58,13 @@ gulp.task('testcss', function() {
     .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
-gulp.task('scripts', function(){  
+gulp.task('scripts', function(){
   return gulp.src([
       config.bowerDir + '/jquery/dist/jquery.js',
       config.bowerDir +'/bootstrap-sass-official/assets/javascripts/bootstrap.js',
       './app/assets/js/script.js',
     ])
-    .pipe(concat('app.js'))
+    .pipe(concat('script.js'))
     .pipe(uglify())
     .pipe(gulp.dest(config.publicDir + '/js/'));
 });

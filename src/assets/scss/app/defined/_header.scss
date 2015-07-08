@@ -6,7 +6,7 @@ header { background: $body-bg; box-shadow: $header-shadow; position: relative;
 	.profileImage { margin: 0px auto -87px; background: $body-bg; width: 60px; padding-top: 18px; position: relative; z-index: 1040;  border-radius: 15px;
 		img { width: 60px; height: 60px; padding: 5px; border: 1px solid $border-color; border-radius: 50%; }
 	}
-	.navbar-default { padding: 8px 0px; background-color: $navbar-default-bg; width: 100%; left: 0; @include transition-all(0.4s); 
+	.navbar-default { padding: 8px 0px; background-color: $navbar-default-bg; width: 100%; left: 0; @include transition-all(0.4s); border-top: 1px solid #eee;
 		&.test {  width: calc(100% - 30px); left: 15px; }
 		.fixedHeaderNameAndImage { @include transition-all(0.4s);
 			&.show { @include transform-translate(0px, 0px); }
@@ -39,7 +39,9 @@ header { background: $body-bg; box-shadow: $header-shadow; position: relative;
 		}
 	}
 	@media all and (max-width: 768px) {
-		.navbar-default.test { width: 100%; left: 0; }
+		.navbar-default { @include transition-all(0.4s);
+			&.test { width: 100%; left: 0; }
+		}
 		.navbar-nav { margin: 8px 0px; }
 		.infoBar {
 			a {
@@ -49,4 +51,16 @@ header { background: $body-bg; box-shadow: $header-shadow; position: relative;
 			}
 		}
 	}
+}
+
+.navbar-default {
+	&.headerHiden { top: -68px; }
+}
+
+.navbar-product { top: 66px; height: 60px; z-index: 1029; background: rgba(255, 255, 255, 1); @include transition-all(0.4s);
+	.infoListProduct { margin: auto; height: 60px; padding: 10px;
+		.nameinfoListProduct { font-size: 20px; font-weight: bold; line-height: 1.2; }
+		.countListProduct { font-size: $font-size-small; }
+	}
+	&.headerHiden { top: 0px; }
 }

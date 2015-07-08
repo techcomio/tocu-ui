@@ -1,61 +1,63 @@
-/* @jsx React.DOM */
-"use strict";
+'use strict';
 
-import React         from 'react';
-import FluxComponent from 'flummox/component';
-
-/* @jsx */
+import React          from 'react';
+import {Link}         from 'react-router';
+import AltContainer   from 'alt/AltContainer';
+import {prepareRoute} from '../decorators';
+import AppStore       from '../store/AppStore';
+import AppActions     from '../actions/AppActions';
+/**
+ * @Component
+ */
 import Header    from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 
+
+@prepareRoute(async function ({ params }) {
+  return await * [
+    AppActions.getData(),
+  ];
+})
 
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.AppActions = props.flux.getActions('appActions');
-
-    this.state = {};
-  }
-
-  static async routerWillRunOnServer(state, flux) {
-    let AppActions = flux.getActions('appActions');
-    return await AppActions.dataActions();
   }
 
   componentWillMount() {
-    this.props.headParams.setTitle("HomeTest | tocu.vn");
-    this.props.headParams.setDescription("home Description");
-  }
-
-  componentDidMount() {
-    this.AppActions.dataActions();
+    this.props.HeadParams.setTitle("Home | tocu.vn");
+    this.props.HeadParams.setDescription("Home | Description");
   }
 
   render() {
     return (
-      <div >
-        <FluxComponent>
-          <Header />
-        </FluxComponent>
+      <div>
+        {/* Header home */}
+        <Header />
 
         <section id="content">
           <div className="container">
-            <FluxComponent connectToStores={{
-                appStore: store => ({ posts: store.getData() }), 
-              }} >
-              <Thumbnail />
-            </FluxComponent>
+          
+            {/* Thumbnail */}
+            <AltContainer 
+              component={Thumbnail}
+              stores={[AppStore]}
+              inject={{
+                posts: function (props) {
+                  return AppStore.getState().posts
+                }
+              }} />
+
           </div>
         </section>
       </div>
     );
   }
-  
+
 };
 
-Home.contextTypes = {
-  flux: React.PropTypes.object.isRequired,
-  router: React.PropTypes.func.isRequired,
-};
+Home.onEnter = function(next, transition) {
+  // transition.to('/sigup');
+}

@@ -3,9 +3,8 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	entry: {
-		app: "./src/client/index.es6",
-		// main: "./src/assets/scss/app/main.scss",
-		commons: ['react/addons', 'react-router', 'flummox']
+		app: "./src/client/index.js",
+		commons: ['react/addons', 'react-router', 'alt', 'iso']
 	},
 	// devtool: "sourcemap",
 	output: {

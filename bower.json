@@ -4,8 +4,7 @@
   "authors": [
     "devalphac <devalphac@outlook.com>"
   ],
-  "license": "MIT",
-  "private": true,
+  "license": "BSD",
   "ignore": [
     "**/.*",
     "node_modules",

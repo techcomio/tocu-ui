@@ -1,5 +1,6 @@
 
 .thumbnail { padding: $thumb-padding; border-radius: $thumb-border-radius; border: 1px solid #fff; box-shadow: $thumb-box-shadow;
+	& > a:hover { text-decoration: none !important; }
 	/* thumb title */
 	&-title { font-size: 14px; font-weight: bold; font-family: $thumb-font-family; }
 	/* thumb img */
@@ -31,9 +32,6 @@
 				display: -webkit-box;
 				-webkit-line-clamp: 2;
 				-webkit-box-orient: vertical;
-				&:hover { color: $link-hover-color; cursor: pointer; 
-					.creditCost { color: $gray; }
-				}
 			}
 		}
 		.newCreditItem {

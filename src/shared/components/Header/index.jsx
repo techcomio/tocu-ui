@@ -1,20 +1,32 @@
  /* @jsx React.DOM */
 'use strict';
 
-import React      from 'react';
-import { Link }   from 'react-router';
-import classNames from 'classnames';
+import React          from 'react';
+import { Link }       from 'react-router';
+import classNames     from 'classnames';
+import {prepareRoute} from '../../decorators';
+
+
+@prepareRoute(async function() {
+  return await * [
+
+  ];
+})
 
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.handleScroll = this.handleScroll.bind(this);
+    this._bind('handleScroll')
 
     this.state = {
       transform: false
     };
+  }
+
+  _bind(...methods) {
+    methods.forEach( (method) => this[method] = this[method].bind(this) );
   }
 
   componentDidMount() {
@@ -62,7 +74,7 @@ export default class Home extends React.Component {
                   <span className="icon-bar"></span>
                 </button>
                 <div className={classesHeaderNameAndImg}>
-                  <Link to="home" className="navbar-brand" >
+                  <Link to="/" className="navbar-brand" >
                     <img alt="Brand" src="/img/logo.png" width="40" height="40" />
                   </Link>
                   <p className="navbar-text pull-left">Tổ Cú</p>
@@ -70,8 +82,8 @@ export default class Home extends React.Component {
               </div>
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div className="nav navbar-nav navbar-right">
-                  <Link to="signin" className="btn btn-sm btn-default navbar-btn">Sign in</Link>
-                  <Link to="signup" className="btn btn-sm btn-primary navbar-btn">Sign up</Link>
+                  <Link to="/signin" className="btn btn-sm btn-default navbar-btn">Sign in</Link>
+                  <Link to="/signup" className="btn btn-sm btn-primary navbar-btn">Sign up</Link>
                 </div>
               </div>
             </div>
@@ -89,7 +101,7 @@ export default class Home extends React.Component {
                       </a>
                     </li>
                     <li>
-                      <a href="#" target="_blank" >
+                      <a href="https://www.facebook.com/thanhchamly" target="_blank" >
                         <i className="fa fa-facebook-square gray">&nbsp; facebook</i>
                       </a>
                     </li>
@@ -115,22 +127,22 @@ export default class Home extends React.Component {
                 <div className="row">
                   <div className="col-xs-3">
                     <a href="#" className="active">
-                      <span className="value">7</span> <span className="labels">Box</span>    
+                      <span className="value">3</span> <span className="labels">Box</span>    
+                    </a>
+                  </div>
+                  <div className="col-xs-3">
+                    <Link to="/sp" className="">
+                      <span className="value">3</span> <span className="labels">Sản phẩm</span>    
+                    </Link>
+                  </div>
+                  <div className="col-xs-3">
+                    <a href="#" className="">
+                      <span className="value">0</span> <span className="labels">Ảnh</span>    
                     </a>
                   </div>
                   <div className="col-xs-3">
                     <a href="#" className="">
-                      <span className="value">88</span> <span className="labels">Sản phẩm</span>    
-                    </a>
-                  </div>
-                  <div className="col-xs-3">
-                    <a href="#" className="">
-                      <span className="value">325</span> <span className="labels">Ảnh</span>    
-                    </a>
-                  </div>
-                  <div className="col-xs-3">
-                    <a href="#" className="">
-                      <span className="value">213</span> <span className="labels">Bài Viết</span>    
+                      <span className="value">0</span> <span className="labels">Bài Viết</span>    
                     </a>
                   </div>
                 </div>
@@ -146,6 +158,5 @@ export default class Home extends React.Component {
 };
 
 Home.contextTypes = {
-  flux: React.PropTypes.object.isRequired,
-  router: React.PropTypes.func.isRequired,
+  router: React.PropTypes.object.isRequired,
 };

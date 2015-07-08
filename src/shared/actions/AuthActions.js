@@ -1,44 +1,90 @@
-import { Actions } from 'flummox';
-import HttpRequest from './../utils/HttpRequest';
-import { Api_Url } from '../utils/config';
+'use strict';
 
-class AuthActions extends Actions {
+import Alt       from '../Alt';
+import Axios     from 'axios';
+import {Api_URL} from '../../../config-sample';
 
-  constructor(flux) {
-    super();
 
-    this.flux = flux;
+class AuthActions {
+
+  /**
+   * Create accout User
+   * @param {string} options.name        họ tên
+   * @param {string} options.password    mật khẩu
+   * @param {number} options.mobilePhone số điện thoại
+   * @param {string} options.city        tỉnh thành
+   * @param {string} options.district    quận/huyện
+   */
+  CreateUser({name, password, mobilePhone, city, district}) {
+  	let self = this;
+    self.actions.CreateUserStart();
+
+    Axios.post(`${Api_URL}/user`, {
+        name: name,
+        password: password,
+        mobilePhone: mobilePhone,
+        city: city,
+        district: district,
+      })
+    	.then(function (res) {
+		    self.dispatch(res.data);
+		  })
+		  .catch(function (res) {
+		    self.actions.CreateFailed(res.data)
+		  });
   }
 
-  async CreateUser(auth) {
+  /**
+   * Login
+   * @param {number} số điện thoại
+   * @param {string} mật khẩu
+   */
+  Login({mobilePhone, password}) {
     let self = this;
-    return await HttpRequest
-      .post(`${Api_Url}/user`)
-      .send(auth)
-      .exec()
-      .then((data) =>  (data))
-      .catch((err) =>  (err));
+    self.actions.LoginStart();
+
+    Axios.post(`${Api_URL}/token`, {
+        mobilePhone: mobilePhone,
+        password: password,
+      })
+      .then(function (res) {
+        self.dispatch(res.data);
+      })
+      .catch(function (res) {
+        self.actions.LoginFailed(res.data);
+      });
   }
 
-  async LoginActions(account) {    
-    return await HttpRequest
-      .post(`${Api_Url}/token`)
-      .send(account)
-      .exec()
-      .then((res) => (res.body))
-      .catch((err) => (err));
+  /**
+   * Actions Start Create User
+   */
+  CreateUserStart() {
+    this.dispatch();
   }
 
-  async cookieActions(token) {
-    console.log('cookieActions', token);
-    console.log('cookieActions');
-    return await token;
+  /**
+   * Actions Start Login
+   */
+  LoginStart() {
+    this.dispatch();
   }
 
-  async logoutActions() {
-    return;
+  /**
+   * Create User Failed
+   * @param {Error} err lỗi create accout
+   */
+  CreateFailed(err) {
+    this.dispatch(err);
+  }
+
+  /**
+   * Login Failed
+   * @param {Error} err lỗi đăng nhập
+   */
+  LoginFailed(err) {
+    this.dispatch(err);
   }
 
 }
 
-export default AuthActions;
+module.exports = Alt.createActions(AuthActions);

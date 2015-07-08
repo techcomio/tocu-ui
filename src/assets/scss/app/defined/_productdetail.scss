@@ -3,9 +3,9 @@
 /* product Detail */
 #productDetail { padding-top: $product-padding-top; padding-bottom: $product-padding-bottom;
 	.productDetail { position: relative; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22); background: #fff; 
-		.navbar-product-detail { position: absolute; top: 0px; z-index: 100;  background: rgba(255, 255, 255, 1); box-sizing: border-box;
+		.navbar-product-detail { position: absolute; top: 0px; z-index: 100;  background: rgba(255, 255, 255, 1); box-sizing: border-box; 
 			height: 56px; width: 100%; display: inline-block; border-radius: 8px 8px 0 0; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
-			&.sticky { position: fixed; top: 65px; border-radius: 0; background: rgba(255, 255, 255, 0.9); }
+			&.sticky { position: fixed; left: 0; top: 0; border-radius: 0; background: rgba(255, 255, 255, 0.9); }
 
 			.navbar { margin: 2px 0; padding: 0 10px;
 				.navbar-right { margin: 0; padding: 0; }
@@ -54,7 +54,10 @@
 				}
 			.product-detail { padding: 20px 40px;
 				.detail { margin-top: 30px;  margin-bottom: 30px;
-					.gia { color: $brand-primary; }
+					.price { color: $brand-primary;
+						.price-list { color: $gray-light; text-decoration: line-through; padding-right: 15px; }
+						.price-sale { color: $brand-primary; }
+					}
 				}
 				ul { padding: 0;
 					li { padding: 10px 0px; border-bottom: 1px solid $border-color; 
@@ -91,8 +94,8 @@
 		}
 
 		@media all and (max-width: 768px) {
-			.navbar-product-detail { height: 40px;
-				.navbar { min-height: 40px; height: 40px; margin: 0; padding-top: 2px;
+			.navbar-product-detail { height: 46px; 
+				.navbar { min-height: 46px; height: 46px; margin: 0; padding-top: 6px;
 					.navbar-header { float: left; }
 					.navbar-right { float: right; }
 					.navbar-btn { margin: 4px 0 !important; }
@@ -132,6 +135,33 @@
 						h3 { font-size: 18px; }
 					}
 				}
+			}
+		}
+	}
+}
+
+
+.masonry { padding-top: 60px;
+	[class^="col-"], [class*="col-"] {
+		padding-left: 8px; padding-right: 8px;
+	}
+	.thumbnail { border: none; padding: 0;
+		a { text-decoration: none; }
+		img { border-radius: 6px 6px 0 0; }
+		.infoSanpham { padding: 5px 10px;
+			.titleSanpham { font-size: $font-size-base; display: block; color: $gray; }
+			.price { font-size: $font-size-small;
+				.price-list { color: $gray-light; text-decoration: line-through; padding-right: 10px; }
+				.price-sale { color: $brand-primary; font-weight: bold; }
+			}
+		}
+	}
+	@media all and (max-width: 768px) {
+		.thumbnail { border-radius: 4px;
+			img { border-radius: 4px 4px 0 0; }
+			.infoSanpham { padding: 3px 6px;
+				.titleSanpham { font-size: 10px; }
+				.price { font-size: 10px; }
 			}
 		}
 	}
