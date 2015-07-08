@@ -1,50 +1,28 @@
-/* @jsx React.DOM */
 'use strict';
 
-import React from 'react';
+import React            from 'react';
+import {Link}           from 'react-router';
+import {prepareRoute}   from '../decorators';
 
-export default React.createClass({
-  contextTypes: {
-    flux: React.PropTypes.object.isRequired,
-    router: React.PropTypes.func.isRequired,
-  },
-  getInitialState() {
-    this.TestActions = this.context.flux.getActions('testActions');
-    this.TestStore = this.context.flux.getStore('testStore');
 
-    return this.getFromStore();
-  },
+export default class Posts extends React.Component {
 
-  getFromStore () {
-    return {
-      posts: this.TestStore.getData(),
-    };
-  },
+  constructor (props) {
+    super(props)
+  }
 
-  componentWillMount() {
-    this.props.headParams.setTitle("Posts | tocu.vn");
-    this.props.headParams.setDescription("set Description");
-  },
+  componentWillMount () {
+    this.props.HeadParams.setTitle("Posts | tocu.vn");
+    this.props.HeadParams.setDescription("Posts | Description");
+  }
 
-  componentDidMount() {
-    this.TestStore.addListener('change', this.onStoreChange);
-    this.TestActions.TestAction();
-  },
-
-  componentWillUnmount() {
-    this.TestStore.removeListener('change', this.onStoreChange);
-  },
-  
-  onStoreChange() {
-    this.setState(this.getFromStore());
-  },
-
-  render() {
+	render () {
     return (
-      <div className="container">
-        Posts {this.props.params.id} 
-      </div>
+      <div>
+				<p>Posts! {this.props.params.id}</p>
+        <Link to="/">to Home!</Link>
+			</div>
     );
-  },
+	}
 
-});
+};

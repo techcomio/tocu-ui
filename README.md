@@ -3,10 +3,10 @@ mã nguồn phần UI website [tocu.vn](http://tocu.vn), tương tác với API 
 
 ## Tech stack:
 - [react](http://facebook.github.io/react/)
-- [react-router](https://github.com/rackt/react-router)
-- [flummox](http://acdlite.github.io/flummox)
+- [react-router 1.0.0-beta](https://github.com/rackt/react-router)
+- [alt](https://github.com/goatslacker/alt)
 - [bootstrap](http://getbootstrap.com)
-- [superagent](https://github.com/visionmedia/superagent)
+- [axios](https://github.com/mzabriskie/axios)
 - [immutable](https://facebook.github.io/immutable-js)
 - [webpack](http://webpack.github.io)
 - [babel](https://babeljs.io)
@@ -16,8 +16,10 @@ mã nguồn phần UI website [tocu.vn](http://tocu.vn), tương tác với API 
 ## Start the app
 ```
 $ npm install
-$ npm install -g nodemon
-$ npm install -g webpack
+$ [sudo] npm install -g nodemon
+$ [sudo] npm install -g babel
+$ [sudo] npm install -g webpack
+$ [sudo] npm install -g gulp
 $ npm start
 ```
 
@@ -34,22 +36,22 @@ $ npm start
 │   │   └── scss          # Container for .scss files
 │   │
 │   ├── server            # Server-side code
-│   │   ├── html.jsx      # Renders the whole HTML document server side (via server/index.es6)
-│   │   └── index.es6     # Send the server-rendered HTML document as response
+│   │   ├── html.jsx      # Renders the whole HTML document server side (via server/index.js)
+│   │   └── index.js      # Send the server-rendered HTML document as response
 │   │
 │   ├── client            # Client-side code
-│   │   └── index.es6     # Entry point for the browser: mounts the <App /> component on document.body.
+│   │   └── index.js      # Entry point for the browser: mounts the <Router /> component on document.body.
 │   │
 │   └── shared            # The root Application component
-│       ├── actions       # flummox Actions
+│       ├── actions       # Alt Actions
 │       ├── components    # React components
 │       ├── handlers      # Contains components acting as "page" for each route
-│       ├── store         # flummox Store
-│       ├── Flux.es6      # flummox Flux
-│       └── routes.es6    # Routes config
+│       ├── store         # Alt Store
+│       ├── Alt.js        # new Alt
+│       └── routes.js     # Routes config
 │
 ├── server.js       # Run the express server
 │
-└── webpack.config.js     # Webpack config for the build task
+└── webpack.config.js    # Webpack config for the build task
 
 ```

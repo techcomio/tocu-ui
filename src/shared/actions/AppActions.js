@@ -1,21 +1,44 @@
-import { Actions } from 'flummox';
-import httpRequest from './../utils/HttpRequest';
-import { Api_Url } from '../utils/config';
+'use strict';
+
+import Alt        from '../Alt';
+import Axios      from 'axios';
+import {Api_URL} from '../../../config-sample';
 
 
-export default class StargazerActions extends Actions {
-	
-  constructor(flux) {
-    super();
+class AppActions {
 
-    this.flux = flux;
+	/**
+	 * request lấy các bài posts
+	 * @dispatch {Array} [bài posts]
+	 */
+  async getData() {
+  	let self = this;
+
+		await Axios.get(`${Api_URL}/box`)
+    	.then((res) => {
+    		/**
+    		 * send data cho Store
+    		 */
+		    self.dispatch(res.data);
+		  })
+		  .catch((res) => {
+		  	/**
+		  	 * send lỗi cho func dataError
+		  	 * @param  {Error} [Error request]
+		  	 */
+		    self.actions.dataFailed(res.data)
+		  });
   }
 
-  async dataActions() {
-    return await httpRequest
-      .get(`https://tocu-tranduchieu.c9.io/data`)
-      .exec()
-      .then((val) => (val.body));
+ 	/**
+ 	 * send lỗi cho Store
+ 	 * @param  {Error} err [Error request]
+ 	 * @dispatch {Error} [send Store]
+ 	 */
+  dataFailed(err) {
+    this.dispatch(err);
   }
 
 }
+
+module.exports = Alt.createActions(AppActions);

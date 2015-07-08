@@ -1,86 +1,63 @@
- /* @jsx React.DOM */
 'use strict';
 
-import React from 'react';
+import React          from 'react';
+import {Link}         from 'react-router';
+import AltContainer   from 'alt/AltContainer';
+import {prepareRoute} from '../decorators';
+import AppStore       from '../store/AppStore';
+import AppActions     from '../actions/AppActions';
+/**
+ * @Component
+ */
+import Header    from '../components/Header';
+import Thumbnail from '../components/Thumbnail';
 
-/* @jsx */
-import Thumbnail from '../components/thumbnail';
 
+@prepareRoute(async function ({ params }) {
+  return await * [
+    AppActions.getData(),
+  ];
+})
 
-export default React.createClass({
-  
-  statics: {
-  	async routerWillRunOnServer(state, flux) {
-      let AppActions = flux.getActions('appActions');
-      return await AppActions.dataActions();
-    },
-  },
+export default class Home extends React.Component {
 
-  contextTypes: {
-    flux: React.PropTypes.object.isRequired,
-	  router: React.PropTypes.func.isRequired,
-  },
+  constructor(props) {
+    super(props);
 
-  getInitialState() {
-  	this.AppActions = this.context.flux.getActions('appActions');
-    this.AppStore = this.context.flux.getStore('appStore');
-
-   	return this.getFromStore();
-  },
-
-  getFromStore () {
-  	return {
-      posts: this.AppStore.getData(),
-	  };
-  },
+  }
 
   componentWillMount() {
-  	this.props.headParams.setTitle("Home | tocu.vn");
-    this.props.headParams.setDescription("home Description");
-  },
-
-  componentDidMount() {
-    this.AppStore.addListener('change', this.onStoreChange);
-		this.AppActions.dataActions();
-  },
-
-  componentWillUnmount() {
-    this.AppStore.removeListener('change', this.onStoreChange);
-  },
-
-  onStoreChange() {
-    this.setState(this.getFromStore());
-  },
+    this.props.HeadParams.setTitle("Home | tocu.vn");
+    this.props.HeadParams.setDescription("Home | Description");
+  }
 
   render() {
-  	if(!this.state.posts) {
-  		return (<div>...loading!</div>);
-  	} else {
-  		let {posts} = this.state;
-	    var ThumbList = posts.map(function(post, i) {
-				return (
-					<div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-						<Thumbnail {...post} />
-					</div>
-				);
-			});
-			return (
-				<div onClick={this.TestActions}>
-					<header>
-			      <div className="container">
-			      </div>
-			    </header>
+    return (
+      <div>
+        {/* Header home */}
+        <Header />
 
-					<section id="content">
-				    <div className="container">
-					    <div className="row">
-		  	     		{ThumbList}
-						  </div>
-					  </div>
-				  </section>
-			  </div>
-			)
-  	}
-  },
-});
+        <section id="content">
+          <div className="container">
+          
+            {/* Thumbnail */}
+            <AltContainer 
+              component={Thumbnail}
+              stores={[AppStore]}
+              inject={{
+                posts: function (props) {
+                  return AppStore.getState().posts
+                }
+              }} />
 
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+};
+
+Home.onEnter = function(next, transition) {
+  // transition.to('/sigup');
+}

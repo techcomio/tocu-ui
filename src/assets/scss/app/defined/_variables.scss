@@ -1,0 +1,57 @@
+
+
+/* body! */
+$bg-body: #E8E8E8;
+$font-family: Helvetica Neue,Helvetica,Arial,Verdana,Geneva,sans-serif;
+
+
+/* all */
+$border-color: #eee;
+
+
+/* Navbar */
+$navbar-default-bg: rgba(255, 255, 255, 1);
+$navbar-size-header-name: 21px;
+$navbar-btn-bg: #FCFCFC;
+
+
+/* header */
+$header-shadow: 0px 1px 2px 0px rgba(124,124,124,0.50);
+
+
+/* .thumbnail */
+$thumb-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.22);
+$thumb-font-family: Helvetica Neue,Helvetica,Arial,Verdana,Geneva,sans-serif;
+$thumb-padding: 0px 10px;
+$thumb-border-radius: 6px;
+$thumb-imgIcon-bg-none: #eee;
+$thumb-imgIcon-bg-red: #f44336;
+$thumb-imgIcon-bg-blue: #317CF6;
+$thumb-imgIcon-bg-yellow: #F8CB2A;
+$thumb-btn-follow-bg: #FCFCFC;
+$thumb-btn-follow-bg-hover: #f5f5f5;
+	
+
+/* Sign In / Sign Up */
+$sign-border-radius: 6px;
+$sign-padding: 20px 40px 20px 40px;
+$sign-footer-border-top-color: #ccc;
+
+
+/* product Detail */
+$product-padding-top: 100px;
+$product-padding-bottom: 20px;
+$product-bg-btn-default: #FCFCFC;
+$product-bg-slide-tabs: rgba(255, 255, 255, 0.6);
+$product-bg-slide-tabs-active: rgba(255, 255, 255, 1);
+$product-opacity-imageSlide-tabs: 0.5;
+$product-opacity-imageSlide-tabs-active: 1;
+$product-bg-imageSlide-tabs: #D8D8D8;
+
+
+/* lightBox */
+$lightBoxSlideImg-zIndex: 10000;
+$lightBoxSlideImg-bg: rgba(37,43,51,.96);
+$lightBoxSlideImg-bg-next-prev: rgba(0,0,0, .1);
+$lightBoxSlideImg-bg-next-prev-hover: rgba(0,0,0, .2);
+$lightBoxSlideImg-color-next-prev: #fff;

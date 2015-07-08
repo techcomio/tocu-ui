@@ -1,0 +1,27 @@
+/* use config */
+@import "config/bootstrap/variables";
+@import "config/fontawesome/variables";
+
+/* using bootstrap and fontawesome */
+@import 'bootstrap';
+@import "font-awesome";
+
+/* use defined */
+@import 'defined/variables';
+@import "defined/mixins";
+
+
+* { outline-style: none !important; }
+body { line-height: $line-height-base; background-color: $bg-body; color: $gray; font-size: $font-size-base; width: 100%; height: 100%; position: relative; font-family: $font-family; }
+ul, li { list-style: none; }
+/* .container */
+#content {
+	& > .container { padding-top: 40px; padding-bottom: 40px; }
+}
+
+
+/* Components */
+@import 'defined/header';
+@import 'defined/thumbnail';
+@import 'defined/signup-signin';
+@import 'defined/productdetail';

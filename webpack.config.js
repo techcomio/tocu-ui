@@ -1,11 +1,10 @@
-var webpack = require('webpack');
+var webpack           = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	entry: {
-		app: "./src/client/index.es6",
-		main: "./src/assets/scss/app/main.scss",
-		commons: ['react/addons', 'react-router', 'flummox']
+		app: "./src/client/index.js",
+		commons: ['react/addons', 'react-router', 'alt', 'iso']
 	},
 	// devtool: "sourcemap",
 	output: {
@@ -37,7 +36,7 @@ module.exports = {
         // loader: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!sass-loader"),
       },
       {
-      	test: /\.(png|jpg)$/, loader: "url-loader"
+      	test: /\.(png|jpg|gif)$/, loader: "url-loader"
       },
       {
       	test: /\.(eot|woff2|woff|ttf|svg)$/, loader: "url-loader"

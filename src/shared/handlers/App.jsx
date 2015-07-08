@@ -1,15 +1,17 @@
-/* @jsx React.DOM */
 'use strict';
 
 import React from 'react';
-import {RouteHandler} from 'react-router'; 
 
-export default class App extends React.Component {
+export default class Application extends React.Component {
 
-	render () {
-		return (
-			<RouteHandler {...this.props} />
-		)
-	}
-	
+  render() {
+    const { children } = this.props;
+    
+    return this.props.children;
+  }
+
 };
+
+Application.contextTypes = {
+	router: React.PropTypes.object.isRequired,
+}
