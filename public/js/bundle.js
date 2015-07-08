@@ -5623,7 +5623,7 @@ webpackJsonp([0],[
 	});
 	exports['default'] = {
 		// Api_URL: 'https://tocu-api-dev-tranduchieu.c9.io',
-		Api_URL: 'http://api-dev.tocu.vn'
+		Api_URL: 'http://api.tocu.vn'
 	};
 	module.exports = exports['default'];
 
@@ -11429,15 +11429,15 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(209);
 
-	var _reactMasonryMixin = __webpack_require__(326);
+	var _reactMasonryMixin = __webpack_require__(324);
 
 	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
 
-	var _storeBoxStore = __webpack_require__(324);
+	var _storeBoxStore = __webpack_require__(341);
 
 	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
 
-	var _actionsBoxActions = __webpack_require__(325);
+	var _actionsBoxActions = __webpack_require__(342);
 
 	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
@@ -11565,179 +11565,9 @@ webpackJsonp([0],[
 /* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _Array$from = __webpack_require__(290)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	var _Alt = __webpack_require__(183);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _actionsBoxActions = __webpack_require__(325);
-
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
-	var _immutable = __webpack_require__(314);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var BoxStore = (function () {
-	  function BoxStore() {
-	    _classCallCheck(this, BoxStore);
-
-	    this.bindActions(_actionsBoxActions2['default']); // getBoxID, getBoxIDFailed
-
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.posts = _immutable2['default'].List();
-	    this.test = _immutable2['default'].List();
-	  }
-
-	  _createClass(BoxStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].List.isList(this.test)) {
-	        this.test = _immutable2['default'].fromJS(this.test);
-	      }
-	      if (!_immutable2['default'].List.isList(this.posts)) {
-	        this.posts = _immutable2['default'].fromJS(this.posts);
-	      }
-	    }
-	  }, {
-	    key: 'onGetBoxID',
-	    value: function onGetBoxID(data) {
-	      this.test = this.test.merge(_Array$from(data));
-	      this.posts = this.posts.merge(_Array$from(data));
-	    }
-	  }, {
-	    key: 'onTest',
-	    value: function onTest(data) {
-	      console.log('onTest');
-	    }
-	  }, {
-	    key: 'onGetBoxIDFailed',
-	    value: function onGetBoxIDFailed(err) {
-	      console.log('onGetBoxIDFailed', err);
-	    }
-	  }]);
-
-	  return BoxStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
-
-/***/ },
-/* 325 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(228)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	var _Alt = __webpack_require__(183);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(294);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(313);
-
-	var BoxActions = (function () {
-	  function BoxActions() {
-	    _classCallCheck(this, BoxActions);
-	  }
-
-	  _createClass(BoxActions, [{
-	    key: 'getBoxID',
-
-	    /**
-	     * request lấy các bài posts trong
-	     * @param {number} id [id box]
-	     * @param {number} skip
-	     * @param {number} limit
-	     * @dispatch {Array} [bài posts]
-	     */
-	    value: function getBoxID(_ref) {
-	      var id = _ref.id;
-	      var skip = _ref.skip;
-	      var limit = _ref.limit;
-	      var self;
-	      return _regeneratorRuntime.async(function getBoxID$(context$2$0) {
-	        while (1) switch (context$2$0.prev = context$2$0.next) {
-	          case 0:
-	            self = this;
-	            context$2$0.next = 3;
-	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
-	              /**
-	               * send data cho Store
-	               */
-	              self.dispatch(res.data);
-	            })['catch'](function (res) {
-	              /**
-	               * send lỗi cho func dataError
-	               * @param  {Error} [Error request]
-	               */
-	              self.actions.getBoxIDFailed(res.data);
-	            }));
-
-	          case 3:
-	          case 'end':
-	            return context$2$0.stop();
-	        }
-	      }, null, this);
-	    }
-	  }, {
-	    key: 'TestActions',
-	    value: function TestActions(_ref2) {
-	      var id = _ref2.id;
-
-	      console.log('TestActions', id);
-	    }
-	  }, {
-	    key: 'test',
-	    value: function test(data) {
-	      this.dispatch(data);
-	    }
-	  }, {
-	    key: 'getBoxIDFailed',
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	    value: function getBoxIDFailed(err) {
-	      this.dispatch(err);
-	    }
-	  }]);
-
-	  return BoxActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(BoxActions);
-
-/***/ },
-/* 326 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var isBrowser = (typeof window !== 'undefined');
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(327) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(340) : null;
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(325) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(338) : null;
 
 	function MasonryMixin() {
 	    return function(reference, options) {
@@ -11849,7 +11679,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 327 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -12043,8 +11873,8 @@ webpackJsonp([0],[
 	// -------------------------- transport -------------------------- //
 	if (true) {
 	  module.exports = masonryDefinition(
-	    __webpack_require__(328),
-	    __webpack_require__(338)
+	    __webpack_require__(326),
+	    __webpack_require__(336)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -12065,7 +11895,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 328 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13056,12 +12886,12 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(332),
+	    __webpack_require__(330),
+	    __webpack_require__(327),
 	    __webpack_require__(329),
 	    __webpack_require__(331),
 	    __webpack_require__(333),
-	    __webpack_require__(335),
-	    __webpack_require__(336)
+	    __webpack_require__(334)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -13090,7 +12920,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 329 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13154,7 +12984,7 @@ webpackJsonp([0],[
 
 	// transport
 	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(330) );
+	  module.exports = defineDocReady( __webpack_require__(328) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  // if RequireJS, then doc is already ready
@@ -13169,7 +12999,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 330 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13257,7 +13087,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 331 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13700,7 +13530,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 332 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13788,7 +13618,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 333 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13997,7 +13827,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(334) );
+	  module.exports = defineGetSize( __webpack_require__(332) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -14010,7 +13840,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 334 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14071,7 +13901,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 335 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -14184,7 +14014,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 336 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14694,9 +14524,9 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
+	    __webpack_require__(329),
 	    __webpack_require__(331),
-	    __webpack_require__(333),
-	    __webpack_require__(337)
+	    __webpack_require__(335)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -14720,7 +14550,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 337 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14781,7 +14611,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 338 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14990,7 +14820,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(339) );
+	  module.exports = defineGetSize( __webpack_require__(337) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -15003,7 +14833,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 339 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15064,7 +14894,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 340 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -15082,8 +14912,8 @@ webpackJsonp([0],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(341),
-	      __webpack_require__(342)
+	      __webpack_require__(339),
+	      __webpack_require__(340)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -15405,7 +15235,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 341 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15883,7 +15713,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 342 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15969,6 +15799,176 @@ webpackJsonp([0],[
 
 	})( window );
 
+
+/***/ },
+/* 341 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _Array$from = __webpack_require__(290)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	var _Alt = __webpack_require__(183);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _actionsBoxActions = __webpack_require__(342);
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
+
+	var _immutable = __webpack_require__(314);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var BoxStore = (function () {
+	  function BoxStore() {
+	    _classCallCheck(this, BoxStore);
+
+	    this.bindActions(_actionsBoxActions2['default']); // getBoxID, getBoxIDFailed
+
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.posts = _immutable2['default'].List();
+	    this.test = _immutable2['default'].List();
+	  }
+
+	  _createClass(BoxStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].List.isList(this.test)) {
+	        this.test = _immutable2['default'].fromJS(this.test);
+	      }
+	      if (!_immutable2['default'].List.isList(this.posts)) {
+	        this.posts = _immutable2['default'].fromJS(this.posts);
+	      }
+	    }
+	  }, {
+	    key: 'onGetBoxID',
+	    value: function onGetBoxID(data) {
+	      this.test = this.test.merge(_Array$from(data));
+	      this.posts = this.posts.merge(_Array$from(data));
+	    }
+	  }, {
+	    key: 'onTest',
+	    value: function onTest(data) {
+	      console.log('onTest');
+	    }
+	  }, {
+	    key: 'onGetBoxIDFailed',
+	    value: function onGetBoxIDFailed(err) {
+	      console.log('onGetBoxIDFailed', err);
+	    }
+	  }]);
+
+	  return BoxStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
+
+/***/ },
+/* 342 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(228)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	var _Alt = __webpack_require__(183);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(294);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(313);
+
+	var BoxActions = (function () {
+	  function BoxActions() {
+	    _classCallCheck(this, BoxActions);
+	  }
+
+	  _createClass(BoxActions, [{
+	    key: 'getBoxID',
+
+	    /**
+	     * request lấy các bài posts trong
+	     * @param {number} id [id box]
+	     * @param {number} skip
+	     * @param {number} limit
+	     * @dispatch {Array} [bài posts]
+	     */
+	    value: function getBoxID(_ref) {
+	      var id = _ref.id;
+	      var skip = _ref.skip;
+	      var limit = _ref.limit;
+	      var self;
+	      return _regeneratorRuntime.async(function getBoxID$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            self = this;
+	            context$2$0.next = 3;
+	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
+	              /**
+	               * send data cho Store
+	               */
+	              self.dispatch(res.data);
+	            })['catch'](function (res) {
+	              /**
+	               * send lỗi cho func dataError
+	               * @param  {Error} [Error request]
+	               */
+	              self.actions.getBoxIDFailed(res.data);
+	            }));
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }, {
+	    key: 'TestActions',
+	    value: function TestActions(_ref2) {
+	      var id = _ref2.id;
+
+	      console.log('TestActions', id);
+	    }
+	  }, {
+	    key: 'test',
+	    value: function test(data) {
+	      this.dispatch(data);
+	    }
+	  }, {
+	    key: 'getBoxIDFailed',
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	    value: function getBoxIDFailed(err) {
+	      this.dispatch(err);
+	    }
+	  }]);
+
+	  return BoxActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(BoxActions);
 
 /***/ },
 /* 343 */
@@ -16564,7 +16564,7 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(209);
 
-	var _reactMasonryMixin = __webpack_require__(326);
+	var _reactMasonryMixin = __webpack_require__(324);
 
 	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
 
