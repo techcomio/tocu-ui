@@ -13,13 +13,14 @@ export default class ThumbItem extends React.Component {
 
   render() {
     let img_url = "/img/404.jpg";
+    let type = "";
     let ListPost = this.props.latestPosts.map((post, i) => {
       /**
        * lấy link ảnh của bài post đầu tiên
        */
       if(i === 0 && post.images) {
         let url = post.images[0];
-        img_url = url.replace(/image\//gi, 'image/320x213/');
+        img_url = url.replace(/image\//gi, 'image/192x130/');
       }
       /**
        * format number to String 250000 => "250.000"
@@ -51,13 +52,24 @@ export default class ThumbItem extends React.Component {
       )
     };    
 
+    switch(this.props.type) {
+      case "product":
+        type = "SP";
+        break;
+      case "article":
+        type = "Ảnh";
+        break;
+      case "photo":
+        type = "Ảnh";
+    }
+
     return (
       <div className="thumbnail">
         <Link to={`/box/${this.props.id}`}>
           <h4 className="thumbnail-title">{this.props.name}</h4>
           <div className="imgWrapper">
             <img className="img-max-height img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
-            <span className="boardPinCount">{this.props.postsCount}</span>
+            <span className="boardPinCount">{this.props.postsCount} {type}</span>
           </div>
           <div>
             <div className="thumbnail-list-news">

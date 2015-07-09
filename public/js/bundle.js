@@ -1041,7 +1041,7 @@ webpackJsonp([0],[
 
 	var _handlersHome2 = _interopRequireDefault(_handlersHome);
 
-	var _handlersBoxTest = __webpack_require__(376);
+	var _handlersBoxTest = __webpack_require__(323);
 
 	var _handlersBoxTest2 = _interopRequireDefault(_handlersBoxTest);
 
@@ -11108,13 +11108,14 @@ webpackJsonp([0],[
 	      var _this = this;
 
 	      var img_url = '/img/404.jpg';
+	      var type = '';
 	      var ListPost = this.props.latestPosts.map(function (post, i) {
 	        /**
 	         * lấy link ảnh của bài post đầu tiên
 	         */
 	        if (i === 0 && post.images) {
 	          var url = post.images[0];
-	          img_url = url.replace(/image\//gi, 'image/320x213/');
+	          img_url = url.replace(/image\//gi, 'image/192x130/');
 	        }
 	        /**
 	         * format number to String 250000 => "250.000"
@@ -11150,6 +11151,17 @@ webpackJsonp([0],[
 	        ));
 	      };
 
+	      switch (this.props.type) {
+	        case 'product':
+	          type = 'SP';
+	          break;
+	        case 'article':
+	          type = 'Ảnh';
+	          break;
+	        case 'photo':
+	          type = 'Ảnh';
+	      }
+
 	      return _react2['default'].createElement(
 	        'div',
 	        { className: 'thumbnail' },
@@ -11168,7 +11180,9 @@ webpackJsonp([0],[
 	            _react2['default'].createElement(
 	              'span',
 	              { className: 'boardPinCount' },
-	              this.props.postsCount
+	              this.props.postsCount,
+	              ' ',
+	              type
 	            )
 	          ),
 	          _react2['default'].createElement(
@@ -11335,19 +11349,19 @@ webpackJsonp([0],[
 /* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _inherits = __webpack_require__(197)["default"];
+	var _inherits = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)["default"];
+	var _get = __webpack_require__(200)['default'];
 
-	var _createClass = __webpack_require__(205)["default"];
+	var _createClass = __webpack_require__(205)['default'];
 
-	var _classCallCheck = __webpack_require__(208)["default"];
+	var _classCallCheck = __webpack_require__(208)['default'];
 
-	var _interopRequireDefault = __webpack_require__(10)["default"];
+	var _interopRequireDefault = __webpack_require__(10)['default'];
 
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 
@@ -11359,38 +11373,50 @@ webpackJsonp([0],[
 	  function CreditItem() {
 	    _classCallCheck(this, CreditItem);
 
-	    _get(Object.getPrototypeOf(CreditItem.prototype), "constructor", this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(CreditItem.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
 	  _inherits(CreditItem, _React$Component);
 
 	  _createClass(CreditItem, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
-	      return _react2["default"].createElement(
-	        "div",
-	        { className: "newsItem newCreditItem" },
-	        _react2["default"].createElement(
-	          "div",
-	          { className: "newsImg" },
-	          _react2["default"].createElement("span", { className: "imgIcon imgIcon-list imgIcon-bg-red" })
+	      var img_url = null;
+	      if (this.props.images) {
+	        var url = this.props.images[0];
+	        img_url = url.replace(/image\//gi, 'image/50x50/');
+	      }
+
+	      console.log(img_url);
+
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'newsItem newCreditItem' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'newsImg' },
+	          _react2['default'].createElement(
+	            'span',
+	            { className: 'imgIcon imgIcon-list imgIcon-bg-red' },
+	            img_url && _react2['default'].createElement('img', { src: img_url })
+	          )
 	        ),
-	        _react2["default"].createElement(
-	          "div",
-	          { className: "newsText newsInfo" },
-	          _react2["default"].createElement(
-	            "p",
-	            { className: "creditTitle" },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'newsText newsInfo' },
+	          _react2['default'].createElement(
+	            'p',
+	            { className: 'creditTitle' },
 	            this.props.name
 	          ),
-	          _react2["default"].createElement(
-	            "p",
+	          _react2['default'].createElement(
+	            'p',
 	            null,
-	            _react2["default"].createElement(
-	              "strong",
-	              { className: "creditCost" },
+	            _react2['default'].createElement(
+	              'strong',
+	              { className: 'creditCost' },
 	              this.props.price,
-	              " đ"
+	              ' đ'
 	            )
 	          )
 	        )
@@ -11399,107 +11425,34 @@ webpackJsonp([0],[
 	  }]);
 
 	  return CreditItem;
-	})(_react2["default"].Component);
+	})(_react2['default'].Component);
 
-	exports["default"] = CreditItem;
+	exports['default'] = CreditItem;
 
 	CreditItem.propTypes = {
-	  id: _react2["default"].PropTypes.number.isRequired,
-	  name: _react2["default"].PropTypes.string.isRequired,
-	  price: _react2["default"].PropTypes.string.isRequired
+	  id: _react2['default'].PropTypes.number.isRequired,
+	  name: _react2['default'].PropTypes.string.isRequired,
+	  price: _react2['default'].PropTypes.string.isRequired
 	};
-	module.exports = exports["default"];
+	module.exports = exports['default'];
 
 /***/ },
-/* 323 */,
-/* 324 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _Array$from = __webpack_require__(290)['default'];
+	var _extends = __webpack_require__(1)['default'];
 
 	var _interopRequireDefault = __webpack_require__(10)['default'];
 
-	var _Alt = __webpack_require__(183);
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
 
-	var _Alt2 = _interopRequireDefault(_Alt);
+	var _react = __webpack_require__(11);
 
-	var _actionsBoxActions = __webpack_require__(325);
-
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
-	var _immutable = __webpack_require__(314);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var BoxStore = (function () {
-	  function BoxStore() {
-	    _classCallCheck(this, BoxStore);
-
-	    this.bindActions(_actionsBoxActions2['default']); // getBoxID, getBoxIDFailed
-
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.posts = _immutable2['default'].List();
-	    this.test = _immutable2['default'].List();
-	  }
-
-	  _createClass(BoxStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].List.isList(this.test)) {
-	        this.test = _immutable2['default'].fromJS(this.test);
-	      }
-	      if (!_immutable2['default'].List.isList(this.posts)) {
-	        this.posts = _immutable2['default'].fromJS(this.posts);
-	      }
-	    }
-	  }, {
-	    key: 'onGetBoxID',
-	    value: function onGetBoxID(data) {
-	      this.test = this.test.merge(_Array$from(data));
-	      this.posts = this.posts.merge(_Array$from(data));
-	    }
-	  }, {
-	    key: 'onTest',
-	    value: function onTest(data) {
-	      console.log('onTest');
-	    }
-	  }, {
-	    key: 'onGetBoxIDFailed',
-	    value: function onGetBoxIDFailed(err) {
-	      console.log('onGetBoxIDFailed', err);
-	    }
-	  }]);
-
-	  return BoxStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
-
-/***/ },
-/* 325 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(228)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	var _Alt = __webpack_require__(183);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
+	var _react2 = _interopRequireDefault(_react);
 
 	var _axios = __webpack_require__(294);
 
@@ -11507,87 +11460,161 @@ webpackJsonp([0],[
 
 	var _configSample = __webpack_require__(313);
 
-	var BoxActions = (function () {
-	  function BoxActions() {
-	    _classCallCheck(this, BoxActions);
+	var _reactRouter = __webpack_require__(209);
+
+	var _reactMasonryMixin = __webpack_require__(324);
+
+	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
+
+	var _storeBoxStore = __webpack_require__(341);
+
+	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
+
+	var _actionsBoxActions = __webpack_require__(342);
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
+
+	/**
+	 * @Component
+	 */
+
+	var _componentsProductDetailHeaderProduct = __webpack_require__(343);
+
+	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
+
+	var _componentsProductDetailBoxItem = __webpack_require__(346);
+
+	var _componentsProductDetailBoxItem2 = _interopRequireDefault(_componentsProductDetailBoxItem);
+
+	var InfiniteScroll = __webpack_require__(347)(_react2['default']);
+	exports['default'] = _react2['default'].createClass({
+	  displayName: 'BoxTest',
+
+	  mixins: [(0, _reactMasonryMixin2['default'])('masonryContainer', { transitionDuration: 0 })],
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      page: 1,
+	      hasMore: true,
+	      skip: 0,
+	      limit: 15,
+	      posts: []
+	    };
+	  },
+
+	  componentWillMount: function componentWillMount() {
+	    this.props.HeadParams.setTitle('Sanpham | tocu.vn');
+	    this.props.HeadParams.setDescription('Sanpham | Description');
+	  },
+
+	  getLoaderElement: function getLoaderElement() {
+	    // return null;
+
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'thumbnail article text-center' },
+	        'Loading ',
+	        _react2['default'].createElement('i', { className: 'fa fa-cog fa-spin' })
+	      )
+	    );
+	  },
+
+	  onChangeBoxStore: function onChangeBoxStore(state) {
+	    var hasMore = state.posts.size >= this.state.limit * this.state.page;
+	    var page = this.state.page + 1;
+	    var skip = this.state.skip += this.state.limit;
+	    this.setState({
+	      posts: state.posts,
+	      hasMore: hasMore,
+	      page: page,
+	      skip: skip
+	    });
+	  },
+
+	  handleLoad: function handleLoad(data) {
+	    console.log('handleLoad');
+	    var hasMore = data.length >= this.state.limit * this.state.page;
+	    var page = this.state.page + 1;
+	    var skip = this.state.skip += this.state.limit;
+	    this.setState({
+	      posts: this.state.posts.concat(data),
+	      hasMore: hasMore,
+	      page: page,
+	      skip: skip
+	    });
+	  },
+
+	  loadMore: function loadMore(page) {
+	    var id = this.props.params.id;
+
+	    var self = this;
+	    setTimeout(function () {
+	      self.loadActions(id, self.state.skip, self.state.limit);
+	    }, 1000);
+	  },
+
+	  loadActions: function loadActions(id, skip, limit) {
+	    var self = this;
+
+	    _axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
+	      self.handleLoad(res.data);
+	    })['catch'](function (res) {});
+	  },
+
+	  getArticlesToRender: function getArticlesToRender() {
+	    return this.state.posts.map(function (post, i) {
+	      return _react2['default'].createElement(_componentsProductDetailBoxItem2['default'], _extends({ key: i }, post));
+	    });
+	  },
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      null,
+	      _react2['default'].createElement(_componentsProductDetailHeaderProduct2['default'], null),
+	      _react2['default'].createElement(
+	        'section',
+	        { id: 'productDetail' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'container' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'masonry' },
+	              _react2['default'].createElement(
+	                InfiniteScroll,
+	                {
+	                  ref: 'masonryContainer',
+	                  loader: this.getLoaderElement(),
+	                  pageStart: this.state.page - 1,
+	                  loadMore: this.loadMore,
+	                  hasMore: this.state.hasMore,
+	                  threshold: 500 },
+	                this.getArticlesToRender()
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
 	  }
 
-	  _createClass(BoxActions, [{
-	    key: 'getBoxID',
-
-	    /**
-	     * request lấy các bài posts trong
-	     * @param {number} id [id box]
-	     * @param {number} skip
-	     * @param {number} limit
-	     * @dispatch {Array} [bài posts]
-	     */
-	    value: function getBoxID(_ref) {
-	      var id = _ref.id;
-	      var skip = _ref.skip;
-	      var limit = _ref.limit;
-	      var self;
-	      return _regeneratorRuntime.async(function getBoxID$(context$2$0) {
-	        while (1) switch (context$2$0.prev = context$2$0.next) {
-	          case 0:
-	            self = this;
-	            context$2$0.next = 3;
-	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
-	              /**
-	               * send data cho Store
-	               */
-	              self.dispatch(res.data);
-	            })['catch'](function (res) {
-	              /**
-	               * send lỗi cho func dataError
-	               * @param  {Error} [Error request]
-	               */
-	              self.actions.getBoxIDFailed(res.data);
-	            }));
-
-	          case 3:
-	          case 'end':
-	            return context$2$0.stop();
-	        }
-	      }, null, this);
-	    }
-	  }, {
-	    key: 'TestActions',
-	    value: function TestActions(_ref2) {
-	      var id = _ref2.id;
-
-	      console.log('TestActions', id);
-	    }
-	  }, {
-	    key: 'test',
-	    value: function test(data) {
-	      this.dispatch(data);
-	    }
-	  }, {
-	    key: 'getBoxIDFailed',
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	    value: function getBoxIDFailed(err) {
-	      this.dispatch(err);
-	    }
-	  }]);
-
-	  return BoxActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(BoxActions);
+	});
+	module.exports = exports['default'];
 
 /***/ },
-/* 326 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isBrowser = (typeof window !== 'undefined');
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(327) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(340) : null;
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(325) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(338) : null;
 
 	function MasonryMixin() {
 	    return function(reference, options) {
@@ -11699,7 +11726,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 327 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -11893,8 +11920,8 @@ webpackJsonp([0],[
 	// -------------------------- transport -------------------------- //
 	if (true) {
 	  module.exports = masonryDefinition(
-	    __webpack_require__(328),
-	    __webpack_require__(338)
+	    __webpack_require__(326),
+	    __webpack_require__(336)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -11915,7 +11942,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 328 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -12906,12 +12933,12 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(332),
+	    __webpack_require__(330),
+	    __webpack_require__(327),
 	    __webpack_require__(329),
 	    __webpack_require__(331),
 	    __webpack_require__(333),
-	    __webpack_require__(335),
-	    __webpack_require__(336)
+	    __webpack_require__(334)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -12940,7 +12967,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 329 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13004,7 +13031,7 @@ webpackJsonp([0],[
 
 	// transport
 	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(330) );
+	  module.exports = defineDocReady( __webpack_require__(328) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  // if RequireJS, then doc is already ready
@@ -13019,7 +13046,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 330 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13107,7 +13134,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 331 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13550,7 +13577,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 332 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13638,7 +13665,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 333 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13847,7 +13874,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(334) );
+	  module.exports = defineGetSize( __webpack_require__(332) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -13860,7 +13887,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 334 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13921,7 +13948,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 335 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -14034,7 +14061,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 336 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14544,9 +14571,9 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
+	    __webpack_require__(329),
 	    __webpack_require__(331),
-	    __webpack_require__(333),
-	    __webpack_require__(337)
+	    __webpack_require__(335)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -14570,7 +14597,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 337 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14631,7 +14658,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 338 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14840,7 +14867,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(339) );
+	  module.exports = defineGetSize( __webpack_require__(337) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -14853,7 +14880,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 339 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14914,7 +14941,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 340 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14932,8 +14959,8 @@ webpackJsonp([0],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(341),
-	      __webpack_require__(342)
+	      __webpack_require__(339),
+	      __webpack_require__(340)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -15255,7 +15282,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 341 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15733,7 +15760,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 342 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15819,6 +15846,176 @@ webpackJsonp([0],[
 
 	})( window );
 
+
+/***/ },
+/* 341 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _Array$from = __webpack_require__(290)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	var _Alt = __webpack_require__(183);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _actionsBoxActions = __webpack_require__(342);
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
+
+	var _immutable = __webpack_require__(314);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var BoxStore = (function () {
+	  function BoxStore() {
+	    _classCallCheck(this, BoxStore);
+
+	    this.bindActions(_actionsBoxActions2['default']); // getBoxID, getBoxIDFailed
+
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.posts = _immutable2['default'].List();
+	    this.test = _immutable2['default'].List();
+	  }
+
+	  _createClass(BoxStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].List.isList(this.test)) {
+	        this.test = _immutable2['default'].fromJS(this.test);
+	      }
+	      if (!_immutable2['default'].List.isList(this.posts)) {
+	        this.posts = _immutable2['default'].fromJS(this.posts);
+	      }
+	    }
+	  }, {
+	    key: 'onGetBoxID',
+	    value: function onGetBoxID(data) {
+	      this.test = this.test.merge(_Array$from(data));
+	      this.posts = this.posts.merge(_Array$from(data));
+	    }
+	  }, {
+	    key: 'onTest',
+	    value: function onTest(data) {
+	      console.log('onTest');
+	    }
+	  }, {
+	    key: 'onGetBoxIDFailed',
+	    value: function onGetBoxIDFailed(err) {
+	      console.log('onGetBoxIDFailed', err);
+	    }
+	  }]);
+
+	  return BoxStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
+
+/***/ },
+/* 342 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(228)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	var _Alt = __webpack_require__(183);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(294);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(313);
+
+	var BoxActions = (function () {
+	  function BoxActions() {
+	    _classCallCheck(this, BoxActions);
+	  }
+
+	  _createClass(BoxActions, [{
+	    key: 'getBoxID',
+
+	    /**
+	     * request lấy các bài posts trong
+	     * @param {number} id [id box]
+	     * @param {number} skip
+	     * @param {number} limit
+	     * @dispatch {Array} [bài posts]
+	     */
+	    value: function getBoxID(_ref) {
+	      var id = _ref.id;
+	      var skip = _ref.skip;
+	      var limit = _ref.limit;
+	      var self;
+	      return _regeneratorRuntime.async(function getBoxID$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            self = this;
+	            context$2$0.next = 3;
+	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
+	              /**
+	               * send data cho Store
+	               */
+	              self.dispatch(res.data);
+	            })['catch'](function (res) {
+	              /**
+	               * send lỗi cho func dataError
+	               * @param  {Error} [Error request]
+	               */
+	              self.actions.getBoxIDFailed(res.data);
+	            }));
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }, {
+	    key: 'TestActions',
+	    value: function TestActions(_ref2) {
+	      var id = _ref2.id;
+
+	      console.log('TestActions', id);
+	    }
+	  }, {
+	    key: 'test',
+	    value: function test(data) {
+	      this.dispatch(data);
+	    }
+	  }, {
+	    key: 'getBoxIDFailed',
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	    value: function getBoxIDFailed(err) {
+	      this.dispatch(err);
+	    }
+	  }]);
+
+	  return BoxActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(BoxActions);
 
 /***/ },
 /* 343 */
@@ -16414,7 +16611,7 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(209);
 
-	var _reactMasonryMixin = __webpack_require__(326);
+	var _reactMasonryMixin = __webpack_require__(324);
 
 	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
 
@@ -20074,178 +20271,6 @@ webpackJsonp([0],[
 
 	exports['default'] = HeadParams;
 	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 376 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _extends = __webpack_require__(1)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _axios = __webpack_require__(294);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(313);
-
-	var _reactRouter = __webpack_require__(209);
-
-	var _reactMasonryMixin = __webpack_require__(326);
-
-	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
-
-	var _storeBoxStore = __webpack_require__(324);
-
-	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
-
-	var _actionsBoxActions = __webpack_require__(325);
-
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
-	/**
-	 * @Component
-	 */
-
-	var _componentsProductDetailHeaderProduct = __webpack_require__(343);
-
-	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
-
-	var _componentsProductDetailBoxItem = __webpack_require__(346);
-
-	var _componentsProductDetailBoxItem2 = _interopRequireDefault(_componentsProductDetailBoxItem);
-
-	var InfiniteScroll = __webpack_require__(347)(_react2['default']);
-	exports['default'] = _react2['default'].createClass({
-	  displayName: 'BoxTest',
-
-	  mixins: [(0, _reactMasonryMixin2['default'])('masonryContainer', { transitionDuration: 0 })],
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      page: 1,
-	      hasMore: true,
-	      skip: 0,
-	      limit: 15,
-	      posts: []
-	    };
-	  },
-
-	  componentWillMount: function componentWillMount() {
-	    this.props.HeadParams.setTitle('Sanpham | tocu.vn');
-	    this.props.HeadParams.setDescription('Sanpham | Description');
-	  },
-
-	  getLoaderElement: function getLoaderElement() {
-	    // return null;
-
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' },
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'thumbnail article text-center' },
-	        'Loading ',
-	        _react2['default'].createElement('i', { className: 'fa fa-cog fa-spin' })
-	      )
-	    );
-	  },
-
-	  onChangeBoxStore: function onChangeBoxStore(state) {
-	    var hasMore = state.posts.size >= this.state.limit * this.state.page;
-	    var page = this.state.page + 1;
-	    var skip = this.state.skip += this.state.limit;
-	    this.setState({
-	      posts: state.posts,
-	      hasMore: hasMore,
-	      page: page,
-	      skip: skip
-	    });
-	  },
-
-	  handleLoad: function handleLoad(data) {
-	    console.log('handleLoad');
-	    var hasMore = data.length >= this.state.limit * this.state.page;
-	    var page = this.state.page + 1;
-	    var skip = this.state.skip += this.state.limit;
-	    this.setState({
-	      posts: this.state.posts.concat(data),
-	      hasMore: hasMore,
-	      page: page,
-	      skip: skip
-	    });
-	  },
-
-	  loadMore: function loadMore(page) {
-	    var id = this.props.params.id;
-
-	    var self = this;
-	    setTimeout(function () {
-	      self.loadActions(id, self.state.skip, self.state.limit);
-	    }, 1000);
-	  },
-
-	  loadActions: function loadActions(id, skip, limit) {
-	    var self = this;
-
-	    _axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
-	      self.handleLoad(res.data);
-	    })['catch'](function (res) {});
-	  },
-
-	  getArticlesToRender: function getArticlesToRender() {
-	    return this.state.posts.map(function (post, i) {
-	      return _react2['default'].createElement(_componentsProductDetailBoxItem2['default'], _extends({ key: i }, post));
-	    });
-	  },
-
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(_componentsProductDetailHeaderProduct2['default'], null),
-	      _react2['default'].createElement(
-	        'section',
-	        { id: 'productDetail' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'container' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'masonry' },
-	              _react2['default'].createElement(
-	                InfiniteScroll,
-	                {
-	                  ref: 'masonryContainer',
-	                  loader: this.getLoaderElement(),
-	                  pageStart: this.state.page - 1,
-	                  loadMore: this.loadMore,
-	                  hasMore: this.state.hasMore,
-	                  threshold: 500 },
-	                this.getArticlesToRender()
-	              )
-	            )
-	          )
-	        )
-	      )
-	    );
-	  }
-
-	});
 	module.exports = exports['default'];
 
 /***/ }
