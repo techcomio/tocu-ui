@@ -23,7 +23,7 @@ export default React.createClass({
         <div className="thumbnail" >
           <Link to={`/sp/${this.props.id}`} >
             <div className="imgWrapper">
-              <img className="img-rounded" data-holder-rendered="true" src={img_url} alt="100%x200" />
+              <img className="img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
             </div>
             <div className="infoSanpham">
               <span className="titleSanpham">{this.props.name}</span>

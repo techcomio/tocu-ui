@@ -1,18 +1,18 @@
 'use strict';
 
-import React        from 'react';
-import {Link}       from 'react-router';
-import MasonryMixin from 'react-masonry-mixin';
+import React         from 'react';
+import { Link }         from 'react-router';
+import MasonryMixin  from 'react-masonry-mixin';
 let InfiniteScroll = require('react-infinite-scroll')(React);
-/**
- * @Component
- */
+/* @jsx */
 import HeaderProduct from '../components/productDetail/HeaderProduct';
 
+var masonryOptions = {
+  transitionDuration: 0,
+};
 
 export default React.createClass({
-
-  mixins: [MasonryMixin('masonryContainer', {transitionDuration: 0})],
+  mixins: [MasonryMixin('masonryContainer', masonryOptions)],
 
   getInitialState: function () {
     return {
@@ -22,13 +22,8 @@ export default React.createClass({
     };
   },
 
-  componentWillMount () {
-    this.props.HeadParams.setTitle("Sanpham | tocu.vn");
-    this.props.HeadParams.setDescription("Sanpham | Description");
-  },
-
   getLoaderElement: function () {
-    return null;
+    // return null;
 
     return (
       <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
@@ -37,18 +32,15 @@ export default React.createClass({
     );
   },
 
-  Test() {
-    var self = this;
-    self.setState({
-      page: page + 1,
-      items: self.state.items.concat([0, 1, 2, 3, 4, 5]),
-      hasMore: (page < 10)
-    });
-  },
-
   loadMore: function (page) {
-    var self = this;
-    console.log(this.props)
+    console.log('load', page);
+    setTimeout(function () {
+      this.setState({
+        page: page + 1,
+        items: this.state.items.concat([0, 1, 2, 3, 4, 5]),
+        hasMore: (page < 10)
+      });
+    }.bind(this), 1000);
   },
 
   getArticlesToRender() {
@@ -74,8 +66,9 @@ export default React.createClass({
     });
   },
 
+  render: function () {
+    console.log('render');
 
-	render () {
     return (
       <div>
         <HeaderProduct />
@@ -101,6 +94,5 @@ export default React.createClass({
         </section>
       </div>
     );
-	}
-
+  }
 });

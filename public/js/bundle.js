@@ -1041,9 +1041,9 @@ webpackJsonp([0],[
 
 	var _handlersHome2 = _interopRequireDefault(_handlersHome);
 
-	var _handlersBox = __webpack_require__(323);
+	var _handlersBoxTest = __webpack_require__(376);
 
-	var _handlersBox2 = _interopRequireDefault(_handlersBox);
+	var _handlersBoxTest2 = _interopRequireDefault(_handlersBoxTest);
 
 	var _handlersPosts = __webpack_require__(348);
 
@@ -1077,7 +1077,7 @@ webpackJsonp([0],[
 		_reactRouter.Route,
 		{ component: _handlersApp2['default'] },
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersHome2['default'], name: 'home', path: '/', onEnter: _handlersHome2['default'].onEnter }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersBox2['default'], name: 'box', path: '/box/:id' }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersBoxTest2['default'], name: 'box', path: '/box/:id' }),
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersPosts2['default'], name: 'posts', path: '/posts/:id' }),
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], name: 'album', path: '/album/:id' }),
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSanpham2['default'], name: 'sp', path: '/sp' }),
@@ -11113,7 +11113,8 @@ webpackJsonp([0],[
 	         * lấy link ảnh của bài post đầu tiên
 	         */
 	        if (i === 0 && post.images) {
-	          img_url = post.images[0];
+	          var url = post.images[0];
+	          img_url = url.replace(/image\//gi, 'image/320x213/');
 	        }
 	        /**
 	         * format number to String 250000 => "250.000"
@@ -11163,7 +11164,7 @@ webpackJsonp([0],[
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'imgWrapper' },
-	            _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: '100%x200' }),
+	            _react2['default'].createElement('img', { className: 'img-max-height img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' }),
 	            _react2['default'].createElement(
 	              'span',
 	              { className: 'boardPinCount' },
@@ -11410,164 +11411,183 @@ webpackJsonp([0],[
 	module.exports = exports["default"];
 
 /***/ },
-/* 323 */
+/* 323 */,
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _extends = __webpack_require__(1)['default'];
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _Array$from = __webpack_require__(290)['default'];
 
 	var _interopRequireDefault = __webpack_require__(10)['default'];
 
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
+	var _Alt = __webpack_require__(183);
 
-	var _react = __webpack_require__(11);
+	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(209);
-
-	var _reactMasonryMixin = __webpack_require__(324);
-
-	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
-
-	var _storeBoxStore = __webpack_require__(341);
-
-	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
-
-	var _actionsBoxActions = __webpack_require__(342);
+	var _actionsBoxActions = __webpack_require__(325);
 
 	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
-	/**
-	 * @Component
-	 */
+	var _immutable = __webpack_require__(314);
 
-	var _componentsProductDetailHeaderProduct = __webpack_require__(343);
+	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
+	var BoxStore = (function () {
+	  function BoxStore() {
+	    _classCallCheck(this, BoxStore);
 
-	var _componentsProductDetailBoxItem = __webpack_require__(346);
+	    this.bindActions(_actionsBoxActions2['default']); // getBoxID, getBoxIDFailed
 
-	var _componentsProductDetailBoxItem2 = _interopRequireDefault(_componentsProductDetailBoxItem);
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
 
-	var InfiniteScroll = __webpack_require__(347)(_react2['default']);
-	exports['default'] = _react2['default'].createClass({
-	  displayName: 'Box',
-
-	  mixins: [(0, _reactMasonryMixin2['default'])('masonryContainer', { transitionDuration: 0 })],
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      page: 1,
-	      hasMore: true,
-	      skip: 0,
-	      limit: 15,
-	      posts: _storeBoxStore2['default'].getState().test
-	    };
-	  },
-
-	  componentWillMount: function componentWillMount() {
-	    this.props.HeadParams.setTitle('Sanpham | tocu.vn');
-	    this.props.HeadParams.setDescription('Sanpham | Description');
-	  },
-
-	  getLoaderElement: function getLoaderElement() {
-	    return null;
-
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' },
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'thumbnail article text-center' },
-	        'Loading ',
-	        _react2['default'].createElement('i', { className: 'fa fa-cog fa-spin' })
-	      )
-	    );
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _storeBoxStore2['default'].listen(this.onChangeBoxStore);
-	  },
-
-	  componentWillUnmount: function componentWillUnmount() {
-	    _storeBoxStore2['default'].unlisten(this.onChangeBoxStore);
-	  },
-
-	  onChangeBoxStore: function onChangeBoxStore(state) {
-	    var hasMore = state.posts.size >= this.state.limit * this.state.page;
-	    var page = this.state.page + 1;
-	    var skip = this.state.skip += this.state.limit;
-	    this.setState({
-	      posts: state.posts,
-	      hasMore: hasMore,
-	      page: page,
-	      skip: skip
-	    });
-	  },
-
-	  loadMore: function loadMore(page) {
-	    var id = this.props.params.id;
-
-	    if (this.state.hasMore) {
-	      _actionsBoxActions2['default'].getBoxID({ id: parseInt(id), skip: this.state.skip, limit: this.state.limit });
-	    }
-	  },
-
-	  getArticlesToRender: function getArticlesToRender() {
-	    return this.state.posts.map(function (post, i) {
-	      return _react2['default'].createElement(_componentsProductDetailBoxItem2['default'], _extends({ key: i }, post.toJS()));
-	    });
-	  },
-
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(_componentsProductDetailHeaderProduct2['default'], null),
-	      _react2['default'].createElement(
-	        'section',
-	        { id: 'productDetail' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'container' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'masonry' },
-	              _react2['default'].createElement(
-	                InfiniteScroll,
-	                {
-	                  ref: 'masonryContainer',
-	                  loader: this.getLoaderElement(),
-	                  pageStart: this.state.page - 1,
-	                  loadMore: this.loadMore,
-	                  hasMore: this.state.hasMore,
-	                  threshold: 500 },
-	                this.getArticlesToRender()
-	              )
-	            )
-	          )
-	        )
-	      )
-	    );
+	    this.posts = _immutable2['default'].List();
+	    this.test = _immutable2['default'].List();
 	  }
 
-	});
-	module.exports = exports['default'];
+	  _createClass(BoxStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].List.isList(this.test)) {
+	        this.test = _immutable2['default'].fromJS(this.test);
+	      }
+	      if (!_immutable2['default'].List.isList(this.posts)) {
+	        this.posts = _immutable2['default'].fromJS(this.posts);
+	      }
+	    }
+	  }, {
+	    key: 'onGetBoxID',
+	    value: function onGetBoxID(data) {
+	      this.test = this.test.merge(_Array$from(data));
+	      this.posts = this.posts.merge(_Array$from(data));
+	    }
+	  }, {
+	    key: 'onTest',
+	    value: function onTest(data) {
+	      console.log('onTest');
+	    }
+	  }, {
+	    key: 'onGetBoxIDFailed',
+	    value: function onGetBoxIDFailed(err) {
+	      console.log('onGetBoxIDFailed', err);
+	    }
+	  }]);
+
+	  return BoxStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
 
 /***/ },
-/* 324 */
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(228)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	var _Alt = __webpack_require__(183);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(294);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(313);
+
+	var BoxActions = (function () {
+	  function BoxActions() {
+	    _classCallCheck(this, BoxActions);
+	  }
+
+	  _createClass(BoxActions, [{
+	    key: 'getBoxID',
+
+	    /**
+	     * request lấy các bài posts trong
+	     * @param {number} id [id box]
+	     * @param {number} skip
+	     * @param {number} limit
+	     * @dispatch {Array} [bài posts]
+	     */
+	    value: function getBoxID(_ref) {
+	      var id = _ref.id;
+	      var skip = _ref.skip;
+	      var limit = _ref.limit;
+	      var self;
+	      return _regeneratorRuntime.async(function getBoxID$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            self = this;
+	            context$2$0.next = 3;
+	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
+	              /**
+	               * send data cho Store
+	               */
+	              self.dispatch(res.data);
+	            })['catch'](function (res) {
+	              /**
+	               * send lỗi cho func dataError
+	               * @param  {Error} [Error request]
+	               */
+	              self.actions.getBoxIDFailed(res.data);
+	            }));
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }, {
+	    key: 'TestActions',
+	    value: function TestActions(_ref2) {
+	      var id = _ref2.id;
+
+	      console.log('TestActions', id);
+	    }
+	  }, {
+	    key: 'test',
+	    value: function test(data) {
+	      this.dispatch(data);
+	    }
+	  }, {
+	    key: 'getBoxIDFailed',
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	    value: function getBoxIDFailed(err) {
+	      this.dispatch(err);
+	    }
+	  }]);
+
+	  return BoxActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(BoxActions);
+
+/***/ },
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isBrowser = (typeof window !== 'undefined');
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(325) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(338) : null;
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(327) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(340) : null;
 
 	function MasonryMixin() {
 	    return function(reference, options) {
@@ -11679,7 +11699,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 325 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -11873,8 +11893,8 @@ webpackJsonp([0],[
 	// -------------------------- transport -------------------------- //
 	if (true) {
 	  module.exports = masonryDefinition(
-	    __webpack_require__(326),
-	    __webpack_require__(336)
+	    __webpack_require__(328),
+	    __webpack_require__(338)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -11895,7 +11915,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 326 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -12886,12 +12906,12 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(330),
-	    __webpack_require__(327),
+	    __webpack_require__(332),
 	    __webpack_require__(329),
 	    __webpack_require__(331),
 	    __webpack_require__(333),
-	    __webpack_require__(334)
+	    __webpack_require__(335),
+	    __webpack_require__(336)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -12920,7 +12940,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 327 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -12984,7 +13004,7 @@ webpackJsonp([0],[
 
 	// transport
 	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(328) );
+	  module.exports = defineDocReady( __webpack_require__(330) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  // if RequireJS, then doc is already ready
@@ -12999,7 +13019,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 328 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13087,7 +13107,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 329 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13530,7 +13550,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 330 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13618,7 +13638,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 331 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13827,7 +13847,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(332) );
+	  module.exports = defineGetSize( __webpack_require__(334) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -13840,7 +13860,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 332 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13901,7 +13921,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 333 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -14014,7 +14034,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 334 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14524,9 +14544,9 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
-	    __webpack_require__(329),
 	    __webpack_require__(331),
-	    __webpack_require__(335)
+	    __webpack_require__(333),
+	    __webpack_require__(337)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -14550,7 +14570,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 335 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14611,7 +14631,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 336 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14820,7 +14840,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(337) );
+	  module.exports = defineGetSize( __webpack_require__(339) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -14833,7 +14853,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 337 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14894,7 +14914,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 338 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14912,8 +14932,8 @@ webpackJsonp([0],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(339),
-	      __webpack_require__(340)
+	      __webpack_require__(341),
+	      __webpack_require__(342)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -15235,7 +15255,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 339 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15713,7 +15733,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 340 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15799,176 +15819,6 @@ webpackJsonp([0],[
 
 	})( window );
 
-
-/***/ },
-/* 341 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _Array$from = __webpack_require__(290)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	var _Alt = __webpack_require__(183);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _actionsBoxActions = __webpack_require__(342);
-
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
-	var _immutable = __webpack_require__(314);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var BoxStore = (function () {
-	  function BoxStore() {
-	    _classCallCheck(this, BoxStore);
-
-	    this.bindActions(_actionsBoxActions2['default']); // getBoxID, getBoxIDFailed
-
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.posts = _immutable2['default'].List();
-	    this.test = _immutable2['default'].List();
-	  }
-
-	  _createClass(BoxStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].List.isList(this.test)) {
-	        this.test = _immutable2['default'].fromJS(this.test);
-	      }
-	      if (!_immutable2['default'].List.isList(this.posts)) {
-	        this.posts = _immutable2['default'].fromJS(this.posts);
-	      }
-	    }
-	  }, {
-	    key: 'onGetBoxID',
-	    value: function onGetBoxID(data) {
-	      this.test = this.test.merge(_Array$from(data));
-	      this.posts = this.posts.merge(_Array$from(data));
-	    }
-	  }, {
-	    key: 'onTest',
-	    value: function onTest(data) {
-	      console.log('onTest');
-	    }
-	  }, {
-	    key: 'onGetBoxIDFailed',
-	    value: function onGetBoxIDFailed(err) {
-	      console.log('onGetBoxIDFailed', err);
-	    }
-	  }]);
-
-	  return BoxStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
-
-/***/ },
-/* 342 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(228)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	var _Alt = __webpack_require__(183);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(294);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(313);
-
-	var BoxActions = (function () {
-	  function BoxActions() {
-	    _classCallCheck(this, BoxActions);
-	  }
-
-	  _createClass(BoxActions, [{
-	    key: 'getBoxID',
-
-	    /**
-	     * request lấy các bài posts trong
-	     * @param {number} id [id box]
-	     * @param {number} skip
-	     * @param {number} limit
-	     * @dispatch {Array} [bài posts]
-	     */
-	    value: function getBoxID(_ref) {
-	      var id = _ref.id;
-	      var skip = _ref.skip;
-	      var limit = _ref.limit;
-	      var self;
-	      return _regeneratorRuntime.async(function getBoxID$(context$2$0) {
-	        while (1) switch (context$2$0.prev = context$2$0.next) {
-	          case 0:
-	            self = this;
-	            context$2$0.next = 3;
-	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
-	              /**
-	               * send data cho Store
-	               */
-	              self.dispatch(res.data);
-	            })['catch'](function (res) {
-	              /**
-	               * send lỗi cho func dataError
-	               * @param  {Error} [Error request]
-	               */
-	              self.actions.getBoxIDFailed(res.data);
-	            }));
-
-	          case 3:
-	          case 'end':
-	            return context$2$0.stop();
-	        }
-	      }, null, this);
-	    }
-	  }, {
-	    key: 'TestActions',
-	    value: function TestActions(_ref2) {
-	      var id = _ref2.id;
-
-	      console.log('TestActions', id);
-	    }
-	  }, {
-	    key: 'test',
-	    value: function test(data) {
-	      this.dispatch(data);
-	    }
-	  }, {
-	    key: 'getBoxIDFailed',
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	    value: function getBoxIDFailed(err) {
-	      this.dispatch(err);
-	    }
-	  }]);
-
-	  return BoxActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(BoxActions);
 
 /***/ },
 /* 343 */
@@ -16307,7 +16157,7 @@ webpackJsonp([0],[
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'imgWrapper' },
-	            _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: '100%x200' })
+	            _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' })
 	          ),
 	          _react2['default'].createElement(
 	            'div',
@@ -16564,22 +16414,26 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(209);
 
-	var _reactMasonryMixin = __webpack_require__(324);
+	var _reactMasonryMixin = __webpack_require__(326);
 
 	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
 
-	/**
-	 * @Component
-	 */
+	/* @jsx */
 
 	var _componentsProductDetailHeaderProduct = __webpack_require__(343);
 
 	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
 
-	var InfiniteScroll = __webpack_require__(347)(_react2['default']);exports['default'] = _react2['default'].createClass({
+	var InfiniteScroll = __webpack_require__(347)(_react2['default']);
+
+	var masonryOptions = {
+	  transitionDuration: 0
+	};
+
+	exports['default'] = _react2['default'].createClass({
 	  displayName: 'Sanpham',
 
-	  mixins: [(0, _reactMasonryMixin2['default'])('masonryContainer', { transitionDuration: 0 })],
+	  mixins: [(0, _reactMasonryMixin2['default'])('masonryContainer', masonryOptions)],
 
 	  getInitialState: function getInitialState() {
 	    return {
@@ -16589,13 +16443,8 @@ webpackJsonp([0],[
 	    };
 	  },
 
-	  componentWillMount: function componentWillMount() {
-	    this.props.HeadParams.setTitle('Sanpham | tocu.vn');
-	    this.props.HeadParams.setDescription('Sanpham | Description');
-	  },
-
 	  getLoaderElement: function getLoaderElement() {
-	    return null;
+	    // return null;
 
 	    return _react2['default'].createElement(
 	      'div',
@@ -16609,18 +16458,15 @@ webpackJsonp([0],[
 	    );
 	  },
 
-	  Test: function Test() {
-	    var self = this;
-	    self.setState({
-	      page: page + 1,
-	      items: self.state.items.concat([0, 1, 2, 3, 4, 5]),
-	      hasMore: page < 10
-	    });
-	  },
-
 	  loadMore: function loadMore(page) {
-	    var self = this;
-	    console.log(this.props);
+	    console.log('load', page);
+	    setTimeout((function () {
+	      this.setState({
+	        page: page + 1,
+	        items: this.state.items.concat([0, 1, 2, 3, 4, 5]),
+	        hasMore: page < 10
+	      });
+	    }).bind(this), 1000);
 	  },
 
 	  getArticlesToRender: function getArticlesToRender() {
@@ -16669,6 +16515,8 @@ webpackJsonp([0],[
 	  },
 
 	  render: function render() {
+	    console.log('render');
+
 	    return _react2['default'].createElement(
 	      'div',
 	      null,
@@ -16702,7 +16550,6 @@ webpackJsonp([0],[
 	      )
 	    );
 	  }
-
 	});
 	module.exports = exports['default'];
 
@@ -20227,6 +20074,178 @@ webpackJsonp([0],[
 
 	exports['default'] = HeadParams;
 	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 376 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = __webpack_require__(1)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _axios = __webpack_require__(294);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(313);
+
+	var _reactRouter = __webpack_require__(209);
+
+	var _reactMasonryMixin = __webpack_require__(326);
+
+	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
+
+	var _storeBoxStore = __webpack_require__(324);
+
+	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
+
+	var _actionsBoxActions = __webpack_require__(325);
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
+
+	/**
+	 * @Component
+	 */
+
+	var _componentsProductDetailHeaderProduct = __webpack_require__(343);
+
+	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
+
+	var _componentsProductDetailBoxItem = __webpack_require__(346);
+
+	var _componentsProductDetailBoxItem2 = _interopRequireDefault(_componentsProductDetailBoxItem);
+
+	var InfiniteScroll = __webpack_require__(347)(_react2['default']);
+	exports['default'] = _react2['default'].createClass({
+	  displayName: 'BoxTest',
+
+	  mixins: [(0, _reactMasonryMixin2['default'])('masonryContainer', { transitionDuration: 0 })],
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      page: 1,
+	      hasMore: true,
+	      skip: 0,
+	      limit: 15,
+	      posts: []
+	    };
+	  },
+
+	  componentWillMount: function componentWillMount() {
+	    this.props.HeadParams.setTitle('Sanpham | tocu.vn');
+	    this.props.HeadParams.setDescription('Sanpham | Description');
+	  },
+
+	  getLoaderElement: function getLoaderElement() {
+	    // return null;
+
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'thumbnail article text-center' },
+	        'Loading ',
+	        _react2['default'].createElement('i', { className: 'fa fa-cog fa-spin' })
+	      )
+	    );
+	  },
+
+	  onChangeBoxStore: function onChangeBoxStore(state) {
+	    var hasMore = state.posts.size >= this.state.limit * this.state.page;
+	    var page = this.state.page + 1;
+	    var skip = this.state.skip += this.state.limit;
+	    this.setState({
+	      posts: state.posts,
+	      hasMore: hasMore,
+	      page: page,
+	      skip: skip
+	    });
+	  },
+
+	  handleLoad: function handleLoad(data) {
+	    console.log('handleLoad');
+	    var hasMore = data.length >= this.state.limit * this.state.page;
+	    var page = this.state.page + 1;
+	    var skip = this.state.skip += this.state.limit;
+	    this.setState({
+	      posts: this.state.posts.concat(data),
+	      hasMore: hasMore,
+	      page: page,
+	      skip: skip
+	    });
+	  },
+
+	  loadMore: function loadMore(page) {
+	    var id = this.props.params.id;
+
+	    var self = this;
+	    setTimeout(function () {
+	      self.loadActions(id, self.state.skip, self.state.limit);
+	    }, 1000);
+	  },
+
+	  loadActions: function loadActions(id, skip, limit) {
+	    var self = this;
+
+	    _axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
+	      self.handleLoad(res.data);
+	    })['catch'](function (res) {});
+	  },
+
+	  getArticlesToRender: function getArticlesToRender() {
+	    return this.state.posts.map(function (post, i) {
+	      return _react2['default'].createElement(_componentsProductDetailBoxItem2['default'], _extends({ key: i }, post));
+	    });
+	  },
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      null,
+	      _react2['default'].createElement(_componentsProductDetailHeaderProduct2['default'], null),
+	      _react2['default'].createElement(
+	        'section',
+	        { id: 'productDetail' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'container' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'masonry' },
+	              _react2['default'].createElement(
+	                InfiniteScroll,
+	                {
+	                  ref: 'masonryContainer',
+	                  loader: this.getLoaderElement(),
+	                  pageStart: this.state.page - 1,
+	                  loadMore: this.loadMore,
+	                  hasMore: this.state.hasMore,
+	                  threshold: 500 },
+	                this.getArticlesToRender()
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+
+	});
 	module.exports = exports['default'];
 
 /***/ }

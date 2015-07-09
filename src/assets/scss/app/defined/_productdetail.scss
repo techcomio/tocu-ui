@@ -147,7 +147,7 @@
 	}
 	.thumbnail { border: none; padding: 0;
 		a { text-decoration: none; }
-		img { border-radius: 6px 6px 0 0; }
+		img { border-radius: 6px 6px 0 0; height: auto; }
 		.infoSanpham { padding: 5px 10px;
 			.titleSanpham { font-size: $font-size-base; display: block; color: $gray; }
 			.price { font-size: $font-size-small;

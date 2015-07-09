@@ -1,6 +1,8 @@
 'use strict';
 
 import React        from 'react';
+import Axios        from 'axios';
+import {Api_URL} from '../../../config-sample';
 import {Link}       from 'react-router';
 import MasonryMixin from 'react-masonry-mixin';
 let InfiniteScroll = require('react-infinite-scroll')(React);
@@ -23,7 +25,7 @@ export default React.createClass({
       hasMore: true,
       skip: 0,
       limit: 15,
-      posts: BoxStore.getState().test,
+      posts: [],
     };
   },
 
@@ -42,14 +44,6 @@ export default React.createClass({
     );
   },
 
-  componentDidMount() {
-    BoxStore.listen(this.onChangeBoxStore);
-  },
-
-  componentWillUnmount() {
-    BoxStore.unlisten(this.onChangeBoxStore);
-  },
-
   onChangeBoxStore(state) {
     let hasMore = (state.posts.size >= this.state.limit * this.state.page)
     let page = this.state.page + 1;
@@ -62,20 +56,46 @@ export default React.createClass({
     });
   },
 
+  handleLoad(data) {
+    console.log('handleLoad')
+    let hasMore = (data.length >= this.state.limit * this.state.page)
+    let page = this.state.page + 1;
+    let skip = this.state.skip += this.state.limit
+    this.setState({
+      posts: this.state.posts.concat(data),
+      hasMore: hasMore,
+      page: page,
+      skip: skip,
+    });
+  },
+
   loadMore: function (page) {
     const {
       params: { id }
     } = this.props;
 
-    if(this.state.hasMore) {
-      BoxActions.getBoxID({id: parseInt(id), skip: this.state.skip, limit: this.state.limit});
-    }
+    var self = this;
+    setTimeout(function() {
+      self.loadActions(id, self.state.skip, self.state.limit);
+    }, 1000);
+  },
+
+  loadActions(id, skip, limit) {
+    let self = this;
+
+    Axios.get(`${Api_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
+      .then((res) => {
+        self.handleLoad(res.data);
+      })
+      .catch((res) => {
+
+      });
   },
 
   getArticlesToRender() {
     return this.state.posts.map((post, i) => {
       return (
-        <BoxItem key={i} {...post.toJS()} />
+        <BoxItem key={i} {...post} />
       );
     });
   },

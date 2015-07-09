@@ -7,7 +7,7 @@ import {Route} from 'react-router';
  */
 import App       from './handlers/App';
 import Home      from './handlers/Home';
-import Box       from './handlers/Box';
+import Box       from './handlers/BoxTest';
 import Posts     from './handlers/Posts';
 import Album     from './handlers/Album';
 import Sanpham   from './handlers/Sanpham';

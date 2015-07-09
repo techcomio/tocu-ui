@@ -1,10 +1,13 @@
 'use strict';
+require('babel/register')({ 
+  stage: 1 // for es 7 features
+});
 
-import express    from 'express';
-import compress   from 'compression';
-import bodyParser from 'body-parser';
+var express = require('express');
+var compress = require('compression');
+var bodyParser = require('body-parser');
 
-import render from './src/server';
+var render = require('./src/server');
 
 let app = express();
 
