@@ -6,21 +6,18 @@ import React  from 'react';
 export default class CreditItem extends React.Component {
 
 	render() {
-    let img_url = null;
-    if(this.props.images) {
+    let images = null;
+    if(this.props.i !== 0 && this.props.images) {
       let url = this.props.images[0];
-      img_url = url.replace(/image\//gi, 'image/50x50/');
+      let img_url = url.replace(/image\//gi, 'image/50x50/');
+      images = <img src={img_url} />
     }
-
-    console.log(img_url)
 
     return (
       <div className="newsItem newCreditItem">
         <div className="newsImg">
         	<span className="imgIcon imgIcon-list imgIcon-bg-red">
-            {img_url && (
-              <img src={img_url} />
-            )}
+            {images}
           </span>
         </div>
         <div className="newsText newsInfo">

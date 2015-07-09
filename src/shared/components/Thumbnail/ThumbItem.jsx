@@ -30,11 +30,11 @@ export default class ThumbItem extends React.Component {
 
       switch(this.props.type) {
         case "product":
-          return <ProductItem key={i} {...post} />
+          return <ProductItem key={i} i={i} {...post} />
         case "article":
-          return <PostItem key={i} {...post} />
+          return <PostItem key={i} i={i} {...post} />
         case "photo":
-          return <AlbumItem key={i} {...post} />
+          return <AlbumItem key={i} i={i} {...post} />
       }
     });
 
@@ -63,6 +63,8 @@ export default class ThumbItem extends React.Component {
         type = "Ảnh";
     }
 
+    console.log(this.props)
+
     return (
       <div className="thumbnail">
         <Link to={`/box/${this.props.id}`}>
@@ -75,7 +77,11 @@ export default class ThumbItem extends React.Component {
             <div className="thumbnail-list-news">
               {ListPost}
             </div>
-            <p><div className="btn btn-default btn-block btn-follow">Follow</div></p>
+            <p>
+              <div className="btn btn-default btn-block btn-follow">
+                {this.props.likesCount} likes
+              </div>
+            </p>
           </div>
         </Link>
       </div>

@@ -48,8 +48,8 @@ export default class SignIn extends React.Component {
 
 };
 
-SignIn.onEnter = async function(next, transition) {
-  // console.log('onEnter SignIn')
+SignIn.onEnter = function(next, transition) {
+  console.log('onEnter SignIn')
 }
 
 SignIn.contextTypes = {

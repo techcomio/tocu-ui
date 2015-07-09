@@ -32,8 +32,9 @@ export default class ImgSlideProduct extends React.Component {
                 if(this.state.current === i) {
                   classSes = "active";
                 }
+                let img_url = url.replace(/image\//gi, 'image/x468/');
                 return (
-                  <li key={i} className={classSes}><figure><img onClick={this.ShowLightBox.bind(this, i)} src={url} alt="" /></figure></li>
+                  <li key={i} className={classSes}><figure><img onClick={this.ShowLightBox.bind(this, i)} src={img_url} alt="" /></figure></li>
                 )
               })}
             </ul>
@@ -59,8 +60,9 @@ export default class ImgSlideProduct extends React.Component {
               if(this.state.current === i) {
                 classSes = "active";
               }
+              let img_url = url.replace(/image\//gi, 'image/90x60/');
               return (
-                <li key={i} className={classSes}><figure><img src={url} onClick={this.handleClickSlideTab.bind(this, i)} alt="" /></figure></li>
+                <li key={i} className={classSes}><figure><img src={img_url} onClick={this.handleClickSlideTab.bind(this, i)} alt="" /></figure></li>
               )
             })}
           </ul>

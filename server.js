@@ -3,15 +3,17 @@ require('babel/register')({
   stage: 1 // for es 7 features
 });
 
-var express = require('express');
-var compress = require('compression');
-var bodyParser = require('body-parser');
+var express      = require('express');
+var cookieParser = require('cookie-parser');
+var compress     = require('compression');
+var bodyParser   = require('body-parser');
 
 var render = require('./src/server');
 
 let app = express();
 
 app.set('port', process.env.PORT || 8080);
+app.use(cookieParser());
 app.use(compress());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

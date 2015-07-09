@@ -25,7 +25,7 @@ export default (
 		<Route component={Album}     name="album"    path="/album/:id" />
 		<Route component={Sanpham}   name="sp"       path="/sp"        />
 		<Route component={SanphamID} name="spID"     path="/sp/:id"    />
-		<Route component={SignIn}    name="signin"   path="/signin"    />
+		<Route component={SignIn}    name="signin"   path="/signin"    onEnter={SignIn.onEnter}/>
 		<Route component={SignUp}    name="signup"   path="/signup"    />
 		<Route component={NotFound}  name="NotFound" path="*"          />
 	</Route>

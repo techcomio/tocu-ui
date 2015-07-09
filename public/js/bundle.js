@@ -1082,7 +1082,7 @@ webpackJsonp([0],[
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], name: 'album', path: '/album/:id' }),
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSanpham2['default'], name: 'sp', path: '/sp' }),
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSanpham_id2['default'], name: 'spID', path: '/sp/:id' }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSignIn2['default'], name: 'signin', path: '/signin' }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSignIn2['default'], name: 'signin', path: '/signin', onEnter: _handlersSignIn2['default'].onEnter }),
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSignUp2['default'], name: 'signup', path: '/signup' }),
 		_react2['default'].createElement(_reactRouter.Route, { component: _handlersNotFound2['default'], name: 'NotFound', path: '*' })
 	);
@@ -11125,11 +11125,11 @@ webpackJsonp([0],[
 
 	        switch (_this.props.type) {
 	          case 'product':
-	            return _react2['default'].createElement(_ProductItem2['default'], _extends({ key: i }, post));
+	            return _react2['default'].createElement(_ProductItem2['default'], _extends({ key: i, i: i }, post));
 	          case 'article':
-	            return _react2['default'].createElement(PostItem, _extends({ key: i }, post));
+	            return _react2['default'].createElement(PostItem, _extends({ key: i, i: i }, post));
 	          case 'photo':
-	            return _react2['default'].createElement(_AlbumItem2['default'], _extends({ key: i }, post));
+	            return _react2['default'].createElement(_AlbumItem2['default'], _extends({ key: i, i: i }, post));
 	        }
 	      });
 
@@ -11161,6 +11161,8 @@ webpackJsonp([0],[
 	        case 'photo':
 	          type = 'Ảnh';
 	      }
+
+	      console.log(this.props);
 
 	      return _react2['default'].createElement(
 	        'div',
@@ -11199,7 +11201,8 @@ webpackJsonp([0],[
 	              _react2['default'].createElement(
 	                'div',
 	                { className: 'btn btn-default btn-block btn-follow' },
-	                'Follow'
+	                this.props.likesCount,
+	                ' likes'
 	              )
 	            )
 	          )
@@ -11381,13 +11384,12 @@ webpackJsonp([0],[
 	  _createClass(CreditItem, [{
 	    key: 'render',
 	    value: function render() {
-	      var img_url = null;
-	      if (this.props.images) {
+	      var images = null;
+	      if (this.props.i !== 0 && this.props.images) {
 	        var url = this.props.images[0];
-	        img_url = url.replace(/image\//gi, 'image/50x50/');
+	        var img_url = url.replace(/image\//gi, 'image/50x50/');
+	        images = _react2['default'].createElement('img', { src: img_url });
 	      }
-
-	      console.log(img_url);
 
 	      return _react2['default'].createElement(
 	        'div',
@@ -11398,7 +11400,7 @@ webpackJsonp([0],[
 	          _react2['default'].createElement(
 	            'span',
 	            { className: 'imgIcon imgIcon-list imgIcon-bg-red' },
-	            img_url && _react2['default'].createElement('img', { src: img_url })
+	            images
 	          )
 	        ),
 	        _react2['default'].createElement(
@@ -16339,7 +16341,8 @@ webpackJsonp([0],[
 	    var price = this.props.price !== null ? this.props.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
 
 	    if (this.props.images) {
-	      img_url = this.props.images[0];
+	      var url = this.props.images[0];
+	      img_url = url.replace(/image\//gi, 'image/230x/');
 	    }
 
 	    return _react2['default'].createElement(
@@ -17379,13 +17382,14 @@ webpackJsonp([0],[
 	                if (_this.state.current === i) {
 	                  classSes = 'active';
 	                }
+	                var img_url = url.replace(/image\//gi, 'image/x468/');
 	                return _react2['default'].createElement(
 	                  'li',
 	                  { key: i, className: classSes },
 	                  _react2['default'].createElement(
 	                    'figure',
 	                    null,
-	                    _react2['default'].createElement('img', { onClick: _this.ShowLightBox.bind(_this, i), src: url, alt: '' })
+	                    _react2['default'].createElement('img', { onClick: _this.ShowLightBox.bind(_this, i), src: img_url, alt: '' })
 	                  )
 	                );
 	              })
@@ -17418,13 +17422,14 @@ webpackJsonp([0],[
 	              if (_this.state.current === i) {
 	                classSes = 'active';
 	              }
+	              var img_url = url.replace(/image\//gi, 'image/90x60/');
 	              return _react2['default'].createElement(
 	                'li',
 	                { key: i, className: classSes },
 	                _react2['default'].createElement(
 	                  'figure',
 	                  null,
-	                  _react2['default'].createElement('img', { src: url, onClick: _this.handleClickSlideTab.bind(_this, i), alt: '' })
+	                  _react2['default'].createElement('img', { src: img_url, onClick: _this.handleClickSlideTab.bind(_this, i), alt: '' })
 	                )
 	              );
 	            })
@@ -18097,8 +18102,6 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(208)['default'];
 
-	var _regeneratorRuntime = __webpack_require__(228)['default'];
-
 	var _interopRequireDefault = __webpack_require__(10)['default'];
 
 	Object.defineProperty(exports, '__esModule', {
@@ -18184,22 +18187,14 @@ webpackJsonp([0],[
 	exports['default'] = SignIn;
 	;
 
-	SignIn.onEnter = function callee$0$0(next, transition) {
-	  return _regeneratorRuntime.async(function callee$0$0$(context$1$0) {
-	    while (1) switch (context$1$0.prev = context$1$0.next) {
-	      case 0:
-	      case 'end':
-	        return context$1$0.stop();
-	    }
-	  }, null, this);
+	SignIn.onEnter = function (next, transition) {
+	  console.log('onEnter SignIn');
 	};
 
 	SignIn.contextTypes = {
 	  router: _react2['default'].PropTypes.object.isRequired
 	};
 	module.exports = exports['default'];
-
-	// console.log('onEnter SignIn')
 
 /***/ },
 /* 361 */
@@ -18808,6 +18803,11 @@ webpackJsonp([0],[
 	    key: 'onLoginFailed',
 	    value: function onLoginFailed(err) {
 	      this.loginState = 'failed';
+	    }
+	  }], [{
+	    key: 'getToken',
+	    value: function getToken() {
+	      return;
 	    }
 	  }]);
 

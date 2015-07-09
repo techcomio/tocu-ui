@@ -59,6 +59,10 @@ class AuthStore {
     this.loginState = "failed";
   }
 
+  static getToken() {
+    return 
+  }
+
 }
 
 

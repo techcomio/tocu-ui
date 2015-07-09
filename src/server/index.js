@@ -47,7 +47,7 @@ export default function (req, res, next) {
        * @param  {string} pathname
        * @return {func} res.redirect [express]
        */
-      if(transition.isCancelled) {
+      if(transition.redirectInfo) {
         var { pathname, query, state } = transition.redirectInfo;
         return res.redirect(pathname)
       }

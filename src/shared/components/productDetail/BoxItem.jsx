@@ -15,7 +15,8 @@ export default React.createClass({
 	  let price = this.props.price !== null ? this.props.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
 
 	  if(this.props.images) {
-	  	img_url = this.props.images[0];
+      let url = this.props.images[0];
+      img_url = url.replace(/image\//gi, 'image/230x/');
 	  }
 		
 		return (
