@@ -1041,19 +1041,19 @@ webpackJsonp([0],[
 
 	var _handlersHome2 = _interopRequireDefault(_handlersHome);
 
-	var _handlersBoxTest = __webpack_require__(323);
+	var _handlersBoxTest = __webpack_require__(326);
 
 	var _handlersBoxTest2 = _interopRequireDefault(_handlersBoxTest);
 
-	var _handlersPosts = __webpack_require__(348);
+	var _handlersPosts = __webpack_require__(327);
 
 	var _handlersPosts2 = _interopRequireDefault(_handlersPosts);
 
-	var _handlersAlbum = __webpack_require__(349);
+	var _handlersAlbum = __webpack_require__(328);
 
 	var _handlersAlbum2 = _interopRequireDefault(_handlersAlbum);
 
-	var _handlersSanpham = __webpack_require__(350);
+	var _handlersSanpham = __webpack_require__(329);
 
 	var _handlersSanpham2 = _interopRequireDefault(_handlersSanpham);
 
@@ -1193,7 +1193,7 @@ webpackJsonp([0],[
 
 	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
 
-	var _componentsThumbnail = __webpack_require__(318);
+	var _componentsThumbnail = __webpack_require__(321);
 
 	var _componentsThumbnail2 = _interopRequireDefault(_componentsThumbnail);
 
@@ -10607,6 +10607,22 @@ webpackJsonp([0],[
 
 	var _decorators = __webpack_require__(286);
 
+	/**
+	 * @Component
+	 */
+
+	var _navbar = __webpack_require__(318);
+
+	var _navbar2 = _interopRequireDefault(_navbar);
+
+	var _infoBar = __webpack_require__(319);
+
+	var _infoBar2 = _interopRequireDefault(_infoBar);
+
+	var _profileInfo = __webpack_require__(320);
+
+	var _profileInfo2 = _interopRequireDefault(_profileInfo);
+
 	var Home = (function (_React$Component) {
 	  function Home(props) {
 	    _classCallCheck(this, _Home);
@@ -10685,222 +10701,10 @@ webpackJsonp([0],[
 	          _react2['default'].createElement(
 	            'nav',
 	            { className: classesNavbar },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'container-fluid' },
-	              _react2['default'].createElement(
-	                'div',
-	                { className: 'navbar-header' },
-	                _react2['default'].createElement(
-	                  'button',
-	                  { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
-	                  _react2['default'].createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    'Toggle navigation'
-	                  ),
-	                  _react2['default'].createElement('span', { className: 'icon-bar' }),
-	                  _react2['default'].createElement('span', { className: 'icon-bar' }),
-	                  _react2['default'].createElement('span', { className: 'icon-bar' })
-	                ),
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: classesHeaderNameAndImg },
-	                  _react2['default'].createElement(
-	                    _reactRouter.Link,
-	                    { to: '/', className: 'navbar-brand' },
-	                    _react2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
-	                  ),
-	                  _react2['default'].createElement(
-	                    'p',
-	                    { className: 'navbar-text pull-left' },
-	                    'Tổ Cú'
-	                  )
-	                )
-	              ),
-	              _react2['default'].createElement(
-	                'div',
-	                { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'nav navbar-nav navbar-right' },
-	                  _react2['default'].createElement(
-	                    _reactRouter.Link,
-	                    { to: '/signin', className: 'btn btn-sm btn-default navbar-btn' },
-	                    'Sign in'
-	                  ),
-	                  _react2['default'].createElement(
-	                    _reactRouter.Link,
-	                    { to: '/signup', className: 'btn btn-sm btn-primary navbar-btn' },
-	                    'Sign up'
-	                  )
-	                )
-	              )
-	            )
+	            _react2['default'].createElement(_navbar2['default'], { transform: this.state.transform })
 	          ),
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'container-fluid profileInfo' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'aboutBar' },
-	              _react2['default'].createElement(
-	                'div',
-	                { className: 'about' },
-	                _react2['default'].createElement(
-	                  'h1',
-	                  { className: 'name' },
-	                  'Tổ Cú'
-	                ),
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'iconsLinksEtc' },
-	                  _react2['default'].createElement(
-	                    'ul',
-	                    null,
-	                    _react2['default'].createElement(
-	                      'li',
-	                      { className: 'websiteWrapper' },
-	                      _react2['default'].createElement(
-	                        'a',
-	                        { href: '#', target: '_blank' },
-	                        _react2['default'].createElement(
-	                          'i',
-	                          { className: 'fa fa-map-marker gray' },
-	                          '  Hà Nội'
-	                        )
-	                      )
-	                    ),
-	                    _react2['default'].createElement(
-	                      'li',
-	                      null,
-	                      _react2['default'].createElement(
-	                        'a',
-	                        { href: 'https://www.facebook.com/thanhchamly', target: '_blank' },
-	                        _react2['default'].createElement(
-	                          'i',
-	                          { className: 'fa fa-facebook-square gray' },
-	                          '  facebook'
-	                        )
-	                      )
-	                    ),
-	                    _react2['default'].createElement(
-	                      'li',
-	                      null,
-	                      _react2['default'].createElement(
-	                        'a',
-	                        { href: '#', target: '_blank' },
-	                        _react2['default'].createElement(
-	                          'i',
-	                          { className: 'fa fa-twitter gray' },
-	                          '  twitter'
-	                        )
-	                      )
-	                    )
-	                  )
-	                ),
-	                _react2['default'].createElement(
-	                  'p',
-	                  { className: 'aboutText' },
-	                  'Nơi chúng ta thỏa sức với niềm đam mê đồ cũ & handmade :x'
-	                )
-	              )
-	            )
-	          ),
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'container-fluid infoBar' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'row' },
-	              _react2['default'].createElement('div', { className: 'col-sm-2 col-md-3 col-lg-4' }),
-	              _react2['default'].createElement(
-	                'div',
-	                { className: 'col-sm-8 col-md-6 col-lg-4' },
-	                _react2['default'].createElement(
-	                  'div',
-	                  { className: 'row' },
-	                  _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-3' },
-	                    _react2['default'].createElement(
-	                      'a',
-	                      { href: '#', className: 'active' },
-	                      _react2['default'].createElement(
-	                        'span',
-	                        { className: 'value' },
-	                        '3'
-	                      ),
-	                      ' ',
-	                      _react2['default'].createElement(
-	                        'span',
-	                        { className: 'labels' },
-	                        'Box'
-	                      )
-	                    )
-	                  ),
-	                  _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-3' },
-	                    _react2['default'].createElement(
-	                      _reactRouter.Link,
-	                      { to: '/sp', className: '' },
-	                      _react2['default'].createElement(
-	                        'span',
-	                        { className: 'value' },
-	                        '3'
-	                      ),
-	                      ' ',
-	                      _react2['default'].createElement(
-	                        'span',
-	                        { className: 'labels' },
-	                        'Sản phẩm'
-	                      )
-	                    )
-	                  ),
-	                  _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-3' },
-	                    _react2['default'].createElement(
-	                      'a',
-	                      { href: '#', className: '' },
-	                      _react2['default'].createElement(
-	                        'span',
-	                        { className: 'value' },
-	                        '0'
-	                      ),
-	                      ' ',
-	                      _react2['default'].createElement(
-	                        'span',
-	                        { className: 'labels' },
-	                        'Ảnh'
-	                      )
-	                    )
-	                  ),
-	                  _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-3' },
-	                    _react2['default'].createElement(
-	                      'a',
-	                      { href: '#', className: '' },
-	                      _react2['default'].createElement(
-	                        'span',
-	                        { className: 'value' },
-	                        '0'
-	                      ),
-	                      ' ',
-	                      _react2['default'].createElement(
-	                        'span',
-	                        { className: 'labels' },
-	                        'Bài Viết'
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2['default'].createElement('div', { className: 'col-sm-2 col-md-3 col-lg-4' })
-	            )
-	          )
+	          _react2['default'].createElement(_profileInfo2['default'], null),
+	          _react2['default'].createElement(_infoBar2['default'], null)
 	        )
 	      );
 	    }
@@ -11012,7 +10816,374 @@ webpackJsonp([0],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ThumbItem = __webpack_require__(319);
+	var _reactRouter = __webpack_require__(209);
+
+	var _classnames = __webpack_require__(317);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var Navbar = (function (_React$Component) {
+	  function Navbar() {
+	    _classCallCheck(this, Navbar);
+
+	    _get(Object.getPrototypeOf(Navbar.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _inherits(Navbar, _React$Component);
+
+	  _createClass(Navbar, [{
+	    key: 'render',
+	    value: function render() {
+	      var classesHeaderNameAndImg = (0, _classnames2['default'])({
+	        fixedHeaderNameAndImage: true,
+	        hiden: !this.props.transform,
+	        show: this.props.transform
+	      });
+
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'container-fluid' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'navbar-header' },
+	          _react2['default'].createElement(
+	            'button',
+	            { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
+	            _react2['default'].createElement(
+	              'span',
+	              { className: 'sr-only' },
+	              'Toggle navigation'
+	            ),
+	            _react2['default'].createElement('span', { className: 'icon-bar' }),
+	            _react2['default'].createElement('span', { className: 'icon-bar' }),
+	            _react2['default'].createElement('span', { className: 'icon-bar' })
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: classesHeaderNameAndImg },
+	            _react2['default'].createElement(
+	              _reactRouter.Link,
+	              { to: '/', className: 'navbar-brand' },
+	              _react2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
+	            ),
+	            _react2['default'].createElement(
+	              'p',
+	              { className: 'navbar-text pull-left' },
+	              'Tổ Cú'
+	            )
+	          )
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'nav navbar-nav navbar-right' },
+	            _react2['default'].createElement(
+	              _reactRouter.Link,
+	              { to: '/signin', className: 'btn btn-sm btn-default navbar-btn' },
+	              'Sign in'
+	            ),
+	            _react2['default'].createElement(
+	              _reactRouter.Link,
+	              { to: '/signup', className: 'btn btn-sm btn-primary navbar-btn' },
+	              'Sign up'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Navbar;
+	})(_react2['default'].Component);
+
+	exports['default'] = Navbar;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 319 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(197)['default'];
+
+	var _get = __webpack_require__(200)['default'];
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(209);
+
+	var InfoBar = (function (_React$Component) {
+	  function InfoBar() {
+	    _classCallCheck(this, InfoBar);
+
+	    _get(Object.getPrototypeOf(InfoBar.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _inherits(InfoBar, _React$Component);
+
+	  _createClass(InfoBar, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'container-fluid infoBar' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2['default'].createElement('div', { className: 'col-sm-2 col-md-3 col-lg-4' }),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-8 col-md-6 col-lg-4' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-3' },
+	                _react2['default'].createElement(
+	                  'a',
+	                  { href: '#', className: 'active' },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'value' },
+	                    '3'
+	                  ),
+	                  ' ',
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'labels' },
+	                    'Box'
+	                  )
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-3' },
+	                _react2['default'].createElement(
+	                  _reactRouter.Link,
+	                  { to: '/sp', className: '' },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'value' },
+	                    '3'
+	                  ),
+	                  ' ',
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'labels' },
+	                    'Sản phẩm'
+	                  )
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-3' },
+	                _react2['default'].createElement(
+	                  'a',
+	                  { href: '#', className: '' },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'value' },
+	                    '0'
+	                  ),
+	                  ' ',
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'labels' },
+	                    'Ảnh'
+	                  )
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'col-xs-3' },
+	                _react2['default'].createElement(
+	                  'a',
+	                  { href: '#', className: '' },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'value' },
+	                    '0'
+	                  ),
+	                  ' ',
+	                  _react2['default'].createElement(
+	                    'span',
+	                    { className: 'labels' },
+	                    'Bài Viết'
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          _react2['default'].createElement('div', { className: 'col-sm-2 col-md-3 col-lg-4' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return InfoBar;
+	})(_react2['default'].Component);
+
+	exports['default'] = InfoBar;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 320 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(197)['default'];
+
+	var _get = __webpack_require__(200)['default'];
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var ProfileInfo = (function (_React$Component) {
+	  function ProfileInfo() {
+	    _classCallCheck(this, ProfileInfo);
+
+	    _get(Object.getPrototypeOf(ProfileInfo.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _inherits(ProfileInfo, _React$Component);
+
+	  _createClass(ProfileInfo, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'container-fluid profileInfo' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'aboutBar' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'about' },
+	            _react2['default'].createElement(
+	              'h1',
+	              { className: 'name' },
+	              'Tổ Cú'
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'iconsLinksEtc' },
+	              _react2['default'].createElement(
+	                'ul',
+	                null,
+	                _react2['default'].createElement(
+	                  'li',
+	                  { className: 'websiteWrapper' },
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { href: '#', target: '_blank' },
+	                    _react2['default'].createElement(
+	                      'i',
+	                      { className: 'fa fa-map-marker gray' },
+	                      '  Hà Nội'
+	                    )
+	                  )
+	                ),
+	                _react2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { href: 'https://www.facebook.com/thanhchamly', target: '_blank' },
+	                    _react2['default'].createElement(
+	                      'i',
+	                      { className: 'fa fa-facebook-square gray' },
+	                      '  facebook'
+	                    )
+	                  )
+	                ),
+	                _react2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { href: '#', target: '_blank' },
+	                    _react2['default'].createElement(
+	                      'i',
+	                      { className: 'fa fa-twitter gray' },
+	                      '  twitter'
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            _react2['default'].createElement(
+	              'p',
+	              { className: 'aboutText' },
+	              'Nơi chúng ta thỏa sức với niềm đam mê đồ cũ & handmade :x'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ProfileInfo;
+	})(_react2['default'].Component);
+
+	exports['default'] = ProfileInfo;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 321 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(197)['default'];
+
+	var _get = __webpack_require__(200)['default'];
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ThumbItem = __webpack_require__(322);
 
 	var _ThumbItem2 = _interopRequireDefault(_ThumbItem);
 
@@ -11050,7 +11221,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 319 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11081,15 +11252,15 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _ArticleItem = __webpack_require__(320);
+	var _ArticleItem = __webpack_require__(323);
 
 	var _ArticleItem2 = _interopRequireDefault(_ArticleItem);
 
-	var _AlbumItem = __webpack_require__(321);
+	var _AlbumItem = __webpack_require__(324);
 
 	var _AlbumItem2 = _interopRequireDefault(_AlbumItem);
 
-	var _ProductItem = __webpack_require__(322);
+	var _ProductItem = __webpack_require__(325);
 
 	var _ProductItem2 = _interopRequireDefault(_ProductItem);
 
@@ -11162,8 +11333,6 @@ webpackJsonp([0],[
 	          type = 'Ảnh';
 	      }
 
-	      console.log(this.props);
-
 	      return _react2['default'].createElement(
 	        'div',
 	        { className: 'thumbnail' },
@@ -11202,7 +11371,7 @@ webpackJsonp([0],[
 	                'div',
 	                { className: 'btn btn-default btn-block btn-follow' },
 	                this.props.likesCount,
-	                ' likes'
+	                ' likes '
 	              )
 	            )
 	          )
@@ -11225,7 +11394,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 320 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -11287,7 +11456,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 321 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -11349,7 +11518,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 322 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11439,7 +11608,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 323 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11464,15 +11633,15 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(209);
 
-	var _reactMasonryMixin = __webpack_require__(324);
+	var _reactMasonryMixin = __webpack_require__(330);
 
 	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
 
-	var _storeBoxStore = __webpack_require__(341);
+	var _storeBoxStore = __webpack_require__(376);
 
 	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
 
-	var _actionsBoxActions = __webpack_require__(342);
+	var _actionsBoxActions = __webpack_require__(377);
 
 	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
@@ -11480,15 +11649,15 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _componentsProductDetailHeaderProduct = __webpack_require__(343);
+	var _componentsProductDetailHeaderProduct = __webpack_require__(347);
 
 	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
 
-	var _componentsProductDetailBoxItem = __webpack_require__(346);
+	var _componentsProductDetailBoxItem = __webpack_require__(386);
 
 	var _componentsProductDetailBoxItem2 = _interopRequireDefault(_componentsProductDetailBoxItem);
 
-	var InfiniteScroll = __webpack_require__(347)(_react2['default']);
+	var InfiniteScroll = __webpack_require__(350)(_react2['default']);
 	exports['default'] = _react2['default'].createClass({
 	  displayName: 'BoxTest',
 
@@ -11536,34 +11705,43 @@ webpackJsonp([0],[
 	    });
 	  },
 
-	  handleLoad: function handleLoad(data) {
-	    console.log('handleLoad');
-	    var hasMore = data.length >= this.state.limit * this.state.page;
-	    var page = this.state.page + 1;
-	    var skip = this.state.skip += this.state.limit;
+	  handleLoad: function handleLoad(data, page) {
+	    var limit = this.state.limit;
+	    var hasMore = data.length == limit;
+	    var skip = this.state.skip += limit;
+
 	    this.setState({
 	      posts: this.state.posts.concat(data),
-	      hasMore: hasMore,
-	      page: page,
+	      page: page + 1,
 	      skip: skip
+	    });
+
+	    this.hasMore(hasMore);
+	  },
+
+	  hasMore: function hasMore(_hasMore) {
+	    this.setState({
+	      hasMore: _hasMore
 	    });
 	  },
 
 	  loadMore: function loadMore(page) {
 	    var id = this.props.params.id;
 
-	    var self = this;
-	    setTimeout(function () {
-	      self.loadActions(id, self.state.skip, self.state.limit);
-	    }, 1000);
+	    var self = this,
+	        skip = this.state.skip,
+	        limit = this.state.limit;
+	    if (this.state.hasMore) {
+	      this.loadActions(id, skip, limit, function (data) {
+	        self.handleLoad(data, page);
+	      });
+	    }
 	  },
 
-	  loadActions: function loadActions(id, skip, limit) {
-	    var self = this;
-
+	  loadActions: function loadActions(id, skip, limit, cb) {
 	    _axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
-	      self.handleLoad(res.data);
-	    })['catch'](function (res) {});
+	      cb(res.data);
+	    });
 	  },
 
 	  getArticlesToRender: function getArticlesToRender() {
@@ -11609,14 +11787,314 @@ webpackJsonp([0],[
 
 	});
 	module.exports = exports['default'];
+	// hasMore: hasMore,
 
 /***/ },
-/* 324 */
+/* 327 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(197)['default'];
+
+	var _get = __webpack_require__(200)['default'];
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(209);
+
+	var _decorators = __webpack_require__(286);
+
+	var Posts = (function (_React$Component) {
+	  function Posts(props) {
+	    _classCallCheck(this, Posts);
+
+	    _get(Object.getPrototypeOf(Posts.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _inherits(Posts, _React$Component);
+
+	  _createClass(Posts, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.HeadParams.setTitle('Posts | tocu.vn');
+	      this.props.HeadParams.setDescription('Posts | Description');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement(
+	          'p',
+	          null,
+	          'Posts! ',
+	          this.props.params.id
+	        ),
+	        _react2['default'].createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          'to Home!'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Posts;
+	})(_react2['default'].Component);
+
+	exports['default'] = Posts;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 328 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _inherits = __webpack_require__(197)['default'];
+
+	var _get = __webpack_require__(200)['default'];
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(209);
+
+	var _decorators = __webpack_require__(286);
+
+	var Album = (function (_React$Component) {
+	  function Album(props) {
+	    _classCallCheck(this, Album);
+
+	    _get(Object.getPrototypeOf(Album.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _inherits(Album, _React$Component);
+
+	  _createClass(Album, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.HeadParams.setTitle('Album | tocu.vn');
+	      this.props.HeadParams.setDescription('Album | Description');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement(
+	          'p',
+	          null,
+	          'Album! ',
+	          this.props.params.id
+	        ),
+	        _react2['default'].createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          'to Home!'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Album;
+	})(_react2['default'].Component);
+
+	exports['default'] = Album;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 329 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(209);
+
+	var _reactMasonryMixin = __webpack_require__(330);
+
+	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
+
+	/* @jsx */
+
+	var _componentsProductDetailHeaderProduct = __webpack_require__(347);
+
+	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
+
+	var InfiniteScroll = __webpack_require__(350)(_react2['default']);
+
+	var masonryOptions = {
+	  transitionDuration: 0
+	};
+
+	exports['default'] = _react2['default'].createClass({
+	  displayName: 'Sanpham',
+
+	  mixins: [(0, _reactMasonryMixin2['default'])('masonryContainer', masonryOptions)],
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      page: 0,
+	      hasMore: true,
+	      items: [0, 1, 2, 3, 4, 5]
+	    };
+	  },
+
+	  getLoaderElement: function getLoaderElement() {
+	    // return null;
+
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'thumbnail article text-center' },
+	        'Loading ',
+	        _react2['default'].createElement('i', { className: 'fa fa-cog fa-spin' })
+	      )
+	    );
+	  },
+
+	  loadMore: function loadMore(page) {
+	    console.log('load', page);
+	    setTimeout((function () {
+	      this.setState({
+	        page: page + 1,
+	        items: this.state.items.concat([0, 1, 2, 3, 4, 5]),
+	        hasMore: page < 10
+	      });
+	    }).bind(this), 1000);
+	  },
+
+	  getArticlesToRender: function getArticlesToRender() {
+	    return this.state.items.map(function (page, i) {
+	      return _react2['default'].createElement(
+	        'div',
+	        { key: i, className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'thumbnail' },
+	          _react2['default'].createElement(
+	            _reactRouter.Link,
+	            { to: 'spID', params: { id: i } },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'imgWrapper' },
+	              _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: '/img/404.jpg', alt: '100%x200' })
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'infoSanpham' },
+	              _react2['default'].createElement(
+	                'span',
+	                { className: 'titleSanpham' },
+	                'Title'
+	              ),
+	              _react2['default'].createElement(
+	                'span',
+	                { className: 'price' },
+	                _react2['default'].createElement(
+	                  'span',
+	                  { className: 'price-list' },
+	                  '153.000 VNĐ'
+	                ),
+	                _react2['default'].createElement(
+	                  'span',
+	                  { className: 'price-sale' },
+	                  '123.000 VNĐ'
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    });
+	  },
+
+	  render: function render() {
+	    console.log('render');
+
+	    return _react2['default'].createElement(
+	      'div',
+	      null,
+	      _react2['default'].createElement(_componentsProductDetailHeaderProduct2['default'], null),
+	      _react2['default'].createElement(
+	        'section',
+	        { id: 'productDetail' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'container' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'masonry' },
+	              _react2['default'].createElement(
+	                InfiniteScroll,
+	                {
+	                  ref: 'masonryContainer',
+	                  loader: this.getLoaderElement(),
+	                  pageStart: this.state.page - 1,
+	                  loadMore: this.loadMore,
+	                  hasMore: this.state.hasMore,
+	                  threshold: 500 },
+	                this.getArticlesToRender()
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isBrowser = (typeof window !== 'undefined');
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(325) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(338) : null;
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(331) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(344) : null;
 
 	function MasonryMixin() {
 	    return function(reference, options) {
@@ -11728,7 +12206,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 325 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -11922,8 +12400,8 @@ webpackJsonp([0],[
 	// -------------------------- transport -------------------------- //
 	if (true) {
 	  module.exports = masonryDefinition(
-	    __webpack_require__(326),
-	    __webpack_require__(336)
+	    __webpack_require__(332),
+	    __webpack_require__(342)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -11944,7 +12422,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 326 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -12935,12 +13413,12 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(330),
-	    __webpack_require__(327),
-	    __webpack_require__(329),
-	    __webpack_require__(331),
+	    __webpack_require__(336),
 	    __webpack_require__(333),
-	    __webpack_require__(334)
+	    __webpack_require__(335),
+	    __webpack_require__(337),
+	    __webpack_require__(339),
+	    __webpack_require__(340)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -12969,7 +13447,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 327 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13033,7 +13511,7 @@ webpackJsonp([0],[
 
 	// transport
 	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(328) );
+	  module.exports = defineDocReady( __webpack_require__(334) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  // if RequireJS, then doc is already ready
@@ -13048,7 +13526,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 328 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13136,7 +13614,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 329 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13579,7 +14057,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 330 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13667,7 +14145,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 331 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -13876,7 +14354,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(332) );
+	  module.exports = defineGetSize( __webpack_require__(338) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -13889,7 +14367,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 332 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13950,7 +14428,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 333 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -14063,7 +14541,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 334 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14573,9 +15051,9 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
-	    __webpack_require__(329),
-	    __webpack_require__(331),
-	    __webpack_require__(335)
+	    __webpack_require__(335),
+	    __webpack_require__(337),
+	    __webpack_require__(341)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -14599,7 +15077,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 335 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14660,7 +15138,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 336 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14869,7 +15347,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(337) );
+	  module.exports = defineGetSize( __webpack_require__(343) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -14882,7 +15360,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 337 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14943,7 +15421,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 338 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14961,8 +15439,8 @@ webpackJsonp([0],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(339),
-	      __webpack_require__(340)
+	      __webpack_require__(345),
+	      __webpack_require__(346)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -15284,7 +15762,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 339 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15762,7 +16240,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 340 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15850,177 +16328,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 341 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _Array$from = __webpack_require__(290)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	var _Alt = __webpack_require__(183);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _actionsBoxActions = __webpack_require__(342);
-
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
-	var _immutable = __webpack_require__(314);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var BoxStore = (function () {
-	  function BoxStore() {
-	    _classCallCheck(this, BoxStore);
-
-	    this.bindActions(_actionsBoxActions2['default']); // getBoxID, getBoxIDFailed
-
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.posts = _immutable2['default'].List();
-	    this.test = _immutable2['default'].List();
-	  }
-
-	  _createClass(BoxStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].List.isList(this.test)) {
-	        this.test = _immutable2['default'].fromJS(this.test);
-	      }
-	      if (!_immutable2['default'].List.isList(this.posts)) {
-	        this.posts = _immutable2['default'].fromJS(this.posts);
-	      }
-	    }
-	  }, {
-	    key: 'onGetBoxID',
-	    value: function onGetBoxID(data) {
-	      this.test = this.test.merge(_Array$from(data));
-	      this.posts = this.posts.merge(_Array$from(data));
-	    }
-	  }, {
-	    key: 'onTest',
-	    value: function onTest(data) {
-	      console.log('onTest');
-	    }
-	  }, {
-	    key: 'onGetBoxIDFailed',
-	    value: function onGetBoxIDFailed(err) {
-	      console.log('onGetBoxIDFailed', err);
-	    }
-	  }]);
-
-	  return BoxStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
-
-/***/ },
-/* 342 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(228)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	var _Alt = __webpack_require__(183);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(294);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(313);
-
-	var BoxActions = (function () {
-	  function BoxActions() {
-	    _classCallCheck(this, BoxActions);
-	  }
-
-	  _createClass(BoxActions, [{
-	    key: 'getBoxID',
-
-	    /**
-	     * request lấy các bài posts trong
-	     * @param {number} id [id box]
-	     * @param {number} skip
-	     * @param {number} limit
-	     * @dispatch {Array} [bài posts]
-	     */
-	    value: function getBoxID(_ref) {
-	      var id = _ref.id;
-	      var skip = _ref.skip;
-	      var limit = _ref.limit;
-	      var self;
-	      return _regeneratorRuntime.async(function getBoxID$(context$2$0) {
-	        while (1) switch (context$2$0.prev = context$2$0.next) {
-	          case 0:
-	            self = this;
-	            context$2$0.next = 3;
-	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
-	              /**
-	               * send data cho Store
-	               */
-	              self.dispatch(res.data);
-	            })['catch'](function (res) {
-	              /**
-	               * send lỗi cho func dataError
-	               * @param  {Error} [Error request]
-	               */
-	              self.actions.getBoxIDFailed(res.data);
-	            }));
-
-	          case 3:
-	          case 'end':
-	            return context$2$0.stop();
-	        }
-	      }, null, this);
-	    }
-	  }, {
-	    key: 'TestActions',
-	    value: function TestActions(_ref2) {
-	      var id = _ref2.id;
-
-	      console.log('TestActions', id);
-	    }
-	  }, {
-	    key: 'test',
-	    value: function test(data) {
-	      this.dispatch(data);
-	    }
-	  }, {
-	    key: 'getBoxIDFailed',
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	    value: function getBoxIDFailed(err) {
-	      this.dispatch(err);
-	    }
-	  }]);
-
-	  return BoxActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(BoxActions);
-
-/***/ },
-/* 343 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -16042,11 +16350,11 @@ webpackJsonp([0],[
 
 	/* @jsx */
 
-	var _Header = __webpack_require__(344);
+	var _Header = __webpack_require__(348);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Navbar = __webpack_require__(345);
+	var _Navbar = __webpack_require__(349);
 
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 
@@ -16098,7 +16406,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 344 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -16219,7 +16527,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 345 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16310,84 +16618,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 346 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(209);
-
-	var _classnames = __webpack_require__(317);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	exports['default'] = _react2['default'].createClass({
-	  displayName: 'BoxItem',
-
-	  propTypes: {},
-
-	  render: function render() {
-	    var img_url = '/img/404.jpg';
-	    var price = this.props.price !== null ? this.props.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
-
-	    if (this.props.images) {
-	      var url = this.props.images[0];
-	      img_url = url.replace(/image\//gi, 'image/230x/');
-	    }
-
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'thumbnail' },
-	        _react2['default'].createElement(
-	          _reactRouter.Link,
-	          { to: '/sp/' + this.props.id },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'imgWrapper' },
-	            _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' })
-	          ),
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'infoSanpham' },
-	            _react2['default'].createElement(
-	              'span',
-	              { className: 'titleSanpham' },
-	              this.props.name
-	            ),
-	            _react2['default'].createElement(
-	              'span',
-	              { className: 'price' },
-	              _react2['default'].createElement(
-	                'span',
-	                { className: 'price-sale' },
-	                price,
-	                ' VNĐ'
-	              )
-	            )
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-	module.exports = exports['default'];
-	/*<span className="price-list">153.000 VNĐ</span>*/
-
-/***/ },
-/* 347 */
+/* 350 */
 /***/ function(module, exports) {
 
 	function topPosition(domElt) {
@@ -16455,305 +16686,6 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 348 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _inherits = __webpack_require__(197)['default'];
-
-	var _get = __webpack_require__(200)['default'];
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(209);
-
-	var _decorators = __webpack_require__(286);
-
-	var Posts = (function (_React$Component) {
-	  function Posts(props) {
-	    _classCallCheck(this, Posts);
-
-	    _get(Object.getPrototypeOf(Posts.prototype), 'constructor', this).call(this, props);
-	  }
-
-	  _inherits(Posts, _React$Component);
-
-	  _createClass(Posts, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle('Posts | tocu.vn');
-	      this.props.HeadParams.setDescription('Posts | Description');
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2['default'].createElement(
-	        'div',
-	        null,
-	        _react2['default'].createElement(
-	          'p',
-	          null,
-	          'Posts! ',
-	          this.props.params.id
-	        ),
-	        _react2['default'].createElement(
-	          _reactRouter.Link,
-	          { to: '/' },
-	          'to Home!'
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Posts;
-	})(_react2['default'].Component);
-
-	exports['default'] = Posts;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 349 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _inherits = __webpack_require__(197)['default'];
-
-	var _get = __webpack_require__(200)['default'];
-
-	var _createClass = __webpack_require__(205)['default'];
-
-	var _classCallCheck = __webpack_require__(208)['default'];
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(209);
-
-	var _decorators = __webpack_require__(286);
-
-	var Album = (function (_React$Component) {
-	  function Album(props) {
-	    _classCallCheck(this, Album);
-
-	    _get(Object.getPrototypeOf(Album.prototype), 'constructor', this).call(this, props);
-	  }
-
-	  _inherits(Album, _React$Component);
-
-	  _createClass(Album, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle('Album | tocu.vn');
-	      this.props.HeadParams.setDescription('Album | Description');
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2['default'].createElement(
-	        'div',
-	        null,
-	        _react2['default'].createElement(
-	          'p',
-	          null,
-	          'Album! ',
-	          this.props.params.id
-	        ),
-	        _react2['default'].createElement(
-	          _reactRouter.Link,
-	          { to: '/' },
-	          'to Home!'
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Album;
-	})(_react2['default'].Component);
-
-	exports['default'] = Album;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 350 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequireDefault = __webpack_require__(10)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(209);
-
-	var _reactMasonryMixin = __webpack_require__(324);
-
-	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
-
-	/* @jsx */
-
-	var _componentsProductDetailHeaderProduct = __webpack_require__(343);
-
-	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
-
-	var InfiniteScroll = __webpack_require__(347)(_react2['default']);
-
-	var masonryOptions = {
-	  transitionDuration: 0
-	};
-
-	exports['default'] = _react2['default'].createClass({
-	  displayName: 'Sanpham',
-
-	  mixins: [(0, _reactMasonryMixin2['default'])('masonryContainer', masonryOptions)],
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      page: 0,
-	      hasMore: true,
-	      items: [0, 1, 2, 3, 4, 5]
-	    };
-	  },
-
-	  getLoaderElement: function getLoaderElement() {
-	    // return null;
-
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' },
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'thumbnail article text-center' },
-	        'Loading ',
-	        _react2['default'].createElement('i', { className: 'fa fa-cog fa-spin' })
-	      )
-	    );
-	  },
-
-	  loadMore: function loadMore(page) {
-	    console.log('load', page);
-	    setTimeout((function () {
-	      this.setState({
-	        page: page + 1,
-	        items: this.state.items.concat([0, 1, 2, 3, 4, 5]),
-	        hasMore: page < 10
-	      });
-	    }).bind(this), 1000);
-	  },
-
-	  getArticlesToRender: function getArticlesToRender() {
-	    return this.state.items.map(function (page, i) {
-	      return _react2['default'].createElement(
-	        'div',
-	        { key: i, className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'thumbnail' },
-	          _react2['default'].createElement(
-	            _reactRouter.Link,
-	            { to: 'spID', params: { id: i } },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'imgWrapper' },
-	              _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: '/img/404.jpg', alt: '100%x200' })
-	            ),
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'infoSanpham' },
-	              _react2['default'].createElement(
-	                'span',
-	                { className: 'titleSanpham' },
-	                'Title'
-	              ),
-	              _react2['default'].createElement(
-	                'span',
-	                { className: 'price' },
-	                _react2['default'].createElement(
-	                  'span',
-	                  { className: 'price-list' },
-	                  '153.000 VNĐ'
-	                ),
-	                _react2['default'].createElement(
-	                  'span',
-	                  { className: 'price-sale' },
-	                  '123.000 VNĐ'
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    });
-	  },
-
-	  render: function render() {
-	    console.log('render');
-
-	    return _react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(_componentsProductDetailHeaderProduct2['default'], null),
-	      _react2['default'].createElement(
-	        'section',
-	        { id: 'productDetail' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'container' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'masonry' },
-	              _react2['default'].createElement(
-	                InfiniteScroll,
-	                {
-	                  ref: 'masonryContainer',
-	                  loader: this.getLoaderElement(),
-	                  pageStart: this.state.page - 1,
-	                  loadMore: this.loadMore,
-	                  hasMore: this.state.hasMore,
-	                  threshold: 500 },
-	                this.getArticlesToRender()
-	              )
-	            )
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-	module.exports = exports['default'];
-
-/***/ },
 /* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -16807,7 +16739,7 @@ webpackJsonp([0],[
 
 	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
 
-	var _componentsProductDetailHeader = __webpack_require__(344);
+	var _componentsProductDetailHeader = __webpack_require__(348);
 
 	var _componentsProductDetailHeader2 = _interopRequireDefault(_componentsProductDetailHeader);
 
@@ -20272,6 +20204,261 @@ webpackJsonp([0],[
 	exports['default'] = HeadParams;
 	;
 	module.exports = exports['default'];
+
+/***/ },
+/* 376 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _Array$from = __webpack_require__(290)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	var _Alt = __webpack_require__(183);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _actionsBoxActions = __webpack_require__(377);
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
+
+	var _immutable = __webpack_require__(314);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var BoxStore = (function () {
+	  function BoxStore() {
+	    _classCallCheck(this, BoxStore);
+
+	    this.bindActions(_actionsBoxActions2['default']); // getBoxID, getBoxIDFailed
+
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.posts = _immutable2['default'].List();
+	    this.test = _immutable2['default'].List();
+	  }
+
+	  _createClass(BoxStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].List.isList(this.test)) {
+	        this.test = _immutable2['default'].fromJS(this.test);
+	      }
+	      if (!_immutable2['default'].List.isList(this.posts)) {
+	        this.posts = _immutable2['default'].fromJS(this.posts);
+	      }
+	    }
+	  }, {
+	    key: 'onGetBoxID',
+	    value: function onGetBoxID(data) {
+	      this.test = this.test.merge(_Array$from(data));
+	      this.posts = this.posts.merge(_Array$from(data));
+	    }
+	  }, {
+	    key: 'onTest',
+	    value: function onTest(data) {
+	      console.log('onTest');
+	    }
+	  }, {
+	    key: 'onGetBoxIDFailed',
+	    value: function onGetBoxIDFailed(err) {
+	      console.log('onGetBoxIDFailed', err);
+	    }
+	  }]);
+
+	  return BoxStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
+
+/***/ },
+/* 377 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(205)['default'];
+
+	var _classCallCheck = __webpack_require__(208)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(228)['default'];
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	var _Alt = __webpack_require__(183);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(294);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(313);
+
+	var BoxActions = (function () {
+	  function BoxActions() {
+	    _classCallCheck(this, BoxActions);
+	  }
+
+	  _createClass(BoxActions, [{
+	    key: 'getBoxID',
+
+	    /**
+	     * request lấy các bài posts trong
+	     * @param {number} id [id box]
+	     * @param {number} skip
+	     * @param {number} limit
+	     * @dispatch {Array} [bài posts]
+	     */
+	    value: function getBoxID(_ref) {
+	      var id = _ref.id;
+	      var skip = _ref.skip;
+	      var limit = _ref.limit;
+	      var self;
+	      return _regeneratorRuntime.async(function getBoxID$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            self = this;
+	            context$2$0.next = 3;
+	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/box/' + id + '?skip=' + skip + '&limit=' + limit).then(function (res) {
+	              /**
+	               * send data cho Store
+	               */
+	              self.dispatch(res.data);
+	            })['catch'](function (res) {
+	              /**
+	               * send lỗi cho func dataError
+	               * @param  {Error} [Error request]
+	               */
+	              self.actions.getBoxIDFailed(res.data);
+	            }));
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+	  }, {
+	    key: 'TestActions',
+	    value: function TestActions(_ref2) {
+	      var id = _ref2.id;
+
+	      console.log('TestActions', id);
+	    }
+	  }, {
+	    key: 'test',
+	    value: function test(data) {
+	      this.dispatch(data);
+	    }
+	  }, {
+	    key: 'getBoxIDFailed',
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	    value: function getBoxIDFailed(err) {
+	      this.dispatch(err);
+	    }
+	  }]);
+
+	  return BoxActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(BoxActions);
+
+/***/ },
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(10)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(209);
+
+	var _classnames = __webpack_require__(317);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _react2['default'].createClass({
+	  displayName: 'BoxItem',
+
+	  propTypes: {},
+
+	  render: function render() {
+	    var img_url = '/img/404.jpg';
+	    var price = this.props.price !== null ? this.props.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
+
+	    if (this.props.images) {
+	      var url = this.props.images[0];
+	      img_url = url.replace(/image\//gi, 'image/230x/');
+	    }
+
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'thumbnail' },
+	        _react2['default'].createElement(
+	          _reactRouter.Link,
+	          { to: '/sp/' + this.props.id },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'imgWrapper' },
+	            _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' })
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'infoSanpham' },
+	            _react2['default'].createElement(
+	              'span',
+	              { className: 'titleSanpham' },
+	              this.props.name
+	            ),
+	            _react2['default'].createElement(
+	              'span',
+	              { className: 'price' },
+	              _react2['default'].createElement(
+	                'span',
+	                { className: 'price-sale' },
+	                price,
+	                ' VNĐ'
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+	module.exports = exports['default'];
+	/*<span className="price-list">153.000 VNĐ</span>*/
 
 /***/ }
 ]);
