@@ -56,16 +56,24 @@ export default React.createClass({
     });
   },
 
-  handleLoad(data) {
-    console.log('handleLoad')
-    let hasMore = (data.length >= this.state.limit * this.state.page)
-    let page = this.state.page + 1;
-    let skip = this.state.skip += this.state.limit
+  handleLoad(data, page) {
+    let limit = this.state.limit;
+    let hasMore = data.length == limit;
+    let skip = this.state.skip += limit
+
     this.setState({
       posts: this.state.posts.concat(data),
-      hasMore: hasMore,
-      page: page,
+      page: page + 1,
       skip: skip,
+      // hasMore: hasMore,
+    });
+
+    this.hasMore(hasMore);
+  },
+
+  hasMore(hasMore) {
+    this.setState({
+      hasMore: hasMore,
     });
   },
 
@@ -74,21 +82,20 @@ export default React.createClass({
       params: { id }
     } = this.props;
 
-    var self = this;
-    setTimeout(function() {
-      self.loadActions(id, self.state.skip, self.state.limit);
-    }, 1000);
+    let self = this,
+    skip = this.state.skip,
+    limit = this.state.limit;
+    if(this.state.hasMore) {
+      this.loadActions(id, skip, limit, function(data) {
+        self.handleLoad(data, page);
+      });
+    }
   },
 
-  loadActions(id, skip, limit) {
-    let self = this;
-
+  loadActions(id, skip, limit, cb) {
     Axios.get(`${Api_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
       .then((res) => {
-        self.handleLoad(res.data);
-      })
-      .catch((res) => {
-
+        cb(res.data);
       });
   },
 

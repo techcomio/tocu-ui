@@ -63,8 +63,6 @@ export default class ThumbItem extends React.Component {
         type = "Ảnh";
     }
 
-    console.log(this.props)
-
     return (
       <div className="thumbnail">
         <Link to={`/box/${this.props.id}`}>
@@ -78,9 +76,7 @@ export default class ThumbItem extends React.Component {
               {ListPost}
             </div>
             <p>
-              <div className="btn btn-default btn-block btn-follow">
-                {this.props.likesCount} likes
-              </div>
+              <div className="btn btn-default btn-block btn-follow">{this.props.likesCount} likes </div>
             </p>
           </div>
         </Link>
