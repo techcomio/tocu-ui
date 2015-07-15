@@ -12,7 +12,7 @@ export default class ThumbNail extends React.Component {
         {this.props.posts.map((post, i) => {
           return (
             <div key={i} className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-              <ThumbItem {...post.toJS()} />
+              <ThumbItem handleBoxLogin={this.props.handleBoxLogin} token={this.props.token} {...post.toJS()} />
             </div>
           );
         })}

@@ -10,9 +10,17 @@ export default class NavbarProductID extends React.Component {
   constructor (props) {
     super(props)
 
+    this.Like  = this.Like.bind(this);
+    this.Share = this.Share.bind(this);
+    this.Cart  = this.Cart.bind(this);
+
     this.state = {
       hideHeader: false,
     };
+  }
+
+  _bind(...methods) {
+    methods.forEach( (method) => this[method] = this[method].bind(this) );
   }
 
   componentDidMount() {
@@ -42,18 +50,44 @@ export default class NavbarProductID extends React.Component {
         <nav className="navbar navbar-defaul">
           <div className="navbar-header">
             <div className="btn-group">
-              <button type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray">&nbsp;</i> Thích</button>
+              <button onClick={this.Like} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray">&nbsp;</i> Thích</button>
               <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.countLike}</span></button>
             </div>
-            <button type="button" className="btn btn-default navbar-btn"><i className="fa fa-facebook-square gray">&nbsp; </i>Chia sẻ</button>
+            <button onClick={this.Share} type="button" className="btn btn-default navbar-btn"><i className="fa fa-facebook-square gray">&nbsp; </i>Chia sẻ</button>
           </div>
           <div className="nav navbar-nav navbar-right">
-            <button type="button" className="btn btn-primary navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Mua</button>
+            <button onClick={this.Cart} type="button" className="btn btn-primary navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Mua</button>
           </div>
         </nav>
       </div>
     );
 	}
+
+  boxLogin(cb) {
+    if(!this.props.token) {
+      this.props.handleBoxLogin();
+    } else {
+      cb();
+    }
+  }
+
+  Like() {
+    this.boxLogin(function() {
+      console.log('Like')
+    });
+  }
+
+  Share() {
+    this.boxLogin(function() {
+      console.log('Share');
+    });
+  }
+
+  Cart() {
+    this.boxLogin(function() {
+      console.log('Cart');
+    });
+  }
 
 };
 

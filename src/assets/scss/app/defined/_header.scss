@@ -20,6 +20,13 @@ header { background: $body-bg; box-shadow: $header-shadow; position: relative;
 		.btn-default { background: $navbar-btn-bg; border: 1px solid $border-color; }
 		.navbar-btn.btn-sm { box-shadow: 0px 1px 1px #BABABA; border-radius: 4px; }
 		.navbar-btn.btn-sm:nth-child(1n + 2) { margin-left: 10px; }
+		.navbar-right { height: 50px; line-height: 50px;
+			.dropdown-toggle { padding: 0; margin: 0; 
+				&:active, &:visited { border-color: #fff; }
+			}
+			img { width: 32px; height: 32px; border-radius: 2px; }
+			.text-name { padding: 0 10px; margin-top: 25px; }
+		}
 	}
 	.profileInfo {
 		.name { font-weight: bold; color: $text-color; }

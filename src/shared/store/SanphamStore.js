@@ -26,6 +26,10 @@ class SanphamStore {
     this.product = this.product.merge(data);
   }
 
+  onActionSanphamID(sp) {
+    this.product = this.product.merge(sp);
+  }
+
   onGetIdFailed(err) {
     console.log('getIdFailed');
   }

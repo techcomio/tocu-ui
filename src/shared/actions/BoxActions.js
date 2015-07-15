@@ -33,13 +33,10 @@ class BoxActions {
 		  });		  
   }
 
-  TestActions({id}) {
-  	console.log('TestActions', id)
+  like({id, token}) {
+  	console.log('like Actions', id)
   }
 
-  test(data) {
-  	this.dispatch(data);
-  }
 
  	/**
  	 * send lỗi cho Store

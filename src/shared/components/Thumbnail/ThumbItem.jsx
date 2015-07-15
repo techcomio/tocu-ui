@@ -2,6 +2,7 @@
 
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
+import BoxActions    from '../../actions/BoxActions';
 /**
  * @Component
  */
@@ -10,6 +11,17 @@ import AlbumItem   from './_AlbumItem';
 import ProductItem from './_ProductItem';
 
 export default class ThumbItem extends React.Component {
+
+  constructor (props) {
+    super(props)
+
+    this._bind('boxLogin', 'handleLike');
+
+  }
+
+  _bind(...methods) {
+    methods.forEach( (method) => this[method] = this[method].bind(this) );
+  }
 
   render() {
     let img_url = "/img/404.jpg";
@@ -76,12 +88,27 @@ export default class ThumbItem extends React.Component {
               {ListPost}
             </div>
             <p>
-              <div className="btn btn-default btn-block btn-follow">{this.props.likesCount} likes </div>
+              <div onClick={this.handleLike} className="btn btn-default btn-block btn-follow">{this.props.likesCount} likes </div>
             </p>
           </div>
         </Link>
       </div>
     );
+  }
+
+  boxLogin(cb) {
+    if(!this.props.token) {
+      this.props.handleBoxLogin();
+    } else {
+      cb();
+    }
+  }
+
+  handleLike(e) {
+    e.preventDefault();
+    this.boxLogin(function() {
+      BoxActions.like({id: this.props.id, token: this.props.token});
+    }.bind(this));
   }
 }
 

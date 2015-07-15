@@ -9,11 +9,11 @@ class AuthActions {
 
   /**
    * Create accout User
-   * @param {string} options.name        họ tên
-   * @param {string} options.password    mật khẩu
-   * @param {number} options.mobilePhone số điện thoại
-   * @param {string} options.city        tỉnh thành
-   * @param {string} options.district    quận/huyện
+   * @param {string} options.name        - họ tên
+   * @param {string} options.password    - mật khẩu
+   * @param {number} options.mobilePhone - số điện thoại
+   * @param {string} options.city        - tỉnh thành
+   * @param {string} options.district    - quận/huyện
    */
   CreateUser({name, password, mobilePhone, city, district}) {
   	let self = this;
@@ -36,8 +36,8 @@ class AuthActions {
 
   /**
    * Login
-   * @param {number} số điện thoại
-   * @param {string} mật khẩu
+   * @param {number} mobilePhone - số điện thoại
+   * @param {string} password - mật khẩu
    */
   Login({mobilePhone, password}) {
     let self = this;
@@ -56,6 +56,14 @@ class AuthActions {
   }
 
   /**
+   * Logout
+   */
+  Logout() {
+    console.log('LogoutActions');
+    this.dispatch();
+  }
+
+  /**
    * Actions Start Create User
    */
   CreateUserStart() {
@@ -71,7 +79,7 @@ class AuthActions {
 
   /**
    * Create User Failed
-   * @param {Error} err lỗi create accout
+   * @param {Error} err - lỗi create accout
    */
   CreateFailed(err) {
     this.dispatch(err);
@@ -79,7 +87,7 @@ class AuthActions {
 
   /**
    * Login Failed
-   * @param {Error} err lỗi đăng nhập
+   * @param {Error} err - lỗi đăng nhập
    */
   LoginFailed(err) {
     this.dispatch(err);

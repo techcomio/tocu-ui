@@ -5,7 +5,14 @@ import React          from 'react';
 import { Link }       from 'react-router';
 import classNames     from 'classnames';
 import {prepareRoute} from '../../decorators';
-
+import AuthStore      from '../../store/AuthStore';
+import AuthActions    from '../../actions/AuthActions';
+/**
+ * @Component
+ */
+import Navbar      from './navbar';
+import InfoBar     from './infoBar';
+import ProfileInfo from './profileInfo';
 
 @prepareRoute(async function() {
   return await * [
@@ -65,91 +72,16 @@ export default class Home extends React.Component {
             <img src="/img/logo.png" alt="MongoDB" />
           </div>
           <nav className={classesNavbar}>
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                </button>
-                <div className={classesHeaderNameAndImg}>
-                  <Link to="/" className="navbar-brand" >
-                    <img alt="Brand" src="/img/logo.png" width="40" height="40" />
-                  </Link>
-                  <p className="navbar-text pull-left">Tổ Cú</p>
-                </div>
-              </div>
-              <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <div className="nav navbar-nav navbar-right">
-                  <Link to="/signin" className="btn btn-sm btn-default navbar-btn">Sign in</Link>
-                  <Link to="/signup" className="btn btn-sm btn-primary navbar-btn">Sign up</Link>
-                </div>
-              </div>
-            </div>
+            <Navbar 
+              Logout={AuthActions.Logout}
+              auth={this.props.auth}
+              transform={this.state.transform} />
           </nav>
 
-          <div className="container-fluid profileInfo">
-            <div className="aboutBar">
-              <div className="about">
-                <h1 className="name">Tổ Cú</h1>
-                <div className="iconsLinksEtc">
-                  <ul>
-                    <li className="websiteWrapper">
-                      <a href="#" target="_blank" >
-                        <i className="fa fa-map-marker gray">&nbsp; Hà Nội</i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.facebook.com/thanhchamly" target="_blank" >
-                        <i className="fa fa-facebook-square gray">&nbsp; facebook</i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" target="_blank" >
-                        <i className="fa fa-twitter gray">&nbsp; twitter</i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+          <ProfileInfo />
 
-                <p className="aboutText" >
-                  Nơi chúng ta thỏa sức với niềm đam mê đồ cũ & handmade :x
-                </p>
-              </div>
-            </div>
-          </div>
+          <InfoBar />
 
-          <div className="container-fluid infoBar">
-            <div className="row">
-              <div className="col-sm-2 col-md-3 col-lg-4"></div>
-              <div className="col-sm-8 col-md-6 col-lg-4">
-                <div className="row">
-                  <div className="col-xs-3">
-                    <a href="#" className="active">
-                      <span className="value">3</span> <span className="labels">Box</span>    
-                    </a>
-                  </div>
-                  <div className="col-xs-3">
-                    <Link to="/sp" className="">
-                      <span className="value">3</span> <span className="labels">Sản phẩm</span>    
-                    </Link>
-                  </div>
-                  <div className="col-xs-3">
-                    <a href="#" className="">
-                      <span className="value">0</span> <span className="labels">Ảnh</span>    
-                    </a>
-                  </div>
-                  <div className="col-xs-3">
-                    <a href="#" className="">
-                      <span className="value">0</span> <span className="labels">Bài Viết</span>    
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-2 col-md-3 col-lg-4"></div>
-            </div>
-          </div>
         </div>
       </header>
     );

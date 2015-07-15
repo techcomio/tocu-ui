@@ -18,9 +18,9 @@ export default React.createClass({
       let url = this.props.images[0];
       img_url = url.replace(/image\//gi, 'image/230x/');
 	  }
-		
+
 		return (
-      <div className='col-xs-6 col-sm-4 col-md-3 col-lg-3'>
+      <div onClick={this.handleClick} className='col-xs-6 col-sm-4 col-md-3 col-lg-3'>
         <div className="thumbnail" >
           <Link to={`/sp/${this.props.id}`} >
             <div className="imgWrapper">
@@ -37,5 +37,8 @@ export default React.createClass({
         </div>
       </div>
 		);
-	}
+	},
+  handleClick() {
+    this.props.onClick(this.props.data);
+  }
 });

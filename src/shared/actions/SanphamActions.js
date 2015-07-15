@@ -40,6 +40,15 @@ class SanphamActions {
     this.dispatch(err);
   }
 
+  /**
+   * actions view san pham ID
+   * @param  {object} sanpham - san pham nguoi dung click view
+   * @dispatch {object}
+   */
+  actionSanphamID(sanpham) {
+  	this.dispatch(sanpham);
+  }
+
 }
 
 module.exports = Alt.createActions(SanphamActions);

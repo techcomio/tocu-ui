@@ -1,6 +1,6 @@
 
 .thumbnail { padding: $thumb-padding; border-radius: $thumb-border-radius; border: 1px solid #fff; box-shadow: $thumb-box-shadow;
-	& > a:hover { text-decoration: none !important; }
+	& > a { text-decoration: none !important; }
 	/* thumb title */
 	&-title { font-size: 14px; font-weight: bold; font-family: $thumb-font-family; }
 	/* thumb img */
@@ -49,9 +49,42 @@
 		box-shadow: 0px 1px 1px 0px #BABABA;
 		border-radius: 4px;
 		&:hover { background-color: $thumb-btn-follow-bg-hover; }
+		&:focus, &:active { border: 1px solid $border-color !important; }
 	}
 
-	@media all and (max-width: 768px) {
+	@media all and (max-width: 1200px) {
+		.imgWrapper { 
+			img {
+				&.img-max-height { min-height: 180px; max-height: 180px; }
+			}
+		}
+	}
+
+	@media all and (max-width: 992px) {
+		.imgWrapper { 
+			img {
+				&.img-max-height { min-height: 128px; max-height: 128px; }
+			}
+		}
+	}
+
+	@media only screen and (max-device-width: 1200px) {
+		.imgWrapper { 
+			img {
+				&.img-max-height { min-height: 180px; max-height: 180px; }
+			}
+		}
+	}
+
+	@media only screen and (max-device-width: 992px) {
+		.imgWrapper { 
+			img {
+				&.img-max-height { min-height: 128px; max-height: 128px; }
+			}
+		}
+	}
+
+	@media only screen and (max-device-width: 768px) {
 		& {  border-radius: 4px; }
 		/* thumb title */
 		&-title { font-size: 11px; margin-top: 5px; margin-bottom: 5px; }

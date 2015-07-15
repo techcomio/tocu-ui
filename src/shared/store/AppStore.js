@@ -13,12 +13,16 @@ class AppStore {
 		this.on('init', this.bootstrap);
 		this.on('bootstrap', this.bootstrap);
 
+    this.auth = new Map({});
     this.error = null;
     this.posts = Immutable.List();
   }
 
   bootstrap() {
     if (!Immutable.List.isList(this.posts)) {
+      this.posts = Immutable.fromJS(this.posts);
+    }
+    if (!Immutable.Map.isMap(this.posts)) {
       this.posts = Immutable.fromJS(this.posts);
     }
   }

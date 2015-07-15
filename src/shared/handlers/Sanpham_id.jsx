@@ -5,11 +5,14 @@ import {Link}         from 'react-router';
 import classNames     from 'classnames';
 import {prepareRoute} from '../decorators';
 import SanphamStore   from '../store/SanphamStore';
+import AuthStore      from '../store/AuthStore';
 import SanphamActions from '../actions/SanphamActions';
+import AuthActions    from '../actions/AuthActions';
 /**
- * @component
+ * @Component
  */
 import AltContainer    from 'alt/AltContainer';
+import FormSignIn      from '../components/Form/SignIn';
 import Header          from '../components/productDetail/Header';
 import ImgSlideProduct from '../components/productDetail/ImgSlideProduct';
 import NavbarProductID from '../components/productDetail/NavbarProductID';
@@ -29,11 +32,13 @@ export default class SanphamID extends React.Component {
   constructor (props) {
     super(props)
 
-    this._bind('onChangeSanphamStore');
+    this._bind('onChangeSanphamStore', 'handleBoxLogin');
 
     this.state = {
       hideHeader: false,
+      boxLogin: false,
       ...SanphamStore.getState().product.toJS(),
+      ...AuthStore.getState().auth.toJS(),
     };
   }
 
@@ -63,7 +68,8 @@ export default class SanphamID extends React.Component {
 	render () {
     return (
       <div>
-        <Header hideHeader={this.state.hideHeader} />
+        <Header 
+          hideHeader={this.state.hideHeader} />
 				
         <section id="productDetail">
           <div className="container">
@@ -72,7 +78,9 @@ export default class SanphamID extends React.Component {
                 <div className="productDetail" >
                   {/* Navbar Product */}
                   <NavbarProductID
+                    token={this.state.token}
                     countLike={this.state.likesCount}
+                    handleBoxLogin={this.handleBoxLogin}
                     hideNavbar={this.state.hideHeader} />
 
                   <div className="product">
@@ -169,8 +177,35 @@ export default class SanphamID extends React.Component {
             </div>
           </div>
         </section>
+
+        {this.state.boxLogin && (
+          <div id="boxLogin">
+            <div className="row">
+              <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+                <div className="centrix">
+                  <AltContainer
+                    component={FormSignIn}
+                    stores={[AuthStore]}
+                    actions={{AuthActions}}
+                    inject={{
+                      loginState: function(props) {
+                        return AuthStore.getState().loginState
+                      }
+                    }}
+                   />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 			</div>
     );
 	}
+
+  handleBoxLogin() {
+    this.setState({
+      boxLogin: true,
+    });
+  }
 
 };

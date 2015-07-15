@@ -2,12 +2,13 @@
 
 import React        from 'react';
 import Axios        from 'axios';
-import {Api_URL} from '../../../config-sample';
+import {Api_URL}    from '../../../config-sample';
 import {Link}       from 'react-router';
 import MasonryMixin from 'react-masonry-mixin';
 let InfiniteScroll = require('react-infinite-scroll')(React);
 import BoxStore     from '../store/BoxStore';
 import BoxActions   from '../actions/BoxActions';
+import SanphamActions   from '../actions/SanphamActions';
 /**
  * @Component
  */
@@ -30,9 +31,16 @@ export default React.createClass({
   },
 
   componentWillMount () {
-    this.props.HeadParams.setTitle("Sanpham | tocu.vn");
-    this.props.HeadParams.setDescription("Sanpham | Description");
+    this.props.HeadParams.setTitle("Box | tocu.vn");
+    this.props.HeadParams.setDescription("Box | Description");
   },
+
+  // componentDidMount() {
+  //   Axios.get(`${Api_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
+  //     .then((res) => {
+  //       cb(res.data);
+  //     });
+  // },
 
   getLoaderElement: function () {
     // return null;
@@ -102,9 +110,9 @@ export default React.createClass({
   getArticlesToRender() {
     return this.state.posts.map((post, i) => {
       return (
-        <BoxItem key={i} {...post} />
+        <BoxItem onClick={this.handleViewSP} data={post} key={i} {...post} />
       );
-    });
+    }.bind(this));
   },
 
   render () {
@@ -133,6 +141,10 @@ export default React.createClass({
         </section>
       </div>
     );
+  },
+
+  handleViewSP(sp) {
+    SanphamActions.actionSanphamID(sp);
   }
 
 });

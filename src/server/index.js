@@ -21,6 +21,13 @@ export default function (req, res, next) {
   const location = new Location(path, query);
   const history  = new History(path);
 
+  let auth = {
+    avatarUrl: req.cookies.avatarUrl,
+    mobilePhone: req.cookies.mobilePhone,
+    name: req.cookies.name,
+    password: req.cookies.password,
+    token: req.cookies.token,
+  }
 
   /**
    * set auth to Store
@@ -28,13 +35,12 @@ export default function (req, res, next) {
    * @type {Object}
    */
   let data = {
-    AppStore: {
-      auth: {id: 123, name: 'test'},
-      posts: [],
+    AuthStore: {
+      auth: req.cookies,
     }
   };
   Alt.bootstrap(JSON.stringify(data));
-  
+
   
   ReactRouter.run(routes, location, async (err, routerState, transition) => {
     try {

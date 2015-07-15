@@ -12,25 +12,7 @@ export default React.createClass({
 	},
 
 	getInitialState() {
-    return {
-      hideHeader: false,
-    };
-  },
-
-	componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  },
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  },
-
-  handleScroll(e) {
-    var scrollTop = window.scrollY;
-    var hideHeader = scrollTop >= 33;
-    this.setState({
-      hideHeader: hideHeader
-    });
+    return {};
   },
 
 	render() {
@@ -39,7 +21,7 @@ export default React.createClass({
       "navbar-default": true,
       "navbar-product": true,
       "navbar-fixed-top": true,
-      headerHiden: this.state.hideHeader,
+      headerHiden: this.props.hideHeader,
     });
 
 		return (

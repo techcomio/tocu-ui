@@ -1,11 +1,11 @@
-/* @jsx React.DOM */
 "use strict";
 
-import React from 'react';
+import React  from 'react';
 import Router from 'react-router';
-/* @jsx */
-import Header from './Header';
-import Navbar from './Navbar';
+/* @Component */
+import AltContainer from 'alt/AltContainer';
+import Header       from './Header';
+import Navbar       from './Navbar';
 
 
 export default React.createClass({
@@ -17,7 +17,6 @@ export default React.createClass({
   getInitialState() {
     return {
       hideHeader: false,
-      previousScroll: 0
     };
   },
 
@@ -30,25 +29,24 @@ export default React.createClass({
   },
 
   handleScroll(e) {
-    var scrollTop = window.scrollY || e.pageY;
-    if(scrollTop >= 70) {
-  	  var hideHeader = this.state.previousScroll <= scrollTop;
-
-	    this.setState({
-	      hideHeader: hideHeader,
-	      previousScroll: scrollTop,
-	    });
-    }
+    var scrollTop = window.scrollY;
+    var hideHeader = scrollTop >= 33;
+    this.setState({
+      hideHeader: hideHeader
+    });
   },
 
 	render() {
 		return (
 			<div>
-				<Header 
+
+        <Header 
           hideHeader={this.state.hideHeader} />
+
 				<Navbar 
           hideHeader={this.state.hideHeader} />
+
 			</div>
 		);
 	}
-})
+});
