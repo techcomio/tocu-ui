@@ -31,7 +31,7 @@ class CityStore {
   }
 
   onGetDistrict(data) {
-    this.district = this.district.merge(data);
+    this.district = Immutable.List(data);
   }
 
   onGetCityFailed(err) {

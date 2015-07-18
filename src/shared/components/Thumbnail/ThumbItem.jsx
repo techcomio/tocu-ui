@@ -107,13 +107,12 @@ export default class ThumbItem extends React.Component {
   handleLike(e) {
     e.preventDefault();
     this.boxLogin(function() {
-      BoxActions.like({id: this.props.id, token: this.props.token});
+      BoxActions.like({itemID: this.props.id, token: this.props.token, userID: this.props.userID});
     }.bind(this));
   }
 }
 
 ThumbItem.propTypes = {
-  name: PropTypes.string.isRequired,
   postsCount: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   latestPosts: PropTypes.array.isRequired,

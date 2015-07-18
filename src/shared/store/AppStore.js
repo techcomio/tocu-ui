@@ -29,6 +29,7 @@ class AppStore {
 
   onGetData(data) {
     this.posts = this.posts.merge(Array.from(data));
+    console.log(this.posts.toJS())
   }
 
   onDataFailed(err) {

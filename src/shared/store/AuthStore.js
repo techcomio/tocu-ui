@@ -33,29 +33,21 @@ class AuthStore {
   }
 
   onLogin(data) {
-    // Cookies.set('token', 'SHA256.hex('abcxyz')', {expires: 8640000}); //  Expires in 100 day
-    Cookies.set('avatarUrl', data.avatarUrl, {expires: 8640000}); //  Expires in 100 day
-    Cookies.set('mobilePhone', data.mobilePhone, {expires: 8640000}); //  Expires in 100 day
-    Cookies.set('name', data.name, {expires: 8640000}); //  Expires in 100 day
-    Cookies.set('password', data.password, {expires: 8640000}); //  Expires in 100 day
-    Cookies.set('token', data.token, {expires: 8640000}); //  Expires in 100 day
-    console.log(data);
+    Cookies.set('access_token', data.access_token, {expires: data.expires_in}); //  Expires in 100 day
 
     this.loginState = "success";
     this.auth = this.auth.merge(data);
     localStorage.auth = JSON.stringify(data);
+    localStorage.access_token = data.access_token;
   }
 
   onLogout() {
     console.log('onLogout');
-    Cookies.expire('avatarUrl'); //  Will expire the cookie with a path of '/' 
-    Cookies.expire('mobilePhone'); //  Will expire the cookie with a path of '/' 
-    Cookies.expire('name'); //  Will expire the cookie with a path of '/' 
-    Cookies.expire('password'); //  Will expire the cookie with a path of '/' 
-    Cookies.expire('token'); //  Will expire the cookie with a path of '/' 
+    Cookies.expire('access_token'); //  Will expire the cookie with a path of '/' 
     this.loginState = "logout";
     this.auth = new Map({});
     delete localStorage.auth;
+    delete localStorage.access_token;
   }
 
   onCreateUserStart() {

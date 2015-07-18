@@ -1,8 +1,9 @@
-
 .thumbnail { padding: $thumb-padding; border-radius: $thumb-border-radius; border: 1px solid #fff; box-shadow: $thumb-box-shadow;
 	& > a { text-decoration: none !important; }
 	/* thumb title */
-	&-title { font-size: 14px; font-weight: bold; font-family: $thumb-font-family; }
+	&-title { font-size: 14px; font-weight: bold; font-family: $thumb-font-family; color: $gray-light; display: block; overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+				-webkit-line-clamp: 1; white-space: nowrap;
+				-webkit-box-orient: vertical; }
 	/* thumb img */
 	.imgWrapper { position: relative; height: auto; width: auto;  /* min-height: 128px; max-height: 128px;  */
 		img { border-radius: 6px; width: 100%;  min-height: 100px;
@@ -18,6 +19,7 @@
 			div { height: 46px;
 				&:first-child { text-align: center; }
 			}
+			.creditTitle { color: $gray-light; }
 			.newsImg { width: 33.33332%; float: left; display: inline-table;
 				.imgIcon { width: 46px; height: 46px; background: $thumb-imgIcon-bg-none; margin: auto; margin-top: -1px; position: relative; display: block; border-radius: 50%;
 					&.imgIcon-bg-red { background: $thumb-imgIcon-bg-red; background-image: url('/img/cart.png'); background-repeat: no-repeat; background-position: center; }
@@ -30,7 +32,7 @@
 			.newsText { width: 66.66668%; display: block; padding: 5px 0px; line-height: 1.4;
 				overflow:hidden;
 				/*white-space: nowrap;*/
-			  text-overflow:ellipsis; 
+			  text-overflow: ellipsis; 
 				display: -webkit-box;
 				-webkit-line-clamp: 2;
 				-webkit-box-orient: vertical;
@@ -91,7 +93,7 @@
 		/* thumb img */
 		.imgWrapper { 
 			img { border-radius: 4px;
-				&.img-max-height { min-height: 80px; max-height: 80px; }
+				&.img-max-height { min-height: 85px; max-height: 85px; }
 			}
 			.boardPinCount { right: 5px; bottom: 5px; padding: 2px 4px; border-radius: 3px; line-height: 1.1; font-size: 10px; }
 		}
@@ -119,4 +121,8 @@
 		/* button follow */
 		.btn-follow { font-size: 10px; line-height: 1.1; }
 	}
+}
+
+@media all and (max-width: 992px) {
+	[class^="col-"], [class*="col-"] { padding-left: 8px; padding-right: 8px; }
 }

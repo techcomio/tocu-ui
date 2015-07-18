@@ -2,7 +2,7 @@
 
 /* product Detail */
 #productDetail { padding-top: $product-padding-top; padding-bottom: $product-padding-bottom;
-	.productDetail { position: relative; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22); background: #fff; 
+	.productDetail { position: relative; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22); background: #fff; display: none;
 		.navbar-product-detail { position: absolute; top: 0px; z-index: 100;  background: rgba(255, 255, 255, 1); box-sizing: border-box; 
 			height: 56px; width: 100%; display: inline-block; border-radius: 8px 8px 0 0; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
 			&.sticky { position: fixed; left: 0; top: 0; border-radius: 0; background: rgba(255, 255, 255, 0.9); }
@@ -34,7 +34,7 @@
 						}
 						.slide-tabs { width: 100%; height: 18px; position: absolute; bottom: 20px; left: 0; text-align: center;
 							ul { margin: 0 auto; padding: 0;
-								li { width: 12px; height: 12px; border-radius: 50%; background: $product-bg-slide-tabs; display: inline-block; margin: 0 4px; 
+								li { width: 12px; height: 12px; border-radius: 50%; background: $product-bg-slide-tabs; display: inline-block; margin: 0 4px;
 									&:hover { cursor: pointer; }
 									&.active { background: $product-bg-slide-tabs-active;  }
 								}
@@ -138,6 +138,61 @@
 			}
 		}
 	}
+
+	.productOrder { position: relative; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22); background: #fff; display: none;
+		.navbar { padding-left: 10px; padding-right: 10px; border-bottom: 1px solid $border-color; margin: 0;
+			.navbar-right { margin-right: 0; float: right; }
+		}
+		.btn { font-weight: bold; box-shadow: 0px 1px 1px #BABABA; }
+		.infoOrder { border-bottom: 1px solid $border-color; text-align: center; padding: 20px 10px; }
+		.infoNguoiNhan { padding: 30px 60px; position: relative; }
+		.row { margin-top: 20px; margin-bottom: 20px; 
+			p { height: 20px; line-height: 31px; vertical-align: middle; }
+		}
+		.title-border { display: block; font-weight: bold; text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5); margin-top: 15px; text-align: center; 
+			p { overflow: hidden; margin-bottom: 10px; text-align: center; font-weight: bold; text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5); 
+				&::before { margin-right: 10px; }
+				&::after { margin-left: 10px; }
+				&::before, &::after { content: ""; display: inline-block; height: 1px; position: relative; vertical-align: middle; width: 25%; background: rgba(0, 0, 0, 0.2) none repeat scroll 0% 0%; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+				}
+			}
+		}
+		.disabled {
+			label { color: #999; }
+		}
+	}
+
+	.statusOrder { position: relative; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22); background: #fff; display: none;
+		.navbar { padding-left: 10px; padding-right: 10px; border-bottom: 1px solid $border-color; margin: 0;
+			.navbar-right { margin-right: 0; }
+		}
+		.status-check { font-size: 72px; color: $brand-success; }
+		.product { padding: 20px 10px; }
+	}
+
+	@media all and (max-width: 768px) {
+		.productOrder { font-size: 12px;
+			.navbar {
+				.navbar-header { float: left; padding-top: 6px; }
+				.navbar-right { float: right; }
+				.navbar-btn { margin: 4px 0 !important; }
+				.btn { font-size: 12px; padding: 5px 6px 3px 6px; line-height: 1.4;
+					i { font-size: 12px !important; }
+				}
+			}
+			.infoNguoiNhan { padding: 10px 20px; }
+			.title-border {
+				p {
+					&::before, &::after { width: 15%; }
+				}
+			}
+			.row {
+				p { height: 20px; line-height: 36px; }
+			}
+			h1 { font-size: 24px; }
+			h3 { font-size: 18px; }
+		}
+	}
 }
 
 
@@ -146,14 +201,17 @@
 		padding-left: 8px; padding-right: 8px;
 	}
 	.thumbnail { border: none; padding: 0;
-		a { text-decoration: none; }
-		img { border-radius: 6px 6px 0 0; height: auto; }
-		.infoSanpham { padding: 5px 10px;
-			.titleSanpham { font-size: $font-size-base; display: block; color: $gray; }
-			.price { font-size: $font-size-small;
-				.price-list { color: $gray-light; text-decoration: line-through; padding-right: 10px; }
-				.price-sale { color: $brand-primary; font-weight: bold; }
+		a { text-decoration: none; color: $gray-light; }
+		img { border-radius: 6px 6px 0 0; height: auto; border-bottom: 1px solid #ddd; }
+		.infoSanpham { padding: 10px 10px 8px 10px; font-size: 11px; line-height: 15px;
+			.titleSanpham { display: block; }
+			.price {
+				.price-list { text-decoration: line-through; padding-right: 10px; }
+				.price-sale { font-weight: bold; }
 			}
+		}
+		.infoBox { padding: 10px 10px; border-top: 1px solid #eee; line-height: 15px;
+			.nameBox { font-size: 11px; color: $gray-light; }
 		}
 	}
 	@media all and (max-width: 768px) {
@@ -165,6 +223,7 @@
 			}
 		}
 	}
+	.div-loading i { font-size: 40px; }
 }
 
 

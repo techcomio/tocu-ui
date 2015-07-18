@@ -3,7 +3,7 @@
 import React  from 'react';
 
 
-export default class CreditItem extends React.Component {
+export default class ProductItem extends React.Component {
 
 	render() {
     let images = null;
@@ -21,7 +21,7 @@ export default class CreditItem extends React.Component {
           </span>
         </div>
         <div className="newsText newsInfo">
-          <p className="creditTitle">{this.props.name}</p>
+          <p className="creditTitle">{this.props.code}</p>
           <p><strong className="creditCost">{this.props.price} đ</strong></p>
         </div>
       </div>
@@ -30,8 +30,8 @@ export default class CreditItem extends React.Component {
 
 }
 
-CreditItem.propTypes = {
+ProductItem.propTypes = {
   id: React.PropTypes.number.isRequired,
-  name: React.PropTypes.string.isRequired,
+  code: React.PropTypes.string.isRequired,
   price: React.PropTypes.string.isRequired,
 }

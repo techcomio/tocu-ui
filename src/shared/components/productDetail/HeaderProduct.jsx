@@ -43,10 +43,14 @@ export default React.createClass({
         <Header 
           hideHeader={this.state.hideHeader} />
 
-				<Navbar 
+				<Navbar
+          info={this.props.info}
+          auth={this.props.auth}
+          likeBox={this.props.BoxActions.like}
           hideHeader={this.state.hideHeader} />
 
 			</div>
 		);
-	}
+	},
+
 });

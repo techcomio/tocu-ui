@@ -1,6 +1,7 @@
 'use strict';
 
 import 'babel/polyfill';
+import Axios                   from 'axios';
 import React                   from 'react';
 import {Router as ReactRouter} from 'react-router';
 import Location                from 'react-router/lib/Location';
@@ -8,6 +9,7 @@ import History                 from 'react-router/lib/MemoryHistory';
 import Iso                     from 'iso';
 import Alt                     from '../shared/Alt';
 import routes                  from '../shared/routes';
+import {Api_URL}               from '../../config-sample';
 /**
  * @Component
  */
@@ -16,30 +18,33 @@ import HeadParams  from '../shared/lib/HeadParams';
 let HtmlComponent = React.createFactory(require('./html'));
 
 
-export default function (req, res, next) {
+export default async function (req, res, next) {
   const { path, query } = req;
   const location = new Location(path, query);
   const history  = new History(path);
 
-  let auth = {
-    avatarUrl: req.cookies.avatarUrl,
-    mobilePhone: req.cookies.mobilePhone,
-    name: req.cookies.name,
-    password: req.cookies.password,
-    token: req.cookies.token,
-  }
+  let token = req.cookies.access_token;
 
-  /**
-   * set auth to Store
-   * @auth cookie...
-   * @type {Object}
-   */
-  let data = {
-    AuthStore: {
-      auth: req.cookies,
-    }
-  };
-  Alt.bootstrap(JSON.stringify(data));
+  if(token) {
+    await Axios.get(`${Api_URL}/user/me`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+    .then((response) => {
+      let dataStore = {
+        AuthStore: {
+          auth: response.data,
+        }
+      };
+      Alt.bootstrap(JSON.stringify(dataStore));
+    }).catch((response) => {});
+  } else {
+    let dataStore = {
+        AuthStore: {
+          auth: {},
+        }
+      };
+    Alt.bootstrap(JSON.stringify(dataStore));
+  }
 
   
   ReactRouter.run(routes, location, async (err, routerState, transition) => {

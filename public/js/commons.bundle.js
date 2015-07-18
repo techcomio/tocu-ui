@@ -98,7 +98,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(266);
+	__webpack_require__(269);
 	__webpack_require__(209);
 	__webpack_require__(3);
 	module.exports = __webpack_require__(194);
@@ -677,7 +677,6 @@
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
-	exports.isPromise = isPromise;
 	exports.eachObject = eachObject;
 	exports.assign = assign;
 	var isFunction = function isFunction(x) {
@@ -685,10 +684,6 @@
 	};
 
 	exports.isFunction = isFunction;
-
-	function isPromise(obj) {
-	  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
-	}
 
 	function eachObject(f, o) {
 	  o.forEach(function (from) {
@@ -1553,8 +1548,7 @@
 	  var action = function action() {
 	    newAction.dispatched = false;
 	    var result = newAction._dispatch.apply(newAction, arguments);
-	    // async functions that return promises should not be dispatched
-	    if (!newAction.dispatched && result !== undefined && !fn.isPromise(result)) {
+	    if (!newAction.dispatched && result !== undefined) {
 	      if (fn.isFunction(result)) {
 	        result(dispatch);
 	      } else {
@@ -23395,8 +23389,8 @@
 	      isTransitioning: false,
 	      location: null,
 	      branch: null,
-	      params: null,
 	      HeadParams: this.props.HeadParams,
+	      params: null,
 	      components: null
 	    };
 	  },
@@ -24921,14 +24915,17 @@
 /* 263 */,
 /* 264 */,
 /* 265 */,
-/* 266 */
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(267);
+	module.exports = __webpack_require__(270);
 
 
 /***/ },
-/* 267 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24951,18 +24948,18 @@
 
 	'use strict';
 
-	var LinkedStateMixin = __webpack_require__(268);
+	var LinkedStateMixin = __webpack_require__(271);
 	var React = __webpack_require__(25);
 	var ReactComponentWithPureRenderMixin =
-	  __webpack_require__(271);
-	var ReactCSSTransitionGroup = __webpack_require__(272);
+	  __webpack_require__(274);
+	var ReactCSSTransitionGroup = __webpack_require__(275);
 	var ReactFragment = __webpack_require__(33);
-	var ReactTransitionGroup = __webpack_require__(273);
+	var ReactTransitionGroup = __webpack_require__(276);
 	var ReactUpdates = __webpack_require__(47);
 
-	var cx = __webpack_require__(281);
-	var cloneWithProps = __webpack_require__(275);
-	var update = __webpack_require__(282);
+	var cx = __webpack_require__(284);
+	var cloneWithProps = __webpack_require__(278);
+	var update = __webpack_require__(285);
 
 	React.addons = {
 	  CSSTransitionGroup: ReactCSSTransitionGroup,
@@ -24979,7 +24976,7 @@
 
 	if ("production" !== process.env.NODE_ENV) {
 	  React.addons.Perf = __webpack_require__(173);
-	  React.addons.TestUtils = __webpack_require__(283);
+	  React.addons.TestUtils = __webpack_require__(286);
 	}
 
 	module.exports = React;
@@ -24987,7 +24984,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26)))
 
 /***/ },
-/* 268 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25004,8 +25001,8 @@
 
 	'use strict';
 
-	var ReactLink = __webpack_require__(269);
-	var ReactStateSetters = __webpack_require__(270);
+	var ReactLink = __webpack_require__(272);
+	var ReactStateSetters = __webpack_require__(273);
 
 	/**
 	 * A simple mixin around ReactLink.forState().
@@ -25032,7 +25029,7 @@
 
 
 /***/ },
-/* 269 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25109,7 +25106,7 @@
 
 
 /***/ },
-/* 270 */
+/* 273 */
 /***/ function(module, exports) {
 
 	/**
@@ -25219,7 +25216,7 @@
 
 
 /***/ },
-/* 271 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25272,7 +25269,7 @@
 
 
 /***/ },
-/* 272 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25294,10 +25291,10 @@
 	var assign = __webpack_require__(36);
 
 	var ReactTransitionGroup = React.createFactory(
-	  __webpack_require__(273)
+	  __webpack_require__(276)
 	);
 	var ReactCSSTransitionGroupChild = React.createFactory(
-	  __webpack_require__(278)
+	  __webpack_require__(281)
 	);
 
 	var ReactCSSTransitionGroup = React.createClass({
@@ -25346,7 +25343,7 @@
 
 
 /***/ },
-/* 273 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25363,10 +25360,10 @@
 	'use strict';
 
 	var React = __webpack_require__(25);
-	var ReactTransitionChildMapping = __webpack_require__(274);
+	var ReactTransitionChildMapping = __webpack_require__(277);
 
 	var assign = __webpack_require__(36);
-	var cloneWithProps = __webpack_require__(275);
+	var cloneWithProps = __webpack_require__(278);
 	var emptyFunction = __webpack_require__(39);
 
 	var ReactTransitionGroup = React.createClass({
@@ -25580,7 +25577,7 @@
 
 
 /***/ },
-/* 274 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25689,7 +25686,7 @@
 
 
 /***/ },
-/* 275 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25707,7 +25704,7 @@
 	'use strict';
 
 	var ReactElement = __webpack_require__(34);
-	var ReactPropTransferer = __webpack_require__(276);
+	var ReactPropTransferer = __webpack_require__(279);
 
 	var keyOf = __webpack_require__(62);
 	var warning = __webpack_require__(38);
@@ -25751,7 +25748,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26)))
 
 /***/ },
-/* 276 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25769,7 +25766,7 @@
 
 	var assign = __webpack_require__(36);
 	var emptyFunction = __webpack_require__(39);
-	var joinClasses = __webpack_require__(277);
+	var joinClasses = __webpack_require__(280);
 
 	/**
 	 * Creates a transfer strategy that will merge prop values using the supplied
@@ -25865,7 +25862,7 @@
 
 
 /***/ },
-/* 277 */
+/* 280 */
 /***/ function(module, exports) {
 
 	/**
@@ -25910,7 +25907,7 @@
 
 
 /***/ },
-/* 278 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25929,8 +25926,8 @@
 
 	var React = __webpack_require__(25);
 
-	var CSSCore = __webpack_require__(279);
-	var ReactTransitionEvents = __webpack_require__(280);
+	var CSSCore = __webpack_require__(282);
+	var ReactTransitionEvents = __webpack_require__(283);
 
 	var onlyChild = __webpack_require__(179);
 	var warning = __webpack_require__(38);
@@ -26061,7 +26058,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26)))
 
 /***/ },
-/* 279 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26176,7 +26173,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26)))
 
 /***/ },
-/* 280 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26291,7 +26288,7 @@
 
 
 /***/ },
-/* 281 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26350,7 +26347,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26)))
 
 /***/ },
-/* 282 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26524,7 +26521,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26)))
 
 /***/ },
-/* 283 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**

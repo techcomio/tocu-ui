@@ -8,16 +8,39 @@ import {Api_URL} from '../../../config-sample';
 class BoxActions {
 
 	/**
-	 * request lấy các bài posts trong
+	 * request lấy các boxs
+	 * @dispatch {Array} [boxs]
+	 */
+  async getBoxs() {
+  	let self = this;
+
+		await Axios.get(`${Api_URL}/box`)
+    	.then((res) => {
+    		/**
+    		 * send data cho Store
+    		 */
+		    self.dispatch(res.data);
+		  })
+		  .catch((res) => {
+		  	/**
+		  	 * send lỗi cho func dataError
+		  	 * @param  {Error} [Error request]
+		  	 */
+		    self.actions.boxsFailed(res.data)
+		  });
+  }
+
+	/**
+	 * request lấy thông tin Box
 	 * @param {number} id [id box]
 	 * @param {number} skip
 	 * @param {number} limit
 	 * @dispatch {Array} [bài posts]
 	 */
-  async getBoxID({id, skip, limit}) {
+  getBoxID({id}) {
   	let self = this;
 		
-		await Axios.get(`${Api_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
+		Axios.get(`${Api_URL}/box/${id}`)
     	.then((res) => {
     		/**
     		 * send data cho Store
@@ -33,10 +56,37 @@ class BoxActions {
 		  });		  
   }
 
-  like({id, token}) {
-  	console.log('like Actions', id)
+  /**
+   * like box
+   * @param  {number} options.itemID - id box
+   * @param  {string} options.token  - token
+   * @param  {number} options.userID - id user
+   * @dispatch {number}                
+   */
+  like({itemID, token, userID}) {
+  	let self = this;
+
+  	Axios.post(`${Api_URL}/like`, {
+      type: "box",
+      itemId: itemID,
+      UserId: userID,
+    })
+    .then((res) => {
+      self.dispatch(itemID);
+    })
+    .catch((res) => {
+      self.actions.likeFailed(res.data);
+    });
   }
 
+ 	/**
+ 	 * send lỗi cho Store
+ 	 * @param  {Error} err [Error request]
+ 	 * @dispatch {Error} [send Store]
+ 	 */
+  boxsFailed(err) {
+    this.dispatch(err);
+  }
 
  	/**
  	 * send lỗi cho Store
@@ -47,7 +97,9 @@ class BoxActions {
     this.dispatch(err);
   }
 
-  
+  likeFailed(err) {
+  	console.log('like box Failed', err);
+  }
 
 }
 

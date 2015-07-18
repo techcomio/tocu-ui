@@ -49,6 +49,35 @@ class SanphamActions {
   	this.dispatch(sanpham);
   }
 
+  
+  like({itemId, token, type, userID}) {
+    let self = this;
+
+    Axios.post(`${Api_URL}/like`, {
+      type: type,
+      itemId: itemId,
+      UserId: userID,
+    })
+    .then((res) => {
+      self.dispatch(res.data);
+    })
+    .catch((res) => {
+      self.actions.likeFailed(res.data);
+    });
+  }
+
+  likeFailed(err) {
+    console.log('likeFailed', err);
+  }
+
+  count() {
+    let self = this;
+    Axios.get(`${Api_URL}/product/count`)
+      .then((res) => {
+        self.dispatch(res.data);
+      })
+  }
+
 }
 
 module.exports = Alt.createActions(SanphamActions);

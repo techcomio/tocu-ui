@@ -4,10 +4,12 @@ import React          from 'react';
 import {Link}         from 'react-router';
 import AltContainer   from 'alt/AltContainer';
 import {prepareRoute} from '../decorators';
-import AppStore       from '../store/AppStore';
+import BoxStore       from '../store/BoxStore';
 import AuthStore      from '../store/AuthStore';
-import AppActions     from '../actions/AppActions';
+import SanphamStore   from '../store/SanphamStore';
+import BoxActions     from '../actions/BoxActions';
 import AuthActions    from '../actions/AuthActions';
+import SanphamActions from '../actions/SanphamActions';
 /**
  * @Component
  */
@@ -18,7 +20,8 @@ import Thumbnail  from '../components/Thumbnail';
 
 @prepareRoute(async function ({ params }) {
   return await * [
-    AppActions.getData(),
+    BoxActions.getBoxs(),
+    SanphamActions.count(),
   ];
 })
 
@@ -47,11 +50,17 @@ export default class Home extends React.Component {
       <div>
         {/* Header home */}
         <AltContainer
-          stores={[AuthStore]}
+          stores={[BoxStore, AuthStore, SanphamStore]}
           inject={{
             auth: function(props) {
               return AuthStore.getState().auth
-            }
+            },
+            countSanpham: function(props) {
+              return SanphamStore.getState().count
+            },
+            countBox: function(props) {
+              return BoxStore.getState().boxs.size
+            },
           }} >
 
           <Header actions={AuthActions} />
@@ -62,13 +71,16 @@ export default class Home extends React.Component {
           
             {/* Thumbnail */}
             <AltContainer 
-              stores={[AppStore, AuthStore]}
+              stores={[BoxStore, AuthStore]}
               inject={{
-                posts: function (props) {
-                  return AppStore.getState().posts
+                boxs: function (props) {
+                  return BoxStore.getState().boxs
                 },
                 token: function(props) {
                   return AuthStore.getState().auth.toJS().token
+                },
+                userID: function(props) {
+                  return AuthStore.getState().auth.toJS().id
                 },
               }} >
               <Thumbnail handleBoxLogin={this.handleBoxLogin} />

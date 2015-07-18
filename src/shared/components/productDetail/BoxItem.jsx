@@ -27,11 +27,14 @@ export default React.createClass({
               <img className="img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
             </div>
             <div className="infoSanpham">
-              <span className="titleSanpham">{this.props.name}</span>
+              <span className="titleSanpham">{this.props.code}</span>
               <span className="price">
                 {/*<span className="price-list">153.000 VNĐ</span>*/}
                 <span className="price-sale">{price} VNĐ</span>
               </span>
+            </div>
+            <div className="infoBox">
+              <span className="nameBox">{this.props.boxName}</span>
             </div>
           </Link>
         </div>

@@ -13,6 +13,7 @@ export default class NavbarProductID extends React.Component {
     this.Like  = this.Like.bind(this);
     this.Share = this.Share.bind(this);
     this.Cart  = this.Cart.bind(this);
+    this.handleScroll  = this.handleScroll.bind(this);
 
     this.state = {
       hideHeader: false,
@@ -24,11 +25,11 @@ export default class NavbarProductID extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this));
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll.bind(this));
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll(e) {
@@ -51,7 +52,7 @@ export default class NavbarProductID extends React.Component {
           <div className="navbar-header">
             <div className="btn-group">
               <button onClick={this.Like} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray">&nbsp;</i> Thích</button>
-              <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.countLike}</span></button>
+              <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.product.likesCount}</span></button>
             </div>
             <button onClick={this.Share} type="button" className="btn btn-default navbar-btn"><i className="fa fa-facebook-square gray">&nbsp; </i>Chia sẻ</button>
           </div>
@@ -64,7 +65,7 @@ export default class NavbarProductID extends React.Component {
 	}
 
   boxLogin(cb) {
-    if(!this.props.token) {
+    if(!this.props.auth.token) {
       this.props.handleBoxLogin();
     } else {
       cb();
@@ -73,8 +74,12 @@ export default class NavbarProductID extends React.Component {
 
   Like() {
     this.boxLogin(function() {
-      console.log('Like')
-    });
+      let {id, token} = this.props.auth;
+      let {type} = this.props.product.Box;
+      let itemId = this.props.product.id;
+
+      this.props.SanphamActions.like({itemId: itemId, token: token, type: type, userID: id});
+    }.bind(this));
   }
 
   Share() {
@@ -85,8 +90,8 @@ export default class NavbarProductID extends React.Component {
 
   Cart() {
     this.boxLogin(function() {
-      console.log('Cart');
-    });
+      this.props.Next();
+    }.bind(this));
   }
 
 };

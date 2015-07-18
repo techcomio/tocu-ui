@@ -13,10 +13,8 @@ export default class Navbar extends React.Component {
       hiden: !this.props.transform,
       show: this.props.transform,
     });
-
-    var auth = this.props.auth.toJS();
     
-    if(!auth.mobilePhone) {
+    if(!this.props.auth.mobilePhone) {
       return (
         <div className="container-fluid">
           <div className="navbar-header">
@@ -54,17 +52,17 @@ export default class Navbar extends React.Component {
           </button>
           <div className={classesHeaderNameAndImg}>
             <Link to="/" className="navbar-brand" >
-              <img alt="Brand" src="/img/logo.png" width="40" height="40" />
+              <img alt="logo" src="/img/logo.png" width="40" height="40" />
             </Link>
             <p className="navbar-text pull-left">Tổ Cú</p>
           </div>
         </div>
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <div className="nav navbar-nav navbar-right">
-            <span className="text-name">{auth.name}</span>
+            <span className="text-name">{this.props.auth.name}</span>
             <div className="btn-group">
               <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img alt="Brand" src={auth.avatarUrl} />
+                <img alt="avatar" src={this.props.auth.avatarUrl} />
               </button>
               <ul className="dropdown-menu">
                 <li><a href="#">settings</a></li>
@@ -79,7 +77,7 @@ export default class Navbar extends React.Component {
   }
 
   handleLogout() {
-    this.props.Logout();
+    this.props.Logout(this.props.auth.access_token);
   }
 
 };

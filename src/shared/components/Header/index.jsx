@@ -53,17 +53,13 @@ export default class Home extends React.Component {
   }
 
   render() {
-      let classesNavbar = classNames({
-        navbar: true,
-        "navbar-default": true,
-        "navbar-fixed-top": true,
-        test: !this.state.transform,
-      });
-      let classesHeaderNameAndImg = classNames({
-        fixedHeaderNameAndImage: true,
-        hiden: !this.state.transform,
-        show: this.state.transform,
-      });
+    let classesNavbar = classNames({
+      "navbar": true,
+      "navbar-default": true,
+      "navbar-home": true,
+      "navbar-fixed-top": true,
+      "test": !this.state.transform,
+    });
 
     return (
       <header>
@@ -74,13 +70,15 @@ export default class Home extends React.Component {
           <nav className={classesNavbar}>
             <Navbar 
               Logout={AuthActions.Logout}
-              auth={this.props.auth}
+              auth={this.props.auth.toJS()}
               transform={this.state.transform} />
           </nav>
 
           <ProfileInfo />
 
-          <InfoBar />
+          <InfoBar
+            countSanpham={this.props.countSanpham}
+            countBox={this.props.countBox} />
 
         </div>
       </header>
