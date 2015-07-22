@@ -22,6 +22,7 @@ import NavbarProductID from '../components/productDetail/NavbarProductID';
 import InfoSanpham     from '../components/SanphamID/InfoSanpham';
 import Detail          from '../components/SanphamID/Detail';
 import Mau             from '../components/SanphamID/Mau';
+import Sidebar         from './test';
 
 
 @prepareRoute(async function ({ params }) {
@@ -184,36 +185,7 @@ export default class SanphamID extends React.Component {
 
               </div>
               <div className="col-md-3 col-lg-3">
-                <div className="row">
-                  <div className="col-xs-6 col-sm-4 col-md-12 col-lg-12">
-                    <div className="thumbnail">
-                      <h4 className="thumbnail-title">Chăn đơn</h4>
-                      <div className="imgWrapper">
-                        <img className="img-rounded" data-holder-rendered="true" src="/img/404.jpg" data-src="holder.js/100%x200" alt="100%x200" />
-                        <span className="boardPinCount">15 SP</span>
-                      </div>
-                      <div>
-                        <div className="thumbnail-list-news">
-                          <a href="#" className="newsItem newCreditItem">
-                            <div className="newsImg"><span className="imgIcon imgIcon-bg-red imgIcon-shopping"></span></div>
-                            <div className="newsText newsInfo">
-                              <p className="creditTitle">Chăn đơn CD01</p>
-                              <p><strong className="creditCost">150.000d</strong></p>
-                            </div>
-                          </a>
-                          <a href="#" className="newsItem newCreditItem">
-                            <div className="newsImg"><span className="imgIcon"></span></div>
-                            <div className="newsText newsInfo">
-                              <p className="creditTitle">Chăn đơn CD02</p>
-                              <p><strong className="creditCost">150.000d</strong></p>
-                            </div>
-                          </a>
-                        </div>
-                        <p><div className="btn btn-default btn-block btn-follow">Follow</div></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <Sidebar {...this.state.Box} />
               </div>
             </div>
           </div>

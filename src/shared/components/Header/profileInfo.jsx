@@ -23,8 +23,8 @@ export default class ProfileInfo extends React.Component {
                   </a>
                 </li>
                 <li>
-                  <a href="#" target="_blank" >
-                    <i className="fa fa-twitter gray">&nbsp; twitter</i>
+                  <a href="tel:+84904905903" target="_blank" >
+                    <i className="fa fa-phone gray">&nbsp; 0904905903</i>
                   </a>
                 </li>
               </ul>

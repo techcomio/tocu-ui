@@ -677,6 +677,7 @@
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
+	exports.isPromise = isPromise;
 	exports.eachObject = eachObject;
 	exports.assign = assign;
 	var isFunction = function isFunction(x) {
@@ -684,6 +685,10 @@
 	};
 
 	exports.isFunction = isFunction;
+
+	function isPromise(obj) {
+	  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+	}
 
 	function eachObject(f, o) {
 	  o.forEach(function (from) {
@@ -1548,7 +1553,8 @@
 	  var action = function action() {
 	    newAction.dispatched = false;
 	    var result = newAction._dispatch.apply(newAction, arguments);
-	    if (!newAction.dispatched && result !== undefined) {
+	    // async functions that return promises should not be dispatched
+	    if (!newAction.dispatched && result !== undefined && !fn.isPromise(result)) {
 	      if (fn.isFunction(result)) {
 	        result(dispatch);
 	      } else {
@@ -23389,8 +23395,8 @@
 	      isTransitioning: false,
 	      location: null,
 	      branch: null,
-	      HeadParams: this.props.HeadParams,
 	      params: null,
+	      HeadParams: this.props.HeadParams,
 	      components: null
 	    };
 	  },

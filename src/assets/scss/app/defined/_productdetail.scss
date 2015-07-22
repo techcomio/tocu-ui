@@ -1,7 +1,11 @@
 
+.row {
+	.row { margin-left: 0; margin-right: 0; }
+}
 
 /* product Detail */
 #productDetail { padding-top: $product-padding-top; padding-bottom: $product-padding-bottom;
+	[class^="col-"], [class*="col-"] { padding-left: 5px; padding-right: 5px; }
 	.productDetail { position: relative; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22); background: #fff; display: none;
 		.navbar-product-detail { position: absolute; top: 0px; z-index: 100;  background: rgba(255, 255, 255, 1); box-sizing: border-box; 
 			height: 56px; width: 100%; display: inline-block; border-radius: 8px 8px 0 0; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
@@ -197,9 +201,7 @@
 
 
 .masonry { padding-top: 60px;
-	[class^="col-"], [class*="col-"] {
-		padding-left: 8px; padding-right: 8px;
-	}
+	[class^="col-"], [class*="col-"] { padding-left: 8px !important; padding-right: 8px !important; }
 	.thumbnail { border: none; padding: 0;
 		a { text-decoration: none; color: $gray-light; }
 		img { border-radius: 6px 6px 0 0; height: auto; border-bottom: 1px solid #ddd; }
@@ -226,8 +228,32 @@
 	.div-loading i { font-size: 40px; }
 }
 
-
-
+.sidebar { overflow: hidden;
+	&.thumbnail { padding: 0px; }
+	.navbar { margin-bottom: 5px; background: #fff; box-shadow: $header-shadow; border-width: 0;
+		.navbar-text { margin-left: 0; margin-right: 0; font-size: 17px; margin-top: 5px; margin-bottom: 5px;  margin-left: 5px;
+			.icon-img { width: 33.33332%; float: left; display: block;
+				.imgIcon { width: 41px; height: 41px; background: $thumb-imgIcon-bg-none; margin: auto; margin-top: -1px; position: relative; display: block; border-radius: 50%;
+					&.imgIcon-bg-red { background: $thumb-imgIcon-bg-red; background-image: url('/img/cart.png'); background-repeat: no-repeat; background-position: center; }
+					&.imgIcon-bg-blue { background: $thumb-imgIcon-bg-blue; }
+					&.imgIcon-bg-yellow { background: $thumb-imgIcon-bg-yellow; }
+				}
+			}
+			.titleBox { width: 66.6666%; float: left; display: block; padding: 5px 0px; line-height: 1.4; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;}
+		}
+	}
+	.masonry-sidebar { height: 500px; overflow-x: hidden; overflow: auto;
+		[class^="col-"], [class*="col-"] { padding-left: 2px !important; padding-right: 2px !important; }
+		.imgWrapper {
+			img { margin-bottom: 4px; width: 100%; min-height: auto; border-radius: 3px; opacity: 0.6;
+				&:hover { opacity: 1; }
+			}
+		}
+	}
+	@media all and (max-width: 768px) {
+		.row { margin-left: 0; margin-right: 0; }
+	}
+}
 
 
 
