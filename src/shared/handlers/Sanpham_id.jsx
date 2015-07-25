@@ -22,7 +22,7 @@ import NavbarProductID from '../components/productDetail/NavbarProductID';
 import InfoSanpham     from '../components/SanphamID/InfoSanpham';
 import Detail          from '../components/SanphamID/Detail';
 import Mau             from '../components/SanphamID/Mau';
-import Sidebar         from './test';
+import Sidebar         from '../components/productDetail/Sidebar';
 
 
 @prepareRoute(async function ({ params }) {
@@ -166,7 +166,6 @@ export default class SanphamID extends React.Component {
                     Next={this.Next}
                     current={this.state.current}
                     {...SanphamStore.getState().product.toJS()} />
-
                 </AltContainer>
 
 
@@ -185,9 +184,353 @@ export default class SanphamID extends React.Component {
 
               </div>
               <div className="col-md-3 col-lg-3">
-                <Sidebar {...this.state.Box} />
+                <div className='row row-sidebar'>
+                  <Sidebar {...this.state.Box} />
+
+                  <div className="col-md-12 col-lg-12">
+                    <div className="panel panel-default">
+                      <div className="panel-heading">Giảm giá</div>
+                      <div className="list-group">
+                        <a href="#" className="list-group-item">
+                          <div className="list-group-body-item">
+                            <div className="img">
+                              <span className="imgIcon">
+                                <img src="http://api.tocu.vn/image/50x50/be9645becb337e08394a-1-1.jpg" />
+                              </span>
+                            </div>
+                            <div className="newsText">
+                              <div className="title">Sơ mi denim Hàn</div>
+                              <div className="price">250.000 d</div>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="#" className="list-group-item">
+                          <div className="list-group-body-item">
+                            <div className="img">
+                              <span className="imgIcon">
+                                <img src="http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg" />
+                              </span>
+                            </div>
+                            <div className="newsText">
+                              <div className="title">Sơ mi denim Hàn</div>
+                              <div className="price">250.000 d</div>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="#" className="list-group-item">
+                          <div className="list-group-body-item">
+                            <div className="img">
+                              <span className="imgIcon">
+                                <img src="http://api.tocu.vn/image/50x50/1e4bdb15fe3ed751a276-3-3.jpg" />
+                              </span>
+                            </div>
+                            <div className="newsText">
+                              <div className="title">Áo ren, len móc Nhật</div>
+                              <div className="price">250.000 d</div>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="#" className="list-group-item">
+                          <div className="list-group-body-item">
+                            <div className="img">
+                              <span className="imgIcon">
+                                <img src="http://api.tocu.vn/image/50x50/3c0827fac42221665e95-8-2.jpg" />
+                              </span>
+                            </div>
+                            <div className="newsText">
+                              <div className="title">Shorts Hàn Quốc</div>
+                              <div className="price">250.000 d</div>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="#" className="list-group-item">
+                          <div className="list-group-body-item">
+                            <div className="img">
+                              <span className="imgIcon">
+                                <img src="http://api.tocu.vn/image/50x50/dc615fb338e70722455f-7-2.jpg" />
+                              </span>
+                            </div>
+                            <div className="newsText">
+                              <div className="title">Shorts Hàn Quốc</div>
+                              <div className="price">250.000 d</div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* 6 box auto */}
+            <div className="row">
+              <div className="col-md-9 col-lg-9">
+                <div className="row row-bottom-detail">
+                  <div className="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div className="thumbnail">
+                      <a className="" href="/box/1" >
+                        <h4 className="thumbnail-title">Sơ mi xô Nhật Hàn</h4>
+                        <div className="imgWrapper">
+                          <img className="img-max-height img-rounded" src="http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg" alt="images" />
+                          <span className="boardPinCount">4 SP</span>
+                        </div>
+                        <div>
+                          <div className="thumbnail-list-news">
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red"></span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM2</p>
+                                <p>
+                                  <strong className="creditCost">150.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red">
+                                  <img src="http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" />
+                                </span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM1</p>
+                                <p>
+                                  <strong className="creditCost">130.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="btn btn-default btn-block btn-follow">
+                            <span>1 likes</span>
+                          </div>
+                          <p></p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div className="thumbnail">
+                      <a className="" href="/box/1" >
+                        <h4 className="thumbnail-title">Sơ mi xô Nhật Hàn</h4>
+                        <div className="imgWrapper">
+                          <img className="img-max-height img-rounded" src="http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg" alt="images" />
+                          <span className="boardPinCount">4 SP</span>
+                        </div>
+                        <div>
+                          <div className="thumbnail-list-news">
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red"></span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM2</p>
+                                <p>
+                                  <strong className="creditCost">150.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red">
+                                  <img src="http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" />
+                                </span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM1</p>
+                                <p>
+                                  <strong className="creditCost">130.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="btn btn-default btn-block btn-follow">
+                            <span>1 likes</span>
+                          </div>
+                          <p></p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div className="thumbnail">
+                      <a className="" href="/box/1" >
+                        <h4 className="thumbnail-title">Sơ mi xô Nhật Hàn</h4>
+                        <div className="imgWrapper">
+                          <img className="img-max-height img-rounded" src="http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg" alt="images" />
+                          <span className="boardPinCount">4 SP</span>
+                        </div>
+                        <div>
+                          <div className="thumbnail-list-news">
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red"></span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM2</p>
+                                <p>
+                                  <strong className="creditCost">150.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red">
+                                  <img src="http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" />
+                                </span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM1</p>
+                                <p>
+                                  <strong className="creditCost">130.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="btn btn-default btn-block btn-follow">
+                            <span>1 likes</span>
+                          </div>
+                          <p></p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div className="thumbnail">
+                      <a className="" href="/box/1" >
+                        <h4 className="thumbnail-title">Sơ mi xô Nhật Hàn</h4>
+                        <div className="imgWrapper">
+                          <img className="img-max-height img-rounded" src="http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg" alt="images" />
+                          <span className="boardPinCount">4 SP</span>
+                        </div>
+                        <div>
+                          <div className="thumbnail-list-news">
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red"></span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM2</p>
+                                <p>
+                                  <strong className="creditCost">150.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red">
+                                  <img src="http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" />
+                                </span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM1</p>
+                                <p>
+                                  <strong className="creditCost">130.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="btn btn-default btn-block btn-follow">
+                            <span>1 likes</span>
+                          </div>
+                          <p></p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div className="thumbnail">
+                      <a className="" href="/box/1" >
+                        <h4 className="thumbnail-title">Sơ mi xô Nhật Hàn</h4>
+                        <div className="imgWrapper">
+                          <img className="img-max-height img-rounded" src="http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg" alt="images" />
+                          <span className="boardPinCount">4 SP</span>
+                        </div>
+                        <div>
+                          <div className="thumbnail-list-news">
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red"></span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM2</p>
+                                <p>
+                                  <strong className="creditCost">150.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red">
+                                  <img src="http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" />
+                                </span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM1</p>
+                                <p>
+                                  <strong className="creditCost">130.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="btn btn-default btn-block btn-follow">
+                            <span>1 likes</span>
+                          </div>
+                          <p></p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div className="thumbnail">
+                      <a className="" href="/box/1" >
+                        <h4 className="thumbnail-title">Sơ mi xô Nhật Hàn</h4>
+                        <div className="imgWrapper">
+                          <img className="img-max-height img-rounded" src="http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg" alt="images" />
+                          <span className="boardPinCount">4 SP</span>
+                        </div>
+                        <div>
+                          <div className="thumbnail-list-news">
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red"></span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM2</p>
+                                <p>
+                                  <strong className="creditCost">150.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                            <div className="newsItem newCreditItem">
+                              <div className="newsImg">
+                                <span className="imgIcon imgIcon-list imgIcon-bg-red">
+                                  <img src="http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" />
+                                </span>
+                              </div>
+                              <div className="newsText newsInfo">
+                                <p className="creditTitle">SM1</p>
+                                <p>
+                                  <strong className="creditCost">130.000 đ</strong>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="btn btn-default btn-block btn-follow">
+                            <span>1 likes</span>
+                          </div>
+                          <p></p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3 col-lg-3">
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -235,3 +578,38 @@ export default class SanphamID extends React.Component {
   }
 
 };
+/*
+<div className="col-md-12 col-lg-12">
+  <div className="panel panel-default">
+    <div className="panel-heading">Panel heading</div>
+    <ul className="list-group">
+      <li className="list-group-item">Cras justo odio</li>
+      <li className="list-group-item">Dapibus ac facilisis in</li>
+      <li className="list-group-item">Morbi leo risus</li>
+      <li className="list-group-item">Porta ac consectetur ac</li>
+      <li className="list-group-item">Vestibulum at eros</li>
+    </ul>
+  </div>
+</div>*/
+/*
+<div className="col-md-12 col-lg-12">
+  <div className="thumbnail sidebar">
+    <nav className="navbar navbar-default navbar-static-top">
+      <div className="nav navbar-nav navbar-text">
+        <div className="titleBox-giamgia">
+          <span>Giam gia</span>
+        </div>
+      </div>
+    </nav>
+    <div className="sidebar-body">
+      <ul className="list-group">
+        <li className="list-group-item">Cras justo odio</li>
+        <li className="list-group-item">Dapibus ac facilisis in</li>
+        <li className="list-group-item">Morbi leo risus</li>
+        <li className="list-group-item">Porta ac consectetur ac</li>
+        <li className="list-group-item">Vestibulum at eros</li>
+      </ul>
+    </div>
+  </div>
+</div>
+*/

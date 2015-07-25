@@ -95,6 +95,8 @@ export default React.createClass({
     let hasMore = data.length == limit;
     let skip = this.state.skip += limit
 
+    console.log(data)
+
     this.setState({
       posts: createUniqueArray(this.state.posts.concat(data), 'id'),
       page: page + 1,

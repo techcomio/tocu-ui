@@ -23369,7 +23369,6 @@
 	    onAbort: func,
 	    onError: func,
 	    onUpdate: func,
-	    HeadParams: object,
 
 	    // Client-side
 	    history: _PropTypes.history,
@@ -23396,8 +23395,8 @@
 	      location: null,
 	      branch: null,
 	      params: null,
+	      components: null,
 	      HeadParams: this.props.HeadParams,
-	      components: null
 	    };
 	  },
 

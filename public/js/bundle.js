@@ -714,9 +714,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -739,13 +739,13 @@ webpackJsonp([0],[
 	var _routes2 = _interopRequireDefault(_routes);
 
 	var AppRouter = (function (_React$Component) {
+	  _inherits(AppRouter, _React$Component);
+
 	  function AppRouter() {
 	    _classCallCheck(this, AppRouter);
 
 	    _get(Object.getPrototypeOf(AppRouter.prototype), 'constructor', this).apply(this, arguments);
 	  }
-
-	  _inherits(AppRouter, _React$Component);
 
 	  _createClass(AppRouter, [{
 	    key: 'render',
@@ -775,48 +775,7 @@ webpackJsonp([0],[
 
 	"use strict";
 
-	var _Object$create = __webpack_require__(198)["default"];
-
-	exports["default"] = function (subClass, superClass) {
-	  if (typeof superClass !== "function" && superClass !== null) {
-	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	  }
-
-	  subClass.prototype = _Object$create(superClass && superClass.prototype, {
-	    constructor: {
-	      value: subClass,
-	      enumerable: false,
-	      writable: true,
-	      configurable: true
-	    }
-	  });
-	  if (superClass) subClass.__proto__ = superClass;
-	};
-
-	exports.__esModule = true;
-
-/***/ },
-/* 198 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(199), __esModule: true };
-
-/***/ },
-/* 199 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $ = __webpack_require__(20);
-	module.exports = function create(P, D){
-	  return $.create(P, D);
-	};
-
-/***/ },
-/* 200 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _Object$getOwnPropertyDescriptor = __webpack_require__(201)["default"];
+	var _Object$getOwnPropertyDescriptor = __webpack_require__(198)["default"];
 
 	exports["default"] = function get(_x, _x2, _x3) {
 	  var _again = true;
@@ -860,23 +819,23 @@ webpackJsonp([0],[
 	exports.__esModule = true;
 
 /***/ },
-/* 201 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(202), __esModule: true };
+	module.exports = { "default": __webpack_require__(199), __esModule: true };
 
 /***/ },
-/* 202 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $ = __webpack_require__(20);
-	__webpack_require__(203);
+	__webpack_require__(200);
 	module.exports = function getOwnPropertyDescriptor(it, key){
 	  return $.getDesc(it, key);
 	};
 
 /***/ },
-/* 203 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $        = __webpack_require__(20)
@@ -907,7 +866,7 @@ webpackJsonp([0],[
 	    return fn(Object($.assertDefined(it)));
 	  } : ID == 8 ? function keys(it){
 	    return fn(toObject(it));
-	  } : __webpack_require__(204).get;
+	  } : __webpack_require__(201).get;
 	  try {
 	    fn('z');
 	  } catch(e){
@@ -917,7 +876,7 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 204 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
@@ -939,6 +898,47 @@ webpackJsonp([0],[
 	module.exports.get = function getOwnPropertyNames(it){
 	  if(windowNames && toString.call(it) == '[object Window]')return getWindowNames(it);
 	  return getNames($.toObject(it));
+	};
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _Object$create = __webpack_require__(203)["default"];
+
+	exports["default"] = function (subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+	  }
+
+	  subClass.prototype = _Object$create(superClass && superClass.prototype, {
+	    constructor: {
+	      value: subClass,
+	      enumerable: false,
+	      writable: true,
+	      configurable: true
+	    }
+	  });
+	  if (superClass) subClass.__proto__ = superClass;
+	};
+
+	exports.__esModule = true;
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(204), __esModule: true };
+
+/***/ },
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $ = __webpack_require__(20);
+	module.exports = function create(P, D){
+	  return $.create(P, D);
 	};
 
 /***/ },
@@ -1080,15 +1080,15 @@ webpackJsonp([0],[
 	exports['default'] = _react2['default'].createElement(
 		_reactRouter.Route,
 		{ component: _handlersApp2['default'] },
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersHome2['default'], name: 'home', path: '/', onEnter: _handlersHome2['default'].onEnter }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersBoxTest2['default'], name: 'box', path: '/box/:id' }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersPosts2['default'], name: 'posts', path: '/posts/:id' }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], name: 'album', path: '/album/:id' }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSanpham2['default'], name: 'sp', path: '/sp' }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSanpham_id2['default'], name: 'spID', path: '/sp/:id' }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSignIn2['default'], name: 'signin', path: '/signin', onEnter: _handlersSignIn2['default'].onEnter }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSignUp2['default'], name: 'signup', path: '/signup' }),
-		_react2['default'].createElement(_reactRouter.Route, { component: _handlersNotFound2['default'], name: 'NotFound', path: '*' })
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersHome2['default'], name: "home", path: "/", onEnter: _handlersHome2['default'].onEnter }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersBoxTest2['default'], name: "box", path: "/box/:id" }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersPosts2['default'], name: "posts", path: "/posts/:id" }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], name: "album", path: "/album/:id" }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSanpham2['default'], name: "sp", path: "/sp" }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSanpham_id2['default'], name: "spID", path: "/sp/:id" }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSignIn2['default'], name: "signin", path: "/signin", onEnter: _handlersSignIn2['default'].onEnter }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersSignUp2['default'], name: "signup", path: "/signup" }),
+		_react2['default'].createElement(_reactRouter.Route, { component: _handlersNotFound2['default'], name: "NotFound", path: "*" })
 	);
 	module.exports = exports['default'];
 
@@ -1098,9 +1098,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -1117,13 +1117,13 @@ webpackJsonp([0],[
 	var _react2 = _interopRequireDefault(_react);
 
 	var Application = (function (_React$Component) {
+	  _inherits(Application, _React$Component);
+
 	  function Application() {
 	    _classCallCheck(this, Application);
 
 	    _get(Object.getPrototypeOf(Application.prototype), 'constructor', this).apply(this, arguments);
 	  }
-
-	  _inherits(Application, _React$Component);
 
 	  _createClass(Application, [{
 	    key: 'render',
@@ -1151,9 +1151,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -1203,11 +1203,11 @@ webpackJsonp([0],[
 
 	var _actionsSanphamActions = __webpack_require__(319);
 
-	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
-
 	/**
 	 * @Component
 	 */
+
+	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
 	var _componentsHeader = __webpack_require__(320);
 
@@ -1222,6 +1222,8 @@ webpackJsonp([0],[
 	var _componentsThumbnail2 = _interopRequireDefault(_componentsThumbnail);
 
 	var Home = (function (_React$Component) {
+	  _inherits(Home, _React$Component);
+
 	  function Home(props) {
 	    _classCallCheck(this, _Home);
 
@@ -1233,11 +1235,7 @@ webpackJsonp([0],[
 	    };
 	  }
 
-	  _inherits(Home, _React$Component);
-
-	  var _Home = Home;
-
-	  _createClass(_Home, [{
+	  _createClass(Home, [{
 	    key: '_bind',
 	    value: function _bind() {
 	      var _this = this;
@@ -1253,8 +1251,8 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle('Home | tocu.vn');
-	      this.props.HeadParams.setDescription('Home | Description');
+	      this.props.HeadParams.setTitle("Home | tocu.vn");
+	      this.props.HeadParams.setDescription("Home | Description");
 	    }
 	  }, {
 	    key: 'render',
@@ -1281,10 +1279,138 @@ webpackJsonp([0],[
 	        ),
 	        _react2['default'].createElement(
 	          'section',
-	          { id: 'content' },
+	          { id: "content" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'container' },
+	            { className: "container" },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: "row" },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: "col-xs-6 col-sm-4 col-md-4 col-lg-3" },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: "thumbnail" },
+	                  _react2['default'].createElement(
+	                    'a',
+	                    { className: "", href: "/box/1" },
+	                    _react2['default'].createElement(
+	                      'h4',
+	                      { className: "thumbnail-title" },
+	                      'Sơ mi xô Nhật Hàn'
+	                    ),
+	                    _react2['default'].createElement(
+	                      'div',
+	                      { className: "imgWrapper" },
+	                      _react2['default'].createElement('img', { className: "img-max-height img-rounded", src: "http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg", alt: "images" }),
+	                      _react2['default'].createElement(
+	                        'span',
+	                        { className: "boardPinCount" },
+	                        '4 SP'
+	                      )
+	                    ),
+	                    _react2['default'].createElement(
+	                      'div',
+	                      null,
+	                      _react2['default'].createElement(
+	                        'div',
+	                        { className: "thumbnail-list-news" },
+	                        _react2['default'].createElement(
+	                          'div',
+	                          { className: "newsItem newCreditItem" },
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "newsImg" },
+	                            _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" })
+	                          ),
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "newsText newsInfo" },
+	                            _react2['default'].createElement(
+	                              'p',
+	                              { className: "creditTitle" },
+	                              'SM2'
+	                            ),
+	                            _react2['default'].createElement(
+	                              'p',
+	                              null,
+	                              _react2['default'].createElement(
+	                                'strong',
+	                                { className: "creditCost" },
+	                                '150.000 đ'
+	                              )
+	                            )
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          { className: "newsItem newCreditItem" },
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "newsImg" },
+	                            _react2['default'].createElement(
+	                              'span',
+	                              { className: "imgIcon imgIcon-list imgIcon-bg-red" },
+	                              _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" })
+	                            )
+	                          ),
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "newsText newsInfo" },
+	                            _react2['default'].createElement(
+	                              'p',
+	                              { className: "creditTitle" },
+	                              'SM1'
+	                            ),
+	                            _react2['default'].createElement(
+	                              'p',
+	                              null,
+	                              _react2['default'].createElement(
+	                                'strong',
+	                                { className: "creditCost" },
+	                                '130.000 đ'
+	                              )
+	                            )
+	                          )
+	                        )
+	                      ),
+	                      _react2['default'].createElement(
+	                        'div',
+	                        { className: "btn btn-default btn-block btn-follow" },
+	                        _react2['default'].createElement(
+	                          'span',
+	                          null,
+	                          '1 likes'
+	                        )
+	                      ),
+	                      _react2['default'].createElement('p', null)
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: "row" },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: "col-xs-12 col-sm-12 col-md-12 col-lg-12" },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: "block-related" },
+	                  _react2['default'].createElement(
+	                    'span',
+	                    null,
+	                    _react2['default'].createElement(
+	                      'span',
+	                      { className: "img" },
+	                      'img'
+	                    )
+	                  )
+	                )
+	              )
+	            ),
 	            _react2['default'].createElement(
 	              _altAltContainer2['default'],
 	              {
@@ -1306,16 +1432,16 @@ webpackJsonp([0],[
 	        ),
 	        this.state.boxLogin && _react2['default'].createElement(
 	          'div',
-	          { id: 'boxLogin' },
+	          { id: "boxLogin" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'row' },
+	            { className: "row" },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	              { className: "col-xs-12 col-sm-7 col-md-5 col-centered" },
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'centrix' },
+	                { className: "centrix" },
 	                _react2['default'].createElement(_altAltContainer2['default'], {
 	                  component: _componentsFormSignIn2['default'],
 	                  stores: [_storeAuthStore2['default']],
@@ -1341,6 +1467,7 @@ webpackJsonp([0],[
 	    }
 	  }]);
 
+	  var _Home = Home;
 	  Home = (0, _decorators.prepareRoute)(function callee$1$0(_ref) {
 	    var params = _ref.params;
 	    return _regeneratorRuntime.async(function callee$1$0$(context$2$0) {
@@ -1364,10 +1491,11 @@ webpackJsonp([0],[
 	exports['default'] = Home;
 	;
 
-	Home.onEnter = function (next, transition) {};
+	Home.onEnter = function (next, transition) {
+	  // transition.to('/sigup');
+	};
 	module.exports = exports['default'];
-	/* Header home */ /* Thumbnail */
-	// transition.to('/sigup');
+	/* Header home */ /* Box yeu thich */ /* Thumbnail */
 
 /***/ },
 /* 228 */
@@ -1498,23 +1626,13 @@ webpackJsonp([0],[
 /* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global, process) {/**
-	 * Copyright (c) 2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * https://raw.github.com/facebook/regenerator/master/LICENSE file. An
-	 * additional grant of patent rights can be found in the PATENTS file in
-	 * the same directory.
-	 */
-
-	"use strict";
+	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
 
 	var _Symbol = __webpack_require__(233)["default"];
 
 	var _Symbol$iterator = __webpack_require__(243)["default"];
 
-	var _Object$create = __webpack_require__(198)["default"];
+	var _Object$create = __webpack_require__(203)["default"];
 
 	var _Promise = __webpack_require__(252)["default"];
 
@@ -1636,9 +1754,24 @@ webpackJsonp([0],[
 	      var result = generator[method](arg);
 	      var value = result.value;
 	      return value instanceof AwaitArgument ? _Promise.resolve(value.arg).then(invokeNext, invokeThrow) : _Promise.resolve(value).then(function (unwrapped) {
+	        // When a yielded Promise is resolved, its final value becomes
+	        // the .value of the Promise<{value,done}> result for the
+	        // current iteration. If the Promise is rejected, however, the
+	        // result for this iteration will be rejected with the same
+	        // reason. Note that rejections of yielded Promises are not
+	        // thrown back into the generator function, as is the case
+	        // when an awaited Promise is rejected. This difference in
+	        // behavior between yield and await is important, because it
+	        // allows the consumer to decide what to do with the yielded
+	        // rejection (swallow it and continue, manually .throw it back
+	        // into the generator, abandon iteration, whatever). With
+	        // await, by contrast, there is no opportunity to examine the
+	        // rejection reason outside the generator function, so the
+	        // only option is to throw it from the await expression, and
+	        // let the generator function handle the exception.
 	        result.value = unwrapped;
 	        return result;
-	      }, invokeThrow);
+	      });
 	    }
 
 	    if (typeof process === "object" && process.domain) {
@@ -1671,9 +1804,8 @@ webpackJsonp([0],[
 	      });
 
 	      // Avoid propagating enqueueResult failures to Promises returned by
-	      // later invocations of the iterator, and call generator.return() to
-	      // allow the generator a chance to clean up.
-	      previousPromise = enqueueResult["catch"](invokeReturn);
+	      // later invocations of the iterator.
+	      previousPromise = enqueueResult["catch"](function (ignored) {});
 
 	      return enqueueResult;
 	    }
@@ -1706,6 +1838,10 @@ webpackJsonp([0],[
 	      }
 
 	      if (state === GenStateCompleted) {
+	        if (method === "throw") {
+	          throw arg;
+	        }
+
 	        // Be forgiving, per 25.3.3.3.3 of the spec:
 	        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
 	        return doneResult();
@@ -1774,7 +1910,7 @@ webpackJsonp([0],[
 	          if (state === GenStateSuspendedYield) {
 	            context.sent = arg;
 	          } else {
-	            delete context.sent;
+	            context.sent = undefined;
 	          }
 	        } else if (method === "throw") {
 	          if (state === GenStateSuspendedStart) {
@@ -1865,7 +2001,7 @@ webpackJsonp([0],[
 	    // locations where there is no enclosing try statement.
 	    this.tryEntries = [{ tryLoc: "root" }];
 	    tryLocsList.forEach(pushTryEntry, this);
-	    this.reset();
+	    this.reset(true);
 	  }
 
 	  runtime.keys = function (object) {
@@ -1939,7 +2075,7 @@ webpackJsonp([0],[
 	  Context.prototype = {
 	    constructor: Context,
 
-	    reset: function reset() {
+	    reset: function reset(skipTempReset) {
 	      this.prev = 0;
 	      this.next = 0;
 	      this.sent = undefined;
@@ -1948,10 +2084,13 @@ webpackJsonp([0],[
 
 	      this.tryEntries.forEach(resetTryEntry);
 
-	      // Pre-initialize at least 20 temporary variables to enable hidden
-	      // class optimizations for simple generators.
-	      for (var tempIndex = 0, tempName; hasOwn.call(this, tempName = "t" + tempIndex) || tempIndex < 20; ++tempIndex) {
-	        this[tempName] = null;
+	      if (!skipTempReset) {
+	        for (var name in this) {
+	          // Not sure about the optimal order of these conditions:
+	          if (name.charAt(0) === "t" && hasOwn.call(this, name) && !isNaN(+name.slice(1))) {
+	            this[name] = undefined;
+	          }
+	        }
 	      }
 	    },
 
@@ -2103,6 +2242,15 @@ webpackJsonp([0],[
 	// object, this seems to be the most reliable technique that does not
 	// use indirect eval (which violates Content Security Policy).
 	typeof global === "object" ? global : typeof window === "object" ? window : typeof self === "object" ? self : undefined);
+	/**
+	 * Copyright (c) 2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * https://raw.github.com/facebook/regenerator/master/LICENSE file. An
+	 * additional grant of patent rights can be found in the PATENTS file in
+	 * the same directory.
+	 */
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(26)))
 
 /***/ },
@@ -2140,7 +2288,7 @@ webpackJsonp([0],[
 	  , getDesc  = $.getDesc
 	  , setDesc  = $.setDesc
 	  , desc     = $.desc
-	  , $names   = __webpack_require__(204)
+	  , $names   = __webpack_require__(201)
 	  , getNames = $names.get
 	  , toObject = $.toObject
 	  , $Symbol  = $.g.Symbol
@@ -3585,7 +3733,7 @@ webpackJsonp([0],[
 	    key: 'onLike',
 	    value: function onLike(id) {
 	      this.boxs = this.boxs.update(this.boxs.findIndex(function (item) {
-	        return item.get('id') === id;
+	        return item.get("id") === id;
 	      }), function (item) {
 	        return item.updateIn(['likesCount'], function (value) {
 	          return value + 1;
@@ -3726,8 +3874,6 @@ webpackJsonp([0],[
 	        }
 	      }, null, this);
 	    }
-	  }, {
-	    key: 'getBoxID',
 
 	    /**
 	     * request lấy thông tin Box
@@ -3736,6 +3882,8 @@ webpackJsonp([0],[
 	     * @param {number} limit
 	     * @dispatch {Array} [bài posts]
 	     */
+	  }, {
+	    key: 'getBoxID',
 	    value: function getBoxID(_ref) {
 	      var id = _ref.id;
 
@@ -3754,8 +3902,6 @@ webpackJsonp([0],[
 	        self.actions.getBoxIDFailed(res.data);
 	      });
 	    }
-	  }, {
-	    key: 'like',
 
 	    /**
 	     * like box
@@ -3764,6 +3910,8 @@ webpackJsonp([0],[
 	     * @param  {number} options.userID - id user
 	     * @dispatch {number}                
 	     */
+	  }, {
+	    key: 'like',
 	    value: function like(_ref2) {
 	      var itemID = _ref2.itemID;
 	      var token = _ref2.token;
@@ -3772,7 +3920,7 @@ webpackJsonp([0],[
 	      var self = this;
 
 	      _axios2['default'].post(_configSample.Api_URL + '/like', {
-	        type: 'box',
+	        type: "box",
 	        itemId: itemID,
 	        UserId: userID
 	      }).then(function (res) {
@@ -3781,25 +3929,25 @@ webpackJsonp([0],[
 	        self.actions.likeFailed(res.data);
 	      });
 	    }
-	  }, {
-	    key: 'boxsFailed',
 
 	    /**
 	     * send lỗi cho Store
 	     * @param  {Error} err [Error request]
 	     * @dispatch {Error} [send Store]
 	     */
+	  }, {
+	    key: 'boxsFailed',
 	    value: function boxsFailed(err) {
 	      this.dispatch(err);
 	    }
-	  }, {
-	    key: 'getBoxIDFailed',
 
 	    /**
 	     * send lỗi cho Store
 	     * @param  {Error} err [Error request]
 	     * @dispatch {Error} [send Store]
 	     */
+	  }, {
+	    key: 'getBoxIDFailed',
 	    value: function getBoxIDFailed(err) {
 	      this.dispatch(err);
 	    }
@@ -5808,7 +5956,7 @@ webpackJsonp([0],[
 	});
 	exports['default'] = {
 		// Api_URL: 'https://tocu-api-dev-tranduchieu.c9.io',
-		Api_URL: 'http://api.tocu.vn'
+		Api_URL: 'http://api-dev.tocu.vn'
 	};
 	module.exports = exports['default'];
 
@@ -5825,7 +5973,7 @@ webpackJsonp([0],[
 	 *  of patent rights can be found in the PATENTS file in the same directory.
 	 */
 	(function (global, factory) {
-	  true ? module.exports = factory() :
+	   true ? module.exports = factory() :
 	  typeof define === 'function' && define.amd ? define(factory) :
 	  global.Immutable = factory()
 	}(this, function () { 'use strict';var SLICE$0 = Array.prototype.slice;
@@ -10797,7 +10945,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'onCreateUser',
 	    value: function onCreateUser(data) {
-	      this.createUseState = 'success';
+	      this.createUseState = "success";
 	      this.auth = this.auth.merge(data);
 	      localStorage.auth = data;
 	    }
@@ -10806,7 +10954,7 @@ webpackJsonp([0],[
 	    value: function onLogin(data) {
 	      _cookiesJs2['default'].set('access_token', data.access_token, { expires: data.expires_in }); //  Expires in 100 day
 
-	      this.loginState = 'success';
+	      this.loginState = "success";
 	      this.auth = this.auth.merge(data);
 	      localStorage.auth = JSON.stringify(data);
 	      localStorage.access_token = data.access_token;
@@ -10816,7 +10964,7 @@ webpackJsonp([0],[
 	    value: function onLogout() {
 	      console.log('onLogout');
 	      _cookiesJs2['default'].expire('access_token'); //  Will expire the cookie with a path of '/'
-	      this.loginState = 'logout';
+	      this.loginState = "logout";
 	      this.auth = new _immutable.Map({});
 	      delete localStorage.auth;
 	      delete localStorage.access_token;
@@ -10825,23 +10973,23 @@ webpackJsonp([0],[
 	    key: 'onCreateUserStart',
 	    value: function onCreateUserStart() {
 	      this.failedCreateMessage = null;
-	      this.createUseState = 'loading';
+	      this.createUseState = "loading";
 	    }
 	  }, {
 	    key: 'onLoginStart',
 	    value: function onLoginStart() {
-	      this.loginState = 'loading';
+	      this.loginState = "loading";
 	    }
 	  }, {
 	    key: 'onCreateFailed',
 	    value: function onCreateFailed(err) {
-	      this.createUseState = 'failed';
+	      this.createUseState = "failed";
 	      this.failedCreateMessage = err.message;
 	    }
 	  }, {
 	    key: 'onLoginFailed',
 	    value: function onLoginFailed(err) {
-	      this.loginState = 'failed';
+	      this.loginState = "failed";
 	    }
 	  }], [{
 	    key: 'getToken',
@@ -10915,14 +11063,14 @@ webpackJsonp([0],[
 	        self.actions.CreateFailed(res.data);
 	      });
 	    }
-	  }, {
-	    key: 'Login',
 
 	    /**
 	     * Login
 	     * @param {number} mobilePhone - số điện thoại
 	     * @param {string} password - mật khẩu
 	     */
+	  }, {
+	    key: 'Login',
 	    value: function Login(_ref2) {
 	      var mobilePhone = _ref2.mobilePhone;
 	      var password = _ref2.password;
@@ -10939,12 +11087,12 @@ webpackJsonp([0],[
 	        self.actions.LoginFailed(res.data);
 	      });
 	    }
-	  }, {
-	    key: 'Logout',
 
 	    /**
 	     * Logout
 	     */
+	  }, {
+	    key: 'Logout',
 	    value: function Logout(access_token) {
 	      var self = this;
 
@@ -10958,41 +11106,41 @@ webpackJsonp([0],[
 	        });
 	      }
 	    }
-	  }, {
-	    key: 'CreateUserStart',
 
 	    /**
 	     * Actions Start Create User
 	     */
+	  }, {
+	    key: 'CreateUserStart',
 	    value: function CreateUserStart() {
 	      this.dispatch();
 	    }
-	  }, {
-	    key: 'LoginStart',
 
 	    /**
 	     * Actions Start Login
 	     */
+	  }, {
+	    key: 'LoginStart',
 	    value: function LoginStart() {
 	      this.dispatch();
 	    }
-	  }, {
-	    key: 'CreateFailed',
 
 	    /**
 	     * Create User Failed
 	     * @param {Error} err - lỗi create accout
 	     */
+	  }, {
+	    key: 'CreateFailed',
 	    value: function CreateFailed(err) {
 	      this.dispatch(err);
 	    }
-	  }, {
-	    key: 'LoginFailed',
 
 	    /**
 	     * Login Failed
 	     * @param {Error} err - lỗi đăng nhập
 	     */
+	  }, {
+	    key: 'LoginFailed',
 	    value: function LoginFailed(err) {
 	      this.dispatch(err);
 	    }
@@ -11314,25 +11462,25 @@ webpackJsonp([0],[
 	        }
 	      }, null, this);
 	    }
-	  }, {
-	    key: 'getIdFailed',
 
 	    /**
 	     * send lỗi cho Store
 	     * @param  {Error} err [Error request]
 	     * @dispatch {Error} [send Store]
 	     */
+	  }, {
+	    key: 'getIdFailed',
 	    value: function getIdFailed(err) {
 	      this.dispatch(err);
 	    }
-	  }, {
-	    key: 'actionSanphamID',
 
 	    /**
 	     * actions view san pham ID
 	     * @param  {object} sanpham - san pham nguoi dung click view
 	     * @dispatch {object}
 	     */
+	  }, {
+	    key: 'actionSanphamID',
 	    value: function actionSanphamID(sanpham) {
 	      this.dispatch(sanpham);
 	    }
@@ -11383,9 +11531,9 @@ webpackJsonp([0],[
 	/* @jsx React.DOM */
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -11419,11 +11567,11 @@ webpackJsonp([0],[
 
 	var _actionsAuthActions = __webpack_require__(316);
 
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
 	/**
 	 * @Component
 	 */
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
 	var _navbar = __webpack_require__(322);
 
@@ -11438,6 +11586,8 @@ webpackJsonp([0],[
 	var _profileInfo2 = _interopRequireDefault(_profileInfo);
 
 	var Home = (function (_React$Component) {
+	  _inherits(Home, _React$Component);
+
 	  function Home(props) {
 	    _classCallCheck(this, _Home);
 
@@ -11450,11 +11600,7 @@ webpackJsonp([0],[
 	    };
 	  }
 
-	  _inherits(Home, _React$Component);
-
-	  var _Home = Home;
-
-	  _createClass(_Home, [{
+	  _createClass(Home, [{
 	    key: '_bind',
 	    value: function _bind() {
 	      var _this = this;
@@ -11490,11 +11636,11 @@ webpackJsonp([0],[
 	    key: 'render',
 	    value: function render() {
 	      var classesNavbar = (0, _classnames2['default'])({
-	        'navbar': true,
-	        'navbar-default': true,
-	        'navbar-home': true,
-	        'navbar-fixed-top': true,
-	        'test': !this.state.transform
+	        "navbar": true,
+	        "navbar-default": true,
+	        "navbar-home": true,
+	        "navbar-fixed-top": true,
+	        "test": !this.state.transform
 	      });
 
 	      return _react2['default'].createElement(
@@ -11502,11 +11648,11 @@ webpackJsonp([0],[
 	        null,
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'container-fluid' },
+	          { className: "container-fluid" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'profileImage' },
-	            _react2['default'].createElement('img', { src: '/img/logo.png', alt: 'MongoDB' })
+	            { className: "profileImage" },
+	            _react2['default'].createElement('img', { src: "/img/logo.png", alt: "MongoDB" })
 	          ),
 	          _react2['default'].createElement(
 	            'nav',
@@ -11525,6 +11671,7 @@ webpackJsonp([0],[
 	    }
 	  }]);
 
+	  var _Home = Home;
 	  Home = (0, _decorators.prepareRoute)(function callee$1$0() {
 	    return _regeneratorRuntime.async(function callee$1$0$(context$2$0) {
 	      while (1) switch (context$2$0.prev = context$2$0.next) {
@@ -11613,9 +11760,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -11638,13 +11785,13 @@ webpackJsonp([0],[
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var Navbar = (function (_React$Component) {
+	  _inherits(Navbar, _React$Component);
+
 	  function Navbar() {
 	    _classCallCheck(this, Navbar);
 
 	    _get(Object.getPrototypeOf(Navbar.prototype), 'constructor', this).apply(this, arguments);
 	  }
-
-	  _inherits(Navbar, _React$Component);
 
 	  _createClass(Navbar, [{
 	    key: 'render',
@@ -11658,51 +11805,51 @@ webpackJsonp([0],[
 	      if (!this.props.auth.mobilePhone) {
 	        return _react2['default'].createElement(
 	          'div',
-	          { className: 'container-fluid' },
+	          { className: "container-fluid" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'navbar-header' },
+	            { className: "navbar-header" },
 	            _react2['default'].createElement(
 	              'button',
-	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
+	              { type: "button", className: "navbar-toggle collapsed", 'data-toggle': "collapse", 'data-target': "#bs-example-navbar-collapse-1" },
 	              _react2['default'].createElement(
 	                'span',
-	                { className: 'sr-only' },
+	                { className: "sr-only" },
 	                'Toggle navigation'
 	              ),
-	              _react2['default'].createElement('span', { className: 'icon-bar' }),
-	              _react2['default'].createElement('span', { className: 'icon-bar' }),
-	              _react2['default'].createElement('span', { className: 'icon-bar' })
+	              _react2['default'].createElement('span', { className: "icon-bar" }),
+	              _react2['default'].createElement('span', { className: "icon-bar" }),
+	              _react2['default'].createElement('span', { className: "icon-bar" })
 	            ),
 	            _react2['default'].createElement(
 	              'div',
 	              { className: classesHeaderNameAndImg },
 	              _react2['default'].createElement(
 	                _reactRouter.Link,
-	                { to: '/', className: 'navbar-brand' },
-	                _react2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
+	                { to: "/", className: "navbar-brand" },
+	                _react2['default'].createElement('img', { alt: "Brand", src: "/img/logo.png", width: "40", height: "40" })
 	              ),
 	              _react2['default'].createElement(
 	                'p',
-	                { className: 'navbar-text pull-left' },
+	                { className: "navbar-text pull-left" },
 	                'Tổ Cú'
 	              )
 	            )
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	            { className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1" },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'nav navbar-nav navbar-right' },
+	              { className: "nav navbar-nav navbar-right" },
 	              _react2['default'].createElement(
 	                _reactRouter.Link,
-	                { to: '/signin', className: 'btn btn-sm btn-default navbar-btn' },
+	                { to: "/signin", className: "btn btn-sm btn-default navbar-btn" },
 	                'Sign in'
 	              ),
 	              _react2['default'].createElement(
 	                _reactRouter.Link,
-	                { to: '/signup', className: 'btn btn-sm btn-primary navbar-btn' },
+	                { to: "/signup", className: "btn btn-sm btn-primary navbar-btn" },
 	                'Sign up'
 	              )
 	            )
@@ -11712,75 +11859,75 @@ webpackJsonp([0],[
 
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'container-fluid' },
+	        { className: "container-fluid" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'navbar-header' },
+	          { className: "navbar-header" },
 	          _react2['default'].createElement(
 	            'button',
-	            { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
+	            { type: "button", className: "navbar-toggle collapsed", 'data-toggle': "collapse", 'data-target': "#bs-example-navbar-collapse-1" },
 	            _react2['default'].createElement(
 	              'span',
-	              { className: 'sr-only' },
+	              { className: "sr-only" },
 	              'Toggle navigation'
 	            ),
-	            _react2['default'].createElement('span', { className: 'icon-bar' }),
-	            _react2['default'].createElement('span', { className: 'icon-bar' }),
-	            _react2['default'].createElement('span', { className: 'icon-bar' })
+	            _react2['default'].createElement('span', { className: "icon-bar" }),
+	            _react2['default'].createElement('span', { className: "icon-bar" }),
+	            _react2['default'].createElement('span', { className: "icon-bar" })
 	          ),
 	          _react2['default'].createElement(
 	            'div',
 	            { className: classesHeaderNameAndImg },
 	            _react2['default'].createElement(
 	              _reactRouter.Link,
-	              { to: '/', className: 'navbar-brand' },
-	              _react2['default'].createElement('img', { alt: 'logo', src: '/img/logo.png', width: '40', height: '40' })
+	              { to: "/", className: "navbar-brand" },
+	              _react2['default'].createElement('img', { alt: "logo", src: "/img/logo.png", width: "40", height: "40" })
 	            ),
 	            _react2['default'].createElement(
 	              'p',
-	              { className: 'navbar-text pull-left' },
+	              { className: "navbar-text pull-left" },
 	              'Tổ Cú'
 	            )
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	          { className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'nav navbar-nav navbar-right' },
+	            { className: "nav navbar-nav navbar-right" },
 	            _react2['default'].createElement(
 	              'span',
-	              { className: 'text-name' },
+	              { className: "text-name" },
 	              this.props.auth.name
 	            ),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'btn-group' },
+	              { className: "btn-group" },
 	              _react2['default'].createElement(
 	                'button',
-	                { type: 'button', className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-	                _react2['default'].createElement('img', { alt: 'avatar', src: this.props.auth.avatarUrl })
+	                { type: "button", className: "btn btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false" },
+	                _react2['default'].createElement('img', { alt: "avatar", src: this.props.auth.avatarUrl })
 	              ),
 	              _react2['default'].createElement(
 	                'ul',
-	                { className: 'dropdown-menu' },
+	                { className: "dropdown-menu" },
 	                _react2['default'].createElement(
 	                  'li',
 	                  null,
 	                  _react2['default'].createElement(
 	                    'a',
-	                    { href: '#' },
+	                    { href: "#" },
 	                    'settings'
 	                  )
 	                ),
-	                _react2['default'].createElement('li', { role: 'separator', className: 'divider' }),
+	                _react2['default'].createElement('li', { role: "separator", className: "divider" }),
 	                _react2['default'].createElement(
 	                  'li',
 	                  null,
 	                  _react2['default'].createElement(
 	                    _reactRouter.Link,
-	                    { to: '/signin', onClick: this.handleLogout.bind(this) },
+	                    { to: "/signin", onClick: this.handleLogout.bind(this) },
 	                    'log out'
 	                  )
 	                )
@@ -11810,9 +11957,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -11831,109 +11978,109 @@ webpackJsonp([0],[
 	var _reactRouter = __webpack_require__(209);
 
 	var InfoBar = (function (_React$Component) {
+	  _inherits(InfoBar, _React$Component);
+
 	  function InfoBar() {
 	    _classCallCheck(this, InfoBar);
 
 	    _get(Object.getPrototypeOf(InfoBar.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _inherits(InfoBar, _React$Component);
-
 	  _createClass(InfoBar, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'container-fluid infoBar' },
+	        { className: "container-fluid infoBar" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'row' },
-	          _react2['default'].createElement('div', { className: 'col-sm-2 col-md-3 col-lg-4' }),
+	          { className: "row" },
+	          _react2['default'].createElement('div', { className: "col-sm-2 col-md-3 col-lg-4" }),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'col-sm-8 col-md-6 col-lg-4' },
+	            { className: "col-sm-8 col-md-6 col-lg-4" },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'row' },
+	              { className: "row" },
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'col-xs-3' },
+	                { className: "col-xs-3" },
 	                _react2['default'].createElement(
 	                  'a',
-	                  { href: '#', className: 'active' },
+	                  { href: "#", className: "active" },
 	                  _react2['default'].createElement(
 	                    'span',
-	                    { className: 'value' },
+	                    { className: "value" },
 	                    this.props.countBox
 	                  ),
 	                  ' ',
 	                  _react2['default'].createElement(
 	                    'span',
-	                    { className: 'labels' },
+	                    { className: "labels" },
 	                    'Box'
 	                  )
 	                )
 	              ),
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'col-xs-3' },
+	                { className: "col-xs-3" },
 	                _react2['default'].createElement(
 	                  _reactRouter.Link,
-	                  { to: '/sp', className: '' },
+	                  { to: "/sp", className: "" },
 	                  _react2['default'].createElement(
 	                    'span',
-	                    { className: 'value' },
+	                    { className: "value" },
 	                    this.props.countSanpham
 	                  ),
 	                  ' ',
 	                  _react2['default'].createElement(
 	                    'span',
-	                    { className: 'labels' },
+	                    { className: "labels" },
 	                    'Sản phẩm'
 	                  )
 	                )
 	              ),
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'col-xs-3' },
+	                { className: "col-xs-3" },
 	                _react2['default'].createElement(
 	                  'a',
-	                  { href: '#', className: '' },
+	                  { href: "#", className: "" },
 	                  _react2['default'].createElement(
 	                    'span',
-	                    { className: 'value' },
+	                    { className: "value" },
 	                    '0'
 	                  ),
 	                  ' ',
 	                  _react2['default'].createElement(
 	                    'span',
-	                    { className: 'labels' },
+	                    { className: "labels" },
 	                    'Ảnh'
 	                  )
 	                )
 	              ),
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'col-xs-3' },
+	                { className: "col-xs-3" },
 	                _react2['default'].createElement(
 	                  'a',
-	                  { href: '#', className: '' },
+	                  { href: "#", className: "" },
 	                  _react2['default'].createElement(
 	                    'span',
-	                    { className: 'value' },
+	                    { className: "value" },
 	                    '0'
 	                  ),
 	                  ' ',
 	                  _react2['default'].createElement(
 	                    'span',
-	                    { className: 'labels' },
+	                    { className: "labels" },
 	                    'Bài Viết'
 	                  )
 	                )
 	              )
 	            )
 	          ),
-	          _react2['default'].createElement('div', { className: 'col-sm-2 col-md-3 col-lg-4' })
+	          _react2['default'].createElement('div', { className: "col-sm-2 col-md-3 col-lg-4" })
 	        )
 	      );
 	    }
@@ -11952,9 +12099,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -11971,46 +12118,46 @@ webpackJsonp([0],[
 	var _react2 = _interopRequireDefault(_react);
 
 	var ProfileInfo = (function (_React$Component) {
+	  _inherits(ProfileInfo, _React$Component);
+
 	  function ProfileInfo() {
 	    _classCallCheck(this, ProfileInfo);
 
 	    _get(Object.getPrototypeOf(ProfileInfo.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _inherits(ProfileInfo, _React$Component);
-
 	  _createClass(ProfileInfo, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'container-fluid profileInfo' },
+	        { className: "container-fluid profileInfo" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'aboutBar' },
+	          { className: "aboutBar" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'about' },
+	            { className: "about" },
 	            _react2['default'].createElement(
 	              'h1',
-	              { className: 'name' },
+	              { className: "name" },
 	              'Tổ Cú'
 	            ),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'iconsLinksEtc' },
+	              { className: "iconsLinksEtc" },
 	              _react2['default'].createElement(
 	                'ul',
 	                null,
 	                _react2['default'].createElement(
 	                  'li',
-	                  { className: 'websiteWrapper' },
+	                  { className: "websiteWrapper" },
 	                  _react2['default'].createElement(
 	                    'a',
-	                    { href: '#', target: '_blank' },
+	                    { href: "#", target: "_blank" },
 	                    _react2['default'].createElement(
 	                      'i',
-	                      { className: 'fa fa-map-marker gray' },
+	                      { className: "fa fa-map-marker gray" },
 	                      '  Hà Nội'
 	                    )
 	                  )
@@ -12020,10 +12167,10 @@ webpackJsonp([0],[
 	                  null,
 	                  _react2['default'].createElement(
 	                    'a',
-	                    { href: 'https://www.facebook.com/thanhchamly', target: '_blank' },
+	                    { href: "https://www.facebook.com/thanhchamly", target: "_blank" },
 	                    _react2['default'].createElement(
 	                      'i',
-	                      { className: 'fa fa-facebook-square gray' },
+	                      { className: "fa fa-facebook-square gray" },
 	                      '  facebook'
 	                    )
 	                  )
@@ -12033,10 +12180,10 @@ webpackJsonp([0],[
 	                  null,
 	                  _react2['default'].createElement(
 	                    'a',
-	                    { href: 'tel:+84904905903', target: '_blank' },
+	                    { href: "tel:+84904905903", target: "_blank" },
 	                    _react2['default'].createElement(
 	                      'i',
-	                      { className: 'fa fa-phone gray' },
+	                      { className: "fa fa-phone gray" },
 	                      '  0904905903'
 	                    )
 	                  )
@@ -12045,7 +12192,7 @@ webpackJsonp([0],[
 	            ),
 	            _react2['default'].createElement(
 	              'p',
-	              { className: 'aboutText' },
+	              { className: "aboutText" },
 	              'Nơi chúng ta thỏa sức với niềm đam mê đồ cũ & handmade :x'
 	            )
 	          )
@@ -12099,15 +12246,15 @@ webpackJsonp([0],[
 
 	var Validations = {
 	  mobilePhone: {
-	    rules: { mobilePhone: ['required', 'regex:/^([0-9]{10,11})$/'] },
-	    messages: { 'required.mobilePhone': 'nhập số điện thoại của bạn!', 'regex.mobilePhone': 'số điện thoại không hợp lệ!' },
+	    rules: { mobilePhone: ["required", "regex:/^([0-9]{10,11})$/"] },
+	    messages: { "required.mobilePhone": "nhập số điện thoại của bạn!", "regex.mobilePhone": "số điện thoại không hợp lệ!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
 	  },
 	  password: {
-	    rules: { password: ['required'] },
-	    messages: { 'required.password': 'nhập password của bạn!' },
+	    rules: { password: ["required"] },
+	    messages: { "required.password": "nhập password của bạn!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
@@ -12132,95 +12279,105 @@ webpackJsonp([0],[
 
 	  componentDidUpdate: function componentDidUpdate() {
 	    var self = this;
-	    if (this.props.loginState === 'success') {
+	    if (this.props.loginState === "success") {
 
 	      setTimeout(function () {
 	        self.replaceWith('/');
 	      }, 100);
+
+	      // var { router: {state: {location}} } = this.context;
+
+	      // let nextPath = location.query.nextPath;
+
+	      // if (nextPath) {
+	      //   this.replaceWith(nextPath);
+	      // } else {
+	      //   this.replaceWith('/');
+	      // }
 	    }
 	  },
 
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { className: 'form-signup' },
+	      { className: "form-signup" },
 	      _react2['default'].createElement(
 	        'div',
-	        { className: 'form-body' },
+	        { className: "form-body" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'form-group' },
+	          { className: "form-group" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'logo' },
-	            _react2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
+	            { className: "logo" },
+	            _react2['default'].createElement('img', { src: "/img/logo.png", style: { width: 50, height: 50 } })
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'p',
-	          { className: 'text-center title-form' },
+	          { className: "text-center title-form" },
 	          'Đăng Nhập Tổ Cú'
 	        ),
-	        this.props.loginState === 'failed' && _react2['default'].createElement(
+	        this.props.loginState === "failed" && _react2['default'].createElement(
 	          'p',
-	          { className: 'text-center text-danger' },
+	          { className: "text-center text-danger" },
 	          'số điện thoại hoặc mật khẩu không đúng'
 	        ),
 	        _react2['default'].createElement(
 	          'form',
 	          null,
 	          _react2['default'].createElement(_inputValidation2['default'], {
-	            ref: 'mobilePhone',
-	            size: 'lg',
-	            type: 'mobilePhone',
-	            placeholder: 'số điện thoại',
-	            name: 'mobilePhone',
+	            ref: "mobilePhone",
+	            size: "lg",
+	            type: "mobilePhone",
+	            placeholder: "số điện thoại",
+	            name: "mobilePhone",
 	            validator: this.state.ValidationData.mobilePhone,
 	            onChange: this._onChangeInputHandler }),
 	          _react2['default'].createElement(_inputValidation2['default'], {
-	            ref: 'password',
-	            size: 'lg',
-	            type: 'password',
-	            placeholder: 'mật khẩu',
-	            name: 'password',
+	            ref: "password",
+	            size: "lg",
+	            type: "password",
+	            placeholder: "mật khẩu",
+	            name: "password",
 	            validator: this.state.ValidationData.password,
 	            onChange: this._onChangeInputHandler }),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'form-group' },
+	            { className: "form-group" },
 	            _react2['default'].createElement(
 	              'button',
-	              { className: 'form-control btn btn-primary',
+	              { className: "form-control btn btn-primary",
 	                onClick: this.handleLogin,
-	                type: 'submit',
+	                type: "submit",
 	                disabled: this.state.disabled },
-	              this.props.loginState !== 'loading' && 'Đăng Nhập',
-	              this.props.loginState === 'loading' && _react2['default'].createElement('i', { className: 'fa fa-spinner fa-pulse' })
+	              this.props.loginState !== "loading" && "Đăng Nhập",
+	              this.props.loginState === "loading" && _react2['default'].createElement('i', { className: "fa fa-spinner fa-pulse" })
 	            )
 	          )
 	        )
 	      ),
 	      _react2['default'].createElement(
 	        'div',
-	        { className: 'form-footer' },
+	        { className: "form-footer" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: "row" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'col-xs-7 col-md-8' },
+	            { className: "col-xs-7 col-md-8" },
 	            _react2['default'].createElement(
 	              'a',
-	              { href: '/password/reset/' },
+	              { href: "/password/reset/" },
 	              'quên mật khẩu?'
 	            )
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'col-xs-5 col-md-4' },
+	            { className: "col-xs-5 col-md-4" },
 	            _react2['default'].createElement(
 	              _reactRouter.Link,
-	              { to: '/signup', className: 'pull-right' },
+	              { to: "/signup", className: "pull-right" },
 	              'Đăng Ký'
 	            )
 	          )
@@ -12283,15 +12440,6 @@ webpackJsonp([0],[
 
 	});
 	module.exports = exports['default'];
-	// var { router: {state: {location}} } = this.context;
-
-	// let nextPath = location.query.nextPath;
-
-	// if (nextPath) {
-	//   this.replaceWith(nextPath);
-	// } else {
-	//   this.replaceWith('/');
-	// }
 
 /***/ },
 /* 326 */
@@ -12303,7 +12451,7 @@ webpackJsonp([0],[
 /* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(203);
+	__webpack_require__(200);
 	module.exports = __webpack_require__(20).core.Object.keys;
 
 /***/ },
@@ -12856,22 +13004,23 @@ webpackJsonp([0],[
 		propTypes: {
 			firstValue: _react2['default'].PropTypes.string
 		},
+		// List: React.PropTypes.array,
 		getDefaultProps: function getDefaultProps() {
 			return {
 				firstValue: ''
 			};
 		},
 		render: function render() {
-			if (this.props.type === 'district') {
+			if (this.props.type === "district") {
 				return _react2['default'].createElement(
 					'div',
-					{ className: 'form-group' },
+					{ className: "form-group" },
 					_react2['default'].createElement(
 						'select',
-						{ className: 'form-control', onChange: this._onChange },
+						{ className: "form-control", onChange: this._onChange },
 						_react2['default'].createElement(
 							'option',
-							{ value: '' },
+							{ value: "" },
 							this.props.firstValue
 						),
 						this.props.List && this.props.List.toJS().map(function (city, i) {
@@ -12886,13 +13035,13 @@ webpackJsonp([0],[
 			} else {
 				return _react2['default'].createElement(
 					'div',
-					{ className: 'form-group' },
+					{ className: "form-group" },
 					_react2['default'].createElement(
 						'select',
-						{ className: 'form-control', onChange: this._onChange },
+						{ className: "form-control", onChange: this._onChange },
 						_react2['default'].createElement(
 							'option',
-							{ value: '' },
+							{ value: "" },
 							this.props.firstValue
 						),
 						this.props.List && this.props.List.map(function (city, i) {
@@ -12921,7 +13070,6 @@ webpackJsonp([0],[
 		}
 	});
 	module.exports = exports['default'];
-	// List: React.PropTypes.array,
 
 /***/ },
 /* 330 */
@@ -12968,26 +13116,26 @@ webpackJsonp([0],[
 	  },
 	  render: function render() {
 	    var classes = (0, _classnames2['default'])({
-	      'form-group': true,
-	      'has-error': this.props.validator.hasError
+	      "form-group": true,
+	      "has-error": this.props.validator.hasError
 	    });
 	    var classesInput = (0, _classnames2['default'])({
-	      'form-control': true,
-	      'input-lg': this.props.size === 'lg'
+	      "form-control": true,
+	      "input-lg": this.props.size === "lg"
 	    });
 
 	    var erros;
 
-	    if (this.props.validator.errorTextRequest !== '') {
+	    if (this.props.validator.errorTextRequest !== "") {
 	      erros = _react2['default'].createElement(
 	        'label',
-	        { className: 'control-label', htmlFor: this.props.name },
+	        { className: "control-label", htmlFor: this.props.name },
 	        this.props.validator.errorTextRequest
 	      );
 	    } else {
 	      erros = _react2['default'].createElement(
 	        'label',
-	        { className: 'control-label', htmlFor: this.props.name },
+	        { className: "control-label", htmlFor: this.props.name },
 	        this.props.validator.errorMessage
 	      );
 	    }
@@ -13028,11 +13176,11 @@ webpackJsonp([0],[
 /* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -13055,13 +13203,13 @@ webpackJsonp([0],[
 	var _ThumbItem2 = _interopRequireDefault(_ThumbItem);
 
 	var ThumbNail = (function (_React$Component) {
+	  _inherits(ThumbNail, _React$Component);
+
 	  function ThumbNail() {
 	    _classCallCheck(this, ThumbNail);
 
 	    _get(Object.getPrototypeOf(ThumbNail.prototype), 'constructor', this).apply(this, arguments);
 	  }
-
-	  _inherits(ThumbNail, _React$Component);
 
 	  _createClass(ThumbNail, [{
 	    key: 'render',
@@ -13070,11 +13218,11 @@ webpackJsonp([0],[
 
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: "row" },
 	        this.props.boxs.map(function (box, i) {
 	          return _react2['default'].createElement(
 	            'div',
-	            { key: i, className: 'col-xs-6 col-sm-4 col-md-4 col-lg-3' },
+	            { key: i, className: "col-xs-6 col-sm-4 col-md-4 col-lg-3" },
 	            _react2['default'].createElement(_ThumbItem2['default'], _extends({ handleBoxLogin: _this.props.handleBoxLogin, userID: _this.props.userID, token: _this.props.token }, box.toJS()))
 	          );
 	        })
@@ -13093,11 +13241,11 @@ webpackJsonp([0],[
 /* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -13119,11 +13267,11 @@ webpackJsonp([0],[
 
 	var _actionsBoxActions = __webpack_require__(293);
 
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
 	/**
 	 * @Component
 	 */
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
 	var _ArticleItem = __webpack_require__(333);
 
@@ -13138,6 +13286,8 @@ webpackJsonp([0],[
 	var _ProductItem2 = _interopRequireDefault(_ProductItem);
 
 	var ThumbItem = (function (_React$Component) {
+	  _inherits(ThumbItem, _React$Component);
+
 	  function ThumbItem(props) {
 	    _classCallCheck(this, ThumbItem);
 
@@ -13145,8 +13295,6 @@ webpackJsonp([0],[
 
 	    this._bind('boxLogin', 'handleLike');
 	  }
-
-	  _inherits(ThumbItem, _React$Component);
 
 	  _createClass(ThumbItem, [{
 	    key: '_bind',
@@ -13166,8 +13314,8 @@ webpackJsonp([0],[
 	    value: function render() {
 	      var _this2 = this;
 
-	      var img_url = '/img/404.jpg';
-	      var type = '';
+	      var img_url = "/img/404.jpg";
+	      var type = "";
 	      var ListPost = this.props.latestPosts.map(function (post, i) {
 	        /**
 	         * lấy link ảnh của bài post đầu tiên
@@ -13183,11 +13331,11 @@ webpackJsonp([0],[
 	        post.price = post.price !== null ? post.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
 
 	        switch (_this2.props.type) {
-	          case 'product':
+	          case "product":
 	            return _react2['default'].createElement(_ProductItem2['default'], _extends({ key: i, i: i }, post));
-	          case 'article':
+	          case "article":
 	            return _react2['default'].createElement(PostItem, _extends({ key: i, i: i }, post));
-	          case 'photo':
+	          case "photo":
 	            return _react2['default'].createElement(_AlbumItem2['default'], _extends({ key: i, i: i }, post));
 	        }
 	      });
@@ -13200,45 +13348,45 @@ webpackJsonp([0],[
 	      for (var i = ListPost.length; i < 2; i++) {
 	        ListPost.push(_react2['default'].createElement(
 	          'div',
-	          { key: i, className: 'newsItem newCreditItem' },
+	          { key: i, className: "newsItem newCreditItem" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'newsImg' },
-	            _react2['default'].createElement('span', { className: 'imgIcon imgIcon-list' })
+	            { className: "newsImg" },
+	            _react2['default'].createElement('span', { className: "imgIcon imgIcon-list" })
 	          ),
-	          _react2['default'].createElement('div', { className: 'newsText', style: { cursor: 'default' } })
+	          _react2['default'].createElement('div', { className: "newsText", style: { cursor: 'default' } })
 	        ));
 	      };
 
 	      switch (this.props.type) {
-	        case 'product':
-	          type = 'SP';
+	        case "product":
+	          type = "SP";
 	          break;
-	        case 'article':
-	          type = 'Ảnh';
+	        case "article":
+	          type = "Ảnh";
 	          break;
-	        case 'photo':
-	          type = 'Ảnh';
+	        case "photo":
+	          type = "Ảnh";
 	      }
 
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'thumbnail' },
+	        { className: "thumbnail" },
 	        _react2['default'].createElement(
 	          _reactRouter.Link,
 	          { to: '/box/' + this.props.id },
 	          _react2['default'].createElement(
 	            'h4',
-	            { className: 'thumbnail-title' },
+	            { className: "thumbnail-title" },
 	            this.props.name
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'imgWrapper' },
-	            _react2['default'].createElement('img', { className: 'img-max-height img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' }),
+	            { className: "imgWrapper" },
+	            _react2['default'].createElement('img', { className: "img-max-height img-rounded", 'data-holder-rendered': "true", src: img_url, alt: "images" }),
 	            _react2['default'].createElement(
 	              'span',
-	              { className: 'boardPinCount' },
+	              { className: "boardPinCount" },
 	              this.props.postsCount,
 	              ' ',
 	              type
@@ -13249,7 +13397,7 @@ webpackJsonp([0],[
 	            null,
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'thumbnail-list-news' },
+	              { className: "thumbnail-list-news" },
 	              ListPost
 	            ),
 	            _react2['default'].createElement(
@@ -13257,7 +13405,7 @@ webpackJsonp([0],[
 	              null,
 	              _react2['default'].createElement(
 	                'div',
-	                { onClick: this.handleLike, className: 'btn btn-default btn-block btn-follow' },
+	                { onClick: this.handleLike, className: "btn btn-default btn-block btn-follow" },
 	                this.props.likesCount,
 	                ' likes '
 	              )
@@ -13302,11 +13450,11 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -13325,28 +13473,28 @@ webpackJsonp([0],[
 	var _reactRouter = __webpack_require__(209);
 
 	var CreditItem = (function (_React$Component) {
+	  _inherits(CreditItem, _React$Component);
+
 	  function CreditItem() {
 	    _classCallCheck(this, CreditItem);
 
 	    _get(Object.getPrototypeOf(CreditItem.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _inherits(CreditItem, _React$Component);
-
 	  _createClass(CreditItem, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        _reactRouter.Link,
-	        { to: '/posts/' + this.props.id, className: 'newsItem newCreditItem' },
+	        { to: '/posts/' + this.props.id, className: "newsItem newCreditItem" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'newsImg' },
-	          _react2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-blue' })
+	          { className: "newsImg" },
+	          _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-blue" })
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'newsText' },
+	          { className: "newsText" },
 	          this.props.text
 	        )
 	      );
@@ -13364,11 +13512,11 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -13387,28 +13535,28 @@ webpackJsonp([0],[
 	var _reactRouter = __webpack_require__(209);
 
 	var AlbumItem = (function (_React$Component) {
+	  _inherits(AlbumItem, _React$Component);
+
 	  function AlbumItem() {
 	    _classCallCheck(this, AlbumItem);
 
 	    _get(Object.getPrototypeOf(AlbumItem.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _inherits(AlbumItem, _React$Component);
-
 	  _createClass(AlbumItem, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        _reactRouter.Link,
-	        { to: '/album/' + this.props.id, className: 'newsItem newCreditItem' },
+	        { to: '/album/' + this.props.id, className: "newsItem newCreditItem" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'newsImg' },
-	          _react2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-yellow' })
+	          { className: "newsImg" },
+	          _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-yellow" })
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'newsText' },
+	          { className: "newsText" },
 	          this.props.text
 	        )
 	      );
@@ -13425,11 +13573,11 @@ webpackJsonp([0],[
 /* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -13446,13 +13594,13 @@ webpackJsonp([0],[
 	var _react2 = _interopRequireDefault(_react);
 
 	var ProductItem = (function (_React$Component) {
+	  _inherits(ProductItem, _React$Component);
+
 	  function ProductItem() {
 	    _classCallCheck(this, ProductItem);
 
 	    _get(Object.getPrototypeOf(ProductItem.prototype), 'constructor', this).apply(this, arguments);
 	  }
-
-	  _inherits(ProductItem, _React$Component);
 
 	  _createClass(ProductItem, [{
 	    key: 'render',
@@ -13466,22 +13614,22 @@ webpackJsonp([0],[
 
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'newsItem newCreditItem' },
+	        { className: "newsItem newCreditItem" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'newsImg' },
+	          { className: "newsImg" },
 	          _react2['default'].createElement(
 	            'span',
-	            { className: 'imgIcon imgIcon-list imgIcon-bg-red' },
+	            { className: "imgIcon imgIcon-list imgIcon-bg-red" },
 	            images
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'newsText newsInfo' },
+	          { className: "newsText newsInfo" },
 	          _react2['default'].createElement(
 	            'p',
-	            { className: 'creditTitle' },
+	            { className: "creditTitle" },
 	            this.props.code
 	          ),
 	          _react2['default'].createElement(
@@ -13489,7 +13637,7 @@ webpackJsonp([0],[
 	            null,
 	            _react2['default'].createElement(
 	              'strong',
-	              { className: 'creditCost' },
+	              { className: "creditCost" },
 	              this.props.price,
 	              ' đ'
 	            )
@@ -13611,7 +13759,7 @@ webpackJsonp([0],[
 
 	exports['default'] = _react2['default'].createClass({
 
-	  displayName: 'Box',
+	  displayName: "Box",
 
 	  mixins: [_reactAsync2['default'].Mixin, (0, _reactMasonryMixin2['default'])('masonryContainer', {})],
 
@@ -13638,8 +13786,8 @@ webpackJsonp([0],[
 	  },
 
 	  componentWillMount: function componentWillMount() {
-	    this.props.HeadParams.setTitle('Box | tocu.vn');
-	    this.props.HeadParams.setDescription('Box | Description');
+	    this.props.HeadParams.setTitle("Box | tocu.vn");
+	    this.props.HeadParams.setDescription("Box | Description");
 	    var id = this.props.params.id;
 
 	    _actionsBoxActions2['default'].getBoxID({ id: id });
@@ -13662,12 +13810,15 @@ webpackJsonp([0],[
 	    var hasMore = data.length == limit;
 	    var skip = this.state.skip += limit;
 
+	    console.log(data);
+
 	    this.setState({
 	      posts: createUniqueArray(this.state.posts.concat(data), 'id'),
 	      page: page + 1,
 	      skip: skip
 	    });
 
+	    // hasMore: hasMore,
 	    this.hasMore(hasMore);
 	  },
 
@@ -13725,20 +13876,20 @@ webpackJsonp([0],[
 	      }),
 	      _react2['default'].createElement(
 	        'section',
-	        { id: 'productDetail' },
+	        { id: "productDetail" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: "container" },
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'row' },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'masonry' },
+	              { className: "masonry" },
 	              _react2['default'].createElement(
 	                InfiniteScroll,
 	                {
-	                  ref: 'masonryContainer',
+	                  ref: "masonryContainer",
 	                  loader: this.getLoaderElement(),
 	                  pageStart: this.state.page - 1,
 	                  loadMore: this.loadMore,
@@ -13759,7 +13910,6 @@ webpackJsonp([0],[
 
 	});
 	module.exports = exports['default'];
-	// hasMore: hasMore,
 
 /***/ },
 /* 337 */
@@ -23492,7 +23642,7 @@ webpackJsonp([0],[
 /* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _interopRequireDefault = __webpack_require__(2)['default'];
 
@@ -23506,9 +23656,9 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(209);
 
-	var _reactRouter2 = _interopRequireDefault(_reactRouter);
-
 	/* @Component */
+
+	var _reactRouter2 = _interopRequireDefault(_reactRouter);
 
 	var _altAltContainer = __webpack_require__(267);
 
@@ -23573,7 +23723,7 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
-	'use strict';
+	"use strict";
 
 	var _extends = __webpack_require__(15)['default'];
 
@@ -23628,10 +23778,10 @@ webpackJsonp([0],[
 
 		render: function render() {
 			var classesNavbar = (0, _classnames2['default'])({
-				'navbar': true,
-				'navbar-default': true,
-				'navbar-fixed-top': true,
-				'headerHiden': this.state.hideHeader
+				"navbar": true,
+				"navbar-default": true,
+				"navbar-fixed-top": true,
+				"headerHiden": this.state.hideHeader
 			});
 
 			if (!this.state.mobilePhone) {
@@ -23640,53 +23790,53 @@ webpackJsonp([0],[
 					null,
 					_react2['default'].createElement(
 						'div',
-						{ className: 'container-fluid' },
+						{ className: "container-fluid" },
 						_react2['default'].createElement(
 							'nav',
 							{ className: classesNavbar },
 							_react2['default'].createElement(
 								'div',
-								{ className: 'container-fluid' },
+								{ className: "container-fluid" },
 								_react2['default'].createElement(
 									'div',
-									{ className: 'navbar-header' },
+									{ className: "navbar-header" },
 									_react2['default'].createElement(
 										'button',
-										{ type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
+										{ type: "button", className: "navbar-toggle collapsed", 'data-toggle': "collapse", 'data-target': "#bs-example-navbar-collapse-1" },
 										_react2['default'].createElement(
 											'span',
-											{ className: 'sr-only' },
+											{ className: "sr-only" },
 											'Toggle navigation'
 										),
-										_react2['default'].createElement('span', { className: 'icon-bar' }),
-										_react2['default'].createElement('span', { className: 'icon-bar' }),
-										_react2['default'].createElement('span', { className: 'icon-bar' })
+										_react2['default'].createElement('span', { className: "icon-bar" }),
+										_react2['default'].createElement('span', { className: "icon-bar" }),
+										_react2['default'].createElement('span', { className: "icon-bar" })
 									),
 									_react2['default'].createElement(
 										_reactRouter.Link,
-										{ to: '/', className: 'navbar-brand', href: '#' },
-										_react2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
+										{ to: "/", className: "navbar-brand", href: "#" },
+										_react2['default'].createElement('img', { alt: "Brand", src: "/img/logo.png", width: "40", height: "40" })
 									),
 									_react2['default'].createElement(
 										'p',
-										{ className: 'navbar-text pull-left' },
+										{ className: "navbar-text pull-left" },
 										'Tổ Cú'
 									)
 								),
 								_react2['default'].createElement(
 									'div',
-									{ className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+									{ className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1" },
 									_react2['default'].createElement(
 										'div',
-										{ className: 'nav navbar-nav navbar-right' },
+										{ className: "nav navbar-nav navbar-right" },
 										_react2['default'].createElement(
 											_reactRouter.Link,
-											{ to: '/signin', className: 'btn btn-sm btn-default navbar-btn' },
+											{ to: "/signin", className: "btn btn-sm btn-default navbar-btn" },
 											'Sign in'
 										),
 										_react2['default'].createElement(
 											_reactRouter.Link,
-											{ to: '/signup', className: 'btn btn-sm btn-primary navbar-btn' },
+											{ to: "/signup", className: "btn btn-sm btn-primary navbar-btn" },
 											'Sign up'
 										)
 									)
@@ -23702,77 +23852,77 @@ webpackJsonp([0],[
 				null,
 				_react2['default'].createElement(
 					'div',
-					{ className: 'container-fluid' },
+					{ className: "container-fluid" },
 					_react2['default'].createElement(
 						'nav',
 						{ className: classesNavbar },
 						_react2['default'].createElement(
 							'div',
-							{ className: 'container-fluid' },
+							{ className: "container-fluid" },
 							_react2['default'].createElement(
 								'div',
-								{ className: 'navbar-header' },
+								{ className: "navbar-header" },
 								_react2['default'].createElement(
 									'button',
-									{ type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
+									{ type: "button", className: "navbar-toggle collapsed", 'data-toggle': "collapse", 'data-target': "#bs-example-navbar-collapse-1" },
 									_react2['default'].createElement(
 										'span',
-										{ className: 'sr-only' },
+										{ className: "sr-only" },
 										'Toggle navigation'
 									),
-									_react2['default'].createElement('span', { className: 'icon-bar' }),
-									_react2['default'].createElement('span', { className: 'icon-bar' }),
-									_react2['default'].createElement('span', { className: 'icon-bar' })
+									_react2['default'].createElement('span', { className: "icon-bar" }),
+									_react2['default'].createElement('span', { className: "icon-bar" }),
+									_react2['default'].createElement('span', { className: "icon-bar" })
 								),
 								_react2['default'].createElement(
 									_reactRouter.Link,
-									{ to: '/', className: 'navbar-brand', href: '#' },
-									_react2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
+									{ to: "/", className: "navbar-brand", href: "#" },
+									_react2['default'].createElement('img', { alt: "Brand", src: "/img/logo.png", width: "40", height: "40" })
 								),
 								_react2['default'].createElement(
 									'p',
-									{ className: 'navbar-text pull-left' },
+									{ className: "navbar-text pull-left" },
 									'Tổ Cú'
 								)
 							),
 							_react2['default'].createElement(
 								'div',
-								{ className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+								{ className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1" },
 								_react2['default'].createElement(
 									'div',
-									{ className: 'nav navbar-nav navbar-right' },
+									{ className: "nav navbar-nav navbar-right" },
 									_react2['default'].createElement(
 										'span',
-										{ className: 'text-name' },
+										{ className: "text-name" },
 										this.state.name
 									),
 									_react2['default'].createElement(
 										'div',
-										{ className: 'btn-group' },
+										{ className: "btn-group" },
 										_react2['default'].createElement(
 											'button',
-											{ type: 'button', className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-											_react2['default'].createElement('img', { alt: 'Brand', src: this.state.avatarUrl })
+											{ type: "button", className: "btn btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false" },
+											_react2['default'].createElement('img', { alt: "Brand", src: this.state.avatarUrl })
 										),
 										_react2['default'].createElement(
 											'ul',
-											{ className: 'dropdown-menu' },
+											{ className: "dropdown-menu" },
 											_react2['default'].createElement(
 												'li',
 												null,
 												_react2['default'].createElement(
 													'a',
-													{ href: '#' },
+													{ href: "#" },
 													'settings'
 												)
 											),
-											_react2['default'].createElement('li', { role: 'separator', className: 'divider' }),
+											_react2['default'].createElement('li', { role: "separator", className: "divider" }),
 											_react2['default'].createElement(
 												'li',
 												null,
 												_react2['default'].createElement(
 													_reactRouter.Link,
-													{ to: '/signin', onClick: this.handleLogout },
+													{ to: "/signin", onClick: this.handleLogout },
 													'log out'
 												)
 											)
@@ -23829,23 +23979,23 @@ webpackJsonp([0],[
 
 	  render: function render() {
 	    var classesNavbar = (0, _classnames2['default'])({
-	      'navbar': true,
-	      'navbar-default': true,
-	      'navbar-product': true,
-	      'navbar-fixed-top': true,
+	      "navbar": true,
+	      "navbar-default": true,
+	      "navbar-product": true,
+	      "navbar-fixed-top": true,
 	      headerHiden: this.props.hideHeader
 	    }),
 	        type = null;
 
 	    switch (this.props.info.type) {
-	      case 'product':
-	        type = 'Sản phẩm';
+	      case "product":
+	        type = "Sản phẩm";
 	        break;
-	      case 'article':
-	        type = 'Bài viết';
+	      case "article":
+	        type = "Bài viết";
 	        break;
-	      case 'photo':
-	        type = 'Ảnh';
+	      case "photo":
+	        type = "Ảnh";
 	        break;
 	    }
 
@@ -23855,29 +24005,29 @@ webpackJsonp([0],[
 
 	    return _react2['default'].createElement(
 	      'div',
-	      { className: 'container-fluid' },
+	      { className: "container-fluid" },
 	      _react2['default'].createElement(
 	        'nav',
 	        { className: classesNavbar },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'infoListProduct text-center' },
+	          { className: "infoListProduct text-center" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'btn-group' },
+	            { className: "btn-group" },
 	            _react2['default'].createElement(
 	              'button',
-	              { onClick: this.handleLikeBox, type: 'button', className: 'btn btn-default navbar-btn' },
+	              { onClick: this.handleLikeBox, type: "button", className: "btn btn-default navbar-btn" },
 	              _react2['default'].createElement(
 	                'i',
-	                { className: 'fa fa-heart gray' },
+	                { className: "fa fa-heart gray" },
 	                ' '
 	              ),
 	              ' Thích'
 	            ),
 	            _react2['default'].createElement(
 	              'button',
-	              { type: 'button', className: 'btn btn-default count-like navbar-btn' },
+	              { type: "button", className: "btn btn-default count-like navbar-btn" },
 	              _react2['default'].createElement(
 	                'span',
 	                null,
@@ -23887,12 +24037,12 @@ webpackJsonp([0],[
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'nameinfoListProduct' },
+	            { className: "nameinfoListProduct" },
 	            this.props.info.name
 	          ),
 	          _react2['default'].createElement(
 	            'span',
-	            { className: 'countListProduct' },
+	            { className: "countListProduct" },
 	            this.props.info.postsCount,
 	            ' ',
 	            type
@@ -23942,7 +24092,7 @@ webpackJsonp([0],[
 	  propTypes: {},
 
 	  render: function render() {
-	    var img_url = '/img/404.jpg';
+	    var img_url = "/img/404.jpg";
 	    var price = this.props.price !== null ? this.props.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
 
 	    if (this.props.images) {
@@ -23955,29 +24105,29 @@ webpackJsonp([0],[
 	      { onClick: this.handleClick, className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
 	      _react2['default'].createElement(
 	        'div',
-	        { className: 'thumbnail' },
+	        { className: "thumbnail" },
 	        _react2['default'].createElement(
 	          _reactRouter.Link,
 	          { to: '/sp/' + this.props.id },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'imgWrapper' },
-	            _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' })
+	            { className: "imgWrapper" },
+	            _react2['default'].createElement('img', { className: "img-rounded", 'data-holder-rendered': "true", src: img_url, alt: "images" })
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'infoSanpham' },
+	            { className: "infoSanpham" },
 	            _react2['default'].createElement(
 	              'span',
-	              { className: 'titleSanpham' },
+	              { className: "titleSanpham" },
 	              this.props.code
 	            ),
 	            _react2['default'].createElement(
 	              'span',
-	              { className: 'price' },
+	              { className: "price" },
 	              _react2['default'].createElement(
 	                'span',
-	                { className: 'price-sale' },
+	                { className: "price-sale" },
 	                price,
 	                ' VNĐ'
 	              )
@@ -23985,10 +24135,10 @@ webpackJsonp([0],[
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'infoBox' },
+	            { className: "infoBox" },
 	            _react2['default'].createElement(
 	              'span',
-	              { className: 'nameBox' },
+	              { className: "nameBox" },
 	              this.props.boxName
 	            )
 	          )
@@ -24053,7 +24203,6 @@ webpackJsonp([0],[
 	      if (!this.props.hasMore) {
 	        return;
 	      }
-
 	      window.addEventListener('scroll', this.scrollListener);
 	      window.addEventListener('resize', this.scrollListener);
 	      this.scrollListener();
@@ -24078,9 +24227,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -24101,19 +24250,19 @@ webpackJsonp([0],[
 	var _decorators = __webpack_require__(228);
 
 	var Posts = (function (_React$Component) {
+	  _inherits(Posts, _React$Component);
+
 	  function Posts(props) {
 	    _classCallCheck(this, Posts);
 
 	    _get(Object.getPrototypeOf(Posts.prototype), 'constructor', this).call(this, props);
 	  }
 
-	  _inherits(Posts, _React$Component);
-
 	  _createClass(Posts, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle('Posts | tocu.vn');
-	      this.props.HeadParams.setDescription('Posts | Description');
+	      this.props.HeadParams.setTitle("Posts | tocu.vn");
+	      this.props.HeadParams.setDescription("Posts | Description");
 	    }
 	  }, {
 	    key: 'render',
@@ -24129,7 +24278,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2['default'].createElement(
 	          _reactRouter.Link,
-	          { to: '/' },
+	          { to: "/" },
 	          'to Home!'
 	        )
 	      );
@@ -24149,9 +24298,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -24172,19 +24321,19 @@ webpackJsonp([0],[
 	var _decorators = __webpack_require__(228);
 
 	var Album = (function (_React$Component) {
+	  _inherits(Album, _React$Component);
+
 	  function Album(props) {
 	    _classCallCheck(this, Album);
 
 	    _get(Object.getPrototypeOf(Album.prototype), 'constructor', this).call(this, props);
 	  }
 
-	  _inherits(Album, _React$Component);
-
 	  _createClass(Album, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle('Album | tocu.vn');
-	      this.props.HeadParams.setDescription('Album | Description');
+	      this.props.HeadParams.setTitle("Album | tocu.vn");
+	      this.props.HeadParams.setDescription("Album | Description");
 	    }
 	  }, {
 	    key: 'render',
@@ -24200,7 +24349,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2['default'].createElement(
 	          _reactRouter.Link,
-	          { to: '/' },
+	          { to: "/" },
 	          'to Home!'
 	        )
 	      );
@@ -24294,34 +24443,34 @@ webpackJsonp([0],[
 	        { key: i, className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'thumbnail' },
+	          { className: "thumbnail" },
 	          _react2['default'].createElement(
 	            _reactRouter.Link,
-	            { to: 'spID', params: { id: i } },
+	            { to: "spID", params: { id: i } },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'imgWrapper' },
-	              _react2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: '/img/404.jpg', alt: '100%x200' })
+	              { className: "imgWrapper" },
+	              _react2['default'].createElement('img', { className: "img-rounded", 'data-holder-rendered': "true", src: "/img/404.jpg", alt: "100%x200" })
 	            ),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'infoSanpham' },
+	              { className: "infoSanpham" },
 	              _react2['default'].createElement(
 	                'span',
-	                { className: 'titleSanpham' },
+	                { className: "titleSanpham" },
 	                'Title'
 	              ),
 	              _react2['default'].createElement(
 	                'span',
-	                { className: 'price' },
+	                { className: "price" },
 	                _react2['default'].createElement(
 	                  'span',
-	                  { className: 'price-list' },
+	                  { className: "price-list" },
 	                  '153.000 VNĐ'
 	                ),
 	                _react2['default'].createElement(
 	                  'span',
-	                  { className: 'price-sale' },
+	                  { className: "price-sale" },
 	                  '123.000 VNĐ'
 	                )
 	              )
@@ -24341,20 +24490,20 @@ webpackJsonp([0],[
 	      _react2['default'].createElement(_componentsProductDetailHeaderProduct2['default'], null),
 	      _react2['default'].createElement(
 	        'section',
-	        { id: 'productDetail' },
+	        { id: "productDetail" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: "container" },
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'row' },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'masonry' },
+	              { className: "masonry" },
 	              _react2['default'].createElement(
 	                InfiniteScroll,
 	                {
-	                  ref: 'masonryContainer',
+	                  ref: "masonryContainer",
 	                  loader: this.getLoaderElement(),
 	                  pageStart: this.state.page - 1,
 	                  loadMore: this.loadMore,
@@ -24377,9 +24526,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -24431,11 +24580,11 @@ webpackJsonp([0],[
 
 	var _actionsCityActions = __webpack_require__(391);
 
-	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
-
 	/**
 	 * @Component
 	 */
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
 	var _altAltContainer = __webpack_require__(267);
 
@@ -24473,11 +24622,13 @@ webpackJsonp([0],[
 
 	var _componentsSanphamIDMau2 = _interopRequireDefault(_componentsSanphamIDMau);
 
-	var _test = __webpack_require__(405);
+	var _componentsProductDetailSidebar = __webpack_require__(405);
 
-	var _test2 = _interopRequireDefault(_test);
+	var _componentsProductDetailSidebar2 = _interopRequireDefault(_componentsProductDetailSidebar);
 
 	var SanphamID = (function (_React$Component) {
+	  _inherits(SanphamID, _React$Component);
+
 	  function SanphamID(props) {
 	    _classCallCheck(this, _SanphamID);
 
@@ -24492,12 +24643,10 @@ webpackJsonp([0],[
 	    }, _storeSanphamStore2['default'].getState().product.toJS());
 	  }
 
-	  _inherits(SanphamID, _React$Component);
-
-	  var _SanphamID = SanphamID;
-
-	  _createClass(_SanphamID, [{
+	  _createClass(SanphamID, [{
 	    key: '_bind',
+
+	    // ...AuthStore.getState().auth.toJS(),
 	    value: function _bind() {
 	      var _this = this;
 
@@ -24512,8 +24661,8 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle('SanphamID | tocu.vn');
-	      this.props.HeadParams.setDescription('SanphamID | Description');
+	      this.props.HeadParams.setTitle("SanphamID | tocu.vn");
+	      this.props.HeadParams.setDescription("SanphamID | Description");
 	    }
 	  }, {
 	    key: 'componentDidMount',
@@ -24555,16 +24704,16 @@ webpackJsonp([0],[
 	          hideHeader: this.state.hideHeader }),
 	        _react2['default'].createElement(
 	          'section',
-	          { id: 'productDetail' },
+	          { id: "productDetail" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'container' },
+	            { className: "container" },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'row' },
+	              { className: "row" },
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'col-md-9 col-lg-9' },
+	                { className: "col-md-9 col-lg-9" },
 	                _react2['default'].createElement(
 	                  'div',
 	                  { className: classProductDetail },
@@ -24588,31 +24737,31 @@ webpackJsonp([0],[
 	                  ),
 	                  _react2['default'].createElement(
 	                    'div',
-	                    { className: 'product' },
+	                    { className: "product" },
 	                    _react2['default'].createElement(_componentsProductDetailImgSlideProduct2['default'], {
 	                      dataUrlImg: this.state.images || [],
 	                      dataUrlImgTab: this.state.images || []
 	                    }),
 	                    _react2['default'].createElement(
 	                      'div',
-	                      { className: 'product-detail' },
+	                      { className: "product-detail" },
 	                      _react2['default'].createElement(_componentsSanphamIDDetail2['default'], {
 	                        name: this.state.name,
 	                        price: this.state.price || 0,
 	                        salePrice: this.state.salePrice }),
 	                      _react2['default'].createElement(
 	                        'div',
-	                        { className: 'row' },
+	                        { className: "row" },
 	                        _react2['default'].createElement(
 	                          'div',
-	                          { className: 'col-md-6' },
+	                          { className: "col-md-6" },
 	                          _react2['default'].createElement(_componentsSanphamIDInfoSanpham2['default'], {
 	                            code: this.state.code,
 	                            description: this.state.description })
 	                        ),
 	                        _react2['default'].createElement(
 	                          'div',
-	                          { className: 'col-md-6' },
+	                          { className: "col-md-6" },
 	                          _react2['default'].createElement(_componentsSanphamIDMau2['default'], this.state.Model)
 	                        )
 	                      )
@@ -24643,39 +24792,39 @@ webpackJsonp([0],[
 	                  { className: classStatusOrder },
 	                  _react2['default'].createElement(
 	                    'nav',
-	                    { className: 'navbar navbar-defaul' },
+	                    { className: "navbar navbar-defaul" },
 	                    _react2['default'].createElement(
 	                      'h3',
-	                      { className: 'text-center' },
+	                      { className: "text-center" },
 	                      'Đặt hàng thành công'
 	                    )
 	                  ),
 	                  _react2['default'].createElement(
 	                    'div',
-	                    { className: 'product' },
+	                    { className: "product" },
 	                    _react2['default'].createElement(
 	                      'div',
-	                      { className: 'text-center status-check' },
-	                      _react2['default'].createElement('i', { className: 'fa fa-check-circle-o' })
+	                      { className: "text-center status-check" },
+	                      _react2['default'].createElement('i', { className: "fa fa-check-circle-o" })
 	                    ),
 	                    _react2['default'].createElement(
 	                      'p',
-	                      { className: 'text-center' },
+	                      { className: "text-center" },
 	                      'Đơn hàng đã được tạo!'
 	                    ),
 	                    _react2['default'].createElement(
 	                      'p',
-	                      { className: 'text-center' },
+	                      { className: "text-center" },
 	                      'số đơn hàng: #2233'
 	                    ),
 	                    _react2['default'].createElement(
 	                      'p',
-	                      { className: 'text-center' },
+	                      { className: "text-center" },
 	                      'dưới đây là thông tin tài khoản của Cú'
 	                    ),
 	                    _react2['default'].createElement(
 	                      'p',
-	                      { className: 'text-center' },
+	                      { className: "text-center" },
 	                      'Bạn nhớ nghi tên đơn hàng trong thông tin chuyển khoản nhé!'
 	                    )
 	                  )
@@ -24683,24 +24832,831 @@ webpackJsonp([0],[
 	              ),
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'col-md-3 col-lg-3' },
-	                _react2['default'].createElement(_test2['default'], this.state.Box)
+	                { className: "col-md-3 col-lg-3" },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: 'row row-sidebar' },
+	                  _react2['default'].createElement(_componentsProductDetailSidebar2['default'], this.state.Box),
+	                  _react2['default'].createElement(
+	                    'div',
+	                    { className: "col-md-12 col-lg-12" },
+	                    _react2['default'].createElement(
+	                      'div',
+	                      { className: "panel panel-default" },
+	                      _react2['default'].createElement(
+	                        'div',
+	                        { className: "panel-heading" },
+	                        'Giảm giá'
+	                      ),
+	                      _react2['default'].createElement(
+	                        'div',
+	                        { className: "list-group" },
+	                        _react2['default'].createElement(
+	                          'a',
+	                          { href: "#", className: "list-group-item" },
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "list-group-body-item" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "img" },
+	                              _react2['default'].createElement(
+	                                'span',
+	                                { className: "imgIcon" },
+	                                _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/be9645becb337e08394a-1-1.jpg" })
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsText" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "title" },
+	                                'Sơ mi denim Hàn'
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "price" },
+	                                '250.000 d'
+	                              )
+	                            )
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'a',
+	                          { href: "#", className: "list-group-item" },
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "list-group-body-item" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "img" },
+	                              _react2['default'].createElement(
+	                                'span',
+	                                { className: "imgIcon" },
+	                                _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg" })
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsText" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "title" },
+	                                'Sơ mi denim Hàn'
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "price" },
+	                                '250.000 d'
+	                              )
+	                            )
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'a',
+	                          { href: "#", className: "list-group-item" },
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "list-group-body-item" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "img" },
+	                              _react2['default'].createElement(
+	                                'span',
+	                                { className: "imgIcon" },
+	                                _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/1e4bdb15fe3ed751a276-3-3.jpg" })
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsText" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "title" },
+	                                'Áo ren, len móc Nhật'
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "price" },
+	                                '250.000 d'
+	                              )
+	                            )
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'a',
+	                          { href: "#", className: "list-group-item" },
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "list-group-body-item" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "img" },
+	                              _react2['default'].createElement(
+	                                'span',
+	                                { className: "imgIcon" },
+	                                _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/3c0827fac42221665e95-8-2.jpg" })
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsText" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "title" },
+	                                'Shorts Hàn Quốc'
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "price" },
+	                                '250.000 d'
+	                              )
+	                            )
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'a',
+	                          { href: "#", className: "list-group-item" },
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "list-group-body-item" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "img" },
+	                              _react2['default'].createElement(
+	                                'span',
+	                                { className: "imgIcon" },
+	                                _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/dc615fb338e70722455f-7-2.jpg" })
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsText" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "title" },
+	                                'Shorts Hàn Quốc'
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "price" },
+	                                '250.000 d'
+	                              )
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
 	              )
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: "row" },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: "col-md-9 col-lg-9" },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { className: "row row-bottom-detail" },
+	                  _react2['default'].createElement(
+	                    'div',
+	                    { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	                    _react2['default'].createElement(
+	                      'div',
+	                      { className: "thumbnail" },
+	                      _react2['default'].createElement(
+	                        'a',
+	                        { className: "", href: "/box/1" },
+	                        _react2['default'].createElement(
+	                          'h4',
+	                          { className: "thumbnail-title" },
+	                          'Sơ mi xô Nhật Hàn'
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          { className: "imgWrapper" },
+	                          _react2['default'].createElement('img', { className: "img-max-height img-rounded", src: "http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg", alt: "images" }),
+	                          _react2['default'].createElement(
+	                            'span',
+	                            { className: "boardPinCount" },
+	                            '4 SP'
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          null,
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "thumbnail-list-news" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" })
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM2'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '150.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement(
+	                                  'span',
+	                                  { className: "imgIcon imgIcon-list imgIcon-bg-red" },
+	                                  _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" })
+	                                )
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM1'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '130.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            )
+	                          ),
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "btn btn-default btn-block btn-follow" },
+	                            _react2['default'].createElement(
+	                              'span',
+	                              null,
+	                              '1 likes'
+	                            )
+	                          ),
+	                          _react2['default'].createElement('p', null)
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _react2['default'].createElement(
+	                    'div',
+	                    { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	                    _react2['default'].createElement(
+	                      'div',
+	                      { className: "thumbnail" },
+	                      _react2['default'].createElement(
+	                        'a',
+	                        { className: "", href: "/box/1" },
+	                        _react2['default'].createElement(
+	                          'h4',
+	                          { className: "thumbnail-title" },
+	                          'Sơ mi xô Nhật Hàn'
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          { className: "imgWrapper" },
+	                          _react2['default'].createElement('img', { className: "img-max-height img-rounded", src: "http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg", alt: "images" }),
+	                          _react2['default'].createElement(
+	                            'span',
+	                            { className: "boardPinCount" },
+	                            '4 SP'
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          null,
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "thumbnail-list-news" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" })
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM2'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '150.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement(
+	                                  'span',
+	                                  { className: "imgIcon imgIcon-list imgIcon-bg-red" },
+	                                  _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" })
+	                                )
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM1'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '130.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            )
+	                          ),
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "btn btn-default btn-block btn-follow" },
+	                            _react2['default'].createElement(
+	                              'span',
+	                              null,
+	                              '1 likes'
+	                            )
+	                          ),
+	                          _react2['default'].createElement('p', null)
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _react2['default'].createElement(
+	                    'div',
+	                    { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	                    _react2['default'].createElement(
+	                      'div',
+	                      { className: "thumbnail" },
+	                      _react2['default'].createElement(
+	                        'a',
+	                        { className: "", href: "/box/1" },
+	                        _react2['default'].createElement(
+	                          'h4',
+	                          { className: "thumbnail-title" },
+	                          'Sơ mi xô Nhật Hàn'
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          { className: "imgWrapper" },
+	                          _react2['default'].createElement('img', { className: "img-max-height img-rounded", src: "http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg", alt: "images" }),
+	                          _react2['default'].createElement(
+	                            'span',
+	                            { className: "boardPinCount" },
+	                            '4 SP'
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          null,
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "thumbnail-list-news" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" })
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM2'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '150.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement(
+	                                  'span',
+	                                  { className: "imgIcon imgIcon-list imgIcon-bg-red" },
+	                                  _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" })
+	                                )
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM1'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '130.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            )
+	                          ),
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "btn btn-default btn-block btn-follow" },
+	                            _react2['default'].createElement(
+	                              'span',
+	                              null,
+	                              '1 likes'
+	                            )
+	                          ),
+	                          _react2['default'].createElement('p', null)
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _react2['default'].createElement(
+	                    'div',
+	                    { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	                    _react2['default'].createElement(
+	                      'div',
+	                      { className: "thumbnail" },
+	                      _react2['default'].createElement(
+	                        'a',
+	                        { className: "", href: "/box/1" },
+	                        _react2['default'].createElement(
+	                          'h4',
+	                          { className: "thumbnail-title" },
+	                          'Sơ mi xô Nhật Hàn'
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          { className: "imgWrapper" },
+	                          _react2['default'].createElement('img', { className: "img-max-height img-rounded", src: "http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg", alt: "images" }),
+	                          _react2['default'].createElement(
+	                            'span',
+	                            { className: "boardPinCount" },
+	                            '4 SP'
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          null,
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "thumbnail-list-news" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" })
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM2'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '150.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement(
+	                                  'span',
+	                                  { className: "imgIcon imgIcon-list imgIcon-bg-red" },
+	                                  _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" })
+	                                )
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM1'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '130.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            )
+	                          ),
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "btn btn-default btn-block btn-follow" },
+	                            _react2['default'].createElement(
+	                              'span',
+	                              null,
+	                              '1 likes'
+	                            )
+	                          ),
+	                          _react2['default'].createElement('p', null)
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _react2['default'].createElement(
+	                    'div',
+	                    { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	                    _react2['default'].createElement(
+	                      'div',
+	                      { className: "thumbnail" },
+	                      _react2['default'].createElement(
+	                        'a',
+	                        { className: "", href: "/box/1" },
+	                        _react2['default'].createElement(
+	                          'h4',
+	                          { className: "thumbnail-title" },
+	                          'Sơ mi xô Nhật Hàn'
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          { className: "imgWrapper" },
+	                          _react2['default'].createElement('img', { className: "img-max-height img-rounded", src: "http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg", alt: "images" }),
+	                          _react2['default'].createElement(
+	                            'span',
+	                            { className: "boardPinCount" },
+	                            '4 SP'
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          null,
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "thumbnail-list-news" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" })
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM2'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '150.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement(
+	                                  'span',
+	                                  { className: "imgIcon imgIcon-list imgIcon-bg-red" },
+	                                  _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" })
+	                                )
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM1'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '130.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            )
+	                          ),
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "btn btn-default btn-block btn-follow" },
+	                            _react2['default'].createElement(
+	                              'span',
+	                              null,
+	                              '1 likes'
+	                            )
+	                          ),
+	                          _react2['default'].createElement('p', null)
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _react2['default'].createElement(
+	                    'div',
+	                    { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	                    _react2['default'].createElement(
+	                      'div',
+	                      { className: "thumbnail" },
+	                      _react2['default'].createElement(
+	                        'a',
+	                        { className: "", href: "/box/1" },
+	                        _react2['default'].createElement(
+	                          'h4',
+	                          { className: "thumbnail-title" },
+	                          'Sơ mi xô Nhật Hàn'
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          { className: "imgWrapper" },
+	                          _react2['default'].createElement('img', { className: "img-max-height img-rounded", src: "http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg", alt: "images" }),
+	                          _react2['default'].createElement(
+	                            'span',
+	                            { className: "boardPinCount" },
+	                            '4 SP'
+	                          )
+	                        ),
+	                        _react2['default'].createElement(
+	                          'div',
+	                          null,
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "thumbnail-list-news" },
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" })
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM2'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '150.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            ),
+	                            _react2['default'].createElement(
+	                              'div',
+	                              { className: "newsItem newCreditItem" },
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsImg" },
+	                                _react2['default'].createElement(
+	                                  'span',
+	                                  { className: "imgIcon imgIcon-list imgIcon-bg-red" },
+	                                  _react2['default'].createElement('img', { src: "http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" })
+	                                )
+	                              ),
+	                              _react2['default'].createElement(
+	                                'div',
+	                                { className: "newsText newsInfo" },
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  { className: "creditTitle" },
+	                                  'SM1'
+	                                ),
+	                                _react2['default'].createElement(
+	                                  'p',
+	                                  null,
+	                                  _react2['default'].createElement(
+	                                    'strong',
+	                                    { className: "creditCost" },
+	                                    '130.000 đ'
+	                                  )
+	                                )
+	                              )
+	                            )
+	                          ),
+	                          _react2['default'].createElement(
+	                            'div',
+	                            { className: "btn btn-default btn-block btn-follow" },
+	                            _react2['default'].createElement(
+	                              'span',
+	                              null,
+	                              '1 likes'
+	                            )
+	                          ),
+	                          _react2['default'].createElement('p', null)
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2['default'].createElement('div', { className: "col-md-3 col-lg-3" })
 	            )
 	          )
 	        ),
 	        this.state.boxLogin && _react2['default'].createElement(
 	          'div',
-	          { id: 'boxLogin' },
+	          { id: "boxLogin" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'row' },
+	            { className: "row" },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	              { className: "col-xs-12 col-sm-7 col-md-5 col-centered" },
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'centrix' },
+	                { className: "centrix" },
 	                _react2['default'].createElement(_altAltContainer2['default'], {
 	                  component: _componentsFormSignIn2['default'],
 	                  stores: [_storeAuthStore2['default']],
@@ -24741,6 +25697,7 @@ webpackJsonp([0],[
 	    }
 	  }]);
 
+	  var _SanphamID = SanphamID;
 	  SanphamID = (0, _decorators.prepareRoute)(function callee$1$0(_ref) {
 	    var params = _ref.params;
 	    return _regeneratorRuntime.async(function callee$1$0$(context$2$0) {
@@ -24763,10 +25720,43 @@ webpackJsonp([0],[
 
 	exports['default'] = SanphamID;
 	;
+	/*
+	<div className="col-md-12 col-lg-12">
+	  <div className="panel panel-default">
+	    <div className="panel-heading">Panel heading</div>
+	    <ul className="list-group">
+	      <li className="list-group-item">Cras justo odio</li>
+	      <li className="list-group-item">Dapibus ac facilisis in</li>
+	      <li className="list-group-item">Morbi leo risus</li>
+	      <li className="list-group-item">Porta ac consectetur ac</li>
+	      <li className="list-group-item">Vestibulum at eros</li>
+	    </ul>
+	  </div>
+	</div>*/
+	/*
+	<div className="col-md-12 col-lg-12">
+	  <div className="thumbnail sidebar">
+	    <nav className="navbar navbar-default navbar-static-top">
+	      <div className="nav navbar-nav navbar-text">
+	        <div className="titleBox-giamgia">
+	          <span>Giam gia</span>
+	        </div>
+	      </div>
+	    </nav>
+	    <div className="sidebar-body">
+	      <ul className="list-group">
+	        <li className="list-group-item">Cras justo odio</li>
+	        <li className="list-group-item">Dapibus ac facilisis in</li>
+	        <li className="list-group-item">Morbi leo risus</li>
+	        <li className="list-group-item">Porta ac consectetur ac</li>
+	        <li className="list-group-item">Vestibulum at eros</li>
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+	*/
 	module.exports = exports['default'];
-
-	// ...AuthStore.getState().auth.toJS(),
-	/* Navbar Product */ /* Slide image */ /* Detail */ /* Thong tin San pham */ /* Thong tin nguoi mau */
+	/* Navbar Product */ /* Slide image */ /* Detail */ /* Thong tin San pham */ /* Thong tin nguoi mau */ /* 6 box auto */
 
 /***/ },
 /* 390 */
@@ -24895,14 +25885,14 @@ webpackJsonp([0],[
 	        }
 	      }, null, this);
 	    }
-	  }, {
-	    key: 'getDistrict',
 
 	    /**
 	     * tìm quận huyện theo tình thành
 	     * @param  {string} city [tên tỉnh/thành phố]
 	     * @dispatch {[quận huyện]}
 	     */
+	  }, {
+	    key: 'getDistrict',
 	    value: function getDistrict(_ref) {
 	      var city = _ref.city;
 
@@ -24916,25 +25906,25 @@ webpackJsonp([0],[
 	        self.actions.getDistrictFailed(res.data);
 	      });
 	    }
-	  }, {
-	    key: 'getCityFailed',
 
 	    /**
 	     * send lỗi cho Store
 	     * @param  {Error} err [Error request]
 	     * @dispatch {Error} [send Store]
 	     */
+	  }, {
+	    key: 'getCityFailed',
 	    value: function getCityFailed(err) {
 	      this.dispatch(err);
 	    }
-	  }, {
-	    key: 'getDistrictFailed',
 
 	    /**
 	     * send lỗi cho Store
 	     * @param  {Error} err [Error request]
 	     * @dispatch {Error} [send Store]
 	     */
+	  }, {
+	    key: 'getDistrictFailed',
 	    value: function getDistrictFailed(err) {
 	      this.dispatch(err);
 	    }
@@ -24951,9 +25941,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -24983,11 +25973,11 @@ webpackJsonp([0],[
 
 	var _actionsShipActions = __webpack_require__(394);
 
-	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
-
 	/**
 	 * @Component
 	 */
+
+	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
 
 	var _FormInputValidation = __webpack_require__(330);
 
@@ -25010,6 +26000,8 @@ webpackJsonp([0],[
 	var _hinhthucThanhtoan2 = _interopRequireDefault(_hinhthucThanhtoan);
 
 	var FormOrder = (function (_React$Component) {
+	  _inherits(FormOrder, _React$Component);
+
 	  function FormOrder(props) {
 	    _classCallCheck(this, FormOrder);
 
@@ -25023,8 +26015,6 @@ webpackJsonp([0],[
 	      hinhthucVC: ''
 	    };
 	  }
-
-	  _inherits(FormOrder, _React$Component);
 
 	  _createClass(FormOrder, [{
 	    key: '_bind',
@@ -25074,33 +26064,33 @@ webpackJsonp([0],[
 	        { className: classProductOrder },
 	        _react2['default'].createElement(
 	          'nav',
-	          { className: 'navbar navbar-defaul' },
+	          { className: "navbar navbar-defaul" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'navbar-header' },
+	            { className: "navbar-header" },
 	            _react2['default'].createElement(
 	              'button',
-	              { onClick: this.handleClickHuy, type: 'button', className: 'btn btn-default navbar-btn' },
+	              { onClick: this.handleClickHuy, type: "button", className: "btn btn-default navbar-btn" },
 	              'Hủy'
 	            )
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'nav navbar-nav navbar-right' },
+	            { className: "nav navbar-nav navbar-right" },
 	            _react2['default'].createElement(
 	              'button',
-	              { onClick: this.handleClickDatMua, type: 'button', className: 'btn btn-primary navbar-btn' },
+	              { onClick: this.handleClickDatMua, type: "button", className: "btn btn-primary navbar-btn" },
 	              'Đặt Mua'
 	            )
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'product' },
+	          { className: "product" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'infoOrder' },
-	            _react2['default'].createElement('img', { src: img_url, alt: 'img', className: 'img-rounded' }),
+	            { className: "infoOrder" },
+	            _react2['default'].createElement('img', { src: img_url, alt: "img", className: "img-rounded" }),
 	            _react2['default'].createElement(
 	              'h3',
 	              null,
@@ -25115,10 +26105,10 @@ webpackJsonp([0],[
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'infoNguoiNhan' },
+	            { className: "infoNguoiNhan" },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'title-border' },
+	              { className: "title-border" },
 	              _react2['default'].createElement(
 	                'p',
 	                null,
@@ -25127,11 +26117,11 @@ webpackJsonp([0],[
 	            ),
 	            _react2['default'].createElement(
 	              'p',
-	              { className: 'text-center' },
+	              { className: "text-center" },
 	              'Điền đầy đủ thông tin người nhận hàng'
 	            ),
 	            _react2['default'].createElement(_formNguoiNhan2['default'], {
-	              ref: 'formNguoiNhan',
+	              ref: "formNguoiNhan",
 	              city: this.props.city,
 	              weight: this.props.weight,
 	              district: this.props.district,
@@ -25140,7 +26130,7 @@ webpackJsonp([0],[
 	              onChangeDisable: this._ChangeDisable }),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'title-border' },
+	              { className: "title-border" },
 	              _react2['default'].createElement(
 	                'p',
 	                null,
@@ -25149,7 +26139,7 @@ webpackJsonp([0],[
 	            ),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'form-inline' },
+	              { className: "form-inline" },
 	              _react2['default'].createElement(_hinhthucVanchuyen2['default'], {
 	                onChange: this._ChangeVanchuyen,
 	                cost: this.state.cost,
@@ -25159,7 +26149,7 @@ webpackJsonp([0],[
 	            ),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'title-border' },
+	              { className: "title-border" },
 	              _react2['default'].createElement(
 	                'p',
 	                null,
@@ -25168,7 +26158,7 @@ webpackJsonp([0],[
 	            ),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'form-inline' },
+	              { className: "form-inline" },
 	              _react2['default'].createElement(_hinhthucThanhtoan2['default'], {
 	                hinhthucVC: this.state.hinhthucVC })
 	            )
@@ -25376,6 +26366,7 @@ webpackJsonp([0],[
 		propTypes: {
 			firstValue: _react2['default'].PropTypes.string
 		},
+		// List: React.PropTypes.array,
 		getDefaultProps: function getDefaultProps() {
 			return {
 				firstValue: ''
@@ -25383,37 +26374,37 @@ webpackJsonp([0],[
 		},
 		render: function render() {
 			var classes = (0, _classnames2['default'])({
-				'form-group': true,
-				'has-error': this.props.validator.hasError
+				"form-group": true,
+				"has-error": this.props.validator.hasError
 			});
 
 			var erros;
 
-			if (this.props.validator.errorTextRequest !== '') {
+			if (this.props.validator.errorTextRequest !== "") {
 				erros = _react2['default'].createElement(
 					'label',
-					{ className: 'control-label', htmlFor: this.props.name },
+					{ className: "control-label", htmlFor: this.props.name },
 					this.props.validator.errorTextRequest
 				);
 			} else {
 				erros = _react2['default'].createElement(
 					'label',
-					{ className: 'control-label', htmlFor: this.props.name },
+					{ className: "control-label", htmlFor: this.props.name },
 					this.props.validator.errorMessage
 				);
 			}
 
-			if (this.props.type === 'district') {
+			if (this.props.type === "district") {
 				return _react2['default'].createElement(
 					'div',
 					{ className: classes },
 					this.props.validator.hasError && erros,
 					_react2['default'].createElement(
 						'select',
-						{ className: 'form-control', onChange: this._onChange },
+						{ className: "form-control", onChange: this._onChange },
 						_react2['default'].createElement(
 							'option',
-							{ value: '' },
+							{ value: "" },
 							this.props.firstValue
 						),
 						this.props.List && this.props.List.toJS().map(function (city, i) {
@@ -25432,10 +26423,10 @@ webpackJsonp([0],[
 					this.props.validator.hasError && erros,
 					_react2['default'].createElement(
 						'select',
-						{ className: 'form-control', onChange: this._onChange },
+						{ className: "form-control", onChange: this._onChange },
 						_react2['default'].createElement(
 							'option',
-							{ value: '' },
+							{ value: "" },
 							this.props.firstValue
 						),
 						this.props.List && this.props.List.map(function (city, i) {
@@ -25467,7 +26458,6 @@ webpackJsonp([0],[
 		}
 	});
 	module.exports = exports['default'];
-	// List: React.PropTypes.array,
 
 /***/ },
 /* 396 */
@@ -25475,9 +26465,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -25505,11 +26495,11 @@ webpackJsonp([0],[
 
 	var _actionsShipActions = __webpack_require__(394);
 
-	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
-
 	/**
 	 * @Component
 	 */
+
+	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
 
 	var _FormInputValidation = __webpack_require__(330);
 
@@ -25521,48 +26511,50 @@ webpackJsonp([0],[
 
 	var Validations = {
 	  mobilePhone: {
-	    rules: { mobilePhone: ['required', 'regex:/^([0-9]{10,11})$/'] },
-	    messages: { 'required.mobilePhone': 'nhập số điện thoại của bạn!', 'regex.mobilePhone': 'số điện thoại không hợp lệ!' },
+	    rules: { mobilePhone: ["required", "regex:/^([0-9]{10,11})$/"] },
+	    messages: { "required.mobilePhone": "nhập số điện thoại của bạn!", "regex.mobilePhone": "số điện thoại không hợp lệ!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
 	  },
 	  name: {
-	    rules: { name: ['required'] },
-	    messages: { 'required.name': 'nhập tên của bạn!' },
+	    rules: { name: ["required"] },
+	    messages: { "required.name": "nhập tên của bạn!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
 	  },
 	  diachi: {
-	    rules: { diachi: ['required'] },
-	    messages: { 'required.diachi': 'nhập địa chỉ của bạn!' },
+	    rules: { diachi: ["required"] },
+	    messages: { "required.diachi": "nhập địa chỉ của bạn!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
 	  },
 	  coquan: {
-	    rules: { coquan: ['required'] },
-	    messages: { 'required.coquan': 'nhập cơ quan của bạn!' },
+	    rules: { coquan: ["required"] },
+	    messages: { "required.coquan": "nhập cơ quan của bạn!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
 	  },
 	  city: {
-	    rules: { city: ['required'] },
-	    messages: { 'required.city': 'nhập tỉnh thành của bạn!' },
+	    rules: { city: ["required"] },
+	    messages: { "required.city": "nhập tỉnh thành của bạn!" },
 	    hasError: false,
 	    errorMessage: ''
 	  },
 	  district: {
-	    rules: { district: ['required'] },
-	    messages: { 'required.district': 'nhập quận huyện của bạn!' },
+	    rules: { district: ["required"] },
+	    messages: { "required.district": "nhập quận huyện của bạn!" },
 	    hasError: false,
 	    errorMessage: ''
 	  }
 	};
 
 	var FormOrder = (function (_React$Component) {
+	  _inherits(FormOrder, _React$Component);
+
 	  function FormOrder(props) {
 	    _classCallCheck(this, FormOrder);
 
@@ -25576,8 +26568,6 @@ webpackJsonp([0],[
 	      shippingMethod: ''
 	    };
 	  }
-
-	  _inherits(FormOrder, _React$Component);
 
 	  _createClass(FormOrder, [{
 	    key: '_bind',
@@ -25597,84 +26587,84 @@ webpackJsonp([0],[
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: "row" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-sm-6 col-md-6' },
+	          { className: "col-sm-6 col-md-6" },
 	          _react2['default'].createElement(_FormInputValidation2['default'], {
-	            ref: 'diachi',
-	            type: 'text',
-	            placeholder: 'Địa chỉ',
-	            name: 'diachi',
+	            ref: "diachi",
+	            type: "text",
+	            placeholder: "Địa chỉ",
+	            name: "diachi",
 	            validator: this.state.ValidationData.diachi,
 	            onChange: this._onChangeInputHandler })
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-sm-6 col-md-6' },
+	          { className: "col-sm-6 col-md-6" },
 	          _react2['default'].createElement(_FormInputValidation2['default'], {
-	            ref: 'name',
-	            type: 'text',
-	            placeholder: 'Họ tên',
-	            name: 'name',
+	            ref: "name",
+	            type: "text",
+	            placeholder: "Họ tên",
+	            name: "name",
 	            validator: this.state.ValidationData.name,
 	            onChange: this._onChangeInputHandler })
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-sm-6 col-md-6' },
+	          { className: "col-sm-6 col-md-6" },
 	          _react2['default'].createElement(_FormInputValidation2['default'], {
-	            ref: 'coquan',
-	            type: 'text',
-	            placeholder: 'Công ty/Cơ quan',
-	            name: 'coquan',
+	            ref: "coquan",
+	            type: "text",
+	            placeholder: "Công ty/Cơ quan",
+	            name: "coquan",
 	            validator: this.state.ValidationData.coquan,
 	            onChange: this._onChangeInputHandler })
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-sm-6 col-md-6' },
+	          { className: "col-sm-6 col-md-6" },
 	          _react2['default'].createElement(_FormInputValidation2['default'], {
-	            ref: 'mobilePhone',
-	            type: 'text',
-	            placeholder: 'Điện thoại',
-	            name: 'mobilePhone',
+	            ref: "mobilePhone",
+	            type: "text",
+	            placeholder: "Điện thoại",
+	            name: "mobilePhone",
 	            validator: this.state.ValidationData.mobilePhone,
 	            onChange: this._onChangeInputHandler })
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-sm-6 col-md-6' },
+	          { className: "col-sm-6 col-md-6" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'form-group' },
+	            { className: "form-group" },
 	            _react2['default'].createElement(_FormSelectValidation2['default'], {
-	              ref: 'city',
-	              type: 'city',
-	              name: 'city',
+	              ref: "city",
+	              type: "city",
+	              name: "city",
 	              List: this.props.city,
 	              validator: this.state.ValidationData.city,
 	              onChangeTest: this.props.onChangeTest,
 	              onChangeCity: this._onChangeSelectCity,
 	              onChange: this._onChangeInputHandler,
-	              firstValue: 'Tỉnh Thành' })
+	              firstValue: "Tỉnh Thành" })
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-sm-6 col-md-6' },
+	          { className: "col-sm-6 col-md-6" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'form-group' },
+	            { className: "form-group" },
 	            _react2['default'].createElement(_FormSelectValidation2['default'], {
-	              ref: 'district',
-	              type: 'district',
-	              name: 'district',
+	              ref: "district",
+	              type: "district",
+	              name: "district",
 	              List: this.props.district,
 	              validator: this.state.ValidationData.district,
 	              onChangeTest: this.props.onChangeTest,
 	              onChange: this._onChangeInputHandler,
-	              firstValue: 'Quận Huyện' })
+	              firstValue: "Quận Huyện" })
 	          )
 	        )
 	      );
@@ -25767,11 +26757,11 @@ webpackJsonp([0],[
 /* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -25792,13 +26782,13 @@ webpackJsonp([0],[
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var HinhthucVanchuyen = (function (_React$Component) {
+	  _inherits(HinhthucVanchuyen, _React$Component);
+
 	  function HinhthucVanchuyen() {
 	    _classCallCheck(this, HinhthucVanchuyen);
 
 	    _get(Object.getPrototypeOf(HinhthucVanchuyen.prototype), 'constructor', this).apply(this, arguments);
 	  }
-
-	  _inherits(HinhthucVanchuyen, _React$Component);
 
 	  _createClass(HinhthucVanchuyen, [{
 	    key: 'render',
@@ -25816,51 +26806,51 @@ webpackJsonp([0],[
 
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: "row" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-xs-9 col-sm-9 col-md-9' },
+	          { className: "col-xs-9 col-sm-9 col-md-9" },
 	          _react2['default'].createElement(
 	            'div',
 	            { className: classhinhthucCOD },
 	            _react2['default'].createElement(
 	              'label',
 	              null,
-	              _react2['default'].createElement('input', { ref: 'cod', onChange: this.onChange.bind(this, 'cod'), type: 'checkbox', disabled: this.props.disabled || this.props.shippingMethod !== 'COD' }),
+	              _react2['default'].createElement('input', { ref: "cod", onChange: this.onChange.bind(this, 'cod'), type: "checkbox", disabled: this.props.disabled || this.props.shippingMethod !== 'COD' }),
 	              '  COD chuyển hành trực tiếp'
 	            )
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-xs-3 col-sm-3 col-md-3' },
+	          { className: "col-xs-3 col-sm-3 col-md-3" },
 	          _react2['default'].createElement(
 	            'p',
-	            { className: 'text-center' },
+	            { className: "text-center" },
 	            this.props.cost,
 	            'đ'
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-xs-9 col-sm-9 col-md-9' },
+	          { className: "col-xs-9 col-sm-9 col-md-9" },
 	          _react2['default'].createElement(
 	            'div',
 	            { className: classhinhthucCPN },
 	            _react2['default'].createElement(
 	              'label',
 	              null,
-	              _react2['default'].createElement('input', { ref: 'cpn', type: 'checkbox', onChange: this.onChange.bind(this, 'cpn'), disabled: this.props.disabled || this.props.shippingMethod !== 'CPN Viettel' }),
+	              _react2['default'].createElement('input', { ref: "cpn", type: "checkbox", onChange: this.onChange.bind(this, 'cpn'), disabled: this.props.disabled || this.props.shippingMethod !== 'CPN Viettel' }),
 	              '  Chuyển phất nhanh Viettel'
 	            )
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-xs-3 col-sm-3 col-md-3' },
+	          { className: "col-xs-3 col-sm-3 col-md-3" },
 	          _react2['default'].createElement(
 	            'p',
-	            { className: 'text-center' },
+	            { className: "text-center" },
 	            this.props.cost,
 	            'đ'
 	          )
@@ -25877,10 +26867,10 @@ webpackJsonp([0],[
 	    key: 'getCheckbox',
 	    value: function getCheckbox() {
 	      if (_react2['default'].findDOMNode(this.refs.cod).checked && !_react2['default'].findDOMNode(this.refs.cod).disabled) {
-	        return 'cod';
+	        return "cod";
 	      }
 	      if (_react2['default'].findDOMNode(this.refs.cpn).checked && !_react2['default'].findDOMNode(this.refs.cpn).disabled) {
-	        return 'cpn';
+	        return "cpn";
 	      }
 	      return null;
 	    }
@@ -25899,11 +26889,11 @@ webpackJsonp([0],[
 /* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -25924,13 +26914,13 @@ webpackJsonp([0],[
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var HinhthucThanhtoan = (function (_React$Component) {
+	  _inherits(HinhthucThanhtoan, _React$Component);
+
 	  function HinhthucThanhtoan() {
 	    _classCallCheck(this, HinhthucThanhtoan);
 
 	    _get(Object.getPrototypeOf(HinhthucThanhtoan.prototype), 'constructor', this).apply(this, arguments);
 	  }
-
-	  _inherits(HinhthucThanhtoan, _React$Component);
 
 	  _createClass(HinhthucThanhtoan, [{
 	    key: 'render',
@@ -25938,31 +26928,31 @@ webpackJsonp([0],[
 	      console.log(this.props);
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: "row" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-md-12' },
+	          { className: "col-md-12" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'checkbox disabled' },
+	            { className: "checkbox disabled" },
 	            _react2['default'].createElement(
 	              'label',
 	              null,
-	              _react2['default'].createElement('input', { type: 'checkbox', value: '', disabled: true }),
+	              _react2['default'].createElement('input', { type: "checkbox", value: "", disabled: true }),
 	              '  COD nhận hàng và thanh toán trực tiếp cho nhân viên giao hàng'
 	            )
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'col-md-12' },
+	          { className: "col-md-12" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'checkbox disabled' },
+	            { className: "checkbox disabled" },
 	            _react2['default'].createElement(
 	              'label',
 	              null,
-	              _react2['default'].createElement('input', { type: 'checkbox', value: '', disabled: true }),
+	              _react2['default'].createElement('input', { type: "checkbox", value: "", disabled: true }),
 	              '  Chuyển khoản qua tài khoản ngân hàng, thẻ, ATM trong vòng 12h'
 	            )
 	          )
@@ -25983,11 +26973,11 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -26001,15 +26991,17 @@ webpackJsonp([0],[
 
 	var _react = __webpack_require__(24);
 
-	var _react2 = _interopRequireDefault(_react);
-
 	/* @jsx */
+
+	var _react2 = _interopRequireDefault(_react);
 
 	var _lightBoxSlideImg = __webpack_require__(400);
 
 	var _lightBoxSlideImg2 = _interopRequireDefault(_lightBoxSlideImg);
 
 	var ImgSlideProduct = (function (_React$Component) {
+	  _inherits(ImgSlideProduct, _React$Component);
+
 	  function ImgSlideProduct(props) {
 	    _classCallCheck(this, ImgSlideProduct);
 
@@ -26025,8 +27017,6 @@ webpackJsonp([0],[
 	    };
 	  }
 
-	  _inherits(ImgSlideProduct, _React$Component);
-
 	  _createClass(ImgSlideProduct, [{
 	    key: 'render',
 	    value: function render() {
@@ -26034,20 +27024,20 @@ webpackJsonp([0],[
 
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'imgProduct' },
+	        { className: "imgProduct" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'imageContainer' },
+	          { className: "imageContainer" },
 	          _react2['default'].createElement(
 	            'div',
-	            { ref: 'test', className: 'gallerySlide' },
+	            { ref: "test", className: "gallerySlide" },
 	            _react2['default'].createElement(
 	              'ul',
 	              null,
 	              this.props.dataUrlImg.map(function (url, i) {
-	                var classSes = '';
+	                var classSes = "";
 	                if (_this.state.current === i) {
-	                  classSes = 'active';
+	                  classSes = "active";
 	                }
 	                var img_url = url.replace(/image\//gi, 'image/x468/');
 	                return _react2['default'].createElement(
@@ -26056,7 +27046,7 @@ webpackJsonp([0],[
 	                  _react2['default'].createElement(
 	                    'figure',
 	                    null,
-	                    _react2['default'].createElement('img', { onClick: _this.ShowLightBox.bind(_this, i), src: img_url, alt: '' })
+	                    _react2['default'].createElement('img', { onClick: _this.ShowLightBox.bind(_this, i), src: img_url, alt: "" })
 	                  )
 	                );
 	              })
@@ -26064,14 +27054,14 @@ webpackJsonp([0],[
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'slide-tabs' },
+	            { className: "slide-tabs" },
 	            _react2['default'].createElement(
 	              'ul',
 	              null,
 	              this.props.dataUrlImg.map(function (url, i) {
-	                var classSes = '';
+	                var classSes = "";
 	                if (_this.state.current === i) {
-	                  classSes = 'active';
+	                  classSes = "active";
 	                }
 	                return _react2['default'].createElement('li', { key: i, className: classSes, onClick: _this.handleClickSlideTab.bind(_this, i) });
 	              })
@@ -26080,14 +27070,14 @@ webpackJsonp([0],[
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'imageSlide-tabs' },
+	          { className: "imageSlide-tabs" },
 	          _react2['default'].createElement(
 	            'ul',
 	            null,
 	            this.props.dataUrlImgTab.map(function (url, i) {
-	              var classSes = '';
+	              var classSes = "";
 	              if (_this.state.current === i) {
-	                classSes = 'active';
+	                classSes = "active";
 	              }
 	              var img_url = url.replace(/image\//gi, 'image/90x60/');
 	              return _react2['default'].createElement(
@@ -26096,7 +27086,7 @@ webpackJsonp([0],[
 	                _react2['default'].createElement(
 	                  'figure',
 	                  null,
-	                  _react2['default'].createElement('img', { src: img_url, onClick: _this.handleClickSlideTab.bind(_this, i), alt: '' })
+	                  _react2['default'].createElement('img', { src: img_url, onClick: _this.handleClickSlideTab.bind(_this, i), alt: "" })
 	                )
 	              );
 	            })
@@ -26146,11 +27136,11 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -26171,6 +27161,8 @@ webpackJsonp([0],[
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var lightBoxSlideImg = (function (_React$Component) {
+	  _inherits(lightBoxSlideImg, _React$Component);
+
 	  function lightBoxSlideImg(props) {
 	    _classCallCheck(this, lightBoxSlideImg);
 
@@ -26184,8 +27176,6 @@ webpackJsonp([0],[
 	      current: this.props.current
 	    };
 	  }
-
-	  _inherits(lightBoxSlideImg, _React$Component);
 
 	  _createClass(lightBoxSlideImg, [{
 	    key: 'render',
@@ -26210,27 +27200,27 @@ webpackJsonp([0],[
 	      });
 
 	      var classesPrev = (0, _classnames2['default'])({
-	        'next-prev': true,
-	        'prev': true,
-	        'hide': this.state.current === 0
+	        "next-prev": true,
+	        "prev": true,
+	        "hide": this.state.current === 0
 	      });
 
 	      var classesNext = (0, _classnames2['default'])({
-	        'next-prev': true,
-	        'next': true,
-	        'hide': this.state.current === length - 1
+	        "next-prev": true,
+	        "next": true,
+	        "hide": this.state.current === length - 1
 	      });
 
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'lightBoxSlideImg' },
+	        { className: "lightBoxSlideImg" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'panes', style: PanesStyle },
+	          { className: "panes", style: PanesStyle },
 	          this.props.dataUrlImg.map(function (url, i) {
 	            return _react2['default'].createElement(
 	              'div',
-	              { key: i, className: 'pane', style: PaneStyle },
+	              { key: i, className: "pane", style: PaneStyle },
 	              _react2['default'].createElement(
 	                'figure',
 	                null,
@@ -26241,22 +27231,22 @@ webpackJsonp([0],[
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'paneNextPrev' },
+	          { className: "paneNextPrev" },
 	          _react2['default'].createElement(
 	            'div',
 	            { className: classesPrev, onClick: this.Prev },
-	            _react2['default'].createElement('i', { className: 'fa fa-angle-left' })
+	            _react2['default'].createElement('i', { className: "fa fa-angle-left" })
 	          ),
 	          _react2['default'].createElement(
 	            'div',
 	            { className: classesNext, onClick: this.Next },
-	            _react2['default'].createElement('i', { className: 'fa fa-angle-right' })
+	            _react2['default'].createElement('i', { className: "fa fa-angle-right" })
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'closeBox', onClick: this.HideLightBox },
-	          _react2['default'].createElement('i', { className: 'fa fa-times' })
+	          { className: "closeBox", onClick: this.HideLightBox },
+	          _react2['default'].createElement('i', { className: "fa fa-times" })
 	        )
 	      );
 	    }
@@ -26296,9 +27286,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -26321,6 +27311,8 @@ webpackJsonp([0],[
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var NavbarProductID = (function (_React$Component) {
+	  _inherits(NavbarProductID, _React$Component);
+
 	  function NavbarProductID(props) {
 	    _classCallCheck(this, NavbarProductID);
 
@@ -26335,8 +27327,6 @@ webpackJsonp([0],[
 	      hideHeader: false
 	    };
 	  }
-
-	  _inherits(NavbarProductID, _React$Component);
 
 	  _createClass(NavbarProductID, [{
 	    key: '_bind',
@@ -26374,8 +27364,8 @@ webpackJsonp([0],[
 	    key: 'render',
 	    value: function render() {
 	      var classesNavbar = (0, _classnames2['default'])({
-	        'navbar-product-detail': true,
-	        'sticky': this.state.hideHeader
+	        "navbar-product-detail": true,
+	        "sticky": this.state.hideHeader
 	      });
 
 	      return _react2['default'].createElement(
@@ -26383,26 +27373,26 @@ webpackJsonp([0],[
 	        { className: classesNavbar },
 	        _react2['default'].createElement(
 	          'nav',
-	          { className: 'navbar navbar-defaul' },
+	          { className: "navbar navbar-defaul" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'navbar-header' },
+	            { className: "navbar-header" },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'btn-group' },
+	              { className: "btn-group" },
 	              _react2['default'].createElement(
 	                'button',
-	                { onClick: this.Like, type: 'button', className: 'btn btn-default navbar-btn' },
+	                { onClick: this.Like, type: "button", className: "btn btn-default navbar-btn" },
 	                _react2['default'].createElement(
 	                  'i',
-	                  { className: 'fa fa-heart gray' },
+	                  { className: "fa fa-heart gray" },
 	                  ' '
 	                ),
 	                ' Thích'
 	              ),
 	              _react2['default'].createElement(
 	                'button',
-	                { type: 'button', className: 'btn btn-default count-like navbar-btn' },
+	                { type: "button", className: "btn btn-default count-like navbar-btn" },
 	                _react2['default'].createElement(
 	                  'span',
 	                  null,
@@ -26412,10 +27402,10 @@ webpackJsonp([0],[
 	            ),
 	            _react2['default'].createElement(
 	              'button',
-	              { onClick: this.Share, type: 'button', className: 'btn btn-default navbar-btn' },
+	              { onClick: this.Share, type: "button", className: "btn btn-default navbar-btn" },
 	              _react2['default'].createElement(
 	                'i',
-	                { className: 'fa fa-facebook-square gray' },
+	                { className: "fa fa-facebook-square gray" },
 	                '  '
 	              ),
 	              'Chia sẻ'
@@ -26423,13 +27413,13 @@ webpackJsonp([0],[
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'nav navbar-nav navbar-right' },
+	            { className: "nav navbar-nav navbar-right" },
 	            _react2['default'].createElement(
 	              'button',
-	              { onClick: this.Cart, type: 'button', className: 'btn btn-primary navbar-btn' },
+	              { onClick: this.Cart, type: "button", className: "btn btn-primary navbar-btn" },
 	              _react2['default'].createElement(
 	                'i',
-	                { className: 'fa fa-shopping-cart gray' },
+	                { className: "fa fa-shopping-cart gray" },
 	                '  '
 	              ),
 	              ' Mua'
@@ -26495,9 +27485,9 @@ webpackJsonp([0],[
 
 	"use strict";
 
-	var _inherits = __webpack_require__(197)["default"];
+	var _get = __webpack_require__(197)["default"];
 
-	var _get = __webpack_require__(200)["default"];
+	var _inherits = __webpack_require__(202)["default"];
 
 	var _createClass = __webpack_require__(205)["default"];
 
@@ -26514,13 +27504,13 @@ webpackJsonp([0],[
 	var _react2 = _interopRequireDefault(_react);
 
 	var InfoSanpham = (function (_React$Component) {
+	  _inherits(InfoSanpham, _React$Component);
+
 	  function InfoSanpham() {
 	    _classCallCheck(this, InfoSanpham);
 
 	    _get(Object.getPrototypeOf(InfoSanpham.prototype), "constructor", this).apply(this, arguments);
 	  }
-
-	  _inherits(InfoSanpham, _React$Component);
 
 	  _createClass(InfoSanpham, [{
 	    key: "render",
@@ -26577,11 +27567,11 @@ webpackJsonp([0],[
 /* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -26598,13 +27588,13 @@ webpackJsonp([0],[
 	var _react2 = _interopRequireDefault(_react);
 
 	var Detail = (function (_React$Component) {
+	  _inherits(Detail, _React$Component);
+
 	  function Detail() {
 	    _classCallCheck(this, Detail);
 
 	    _get(Object.getPrototypeOf(Detail.prototype), 'constructor', this).apply(this, arguments);
 	  }
-
-	  _inherits(Detail, _React$Component);
 
 	  _createClass(Detail, [{
 	    key: 'render',
@@ -26625,7 +27615,7 @@ webpackJsonp([0],[
 	      if (this.props.salePrice) {
 	        return _react2['default'].createElement(
 	          'div',
-	          { className: 'detail' },
+	          { className: "detail" },
 	          _react2['default'].createElement(
 	            'h1',
 	            null,
@@ -26633,16 +27623,16 @@ webpackJsonp([0],[
 	          ),
 	          _react2['default'].createElement(
 	            'h3',
-	            { className: 'price' },
+	            { className: "price" },
 	            _react2['default'].createElement(
 	              'span',
-	              { className: 'price-list' },
+	              { className: "price-list" },
 	              price,
 	              ' VNĐ'
 	            ),
 	            _react2['default'].createElement(
 	              'span',
-	              { className: 'price-sale' },
+	              { className: "price-sale" },
 	              salePrice,
 	              ' VNĐ'
 	            )
@@ -26652,7 +27642,7 @@ webpackJsonp([0],[
 
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'detail' },
+	        { className: "detail" },
 	        _react2['default'].createElement(
 	          'h1',
 	          null,
@@ -26660,10 +27650,10 @@ webpackJsonp([0],[
 	        ),
 	        _react2['default'].createElement(
 	          'h3',
-	          { className: 'price' },
+	          { className: "price" },
 	          _react2['default'].createElement(
 	            'span',
-	            { className: 'price-sale' },
+	            { className: "price-sale" },
 	            price,
 	            ' VNĐ'
 	          )
@@ -26691,9 +27681,9 @@ webpackJsonp([0],[
 
 	"use strict";
 
-	var _inherits = __webpack_require__(197)["default"];
+	var _get = __webpack_require__(197)["default"];
 
-	var _get = __webpack_require__(200)["default"];
+	var _inherits = __webpack_require__(202)["default"];
 
 	var _createClass = __webpack_require__(205)["default"];
 
@@ -26710,13 +27700,13 @@ webpackJsonp([0],[
 	var _react2 = _interopRequireDefault(_react);
 
 	var Mau = (function (_React$Component) {
+	  _inherits(Mau, _React$Component);
+
 	  function Mau() {
 	    _classCallCheck(this, Mau);
 
 	    _get(Object.getPrototypeOf(Mau.prototype), "constructor", this).apply(this, arguments);
 	  }
-
-	  _inherits(Mau, _React$Component);
 
 	  _createClass(Mau, [{
 	    key: "render",
@@ -26839,8 +27829,8 @@ webpackJsonp([0],[
 	  transitionDuration: 0
 	};
 
-	var Test = _reactAddons2['default'].createClass({
-	  displayName: 'Test',
+	var Sidebar = _reactAddons2['default'].createClass({
+	  displayName: 'Sidebar',
 
 	  mixins: [MasonryMixin('masonryContainer', masonryOptions)],
 
@@ -26867,7 +27857,7 @@ webpackJsonp([0],[
 	  render: function render() {
 	    var icon = undefined;
 	    var childElements = this.state.posts.map(function (element, i) {
-	      var img_url = '/img/404.jpg';
+	      var img_url = "/img/404.jpg";
 	      if (element.images) {
 	        var url = element.images[0];
 	        img_url = url.replace(/image\//gi, 'image/100x/');
@@ -26881,39 +27871,37 @@ webpackJsonp([0],[
 	          { to: '/sp/' + element.id },
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'imgWrapper' },
-	            _reactAddons2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' })
+	            { className: "imgWrapper" },
+	            _reactAddons2['default'].createElement('img', { className: "img-rounded", 'data-holder-rendered': "true", src: img_url, alt: "images" })
 	          )
 	        )
 	      );
 	    });
 
 	    switch (this.props.type) {
-	      case 'product':
-	        icon = _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red' });
+	      case "product":
+	        icon = _reactAddons2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" });
 	        break;
-	      case 'article':
-	        icon = _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red' });
+	      case "article":
+	        icon = _reactAddons2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" });
 	        break;
-	      case 'photo':
-	        icon = _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red' });
+	      case "photo":
+	        icon = _reactAddons2['default'].createElement('span', { className: "imgIcon imgIcon-list imgIcon-bg-red" });
 	        break;
 	    }
 
-	    console.log(this.props);
-
 	    return _reactAddons2['default'].createElement(
 	      'div',
-	      { className: 'row' },
+	      { className: "col-md-12 col-lg-12" },
 	      _reactAddons2['default'].createElement(
 	        'div',
-	        { className: 'thumbnail sidebar' },
+	        { className: "thumbnail sidebar" },
 	        _reactAddons2['default'].createElement(
 	          'nav',
-	          { className: 'navbar navbar-default navbar-static-top' },
+	          { className: "navbar navbar-default navbar-static-top" },
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'nav navbar-nav navbar-text' },
+	            { className: "nav navbar-nav navbar-text" },
 	            _reactAddons2['default'].createElement(
 	              'div',
 	              { className: 'icon-img' },
@@ -26921,7 +27909,7 @@ webpackJsonp([0],[
 	            ),
 	            _reactAddons2['default'].createElement(
 	              'div',
-	              { className: 'titleBox' },
+	              { className: "titleBox" },
 	              _reactAddons2['default'].createElement(
 	                'span',
 	                null,
@@ -26932,10 +27920,10 @@ webpackJsonp([0],[
 	        ),
 	        _reactAddons2['default'].createElement(
 	          'div',
-	          { className: 'masonry-sidebar' },
+	          { className: "masonry-sidebar" },
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { ref: 'masonryContainer' },
+	            { ref: "masonryContainer" },
 	            childElements
 	          )
 	        )
@@ -26944,7 +27932,7 @@ webpackJsonp([0],[
 	  }
 	});
 
-	module.exports = Test;
+	module.exports = Sidebar;
 	/* navbar sidebar */ /* Gird item */
 
 /***/ },
@@ -26953,9 +27941,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -26983,11 +27971,11 @@ webpackJsonp([0],[
 
 	var _actionsAuthActions = __webpack_require__(316);
 
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
 	/**
 	 * @Component
 	 */
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
 	var _altAltContainer = __webpack_require__(267);
 
@@ -26998,32 +27986,32 @@ webpackJsonp([0],[
 	var _componentsFormSignIn2 = _interopRequireDefault(_componentsFormSignIn);
 
 	var SignIn = (function (_React$Component) {
+	  _inherits(SignIn, _React$Component);
+
 	  function SignIn(props) {
 	    _classCallCheck(this, SignIn);
 
 	    _get(Object.getPrototypeOf(SignIn.prototype), 'constructor', this).call(this, props);
 	  }
 
-	  _inherits(SignIn, _React$Component);
-
 	  _createClass(SignIn, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle('SignIn | tocu.vn');
-	      this.props.HeadParams.setDescription('SignIn | Description');
+	      this.props.HeadParams.setTitle("SignIn | tocu.vn");
+	      this.props.HeadParams.setDescription("SignIn | Description");
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'container' },
+	        { className: "container" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: "row" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	            { className: "col-xs-12 col-sm-7 col-md-5 col-centered" },
 	            _react2['default'].createElement(_altAltContainer2['default'], {
 	              component: _componentsFormSignIn2['default'],
 	              stores: [_storeAuthStore2['default']],
@@ -27061,9 +28049,9 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var _inherits = __webpack_require__(197)['default'];
+	var _get = __webpack_require__(197)['default'];
 
-	var _get = __webpack_require__(200)['default'];
+	var _inherits = __webpack_require__(202)['default'];
 
 	var _createClass = __webpack_require__(205)['default'];
 
@@ -27122,31 +28110,29 @@ webpackJsonp([0],[
 	var _componentsFormSignUp2 = _interopRequireDefault(_componentsFormSignUp);
 
 	var SignUp = (function (_React$Component) {
+	  _inherits(SignUp, _React$Component);
+
 	  function SignUp(props) {
 	    _classCallCheck(this, _SignUp);
 
 	    _get(Object.getPrototypeOf(_SignUp.prototype), 'constructor', this).call(this, props);
 	  }
 
-	  _inherits(SignUp, _React$Component);
-
-	  var _SignUp = SignUp;
-
-	  _createClass(_SignUp, [{
+	  _createClass(SignUp, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle('SignUp | tocu.vn');
-	      this.props.HeadParams.setDescription('SignUp | Description');
+	      this.props.HeadParams.setTitle("SignUp | tocu.vn");
+	      this.props.HeadParams.setDescription("SignUp | Description");
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'container' },
+	        { className: "container" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: "row" },
 	          _react2['default'].createElement(_altAltContainer2['default'], {
 	            params: this.props.params,
 	            component: _componentsFormSignUp2['default'],
@@ -27171,6 +28157,7 @@ webpackJsonp([0],[
 	    }
 	  }]);
 
+	  var _SignUp = SignUp;
 	  SignUp = (0, _decorators.prepareRoute)(function callee$1$0(_ref) {
 	    var params = _ref.params;
 	    return _regeneratorRuntime.async(function callee$1$0$(context$2$0) {
@@ -27250,22 +28237,22 @@ webpackJsonp([0],[
 
 	var Validations = {
 	  mobilePhone: {
-	    rules: { mobilePhone: ['required', 'regex:/^([0-9]{10,11})$/'] },
-	    messages: { 'required.mobilePhone': 'nhập số điện thoại của bạn!', 'regex.mobilePhone': 'số điện thoại không hợp lệ!' },
+	    rules: { mobilePhone: ["required", "regex:/^([0-9]{10,11})$/"] },
+	    messages: { "required.mobilePhone": "nhập số điện thoại của bạn!", "regex.mobilePhone": "số điện thoại không hợp lệ!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
 	  },
 	  name: {
-	    rules: { name: ['required'] },
-	    messages: { 'required.name': 'nhập tên của bạn!' },
+	    rules: { name: ["required"] },
+	    messages: { "required.name": "nhập tên của bạn!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
 	  },
 	  password: {
-	    rules: { password: ['required'] },
-	    messages: { 'required.password': 'nhập password của bạn!' },
+	    rules: { password: ["required"] },
+	    messages: { "required.password": "nhập password của bạn!" },
 	    hasError: false,
 	    errorMessage: '',
 	    errorTextRequest: ''
@@ -27290,111 +28277,121 @@ webpackJsonp([0],[
 
 	  componentDidUpdate: function componentDidUpdate() {
 	    var self = this;
-	    if (this.props.createUseState === 'success') {
+	    if (this.props.createUseState === "success") {
 
 	      setTimeout(function () {
 	        self.replaceWith('/');
 	      }, 100);
+
+	      // var { router: {state: {location}} } = this.context;
+
+	      // let nextPath = location.query.nextPath;
+
+	      // if (nextPath) {
+	      //   this.replaceWith(nextPath);
+	      // } else {
+	      //   this.replaceWith('/');
+	      // }
 	    }
 	  },
 
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	      { className: "col-xs-12 col-sm-7 col-md-5 col-centered" },
 	      _react2['default'].createElement(
 	        'div',
-	        { className: 'form-signup' },
+	        { className: "form-signup" },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'form-body' },
+	          { className: "form-body" },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'form-group' },
+	            { className: "form-group" },
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'logo' },
-	              _react2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
+	              { className: "logo" },
+	              _react2['default'].createElement('img', { src: "/img/logo.png", style: { width: 50, height: 50 } })
 	            )
 	          ),
 	          _react2['default'].createElement(
 	            'p',
-	            { className: 'text-center title-form' },
+	            { className: "text-center title-form" },
 	            'Đăng Ký Tổ Cú'
 	          ),
-	          this.props.createUseState === 'failed' && _react2['default'].createElement(
+	          this.props.createUseState === "failed" && _react2['default'].createElement(
 	            'p',
-	            { className: 'text-center text-danger' },
+	            { className: "text-center text-danger" },
 	            this.props.failedMessage
 	          ),
 	          _react2['default'].createElement(
 	            'form',
 	            null,
 	            _react2['default'].createElement(_inputValidation2['default'], {
-	              ref: 'name',
-	              type: 'name',
-	              placeholder: 'họ tên',
-	              name: 'name',
+	              ref: "name",
+	              type: "name",
+	              placeholder: "họ tên",
+	              name: "name",
 	              validator: this.state.ValidationData.name,
 	              onChange: this._onChangeInputHandler }),
 	            _react2['default'].createElement(_inputValidation2['default'], {
-	              ref: 'mobilePhone',
-	              type: 'mobilePhone',
-	              placeholder: 'số điện thoại',
-	              name: 'mobilePhone',
+	              ref: "mobilePhone",
+	              type: "mobilePhone",
+	              placeholder: "số điện thoại",
+	              name: "mobilePhone",
 	              validator: this.state.ValidationData.mobilePhone,
 	              onChange: this._onChangeInputHandler }),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'row' },
+	              { className: "row" },
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'col-xs-6' },
+	                { className: "col-xs-6" },
 	                _react2['default'].createElement(_select2['default'], {
-	                  ref: 'city',
-	                  type: 'city',
+	                  ref: "city",
+	                  type: "city",
 	                  List: this.props.city,
 	                  onChange: this._onChangeSelectCity,
-	                  firstValue: 'Tỉnh Thành' })
+	                  firstValue: "Tỉnh Thành" })
 	              ),
 	              _react2['default'].createElement(
 	                'div',
-	                { className: 'col-xs-6' },
+	                { className: "col-xs-6" },
 	                _react2['default'].createElement(_select2['default'], {
-	                  ref: 'district',
-	                  type: 'district',
+	                  ref: "district",
+	                  type: "district",
 	                  List: this.props.district,
-	                  firstValue: 'Quận Huyện' })
+	                  firstValue: "Quận Huyện" })
 	              )
 	            ),
 	            _react2['default'].createElement(_inputValidation2['default'], {
-	              ref: 'password',
-	              type: 'password',
-	              placeholder: 'mật khẩu',
-	              name: 'password',
+	              ref: "password",
+	              type: "password",
+	              placeholder: "mật khẩu",
+	              name: "password",
 	              validator: this.state.ValidationData.password,
 	              onChange: this._onChangeInputHandler }),
 	            _react2['default'].createElement(
 	              'div',
-	              { className: 'form-group' },
+	              { className: "form-group" },
 	              _react2['default'].createElement(
 	                'button',
-	                { className: 'form-control btn btn-primary',
+	                { className: "form-control btn btn-primary",
 	                  onClick: this.CreateAuth,
-	                  type: 'submit',
+	                  type: "submit",
 	                  disabled: this.state.disabled },
-	                this.props.createUseState !== 'loading' && 'Tạo Tài Khoản',
-	                this.props.createUseState === 'loading' && _react2['default'].createElement('i', { className: 'fa fa-spinner fa-pulse' })
+	                this.props.createUseState !== "loading" && "Tạo Tài Khoản",
+	                this.props.createUseState === "loading" && _react2['default'].createElement('i', { className: "fa fa-spinner fa-pulse" })
 	              )
 	            )
 	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'form-footer text-center' },
+	          { className: "form-footer text-center" },
 	          _react2['default'].createElement(
 	            _reactRouter.Link,
-	            { to: 'signin' },
+	            { to: "signin" },
 	            'Đăng Nhập'
 	          )
 	        )
@@ -27463,15 +28460,6 @@ webpackJsonp([0],[
 	  }
 	});
 	module.exports = exports['default'];
-	// var { router: {state: {location}} } = this.context;
-
-	// let nextPath = location.query.nextPath;
-
-	// if (nextPath) {
-	//   this.replaceWith(nextPath);
-	// } else {
-	//   this.replaceWith('/');
-	// }
 
 /***/ },
 /* 409 */
@@ -27479,9 +28467,9 @@ webpackJsonp([0],[
 
 	"use strict";
 
-	var _inherits = __webpack_require__(197)["default"];
+	var _get = __webpack_require__(197)["default"];
 
-	var _get = __webpack_require__(200)["default"];
+	var _inherits = __webpack_require__(202)["default"];
 
 	var _createClass = __webpack_require__(205)["default"];
 
@@ -27498,13 +28486,13 @@ webpackJsonp([0],[
 	var _react2 = _interopRequireDefault(_react);
 
 	var NotFound = (function (_React$Component) {
+	  _inherits(NotFound, _React$Component);
+
 	  function NotFound(props) {
 	    _classCallCheck(this, NotFound);
 
 	    _get(Object.getPrototypeOf(NotFound.prototype), "constructor", this).call(this, props);
 	  }
-
-	  _inherits(NotFound, _React$Component);
 
 	  _createClass(NotFound, [{
 	    key: "render",
@@ -27553,17 +28541,17 @@ webpackJsonp([0],[
 	    _classCallCheck(this, HeadParams);
 
 	    this.title = title || 'Tocu.vn';
-	    this.description = desc || 'tocu';
-	    this.keywords = keys || 'tocu';
+	    this.description = desc || "tocu";
+	    this.keywords = keys || "tocu";
 	  }
+
+	  /**
+	   * set Title page
+	   * @param {string} title
+	   */
 
 	  _createClass(HeadParams, [{
 	    key: 'setTitle',
-
-	    /**
-	     * set Title page
-	     * @param {string} title
-	     */
 	    value: function setTitle(title) {
 	      this.title = title;
 
@@ -27572,13 +28560,13 @@ webpackJsonp([0],[
 	        TagTitle.text = title;
 	      }
 	    }
-	  }, {
-	    key: 'setDescription',
 
 	    /**
 	     * set Description
 	     * @param {string} description
 	     */
+	  }, {
+	    key: 'setDescription',
 	    value: function setDescription(description) {
 	      this.description = description;
 

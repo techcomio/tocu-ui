@@ -6,7 +6,7 @@ var MasonryMixin = require('react-masonry-mixin');
 
 import Axios          from 'axios';
 import {Link}         from 'react-router';
-import {Api_URL}      from '../../../config-sample';
+import {Api_URL}      from '../../../../config-sample';
  
 var masonryOptions = {
   transitionDuration: 0
