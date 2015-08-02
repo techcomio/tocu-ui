@@ -1,5 +1,6 @@
 var webpack           = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const env = process.env.NODE_ENV || 'development';
 
 module.exports = {
 	entry: {
@@ -21,7 +22,7 @@ module.exports = {
 			{
 				exclude: /node_modules/,
 				test: /\.(js|jsx|es|es6|es7)$/,
-				loader: 'babel-loader?optional=runtime&stage=1'
+				loader: 'babel-loader?optional=runtime&stage=0'
 			},
 			{
 				test: /\.css$/,
@@ -45,7 +46,8 @@ module.exports = {
 	},
   plugins: [
 	  new webpack.optimize.CommonsChunkPlugin("commons", "/js/commons.bundle.js"),
-	  // new webpack.optimize.UglifyJsPlugin({minimize: true, compress: { warnings: false }}),
+	  new webpack.DefinePlugin({'process.env': { 'NODE_ENV': `"${env}"`} }),
+	  new webpack.optimize.UglifyJsPlugin({minimize: true, compress: { warnings: false }, output: {comments: false}}),
 	  new ExtractTextPlugin("/css/[name].css")
   ],
 };

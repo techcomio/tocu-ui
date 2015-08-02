@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React from 'react/addons';
 
 export default class Application extends React.Component {
 

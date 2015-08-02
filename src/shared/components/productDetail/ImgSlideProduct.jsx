@@ -1,7 +1,7 @@
 /* @jsx React.DOM */
 "use strict";
 
-import React from 'react';
+import React from 'react/addons';
 
 /* @jsx */
 import LightBoxSlideImg from './lightBoxSlideImg';
@@ -10,9 +10,9 @@ export default class ImgSlideProduct extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.ShowLightBox = this.ShowLightBox.bind(this);
     this.HideLightBox = this.HideLightBox.bind(this);
+    this.renderLightBox = this.renderLightBox.bind(this);
     this.handleClickSlideTab = this.handleClickSlideTab.bind(this);
 
     this.state = {
@@ -55,7 +55,7 @@ export default class ImgSlideProduct extends React.Component {
         </div>
         <div className="imageSlide-tabs">
           <ul>
-            {this.props.dataUrlImgTab.map((url, i) => {
+            {this.props.dataUrlImg.map((url, i) => {
               var classSes = "";
               if(this.state.current === i) {
                 classSes = "active";
@@ -68,17 +68,22 @@ export default class ImgSlideProduct extends React.Component {
           </ul>
         </div>
 
-        {this.state.showLightBox && (
-          <LightBoxSlideImg 
-            dataUrlImg={this.props.dataUrlImg}
-            current={this.state.current}
-            showLightBox={this.state.showLightBox}
-            HideLightBox={this.HideLightBox}
-          />
-        )}
-
+        {this.renderLightBox()}
       </div>
     );
+  }
+
+  renderLightBox() {
+    if(this.state.showLightBox) {
+      return (
+        <LightBoxSlideImg 
+          dataUrlImg={this.props.dataUrlImg}
+          current={this.state.current}
+          showLightBox={this.state.showLightBox}
+          HideLightBox={this.HideLightBox}
+        />
+      )
+    }
   }
 
   ShowLightBox(i, e) {

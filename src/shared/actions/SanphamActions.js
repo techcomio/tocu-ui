@@ -50,19 +50,36 @@ class SanphamActions {
   }
 
   
-  like({itemId, token, type, userID}) {
+  like({itemId, token, type }) {
     let self = this;
 
-    Axios.post(`${Api_URL}/like`, {
-      type: type,
-      itemId: itemId,
-      UserId: userID,
+    Axios.post(`${Api_URL}/like`, { type: type, itemId: itemId }, {
+      headers: { 'Authorization': `Bearer ${localStorage.access_token}` }
     })
     .then((res) => {
       self.dispatch(res.data);
     })
     .catch((res) => {
       self.actions.likeFailed(res.data);
+    });
+  }
+
+  getHasOrder({id}) {
+    let self = this;
+
+    Axios.get(`${Api_URL}/order`, {
+      params: {
+        filters: `status==open;id==${id}`,
+      },
+      headers: { 'Authorization': `Bearer ${localStorage.access_token}` }
+    })
+    .then((res) => {
+      console.log('then getHasOrder', res.data)
+      // self.dispatch(res.data);
+    })
+    .catch((res) => {
+      console.log('catch getHasOrder', res.data)
+      // self.actions.likeFailed(res.data);
     });
   }
 

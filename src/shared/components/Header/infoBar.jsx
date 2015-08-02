@@ -1,7 +1,7 @@
 'use strict';
 
-import React  from 'react';
-import {Link} from 'react-router';
+import React    from 'react/addons';
+import { Link } from 'react-router';
 
 
 export default class InfoBar extends React.Component {
@@ -19,9 +19,9 @@ export default class InfoBar extends React.Component {
                 </a>
               </div>
               <div className="col-xs-3">
-                <Link to="/sp" className="">
+                <a href="#" className="">
                   <span className="value">{this.props.countSanpham}</span> <span className="labels">Sản phẩm</span>    
-                </Link>
+                </a>
               </div>
               <div className="col-xs-3">
                 <a href="#" className="">

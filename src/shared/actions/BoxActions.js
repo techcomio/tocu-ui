@@ -63,13 +63,11 @@ class BoxActions {
    * @param  {number} options.userID - id user
    * @dispatch {number}                
    */
-  like({itemID, token, userID}) {
+  like({itemID, token}) {
   	let self = this;
 
-  	Axios.post(`${Api_URL}/like`, {
-      type: "box",
-      itemId: itemID,
-      UserId: userID,
+  	Axios.post(`${Api_URL}/like`, { type: "box", itemId: itemID }, {
+      headers: { 'Authorization': `Bearer ${localStorage.access_token}` }
     })
     .then((res) => {
       self.dispatch(itemID);

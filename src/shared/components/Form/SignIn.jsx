@@ -1,8 +1,10 @@
 'use strict';
 
-import React                     from 'react';
+import React                     from 'react/addons';
 import Validator                 from 'validatorjs';
 import {Link, State, Navigation} from 'react-router';
+import AuthStore                 from '../../store/AuthStore';
+
 /**
  * @Component
  */
@@ -12,14 +14,14 @@ import InputValidation from './inputValidation';
 let Validations = {
   mobilePhone: {
     rules: {mobilePhone: [ "required", "regex:/^([0-9]{10,11})$/" ]},
-    messages: {"required.mobilePhone": "nhập số điện thoại của bạn!", "regex.mobilePhone": "số điện thoại không hợp lệ!"},
+    messages: {"required.mobilePhone": "Nhập số điện thoại của bạn!", "regex.mobilePhone": "Số điện thoại không hợp lệ!"},
     hasError: false,
     errorMessage: '',
     errorTextRequest: ''
   },
   password: {
     rules: {password: [ "required"]},
-    messages: {"required.password": "nhập password của bạn!"},
+    messages: {"required.password": "Nhập password của bạn!"},
     hasError: false,
     errorMessage: '',
     errorTextRequest: ''
@@ -42,33 +44,41 @@ export default React.createClass({
     };
   },
 
-  componentDidUpdate() {
-    let self = this;
-    if(this.props.loginState === "success") {
+  componentDidMount() {
+    AuthStore.listen(this.onChangeAuthStore);
+  },
 
-      setTimeout(function() {
-        self.replaceWith('/');
-      }, 100)
+  componentWillUnmount() {
+    AuthStore.unlisten(this.onChangeAuthStore);
+  },
 
-      // var { router: {state: {location}} } = this.context;
-
-      // let nextPath = location.query.nextPath;
-
-      // if (nextPath) {
-      //   this.replaceWith(nextPath);
-      // } else {
-      //   this.replaceWith('/');
-      // }
+  onChangeAuthStore(state) {
+    if(state.loginState === "success") {
+      let self = this;
+      if(this.props.replaceWith) {
+        this.props.replaceWith();
+      } else {
+        setTimeout(function() {
+          self.transitionTo('/');
+        }, 100);
+      }
     }
   },
 
   render() {
+    let nextPath = '/';
+    if(this.props.nextPath) {
+      nextPath = this.props.nextPath;
+    }
+
     return (
       <div className="form-signup">
         <div className="form-body">
           <div className="form-group">
             <div className="logo">
-              <img src="/img/logo.png" style={{width: 50, height: 50}} />
+              <Link to="/">
+                <img src="/img/logo.png" style={{width: 50, height: 50}} />
+              </Link>
             </div>
           </div>
 
@@ -120,7 +130,7 @@ export default React.createClass({
               <a href="/password/reset/" >quên mật khẩu?</a>
             </div>
             <div className="col-xs-5 col-md-4">
-              <Link to="/signup" className="pull-right" >Đăng Ký</Link>
+              <Link to={`/signup?nextPath=${nextPath}`} className="pull-right" >Đăng Ký</Link>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import 'babel/polyfill';
 import Axios                   from 'axios';
-import React                   from 'react';
+import React                   from 'react/addons';
 import {Router as ReactRouter} from 'react-router';
 import Location                from 'react-router/lib/Location';
 import History                 from 'react-router/lib/MemoryHistory';

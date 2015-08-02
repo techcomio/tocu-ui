@@ -1,6 +1,6 @@
 'use strict';
 
-import React      from 'react';
+import React      from 'react/addons';
 import { Link }   from 'react-router';
 import classNames from 'classnames';
 
@@ -14,7 +14,7 @@ export default class Navbar extends React.Component {
       show: this.props.transform,
     });
     
-    if(!this.props.auth.mobilePhone) {
+    if(!this.props.auth.get('mobilePhone')) {
       return (
         <div className="container-fluid">
           <div className="navbar-header">
@@ -59,15 +59,15 @@ export default class Navbar extends React.Component {
         </div>
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <div className="nav navbar-nav navbar-right">
-            <span className="text-name">{this.props.auth.name}</span>
+            <span className="text-name">{this.props.auth.get('name')}</span>
             <div className="btn-group">
               <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img alt="avatar" src={this.props.auth.avatarUrl} />
+                <img alt="avatar" src={this.props.auth.get('avatarUrl')} />
               </button>
               <ul className="dropdown-menu">
                 <li><a href="#">settings</a></li>
                 <li role="separator" className="divider"></li>
-                <li><Link to="/signin" onClick={this.handleLogout.bind(this)} >log out</Link></li>
+                <li><Link to="/signin" onClick={::this.handleLogout} >log out</Link></li>
               </ul>
             </div>
           </div>
@@ -76,8 +76,9 @@ export default class Navbar extends React.Component {
     );
   }
 
-  handleLogout() {
-    this.props.Logout(this.props.auth.access_token);
+  handleLogout(e) {
+    console.log('handleLogout')
+    this.props.AuthActions.Logout(localStorage.access_token);
   }
 
 };

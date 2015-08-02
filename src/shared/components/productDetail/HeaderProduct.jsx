@@ -1,6 +1,6 @@
 "use strict";
 
-import React  from 'react';
+import React  from 'react/addons';
 import Router from 'react-router';
 /* @Component */
 import AltContainer from 'alt/AltContainer';
@@ -39,14 +39,14 @@ export default React.createClass({
 	render() {
 		return (
 			<div>
-
         <Header 
           hideHeader={this.state.hideHeader} />
 
 				<Navbar
           info={this.props.info}
           auth={this.props.auth}
-          likeBox={this.props.BoxActions.like}
+          handleBoxLogin={this.props.handleBoxLogin}
+          BoxActions={this.props.BoxActions}
           hideHeader={this.state.hideHeader} />
 
 			</div>

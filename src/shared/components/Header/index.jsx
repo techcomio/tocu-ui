@@ -1,12 +1,9 @@
  /* @jsx React.DOM */
 'use strict';
 
-import React          from 'react';
+import React          from 'react/addons';
 import { Link }       from 'react-router';
 import classNames     from 'classnames';
-import {prepareRoute} from '../../decorators';
-import AuthStore      from '../../store/AuthStore';
-import AuthActions    from '../../actions/AuthActions';
 /**
  * @Component
  */
@@ -14,26 +11,16 @@ import Navbar      from './navbar';
 import InfoBar     from './infoBar';
 import ProfileInfo from './profileInfo';
 
-@prepareRoute(async function() {
-  return await * [
-
-  ];
-})
 
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this._bind('handleScroll')
+    this.handleScroll = this.handleScroll.bind(this);
 
     this.state = {
       transform: false
     };
-  }
-
-  _bind(...methods) {
-    methods.forEach( (method) => this[method] = this[method].bind(this) );
   }
 
   componentDidMount() {
@@ -69,8 +56,8 @@ export default class Home extends React.Component {
           </div>
           <nav className={classesNavbar}>
             <Navbar 
-              Logout={AuthActions.Logout}
-              auth={this.props.auth.toJS()}
+              AuthActions={this.props.AuthActions}
+              auth={this.props.auth}
               transform={this.state.transform} />
           </nav>
 

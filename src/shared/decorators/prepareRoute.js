@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react/addons';
 import Router             from 'react-router';
 
 

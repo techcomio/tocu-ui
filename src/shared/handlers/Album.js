@@ -1,6 +1,6 @@
 'use strict';
 
-import React            from 'react';
+import React            from 'react/addons';
 import {Link}           from 'react-router';
 import {prepareRoute}   from '../decorators';
 

@@ -1,7 +1,7 @@
 /* @jsx React.DOM */
 "use strict";
 
-import React       from 'react';
+import React       from 'react/addons';
 import { Link	}    from 'react-router';
 import classNames  from 'classnames';
 import AuthStore   from '../../store/AuthStore';
@@ -18,10 +18,12 @@ export default React.createClass({
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+    AuthStore.listen(this.handleAuthStore);
   },
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    AuthStore.unlisten(this.handleAuthStore);
   },
 
   handleScroll(e) {
@@ -30,6 +32,12 @@ export default React.createClass({
     this.setState({
       hideHeader: hideHeader
     });
+  },
+
+  handleAuthStore(state) {
+  	this.setState({
+  		...state.auth.toJS(),
+  	})
   },
 
 	render() {
@@ -115,7 +123,7 @@ export default React.createClass({
 	},
 
 	handleLogout() {
-		AuthActions.Logout();
+		AuthActions.Logout(localStorage.access_token);
 	},
 
 });

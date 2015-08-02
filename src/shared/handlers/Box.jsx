@@ -1,64 +1,122 @@
 'use strict';
 
-import React        from 'react';
-import {Link}       from 'react-router';
-import MasonryMixin from 'react-masonry-mixin';
-let InfiniteScroll = require('react-infinite-scroll')(React);
-import BoxStore     from '../store/BoxStore';
-import BoxActions   from '../actions/BoxActions';
+import React          from 'react/addons';
+import Axios          from 'axios';
+import ReactAsync     from 'react-async';
+import {Link}         from 'react-router';
+import {Api_URL}      from '../../../config-sample';
+import BoxStore       from '../store/BoxStore';
+import AuthStore      from '../store/AuthStore';
+import BoxActions     from '../actions/BoxActions';
+import AuthActions    from '../actions/AuthActions';
+import SanphamActions from '../actions/SanphamActions';
+import VerifyStore    from '../store/VerifyStore';
+import VerifyActions  from '../actions/VerifyActions';
+import MasonryMixin   from 'react-masonry-mixin';
+import PackeryMixin   from 'react-packery-mixin';
+let InfiniteScroll   = require('react-infinite-scroll')(React);
 /**
  * @Component
  */
+import AltContainer  from 'alt/AltContainer';
+import FormSignIn    from '../components/Form/SignIn';
+import Verify        from '../components/Form/Verify';
 import HeaderProduct from '../components/productDetail/HeaderProduct';
-import BoxItem from '../components/productDetail/BoxItem';
+import BoxItem       from '../components/Box/BoxItem';
+
+var createUniqueArray = (function () {
+  return function (inputArray, sorter) {
+    var arrResult = {};
+    var nonDuplicatedArray = [];
+    var i, n;
+
+    for (i = 0, n = inputArray.length; i < n; i++) {
+      var item = inputArray[i];
+
+      if (sorter) {
+        arrResult[item[sorter]] = item;
+      } else {
+        arrResult[item] = item;
+      }
+    }
+
+    i = 0;
+
+    for (var item in arrResult) {
+      nonDuplicatedArray[i++] = arrResult[item];
+    }
+
+    return nonDuplicatedArray;
+  };
+})();
 
 
 export default React.createClass({
 
-  mixins: [MasonryMixin('masonryContainer', {transitionDuration: 0})],
+  displayName: "Box",
 
-  getInitialState: function () {
-    return {
-      page: 1,
+  mixins: [ReactAsync.Mixin, MasonryMixin('masonryContainer', {})],
+
+  componentWillReceiveProps: function (nextProps) {
+    if (nextProps.category !== this.props.category) {
+      this.setState({
+        page: 0,
+        posts: [],
+        hasMore: true,
+        boxLogin: false,
+        boxVerify: false,
+        skip: 0,
+        limit: 15,
+      });
+    }
+  },
+
+  getInitialStateAsync: function (callback) {
+    callback(null, {
+      page: 0,
+      posts: [],
       hasMore: true,
+      boxLogin: false,
+      boxVerify: false,
       skip: 0,
       limit: 15,
-      posts: BoxStore.getState().test,
-    };
+    });
   },
 
   componentWillMount () {
-    this.props.HeadParams.setTitle("Sanpham | tocu.vn");
-    this.props.HeadParams.setDescription("Sanpham | Description");
+    this.props.HeadParams.setTitle("Box | tocu.vn");
+    this.props.HeadParams.setDescription("Box | Description");
+    const {params: { id }} = this.props;
+
+    BoxActions.getBoxID({id: id});
   },
 
   getLoaderElement: function () {
-    // return null;
-
     return (
       <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-        <div className='thumbnail article text-center'>Loading <i className='fa fa-cog fa-spin'></i></div>
+        <div className='div-loading text-center'><i className='fa fa-spinner fa-pulse'></i></div>
       </div>
     );
   },
 
-  componentDidMount() {
-    BoxStore.listen(this.onChangeBoxStore);
-  },
+  handleLoad(data, page) {
+    let limit = this.state.limit;
+    let hasMore = data.length == limit;
+    let skip = this.state.skip += limit
 
-  componentWillUnmount() {
-    BoxStore.unlisten(this.onChangeBoxStore);
-  },
-
-  onChangeBoxStore(state) {
-    let hasMore = (state.posts.size >= this.state.limit * this.state.page)
-    let page = this.state.page + 1;
-    let skip = this.state.skip += this.state.limit
     this.setState({
-      posts: state.posts,
-      hasMore: hasMore,
-      page: page,
+      posts: createUniqueArray(this.state.posts.concat(data), 'id'),
+      page: page + 1,
       skip: skip,
+      // hasMore: hasMore,
+    });
+
+    this.hasMore(hasMore)
+  },
+
+  hasMore(hasMore) {
+    this.setState({
+      hasMore: hasMore,
     });
   },
 
@@ -67,24 +125,50 @@ export default React.createClass({
       params: { id }
     } = this.props;
 
+    let self = this,
+    skip = this.state.skip,
+    limit = this.state.limit;
     if(this.state.hasMore) {
-      BoxActions.getBoxID({id: parseInt(id), skip: this.state.skip, limit: this.state.limit});
+      this.loadActions(id, skip, limit, function(data) {
+        self.handleLoad(data, page);
+      });
     }
   },
 
+  loadActions(id, skip, limit, cb) {
+    Axios.get(`${Api_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
+      .then((res) => {
+        cb(res.data);
+      });
+  },
+
   getArticlesToRender() {
+    if(!this.state.posts) return null;
+
     return this.state.posts.map((post, i) => {
       return (
-        <BoxItem key={i} {...post.toJS()} />
+        <BoxItem onClick={this.handleViewSP} data={post} key={i} {...post} />
       );
-    });
+    }.bind(this));
   },
 
   render () {
     return (
       <div>
-        <HeaderProduct />
+        <AltContainer
+          stores={[BoxStore, AuthStore]}
+          actions={{BoxActions}}
+          inject={{
+            info: function(props) {
+              return BoxStore.getState().info;
+            },
+            auth: function(props) {
+              return AuthStore.getState().auth;
+            }
+          }} >
 
+          <HeaderProduct handleBoxLogin={this.handleBoxLogin} />
+        </AltContainer>
         <section id="productDetail">
           <div className="container">
             <div className='row'>
@@ -104,8 +188,101 @@ export default React.createClass({
             </div>
           </div>
         </section>
+
+        {this.renderBoxLogin()}
       </div>
     );
+  },
+
+  renderBoxLogin() {
+    if(this.state.boxLogin) {
+      return (
+        <div id="boxLogin">
+          <div className="row">
+            <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+              <div className="centrix">
+                <AltContainer
+                  stores={[AuthStore]}
+                  actions={{AuthActions}}
+                  inject={{
+                    loginState: function(props) {
+                      return AuthStore.getState().loginState
+                    }
+                  }} >
+
+                  <FormSignIn replaceWith={this.hideBoxLogin} />
+                </AltContainer>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if(this.state.boxVerify) {
+      VerifyActions.getCode();
+      return (
+        <div id="boxLogin">
+          <div className="row">
+            <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+              <div className="centrix">
+                <AltContainer
+                  params={this.props.params}
+                  stores={[VerifyStore, AuthStore]}
+                  actions={{VerifyActions}}
+                  inject={{
+                    auth: () => {
+                      return AuthStore.getState().auth
+                    },
+                    verify: () => {
+                      return VerifyStore.getState().verify
+                    },
+                    verifyFaild: () => {
+                      return VerifyStore.getState().verifyFaild
+                    },
+                    verifyState: () => {
+                      return VerifyStore.getState().verifyState
+                    }
+                  }} >
+
+                  <Verify hideBoxVerify={this.hideBoxVerify} />
+                </AltContainer>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  },
+
+  handleViewSP(sp) {
+    SanphamActions.actionSanphamID(sp);
+  },
+
+  handleBoxLogin(val) {
+    console.log('handleBoxLogin', val)
+    if(val === "token") {
+      this.setState({
+        boxLogin: true,
+      });
+    }
+    if(val === "verify") {
+      this.setState({
+        boxVerify: true,
+      });
+    }
+  },
+
+  hideBoxLogin() {
+    this.setState({
+      boxLogin: false,
+    });
+  },
+
+  hideBoxVerify() {
+    this.setState({
+      boxVerify: false,
+    });
   }
 
 });

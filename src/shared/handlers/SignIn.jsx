@@ -1,6 +1,6 @@
 'use strict';
 
-import React       from 'react';
+import React       from 'react/addons';
 import {Link}      from 'react-router';
 import Validator   from 'validatorjs';
 import AuthStore   from '../store/AuthStore';
@@ -20,13 +20,13 @@ export default class SignIn extends React.Component {
 
   componentWillMount () {
     this.props.HeadParams.setTitle("SignIn | tocu.vn");
-    this.props.HeadParams.setDescription("SignIn | Description");
+    this.props.HeadParams.setDescription("SignIn tocu.vn");
   }
 
   render() {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row row-form">
           <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
 
             <AltContainer

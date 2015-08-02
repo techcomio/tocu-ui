@@ -1,7 +1,7 @@
 /* @jsx React.DOM */
 "use strict";
 
-import React  from 'react';
+import React  from 'react/addons';
 import {Link} from 'react-router';
 
 export default class AlbumItem extends React.Component {

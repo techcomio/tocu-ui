@@ -34,7 +34,7 @@ header { background: $body-bg; box-shadow: $header-shadow; position: relative;
 		margin-top: 80px; text-align: center; padding-bottom: 20px;
 		ul { padding-left: 0px; padding-right: 0px; }
 		li { display: inline-block;
-			&:nth-child(1n + 2):before { content: '♀'; width: 20px; height: 20px; padding: 8px; } /*•*/
+			&:nth-child(1n + 2):before { content: '·'; width: 20px; height: 20px; padding: 8px; } /*•*/
 		}
 	}
 	.infoBar { height: 60px; border-top: 1px solid $border-color;
@@ -73,4 +73,10 @@ header { background: $body-bg; box-shadow: $header-shadow; position: relative;
 	}
 	.btn-group { float: right; }
 	.btn {  margin-top: 4px; }
+	@media all and (max-width: 768px) {
+		.infoListProduct {
+			.nameinfoListProduct { font-size: 14px; line-height: 1.6; }
+			.countListProduct { font-size: $font-size-small; }
+		}
+	}
 }

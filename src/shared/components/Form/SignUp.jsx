@@ -1,82 +1,90 @@
 'use strict';
 
-import React                     from 'react';
+import React, { PropTypes }      from 'react/addons';
 import Validator                 from 'validatorjs';
 import {Link, State, Navigation} from 'react-router';
+import classnames                from 'classnames';
+import AuthStore                 from '../../store/AuthStore';
 /**
  * @Component
  */
+import AltContainer    from 'alt/AltContainer';
 import Select          from './select';
+import Verify          from './Verify';
 import InputValidation from './inputValidation';
-
 
 let Validations = {
   mobilePhone: {
-    rules: {mobilePhone: [ "required", "regex:/^([0-9]{10,11})$/" ]},
-    messages: {"required.mobilePhone": "nhập số điện thoại của bạn!", "regex.mobilePhone": "số điện thoại không hợp lệ!"},
+    rules: {mobilePhone: ["required", "regex:/^([0-9]{10,11})$/" ]},
+    messages: {"required.mobilePhone": "Nhập số điện thoại của bạn!", "regex.mobilePhone": "Số điện thoại không hợp lệ!"},
     hasError: false,
     errorMessage: '',
     errorTextRequest: ''
   },
   name: {
-    rules: {name: [ "required"]},
-    messages: {"required.name": "nhập tên của bạn!"},
+    rules: {name: ["required"]},
+    messages: {"required.name": "Nhập tên của bạn!"},
     hasError: false,
     errorMessage: '',
     errorTextRequest: ''
   },
   password: {
-    rules: {password: [ "required"]},
-    messages: {"required.password": "nhập password của bạn!"},
+    rules: {password: ["required"]},
+    messages: {"required.password": "Nhập password của bạn!"},
     hasError: false,
     errorMessage: '',
     errorTextRequest: ''
   },
 };
 
+
 export default React.createClass({
   
   mixins: [State, Navigation],
 
   contextTypes: {
-    router: React.PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
   },
 
   getInitialState() {
     return {
       disabled: true,
       ValidationData: Validations,
+      boxMaxacnhan: false,
     };
   },
 
-  componentDidUpdate() {
-    let self = this;
-    if(this.props.createUseState === "success") {
+  componentDidMount() {
+    AuthStore.listen(this.onChangeAuthStore);
+  },
 
-      setTimeout(function() {
-        self.replaceWith('/');
-      }, 100)
+  componentWillUnmount() {
+    AuthStore.unlisten(this.onChangeAuthStore);
+  },
 
-      // var { router: {state: {location}} } = this.context;
-
-      // let nextPath = location.query.nextPath;
-
-      // if (nextPath) {
-      //   this.replaceWith(nextPath);
-      // } else {
-      //   this.replaceWith('/');
-      // }
+  onChangeAuthStore(state) {
+    if(state.createUseState === "success") {
+      this.setState({
+        boxMaxacnhan: true,
+      });
     }
   },
 
 	render () {
+    let classNameFrom = classnames({
+      "form-signup": true,
+      "hide": this.state.boxMaxacnhan,
+    });
+
 		return (
 			<div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
-        <div className="form-signup">
+        <div className={classNameFrom}>
           <div className="form-body">
             <div className="form-group">
               <div className="logo">
-                <img src="/img/logo.png" style={{width: 50, height: 50}} />
+                <Link to="/">
+                  <img src="/img/logo.png" style={{width: 50, height: 50}} />
+                </Link>
               </div>
             </div>
 
@@ -90,7 +98,7 @@ export default React.createClass({
               <InputValidation
                 ref="name"
                 type="name"
-                placeholder="họ tên"
+                placeholder="Họ tên"
                 name="name"
                 validator={this.state.ValidationData.name}
                 onChange={this._onChangeInputHandler} />
@@ -98,7 +106,7 @@ export default React.createClass({
               <InputValidation
                 ref="mobilePhone"
                 type="mobilePhone"
-                placeholder="số điện thoại"
+                placeholder="Số điện thoại"
                 name="mobilePhone"
                 validator={this.state.ValidationData.mobilePhone}
                 onChange={this._onChangeInputHandler} />
@@ -124,7 +132,7 @@ export default React.createClass({
               <InputValidation
                 ref="password"
                 type="password"
-                placeholder="mật khẩu"
+                placeholder="Mật khẩu"
                 name="password"
                 validator={this.state.ValidationData.password}
                 onChange={this._onChangeInputHandler} />
@@ -150,9 +158,24 @@ export default React.createClass({
             <Link to="signin">Đăng Nhập</Link>
           </div>
         </div>
+        {this.renderMaxacnhan()}
       </div>
 		)
 	},
+
+  renderMaxacnhan() {
+    if(this.state.boxMaxacnhan) {
+      this.props.VerifyActions.getCode();
+      return (
+        <Verify
+          auth={this.props.auth}
+          verify={this.props.verify}
+          verifyFaild={this.props.verifyFaild}
+          verifyState={this.props.verifyState}
+          VerifyActions={this.props.VerifyActions} />
+      );
+    }
+  },
 
   _setAndValidateInput(name, value) {
     let ValidationData = this.state.ValidationData;
@@ -212,4 +235,5 @@ export default React.createClass({
 
     this.props.AuthActions.CreateUser({name, mobilePhone, city, district, password});
   },
+
 });

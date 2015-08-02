@@ -1,6 +1,6 @@
 'use strict';
 require('babel/register')({ 
-  stage: 1 // for es 7 features
+  stage: 0 // for es 7 features
 });
 
 var express      = require('express');
@@ -11,6 +11,7 @@ var bodyParser   = require('body-parser');
 var render = require('./src/server');
 
 let app = express();
+const env = process.env.NODE_ENV || 'development';
 
 app.set('port', process.env.PORT || 8080);
 app.use(cookieParser());
@@ -31,10 +32,13 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.json({
-    message: err.message,
-    error: {}
-  });
+  if(env === "development") {
+    return res.json({
+      message: err.message,
+      error: {}
+    });
+  }
+  res.send('');
 });
 
 

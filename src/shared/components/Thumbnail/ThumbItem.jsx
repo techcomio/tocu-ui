@@ -1,8 +1,9 @@
 "use strict";
 
-import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
-import BoxActions    from '../../actions/BoxActions';
+import React, {PropTypes} from 'react/addons';
+import {Link}             from 'react-router';
+import Immutable          from 'immutable';
+import BoxActions         from '../../actions/BoxActions';
 /**
  * @Component
  */
@@ -24,15 +25,17 @@ export default class ThumbItem extends React.Component {
   }
 
   render() {
-    let img_url = "/img/404.jpg";
+    let img_url = "http://api.tocu.vn/image/220x220/404.jpg";
     let type = "";
-    let ListPost = this.props.latestPosts.map((post, i) => {
+    let ListPost = this.props.box.get('latestPosts').toJS().map((post, i) => {
       /**
        * lấy link ảnh của bài post đầu tiên
        */
+      let backgroundImage = true;
       if(i === 0 && post.images) {
         let url = post.images[0];
-        img_url = url.replace(/image\//gi, 'image/192x130/');
+        img_url = url.replace(/image\//gi, 'image/220x220/');
+        backgroundImage = false;
       }
       /**
        * format number to String 250000 => "250.000"
@@ -40,9 +43,9 @@ export default class ThumbItem extends React.Component {
        */
       post.price = post.price !== null ? post.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
 
-      switch(this.props.type) {
+      switch(this.props.box.get('type')) {
         case "product":
-          return <ProductItem key={i} i={i} {...post} />
+          return <ProductItem key={i} i={i} {...post} backgroundImage={backgroundImage} />
         case "article":
           return <PostItem key={i} i={i} {...post} />
         case "photo":
@@ -57,39 +60,56 @@ export default class ThumbItem extends React.Component {
      */
     for (let i = ListPost.length; i < 2; i++) {
       ListPost.push(
-        <div key={i} className="newsItem newCreditItem">
-          <div className="newsImg"><span className="imgIcon imgIcon-list"></span></div>
-          <div className="newsText" style={{cursor: 'default'}}></div>
+        <div key={i} className="list-item emtry">
+          <div className="item">
+            <div className="newsItem newCreditItem">
+              <div className="newsImg">
+                <span className="imgIcon imgIcon-list"></span>
+              </div>
+              <div className="newsText newsInfo">
+                <p className="creditTitle"></p>
+                <p>
+                  <strong className="creditCost"></strong>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )
     };    
 
-    switch(this.props.type) {
+    switch(this.props.box.get('type')) {
       case "product":
-        type = "SP";
+        type = "sản phẩm";
         break;
       case "article":
-        type = "Ảnh";
+        type = "bài viết";
         break;
       case "photo":
-        type = "Ảnh";
+        type = "ảnh";
     }
 
     return (
       <div className="thumbnail">
-        <Link to={`/box/${this.props.id}`}>
-          <h4 className="thumbnail-title">{this.props.name}</h4>
-          <div className="imgWrapper">
-            <img className="img-max-height img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
-            <span className="boardPinCount">{this.props.postsCount} {type}</span>
+        <Link to={`/box/${this.props.box.get('id')}`}>
+          <div className="img-Wrapper">
+            <img className="img-max-height" data-holder-rendered="true" src={img_url} alt="images" />
+            <div className="divshowdow"></div>
           </div>
-          <div>
-            <div className="thumbnail-list-news">
+          <div className="thumbnail-list-news">
+            <div className="list-news">
               {ListPost}
             </div>
-            <p>
-              <div onClick={this.handleLike} className="btn btn-default btn-block btn-follow">{this.props.likesCount} likes </div>
-            </p>
+          </div>
+          <div className="thumbnail-info">
+            <div className="infoItem">
+              <span className="titleItem">{this.props.box.get('name')}</span>
+              <span className="countItem">{this.props.box.get('postsCount')} {type}</span>
+            </div>
+            <div className="socialItem">
+              <span className="SmallIcon likeSmallIcon"></span>
+              <span className="socialMetaCount">{this.props.box.get('likesCount')}</span>
+            </div>
           </div>
         </Link>
       </div>
@@ -97,7 +117,7 @@ export default class ThumbItem extends React.Component {
   }
 
   boxLogin(cb) {
-    if(!this.props.token) {
+    if(!this.props.auth.get('access_token')) {
       this.props.handleBoxLogin();
     } else {
       cb();
@@ -107,13 +127,12 @@ export default class ThumbItem extends React.Component {
   handleLike(e) {
     e.preventDefault();
     this.boxLogin(function() {
-      BoxActions.like({itemID: this.props.id, token: this.props.token, userID: this.props.userID});
+      BoxActions.like({itemID: this.props.box.get('id'), token: this.props.auth.get('access_token'), userID: this.props.auth.get('id')});
     }.bind(this));
   }
 }
 
 ThumbItem.propTypes = {
-  postsCount: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-  latestPosts: PropTypes.array.isRequired,
+  box: PropTypes.instanceOf(Immutable.Map).isRequired,
+  auth: PropTypes.instanceOf(Immutable.Map).isRequired,
 }

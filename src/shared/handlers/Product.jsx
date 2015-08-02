@@ -1,8 +1,8 @@
 'use strict';
 
-import React         from 'react';
-import { Link }         from 'react-router';
-import MasonryMixin  from 'react-masonry-mixin';
+import React        from 'react/addons';
+import { Link }     from 'react-router';
+import MasonryMixin from 'react-masonry-mixin';
 let InfiniteScroll = require('react-infinite-scroll')(React);
 /* @jsx */
 import HeaderProduct from '../components/productDetail/HeaderProduct';
@@ -23,8 +23,6 @@ export default React.createClass({
   },
 
   getLoaderElement: function () {
-    // return null;
-
     return (
       <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
         <div className='thumbnail article text-center'>Loading <i className='fa fa-cog fa-spin'></i></div>
@@ -33,7 +31,6 @@ export default React.createClass({
   },
 
   loadMore: function (page) {
-    console.log('load', page);
     setTimeout(function () {
       this.setState({
         page: page + 1,
@@ -67,8 +64,6 @@ export default React.createClass({
   },
 
   render: function () {
-    console.log('render');
-
     return (
       <div>
         <HeaderProduct />

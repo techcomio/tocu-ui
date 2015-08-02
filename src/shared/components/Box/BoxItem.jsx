@@ -1,6 +1,6 @@
 'use strict';
 
-import React      from 'react';
+import React      from 'react/addons';
 import { Link }   from 'react-router';
 import classNames from 'classnames';
 
@@ -22,7 +22,7 @@ export default React.createClass({
 		return (
       <div onClick={this.handleClick} className='col-xs-6 col-sm-4 col-md-3 col-lg-3'>
         <div className="thumbnail" >
-          <Link to={`/sp/${this.props.id}`} >
+          <Link to={`/product/${this.props.id}`} >
             <div className="imgWrapper">
               <img className="img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
             </div>

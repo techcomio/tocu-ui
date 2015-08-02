@@ -1,21 +1,24 @@
 'use strict';
 
-import React          from 'react';
+import React          from 'react/addons';
 import {Link}         from 'react-router';
 import AltContainer   from 'alt/AltContainer';
 import {prepareRoute} from '../decorators';
 import BoxStore       from '../store/BoxStore';
 import AuthStore      from '../store/AuthStore';
 import SanphamStore   from '../store/SanphamStore';
+import OrderStore     from '../store/OrderStore';
 import BoxActions     from '../actions/BoxActions';
 import AuthActions    from '../actions/AuthActions';
 import SanphamActions from '../actions/SanphamActions';
+import OrderActions   from '../actions/OrderActions';
 /**
  * @Component
  */
-import Header     from '../components/Header';
-import FormSignIn from '../components/Form/SignIn';
-import Thumbnail  from '../components/Thumbnail';
+import Header      from '../components/Header';
+import BoxYeuThich from '../components/BoxYeuThich';
+import FormSignIn  from '../components/Form/SignIn';
+import Thumbnail   from '../components/Thumbnail';
 
 
 @prepareRoute(async function ({ params }) {
@@ -29,7 +32,7 @@ export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
-    this._bind('handleBoxLogin');
+    this._bind('renderBoxLogin', 'handleBoxLogin', 'hideBoxLogin');
 
     this.state = {
       boxLogin: false,
@@ -45,12 +48,17 @@ export default class Home extends React.Component {
     this.props.HeadParams.setDescription("Home | Description");
   }
 
+  componentDidMount() {
+    OrderActions.getListOrder();
+  }
+
   render() {
     return (
       <div>
         {/* Header home */}
         <AltContainer
           stores={[BoxStore, AuthStore, SanphamStore]}
+          actions={{AuthActions}}
           inject={{
             auth: function(props) {
               return AuthStore.getState().auth
@@ -63,68 +71,24 @@ export default class Home extends React.Component {
             },
           }} >
 
-          <Header actions={AuthActions} />
+          <Header />
         </AltContainer>
 
         <section id="content">
           <div className="container">
 
             {/* Box yeu thich */}
-            <div className="row">
-              <div className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-                <div className="thumbnail">
-                  <a className="" href="/box/1" >
-                    <h4 className="thumbnail-title">Sơ mi xô Nhật Hàn</h4>
-                    <div className="imgWrapper">
-                      <img className="img-max-height img-rounded" src="http://api.tocu.vn/image/192x130/93a197c1e33eeb10ad5d-2-7.jpg" alt="images" />
-                      <span className="boardPinCount">4 SP</span>
-                    </div>
-                    <div>
-                      <div className="thumbnail-list-news">
-                        <div className="newsItem newCreditItem">
-                          <div className="newsImg">
-                            <span className="imgIcon imgIcon-list imgIcon-bg-red"></span>
-                          </div>
-                          <div className="newsText newsInfo">
-                            <p className="creditTitle">SM2</p>
-                            <p>
-                              <strong className="creditCost">150.000 đ</strong>
-                            </p>
-                          </div>
-                        </div>
-                        <div className="newsItem newCreditItem">
-                          <div className="newsImg">
-                            <span className="imgIcon imgIcon-list imgIcon-bg-red">
-                              <img src="http://api.tocu.vn/image/50x50/0cf60858dd9553a692d3-1-1.jpg" />
-                            </span>
-                          </div>
-                          <div className="newsText newsInfo">
-                            <p className="creditTitle">SM1</p>
-                            <p>
-                              <strong className="creditCost">130.000 đ</strong>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="btn btn-default btn-block btn-follow">
-                        <span>1 likes</span>
-                      </div>
-                      <p></p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
+            <AltContainer
+              stores={[OrderStore]}
+              actions={{OrderActions}}
+              inject={{
+                listOrder: () => {
+                  return OrderStore.getState().listOrder
+                },
+              }} >
 
-            <div className="row">
-              <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div className="block-related">
-                  <span>
-                    <span className="img">img</span>
-                  </span>
-                </div>
-              </div>
-            </div>
+              <BoxYeuThich />
+            </AltContainer>
           
             {/* Thumbnail */}
             <AltContainer 
@@ -133,12 +97,9 @@ export default class Home extends React.Component {
                 boxs: function (props) {
                   return BoxStore.getState().boxs
                 },
-                token: function(props) {
-                  return AuthStore.getState().auth.toJS().token
-                },
-                userID: function(props) {
-                  return AuthStore.getState().auth.toJS().id
-                },
+                auth: function(props) {
+                  return AuthStore.getState().auth;
+                }
               }} >
               <Thumbnail handleBoxLogin={this.handleBoxLogin} />
             </AltContainer>
@@ -146,33 +107,46 @@ export default class Home extends React.Component {
         </section>
 
 
-        {this.state.boxLogin && (
-          <div id="boxLogin">
-            <div className="row">
-              <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
-                <div className="centrix">
-                  <AltContainer
-                    component={FormSignIn}
-                    stores={[AuthStore]}
-                    actions={{AuthActions}}
-                    inject={{
-                      loginState: function(props) {
-                        return AuthStore.getState().loginState
-                      }
-                    }}
-                   />
-                </div>
+        {this.renderBoxLogin()}
+      </div>
+    );
+  }
+
+  renderBoxLogin() {
+    if(this.state.boxLogin) {
+      return (
+        <div id="boxLogin">
+          <div className="row">
+            <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+              <div className="centrix">
+                <AltContainer
+                  stores={[AuthStore]}
+                  actions={{AuthActions}}
+                  inject={{
+                    loginState: function(props) {
+                      return AuthStore.getState().loginState
+                    }
+                  }} >
+                  
+                  <FormSignIn replaceWith={this.hideBoxLogin} />
+                </AltContainer>
               </div>
             </div>
           </div>
-        )}
-      </div>
-    );
+        </div>
+      );
+    }
   }
 
   handleBoxLogin() {
     this.setState({
       boxLogin: true,
+    });
+  }
+
+  hideBoxLogin() {
+    this.setState({
+      boxLogin: false,
     });
   }
 

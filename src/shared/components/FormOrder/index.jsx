@@ -1,73 +1,34 @@
 'use strict';
 
-import React       from 'react';
+import React       from 'react/addons';
 import Validator   from 'validatorjs';
 import classNames  from 'classnames';
 import ShipStore   from '../../store/ShipStore';
-import ShipActions from '../../actions/ShipActions';
 /**
  * @Component
  */
-import InputValidation  from '../Form/inputValidation';
-import SelectValidation from '../Form/selectValidation';
+import InputValidation   from '../Form/inputValidation';
+import SelectValidation  from '../Form/selectValidation';
+import FormNguoiNhan     from './formNguoiNhan';
 import HinhthucVanchuyen from './hinhthucVanchuyen';
 import HinhthucThanhtoan from './hinhthucThanhtoan';
 
-
-let Validations = {
-  mobilePhone: {
-    rules: {mobilePhone: [ "required", "regex:/^([0-9]{10,11})$/" ]},
-    messages: {"required.mobilePhone": "nhập số điện thoại của bạn!", "regex.mobilePhone": "số điện thoại không hợp lệ!"},
-    hasError: false,
-    errorMessage: '',
-    errorTextRequest: ''
-  },
-  name: {
-    rules: {name: [ "required"]},
-    messages: {"required.name": "nhập tên của bạn!"},
-    hasError: false,
-    errorMessage: '',
-    errorTextRequest: ''
-  },
-  diachi: {
-    rules: {diachi: [ "required"]},
-    messages: {"required.diachi": "nhập địa chỉ của bạn!"},
-    hasError: false,
-    errorMessage: '',
-    errorTextRequest: ''
-  },
-  coquan: {
-    rules: {coquan: [ "required"]},
-    messages: {"required.coquan": "nhập cơ quan của bạn!"},
-    hasError: false,
-    errorMessage: '',
-    errorTextRequest: ''
-  },
-  city: {
-    rules: {city: [ "required"]},
-    messages: {"required.city": "nhập tỉnh thành của bạn!"},
-    hasError: false,
-    errorMessage: '',
-  },
-  district: {
-    rules: {district: [ "required"]},
-    messages: {"required.district": "nhập quận huyện của bạn!"},
-    hasError: false,
-    errorMessage: '',
-  }
-};
 
 export default class FormOrder extends React.Component {
 
   constructor(props) {
     super(props);
-    this._bind('handleClickHuy', 'handleClickDatMua', '_onChangeInputHandler', '_setDisabledSubmit', '_setAndValidateInput', '_onChangeSelectCity', '_actionsShip', '_shipOnChange');
+    this._bind('handleClickHuy', 'handleClickDatMua', 'handleScroll', '_onChangeSelectCity', '_shipOnChange', '_ChangeDisable', '_ChangeVanchuyen', 'resetHinhthucVC', '_ChangeThanhtoan');
 
     this.state = {
-      ValidationData: Validations,
       disabled: true,
+      disabledHinhthucTT: true,
       cost: 0,
+      amount: 0,
       shippingMethod: '',
+      hinhthucVC: null,
+      hideHeader: false,
+      disabledBtnDatHang: true,
     }
   }
 
@@ -77,119 +38,105 @@ export default class FormOrder extends React.Component {
 
   componentDidMount() {
     ShipStore.listen(this._shipOnChange);
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
     ShipStore.unlisten(this._shipOnChange);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   _shipOnChange(state) {
-    this.setState(state.phiship.toJS());
+    this.setState({
+      disabled: false,
+      ...state.phiship.toJS()
+    });
+
+    let vc = this.refs.hinhthucVC.getCheckbox();
+    if(vc) {
+      this._ChangeVanchuyen(vc, true);
+      this.setBtnDatHang();
+    } else {
+      this._ChangeVanchuyen(null, null);
+      this.setState({
+        disabledBtnDatHang: true,
+      });
+    }
+  }
+
+  handleScroll(e) {
+    var scrollTop = window.scrollY;
+    var hideHeader = scrollTop >= 33;
+    this.setState({
+      hideHeader: hideHeader
+    });
   }
 
   render() {
-    let classProductOrder = classNames({
-      productOrder: true,
-      show: this.props.current === 2,
+    let classNavbarOrder = classNames({
+      "navbar-product-detail": true,
+      sticky: this.state.hideHeader,
     });
-    let img_url;
-    if(this.props.images) {
-      let url = this.props.images[0];
-      img_url = url.replace(/image\//gi, 'image/192x130/');
-    }
 
-    let price = this.props.price !== null ? this.props.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
+    let img_url, price, cost, amount;
+    if(this.props.product.get('images').get(0)) {
+      let url = this.props.product.get('images').get(0);
+      img_url = url.replace(/image\//gi, 'image/100x100/');
+    }
+    
+    if(this.props.product.get('price')) {
+      price = this.props.product.get('price').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
+      this.state.amount = this.props.product.get('price') + this.state.cost;
+      amount = this.state.amount.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
+    }
+    cost = this.state.cost.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
 
     return (
-      <div className={classProductOrder}>
-        <nav className="navbar navbar-defaul">
-          <div className="navbar-header">
-            <button onClick={this.handleClickHuy} type="button" className="btn btn-default navbar-btn">Hủy</button>
-          </div>
-          <div className="nav navbar-nav navbar-right">
-            <button onClick={this.handleClickDatMua} type="button" className="btn btn-primary navbar-btn">Đặt Mua</button>
-          </div>
-        </nav>
+      <div className="productOrder">
+        <div className={classNavbarOrder}>
+          <nav className="navbar navbar-defaul">
+            <div className="navbar-header">
+              <button onClick={this.handleClickHuy} type="button" className="btn btn-default navbar-btn">Hủy</button>
+            </div>
+            <div className="nav navbar-nav navbar-right">
+              <button onClick={this.handleClickDatMua} type="button" className="btn btn-primary navbar-btn" disabled={this.state.disabledBtnDatHang}>Hoàn tất</button>
+            </div>
+          </nav>
+        </div>
         <div className="product">
           <div className="infoOrder">
-            <img src={img_url} alt="img" className="img-rounded" />
-            <h3>{this.props.name}</h3>
-            <span>{price}đ + 55.000đ(ship) = 255.000đ</span>
+            <div className="infoOrder-body">
+              <div className="infoOrder-img">
+                <img src={img_url} alt="img" className="img-rounded" />
+              </div>
+              <div className="infoOrder-text">
+                <h3>{this.props.product.get('boxName')} - {this.props.product.get('code')}</h3>
+                <span>{price}đ (giá) + {cost}đ (ship) = {amount}đ</span>
+              </div>
+            </div>
           </div>
           <div className="infoNguoiNhan">
             <div className="title-border">
               <p>Thông tin người nhận</p>
             </div>
             <p className="text-center">Điền đầy đủ thông tin người nhận hàng</p>
-            <div className="row">
-              <div className="col-sm-6 col-md-6">
-                <InputValidation
-                  ref="diachi"
-                  type="text"
-                  placeholder="Địa chỉ"
-                  name="diachi"
-                  validator={this.state.ValidationData.diachi}
-                  onChange={this._onChangeInputHandler} />
-              </div>
-              <div className="col-sm-6 col-md-6">
-                <InputValidation
-                  ref="name"
-                  type="text"
-                  placeholder="Họ tên"
-                  name="name"
-                  validator={this.state.ValidationData.name}
-                  onChange={this._onChangeInputHandler} />
-              </div>
-              <div className="col-sm-6 col-md-6">
-                <InputValidation
-                  ref="coquan"
-                  type="text"
-                  placeholder="Công ty/Cơ quan"
-                  name="coquan"
-                  validator={this.state.ValidationData.coquan}
-                  onChange={this._onChangeInputHandler} />
-              </div>
-              <div className="col-sm-6 col-md-6">
-                <InputValidation
-                  ref="mobilePhone"
-                  type="text"
-                  placeholder="Điện thoại"
-                  name="mobilePhone"
-                  validator={this.state.ValidationData.mobilePhone}
-                  onChange={this._onChangeInputHandler} />
-              </div>
-              <div className="col-sm-6 col-md-6">
-                <div className="form-group">
-                  <SelectValidation
-                    ref="city"
-                    type="city"
-                    name="city"
-                    List={this.props.city}
-                    validator={this.state.ValidationData.city}
-                    onChangeCity={this._onChangeSelectCity}
-                    onChange={this._onChangeInputHandler}
-                    firstValue="Tỉnh Thành" />
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-6">
-                <div className="form-group">
-                  <SelectValidation
-                    ref="district"
-                    type="district"
-                    name="district"
-                    List={this.props.district}
-                    validator={this.state.ValidationData.district}
-                    onChange={this._onChangeInputHandler}
-                    firstValue="Quận Huyện" />
-                </div>
-              </div>
-            </div>
+            <FormNguoiNhan
+              ref="formNguoiNhan"
+              city={this.props.city}
+              district={this.props.district}
+              product={this.props.product}
+              onChangeTest={this.resetHinhthucVC}
+              onChangeSelectCity={this._onChangeSelectCity}
+              onChangeDisable={this._ChangeDisable} />
 
             <div className="title-border">
               <p>Hình thức vận chuyển</p>
             </div>
             <div className="form-inline">
-              <HinhthucVanchuyen 
+              <HinhthucVanchuyen
+                ref="hinhthucVC"
+                onChange={this._ChangeVanchuyen}
+                cost={this.state.cost}
                 disabled={this.state.disabled}
                 shippingMethod={this.state.shippingMethod}
               />
@@ -199,7 +146,11 @@ export default class FormOrder extends React.Component {
               <p>Hình thức thanh toán</p>
             </div>
             <div className="form-inline">
-              <HinhthucThanhtoan />
+              <HinhthucThanhtoan
+                ref="hinhthucTT"
+                onChange={this._ChangeThanhtoan}
+                disabled={this.state.disabledHinhthucTT}
+                hinhthucVC={this.state.hinhthucVC} />
             </div>
 
           </div>
@@ -208,69 +159,103 @@ export default class FormOrder extends React.Component {
     );
   }
 
-  _setAndValidateInput(name, value) {
-    let ValidationData = this.state.ValidationData;
-    let data = {};
-    let {rules, messages} = ValidationData[name];
-
-
-    ValidationData[name].hasFocus = true;
-    ValidationData[name].hasError = false;
-    ValidationData[name].errorMessage = '';
-    ValidationData[name].errorTextRequest = '';
-
-    data[name] = value || '';
-
-    let validation = new Validator(data, rules, messages);
-
-    if(validation.fails() ) {
-      ValidationData[name].hasError = true;
-      ValidationData[name].errorMessage = validation.errors.first(name);
-    }
-
-    this.setState({ ValidationData: ValidationData });
-  }
-
-  _setDisabledSubmit() {
-    let ValidationData = this.state.ValidationData,
-      total = Object.keys(ValidationData).length,
-      done = 0,
-      disabled;
-      
-    Object.keys(ValidationData).forEach((key) => {
-      if(ValidationData[key].hasFocus && ValidationData[key].hasError === false) {
-        done += 1;
-      }
-    });
-
-    disabled = done === total ? false : true;
-    this.setState({ disabled: disabled });
-    if(!disabled) {
-      this._actionsShip();
-    }
-  }
-
-  _onChangeInputHandler(name, value) {
-    this._setAndValidateInput(name, value);
-    this._setDisabledSubmit();
-  }
-
   _onChangeSelectCity(citySelect) {
     this.props.CityActions.getDistrict({city: citySelect});
-  }
-
-  _actionsShip() {
-    let city = this.refs.city.getValues();
-    let district = this.refs.district.getValues();
-    let weight = this.props.weight;
-    ShipActions.getPhiShip({city: city, district: district, weight: weight});
+    this.setState({
+      shippingMethod: '',
+    });
   }
 
   handleClickHuy() {
-    this.props.Prev();
+    this.props.Prev(2);
+  }
+
+  setBtnDatHang() {
+    if(!this.state.disabled && this.refs.hinhthucVC.getCheckbox() && this.refs.hinhthucTT.getCheckbox()) {
+      this.setState({
+        disabledBtnDatHang: false,
+      });
+    } else {
+       this.setState({
+        disabledBtnDatHang: true,
+      });
+    }
+  }
+
+  setBtnDatHangs() {
+    if(!this.state.disabled && this.refs.hinhthucVC.getCheckbox() && this.refs.hinhthucTT.getTest()) {
+      this.setState({
+        disabledBtnDatHang: false,
+      });
+    } else {
+       this.setState({
+        disabledBtnDatHang: true,
+      });
+    }
   }
 
   handleClickDatMua() {
+    console.log('handleClickDatMua');
+    console.log(this.refs.formNguoiNhan.getValue())
+    console.log(this.state.shippingMethod)
+    console.log(this.refs.hinhthucTT.getCheckbox())
+    
+    let data = {
+      store: 'ol',
+      shippingInfo: this.refs.formNguoiNhan.getValue(),
+      shippingMethod: this.state.shippingMethod === "COD" ? "cod" : "delivery",
+      shippingCost: this.state.cost,
+      paymentMethod: this.refs.hinhthucTT.getCheckbox(),
+      total: this.props.product.get('price'),
+      percentageDiscount: 0,
+      amount: this.state.amount,
+      totalWeight: this.props.product.get('weight'),
+      noteBySaleman: null,
+      OrderLines: [{
+        product: {
+          id: this.props.product.get('id'),
+          onlineStore: true,
+        },
+        quantity: 1,
+        unitPrice: this.props.product.get('price'),
+        amount: this.props.product.get('price'),
+        weight: this.props.product.get('weight'),
+      }],
+    };
+
+    this.props.OrderActions.createOrder({...data});
     this.props.Next();
   }
+
+  _ChangeDisable(value) {
+    this.setState({
+      disabled: value,
+    });    
+  }
+
+  _ChangeVanchuyen (value, checked) {
+    if(checked) {
+      this.setState({
+        hinhthucVC: value,
+        disabledHinhthucTT: false,
+      });
+    } else {
+      this.setState({
+        hinhthucVC: null,
+        disabledHinhthucTT: true,
+      });
+    }
+    this.setBtnDatHangs();
+  }
+
+  _ChangeThanhtoan() {
+    this.setBtnDatHang();
+  }
+
+  resetHinhthucVC() {
+    this.setState({
+      hinhthucVC: null
+    });
+  }
+
 };

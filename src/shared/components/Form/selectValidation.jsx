@@ -1,6 +1,6 @@
 'use strict';
 
-import React      from 'react';
+import React      from 'react/addons';
 import classNames from 'classnames';
 
 
@@ -33,41 +33,42 @@ export default React.createClass({
     	erros = <label className="control-label" htmlFor={this.props.name} >{this.props.validator.errorMessage}</label>
     }
 
+		return (
+			<div className={classes} >
+				{this.props.validator.hasError && (
+				  erros
+				)}
+				{this.renderSelect()}
+			</div>
+		);
+	},
 
+	renderSelect() {
 		if(this.props.type === "district") {
 			return (
-				<div className={classes} >
-					{this.props.validator.hasError && (
-					  erros
+				<select className="form-control" onChange={this._onChange}>
+					<option value="">{this.props.firstValue}</option>
+					{this.props.List && (
+			      this.props.List.toJS().map(function(city, i) {
+			      	return <option key={i} value={city.name}>{city.name}</option>
+			      })
 					)}
-					<select className="form-control" onChange={this._onChange}>
-						<option value="">{this.props.firstValue}</option>
-						{this.props.List && (
-				      this.props.List.toJS().map(function(city, i) {
-				      	return <option key={i} value={city.name}>{city.name}</option>
-				      })
-						)}
-					</select>
-				</div>
+				</select>
 			);
 		} else {
 			return (
-				<div className={classes} >
-					{this.props.validator.hasError && (
-					  erros
+				<select className="form-control" onChange={this._onChange}>
+					<option value="">{this.props.firstValue}</option>
+					{this.props.List && (
+			      this.props.List.map(function(city, i) {
+			      	return <option key={i} value={city}>{city}</option>
+			      })
 					)}
-					<select className="form-control" onChange={this._onChange}>
-						<option value="">{this.props.firstValue}</option>
-						{this.props.List && (
-				      this.props.List.map(function(city, i) {
-				      	return <option key={i} value={city}>{city}</option>
-				      })
-						)}
-					</select>
-				</div>
+				</select>
 			);
 		}
 	},
+
 	_onChange(e) {
     var value = e.target.value;
     this.setValues(value);
@@ -77,11 +78,14 @@ export default React.createClass({
     this.props.onChange(this.props.name, value);
     this.props.onChangeTest();
   },
+
   setValues(txt) {
     this.setState({ value: txt });
     this.value = txt;
   },
+
   getValues() {
   	return this.value;
   }
+  
 });

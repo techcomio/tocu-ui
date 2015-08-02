@@ -1,12 +1,14 @@
 'use strict';
 
-import React          from 'react';
+import React          from 'react/addons';
 import Router, {Link} from 'react-router';
 import Validator      from 'validatorjs';
 import AuthStore      from '../store/AuthStore';
 import AuthActions    from '../actions/AuthActions';
 import CityStore      from '../store/CityStore';
 import CityActions    from '../actions/CityActions';
+import VerifyStore    from '../store/VerifyStore';
+import VerifyActions  from '../actions/VerifyActions';
 import {prepareRoute} from '../decorators';
 /**
  * @Component
@@ -29,31 +31,43 @@ export default class SignUp extends React.Component {
 
   componentWillMount () {
     this.props.HeadParams.setTitle("SignUp | tocu.vn");
-    this.props.HeadParams.setDescription("SignUp | Description");
+    this.props.HeadParams.setDescription("SignUp tocu.vn");
   }
 
   render() {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row row-form">
         
           <AltContainer
             params={this.props.params}
             component={FormSignUp}
-            stores={[CityStore, AuthStore]}
-            actions={{CityActions, AuthActions}}
+            stores={[CityStore, AuthStore, VerifyStore]}
+            actions={{CityActions, AuthActions, VerifyActions}}
             inject={{
-              city: function (props) {
+              city: () => {
                 return CityStore.getState().city
               },
-              district: function(props) {
+              district: () => {
                 return CityStore.getState().district
               },
-              failedMessage: function(props) {
+              failedMessage: () => {
                 return AuthStore.getState().failedCreateMessage
               },
-              createUseState: function(props) {
+              createUseState: () => {
                 return AuthStore.getState().createUseState
+              },
+              auth: () => {
+                return AuthStore.getState().auth
+              },
+              verify: () => {
+                return VerifyStore.getState().verify
+              },
+              verifyFaild: () => {
+                return VerifyStore.getState().verifyFaild
+              },
+              verifyState: () => {
+                return VerifyStore.getState().verifyState
               }
             }} />
 

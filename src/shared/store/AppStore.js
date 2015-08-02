@@ -3,13 +3,11 @@
 import Alt              from '../Alt';
 import AppActions       from '../actions/AppActions';
 import Immutable, {Map} from 'immutable';
-import env from '../lib/env';
 
 class AppStore {
 
   constructor() {
     this.bindActions(AppActions);  // getData, dataFailed
-
 		this.on('init', this.bootstrap);
 		this.on('bootstrap', this.bootstrap);
 
@@ -37,7 +35,6 @@ class AppStore {
   }
 
   static Demo() {
-  	// console.log(this.state)
   	return 'Demo';
   }
 

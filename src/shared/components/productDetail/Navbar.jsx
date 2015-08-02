@@ -1,6 +1,6 @@
 'use strict';
 
-import React      from 'react';
+import React      from 'react/addons';
 import { Link }   from 'react-router';
 import classNames from 'classnames';
 
@@ -25,7 +25,7 @@ export default React.createClass({
     }),
     type = null;
     
-    switch(this.props.info.type) {
+    switch(this.props.info.get('type')) {
       case "product":
         type = "Sản phẩm";
         break;
@@ -37,23 +37,19 @@ export default React.createClass({
         break;
     }
 
-    /*
-      <button onClick={this.handleLikeBox} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray">&nbsp;</i> Thích</button>
-     */
-
 		return (
       <div className="container-fluid">
 	    	<nav className={classesNavbar}>
           <div className="infoListProduct text-center">
             <div className="btn-group">
-              <button onClick={this.handleLikeBox} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray">&nbsp;</i> Thích</button>
-              <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.info.likesCount}</span></button>
+              <button onClick={this.handleLikeBox} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray"></i></button>
+              <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.info.get('likesCount')}</span></button>
             </div>
 	          <div className="nameinfoListProduct">
-	          	{this.props.info.name}
+	          	{this.props.info.get('name')}
 	          </div>
 	          <span className="countListProduct">
-	          	{this.props.info.postsCount} {type}
+	          	{this.props.info.get('postsCount')} {type}
 	          </span>
           </div>
 		    </nav>
@@ -61,13 +57,28 @@ export default React.createClass({
 		);
 	},
 
+  boxLogin(cb) {
+    if(!this.props.auth.get('access_token')) {
+      this.props.handleBoxLogin('token');
+    } else {
+      if(!this.props.auth.get('isVerifyMobilePhone')) {
+        this.props.handleBoxLogin('verify');
+        return;
+      }
+      cb();
+    }
+  },
+
 	handleLikeBox() {
-		let itemID = this.props.info.id,
-			token = this.props.auth.token,
-			userID = this.props.auth.id;
-			
-		// actions like box
-		this.props.likeBox({itemID: itemID, token: token, userID: userID});
+    console.log('handleLikeBox')
+    let self = this;
+    this.boxLogin(() => {
+  		let itemID = this.props.info.get('id'),
+  			token = this.props.auth.get('access_token');
+
+  		// actions like box
+  		self.props.BoxActions.like({itemID: itemID, token: token});
+    })
 	},
 
 });
