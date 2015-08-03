@@ -47,7 +47,7 @@ module.exports = {
   plugins: [
 	  new webpack.optimize.CommonsChunkPlugin("commons", "/js/commons.bundle.js"),
 	  new webpack.DefinePlugin({'process.env': { 'NODE_ENV': `"${env}"`} }),
-	  new webpack.optimize.UglifyJsPlugin({minimize: true, compress: { warnings: false }, output: {comments: false}}),
+	  // new webpack.optimize.UglifyJsPlugin({minimize: true, compress: { warnings: false }, output: {comments: false}}),
 	  new ExtractTextPlugin("/css/[name].css")
   ],
 };

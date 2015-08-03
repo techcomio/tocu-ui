@@ -31,8 +31,8 @@ export default class StatusOrder extends React.Component {
         <div className="product">
           <div className={classes}><i className="fa fa-check-circle-o"></i></div>
           <p className="text-center"><strong>{this.props.status.get('messages')}</strong></p>
-          <p className="text-center">số đơn hàng: #{this.props.order.get('OrderId') || this.props.order.get('id')}</p>
-          <p className="text-center">dưới đây là thông tin tài khoản của Cú</p>
+          <p className="text-center">Mã đơn hàng: #{this.props.order.get('OrderId') || this.props.order.get('id')}</p>
+          <p className="text-center">Dưới đây là thông tin tài khoản của Cú</p>
           <p className="text-center">Bạn nhớ nghi tên đơn hàng trong thông tin chuyển khoản nhé!</p>
         </div>
       </div>

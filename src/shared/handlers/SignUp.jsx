@@ -60,8 +60,8 @@ export default class SignUp extends React.Component {
               auth: () => {
                 return AuthStore.getState().auth
               },
-              verify: () => {
-                return VerifyStore.getState().verify
+              codeFaild: () => {
+                return VerifyStore.getState().codeFaild
               },
               verifyFaild: () => {
                 return VerifyStore.getState().verifyFaild

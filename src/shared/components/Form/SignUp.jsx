@@ -64,6 +64,7 @@ export default React.createClass({
 
   onChangeAuthStore(state) {
     if(state.createUseState === "success") {
+      this.props.VerifyActions.getCode();
       this.setState({
         boxMaxacnhan: true,
       });
@@ -71,13 +72,22 @@ export default React.createClass({
   },
 
 	render () {
-    let classNameFrom = classnames({
-      "form-signup": true,
-      "hide": this.state.boxMaxacnhan,
-    });
-
 		return (
 			<div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+        {this.renderFrom()}
+        {this.renderMaxacnhan()}
+      </div>
+		)
+	},
+
+  renderFrom() {
+    if(!this.state.boxMaxacnhan) {
+      let classNameFrom = classnames({
+        "form-signup": true,
+        "hide": this.state.boxMaxacnhan,
+      });
+
+      return (
         <div className={classNameFrom}>
           <div className="form-body">
             <div className="form-group">
@@ -158,18 +168,16 @@ export default React.createClass({
             <Link to="signin">Đăng Nhập</Link>
           </div>
         </div>
-        {this.renderMaxacnhan()}
-      </div>
-		)
-	},
+      )
+    }
+  },
 
   renderMaxacnhan() {
     if(this.state.boxMaxacnhan) {
-      this.props.VerifyActions.getCode();
       return (
         <Verify
           auth={this.props.auth}
-          verify={this.props.verify}
+          codeFaild={this.props.codeFaild}
           verifyFaild={this.props.verifyFaild}
           verifyState={this.props.verifyState}
           VerifyActions={this.props.VerifyActions} />

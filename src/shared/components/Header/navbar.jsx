@@ -65,9 +65,9 @@ export default class Navbar extends React.Component {
                 <img alt="avatar" src={this.props.auth.get('avatarUrl')} />
               </button>
               <ul className="dropdown-menu">
-                <li><a href="#">settings</a></li>
+                <li><a href="#">Settings</a></li>
                 <li role="separator" className="divider"></li>
-                <li><Link to="/signin" onClick={::this.handleLogout} >log out</Link></li>
+                <li><Link to="/signin" onClick={::this.handleLogout} >Log out</Link></li>
               </ul>
             </div>
           </div>

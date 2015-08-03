@@ -29,7 +29,7 @@ export default class HinhthucVanchuyen extends React.Component {
           <div className="col-xs-9 col-sm-9 col-md-9">
             <div className="checkbox disabled">
               <label>
-                <input ref="cod" type="checkbox" checked={false} disabled={false} />&nbsp; Chuyển hành trực tiếp
+                <input ref="cod" type="checkbox" checked={false} disabled={false} />&nbsp; Chuyển hàng trực tiếp
               </label>
             </div>
           </div>

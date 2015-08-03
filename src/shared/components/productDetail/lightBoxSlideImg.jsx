@@ -10,17 +10,13 @@ export default class lightBoxSlideImg extends React.Component {
   constructor(props) {
     super(props);
 
-    this.HideLightBox = this.HideLightBox.bind(this);
-    this.Prev = this.Prev.bind(this);
-    this.Next = this.Next.bind(this);
-
     this.state = {
       current: this.props.current
     }
   }
 
   render() {
-    var length = this.props.dataUrlImg.length;
+    var length = this.props.dataUrlImg.size;
     var phantram = 100 / length;
     var translateX = phantram * this.state.current;
     var PanesStyle = {
@@ -65,10 +61,10 @@ export default class lightBoxSlideImg extends React.Component {
           })}
         </div>
         <div className="paneNextPrev">
-          <div className={classesPrev} onClick={this.Prev}><i className="fa fa-angle-left"></i></div>
-          <div className={classesNext} onClick={this.Next}><i className="fa fa-angle-right"></i></div>
+          <div className={classesPrev} onClick={::this.Prev}><i className="fa fa-angle-left"></i></div>
+          <div className={classesNext} onClick={::this.Next}><i className="fa fa-angle-right"></i></div>
         </div>
-        <div className="closeBox" onClick={this.HideLightBox}>
+        <div className="closeBox" onClick={::this.HideLightBox}>
           <i className="fa fa-times"></i>
         </div>
       </div>

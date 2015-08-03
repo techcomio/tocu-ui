@@ -2,7 +2,7 @@
 
 import Alt              from '../Alt';
 import Immutable, {Map} from 'immutable';
-import VerifyActions      from '../actions/VerifyActions';
+import VerifyActions    from '../actions/VerifyActions';
 
 
 class VerifyStore {
@@ -12,14 +12,14 @@ class VerifyStore {
 		this.on('init', this.bootstrap);
 		this.on('bootstrap', this.bootstrap);
 
-    this.verify = new Map({});
+    this.codeFaild = new Map({});
     this.verifyFaild = new Map({});
     this.verifyState = false;
   }
 
   bootstrap() {
-    if (!Immutable.Map.isMap(this.verify)) {
-      this.verify = Immutable.fromJS(this.verify);
+    if (!Immutable.Map.isMap(this.codeFaild)) {
+      this.codeFaild = Immutable.fromJS(this.codeFaild);
     }
     if (!Immutable.Map.isMap(this.verifyFaild)) {
       this.verifyFaild = Immutable.fromJS(this.verifyFaild);
@@ -28,21 +28,26 @@ class VerifyStore {
 
   onGetCode(data) {
     console.log('onGetCode', data)
-    this.verify = this.verify.merge(data);
+    this.codeFaild = new Map({});
   }
 
   onGetVerify(data) {
+    console.log('onGetVerify', data);
     this.verifyState = true;
+    this.verifyFaild = new Map({});
+    this.codeFaild = new Map({});
   }
 
   onGetCodeFaild(err) {
     console.log('onGetCodeFaild', err);
-    this.verifyFaild = this.verifyFaild.merge(err);
+    this.codeFaild = new Map(err);
+    this.verifyFaild = new Map({});
   }
 
   onGetVerifyFaild(err) {
     console.log('onGetVerifyFaild', err);
-    this.verifyFaild = this.verifyFaild.merge(err);
+    this.verifyFaild = new Map(err);
+    this.verifyState = false;
   }
   
 }

@@ -34,7 +34,7 @@ export default class Products extends React.Component {
 	      <div className="product">
 	        {/* Slide image */}
 	        <ImgSlideProduct
-	          dataUrlImg={this.props.product.get('images').toJS() || []} />
+	          dataUrlImg={this.props.product.get('images') || []} />
 
 	        <div className="product-detail">
 	          {/* Detail */}

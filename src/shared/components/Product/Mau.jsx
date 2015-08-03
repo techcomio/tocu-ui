@@ -10,7 +10,7 @@ export default class Mau extends React.Component {
     if(this.props.model) {
       return (
         <ul>
-          <li className="border-bottom-2"><strong>Mẫu: </strong> {this.props.model.get('name')}</li>
+          <li className="border-bottom-2"><strong>Mẫu: </strong></li>
           <li>Cao: <strong>{this.props.model.get('height')} cm</strong></li>
           <li>Nặng: <strong>{this.props.model.get('weight')} kg</strong></li>
           <li>Vòng 1: <strong>{this.props.model.get('bust')} cm</strong></li>

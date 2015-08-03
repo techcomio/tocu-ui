@@ -80,13 +80,13 @@ export default class ThumbItem extends React.Component {
 
     switch(this.props.box.get('type')) {
       case "product":
-        type = "sản phẩm";
+        type = "Sản phẩm";
         break;
       case "article":
-        type = "bài viết";
+        type = "Bài viết";
         break;
       case "photo":
-        type = "ảnh";
+        type = "Ảnh";
     }
 
     return (

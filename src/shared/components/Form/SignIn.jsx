@@ -4,7 +4,6 @@ import React                     from 'react/addons';
 import Validator                 from 'validatorjs';
 import {Link, State, Navigation} from 'react-router';
 import AuthStore                 from '../../store/AuthStore';
-
 /**
  * @Component
  */
@@ -84,7 +83,7 @@ export default React.createClass({
 
           <p className="text-center title-form">Đăng Nhập Tổ Cú</p>
           {this.props.loginState === "failed" && (
-            <p className="text-center text-danger">số điện thoại hoặc mật khẩu không đúng</p>
+            <p className="text-center text-danger">Số điện thoại hoặc mật khẩu không đúng</p>
           )}
 
           <form>
@@ -92,7 +91,7 @@ export default React.createClass({
               ref="mobilePhone"
               size="lg"
               type="mobilePhone"
-              placeholder="số điện thoại"
+              placeholder="Số điện thoại"
               name="mobilePhone"
               validator={this.state.ValidationData.mobilePhone}
               onChange={this._onChangeInputHandler} />
@@ -101,7 +100,7 @@ export default React.createClass({
               ref="password"
               size="lg"
               type="password"
-              placeholder="mật khẩu"
+              placeholder="Mật khẩu"
               name="password"
               validator={this.state.ValidationData.password}
               onChange={this._onChangeInputHandler} />
@@ -127,7 +126,7 @@ export default React.createClass({
         <div className="form-footer">
           <div className="row">
             <div className="col-xs-7 col-md-8">
-              <a href="/password/reset/" >quên mật khẩu?</a>
+              <a href="/password/reset/" >Quên mật khẩu?</a>
             </div>
             <div className="col-xs-5 col-md-4">
               <Link to={`/signup?nextPath=${nextPath}`} className="pull-right" >Đăng Ký</Link>

@@ -58,15 +58,13 @@ export default class PushListOrder extends React.Component {
         </div>
         <div className="product">
           <div className="listOrder">
-            <div className="text-center title">Bạn đang có đơn hàng trờ vận chuyển</div>
+            <div className="text-center title">Bạn đang có đơn hàng chờ vận chuyển</div>
             <div className="row">
               <div className="col-xs-12 col-sm-12 col-md-12">
-                <span className="hihi">Thêm vào đơn hàng trước:</span>
                 {this.renderListOrder()}
-                <span className="hihi">Tạo mới:</span>
                 <div className="radio">
                   <label>
-                    <input onClick={this.selectOrderNull.bind(this)} type="radio" name="optionsRadios" value="option2" /> Tạo đơn hàng mới
+                    <input onClick={this.selectOrderNull.bind(this)} type="radio" name="optionsRadios" value="option2" /> Tạo đơn hàng mới (nếu bạn muốn chuyển đến địa chỉ khác)
                   </label>
                 </div>
               </div>
@@ -80,11 +78,10 @@ export default class PushListOrder extends React.Component {
   renderListOrder() {
     return this.props.listOrder.map((item, i) => {
       var day = moment(item.get('updatedAt')).locale('vi').format("hh:mm dddd, DD/MM/YYYY")
-      // <input onClick={this.selectOrder.bind(this, item.toJS())} ref="push" type="radio" name="optionsRadios" value="option1" defaultChecked /> 
       return (
         <div key={i} className="radio">
           <label>
-            <input onClick={this.selectOrder.bind(this, item.toJS())} type="radio" name="optionsRadios" value="option1" /> Thêm vào đơn hàng #{item.get('id')} tạo lúc {day}
+            <input onClick={this.selectOrder.bind(this, item.toJS())} type="radio" name="optionsRadios" value="option1" /> Thêm vào đơn hàng #{item.get('id')} đã tạo lúc {day}
           </label>
         </div>
       );

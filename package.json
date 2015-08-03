@@ -38,6 +38,7 @@
     "gulp-uglify": "^1.2.0",
     "immutable": "^3.7.4",
     "iso": "^4.1.0",
+    "moment": "^2.10.6",
     "node-sass": "^3.2.0",
     "nodemon": "^1.4.0",
     "react": "^0.13.3",

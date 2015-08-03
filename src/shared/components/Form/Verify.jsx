@@ -1,6 +1,6 @@
 'use strict';
 
-import React                     from 'react/addons';
+import React, { PropTypes}       from 'react/addons';
 import {Link, State, Navigation} from 'react-router';
 
 
@@ -9,7 +9,7 @@ export default React.createClass({
   mixins: [State, Navigation],
 
   contextTypes: {
-    router: React.PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
   },
 
   componentDidMount() {
@@ -18,7 +18,7 @@ export default React.createClass({
 
   componentDidUpdate() {
     if(this.props.verifyState) {
-      this.onTransitionTo();
+      this.onToNexPath();
     }
   },
 
@@ -33,12 +33,12 @@ export default React.createClass({
           <h4>Xác thực số điện thoại!</h4>
           <p>Chúng tôi đã gửi một mã xác thực vào số điện thoại {this.props.auth.get('mobilePhone')}.</p>
           <div className="form-group" >
-            <label className="text-danger">{this.props.verifyFaild.get('message')}</label>
-            <input ref="code" className="form-control" name="macode" placeholder="mã xác thực" type="text" />
+            <label className="text-danger">{this.props.verifyFaild.get('message') || this.props.codeFaild.get('message')}</label>
+            <input ref="code" className="form-control" name="macode" placeholder="Mã xác thực" type="text" />
           </div>
           <div className="row">
             <div className="col-xs-5 col-md-5">
-              <button className="btn btn-link" onClick={this.getCode} disabled={this.props.verifyFaild.size > 0 ? true : false}><i className="fa fa-refresh"></i>Send a new code.</button>
+              <button className="btn btn-link" onClick={this.getCode} disabled={this.props.codeFaild.size > 0 ? true : false}><i className="fa fa-refresh"></i>Send a new code.</button>
             </div>
             <div className="col-xs-7 col-md-7">
               <div className="pull-right">
@@ -57,7 +57,7 @@ export default React.createClass({
   },
 
   onCancel() {
-    this.onTransitionTo();
+    this.onToNexPath();
   },
 
   onVerify() {
@@ -65,26 +65,20 @@ export default React.createClass({
     this.props.VerifyActions.getVerify(code)
   },
 
-  onTransitionTo() {
-    var self = this;
+  onToNexPath() {
     if(this.props.hideBoxVerify) {
       this.props.hideBoxVerify();
       return;
     }
 
-    let { router: {state: {location}} } = this.context;
-    let query = location.query;
+    const { router } = this.context;
+    const { state: { location } } = router;
+    const query = location.query;
 
     if (query && query.nextPath) {
-      setTimeout(function() {
-        self.transitionTo(query.nextPath);
-      }, 100);
-      return;
+      return router.transitionTo(query.nextPath);
     } else {
-      setTimeout(function() {
-        self.transitionTo('/');
-      }, 100);
-      return;
+      return router.transitionTo('/');
     }
   }
 

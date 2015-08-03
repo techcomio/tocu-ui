@@ -69,7 +69,7 @@ export default class SanphamID extends React.Component {
   componentDidMount() {
     // let { id } = this.props.params;
     // OrderActions.checkOrder({id});
-    OrderActions.getListOrder();
+    /*OrderActions.getListOrder();*/
     SanphamStore.listen(this.onChangeSanphamStore);
     // OrderStore.listen(this.onChangeOrderStore);
   }
@@ -612,7 +612,6 @@ export default class SanphamID extends React.Component {
     }
 
     if(this.state.boxVerify) {
-      VerifyActions.getCode();
       return (
         <div id="boxLogin">
           <div className="row">
@@ -626,8 +625,8 @@ export default class SanphamID extends React.Component {
                     auth: () => {
                       return AuthStore.getState().auth
                     },
-                    verify: () => {
-                      return VerifyStore.getState().verify
+                    codeFaild: () => {
+                      return VerifyStore.getState().codeFaild
                     },
                     verifyFaild: () => {
                       return VerifyStore.getState().verifyFaild
@@ -654,6 +653,7 @@ export default class SanphamID extends React.Component {
       });
     }
     if(val === 'verify') {
+      VerifyActions.getCode();
       this.setState({
         boxVerify: true,
       });

@@ -33,13 +33,6 @@ let Validations = {
     errorMessage: '',
     errorTextRequest: ''
   },
-  coquan: {
-    rules: {coquan: [ "required"]},
-    messages: {"required.coquan": "Nhập cơ quan của bạn!"},
-    hasError: false,
-    errorMessage: '',
-    errorTextRequest: ''
-  },
   city: {
     rules: {city: [ "required"]},
     messages: {"required.city": "Chọn tỉnh thành của bạn!"},
@@ -96,16 +89,7 @@ export default class FormOrder extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6 col-md-6">
-            <InputValidation
-              ref="coquan"
-              type="text"
-              placeholder="Công ty/Cơ quan"
-              name="coquan"
-              validator={this.state.ValidationData.coquan}
-              onChange={this._onChangeInputHandler} />
-          </div>
-          <div className="col-sm-6 col-md-6">
+          <div className="col-sm-12 col-md-12">
             <InputValidation
               ref="diachi"
               type="text"
@@ -226,12 +210,10 @@ export default class FormOrder extends React.Component {
   getValue() {
     let diachi = this.refs.diachi.getValue();
     let name = this.refs.name.getValue();
-    let coquan = this.refs.coquan.getValue();
     let mobilePhone = this.refs.mobilePhone.getValue();
     let city = this.refs.city.getValues();
     let district = this.refs.district.getValues();
     return {
-      company: coquan,
       name: name,
       address: diachi,
       phone: mobilePhone,

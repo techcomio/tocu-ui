@@ -14,10 +14,10 @@ class VerifyActions {
 		  headers: { 'Authorization': `Bearer ${localStorage.access_token}` }
 		})
 		.then((res) => {
-			this.dispatch(res.data);
+			self.dispatch(res.data);
 		})
 		.catch((res) => {
-			self.actions.getVerifyFaild(res.data);
+			self.actions.getCodeFaild(res.data);
 		});
 	}
 
@@ -28,10 +28,10 @@ class VerifyActions {
 		  headers: { 'Authorization': `Bearer ${localStorage.access_token}` }
 		})
 		.then((res) => {
-			this.dispatch(res.data);
+			self.dispatch(res.data);
 		})
 		.catch((res) => {
-			self.actions.getCodeFaild(res.data);
+			self.actions.getVerifyFaild(res.data);
 		});
 	}
 

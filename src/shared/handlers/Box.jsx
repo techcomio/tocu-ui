@@ -220,7 +220,6 @@ export default React.createClass({
     }
 
     if(this.state.boxVerify) {
-      VerifyActions.getCode();
       return (
         <div id="boxLogin">
           <div className="row">
@@ -234,8 +233,8 @@ export default React.createClass({
                     auth: () => {
                       return AuthStore.getState().auth
                     },
-                    verify: () => {
-                      return VerifyStore.getState().verify
+                    codeFaild: () => {
+                      return VerifyStore.getState().codeFaild
                     },
                     verifyFaild: () => {
                       return VerifyStore.getState().verifyFaild
@@ -267,6 +266,7 @@ export default React.createClass({
       });
     }
     if(val === "verify") {
+      VerifyActions.getCode();
       this.setState({
         boxVerify: true,
       });

@@ -196,9 +196,9 @@ export default class FormOrder extends React.Component {
 
   handleClickDatMua() {
     console.log('handleClickDatMua');
-    console.log(this.refs.formNguoiNhan.getValue())
+/*    console.log(this.refs.formNguoiNhan.getValue())
     console.log(this.state.shippingMethod)
-    console.log(this.refs.hinhthucTT.getCheckbox())
+    console.log(this.refs.hinhthucTT.getCheckbox())*/
     
     let data = {
       store: 'ol',
