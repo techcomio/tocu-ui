@@ -11,8 +11,26 @@ export default React.createClass({
 	  likesCount: React.PropTypes.number
 	},
 
-	getInitialState() {
-    return {};
+  getInitialState() {
+    return {
+      hideHeader: false,
+    };
+  },
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+
+  handleScroll(e) {
+    var scrollTop = window.scrollY;
+    var hideHeader = scrollTop >= 50;
+    this.setState({
+      hideHeader: hideHeader
+    });
   },
 
 	render() {
@@ -20,8 +38,9 @@ export default React.createClass({
       "navbar": true,
       "navbar-default": true,
       "navbar-product": true,
-      "navbar-fixed-top": true,
-      headerHiden: this.props.hideHeader,
+      "navbar-static-top": true,
+      "navbar-fixed-top": this.state.hideHeader,
+      "position-top": !this.state.hideHeader,
     }),
     type = null;
     
@@ -38,22 +57,20 @@ export default React.createClass({
     }
 
 		return (
-      <div className="container-fluid">
-	    	<nav className={classesNavbar}>
-          <div className="infoListProduct text-center">
-            <div className="btn-group">
-              <button onClick={this.handleLikeBox} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray"></i></button>
-              <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.info.get('likesCount')}</span></button>
-            </div>
-	          <div className="nameinfoListProduct">
-	          	{this.props.info.get('name')}
-	          </div>
-	          <span className="countListProduct">
-	          	{this.props.info.get('postsCount')} {type}
-	          </span>
+    	<nav className={classesNavbar}>
+        <div className="infoListProduct text-center">
+          <div className="btn-group">
+            <button onClick={this.handleLikeBox} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray"></i></button>
+            <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.info.get('likesCount')}</span></button>
           </div>
-		    </nav>
-      </div>
+          <div className="nameinfoListProduct">
+          	{this.props.info.get('name')}
+          </div>
+          <span className="countListProduct">
+          	{this.props.info.get('postsCount')} {type}
+          </span>
+        </div>
+	    </nav>
 		);
 	},
 
@@ -70,7 +87,6 @@ export default React.createClass({
   },
 
 	handleLikeBox() {
-    console.log('handleLikeBox')
     let self = this;
     this.boxLogin(() => {
   		let itemID = this.props.info.get('id'),

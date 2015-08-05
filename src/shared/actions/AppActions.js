@@ -23,7 +23,7 @@ class AppActions {
 		  })
 		  .catch((res) => {
 		  	/**
-		  	 * send lỗi cho func dataError
+		  	 * send lỗi cho func dataFailed
 		  	 * @param  {Error} [Error request]
 		  	 */
 		    self.actions.dataFailed(res.data)

@@ -2,6 +2,9 @@
 
 import React, { PropTypes}       from 'react/addons';
 import {Link, State, Navigation} from 'react-router';
+import VerifyStore               from '../../store/VerifyStore';
+import AuthStore                 from '../../store/AuthStore';
+import VerifyActions             from '../../actions/VerifyActions';
 
 
 export default React.createClass({
@@ -12,33 +15,60 @@ export default React.createClass({
     router: PropTypes.object.isRequired,
   },
 
+  getInitialState() {
+    return {
+      auth: AuthStore.getState().auth,
+      ...VerifyStore.getState(),
+    };
+  },
+
   componentDidMount() {
     React.findDOMNode(this.refs.code).focus();
+    AuthStore.listen(this._onChangeAuthStore);
+    VerifyStore.listen(this._onChangeVerifyStore);
+  },
+
+  componentWillUnmount() {
+    AuthStore.unlisten(this._onChangeAuthStore);
+    VerifyStore.unlisten(this._onChangeVerifyStore);
+  },
+
+  _onChangeAuthStore(state) {
+    this.setState({
+      auth: state.auth,
+    });
+  },
+
+  _onChangeVerifyStore(state) {
+    this.setState({
+      ...state,
+    });
   },
 
   componentDidUpdate() {
-    if(this.props.verifyState) {
+    if(this.state.verifyState) {
       this.onToNexPath();
     }
   },
 
   getCode() {
-    this.props.VerifyActions.getCode();
+    VerifyActions.getCode();
   },
 
   render() {
     return (
       <div className="form-signup verify">
         <div className="verify-body">
+          {this.props.children}
           <h4>Xác thực số điện thoại!</h4>
-          <p>Chúng tôi đã gửi một mã xác thực vào số điện thoại {this.props.auth.get('mobilePhone')}.</p>
+          <p>Chúng tôi đã gửi một mã xác thực vào số điện thoại {this.state.auth.get('mobilePhone')}.</p>
           <div className="form-group" >
-            <label className="text-danger">{this.props.verifyFaild.get('message') || this.props.codeFaild.get('message')}</label>
+            <label className="text-danger">{this.state.verifyFaild.get('message') || this.state.codeFaild.get('message')}</label>
             <input ref="code" className="form-control" name="macode" placeholder="Mã xác thực" type="text" />
           </div>
           <div className="row">
             <div className="col-xs-5 col-md-5">
-              <button className="btn btn-link" onClick={this.getCode} disabled={this.props.codeFaild.size > 0 ? true : false}><i className="fa fa-refresh"></i>Send a new code.</button>
+              <button className="btn btn-link" onClick={this.getCode} disabled={this.state.codeFaild.size > 0 ? true : false}><i className="fa fa-refresh"></i>Send a new code.</button>
             </div>
             <div className="col-xs-7 col-md-7">
               <div className="pull-right">
@@ -62,7 +92,7 @@ export default React.createClass({
 
   onVerify() {
     let code = React.findDOMNode(this.refs.code).value;
-    this.props.VerifyActions.getVerify(code)
+    VerifyActions.getVerify(code)
   },
 
   onToNexPath() {

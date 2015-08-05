@@ -6,37 +6,26 @@ import Router             from 'react-router';
 
 export default function prepareRoute(prepareFn) {
 
-  return DecoratedComponent => React.createClass({
+  return DecoratedComponent => class PrepareRouteDecorator extends React.Component {
 
-    contextTypes: {
+    static contextTypes = {
       router: PropTypes.instanceOf(Router).isRequired
-    },
+    }
 
-    statics: {
-      prepareRoute: prepareFn
-    },
-
+    static prepareRoute = prepareFn
+    
     componentDidMount() {
       const {
         props: { params, location }
       } = this;
 
       prepareFn({ params, location });
-    },
+    }
 
     render() {
-      /**
-       * [contextTypes description]
-       * DecoratedComponent setting this.context.router
-       * @type {Object}
-       */
-      DecoratedComponent.contextTypes = {
-        router: PropTypes.instanceOf(Router).isRequired,
-      }
-      
       return <DecoratedComponent {...this.props} />
-    },
+    }
 
-  });
+  };
 
 }

@@ -1,10 +1,11 @@
-/* @jsx React.DOM */
 "use strict";
 
 import React from 'react/addons';
-
-/* @jsx */
+/**
+ * @Component
+ */
 import LightBoxSlideImg from './lightBoxSlideImg';
+
 
 export default class ImgSlideProduct extends React.Component {
 

@@ -6,7 +6,7 @@
   ],
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node --stage 0 server.js",
+    "start": "nodemon server.js",
     "dev": "webpack -w",
     "sass": "gulp && gulp watch"
   },

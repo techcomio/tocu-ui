@@ -23,7 +23,7 @@ export default (
 		<Route component={Posts}     name="posts"     path="/posts/:id"   />
 		<Route component={Album}     name="album"     path="/album/:id"   />
 		<Route component={ProductID} name="productID" path="/product/:id" />
-		<Route component={SignIn}    name="signin"    path="/signin"      onEnter={SignIn.onEnter} />
+		<Route component={SignIn}    name="signin"    path="/signin"      onEnter={SignIn.onEnter} context={{test: 'hi!'}} />
 		<Route component={SignUp}    name="signup"    path="/signup"      />
 		<Route component={NotFound}  name="NotFound"  path="*"            />
 	</Route>

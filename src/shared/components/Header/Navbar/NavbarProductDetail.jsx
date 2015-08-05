@@ -20,11 +20,13 @@ export default class NavbarProductID extends React.Component {
     methods.forEach( (method) => this[method] = this[method].bind(this) );
   }
 
+  static propTypes = {
+    hideNavbar: React.PropTypes.bool,
+    countLike: React.PropTypes.number,
+  }
+
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-    /*if(this.props.auth.get('access_token')) {
-      this.props.OrderActions.checkOrder({ id: this.props.product.get('id') });
-    }*/
   }
 
   componentWillUnmount() {
@@ -33,7 +35,7 @@ export default class NavbarProductID extends React.Component {
 
   handleScroll(e) {
     var scrollTop = window.scrollY;
-    var hideHeader = scrollTop >= 33;
+    var hideHeader = scrollTop >= 80;
     this.setState({
       hideHeader: hideHeader
     });
@@ -47,7 +49,7 @@ export default class NavbarProductID extends React.Component {
     
     return (
       <div className={classesNavbar} >
-        <nav className="navbar navbar-defaul">
+        <nav className="navbar navbar-tocu">
           <div className="navbar-header">
             <div className="btn-group">
               <button onClick={this.Like} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray">&nbsp;</i> Thích</button>
@@ -72,14 +74,12 @@ export default class NavbarProductID extends React.Component {
       default:
         return <button onClick={this.Cart} type="button" className="btn btn-primary navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Mua</button>
     }
-    console.log(this.props.product.toJS())
   }
 
   boxLogin(cb) {
     if(!this.props.auth.get('access_token')) {
       this.props.handleBoxLogin('token');
     } else {
-
       if(!this.props.auth.get('isVerifyMobilePhone')) {
         this.props.handleBoxLogin('verify');
         return;
@@ -91,7 +91,7 @@ export default class NavbarProductID extends React.Component {
   Like() {
     this.boxLogin(function() {
       let token  = this.props.auth.get('access_token');
-      let type   = this.props.product.get('Box').get('type')
+      let type   = this.props.product.get('Box').get('type');
       let itemId = this.props.product.get('id');
 
       this.props.SanphamActions.like({itemId: itemId, token: token, type: type});
@@ -105,18 +105,7 @@ export default class NavbarProductID extends React.Component {
   }
 
   Cart() {
-    this.boxLogin(function() {
-      if(this.props.listOrder.size < 1) {
-        this.props.Next(2);
-      } else {
-        this.props.Next();
-      }
-    }.bind(this));
+    this.props.OrderActions.addToCart(this.props.product);
   }
 
-};
-
-NavbarProductID.propTypes = {
-  hideNavbar: React.PropTypes.bool,
-  countLike: React.PropTypes.number,
 };

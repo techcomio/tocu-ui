@@ -4,11 +4,12 @@ import React                     from 'react/addons';
 import Validator                 from 'validatorjs';
 import {Link, State, Navigation} from 'react-router';
 import AuthStore                 from '../../store/AuthStore';
+import AuthActions               from '../../actions/AuthActions';
 /**
  * @Component
  */
 import Select          from './select';
-import InputValidation from './inputValidation';
+import InputValidation from './inputValidationLabel';
 
 let Validations = {
   mobilePhone: {
@@ -40,6 +41,7 @@ export default React.createClass({
     return {
       disabled: true,
       ValidationData: Validations,
+      loginState: AuthStore.getState().loginState,
     };
   },
 
@@ -56,12 +58,17 @@ export default React.createClass({
       let self = this;
       if(this.props.replaceWith) {
         this.props.replaceWith();
+        return;
       } else {
         setTimeout(function() {
           self.transitionTo('/');
         }, 100);
+        return;
       }
     }
+    this.setState({
+      loginState: AuthStore.getState().loginState,
+    });
   },
 
   render() {
@@ -72,24 +79,26 @@ export default React.createClass({
 
     return (
       <div className="form-signup">
+        <div className="form-header">
+          {this.props.children}
+          <div className="form-title text-center">Đăng nhập Tổ Cú</div>
+        </div>
         <div className="form-body">
           <div className="form-group">
             <div className="logo">
               <Link to="/">
-                <img src="/img/logo.png" style={{width: 50, height: 50}} />
+                <img src="/img/logo.png" />
               </Link>
             </div>
           </div>
 
-          <p className="text-center title-form">Đăng Nhập Tổ Cú</p>
-          {this.props.loginState === "failed" && (
+          {this.state.loginState === "failed" && (
             <p className="text-center text-danger">Số điện thoại hoặc mật khẩu không đúng</p>
           )}
 
           <form>
             <InputValidation
               ref="mobilePhone"
-              size="lg"
               type="mobilePhone"
               placeholder="Số điện thoại"
               name="mobilePhone"
@@ -98,7 +107,6 @@ export default React.createClass({
 
             <InputValidation
               ref="password"
-              size="lg"
               type="password"
               placeholder="Mật khẩu"
               name="password"
@@ -111,10 +119,10 @@ export default React.createClass({
                 type="submit"
                 disabled={this.state.disabled}>
 
-                {this.props.loginState !== "loading" && (
+                {this.state.loginState !== "loading" && (
                   "Đăng Nhập"
                 )}
-                {this.props.loginState === "loading" && (
+                {this.state.loginState === "loading" && (
                   <i className="fa fa-spinner fa-pulse"></i>
                 )}
 
@@ -185,7 +193,7 @@ export default React.createClass({
     e.preventDefault();
     var mobilePhone = this.refs.mobilePhone.getValue();
     var password = this.refs.password.getValue();
-    this.props.AuthActions.Login({mobilePhone, password})
+    AuthActions.Login({mobilePhone, password});
   },
 
 });

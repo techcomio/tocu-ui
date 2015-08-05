@@ -13,14 +13,14 @@ import SaleActions    from '../actions/SaleActions';
 /**
  * @Component
  */
-import BoxSignIn     from '../components/Form/BoxSignIn';
-import BoxVerify     from '../components/Form/BoxVerify';
+import FormSignIn    from '../components/Form/SignIn';
+import Verify        from '../components/Form/Verify';
 import FormOrder     from '../components/FormOrder';
 import Product       from '../components/Product';
 import PushListOrder from '../components/Product/PushListOrder';
 import StatusOrder   from '../components/Product/StatusOrder';
 import Header        from '../components/Header/ProductID';
-import Sidebar       from '../components/Product/Sidebar';
+import Sidebar       from '../components/productDetail/Sidebar';
 import Sale          from '../components/Sale';
 
 
@@ -36,7 +36,8 @@ export default class ProductID extends React.Component {
 
   constructor (props) {
     super(props)
-    this._bind('onChangeSanphamStore', 'handleBoxLogin', 'hideBoxLogin', 'renderBoxLogin', 'renderProductDetail', 'hideBoxVerify');
+
+    this._bind('onChangeSanphamStore', 'handleBoxLogin', 'Next', 'Prev', 'hideBoxLogin', 'renderBoxLogin', 'renderProductDetail', 'renderFormOrder', 'renderStatusOrder', 'hideBoxVerify');
 
     this.state = {
       boxLogin: false,
@@ -56,11 +57,16 @@ export default class ProductID extends React.Component {
   }
 
   componentDidMount() {
+    // let { id } = this.props.params;
+    // OrderActions.checkOrder({id});
+    /*OrderActions.getListOrder();*/
     SanphamStore.listen(this.onChangeSanphamStore);
+    // OrderStore.listen(this.onChangeOrderStore);
   }
 
   componentWillUnmount() {
     SanphamStore.unlisten(this.onChangeSanphamStore);
+    // OrderStore.unlisten(this.onChangeOrderStore);
   }
 
   onChangeSanphamStore(state) {
@@ -69,10 +75,13 @@ export default class ProductID extends React.Component {
     });
   }
 
+  onChangeOrderStore(state) {
+    // console.log('onChangeOrderStore', state);
+  }
+
 	render () {
     return (
       <div>
-        {/* Header */}
         <Header />
 				
         <section id="productDetail">
@@ -80,6 +89,14 @@ export default class ProductID extends React.Component {
             <div className="row">
               <div className="col-md-9 col-lg-9">
                 {this.renderProductDetail()}
+
+                {/*
+                {this.renderPushListOrder()}
+                
+                {this.renderFormOrder()}
+
+                {this.renderStatusOrder()}
+                */}
 
                 {/* 6 box auto */}
                 <div className="row row-bottom-detail">
@@ -439,7 +456,7 @@ export default class ProductID extends React.Component {
           </div>
         </section>
 
-        {this.renderBoxLogin()}
+        {/*this.renderBoxLogin()*/}
 			</div>
     );
 	}
@@ -447,20 +464,66 @@ export default class ProductID extends React.Component {
   renderProductDetail() {
     return (
       <Product
+        Next={this.Next}
         handleBoxLogin={this.handleBoxLogin} />
     );
+  }
+
+  renderPushListOrder() {
+    if (this.state.current === 2) {
+      return (
+        <PushListOrder 
+          Prev={this.Prev}
+          Next={this.Next} />
+      )
+    }
+  }
+
+  renderFormOrder() {
+    if(this.state.current === 3) {
+      return (
+        <FormOrder
+          Prev={this.Prev}
+          Next={this.Next} />
+      );
+    }
+  }
+
+  renderStatusOrder() {
+    if(this.state.current === 4) {
+      return (
+        <StatusOrder
+          Prev={this.Prev} />
+      );
+    }
   }
 
   renderBoxLogin() {
     if(this.state.boxLogin) {
       return (
-        <BoxSignIn hideBoxLogin={this.hideBoxLogin} location={this.props.location} />
+        <div id="boxLogin">
+          <div className="row">
+            <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+              <div className="centrix">
+                <FormSignIn replaceWith={this.hideBoxLogin} nextPath={this.props.location.pathname} />
+              </div>
+            </div>
+          </div>
+        </div>
       );
     }
 
     if(this.state.boxVerify) {
       return (
-        <BoxVerify hideBoxVerify={this.hideBoxVerify} />
+        <div id="boxLogin">
+          <div className="row">
+            <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+              <div className="centrix">
+                <Verify hideBoxVerify={this.hideBoxVerify} />
+              </div>
+            </div>
+          </div>
+        </div>
       );
     }
   }
@@ -489,6 +552,30 @@ export default class ProductID extends React.Component {
     this.setState({
       boxVerify: false,
     });
+  }
+
+  Next(i) {
+    if(i) {
+      this.setState({
+        current: this.state.current + i,
+      });
+    } else {
+      this.setState({
+        current: this.state.current + 1,
+      });
+    }
+  }
+
+  Prev(i) {
+    if(i) {
+      this.setState({
+        current: this.state.current - i,
+      });
+    } else {
+      this.setState({
+        current: this.state.current - 1,
+      });
+    }
   }
 
 };

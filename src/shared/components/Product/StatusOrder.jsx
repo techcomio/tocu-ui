@@ -1,25 +1,44 @@
 'use strict';
 import React      from 'react/addons';
 import classNames from 'classnames';
+import OrderStore from '../../store/OrderStore';
 
 
 export default class StatusOrder extends React.Component {
 
   constructor(props) {
     super(props);
+    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
 
-    this.state = {};
+    this.state = {
+      ...OrderStore.getState(),
+    };
   }
+
+  componentDidMount() {
+    OrderStore.listen(this._onChangeOrderStore);
+  }
+
+  componentWillUnmount() {
+    OrderStore.unlisten(this._onChangeOrderStore);
+  }
+
+  _onChangeOrderStore(state) {
+    this.setState({
+      ...state,
+    });
+  }
+
   render() {
     let classes = classNames({
       "text-center": true,
       "status-check": true,
-      success: this.props.status.get('status') === 'success',
-      warning: this.props.status.get('status') === 'warning',
+      success: this.state.createStatus.get('status') === 'success',
+      warning: this.state.createStatus.get('status') === 'warning',
     });
 
-    console.log(this.props.status.toJS())
-  	console.log(this.props.order.toJS())
+    console.log(this.state.createStatus.toJS())
+  	console.log(this.state.order.toJS())
 
   	return (
 	  	<div className="statusOrder">
@@ -30,8 +49,8 @@ export default class StatusOrder extends React.Component {
         </nav>
         <div className="product">
           <div className={classes}><i className="fa fa-check-circle-o"></i></div>
-          <p className="text-center"><strong>{this.props.status.get('messages')}</strong></p>
-          <p className="text-center">Mã đơn hàng: #{this.props.order.get('OrderId') || this.props.order.get('id')}</p>
+          <p className="text-center"><strong>{this.state.createStatus.get('messages')}</strong></p>
+          <p className="text-center">Mã đơn hàng: #{this.state.order.get('OrderId') || this.state.order.get('id')}</p>
           <p className="text-center">Dưới đây là thông tin tài khoản của Cú</p>
           <p className="text-center">Bạn nhớ nghi tên đơn hàng trong thông tin chuyển khoản nhé!</p>
         </div>

@@ -9,7 +9,6 @@ class BoxStore {
 
   constructor() {
     this.bindActions(BoxActions);  // getBoxs, getBoxID, like, boxsFailed, getBoxIDFailed, likeFailed
-
 		this.on('init', this.bootstrap);
 		this.on('bootstrap', this.bootstrap);
 

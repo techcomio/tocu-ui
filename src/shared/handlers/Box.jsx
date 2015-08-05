@@ -5,12 +5,8 @@ import Axios          from 'axios';
 import ReactAsync     from 'react-async';
 import {Link}         from 'react-router';
 import {Api_URL}      from '../../../config-sample';
-import BoxStore       from '../store/BoxStore';
-import AuthStore      from '../store/AuthStore';
 import BoxActions     from '../actions/BoxActions';
-import AuthActions    from '../actions/AuthActions';
 import SanphamActions from '../actions/SanphamActions';
-import VerifyStore    from '../store/VerifyStore';
 import VerifyActions  from '../actions/VerifyActions';
 import MasonryMixin   from 'react-masonry-mixin';
 import PackeryMixin   from 'react-packery-mixin';
@@ -18,11 +14,10 @@ let InfiniteScroll   = require('react-infinite-scroll')(React);
 /**
  * @Component
  */
-import AltContainer  from 'alt/AltContainer';
-import FormSignIn    from '../components/Form/SignIn';
-import Verify        from '../components/Form/Verify';
-import HeaderProduct from '../components/productDetail/HeaderProduct';
-import BoxItem       from '../components/Box/BoxItem';
+import FormSignIn from '../components/Form/SignIn';
+import Verify     from '../components/Form/Verify';
+import Header     from '../components/Header/Box';
+import BoxItem    from '../components/Box/BoxItem';
 
 var createUniqueArray = (function () {
   return function (inputArray, sorter) {
@@ -155,20 +150,8 @@ export default React.createClass({
   render () {
     return (
       <div>
-        <AltContainer
-          stores={[BoxStore, AuthStore]}
-          actions={{BoxActions}}
-          inject={{
-            info: function(props) {
-              return BoxStore.getState().info;
-            },
-            auth: function(props) {
-              return AuthStore.getState().auth;
-            }
-          }} >
+        <Header handleBoxLogin={this.handleBoxLogin} />
 
-          <HeaderProduct handleBoxLogin={this.handleBoxLogin} />
-        </AltContainer>
         <section id="productDetail">
           <div className="container">
             <div className='row'>
@@ -201,17 +184,7 @@ export default React.createClass({
           <div className="row">
             <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
               <div className="centrix">
-                <AltContainer
-                  stores={[AuthStore]}
-                  actions={{AuthActions}}
-                  inject={{
-                    loginState: function(props) {
-                      return AuthStore.getState().loginState
-                    }
-                  }} >
-
-                  <FormSignIn replaceWith={this.hideBoxLogin} />
-                </AltContainer>
+                <FormSignIn replaceWith={this.hideBoxLogin} />
               </div>
             </div>
           </div>
@@ -225,27 +198,7 @@ export default React.createClass({
           <div className="row">
             <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
               <div className="centrix">
-                <AltContainer
-                  params={this.props.params}
-                  stores={[VerifyStore, AuthStore]}
-                  actions={{VerifyActions}}
-                  inject={{
-                    auth: () => {
-                      return AuthStore.getState().auth
-                    },
-                    codeFaild: () => {
-                      return VerifyStore.getState().codeFaild
-                    },
-                    verifyFaild: () => {
-                      return VerifyStore.getState().verifyFaild
-                    },
-                    verifyState: () => {
-                      return VerifyStore.getState().verifyState
-                    }
-                  }} >
-
-                  <Verify hideBoxVerify={this.hideBoxVerify} />
-                </AltContainer>
+                <Verify hideBoxVerify={this.hideBoxVerify} />
               </div>
             </div>
           </div>

@@ -80,20 +80,18 @@ class AuthActions {
   /**
    * Logout
    */
-  Logout(access_token) {
+  Logout() {
     let self = this;
 
-    if(access_token) {
-      Axios.get(`${Api_URL}/token/expire`, {
-        headers: { 'Authorization': `Bearer ${access_token}` }
-      })
-      .then((res) => {
-        self.dispatch();
-      })
-      .catch((res) => {
-        console.log('err Logout', res);
-      });
-    }
+    Axios.get(`${Api_URL}/token/expire`, {
+      headers: { 'Authorization': `Bearer ${localStorage.access_token}` }
+    })
+    .then((res) => {
+      self.dispatch();
+    })
+    .catch((res) => {
+      console.log('err Logout', res);
+    });
   }
 
   /**

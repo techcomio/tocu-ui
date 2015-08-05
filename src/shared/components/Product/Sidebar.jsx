@@ -1,8 +1,9 @@
+'use strict';
 
-// var React = require('react');
-import React      from 'react/addons';
-var ReactAsync   = require('react-async');
-var MasonryMixin = require('react-masonry-mixin');
+import React          from 'react/addons';
+import SanphamActions from '../../actions/SanphamActions';
+var ReactAsync       = require('react-async');
+var MasonryMixin     = require('react-masonry-mixin');
 
 import Axios       from 'axios';
 import { Link }    from 'react-router';
@@ -83,7 +84,7 @@ var Sidebar = React.createClass({
   },
 
   handleViewSP(sp) {
-    this.props.SanphamActions.actionSanphamID(sp);
+    SanphamActions.actionSanphamID(sp);
   },
 
   renderIcon() {

@@ -15,7 +15,7 @@ export default class InfoBar extends React.Component {
             <div className="row">
               <div className="col-xs-3">
                 <a href="#" className="active">
-                  <span className="value">{this.props.countBox}</span> <span className="labels">Box</span>    
+                  <span className="value">{this.props.Box.size}</span> <span className="labels">Box</span>    
                 </a>
               </div>
               <div className="col-xs-3">

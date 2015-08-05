@@ -1,6 +1,8 @@
 'use strict';
 
-import React from 'react/addons';
+import React        from 'react/addons';
+import OrderStore   from '../../store/OrderStore';
+import OrderActions from '../../actions/OrderActions';
 /**
  * @Component
  */
@@ -11,11 +13,30 @@ export default class BoxYeuThich extends React.Component {
 
   constructor (props) {
     super(props);
+    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
+
+    this.state = {
+      listOrder: OrderStore.getState().listOrder,
+    };
+  }
+
+  componentDidMount() {
+    OrderStore.listen(this._onChangeOrderStore);
+  }
+
+  componentWillUnmount() {
+    OrderStore.unlisten(this._onChangeOrderStore);
+  }
+
+  _onChangeOrderStore(state) {
+    this.setState({
+      listOrder: state.listOrder,
+    });
   }
 
 	render () {
     return (<span></span>);
-    if(this.props.listOrder.size < 1) {
+    if(this.state.listOrder.size < 1) {
     }
     return (
       <div>
@@ -75,7 +96,7 @@ export default class BoxYeuThich extends React.Component {
             </div>
           </div>
           <div className="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-            <BoxOrder listOrder={this.props.listOrder} />
+            <BoxOrder listOrder={this.state.listOrder} />
           </div>
         </div>
 

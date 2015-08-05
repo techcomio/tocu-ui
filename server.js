@@ -13,7 +13,7 @@ var render = require('./src/server');
 let app = express();
 const env = process.env.NODE_ENV || 'development';
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8000);
 app.use(cookieParser());
 app.use(compress());
 app.use(bodyParser.json());

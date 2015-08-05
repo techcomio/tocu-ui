@@ -1,9 +1,13 @@
 'use strict';
 
-import React      from 'react/addons';
-import Validator  from 'validatorjs';
-import classNames from 'classnames';
-import moment     from 'moment';
+import React        from 'react/addons';
+import Validator    from 'validatorjs';
+import classNames   from 'classnames';
+import moment       from 'moment';
+import OrderStore   from '../../store/OrderStore';
+import SanphamStore from '../../store/SanphamStore';
+import OrderActions from '../../actions/OrderActions';
+
 
 export default class PushListOrder extends React.Component {
 
@@ -13,21 +17,30 @@ export default class PushListOrder extends React.Component {
     this.renderListOrder = this.renderListOrder.bind(this);
     this.handleClickHuy = this.handleClickHuy.bind(this);
     this.handleClickDatMua = this.handleClickDatMua.bind(this);
+    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
+    this._onChangeSanphamStore = this._onChangeSanphamStore.bind(this);
 
     this.state = {
       disabledBtnDatHang: true,
       selectOrder: false,
+      listOrder: OrderStore.getState().listOrder,
+      itemPushOrder: OrderStore.getState().itemPushOrder,
+      product: SanphamStore.getState().product,
     };
   }
 
   componentDidMount() {
-    this.props.OrderActions.getListOrder();
-    this.props.OrderActions.pushOrder({});
+    OrderActions.getListOrder();
+    OrderActions.pushOrder({});
     window.addEventListener('scroll', this.handleScroll);
+    OrderStore.listen(this._onChangeOrderStore);
+    SanphamStore.listen(this._onChangeSanphamStore);
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    OrderStore.unlisten(this._onChangeOrderStore);
+    SanphamStore.unlisten(this._onChangeSanphamStore);
   }
 
   handleScroll(e) {
@@ -35,6 +48,19 @@ export default class PushListOrder extends React.Component {
     var hideHeader = scrollTop >= 33;
     this.setState({
       hideHeader: hideHeader
+    });
+  }
+
+  _onChangeOrderStore(state) {
+    this.setState({
+      listOrder: state.listOrder,
+      itemPushOrder: state.itemPushOrder,
+    });
+  }
+
+  _onChangeSanphamStore(state) {
+    this.setState({
+      product: state.product,
     });
   }
 
@@ -76,7 +102,7 @@ export default class PushListOrder extends React.Component {
   }
 
   renderListOrder() {
-    return this.props.listOrder.map((item, i) => {
+    return this.state.listOrder.map((item, i) => {
       var day = moment(item.get('updatedAt')).locale('vi').format("hh:mm dddd, DD/MM/YYYY")
       return (
         <div key={i} className="radio">
@@ -89,7 +115,7 @@ export default class PushListOrder extends React.Component {
   }
 
   selectOrder(item, e) {
-    this.props.OrderActions.pushOrder(item);
+    OrderActions.pushOrder(item);
     this.setState({
       selectOrder: true,
       disabledBtnDatHang: false
@@ -97,7 +123,7 @@ export default class PushListOrder extends React.Component {
   }
 
   selectOrderNull(e) {
-    this.props.OrderActions.pushOrder({});
+    OrderActions.pushOrder({});
     this.setState({
       selectOrder: false,
       disabledBtnDatHang: false,
@@ -109,22 +135,22 @@ export default class PushListOrder extends React.Component {
   }
 
   handleClickDatMua() {
-    if(!this.props.itemPushOrder.size) {
+    if(!this.state.itemPushOrder.size) {
       this.props.Next(1);
     } else {
       let data = {
-        OrderId: this.props.itemPushOrder.get('id'),
+        OrderId: this.state.itemPushOrder.get('id'),
         product: {
-          id: this.props.product.get('id'),
+          id: this.state.product.get('id'),
           onlineStore: true,
         },
-        unitPrice: this.props.product.get('price'),
+        unitPrice: this.state.product.get('price'),
         quantity: 1,
-        amount: this.props.product.get('salePrice') ? this.props.product.get('salePrice') : this.props.product.get('price'),
-        weight: this.props.product.get('weight'),
+        amount: this.state.product.get('salePrice') ? this.state.product.get('salePrice') : this.state.product.get('price'),
+        weight: this.state.product.get('weight'),
       }
 
-      this.props.OrderActions.addOrder({...data});
+      OrderActions.addOrder({...data});
       this.props.Next(2);
       
     /*{

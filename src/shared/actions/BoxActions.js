@@ -23,7 +23,7 @@ class BoxActions {
 		  })
 		  .catch((res) => {
 		  	/**
-		  	 * send lỗi cho func dataError
+		  	 * send lỗi cho func boxsFailed
 		  	 * @param  {Error} [Error request]
 		  	 */
 		    self.actions.boxsFailed(res.data)
@@ -49,7 +49,7 @@ class BoxActions {
 		  })
 		  .catch((res) => {
 		  	/**
-		  	 * send lỗi cho func dataError
+		  	 * send lỗi cho func getBoxIDFailed
 		  	 * @param  {Error} [Error request]
 		  	 */
 		    self.actions.getBoxIDFailed(res.data)

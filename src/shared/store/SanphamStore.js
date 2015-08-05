@@ -3,6 +3,7 @@
 import Alt              from '../Alt';
 import Immutable, {Map} from 'immutable';
 import SanphamActions   from '../actions/SanphamActions';
+import BoxStore         from './BoxStore';
 
 
 class SanphamStore {
@@ -43,6 +44,7 @@ class SanphamStore {
   }
 
   onCount(data) {
+    this.waitFor(BoxStore.dispatchToken);
     this.count = data;
   }
 

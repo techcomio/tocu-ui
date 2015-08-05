@@ -5,6 +5,11 @@ import Validator                 from 'validatorjs';
 import {Link, State, Navigation} from 'react-router';
 import classnames                from 'classnames';
 import AuthStore                 from '../../store/AuthStore';
+import AuthActions               from '../../actions/AuthActions';
+import CityStore                 from '../../store/CityStore';
+import CityActions               from '../../actions/CityActions';
+import VerifyStore               from '../../store/VerifyStore';
+import VerifyActions             from '../../actions/VerifyActions';
 /**
  * @Component
  */
@@ -51,24 +56,48 @@ export default React.createClass({
       disabled: true,
       ValidationData: Validations,
       boxMaxacnhan: false,
+      ...AuthStore.getState(),
+      ...CityStore.getState(),
+      ...VerifyStore.getState(),
     };
   },
 
   componentDidMount() {
-    AuthStore.listen(this.onChangeAuthStore);
+    AuthStore.listen(this._onChangeAuthStore);
+    CityStore.listen(this._onChangeCityStore);
+    VerifyStore.listen(this._onChangeVerifyStore);
   },
 
   componentWillUnmount() {
-    AuthStore.unlisten(this.onChangeAuthStore);
+    AuthStore.unlisten(this._onChangeAuthStore);
+    CityStore.unlisten(this._onChangeCityStore);
+    VerifyStore.unlisten(this._onChangeVerifyStore);
   },
 
-  onChangeAuthStore(state) {
+  _onChangeAuthStore(state) {
     if(state.createUseState === "success") {
-      this.props.VerifyActions.getCode();
+      VerifyActions.getCode();
       this.setState({
         boxMaxacnhan: true,
+        ...state,
       });
+      return;
     }
+    this.setState({
+      ...state,
+    });
+  },
+
+  _onChangeCityStore(state) {
+    this.setState({
+      ...state,
+    });
+  },
+
+  _onChangeVerifyStore(state) {
+    this.setState({
+      ...state,
+    });
   },
 
 	render () {
@@ -100,8 +129,8 @@ export default React.createClass({
 
             <p className="text-center title-form">Đăng Ký Tổ Cú</p>
 
-            {this.props.createUseState === "failed" && (
-              <p className="text-center text-danger">{this.props.failedMessage}</p>
+            {this.state.createUseState === "failed" && (
+              <p className="text-center text-danger">{this.state.failedCreateMessage}</p>
             )}
 
             <form>
@@ -126,7 +155,7 @@ export default React.createClass({
                   <Select
                     ref="city"
                     type="city"
-                    List={this.props.city}
+                    List={this.state.city}
                     onChange={this._onChangeSelectCity}
                     firstValue="Tỉnh Thành" />
                 </div>
@@ -134,7 +163,7 @@ export default React.createClass({
                   <Select
                     ref="district"
                     type="district"
-                    List={this.props.district}
+                    List={this.state.district}
                     firstValue="Quận Huyện" />
                 </div>
               </div>
@@ -153,10 +182,10 @@ export default React.createClass({
                   type="submit"
                   disabled={this.state.disabled}>
 
-                  {this.props.createUseState !== "loading" && (
+                  {this.state.createUseState !== "loading" && (
                     "Tạo Tài Khoản"
                   )}
-                  {this.props.createUseState === "loading" && (
+                  {this.state.createUseState === "loading" && (
                     <i className="fa fa-spinner fa-pulse"></i>
                   )}
                 </button>
@@ -176,11 +205,11 @@ export default React.createClass({
     if(this.state.boxMaxacnhan) {
       return (
         <Verify
-          auth={this.props.auth}
-          codeFaild={this.props.codeFaild}
-          verifyFaild={this.props.verifyFaild}
-          verifyState={this.props.verifyState}
-          VerifyActions={this.props.VerifyActions} />
+          auth={this.state.auth}
+          codeFaild={this.state.codeFaild}
+          verifyFaild={this.state.verifyFaild}
+          verifyState={this.state.verifyState}
+          VerifyActions={VerifyActions} />
       );
     }
   },
@@ -230,7 +259,7 @@ export default React.createClass({
   },
 
   _onChangeSelectCity(citySelect) {
-    this.props.CityActions.getDistrict({city: citySelect});
+    CityActions.getDistrict({city: citySelect});
   },
 
   CreateAuth(e) {
@@ -241,7 +270,7 @@ export default React.createClass({
     let district    = this.refs.district.getValue();
     let password    = this.refs.password.getValue();
 
-    this.props.AuthActions.CreateUser({name, mobilePhone, city, district, password});
+    AuthActions.CreateUser({name, mobilePhone, city, district, password});
   },
 
 });

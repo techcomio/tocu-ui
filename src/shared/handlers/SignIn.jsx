@@ -8,14 +8,23 @@ import AuthActions from '../actions/AuthActions';
 /**
  * @Component
  */
-import AltContainer from 'alt/AltContainer';
 import FormSignIn   from '../components/Form/SignIn';
 
 
 export default class SignIn extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired,
+  }
+
+  static onEnter(next, transition) {
+    let {test} = this.context;
+    console.log('onEnter SignIn')
+    console.log(test)
   }
 
   componentWillMount () {
@@ -28,18 +37,7 @@ export default class SignIn extends React.Component {
       <div className="container">
         <div className="row row-form">
           <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
-
-            <AltContainer
-              component={FormSignIn}
-              stores={[AuthStore]}
-              actions={{AuthActions}}
-              inject={{
-                loginState: function(props) {
-                  return AuthStore.getState().loginState
-                }
-              }}
-             />
-
+            <FormSignIn />
           </div>
         </div>
       </div>
@@ -47,11 +45,3 @@ export default class SignIn extends React.Component {
   }
 
 };
-
-SignIn.onEnter = function(next, transition) {
-  console.log('onEnter SignIn')
-}
-
-SignIn.contextTypes = {
-  router: React.PropTypes.object.isRequired,
-}

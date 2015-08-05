@@ -32,7 +32,7 @@ webpackJsonp([0],[
 
 	var _sharedRoutes2 = _interopRequireDefault(_sharedRoutes);
 
-	var _sharedLibHeadParams = __webpack_require__(536);
+	var _sharedLibHeadParams = __webpack_require__(538);
 
 	var _sharedLibHeadParams2 = _interopRequireDefault(_sharedLibHeadParams);
 
@@ -1130,23 +1130,23 @@ webpackJsonp([0],[
 
 	var _handlersPosts2 = _interopRequireDefault(_handlersPosts);
 
-	var _handlersAlbum = __webpack_require__(419);
+	var _handlersAlbum = __webpack_require__(418);
 
 	var _handlersAlbum2 = _interopRequireDefault(_handlersAlbum);
 
-	var _handlersProduct_id = __webpack_require__(420);
+	var _handlersProduct_id = __webpack_require__(419);
 
 	var _handlersProduct_id2 = _interopRequireDefault(_handlersProduct_id);
 
-	var _handlersSignIn = __webpack_require__(532);
+	var _handlersSignIn = __webpack_require__(534);
 
 	var _handlersSignIn2 = _interopRequireDefault(_handlersSignIn);
 
-	var _handlersSignUp = __webpack_require__(533);
+	var _handlersSignUp = __webpack_require__(535);
 
 	var _handlersSignUp2 = _interopRequireDefault(_handlersSignUp);
 
-	var _handlersNotFound = __webpack_require__(535);
+	var _handlersNotFound = __webpack_require__(537);
 
 	var _handlersNotFound2 = _interopRequireDefault(_handlersNotFound);
 
@@ -1158,7 +1158,7 @@ webpackJsonp([0],[
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersPosts2['default'], name: 'posts', path: '/posts/:id' }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], name: 'album', path: '/album/:id' }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersProduct_id2['default'], name: 'productID', path: '/product/:id' }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersSignIn2['default'], name: 'signin', path: '/signin', onEnter: _handlersSignIn2['default'].onEnter }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersSignIn2['default'], name: 'signin', path: '/signin', onEnter: _handlersSignIn2['default'].onEnter, context: { test: 'hi!' } }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersSignUp2['default'], name: 'signup', path: '/signup' }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersNotFound2['default'], name: 'NotFound', path: '*' })
 	);
@@ -1269,6 +1269,14 @@ webpackJsonp([0],[
 
 	'use strict';
 
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
 	Object.defineProperty(exports, '__esModule', {
@@ -1287,38 +1295,43 @@ webpackJsonp([0],[
 	function prepareRoute(prepareFn) {
 
 	  return function (DecoratedComponent) {
-	    return _reactAddons2['default'].createClass({
+	    return (function (_React$Component) {
+	      _inherits(PrepareRouteDecorator, _React$Component);
 
-	      contextTypes: {
-	        router: _reactAddons.PropTypes.instanceOf(_reactRouter2['default']).isRequired
-	      },
+	      function PrepareRouteDecorator() {
+	        _classCallCheck(this, PrepareRouteDecorator);
 
-	      statics: {
-	        prepareRoute: prepareFn
-	      },
-
-	      componentDidMount: function componentDidMount() {
-	        var _props = this.props;
-	        var params = _props.params;
-	        var location = _props.location;
-
-	        prepareFn({ params: params, location: location });
-	      },
-
-	      render: function render() {
-	        /**
-	         * [contextTypes description]
-	         * DecoratedComponent setting this.context.router
-	         * @type {Object}
-	         */
-	        DecoratedComponent.contextTypes = {
-	          router: _reactAddons.PropTypes.instanceOf(_reactRouter2['default']).isRequired
-	        };
-
-	        return _reactAddons2['default'].createElement(DecoratedComponent, this.props);
+	        _get(Object.getPrototypeOf(PrepareRouteDecorator.prototype), 'constructor', this).apply(this, arguments);
 	      }
 
-	    });
+	      _createClass(PrepareRouteDecorator, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	          var _props = this.props;
+	          var params = _props.params;
+	          var location = _props.location;
+
+	          prepareFn({ params: params, location: location });
+	        }
+	      }, {
+	        key: 'render',
+	        value: function render() {
+	          return _reactAddons2['default'].createElement(DecoratedComponent, this.props);
+	        }
+	      }], [{
+	        key: 'contextTypes',
+	        value: {
+	          router: _reactAddons.PropTypes.instanceOf(_reactRouter2['default']).isRequired
+	        },
+	        enumerable: true
+	      }, {
+	        key: 'prepareRoute',
+	        value: prepareFn,
+	        enumerable: true
+	      }]);
+
+	      return PrepareRouteDecorator;
+	    })(_reactAddons2['default'].Component);
 	  };
 	}
 
@@ -1364,6 +1377,12 @@ webpackJsonp([0],[
 
 	      return this.props.children;
 	    }
+	  }], [{
+	    key: 'contextTypes',
+	    value: {
+	      router: _reactAddons2['default'].PropTypes.object.isRequired
+	    },
+	    enumerable: true
 	  }]);
 
 	  return Application;
@@ -1371,10 +1390,6 @@ webpackJsonp([0],[
 
 	exports['default'] = Application;
 	;
-
-	Application.contextTypes = {
-	  router: _reactAddons2['default'].PropTypes.object.isRequired
-	};
 	module.exports = exports['default'];
 
 /***/ },
@@ -1391,9 +1406,9 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _regeneratorRuntime = __webpack_require__(262)['default'];
+	var _regeneratorRuntime = __webpack_require__(266)['default'];
 
-	var _Promise = __webpack_require__(292)['default'];
+	var _Promise = __webpack_require__(296)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -1407,41 +1422,21 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _altAltContainer = __webpack_require__(311);
+	var _altAltContainer = __webpack_require__(262);
 
 	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
 
 	var _decorators = __webpack_require__(257);
 
-	var _storeBoxStore = __webpack_require__(315);
-
-	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
-
-	var _storeAuthStore = __webpack_require__(341);
-
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
-
-	var _storeSanphamStore = __webpack_require__(345);
-
-	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
-
-	var _storeOrderStore = __webpack_require__(347);
-
-	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
-
-	var _actionsBoxActions = __webpack_require__(319);
+	var _actionsBoxActions = __webpack_require__(315);
 
 	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
-	var _actionsAuthActions = __webpack_require__(342);
-
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _actionsSanphamActions = __webpack_require__(346);
+	var _actionsSanphamActions = __webpack_require__(336);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
-	var _actionsOrderActions = __webpack_require__(348);
+	var _actionsOrderActions = __webpack_require__(337);
 
 	/**
 	 * @Component
@@ -1449,9 +1444,9 @@ webpackJsonp([0],[
 
 	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
-	var _componentsHeader = __webpack_require__(349);
+	var _componentsHeaderHome = __webpack_require__(338);
 
-	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
+	var _componentsHeaderHome2 = _interopRequireDefault(_componentsHeaderHome);
 
 	var _componentsBoxYeuThich = __webpack_require__(354);
 
@@ -1472,7 +1467,7 @@ webpackJsonp([0],[
 	    _classCallCheck(this, _Home);
 
 	    _get(Object.getPrototypeOf(_Home.prototype), 'constructor', this).call(this, props);
-	    this._bind('renderBoxLogin', 'handleBoxLogin', 'hideBoxLogin');
+	    this._bind('handleBoxLogin', 'hideBoxLogin');
 
 	    this.state = {
 	      boxLogin: false
@@ -1509,59 +1504,18 @@ webpackJsonp([0],[
 	      return _reactAddons2['default'].createElement(
 	        'div',
 	        null,
-	        _reactAddons2['default'].createElement(
-	          _altAltContainer2['default'],
-	          {
-	            stores: [_storeBoxStore2['default'], _storeAuthStore2['default'], _storeSanphamStore2['default']],
-	            actions: { AuthActions: _actionsAuthActions2['default'] },
-	            inject: {
-	              auth: function auth(props) {
-	                return _storeAuthStore2['default'].getState().auth;
-	              },
-	              countSanpham: function countSanpham(props) {
-	                return _storeSanphamStore2['default'].getState().count;
-	              },
-	              countBox: function countBox(props) {
-	                return _storeBoxStore2['default'].getState().boxs.size;
-	              }
-	            } },
-	          _reactAddons2['default'].createElement(_componentsHeader2['default'], null)
-	        ),
+	        _reactAddons2['default'].createElement(_componentsHeaderHome2['default'], null),
 	        _reactAddons2['default'].createElement(
 	          'section',
 	          { id: 'content' },
 	          _reactAddons2['default'].createElement(
 	            'div',
 	            { className: 'container' },
-	            _reactAddons2['default'].createElement(
-	              _altAltContainer2['default'],
-	              {
-	                stores: [_storeOrderStore2['default']],
-	                actions: { OrderActions: _actionsOrderActions2['default'] },
-	                inject: {
-	                  listOrder: function listOrder() {
-	                    return _storeOrderStore2['default'].getState().listOrder;
-	                  }
-	                } },
-	              _reactAddons2['default'].createElement(_componentsBoxYeuThich2['default'], null)
-	            ),
-	            _reactAddons2['default'].createElement(
-	              _altAltContainer2['default'],
-	              {
-	                stores: [_storeBoxStore2['default'], _storeAuthStore2['default']],
-	                inject: {
-	                  boxs: function boxs(props) {
-	                    return _storeBoxStore2['default'].getState().boxs;
-	                  },
-	                  auth: function auth(props) {
-	                    return _storeAuthStore2['default'].getState().auth;
-	                  }
-	                } },
-	              _reactAddons2['default'].createElement(_componentsThumbnail2['default'], { handleBoxLogin: this.handleBoxLogin })
-	            )
+	            _reactAddons2['default'].createElement(_componentsBoxYeuThich2['default'], null),
+	            _reactAddons2['default'].createElement(_componentsThumbnail2['default'], { handleBoxLogin: this.handleBoxLogin })
 	          )
 	        ),
-	        this.renderBoxLogin()
+	        this.renderBoxLogin.call(this)
 	      );
 	    }
 	  }, {
@@ -1580,18 +1534,7 @@ webpackJsonp([0],[
 	              _reactAddons2['default'].createElement(
 	                'div',
 	                { className: 'centrix' },
-	                _reactAddons2['default'].createElement(
-	                  _altAltContainer2['default'],
-	                  {
-	                    stores: [_storeAuthStore2['default']],
-	                    actions: { AuthActions: _actionsAuthActions2['default'] },
-	                    inject: {
-	                      loginState: function loginState(props) {
-	                        return _storeAuthStore2['default'].getState().loginState;
-	                      }
-	                    } },
-	                  _reactAddons2['default'].createElement(_componentsFormSignIn2['default'], { replaceWith: this.hideBoxLogin })
-	                )
+	                _reactAddons2['default'].createElement(_componentsFormSignIn2['default'], { replaceWith: this.hideBoxLogin })
 	              )
 	            )
 	          )
@@ -1637,15 +1580,303 @@ webpackJsonp([0],[
 
 	exports['default'] = Home;
 	;
-
-	Home.onEnter = function (next, transition) {
-	  // transition.to('/sigup');
-	};
 	module.exports = exports['default'];
 	/* Header home */ /* Box yeu thich */ /* Thumbnail */
 
 /***/ },
 /* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(263)
+
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * AltContainer.
+	 *
+	 * There are many ways to use AltContainer.
+	 *
+	 * Using the `stores` prop.
+	 *
+	 * <AltContainer stores={{ FooStore: FooStore }}>
+	 *   children get this.props.FooStore.storeData
+	 * </AltContainer>
+	 *
+	 * You can also pass in functions.
+	 *
+	 * <AltContainer stores={{ FooStore: function () { return { storeData: true } } }}>
+	 *   children get this.props.FooStore.storeData
+	 * </AltContainer>
+	 *
+	 * Using the `store` prop.
+	 *
+	 * <AltContainer store={FooStore}>
+	 *   children get this.props.storeData
+	 * </AltContainer>
+	 *
+	 * Passing in `flux` because you're using alt instances
+	 *
+	 * <AltContainer flux={flux}>
+	 *   children get this.props.flux
+	 * </AltContainer>
+	 *
+	 * Using a custom render function.
+	 *
+	 * <AltContainer
+	 *   render={function (props) {
+	 *     return <div />;
+	 *   }}
+	 * />
+	 *
+	 * Using the `transform` prop.
+	 *
+	 * <AltContainer
+	 *   stores={{ FooStore: FooStore, BarStore: BarStore }}
+	 *   transform={function(stores) {
+	 *     var FooStore = stores.FooStore;
+	 *     var BarStore = stores.BarStore;
+	 *     var products =
+	 *       FooStore.products
+	 *         .slice(0, 10)
+	 *         .concat(BarStore.products);
+	 *     return { products: products };
+	 *   }}
+	 * >
+	 *   children get this.props.products
+	 * </AltContainer>
+	 *
+	 * Full docs available at http://goatslacker.github.io/alt/
+	 */
+	var React = __webpack_require__(16)
+	var mixinContainer = __webpack_require__(264)
+	var assign = __webpack_require__(208).assign
+
+	var AltContainer = React.createClass(assign({
+	  displayName: 'AltContainer',
+
+	  render: function () {
+	    return this.altRender('div')
+	  }
+	}, mixinContainer(React)))
+
+	module.exports = AltContainer
+
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Subscribe = __webpack_require__(265)
+	var assign = __webpack_require__(208).assign
+
+	function id(it) {
+	  return it
+	}
+
+	function getStateFromStore(store, props) {
+	  return typeof store === 'function' ? store(props).value : store.getState()
+	}
+
+	function getStateFromKey(actions, props) {
+	  return typeof actions === 'function' ? actions(props) : actions
+	}
+
+	function mixinContainer(React) {
+	  var cloneWithProps = React.addons.cloneWithProps
+
+	  return {
+	    contextTypes: {
+	      flux: React.PropTypes.object
+	    },
+
+	    childContextTypes: {
+	      flux: React.PropTypes.object
+	    },
+
+	    getChildContext: function () {
+	      var flux = this.props.flux || this.context.flux
+	      return flux ? { flux: flux } : {}
+	    },
+
+	    getInitialState: function () {
+	      if (this.props.stores && this.props.store) {
+	        throw new ReferenceError('Cannot define both store and stores')
+	      }
+
+	      return this.reduceState(this.props)
+	    },
+
+	    componentWillReceiveProps: function (nextProps) {
+	      this.destroySubscriptions()
+	      this.setState(this.reduceState(nextProps))
+	      this.registerStores(nextProps)
+	    },
+
+	    componentDidMount: function () {
+	      this.registerStores(this.props)
+	    },
+
+	    componentWillUnmount: function () {
+	      this.destroySubscriptions()
+	    },
+
+	    registerStores: function (props) {
+	      var stores = props.stores
+	      Subscribe.create(this)
+
+	      if (props.store) {
+	        this.addSubscription(props.store)
+	      } else if (props.stores) {
+	        if (Array.isArray(stores)) {
+	          stores.forEach(function (store) {
+	            this.addSubscription(store)
+	          }, this)
+	        } else {
+	          Object.keys(stores).forEach(function (formatter) {
+	            this.addSubscription(stores[formatter])
+	          }, this)
+	        }
+	      }
+	    },
+
+	    destroySubscriptions: function () {
+	      Subscribe.destroy(this)
+	    },
+
+	    getStateFromStores: function (props) {
+	      var stores = props.stores
+	      if (props.store) {
+	        return getStateFromStore(props.store, props)
+	      } else if (props.stores) {
+	        // If you pass in an array of stores then we are just listening to them
+	        // it should be an object then the state is added to the key specified
+	        if (!Array.isArray(stores)) {
+	          return Object.keys(stores).reduce(function (obj, key) {
+	            obj[key] = getStateFromStore(stores[key], props)
+	            return obj
+	          }, {})
+	        }
+	      } else {
+	        return {}
+	      }
+	    },
+
+	    getStateFromActions: function (props) {
+	      if (props.actions) {
+	        return getStateFromKey(props.actions, props)
+	      } else {
+	        return {}
+	      }
+	    },
+
+	    getInjected: function (props) {
+	      if (props.inject) {
+	        return Object.keys(props.inject).reduce(function (obj, key) {
+	          obj[key] = getStateFromKey(props.inject[key], props)
+	          return obj
+	        }, {})
+	      } else {
+	        return {}
+	      }
+	    },
+
+	    reduceState: function (props) {
+	      return assign(
+	        {},
+	        this.getStateFromStores(props),
+	        this.getStateFromActions(props),
+	        this.getInjected(props)
+	      )
+	    },
+
+	    addSubscription: function (store) {
+	      if (typeof store === 'function') {
+	        Subscribe.add(this, store(this.props).store, this.altSetState)
+	      } else {
+	        Subscribe.add(this, store, this.altSetState)
+	      }
+	    },
+
+	    altSetState: function () {
+	      this.setState(this.reduceState(this.props))
+	    },
+
+	    getProps: function () {
+	      var flux = this.props.flux || this.context.flux
+	      var transform = typeof this.props.transform === 'function'
+	        ? this.props.transform
+	        : id
+	      return transform(assign(
+	        flux ? { flux: flux } : {},
+	        this.state
+	      ))
+	    },
+
+	    shouldComponentUpdate: function () {
+	      return this.props.shouldComponentUpdate
+	        ? this.props.shouldComponentUpdate(this.getProps())
+	        : true
+	    },
+
+	    altRender: function (Node) {
+	      var children = this.props.children
+	      // Custom rendering function
+	      if (typeof this.props.render === 'function') {
+	        return this.props.render(this.getProps())
+	      } else if (this.props.component) {
+	        return React.createElement(this.props.component, this.getProps())
+	      }
+
+	      // Does not wrap child in a div if we don't have to.
+	      if (Array.isArray(children)) {
+	        return React.createElement(Node, null, children.map(function (child, i) {
+	          return cloneWithProps(child, assign({ key: i }, this.getProps()))
+	        }, this))
+	      } else if (children) {
+	        return cloneWithProps(children, this.getProps())
+	      } else {
+	        return React.createElement(Node, this.getProps())
+	      }
+	    }
+	  }
+	}
+
+	module.exports = mixinContainer
+
+
+/***/ },
+/* 265 */
+/***/ function(module, exports) {
+
+	'use strict'
+
+	var Subscribe = {
+	  create: function (context) {
+	    context._AltMixinRegistry = context._AltMixinRegistry || []
+	  },
+
+	  add: function (context, store, handler) {
+	    context._AltMixinRegistry.push(store.listen(handler))
+	  },
+
+	  destroy: function (context) {
+	    context._AltMixinRegistry.forEach(function (f) { f() })
+	    context._AltMixinRegistry = []
+	  },
+
+	  listeners: function (context) {
+	    return context._AltMixinRegistry
+	  }
+	}
+
+	module.exports = Subscribe
+
+
+/***/ },
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// This method of obtaining a reference to the global object needs to be
@@ -1666,7 +1897,7 @@ webpackJsonp([0],[
 	// Force reevalutation of runtime.js.
 	g.regeneratorRuntime = undefined;
 
-	module.exports = __webpack_require__(263);
+	module.exports = __webpack_require__(267);
 
 	if (hadRuntime) {
 	  // Restore the original runtime.
@@ -1681,7 +1912,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 263 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {/**
@@ -1696,13 +1927,13 @@ webpackJsonp([0],[
 
 	"use strict";
 
-	var _Symbol = __webpack_require__(265)["default"];
+	var _Symbol = __webpack_require__(269)["default"];
 
-	var _Symbol$iterator = __webpack_require__(279)["default"];
+	var _Symbol$iterator = __webpack_require__(283)["default"];
 
 	var _Object$create = __webpack_require__(225)["default"];
 
-	var _Promise = __webpack_require__(292)["default"];
+	var _Promise = __webpack_require__(296)["default"];
 
 	!(function (global) {
 	  "use strict";
@@ -2310,10 +2541,10 @@ webpackJsonp([0],[
 	// object, this seems to be the most reliable technique that does not
 	// use indirect eval (which violates Content Security Policy).
 	typeof global === "object" ? global : typeof window === "object" ? window : typeof self === "object" ? self : undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(264)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(268)))
 
 /***/ },
-/* 264 */
+/* 268 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -2409,40 +2640,40 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 265 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(266), __esModule: true };
+	module.exports = { "default": __webpack_require__(270), __esModule: true };
 
 /***/ },
-/* 266 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(267);
+	__webpack_require__(271);
 	module.exports = __webpack_require__(7).Symbol;
 
 /***/ },
-/* 267 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// ECMAScript 6 symbols shim
 	var $              = __webpack_require__(14)
 	  , global         = __webpack_require__(6)
-	  , has            = __webpack_require__(268)
-	  , SUPPORT_DESC   = __webpack_require__(269)
+	  , has            = __webpack_require__(272)
+	  , SUPPORT_DESC   = __webpack_require__(273)
 	  , $def           = __webpack_require__(5)
-	  , $redef         = __webpack_require__(270)
-	  , shared         = __webpack_require__(273)
-	  , setTag         = __webpack_require__(274)
-	  , uid            = __webpack_require__(276)
-	  , wks            = __webpack_require__(275)
-	  , keyOf          = __webpack_require__(277)
+	  , $redef         = __webpack_require__(274)
+	  , shared         = __webpack_require__(277)
+	  , setTag         = __webpack_require__(278)
+	  , uid            = __webpack_require__(280)
+	  , wks            = __webpack_require__(279)
+	  , keyOf          = __webpack_require__(281)
 	  , $names         = __webpack_require__(223)
 	  , enumKeys       = __webpack_require__(13)
 	  , anObject       = __webpack_require__(231)
 	  , toObject       = __webpack_require__(9)
-	  , createDesc     = __webpack_require__(272)
+	  , createDesc     = __webpack_require__(276)
 	  , getDesc        = $.getDesc
 	  , setDesc        = $.setDesc
 	  , $create        = $.create
@@ -2554,7 +2785,7 @@ webpackJsonp([0],[
 	  $.getNames   = $names.get = getOwnPropertyNames;
 	  $.getSymbols = getOwnPropertySymbols;
 
-	  if(SUPPORT_DESC && !__webpack_require__(278)){
+	  if(SUPPORT_DESC && !__webpack_require__(282)){
 	    $redef(ObjectProto, 'propertyIsEnumerable', propertyIsEnumerable, true);
 	  }
 	}
@@ -2622,7 +2853,7 @@ webpackJsonp([0],[
 	setTag(global.JSON, 'JSON', true);
 
 /***/ },
-/* 268 */
+/* 272 */
 /***/ function(module, exports) {
 
 	var hasOwnProperty = {}.hasOwnProperty;
@@ -2631,7 +2862,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 269 */
+/* 273 */
 /***/ function(module, exports) {
 
 	// Thank's IE8 for his funny defineProperty
@@ -2642,18 +2873,18 @@ webpackJsonp([0],[
 	}();
 
 /***/ },
-/* 270 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(271);
+	module.exports = __webpack_require__(275);
 
 /***/ },
-/* 271 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $          = __webpack_require__(14)
-	  , createDesc = __webpack_require__(272);
-	module.exports = __webpack_require__(269) ? function(object, key, value){
+	  , createDesc = __webpack_require__(276);
+	module.exports = __webpack_require__(273) ? function(object, key, value){
 	  return $.setDesc(object, key, createDesc(1, value));
 	} : function(object, key, value){
 	  object[key] = value;
@@ -2661,7 +2892,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 272 */
+/* 276 */
 /***/ function(module, exports) {
 
 	module.exports = function(bitmap, value){
@@ -2674,7 +2905,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 273 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var global = __webpack_require__(6)
@@ -2685,30 +2916,30 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 274 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var has  = __webpack_require__(268)
-	  , hide = __webpack_require__(271)
-	  , TAG  = __webpack_require__(275)('toStringTag');
+	var has  = __webpack_require__(272)
+	  , hide = __webpack_require__(275)
+	  , TAG  = __webpack_require__(279)('toStringTag');
 
 	module.exports = function(it, tag, stat){
 	  if(it && !has(it = stat ? it : it.prototype, TAG))hide(it, TAG, tag);
 	};
 
 /***/ },
-/* 275 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var store  = __webpack_require__(273)('wks')
+	var store  = __webpack_require__(277)('wks')
 	  , Symbol = __webpack_require__(6).Symbol;
 	module.exports = function(name){
 	  return store[name] || (store[name] =
-	    Symbol && Symbol[name] || (Symbol || __webpack_require__(276))('Symbol.' + name));
+	    Symbol && Symbol[name] || (Symbol || __webpack_require__(280))('Symbol.' + name));
 	};
 
 /***/ },
-/* 276 */
+/* 280 */
 /***/ function(module, exports) {
 
 	var id = 0
@@ -2718,7 +2949,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 277 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $        = __webpack_require__(14)
@@ -2733,33 +2964,33 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 278 */
+/* 282 */
 /***/ function(module, exports) {
 
 	module.exports = true;
 
 /***/ },
-/* 279 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(280), __esModule: true };
+	module.exports = { "default": __webpack_require__(284), __esModule: true };
 
 /***/ },
-/* 280 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(281);
-	__webpack_require__(288);
-	module.exports = __webpack_require__(275)('iterator');
+	__webpack_require__(285);
+	__webpack_require__(292);
+	module.exports = __webpack_require__(279)('iterator');
 
 /***/ },
-/* 281 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $at  = __webpack_require__(282)(true);
+	var $at  = __webpack_require__(286)(true);
 
 	// 21.1.3.27 String.prototype[@@iterator]()
-	__webpack_require__(284)(String, 'String', function(iterated){
+	__webpack_require__(288)(String, 'String', function(iterated){
 	  this._t = String(iterated); // target
 	  this._i = 0;                // next index
 	// 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -2774,12 +3005,12 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 282 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// true  -> String#at
 	// false -> String#codePointAt
-	var toInteger = __webpack_require__(283)
+	var toInteger = __webpack_require__(287)
 	  , defined   = __webpack_require__(12);
 	module.exports = function(TO_STRING){
 	  return function(that, pos){
@@ -2797,7 +3028,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 283 */
+/* 287 */
 /***/ function(module, exports) {
 
 	// 7.1.4 ToInteger
@@ -2808,23 +3039,23 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 284 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var LIBRARY         = __webpack_require__(278)
+	var LIBRARY         = __webpack_require__(282)
 	  , $def            = __webpack_require__(5)
-	  , $redef          = __webpack_require__(270)
-	  , hide            = __webpack_require__(271)
-	  , has             = __webpack_require__(268)
-	  , SYMBOL_ITERATOR = __webpack_require__(275)('iterator')
-	  , Iterators       = __webpack_require__(285)
+	  , $redef          = __webpack_require__(274)
+	  , hide            = __webpack_require__(275)
+	  , has             = __webpack_require__(272)
+	  , SYMBOL_ITERATOR = __webpack_require__(279)('iterator')
+	  , Iterators       = __webpack_require__(289)
 	  , FF_ITERATOR     = '@@iterator'
 	  , KEYS            = 'keys'
 	  , VALUES          = 'values';
 	function returnThis(){ return this; }
 	module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE){
-	  __webpack_require__(286)(Constructor, NAME, next);
+	  __webpack_require__(290)(Constructor, NAME, next);
 	  function createMethod(kind){
 	    switch(kind){
 	      case KEYS: return function keys(){ return new Constructor(this, kind); };
@@ -2840,7 +3071,7 @@ webpackJsonp([0],[
 	  if(_native){
 	    var IteratorPrototype = __webpack_require__(14).getProto(_default.call(new Base));
 	    // Set @@toStringTag to native iterators
-	    __webpack_require__(274)(IteratorPrototype, TAG, true);
+	    __webpack_require__(278)(IteratorPrototype, TAG, true);
 	    // FF fix
 	    if(!LIBRARY && has(proto, FF_ITERATOR))hide(IteratorPrototype, SYMBOL_ITERATOR, returnThis);
 	  }
@@ -2857,18 +3088,18 @@ webpackJsonp([0],[
 	    };
 	    if(FORCE)for(key in methods){
 	      if(!(key in proto))$redef(proto, key, methods[key]);
-	    } else $def($def.P + $def.F * __webpack_require__(287), NAME, methods);
+	    } else $def($def.P + $def.F * __webpack_require__(291), NAME, methods);
 	  }
 	};
 
 /***/ },
-/* 285 */
+/* 289 */
 /***/ function(module, exports) {
 
 	module.exports = {};
 
 /***/ },
-/* 286 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2876,42 +3107,42 @@ webpackJsonp([0],[
 	  , IteratorPrototype = {};
 
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-	__webpack_require__(271)(IteratorPrototype, __webpack_require__(275)('iterator'), function(){ return this; });
+	__webpack_require__(275)(IteratorPrototype, __webpack_require__(279)('iterator'), function(){ return this; });
 
 	module.exports = function(Constructor, NAME, next){
-	  Constructor.prototype = $.create(IteratorPrototype, {next: __webpack_require__(272)(1,next)});
-	  __webpack_require__(274)(Constructor, NAME + ' Iterator');
+	  Constructor.prototype = $.create(IteratorPrototype, {next: __webpack_require__(276)(1,next)});
+	  __webpack_require__(278)(Constructor, NAME + ' Iterator');
 	};
 
 /***/ },
-/* 287 */
+/* 291 */
 /***/ function(module, exports) {
 
 	// Safari has buggy iterators w/o `next`
 	module.exports = 'keys' in [] && !('next' in [].keys());
 
 /***/ },
-/* 288 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(289);
-	var Iterators = __webpack_require__(285);
+	__webpack_require__(293);
+	var Iterators = __webpack_require__(289);
 	Iterators.NodeList = Iterators.HTMLCollection = Iterators.Array;
 
 /***/ },
-/* 289 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var setUnscope = __webpack_require__(290)
-	  , step       = __webpack_require__(291)
-	  , Iterators  = __webpack_require__(285)
+	var setUnscope = __webpack_require__(294)
+	  , step       = __webpack_require__(295)
+	  , Iterators  = __webpack_require__(289)
 	  , toObject   = __webpack_require__(9);
 
 	// 22.1.3.4 Array.prototype.entries()
 	// 22.1.3.13 Array.prototype.keys()
 	// 22.1.3.29 Array.prototype.values()
 	// 22.1.3.30 Array.prototype[@@iterator]()
-	__webpack_require__(284)(Array, 'Array', function(iterated, kind){
+	__webpack_require__(288)(Array, 'Array', function(iterated, kind){
 	  this._t = toObject(iterated); // target
 	  this._i = 0;                  // next index
 	  this._k = kind;               // kind
@@ -2937,13 +3168,13 @@ webpackJsonp([0],[
 	setUnscope('entries');
 
 /***/ },
-/* 290 */
+/* 294 */
 /***/ function(module, exports) {
 
 	module.exports = function(){ /* empty */ };
 
 /***/ },
-/* 291 */
+/* 295 */
 /***/ function(module, exports) {
 
 	module.exports = function(done, value){
@@ -2951,52 +3182,52 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 292 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(293), __esModule: true };
+	module.exports = { "default": __webpack_require__(297), __esModule: true };
 
 /***/ },
-/* 293 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(294);
-	__webpack_require__(281);
-	__webpack_require__(288);
-	__webpack_require__(295);
+	__webpack_require__(298);
+	__webpack_require__(285);
+	__webpack_require__(292);
+	__webpack_require__(299);
 	module.exports = __webpack_require__(7).Promise;
 
 /***/ },
-/* 294 */
+/* 298 */
 /***/ function(module, exports) {
 
 	
 
 /***/ },
-/* 295 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $          = __webpack_require__(14)
-	  , LIBRARY    = __webpack_require__(278)
+	  , LIBRARY    = __webpack_require__(282)
 	  , global     = __webpack_require__(6)
 	  , ctx        = __webpack_require__(232)
-	  , classof    = __webpack_require__(296)
+	  , classof    = __webpack_require__(300)
 	  , $def       = __webpack_require__(5)
 	  , isObject   = __webpack_require__(222)
 	  , anObject   = __webpack_require__(231)
 	  , aFunction  = __webpack_require__(233)
-	  , strictNew  = __webpack_require__(297)
-	  , forOf      = __webpack_require__(298)
+	  , strictNew  = __webpack_require__(301)
+	  , forOf      = __webpack_require__(302)
 	  , setProto   = __webpack_require__(230).set
-	  , same       = __webpack_require__(303)
-	  , species    = __webpack_require__(304)
-	  , SPECIES    = __webpack_require__(275)('species')
-	  , RECORD     = __webpack_require__(276)('record')
+	  , same       = __webpack_require__(307)
+	  , species    = __webpack_require__(308)
+	  , SPECIES    = __webpack_require__(279)('species')
+	  , RECORD     = __webpack_require__(280)('record')
 	  , PROMISE    = 'Promise'
 	  , process    = global.process
 	  , isNode     = classof(process) == 'process'
-	  , asap       = process && process.nextTick || __webpack_require__(305).set
+	  , asap       = process && process.nextTick || __webpack_require__(309).set
 	  , P          = global[PROMISE]
 	  , Wrapper;
 
@@ -3022,7 +3253,7 @@ webpackJsonp([0],[
 	      works = false;
 	    }
 	    // actual V8 bug, https://code.google.com/p/v8/issues/detail?id=4162
-	    if(works && __webpack_require__(269)){
+	    if(works && __webpack_require__(273)){
 	      var thenableThenGotten = false;
 	      P.resolve($.setDesc({}, 'then', {
 	        get: function(){ thenableThenGotten = true; }
@@ -3164,7 +3395,7 @@ webpackJsonp([0],[
 	      $reject.call(record, err);
 	    }
 	  };
-	  __webpack_require__(309)(P.prototype, {
+	  __webpack_require__(313)(P.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected){
 	      var S = anObject(anObject(this).constructor)[SPECIES];
@@ -3191,7 +3422,7 @@ webpackJsonp([0],[
 
 	// export
 	$def($def.G + $def.W + $def.F * !useNative, {Promise: P});
-	__webpack_require__(274)(P, PROMISE);
+	__webpack_require__(278)(P, PROMISE);
 	species(P);
 	species(Wrapper = __webpack_require__(7)[PROMISE]);
 
@@ -3209,7 +3440,7 @@ webpackJsonp([0],[
 	      ? x : new this(function(res){ res(x); });
 	  }
 	});
-	$def($def.S + $def.F * !(useNative && __webpack_require__(310)(function(iter){
+	$def($def.S + $def.F * !(useNative && __webpack_require__(314)(function(iter){
 	  P.all(iter)['catch'](function(){});
 	})), PROMISE, {
 	  // 25.4.4.1 Promise.all(iterable)
@@ -3241,11 +3472,11 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 296 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var cof = __webpack_require__(11)
-	  , TAG = __webpack_require__(275)('toStringTag')
+	  , TAG = __webpack_require__(279)('toStringTag')
 	  // ES3 wrong here
 	  , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 
@@ -3261,7 +3492,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 297 */
+/* 301 */
 /***/ function(module, exports) {
 
 	module.exports = function(it, Constructor, name){
@@ -3270,15 +3501,15 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 298 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var ctx         = __webpack_require__(232)
-	  , call        = __webpack_require__(299)
-	  , isArrayIter = __webpack_require__(300)
+	  , call        = __webpack_require__(303)
+	  , isArrayIter = __webpack_require__(304)
 	  , anObject    = __webpack_require__(231)
-	  , toLength    = __webpack_require__(301)
-	  , getIterFn   = __webpack_require__(302);
+	  , toLength    = __webpack_require__(305)
+	  , getIterFn   = __webpack_require__(306);
 	module.exports = function(iterable, entries, fn, that){
 	  var iterFn = getIterFn(iterable)
 	    , f      = ctx(fn, that, entries ? 2 : 1)
@@ -3294,7 +3525,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 299 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var anObject = __webpack_require__(231);
@@ -3312,34 +3543,34 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 300 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Iterators = __webpack_require__(285)
-	  , ITERATOR  = __webpack_require__(275)('iterator');
+	var Iterators = __webpack_require__(289)
+	  , ITERATOR  = __webpack_require__(279)('iterator');
 	module.exports = function(it){
 	  return ('Array' in Iterators ? Iterators.Array : Array.prototype[ITERATOR]) === it;
 	};
 
 /***/ },
-/* 301 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(283)
+	var toInteger = __webpack_require__(287)
 	  , min       = Math.min;
 	module.exports = function(it){
 	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 	};
 
 /***/ },
-/* 302 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(6)
-	  , classof   = __webpack_require__(296)
-	  , ITERATOR  = __webpack_require__(275)('iterator')
-	  , Iterators = __webpack_require__(285);
+	  , classof   = __webpack_require__(300)
+	  , ITERATOR  = __webpack_require__(279)('iterator')
+	  , Iterators = __webpack_require__(289);
 	module.exports = __webpack_require__(7).getIteratorMethod = function(it){
 	  var Symbol = global.Symbol;
 	  if(it != undefined){
@@ -3350,7 +3581,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 303 */
+/* 307 */
 /***/ function(module, exports) {
 
 	module.exports = Object.is || function is(x, y){
@@ -3358,27 +3589,27 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 304 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $       = __webpack_require__(14)
-	  , SPECIES = __webpack_require__(275)('species');
+	  , SPECIES = __webpack_require__(279)('species');
 	module.exports = function(C){
-	  if(__webpack_require__(269) && !(SPECIES in C))$.setDesc(C, SPECIES, {
+	  if(__webpack_require__(273) && !(SPECIES in C))$.setDesc(C, SPECIES, {
 	    configurable: true,
 	    get: function(){ return this; }
 	  });
 	};
 
 /***/ },
-/* 305 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var ctx                = __webpack_require__(232)
-	  , invoke             = __webpack_require__(307)
-	  , html               = __webpack_require__(308)
-	  , cel                = __webpack_require__(306)
+	  , invoke             = __webpack_require__(311)
+	  , html               = __webpack_require__(312)
+	  , cel                = __webpack_require__(310)
 	  , global             = __webpack_require__(6)
 	  , process            = global.process
 	  , setTask            = global.setImmediate
@@ -3452,7 +3683,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 306 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(222)
@@ -3464,7 +3695,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 307 */
+/* 311 */
 /***/ function(module, exports) {
 
 	// Fast apply
@@ -3488,26 +3719,26 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 308 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(6).document && document.documentElement;
 
 /***/ },
-/* 309 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $redef = __webpack_require__(270);
+	var $redef = __webpack_require__(274);
 	module.exports = function(target, src){
 	  for(var key in src)$redef(target, key, src[key]);
 	  return target;
 	};
 
 /***/ },
-/* 310 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SYMBOL_ITERATOR = __webpack_require__(275)('iterator')
+	var SYMBOL_ITERATOR = __webpack_require__(279)('iterator')
 	  , SAFE_CLOSING    = false;
 	try {
 	  var riter = [7][SYMBOL_ITERATOR]();
@@ -3528,298 +3759,6 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 311 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(312)
-
-
-/***/ },
-/* 312 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * AltContainer.
-	 *
-	 * There are many ways to use AltContainer.
-	 *
-	 * Using the `stores` prop.
-	 *
-	 * <AltContainer stores={{ FooStore: FooStore }}>
-	 *   children get this.props.FooStore.storeData
-	 * </AltContainer>
-	 *
-	 * You can also pass in functions.
-	 *
-	 * <AltContainer stores={{ FooStore: function () { return { storeData: true } } }}>
-	 *   children get this.props.FooStore.storeData
-	 * </AltContainer>
-	 *
-	 * Using the `store` prop.
-	 *
-	 * <AltContainer store={FooStore}>
-	 *   children get this.props.storeData
-	 * </AltContainer>
-	 *
-	 * Passing in `flux` because you're using alt instances
-	 *
-	 * <AltContainer flux={flux}>
-	 *   children get this.props.flux
-	 * </AltContainer>
-	 *
-	 * Using a custom render function.
-	 *
-	 * <AltContainer
-	 *   render={function (props) {
-	 *     return <div />;
-	 *   }}
-	 * />
-	 *
-	 * Using the `transform` prop.
-	 *
-	 * <AltContainer
-	 *   stores={{ FooStore: FooStore, BarStore: BarStore }}
-	 *   transform={function(stores) {
-	 *     var FooStore = stores.FooStore;
-	 *     var BarStore = stores.BarStore;
-	 *     var products =
-	 *       FooStore.products
-	 *         .slice(0, 10)
-	 *         .concat(BarStore.products);
-	 *     return { products: products };
-	 *   }}
-	 * >
-	 *   children get this.props.products
-	 * </AltContainer>
-	 *
-	 * Full docs available at http://goatslacker.github.io/alt/
-	 */
-	var React = __webpack_require__(16)
-	var mixinContainer = __webpack_require__(313)
-	var assign = __webpack_require__(208).assign
-
-	var AltContainer = React.createClass(assign({
-	  displayName: 'AltContainer',
-
-	  render: function () {
-	    return this.altRender('div')
-	  }
-	}, mixinContainer(React)))
-
-	module.exports = AltContainer
-
-
-/***/ },
-/* 313 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Subscribe = __webpack_require__(314)
-	var assign = __webpack_require__(208).assign
-
-	function id(it) {
-	  return it
-	}
-
-	function getStateFromStore(store, props) {
-	  return typeof store === 'function' ? store(props).value : store.getState()
-	}
-
-	function getStateFromKey(actions, props) {
-	  return typeof actions === 'function' ? actions(props) : actions
-	}
-
-	function mixinContainer(React) {
-	  var cloneWithProps = React.addons.cloneWithProps
-
-	  return {
-	    contextTypes: {
-	      flux: React.PropTypes.object
-	    },
-
-	    childContextTypes: {
-	      flux: React.PropTypes.object
-	    },
-
-	    getChildContext: function () {
-	      var flux = this.props.flux || this.context.flux
-	      return flux ? { flux: flux } : {}
-	    },
-
-	    getInitialState: function () {
-	      if (this.props.stores && this.props.store) {
-	        throw new ReferenceError('Cannot define both store and stores')
-	      }
-
-	      return this.reduceState(this.props)
-	    },
-
-	    componentWillReceiveProps: function (nextProps) {
-	      this.destroySubscriptions()
-	      this.setState(this.reduceState(nextProps))
-	      this.registerStores(nextProps)
-	    },
-
-	    componentDidMount: function () {
-	      this.registerStores(this.props)
-	    },
-
-	    componentWillUnmount: function () {
-	      this.destroySubscriptions()
-	    },
-
-	    registerStores: function (props) {
-	      var stores = props.stores
-	      Subscribe.create(this)
-
-	      if (props.store) {
-	        this.addSubscription(props.store)
-	      } else if (props.stores) {
-	        if (Array.isArray(stores)) {
-	          stores.forEach(function (store) {
-	            this.addSubscription(store)
-	          }, this)
-	        } else {
-	          Object.keys(stores).forEach(function (formatter) {
-	            this.addSubscription(stores[formatter])
-	          }, this)
-	        }
-	      }
-	    },
-
-	    destroySubscriptions: function () {
-	      Subscribe.destroy(this)
-	    },
-
-	    getStateFromStores: function (props) {
-	      var stores = props.stores
-	      if (props.store) {
-	        return getStateFromStore(props.store, props)
-	      } else if (props.stores) {
-	        // If you pass in an array of stores then we are just listening to them
-	        // it should be an object then the state is added to the key specified
-	        if (!Array.isArray(stores)) {
-	          return Object.keys(stores).reduce(function (obj, key) {
-	            obj[key] = getStateFromStore(stores[key], props)
-	            return obj
-	          }, {})
-	        }
-	      } else {
-	        return {}
-	      }
-	    },
-
-	    getStateFromActions: function (props) {
-	      if (props.actions) {
-	        return getStateFromKey(props.actions, props)
-	      } else {
-	        return {}
-	      }
-	    },
-
-	    getInjected: function (props) {
-	      if (props.inject) {
-	        return Object.keys(props.inject).reduce(function (obj, key) {
-	          obj[key] = getStateFromKey(props.inject[key], props)
-	          return obj
-	        }, {})
-	      } else {
-	        return {}
-	      }
-	    },
-
-	    reduceState: function (props) {
-	      return assign(
-	        {},
-	        this.getStateFromStores(props),
-	        this.getStateFromActions(props),
-	        this.getInjected(props)
-	      )
-	    },
-
-	    addSubscription: function (store) {
-	      if (typeof store === 'function') {
-	        Subscribe.add(this, store(this.props).store, this.altSetState)
-	      } else {
-	        Subscribe.add(this, store, this.altSetState)
-	      }
-	    },
-
-	    altSetState: function () {
-	      this.setState(this.reduceState(this.props))
-	    },
-
-	    getProps: function () {
-	      var flux = this.props.flux || this.context.flux
-	      var transform = typeof this.props.transform === 'function'
-	        ? this.props.transform
-	        : id
-	      return transform(assign(
-	        flux ? { flux: flux } : {},
-	        this.state
-	      ))
-	    },
-
-	    shouldComponentUpdate: function () {
-	      return this.props.shouldComponentUpdate
-	        ? this.props.shouldComponentUpdate(this.getProps())
-	        : true
-	    },
-
-	    altRender: function (Node) {
-	      var children = this.props.children
-	      // Custom rendering function
-	      if (typeof this.props.render === 'function') {
-	        return this.props.render(this.getProps())
-	      } else if (this.props.component) {
-	        return React.createElement(this.props.component, this.getProps())
-	      }
-
-	      // Does not wrap child in a div if we don't have to.
-	      if (Array.isArray(children)) {
-	        return React.createElement(Node, null, children.map(function (child, i) {
-	          return cloneWithProps(child, assign({ key: i }, this.getProps()))
-	        }, this))
-	      } else if (children) {
-	        return cloneWithProps(children, this.getProps())
-	      } else {
-	        return React.createElement(Node, this.getProps())
-	      }
-	    }
-	  }
-	}
-
-	module.exports = mixinContainer
-
-
-/***/ },
-/* 314 */
-/***/ function(module, exports) {
-
-	'use strict'
-
-	var Subscribe = {
-	  create: function (context) {
-	    context._AltMixinRegistry = context._AltMixinRegistry || []
-	  },
-
-	  add: function (context, store, handler) {
-	    context._AltMixinRegistry.push(store.listen(handler))
-	  },
-
-	  destroy: function (context) {
-	    context._AltMixinRegistry.forEach(function (f) { f() })
-	    context._AltMixinRegistry = []
-	  },
-
-	  listeners: function (context) {
-	    return context._AltMixinRegistry
-	  }
-	}
-
-	module.exports = Subscribe
-
-
-/***/ },
 /* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3829,7 +3768,7 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _Array$from = __webpack_require__(316)['default'];
+	var _regeneratorRuntime = __webpack_require__(266)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -3837,157 +3776,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _actionsBoxActions = __webpack_require__(319);
-
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
-	var _immutable = __webpack_require__(340);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var BoxStore = (function () {
-	  function BoxStore() {
-	    _classCallCheck(this, BoxStore);
-
-	    this.bindActions(_actionsBoxActions2['default']); // getBoxs, getBoxID, like, boxsFailed, getBoxIDFailed, likeFailed
-
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.boxs = _immutable2['default'].List();
-	    this.test = _immutable2['default'].List();
-	    this.info = _immutable2['default'].Map();
-	  }
-
-	  _createClass(BoxStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].List.isList(this.boxs)) {
-	        this.boxs = _immutable2['default'].fromJS(this.boxs);
-	      }
-	      if (!_immutable2['default'].List.isList(this.test)) {
-	        this.test = _immutable2['default'].fromJS(this.test);
-	      }
-	      if (!_immutable2['default'].List.isList(this.info)) {
-	        this.info = _immutable2['default'].fromJS(this.info);
-	      }
-	    }
-	  }, {
-	    key: 'onGetBoxs',
-	    value: function onGetBoxs(data) {
-	      this.boxs = this.boxs.merge(_Array$from(data));
-	    }
-	  }, {
-	    key: 'onGetBoxID',
-	    value: function onGetBoxID(data) {
-	      this.info = this.info.merge(data);
-	    }
-	  }, {
-	    key: 'onLike',
-	    value: function onLike(id) {
-	      this.boxs = this.boxs.update(this.boxs.findIndex(function (item) {
-	        return item.get("id") === id;
-	      }), function (item) {
-	        return item.updateIn(['likesCount'], function (value) {
-	          return value + 1;
-	        });
-	      });
-
-	      this.info = this.info.updateIn(['likesCount'], function (value) {
-	        return value + 1;
-	      });
-	    }
-	  }, {
-	    key: 'onBoxsFailed',
-	    value: function onBoxsFailed(err) {
-	      console.log('onBoxsFailed', err);
-	    }
-	  }, {
-	    key: 'onGetBoxIDFailed',
-	    value: function onGetBoxIDFailed(err) {
-	      console.log('onGetBoxIDFailed', err);
-	    }
-	  }]);
-
-	  return BoxStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
-
-/***/ },
-/* 316 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(317), __esModule: true };
-
-/***/ },
-/* 317 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(281);
-	__webpack_require__(318);
-	module.exports = __webpack_require__(7).Array.from;
-
-/***/ },
-/* 318 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var ctx         = __webpack_require__(232)
-	  , $def        = __webpack_require__(5)
-	  , toObject    = __webpack_require__(9)
-	  , call        = __webpack_require__(299)
-	  , isArrayIter = __webpack_require__(300)
-	  , toLength    = __webpack_require__(301)
-	  , getIterFn   = __webpack_require__(302);
-	$def($def.S + $def.F * !__webpack_require__(310)(function(iter){ Array.from(iter); }), 'Array', {
-	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
-	  from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
-	    var O       = toObject(arrayLike, true)
-	      , C       = typeof this == 'function' ? this : Array
-	      , mapfn   = arguments[1]
-	      , mapping = mapfn !== undefined
-	      , index   = 0
-	      , iterFn  = getIterFn(O)
-	      , length, result, step, iterator;
-	    if(mapping)mapfn = ctx(mapfn, arguments[2], 2);
-	    // if object isn't iterable or it's array with default iterator - use simple case
-	    if(iterFn != undefined && !(C == Array && isArrayIter(iterFn))){
-	      for(iterator = iterFn.call(O), result = new C; !(step = iterator.next()).done; index++){
-	        result[index] = mapping ? call(iterator, mapfn, [step.value, index], true) : step.value;
-	      }
-	    } else {
-	      for(result = new C(length = toLength(O.length)); length > index; index++){
-	        result[index] = mapping ? mapfn(O[index], index) : O[index];
-	      }
-	    }
-	    result.length = index;
-	    return result;
-	  }
-	});
-
-/***/ },
-/* 319 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(262)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(320);
+	var _axios = __webpack_require__(316);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(339);
+	var _configSample = __webpack_require__(335);
 
 	var BoxActions = (function () {
 	  function BoxActions() {
@@ -4015,7 +3808,7 @@ webpackJsonp([0],[
 	              self.dispatch(res.data);
 	            })['catch'](function (res) {
 	              /**
-	               * send lỗi cho func dataError
+	               * send lỗi cho func boxsFailed
 	               * @param  {Error} [Error request]
 	               */
 	              self.actions.boxsFailed(res.data);
@@ -4049,7 +3842,7 @@ webpackJsonp([0],[
 	        self.dispatch(res.data);
 	      })['catch'](function (res) {
 	        /**
-	         * send lỗi cho func dataError
+	         * send lỗi cho func getBoxIDFailed
 	         * @param  {Error} [Error request]
 	         */
 	        self.actions.getBoxIDFailed(res.data);
@@ -4114,28 +3907,28 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(BoxActions);
 
 /***/ },
-/* 320 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(321);
+	module.exports = __webpack_require__(317);
 
 /***/ },
-/* 321 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(322);
-	var utils = __webpack_require__(323);
-	var deprecatedMethod = __webpack_require__(324);
-	var dispatchRequest = __webpack_require__(325);
-	var InterceptorManager = __webpack_require__(332);
+	var defaults = __webpack_require__(318);
+	var utils = __webpack_require__(319);
+	var deprecatedMethod = __webpack_require__(320);
+	var dispatchRequest = __webpack_require__(321);
+	var InterceptorManager = __webpack_require__(328);
 
 	// Polyfill ES6 Promise if needed
 	(function () {
 	  // webpack is being used to set es6-promise to the native Promise
 	  // for the standalone build. It's necessary to make sure polyfill exists.
-	  var P = __webpack_require__(333);
+	  var P = __webpack_require__(329);
 	  if (P && typeof P.polyfill === 'function') {
 	    P.polyfill();
 	  }
@@ -4198,7 +3991,7 @@ webpackJsonp([0],[
 	axios.all = function (promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(338);
+	axios.spread = __webpack_require__(334);
 
 	// Expose interceptors
 	axios.interceptors = {
@@ -4237,12 +4030,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 322 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(323);
+	var utils = __webpack_require__(319);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -4295,7 +4088,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 323 */
+/* 319 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4518,7 +4311,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 324 */
+/* 320 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4546,7 +4339,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 325 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -4563,11 +4356,11 @@ webpackJsonp([0],[
 	    try {
 	      // For browsers use XHR adapter
 	      if (typeof window !== 'undefined') {
-	        __webpack_require__(326)(resolve, reject, config);
+	        __webpack_require__(322)(resolve, reject, config);
 	      }
 	      // For node use HTTP adapter
 	      else if (typeof process !== 'undefined') {
-	        __webpack_require__(326)(resolve, reject, config);
+	        __webpack_require__(322)(resolve, reject, config);
 	      }
 	    } catch (e) {
 	      reject(e);
@@ -4576,23 +4369,23 @@ webpackJsonp([0],[
 	};
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(264)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(268)))
 
 /***/ },
-/* 326 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/*global ActiveXObject:true*/
 
-	var defaults = __webpack_require__(322);
-	var utils = __webpack_require__(323);
-	var buildUrl = __webpack_require__(327);
-	var cookies = __webpack_require__(328);
-	var parseHeaders = __webpack_require__(329);
-	var transformData = __webpack_require__(330);
-	var urlIsSameOrigin = __webpack_require__(331);
+	var defaults = __webpack_require__(318);
+	var utils = __webpack_require__(319);
+	var buildUrl = __webpack_require__(323);
+	var cookies = __webpack_require__(324);
+	var parseHeaders = __webpack_require__(325);
+	var transformData = __webpack_require__(326);
+	var urlIsSameOrigin = __webpack_require__(327);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  // Transform request data
@@ -4691,12 +4484,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 327 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(323);
+	var utils = __webpack_require__(319);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -4749,12 +4542,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 328 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(323);
+	var utils = __webpack_require__(319);
 
 	module.exports = {
 	  write: function write(name, value, expires, path, domain, secure) {
@@ -4792,12 +4585,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 329 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(323);
+	var utils = __webpack_require__(319);
 
 	/**
 	 * Parse headers into an object
@@ -4832,12 +4625,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 330 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(323);
+	var utils = __webpack_require__(319);
 
 	/**
 	 * Transform the data for a request or a response
@@ -4857,12 +4650,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 331 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(323);
+	var utils = __webpack_require__(319);
 	var msie = /(msie|trident)/i.test(navigator.userAgent);
 	var urlParsingNode = document.createElement('a');
 	var originUrl;
@@ -4915,12 +4708,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 332 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(323);
+	var utils = __webpack_require__(319);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -4973,7 +4766,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 333 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, setImmediate, global, module) {/*!
@@ -5112,7 +4905,7 @@ webpackJsonp([0],[
 	    function lib$es6$promise$asap$$attemptVertex() {
 	      try {
 	        var r = require;
-	        var vertx = __webpack_require__(336);
+	        var vertx = __webpack_require__(332);
 	        lib$es6$promise$asap$$vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	        return lib$es6$promise$asap$$useVertxTimer();
 	      } catch(e) {
@@ -5937,7 +5730,7 @@ webpackJsonp([0],[
 	    };
 
 	    /* global define:true module:true window: true */
-	    if ("function" === 'function' && __webpack_require__(337)['amd']) {
+	    if ("function" === 'function' && __webpack_require__(333)['amd']) {
 	      !(__WEBPACK_AMD_DEFINE_RESULT__ = function() { return lib$es6$promise$umd$$ES6Promise; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof module !== 'undefined' && module['exports']) {
 	      module['exports'] = lib$es6$promise$umd$$ES6Promise;
@@ -5949,13 +5742,13 @@ webpackJsonp([0],[
 	}).call(this);
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(264), __webpack_require__(334).setImmediate, (function() { return this; }()), __webpack_require__(335)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(268), __webpack_require__(330).setImmediate, (function() { return this; }()), __webpack_require__(331)(module)))
 
 /***/ },
-/* 334 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(264).nextTick;
+	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(268).nextTick;
 	var apply = Function.prototype.apply;
 	var slice = Array.prototype.slice;
 	var immediateIds = {};
@@ -6031,10 +5824,10 @@ webpackJsonp([0],[
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(334).setImmediate, __webpack_require__(334).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(330).setImmediate, __webpack_require__(330).clearImmediate))
 
 /***/ },
-/* 335 */
+/* 331 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -6050,20 +5843,20 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 336 */
+/* 332 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 337 */
+/* 333 */
 /***/ function(module, exports) {
 
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
 
 
 /***/ },
-/* 338 */
+/* 334 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6096,7 +5889,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 339 */
+/* 335 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6111,7 +5904,585 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
+/* 336 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(266)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(316);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(335);
+
+	var SanphamActions = (function () {
+	  function SanphamActions() {
+	    _classCallCheck(this, SanphamActions);
+	  }
+
+	  _createClass(SanphamActions, [{
+	    key: 'getSanphamID',
+
+	    /**
+	     * lấy thông tin sản phẩm
+	     * @param  {number} id [id sản phẩm]
+	     * @dispatch {object}    thông tin sản phẩm
+	     */
+	    value: function getSanphamID(_ref) {
+	      var id = _ref.id;
+	      var self;
+	      return _regeneratorRuntime.async(function getSanphamID$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            self = this;
+	            context$2$0.next = 3;
+	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/' + id).then(function (res) {
+	              /**
+	               * send data cho Store
+	               */
+	              self.dispatch(res.data);
+	            })['catch'](function (res) {
+	              /**
+	               * send lỗi cho func getIdFailed
+	               * @param  {Error} [Error request]
+	               */
+	              self.actions.getIdFailed(res.data);
+	            }));
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	  }, {
+	    key: 'getIdFailed',
+	    value: function getIdFailed(err) {
+	      this.dispatch(err);
+	    }
+
+	    /**
+	     * actions view san pham ID
+	     * @param  {object} sanpham - san pham nguoi dung click view
+	     * @dispatch {object}
+	     */
+	  }, {
+	    key: 'actionSanphamID',
+	    value: function actionSanphamID(sanpham) {
+	      this.dispatch(sanpham);
+	    }
+	  }, {
+	    key: 'like',
+	    value: function like(_ref2) {
+	      var itemId = _ref2.itemId;
+	      var token = _ref2.token;
+	      var type = _ref2.type;
+
+	      var self = this;
+
+	      _axios2['default'].post(_configSample.Api_URL + '/like', { type: type, itemId: itemId }, {
+	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
+	      }).then(function (res) {
+	        self.dispatch(res.data);
+	      })['catch'](function (res) {
+	        self.actions.likeFailed(res.data);
+	      });
+	    }
+	  }, {
+	    key: 'getHasOrder',
+	    value: function getHasOrder(_ref3) {
+	      var id = _ref3.id;
+
+	      var self = this;
+
+	      _axios2['default'].get(_configSample.Api_URL + '/order', {
+	        params: {
+	          filters: 'status==open;id==' + id
+	        },
+	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
+	      }).then(function (res) {
+	        console.log('then getHasOrder', res.data);
+	        // self.dispatch(res.data);
+	      })['catch'](function (res) {
+	        console.log('catch getHasOrder', res.data);
+	        // self.actions.likeFailed(res.data);
+	      });
+	    }
+	  }, {
+	    key: 'likeFailed',
+	    value: function likeFailed(err) {
+	      console.log('likeFailed', err);
+	    }
+	  }, {
+	    key: 'count',
+	    value: function count() {
+	      var self = this;
+	      _axios2['default'].get(_configSample.Api_URL + '/product/count').then(function (res) {
+	        self.dispatch(res.data);
+	      });
+	    }
+	  }]);
+
+	  return SanphamActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(SanphamActions);
+
+/***/ },
+/* 337 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(316);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(335);
+
+	var OrderActions = (function () {
+	  function OrderActions() {
+	    _classCallCheck(this, OrderActions);
+	  }
+
+	  _createClass(OrderActions, [{
+	    key: 'createOrder',
+	    value: function createOrder(dataObj) {
+	      var self = this;
+
+	      _axios2['default'].post(_configSample.Api_URL + '/order', dataObj, {
+	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
+	      }).then(function (res) {
+	        console.log('then', res.data);
+	        self.dispatch(res.data);
+	      })['catch'](function (res) {
+	        console.log('catch', res);
+	        self.actions.createOrderErr(res.data);
+	      });
+	    }
+	  }, {
+	    key: 'getListOrder',
+	    value: function getListOrder() {
+	      var self = this;
+
+	      _axios2['default'].get(_configSample.Api_URL + '/order?filters=status==open&sort=-createdAt', {
+	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
+	      }).then(function (res) {
+	        self.dispatch(res.data);
+	      });
+	    }
+	  }, {
+	    key: 'checkOrder',
+	    value: function checkOrder(_ref) {
+	      var id = _ref.id;
+
+	      var self = this;
+	      _axios2['default'].get(_configSample.Api_URL + '/order?filters=status==open;id==' + id + '&sort=-createdAt&limit=1', {
+	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
+	      }).then(function (res) {
+	        self.dispatch(res.data);
+	      });
+	    }
+	  }, {
+	    key: 'addOrder',
+	    value: function addOrder(dataObj) {
+	      // this.dispatch({
+	      //   "id": 12,
+	      //   "OrderId": 4,
+	      //   "product": {
+	      //     "id": 1,
+	      //     "code": "SM1",
+	      //     "name": "Sơ mi xô Nhật Hàn",
+	      //     "imageUrl": "http://api.tocu.vn/image/0cf60858dd9553a692d3-1-1.jpg",
+	      //     "onlineStore": true
+	      //   },
+	      //   "unitPrice": 200000,
+	      //   "quantity": 1,
+	      //   "amount": 200000,
+	      //   "weight": 500,
+	      //   "UserId": 2,
+	      //   "status": "suspended",
+	      //   "updatedAt": "2015-08-02T11:18:00.134Z",
+	      //   "createdAt": "2015-08-02T11:18:00.134Z"
+	      // });
+	      var self = this;
+	      _axios2['default'].post(_configSample.Api_URL + '/orderline', dataObj, {
+	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
+	      }).then(function (res) {
+	        self.dispatch(res.data);
+	      })['catch'](function (res) {
+	        res.data.dataObj = dataObj;
+	        self.actions.addOrderErr(res.data);
+	      });
+	    }
+	  }, {
+	    key: 'addToCart',
+	    value: function addToCart(product) {
+	      this.dispatch(product);
+	    }
+	  }, {
+	    key: 'pushOrder',
+	    value: function pushOrder(data) {
+	      this.dispatch(data);
+	    }
+	  }, {
+	    key: 'createOrderErr',
+	    value: function createOrderErr(err) {
+	      this.dispatch(err);
+	    }
+	  }, {
+	    key: 'addOrderErr',
+	    value: function addOrderErr(err) {
+	      this.dispatch(err);
+	    }
+	  }]);
+
+	  return OrderActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(OrderActions);
+
+/***/ },
+/* 338 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* @jsx React.DOM */
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(344);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storeBoxStore = __webpack_require__(339);
+
+	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
+
+	var _storeAuthStore = __webpack_require__(345);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _storeOrderStore = __webpack_require__(349);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
+
+	var _storeSanphamStore = __webpack_require__(350);
+
+	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
+
+	var _actionsAuthActions = __webpack_require__(346);
+
+	/**
+	 * @Component
+	 */
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
+
+	var _NavbarNavbar = __webpack_require__(351);
+
+	var _NavbarNavbar2 = _interopRequireDefault(_NavbarNavbar);
+
+	var _HomeInfoBar = __webpack_require__(352);
+
+	var _HomeInfoBar2 = _interopRequireDefault(_HomeInfoBar);
+
+	var _HomeProfileInfo = __webpack_require__(353);
+
+	var _HomeProfileInfo2 = _interopRequireDefault(_HomeProfileInfo);
+
+	var Home = (function (_React$Component) {
+	  _inherits(Home, _React$Component);
+
+	  function Home(props) {
+	    _classCallCheck(this, Home);
+
+	    _get(Object.getPrototypeOf(Home.prototype), 'constructor', this).call(this, props);
+	    this._onChangeAuthStore = this._onChangeAuthStore.bind(this);
+	    this._onChangeSanphamStore = this._onChangeSanphamStore.bind(this);
+	    this._onChangeBoxStore = this._onChangeBoxStore.bind(this);
+	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
+
+	    this.state = {
+	      auth: _storeAuthStore2['default'].getState().auth,
+	      countSanpham: _storeSanphamStore2['default'].getState().count,
+	      box: _storeBoxStore2['default'].getState().boxs,
+	      count: _storeOrderStore2['default'].getTotalSize()
+	    };
+	  }
+
+	  _createClass(Home, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	      _storeBoxStore2['default'].listen(this._onChangeBoxStore);
+	      _storeSanphamStore2['default'].listen(this._onChangeSanphamStore);
+	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	      _storeBoxStore2['default'].unlisten(this._onChangeBoxStore);
+	      _storeSanphamStore2['default'].unlisten(this._onChangeSanphamStore);
+	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: '_onChangeAuthStore',
+	    value: function _onChangeAuthStore(state) {
+	      this.setState({
+	        auth: state.auth
+	      });
+	    }
+	  }, {
+	    key: '_onChangeSanphamStore',
+	    value: function _onChangeSanphamStore(state) {
+	      this.setState({
+	        countSanpham: state.count
+	      });
+	    }
+	  }, {
+	    key: '_onChangeBoxStore',
+	    value: function _onChangeBoxStore(state) {
+	      this.setState({
+	        box: state.boxs
+	      });
+	    }
+	  }, {
+	    key: '_onChangeOrderStore',
+	    value: function _onChangeOrderStore(state) {
+	      this.setState({
+	        count: _storeOrderStore2['default'].getTotalSize()
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'header',
+	        null,
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'container-fluid' },
+	          _reactAddons2['default'].createElement(_NavbarNavbar2['default'], {
+	            count: this.state.count,
+	            AuthActions: _actionsAuthActions2['default'],
+	            auth: this.state.auth }),
+	          _reactAddons2['default'].createElement(_HomeProfileInfo2['default'], null),
+	          _reactAddons2['default'].createElement(_HomeInfoBar2['default'], {
+	            countSanpham: this.state.countSanpham,
+	            Box: this.state.box })
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'contextTypes',
+	    value: {
+	      router: _reactAddons2['default'].PropTypes.object.isRequired
+	    },
+	    enumerable: true
+	  }]);
+
+	  return Home;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Home;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 339 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _Array$from = __webpack_require__(340)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _actionsBoxActions = __webpack_require__(315);
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
+
+	var _immutable = __webpack_require__(343);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var BoxStore = (function () {
+	  function BoxStore() {
+	    _classCallCheck(this, BoxStore);
+
+	    this.bindActions(_actionsBoxActions2['default']); // getBoxs, getBoxID, like, boxsFailed, getBoxIDFailed, likeFailed
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.boxs = _immutable2['default'].List();
+	    this.test = _immutable2['default'].List();
+	    this.info = _immutable2['default'].Map();
+	  }
+
+	  _createClass(BoxStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].List.isList(this.boxs)) {
+	        this.boxs = _immutable2['default'].fromJS(this.boxs);
+	      }
+	      if (!_immutable2['default'].List.isList(this.test)) {
+	        this.test = _immutable2['default'].fromJS(this.test);
+	      }
+	      if (!_immutable2['default'].List.isList(this.info)) {
+	        this.info = _immutable2['default'].fromJS(this.info);
+	      }
+	    }
+	  }, {
+	    key: 'onGetBoxs',
+	    value: function onGetBoxs(data) {
+	      this.boxs = this.boxs.merge(_Array$from(data));
+	    }
+	  }, {
+	    key: 'onGetBoxID',
+	    value: function onGetBoxID(data) {
+	      this.info = this.info.merge(data);
+	    }
+	  }, {
+	    key: 'onLike',
+	    value: function onLike(id) {
+	      this.boxs = this.boxs.update(this.boxs.findIndex(function (item) {
+	        return item.get("id") === id;
+	      }), function (item) {
+	        return item.updateIn(['likesCount'], function (value) {
+	          return value + 1;
+	        });
+	      });
+
+	      this.info = this.info.updateIn(['likesCount'], function (value) {
+	        return value + 1;
+	      });
+	    }
+	  }, {
+	    key: 'onBoxsFailed',
+	    value: function onBoxsFailed(err) {
+	      console.log('onBoxsFailed', err);
+	    }
+	  }, {
+	    key: 'onGetBoxIDFailed',
+	    value: function onGetBoxIDFailed(err) {
+	      console.log('onGetBoxIDFailed', err);
+	    }
+	  }]);
+
+	  return BoxStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(BoxStore, 'BoxStore');
+
+/***/ },
 /* 340 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(341), __esModule: true };
+
+/***/ },
+/* 341 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(285);
+	__webpack_require__(342);
+	module.exports = __webpack_require__(7).Array.from;
+
+/***/ },
+/* 342 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var ctx         = __webpack_require__(232)
+	  , $def        = __webpack_require__(5)
+	  , toObject    = __webpack_require__(9)
+	  , call        = __webpack_require__(303)
+	  , isArrayIter = __webpack_require__(304)
+	  , toLength    = __webpack_require__(305)
+	  , getIterFn   = __webpack_require__(306);
+	$def($def.S + $def.F * !__webpack_require__(314)(function(iter){ Array.from(iter); }), 'Array', {
+	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
+	  from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
+	    var O       = toObject(arrayLike, true)
+	      , C       = typeof this == 'function' ? this : Array
+	      , mapfn   = arguments[1]
+	      , mapping = mapfn !== undefined
+	      , index   = 0
+	      , iterFn  = getIterFn(O)
+	      , length, result, step, iterator;
+	    if(mapping)mapfn = ctx(mapfn, arguments[2], 2);
+	    // if object isn't iterable or it's array with default iterator - use simple case
+	    if(iterFn != undefined && !(C == Array && isArrayIter(iterFn))){
+	      for(iterator = iterFn.call(O), result = new C; !(step = iterator.next()).done; index++){
+	        result[index] = mapping ? call(iterator, mapfn, [step.value, index], true) : step.value;
+	      }
+	    } else {
+	      for(result = new C(length = toLength(O.length)); length > index; index++){
+	        result[index] = mapping ? mapfn(O[index], index) : O[index];
+	      }
+	    }
+	    result.length = index;
+	    return result;
+	  }
+	});
+
+/***/ },
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11043,7 +11414,62 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 341 */
+/* 344 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+
+	(function () {
+		'use strict';
+
+		function classNames () {
+
+			var classes = '';
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if ('string' === argType || 'number' === argType) {
+					classes += ' ' + arg;
+
+				} else if (Array.isArray(arg)) {
+					classes += ' ' + classNames.apply(null, arg);
+
+				} else if ('object' === argType) {
+					for (var key in arg) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
+							classes += ' ' + key;
+						}
+					}
+				}
+			}
+
+			return classes.substr(1);
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true){
+			// AMD. Register as an anonymous module.
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+
+	}());
+
+
+/***/ },
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11058,19 +11484,19 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _actionsAuthActions = __webpack_require__(342);
+	var _actionsAuthActions = __webpack_require__(346);
 
 	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
-	var _actionsVerifyActions = __webpack_require__(343);
+	var _actionsVerifyActions = __webpack_require__(347);
 
 	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
-	var _cookiesJs = __webpack_require__(344);
+	var _cookiesJs = __webpack_require__(348);
 
 	var _cookiesJs2 = _interopRequireDefault(_cookiesJs);
 
-	var _immutable = __webpack_require__(340);
+	var _immutable = __webpack_require__(343);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -11167,7 +11593,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(AuthStore, 'AuthStore');
 
 /***/ },
-/* 342 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11182,11 +11608,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(320);
+	var _axios = __webpack_require__(316);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(339);
+	var _configSample = __webpack_require__(335);
 
 	var AuthActions = (function () {
 	  function AuthActions() {
@@ -11278,18 +11704,16 @@ webpackJsonp([0],[
 	     */
 	  }, {
 	    key: 'Logout',
-	    value: function Logout(access_token) {
+	    value: function Logout() {
 	      var self = this;
 
-	      if (access_token) {
-	        _axios2['default'].get(_configSample.Api_URL + '/token/expire', {
-	          headers: { 'Authorization': 'Bearer ' + access_token }
-	        }).then(function (res) {
-	          self.dispatch();
-	        })['catch'](function (res) {
-	          console.log('err Logout', res);
-	        });
-	      }
+	      _axios2['default'].get(_configSample.Api_URL + '/token/expire', {
+	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
+	      }).then(function (res) {
+	        self.dispatch();
+	      })['catch'](function (res) {
+	        console.log('err Logout', res);
+	      });
 	    }
 
 	    /**
@@ -11337,7 +11761,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(AuthActions);
 
 /***/ },
-/* 343 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11352,11 +11776,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(320);
+	var _axios = __webpack_require__(316);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(339);
+	var _configSample = __webpack_require__(335);
 
 	var VerifyActions = (function () {
 		function VerifyActions() {
@@ -11407,7 +11831,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(VerifyActions);
 
 /***/ },
-/* 344 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -11573,7 +11997,7 @@ webpackJsonp([0],[
 	})(typeof window === 'undefined' ? this : window);
 
 /***/ },
-/* 345 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11588,13 +12012,167 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _immutable = __webpack_require__(340);
+	var _immutable = __webpack_require__(343);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsSanphamActions = __webpack_require__(346);
+	var _actionsOrderActions = __webpack_require__(337);
+
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
+
+	var OrderStore = (function () {
+	  function OrderStore() {
+	    _classCallCheck(this, OrderStore);
+
+	    this.bindActions(_actionsOrderActions2['default']); // createOrder, createOrderErr, getListOrder, pushOrder, checkOrder, addToCart
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.order = new _immutable.Map({});
+	    this.listOrder = new _immutable2['default'].List([]);
+	    this.listOrders = new _immutable.Map({});
+	    this.itemPushOrder = new _immutable.Map({});
+	    this.createStatus = new _immutable.Map({});
+	  }
+
+	  _createClass(OrderStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].Map.isMap(this.order)) {
+	        this.order = _immutable2['default'].fromJS(this.order);
+	      }
+	      if (!_immutable2['default'].List.isList(this.listOrder)) {
+	        this.listOrder = _immutable2['default'].fromJS(this.listOrder);
+	      }
+	      if (!_immutable2['default'].List.isList(this.listOrders)) {
+	        this.listOrders = _immutable2['default'].fromJS(this.listOrders);
+	      }
+	      if (!_immutable2['default'].Map.isMap(this.createStatus)) {
+	        this.createStatus = _immutable2['default'].fromJS(this.createStatus);
+	      }
+	      if (!_immutable2['default'].Map.isMap(this.itemPushOrder)) {
+	        this.itemPushOrder = _immutable2['default'].fromJS(this.itemPushOrder);
+	      }
+	    }
+	  }, {
+	    key: 'onCreateOrder',
+	    value: function onCreateOrder(data) {
+	      console.log('onCreateOrder', data);
+	      this.createStatus = new _immutable.Map({ messages: 'Đặt hàng thành công', status: 'success' });
+	      this.order = new _immutable.Map(data);
+	    }
+	  }, {
+	    key: 'onGetListOrder',
+	    value: function onGetListOrder(data) {
+	      this.listOrder = this.listOrder.merge(data);
+	    }
+	  }, {
+	    key: 'onAddOrder',
+	    value: function onAddOrder(data) {
+	      console.log('onAddOrder', data);
+	      this.createStatus = new _immutable.Map({ messages: 'Thêm vào đơn hàng #' + data.id + ' thành công', status: 'success' });
+	      this.order = new _immutable.Map(data);
+	    }
+	  }, {
+	    key: 'onAddToCart',
+	    value: function onAddToCart(product) {
+	      this.listOrders = this.listOrders.set(product.get('id'), product);
+	      console.log('onAddToCart', this.listOrders.toJS());
+	    }
+	  }, {
+	    key: 'onCheckOrder',
+	    value: function onCheckOrder(data) {
+	      console.log('onCheckOrder', data);
+	    }
+	  }, {
+	    key: 'onPushOrder',
+	    value: function onPushOrder(data) {
+	      this.itemPushOrder = new _immutable.Map(data);
+	    }
+	  }, {
+	    key: 'onCreateOrderErr',
+	    value: function onCreateOrderErr(err) {
+	      this.createStatus = new _immutable.Map({ messages: err.message, status: 'warning' });
+	    }
+	  }, {
+	    key: 'onAddOrderErr',
+	    value: function onAddOrderErr(err) {
+	      this.createStatus = new _immutable.Map({ messages: err.message, status: 'warning' });
+	      this.order = new _immutable.Map(err.dataObj);
+	    }
+	  }], [{
+	    key: 'getTotalCart',
+	    value: function getTotalCart() {
+	      var total = 0;
+
+	      var _getState = this.getState();
+
+	      var listOrders = _getState.listOrders;
+
+	      listOrders.forEach(function (product, key) {
+	        total += product.get('price');
+	      });
+
+	      return total;
+	    }
+	  }, {
+	    key: 'getTotalCartSale',
+	    value: function getTotalCartSale() {
+	      var total = 0;
+
+	      var _getState2 = this.getState();
+
+	      var listOrders = _getState2.listOrders;
+
+	      listOrders.forEach(function (product, key) {
+	        total += product.get('salePrice') ? product.get('salePrice') : product.get('price');
+	      });
+
+	      return total;
+	    }
+	  }, {
+	    key: 'getTotalSize',
+	    value: function getTotalSize() {
+	      var _getState3 = this.getState();
+
+	      var listOrders = _getState3.listOrders;
+
+	      return listOrders.size;
+	    }
+	  }]);
+
+	  return OrderStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(OrderStore, 'OrderStore');
+
+/***/ },
+/* 350 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _immutable = __webpack_require__(343);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _actionsSanphamActions = __webpack_require__(336);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
+
+	var _BoxStore = __webpack_require__(339);
+
+	var _BoxStore2 = _interopRequireDefault(_BoxStore);
 
 	var SanphamStore = (function () {
 	  function SanphamStore() {
@@ -11644,6 +12222,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'onCount',
 	    value: function onCount(data) {
+	      this.waitFor(_BoxStore2['default'].dispatchToken);
 	      this.count = data;
 	    }
 	  }]);
@@ -11652,554 +12231,6 @@ webpackJsonp([0],[
 	})();
 
 	module.exports = _Alt2['default'].createStore(SanphamStore, 'SanphamStore');
-
-/***/ },
-/* 346 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(262)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(320);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(339);
-
-	var SanphamActions = (function () {
-	  function SanphamActions() {
-	    _classCallCheck(this, SanphamActions);
-	  }
-
-	  _createClass(SanphamActions, [{
-	    key: 'getSanphamID',
-
-	    /**
-	     * lấy thông tin sản phẩm
-	     * @param  {number} id [id sản phẩm]
-	     * @dispatch {object}    thông tin sản phẩm
-	     */
-	    value: function getSanphamID(_ref) {
-	      var id = _ref.id;
-	      var self;
-	      return _regeneratorRuntime.async(function getSanphamID$(context$2$0) {
-	        while (1) switch (context$2$0.prev = context$2$0.next) {
-	          case 0:
-	            self = this;
-	            context$2$0.next = 3;
-	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product/' + id).then(function (res) {
-	              /**
-	               * send data cho Store
-	               */
-	              self.dispatch(res.data);
-	            })['catch'](function (res) {
-	              /**
-	               * send lỗi cho func getIdFailed
-	               * @param  {Error} [Error request]
-	               */
-	              self.actions.getIdFailed(res.data);
-	            }));
-
-	          case 3:
-	          case 'end':
-	            return context$2$0.stop();
-	        }
-	      }, null, this);
-	    }
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	  }, {
-	    key: 'getIdFailed',
-	    value: function getIdFailed(err) {
-	      this.dispatch(err);
-	    }
-
-	    /**
-	     * actions view san pham ID
-	     * @param  {object} sanpham - san pham nguoi dung click view
-	     * @dispatch {object}
-	     */
-	  }, {
-	    key: 'actionSanphamID',
-	    value: function actionSanphamID(sanpham) {
-	      this.dispatch(sanpham);
-	    }
-	  }, {
-	    key: 'like',
-	    value: function like(_ref2) {
-	      var itemId = _ref2.itemId;
-	      var token = _ref2.token;
-	      var type = _ref2.type;
-
-	      var self = this;
-
-	      _axios2['default'].post(_configSample.Api_URL + '/like', { type: type, itemId: itemId }, {
-	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
-	      }).then(function (res) {
-	        self.dispatch(res.data);
-	      })['catch'](function (res) {
-	        self.actions.likeFailed(res.data);
-	      });
-	    }
-	  }, {
-	    key: 'getHasOrder',
-	    value: function getHasOrder(_ref3) {
-	      var id = _ref3.id;
-
-	      var self = this;
-
-	      _axios2['default'].get(_configSample.Api_URL + '/order', {
-	        params: {
-	          filters: 'status==open;id==' + id
-	        },
-	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
-	      }).then(function (res) {
-	        console.log('then getHasOrder', res.data);
-	        // self.dispatch(res.data);
-	      })['catch'](function (res) {
-	        console.log('catch getHasOrder', res.data);
-	        // self.actions.likeFailed(res.data);
-	      });
-	    }
-	  }, {
-	    key: 'likeFailed',
-	    value: function likeFailed(err) {
-	      console.log('likeFailed', err);
-	    }
-	  }, {
-	    key: 'count',
-	    value: function count() {
-	      var self = this;
-	      _axios2['default'].get(_configSample.Api_URL + '/product/count').then(function (res) {
-	        self.dispatch(res.data);
-	      });
-	    }
-	  }]);
-
-	  return SanphamActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(SanphamActions);
-
-/***/ },
-/* 347 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _immutable = __webpack_require__(340);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _actionsOrderActions = __webpack_require__(348);
-
-	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
-
-	var OrderStore = (function () {
-	  function OrderStore() {
-	    _classCallCheck(this, OrderStore);
-
-	    this.bindActions(_actionsOrderActions2['default']); // createOrder, createOrderErr, getListOrder, pushOrder, checkOrder
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.order = new _immutable.Map({});
-	    this.listOrder = new _immutable2['default'].List([]);
-	    this.itemPushOrder = new _immutable.Map({});
-	    this.createStatus = new _immutable.Map({});
-	  }
-
-	  _createClass(OrderStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].Map.isMap(this.order)) {
-	        this.order = _immutable2['default'].fromJS(this.order);
-	      }
-	      if (!_immutable2['default'].List.isList(this.listOrder)) {
-	        this.listOrder = _immutable2['default'].fromJS(this.listOrder);
-	      }
-	      if (!_immutable2['default'].Map.isMap(this.createStatus)) {
-	        this.createStatus = _immutable2['default'].fromJS(this.createStatus);
-	      }
-	      if (!_immutable2['default'].Map.isMap(this.itemPushOrder)) {
-	        this.itemPushOrder = _immutable2['default'].fromJS(this.itemPushOrder);
-	      }
-	    }
-	  }, {
-	    key: 'onCreateOrder',
-	    value: function onCreateOrder(data) {
-	      console.log('onCreateOrder', data);
-	      this.createStatus = new _immutable.Map({ messages: 'Đặt hàng thành công', status: 'success' });
-	      this.order = new _immutable.Map(data);
-	    }
-	  }, {
-	    key: 'onGetListOrder',
-	    value: function onGetListOrder(data) {
-	      this.listOrder = this.listOrder.merge(data);
-	    }
-	  }, {
-	    key: 'onAddOrder',
-	    value: function onAddOrder(data) {
-	      console.log('onAddOrder', data);
-	      this.createStatus = new _immutable.Map({ messages: 'Thêm vào đơn hàng #' + data.id + ' thành công', status: 'success' });
-	      this.order = new _immutable.Map(data);
-	    }
-	  }, {
-	    key: 'onCheckOrder',
-	    value: function onCheckOrder(data) {
-	      console.log('onCheckOrder', data);
-	    }
-	  }, {
-	    key: 'onPushOrder',
-	    value: function onPushOrder(data) {
-	      this.itemPushOrder = new _immutable.Map(data);
-	    }
-	  }, {
-	    key: 'onCreateOrderErr',
-	    value: function onCreateOrderErr(err) {
-	      this.createStatus = new _immutable.Map({ messages: err.message, status: 'warning' });
-	    }
-	  }, {
-	    key: 'onAddOrderErr',
-	    value: function onAddOrderErr(err) {
-	      this.createStatus = new _immutable.Map({ messages: err.message, status: 'warning' });
-	      this.order = new _immutable.Map(err.dataObj);
-	    }
-	  }]);
-
-	  return OrderStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(OrderStore, 'OrderStore');
-
-/***/ },
-/* 348 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(320);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(339);
-
-	var OrderActions = (function () {
-	  function OrderActions() {
-	    _classCallCheck(this, OrderActions);
-	  }
-
-	  _createClass(OrderActions, [{
-	    key: 'createOrder',
-	    value: function createOrder(dataObj) {
-	      var self = this;
-
-	      _axios2['default'].post(_configSample.Api_URL + '/order', dataObj, {
-	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
-	      }).then(function (res) {
-	        console.log('then', res.data);
-	        self.dispatch(res.data);
-	      })['catch'](function (res) {
-	        console.log('catch', res);
-	        self.actions.createOrderErr(res.data);
-	      });
-	    }
-	  }, {
-	    key: 'getListOrder',
-	    value: function getListOrder() {
-	      var self = this;
-
-	      _axios2['default'].get(_configSample.Api_URL + '/order?filters=status==open&sort=-createdAt', {
-	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
-	      }).then(function (res) {
-	        self.dispatch(res.data);
-	      });
-	    }
-	  }, {
-	    key: 'checkOrder',
-	    value: function checkOrder(_ref) {
-	      var id = _ref.id;
-
-	      var self = this;
-	      _axios2['default'].get(_configSample.Api_URL + '/order?filters=status==open;id==' + id + '&sort=-createdAt&limit=1', {
-	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
-	      }).then(function (res) {
-	        self.dispatch(res.data);
-	      });
-	    }
-	  }, {
-	    key: 'addOrder',
-	    value: function addOrder(dataObj) {
-	      // this.dispatch({
-	      //   "id": 12,
-	      //   "OrderId": 4,
-	      //   "product": {
-	      //     "id": 1,
-	      //     "code": "SM1",
-	      //     "name": "Sơ mi xô Nhật Hàn",
-	      //     "imageUrl": "http://api.tocu.vn/image/0cf60858dd9553a692d3-1-1.jpg",
-	      //     "onlineStore": true
-	      //   },
-	      //   "unitPrice": 200000,
-	      //   "quantity": 1,
-	      //   "amount": 200000,
-	      //   "weight": 500,
-	      //   "UserId": 2,
-	      //   "status": "suspended",
-	      //   "updatedAt": "2015-08-02T11:18:00.134Z",
-	      //   "createdAt": "2015-08-02T11:18:00.134Z"
-	      // });
-	      var self = this;
-	      _axios2['default'].post(_configSample.Api_URL + '/orderline', dataObj, {
-	        headers: { 'Authorization': 'Bearer ' + localStorage.access_token }
-	      }).then(function (res) {
-	        self.dispatch(res.data);
-	      })['catch'](function (res) {
-	        res.data.dataObj = dataObj;
-	        self.actions.addOrderErr(res.data);
-	      });
-	    }
-	  }, {
-	    key: 'pushOrder',
-	    value: function pushOrder(data) {
-	      this.dispatch(data);
-	    }
-	  }, {
-	    key: 'createOrderErr',
-	    value: function createOrderErr(err) {
-	      this.dispatch(err);
-	    }
-	  }, {
-	    key: 'addOrderErr',
-	    value: function addOrderErr(err) {
-	      this.dispatch(err);
-	    }
-	  }]);
-
-	  return OrderActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(OrderActions);
-
-/***/ },
-/* 349 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* @jsx React.DOM */
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _classnames = __webpack_require__(350);
-
-	/**
-	 * @Component
-	 */
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _navbar = __webpack_require__(351);
-
-	var _navbar2 = _interopRequireDefault(_navbar);
-
-	var _infoBar = __webpack_require__(352);
-
-	var _infoBar2 = _interopRequireDefault(_infoBar);
-
-	var _profileInfo = __webpack_require__(353);
-
-	var _profileInfo2 = _interopRequireDefault(_profileInfo);
-
-	var Home = (function (_React$Component) {
-	  _inherits(Home, _React$Component);
-
-	  function Home(props) {
-	    _classCallCheck(this, Home);
-
-	    _get(Object.getPrototypeOf(Home.prototype), 'constructor', this).call(this, props);
-	    this.handleScroll = this.handleScroll.bind(this);
-
-	    this.state = {
-	      transform: false
-	    };
-	  }
-
-	  _createClass(Home, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      window.addEventListener('scroll', this.handleScroll);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      window.removeEventListener('scroll', this.handleScroll);
-	    }
-	  }, {
-	    key: 'handleScroll',
-	    value: function handleScroll(e) {
-	      var scrollTop = window.scrollY;
-	      var transform = scrollTop >= 70;
-	      this.setState({
-	        transform: transform
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var classesNavbar = (0, _classnames2['default'])({
-	        "navbar": true,
-	        "navbar-default": true,
-	        "navbar-home": true,
-	        "navbar-fixed-top": true,
-	        "test": !this.state.transform
-	      });
-
-	      return _reactAddons2['default'].createElement(
-	        'header',
-	        null,
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'profileImage' },
-	            _reactAddons2['default'].createElement('img', { src: '/img/logo.png', alt: 'MongoDB' })
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'nav',
-	            { className: classesNavbar },
-	            _reactAddons2['default'].createElement(_navbar2['default'], {
-	              AuthActions: this.props.AuthActions,
-	              auth: this.props.auth,
-	              transform: this.state.transform })
-	          ),
-	          _reactAddons2['default'].createElement(_profileInfo2['default'], null),
-	          _reactAddons2['default'].createElement(_infoBar2['default'], {
-	            countSanpham: this.props.countSanpham,
-	            countBox: this.props.countBox })
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Home;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = Home;
-	;
-
-	Home.contextTypes = {
-	  router: _reactAddons2['default'].PropTypes.object.isRequired
-	};
-	module.exports = exports['default'];
-
-/***/ },
-/* 350 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-
-	(function () {
-		'use strict';
-
-		function classNames () {
-
-			var classes = '';
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg;
-
-				if ('string' === argType || 'number' === argType) {
-					classes += ' ' + arg;
-
-				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
-
-				} else if ('object' === argType) {
-					for (var key in arg) {
-						if (arg.hasOwnProperty(key) && arg[key]) {
-							classes += ' ' + key;
-						}
-					}
-				}
-			}
-
-			return classes.substr(1);
-		}
-
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true){
-			// AMD. Register as an anonymous module.
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-
-	}());
-
 
 /***/ },
 /* 351 */
@@ -12227,54 +12258,41 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var Navbar = (function (_React$Component) {
 	  _inherits(Navbar, _React$Component);
 
-	  function Navbar() {
+	  function Navbar(props) {
 	    _classCallCheck(this, Navbar);
 
-	    _get(Object.getPrototypeOf(Navbar.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Navbar.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      transform: false
+	    };
 	  }
 
 	  _createClass(Navbar, [{
 	    key: 'render',
 	    value: function render() {
-	      var classesHeaderNameAndImg = (0, _classnames2['default'])({
-	        fixedHeaderNameAndImage: true,
-	        hiden: !this.props.transform,
-	        show: this.props.transform
-	      });
 
 	      if (!this.props.auth.get('mobilePhone')) {
 	        return _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'container-fluid' },
+	          'nav',
+	          { className: 'navbar navbar-tocu' },
 	          _reactAddons2['default'].createElement(
 	            'div',
 	            { className: 'navbar-header' },
 	            _reactAddons2['default'].createElement(
-	              'button',
-	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                'Toggle navigation'
-	              ),
-	              _reactAddons2['default'].createElement('span', { className: 'icon-bar' }),
-	              _reactAddons2['default'].createElement('span', { className: 'icon-bar' }),
-	              _reactAddons2['default'].createElement('span', { className: 'icon-bar' })
-	            ),
-	            _reactAddons2['default'].createElement(
 	              'div',
-	              { className: classesHeaderNameAndImg },
+	              { className: 'logo' },
 	              _reactAddons2['default'].createElement(
 	                _reactRouter.Link,
 	                { to: '/', className: 'navbar-brand' },
-	                _reactAddons2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
+	                _reactAddons2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png' })
 	              ),
 	              _reactAddons2['default'].createElement(
 	                'p',
@@ -12285,19 +12303,83 @@ webpackJsonp([0],[
 	          ),
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	            { className: 'navbar-tocu-right' },
 	            _reactAddons2['default'].createElement(
 	              'div',
-	              { className: 'nav navbar-nav navbar-right' },
+	              { className: 'btn-group' },
 	              _reactAddons2['default'].createElement(
 	                _reactRouter.Link,
-	                { to: '/signin', className: 'btn btn-sm btn-default navbar-btn' },
+	                { to: '/signin', className: 'btn btn-sm btn-link' },
 	                'Sign in'
 	              ),
 	              _reactAddons2['default'].createElement(
 	                _reactRouter.Link,
-	                { to: '/signup', className: 'btn btn-sm btn-primary navbar-btn' },
+	                { to: '/signup', className: 'btn btn-sm btn-primary' },
 	                'Sign up'
+	              )
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'btn-group' },
+	              _reactAddons2['default'].createElement(
+	                'span',
+	                { className: 'icon cart-menu', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	                _reactAddons2['default'].createElement(
+	                  'span',
+	                  { className: 'count' },
+	                  this.props.count
+	                )
+	              ),
+	              _reactAddons2['default'].createElement(
+	                'ul',
+	                { className: 'dropdown-menu dropdown-menu-right' },
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'test'
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'hihi'
+	                  )
+	                )
+	              )
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'btn-group' },
+	              _reactAddons2['default'].createElement('span', { className: 'icon menu-bars', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' }),
+	              _reactAddons2['default'].createElement(
+	                'ul',
+	                { className: 'dropdown-menu dropdown-menu-right' },
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'test'
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'hihi'
+	                  )
+	                )
 	              )
 	            )
 	          )
@@ -12305,30 +12387,18 @@ webpackJsonp([0],[
 	      }
 
 	      return _reactAddons2['default'].createElement(
-	        'div',
-	        { className: 'container-fluid' },
+	        'nav',
+	        { className: 'navbar navbar-tocu' },
 	        _reactAddons2['default'].createElement(
 	          'div',
 	          { className: 'navbar-header' },
 	          _reactAddons2['default'].createElement(
-	            'button',
-	            { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
-	            _reactAddons2['default'].createElement(
-	              'span',
-	              { className: 'sr-only' },
-	              'Toggle navigation'
-	            ),
-	            _reactAddons2['default'].createElement('span', { className: 'icon-bar' }),
-	            _reactAddons2['default'].createElement('span', { className: 'icon-bar' }),
-	            _reactAddons2['default'].createElement('span', { className: 'icon-bar' })
-	          ),
-	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: classesHeaderNameAndImg },
+	            { className: 'logo' },
 	            _reactAddons2['default'].createElement(
 	              _reactRouter.Link,
 	              { to: '/', className: 'navbar-brand' },
-	              _reactAddons2['default'].createElement('img', { alt: 'logo', src: '/img/logo.png', width: '40', height: '40' })
+	              _reactAddons2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png' })
 	            ),
 	            _reactAddons2['default'].createElement(
 	              'p',
@@ -12339,44 +12409,99 @@ webpackJsonp([0],[
 	        ),
 	        _reactAddons2['default'].createElement(
 	          'div',
-	          { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	          { className: 'navbar-tocu-right' },
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'nav navbar-nav navbar-right' },
+	            { className: 'btn-group' },
 	            _reactAddons2['default'].createElement(
 	              'span',
-	              { className: 'text-name' },
-	              this.props.auth.get('name')
+	              { className: 'icon cart-menu', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	              _reactAddons2['default'].createElement(
+	                'span',
+	                { className: 'count' },
+	                this.props.count
+	              )
 	            ),
 	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'btn-group' },
+	              'ul',
+	              { className: 'dropdown-menu dropdown-menu-right' },
 	              _reactAddons2['default'].createElement(
-	                'button',
-	                { type: 'button', className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-	                _reactAddons2['default'].createElement('img', { alt: 'avatar', src: this.props.auth.get('avatarUrl') })
+	                'li',
+	                null,
+	                _reactAddons2['default'].createElement(
+	                  'a',
+	                  { href: '#' },
+	                  'test'
+	                )
 	              ),
+	              _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
 	              _reactAddons2['default'].createElement(
-	                'ul',
-	                { className: 'dropdown-menu' },
+	                'li',
+	                null,
 	                _reactAddons2['default'].createElement(
-	                  'li',
-	                  null,
-	                  _reactAddons2['default'].createElement(
-	                    'a',
-	                    { href: '#' },
-	                    'Settings'
-	                  )
-	                ),
-	                _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
+	                  'a',
+	                  { href: '#' },
+	                  'hihi'
+	                )
+	              )
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'btn-group' },
+	            _reactAddons2['default'].createElement('span', { className: 'icon menu-bars', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' }),
+	            _reactAddons2['default'].createElement(
+	              'ul',
+	              { className: 'dropdown-menu dropdown-menu-right' },
+	              _reactAddons2['default'].createElement(
+	                'li',
+	                null,
 	                _reactAddons2['default'].createElement(
-	                  'li',
-	                  null,
-	                  _reactAddons2['default'].createElement(
-	                    _reactRouter.Link,
-	                    { to: '/signin', onClick: this.handleLogout.bind(this) },
-	                    'Log out'
-	                  )
+	                  'a',
+	                  { href: '#' },
+	                  'test'
+	                )
+	              ),
+	              _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
+	              _reactAddons2['default'].createElement(
+	                'li',
+	                null,
+	                _reactAddons2['default'].createElement(
+	                  'a',
+	                  { href: '#' },
+	                  'hihi'
+	                )
+	              )
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'btn-group' },
+	            _reactAddons2['default'].createElement(
+	              'button',
+	              { type: 'button', className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	              _reactAddons2['default'].createElement('img', { alt: 'avatar', src: this.props.auth.get('avatarUrl') })
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'ul',
+	              { className: 'dropdown-menu dropdown-menu-right' },
+	              _reactAddons2['default'].createElement(
+	                'li',
+	                null,
+	                _reactAddons2['default'].createElement(
+	                  'a',
+	                  { href: '#' },
+	                  'Settings'
+	                )
+	              ),
+	              _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
+	              _reactAddons2['default'].createElement(
+	                'li',
+	                null,
+	                _reactAddons2['default'].createElement(
+	                  _reactRouter.Link,
+	                  { to: '/signin', onClick: this.handleLogout.bind(this) },
+	                  'Log out'
 	                )
 	              )
 	            )
@@ -12387,8 +12512,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'handleLogout',
 	    value: function handleLogout(e) {
-	      console.log('handleLogout');
-	      this.props.AuthActions.Logout(localStorage.access_token);
+	      this.props.AuthActions.Logout();
 	    }
 	  }]);
 
@@ -12459,7 +12583,7 @@ webpackJsonp([0],[
 	                  _reactAddons2['default'].createElement(
 	                    'span',
 	                    { className: 'value' },
-	                    this.props.countBox
+	                    this.props.Box.size
 	                  ),
 	                  ' ',
 	                  _reactAddons2['default'].createElement(
@@ -12678,11 +12802,19 @@ webpackJsonp([0],[
 
 	var _reactAddons = __webpack_require__(16);
 
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _storeOrderStore = __webpack_require__(349);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
+
+	var _actionsOrderActions = __webpack_require__(337);
+
 	/**
 	 * @Component
 	 */
 
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
 	var _BoxOrder = __webpack_require__(355);
 
@@ -12695,13 +12827,35 @@ webpackJsonp([0],[
 	    _classCallCheck(this, BoxYeuThich);
 
 	    _get(Object.getPrototypeOf(BoxYeuThich.prototype), 'constructor', this).call(this, props);
+	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
+
+	    this.state = {
+	      listOrder: _storeOrderStore2['default'].getState().listOrder
+	    };
 	  }
 
 	  _createClass(BoxYeuThich, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: '_onChangeOrderStore',
+	    value: function _onChangeOrderStore(state) {
+	      this.setState({
+	        listOrder: state.listOrder
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _reactAddons2['default'].createElement('span', null);
-	      if (this.props.listOrder.size < 1) {}
+	      if (this.state.listOrder.size < 1) {}
 	      return _reactAddons2['default'].createElement(
 	        'div',
 	        null,
@@ -12830,7 +12984,7 @@ webpackJsonp([0],[
 	          _reactAddons2['default'].createElement(
 	            'div',
 	            { className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
-	            _reactAddons2['default'].createElement(_BoxOrder2['default'], { listOrder: this.props.listOrder })
+	            _reactAddons2['default'].createElement(_BoxOrder2['default'], { listOrder: this.state.listOrder })
 	          )
 	        ),
 	        _reactAddons2['default'].createElement(
@@ -13056,21 +13210,25 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _storeAuthStore = __webpack_require__(341);
+	var _storeAuthStore = __webpack_require__(345);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _actionsAuthActions = __webpack_require__(346);
 
 	/**
 	 * @Component
 	 */
 
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
 	var _select = __webpack_require__(360);
 
 	var _select2 = _interopRequireDefault(_select);
 
-	var _inputValidation = __webpack_require__(361);
+	var _inputValidationLabel = __webpack_require__(430);
 
-	var _inputValidation2 = _interopRequireDefault(_inputValidation);
+	var _inputValidationLabel2 = _interopRequireDefault(_inputValidationLabel);
 
 	var Validations = {
 	  mobilePhone: {
@@ -13101,7 +13259,8 @@ webpackJsonp([0],[
 	  getInitialState: function getInitialState() {
 	    return {
 	      disabled: true,
-	      ValidationData: Validations
+	      ValidationData: Validations,
+	      loginState: _storeAuthStore2['default'].getState().loginState
 	    };
 	  },
 
@@ -13117,17 +13276,28 @@ webpackJsonp([0],[
 	    var _this = this;
 
 	    if (state.loginState === "success") {
-	      (function () {
+	      var _ret = (function () {
 	        var self = _this;
 	        if (_this.props.replaceWith) {
 	          _this.props.replaceWith();
+	          return {
+	            v: undefined
+	          };
 	        } else {
 	          setTimeout(function () {
 	            self.transitionTo('/');
 	          }, 100);
+	          return {
+	            v: undefined
+	          };
 	        }
 	      })();
+
+	      if (typeof _ret === 'object') return _ret.v;
 	    }
+	    this.setState({
+	      loginState: _storeAuthStore2['default'].getState().loginState
+	    });
 	  },
 
 	  render: function render() {
@@ -13141,6 +13311,16 @@ webpackJsonp([0],[
 	      { className: 'form-signup' },
 	      _reactAddons2['default'].createElement(
 	        'div',
+	        { className: 'form-header' },
+	        this.props.children,
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'form-title text-center' },
+	          'Đăng nhập Tổ Cú'
+	        )
+	      ),
+	      _reactAddons2['default'].createElement(
+	        'div',
 	        { className: 'form-body' },
 	        _reactAddons2['default'].createElement(
 	          'div',
@@ -13151,16 +13331,11 @@ webpackJsonp([0],[
 	            _reactAddons2['default'].createElement(
 	              _reactRouter.Link,
 	              { to: '/' },
-	              _reactAddons2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
+	              _reactAddons2['default'].createElement('img', { src: '/img/logo.png' })
 	            )
 	          )
 	        ),
-	        _reactAddons2['default'].createElement(
-	          'p',
-	          { className: 'text-center title-form' },
-	          'Đăng Nhập Tổ Cú'
-	        ),
-	        this.props.loginState === "failed" && _reactAddons2['default'].createElement(
+	        this.state.loginState === "failed" && _reactAddons2['default'].createElement(
 	          'p',
 	          { className: 'text-center text-danger' },
 	          'Số điện thoại hoặc mật khẩu không đúng'
@@ -13168,17 +13343,15 @@ webpackJsonp([0],[
 	        _reactAddons2['default'].createElement(
 	          'form',
 	          null,
-	          _reactAddons2['default'].createElement(_inputValidation2['default'], {
+	          _reactAddons2['default'].createElement(_inputValidationLabel2['default'], {
 	            ref: 'mobilePhone',
-	            size: 'lg',
 	            type: 'mobilePhone',
 	            placeholder: 'Số điện thoại',
 	            name: 'mobilePhone',
 	            validator: this.state.ValidationData.mobilePhone,
 	            onChange: this._onChangeInputHandler }),
-	          _reactAddons2['default'].createElement(_inputValidation2['default'], {
+	          _reactAddons2['default'].createElement(_inputValidationLabel2['default'], {
 	            ref: 'password',
-	            size: 'lg',
 	            type: 'password',
 	            placeholder: 'Mật khẩu',
 	            name: 'password',
@@ -13193,8 +13366,8 @@ webpackJsonp([0],[
 	                onClick: this.handleLogin,
 	                type: 'submit',
 	                disabled: this.state.disabled },
-	              this.props.loginState !== "loading" && "Đăng Nhập",
-	              this.props.loginState === "loading" && _reactAddons2['default'].createElement('i', { className: 'fa fa-spinner fa-pulse' })
+	              this.state.loginState !== "loading" && "Đăng Nhập",
+	              this.state.loginState === "loading" && _reactAddons2['default'].createElement('i', { className: 'fa fa-spinner fa-pulse' })
 	            )
 	          )
 	        )
@@ -13277,7 +13450,7 @@ webpackJsonp([0],[
 	    e.preventDefault();
 	    var mobilePhone = this.refs.mobilePhone.getValue();
 	    var password = this.refs.password.getValue();
-	    this.props.AuthActions.Login({ mobilePhone: mobilePhone, password: password });
+	    _actionsAuthActions2['default'].Login({ mobilePhone: mobilePhone, password: password });
 	  }
 
 	});
@@ -13831,7 +14004,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -13931,7 +14104,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -14039,6 +14212,18 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
+	var _storeBoxStore = __webpack_require__(339);
+
+	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
+
+	var _storeAuthStore = __webpack_require__(345);
+
+	/**
+	 * @Component
+	 */
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
 	var _ThumbItem = __webpack_require__(363);
 
 	var _ThumbItem2 = _interopRequireDefault(_ThumbItem);
@@ -14046,13 +14231,46 @@ webpackJsonp([0],[
 	var ThumbNail = (function (_React$Component) {
 	  _inherits(ThumbNail, _React$Component);
 
-	  function ThumbNail() {
+	  function ThumbNail(props) {
 	    _classCallCheck(this, ThumbNail);
 
-	    _get(Object.getPrototypeOf(ThumbNail.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(ThumbNail.prototype), 'constructor', this).call(this, props);
+	    this._onChangeAuthStore = this._onChangeAuthStore.bind(this);
+	    this._onChangeBoxStore = this._onChangeBoxStore.bind(this);
+
+	    this.state = {
+	      boxs: _storeBoxStore2['default'].getState().boxs,
+	      auth: _storeAuthStore2['default'].getState().auth
+	    };
 	  }
 
 	  _createClass(ThumbNail, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	      _storeBoxStore2['default'].listen(this._onChangeBoxStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	      _storeBoxStore2['default'].unlisten(this._onChangeBoxStore);
+	    }
+	  }, {
+	    key: '_onChangeAuthStore',
+	    value: function _onChangeAuthStore(state) {
+	      this.setState({
+	        auth: state.auth
+	      });
+	    }
+	  }, {
+	    key: '_onChangeBoxStore',
+	    value: function _onChangeBoxStore(state) {
+	      this.setState({
+	        boxs: state.boxs
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this = this;
@@ -14060,11 +14278,11 @@ webpackJsonp([0],[
 	      return _reactAddons2['default'].createElement(
 	        'div',
 	        { className: 'row' },
-	        this.props.boxs.map(function (box, i) {
+	        this.state.boxs.map(function (box, i) {
 	          return _reactAddons2['default'].createElement(
 	            'div',
 	            { key: i, className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
-	            _reactAddons2['default'].createElement(_ThumbItem2['default'], { handleBoxLogin: _this.props.handleBoxLogin, auth: _this.props.auth, box: box })
+	            _reactAddons2['default'].createElement(_ThumbItem2['default'], { handleBoxLogin: _this.props.handleBoxLogin, auth: _this.state.auth, box: box })
 	          );
 	        })
 	      );
@@ -14106,11 +14324,11 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _immutable = __webpack_require__(340);
+	var _immutable = __webpack_require__(343);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsBoxActions = __webpack_require__(319);
+	var _actionsBoxActions = __webpack_require__(315);
 
 	/**
 	 * @Component
@@ -14561,7 +14779,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _axios = __webpack_require__(320);
+	var _axios = __webpack_require__(316);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -14571,41 +14789,25 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _configSample = __webpack_require__(339);
+	var _configSample = __webpack_require__(335);
 
-	var _storeBoxStore = __webpack_require__(315);
-
-	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
-
-	var _storeAuthStore = __webpack_require__(341);
-
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
-
-	var _actionsBoxActions = __webpack_require__(319);
+	var _actionsBoxActions = __webpack_require__(315);
 
 	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
-	var _actionsAuthActions = __webpack_require__(342);
-
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _actionsSanphamActions = __webpack_require__(346);
+	var _actionsSanphamActions = __webpack_require__(336);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
-	var _storeVerifyStore = __webpack_require__(373);
-
-	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
-
-	var _actionsVerifyActions = __webpack_require__(343);
+	var _actionsVerifyActions = __webpack_require__(347);
 
 	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
-	var _reactMasonryMixin = __webpack_require__(374);
+	var _reactMasonryMixin = __webpack_require__(373);
 
 	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
 
-	var _reactPackeryMixin = __webpack_require__(391);
+	var _reactPackeryMixin = __webpack_require__(390);
 
 	var _reactPackeryMixin2 = _interopRequireDefault(_reactPackeryMixin);
 
@@ -14613,27 +14815,23 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _altAltContainer = __webpack_require__(311);
-
-	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
-
 	var _componentsFormSignIn = __webpack_require__(356);
 
 	var _componentsFormSignIn2 = _interopRequireDefault(_componentsFormSignIn);
 
-	var _componentsFormVerify = __webpack_require__(413);
+	var _componentsFormVerify = __webpack_require__(412);
 
 	var _componentsFormVerify2 = _interopRequireDefault(_componentsFormVerify);
 
-	var _componentsProductDetailHeaderProduct = __webpack_require__(414);
+	var _componentsHeaderBox = __webpack_require__(414);
 
-	var _componentsProductDetailHeaderProduct2 = _interopRequireDefault(_componentsProductDetailHeaderProduct);
+	var _componentsHeaderBox2 = _interopRequireDefault(_componentsHeaderBox);
 
-	var _componentsBoxBoxItem = __webpack_require__(417);
+	var _componentsBoxBoxItem = __webpack_require__(416);
 
 	var _componentsBoxBoxItem2 = _interopRequireDefault(_componentsBoxBoxItem);
 
-	var InfiniteScroll = __webpack_require__(418)(_reactAddons2['default']);
+	var InfiniteScroll = __webpack_require__(417)(_reactAddons2['default']);
 
 	var createUniqueArray = (function () {
 	  return function (inputArray, sorter) {
@@ -14767,21 +14965,7 @@ webpackJsonp([0],[
 	    return _reactAddons2['default'].createElement(
 	      'div',
 	      null,
-	      _reactAddons2['default'].createElement(
-	        _altAltContainer2['default'],
-	        {
-	          stores: [_storeBoxStore2['default'], _storeAuthStore2['default']],
-	          actions: { BoxActions: _actionsBoxActions2['default'] },
-	          inject: {
-	            info: function info(props) {
-	              return _storeBoxStore2['default'].getState().info;
-	            },
-	            auth: function auth(props) {
-	              return _storeAuthStore2['default'].getState().auth;
-	            }
-	          } },
-	        _reactAddons2['default'].createElement(_componentsProductDetailHeaderProduct2['default'], { handleBoxLogin: this.handleBoxLogin })
-	      ),
+	      _reactAddons2['default'].createElement(_componentsHeaderBox2['default'], { handleBoxLogin: this.handleBoxLogin }),
 	      _reactAddons2['default'].createElement(
 	        'section',
 	        { id: 'productDetail' },
@@ -14827,18 +15011,7 @@ webpackJsonp([0],[
 	            _reactAddons2['default'].createElement(
 	              'div',
 	              { className: 'centrix' },
-	              _reactAddons2['default'].createElement(
-	                _altAltContainer2['default'],
-	                {
-	                  stores: [_storeAuthStore2['default']],
-	                  actions: { AuthActions: _actionsAuthActions2['default'] },
-	                  inject: {
-	                    loginState: function loginState(props) {
-	                      return _storeAuthStore2['default'].getState().loginState;
-	                    }
-	                  } },
-	                _reactAddons2['default'].createElement(_componentsFormSignIn2['default'], { replaceWith: this.hideBoxLogin })
-	              )
+	              _reactAddons2['default'].createElement(_componentsFormSignIn2['default'], { replaceWith: this.hideBoxLogin })
 	            )
 	          )
 	        )
@@ -14858,28 +15031,7 @@ webpackJsonp([0],[
 	            _reactAddons2['default'].createElement(
 	              'div',
 	              { className: 'centrix' },
-	              _reactAddons2['default'].createElement(
-	                _altAltContainer2['default'],
-	                {
-	                  params: this.props.params,
-	                  stores: [_storeVerifyStore2['default'], _storeAuthStore2['default']],
-	                  actions: { VerifyActions: _actionsVerifyActions2['default'] },
-	                  inject: {
-	                    auth: function auth() {
-	                      return _storeAuthStore2['default'].getState().auth;
-	                    },
-	                    codeFaild: function codeFaild() {
-	                      return _storeVerifyStore2['default'].getState().codeFaild;
-	                    },
-	                    verifyFaild: function verifyFaild() {
-	                      return _storeVerifyStore2['default'].getState().verifyFaild;
-	                    },
-	                    verifyState: function verifyState() {
-	                      return _storeVerifyStore2['default'].getState().verifyState;
-	                    }
-	                  } },
-	                _reactAddons2['default'].createElement(_componentsFormVerify2['default'], { hideBoxVerify: this.hideBoxVerify })
-	              )
+	              _reactAddons2['default'].createElement(_componentsFormVerify2['default'], { hideBoxVerify: this.hideBoxVerify })
 	            )
 	          )
 	        )
@@ -15220,91 +15372,9 @@ webpackJsonp([0],[
 /* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _immutable = __webpack_require__(340);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _actionsVerifyActions = __webpack_require__(343);
-
-	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
-
-	var VerifyStore = (function () {
-	  function VerifyStore() {
-	    _classCallCheck(this, VerifyStore);
-
-	    this.bindActions(_actionsVerifyActions2['default']); // getVerify, getVerifyFaild, getCode, getCodeFaild
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.codeFaild = new _immutable.Map({});
-	    this.verifyFaild = new _immutable.Map({});
-	    this.verifyState = false;
-	  }
-
-	  _createClass(VerifyStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].Map.isMap(this.codeFaild)) {
-	        this.codeFaild = _immutable2['default'].fromJS(this.codeFaild);
-	      }
-	      if (!_immutable2['default'].Map.isMap(this.verifyFaild)) {
-	        this.verifyFaild = _immutable2['default'].fromJS(this.verifyFaild);
-	      }
-	    }
-	  }, {
-	    key: 'onGetCode',
-	    value: function onGetCode(data) {
-	      console.log('onGetCode', data);
-	      this.codeFaild = new _immutable.Map({});
-	    }
-	  }, {
-	    key: 'onGetVerify',
-	    value: function onGetVerify(data) {
-	      console.log('onGetVerify', data);
-	      this.verifyState = true;
-	      this.verifyFaild = new _immutable.Map({});
-	      this.codeFaild = new _immutable.Map({});
-	    }
-	  }, {
-	    key: 'onGetCodeFaild',
-	    value: function onGetCodeFaild(err) {
-	      console.log('onGetCodeFaild', err);
-	      this.codeFaild = new _immutable.Map(err);
-	      this.verifyFaild = new _immutable.Map({});
-	    }
-	  }, {
-	    key: 'onGetVerifyFaild',
-	    value: function onGetVerifyFaild(err) {
-	      console.log('onGetVerifyFaild', err);
-	      this.verifyFaild = new _immutable.Map(err);
-	      this.verifyState = false;
-	    }
-	  }]);
-
-	  return VerifyStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(VerifyStore, 'VerifyStore');
-
-/***/ },
-/* 374 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var isBrowser = (typeof window !== 'undefined');
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(375) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(388) : null;
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(374) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(387) : null;
 
 	function MasonryMixin() {
 	    return function(reference, options) {
@@ -15416,7 +15486,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 375 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -15610,8 +15680,8 @@ webpackJsonp([0],[
 	// -------------------------- transport -------------------------- //
 	if (true) {
 	  module.exports = masonryDefinition(
-	    __webpack_require__(376),
-	    __webpack_require__(386)
+	    __webpack_require__(375),
+	    __webpack_require__(385)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -15632,7 +15702,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 376 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -16623,12 +16693,12 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(380),
-	    __webpack_require__(377),
 	    __webpack_require__(379),
-	    __webpack_require__(381),
-	    __webpack_require__(383),
-	    __webpack_require__(384)
+	    __webpack_require__(376),
+	    __webpack_require__(378),
+	    __webpack_require__(380),
+	    __webpack_require__(382),
+	    __webpack_require__(383)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -16657,7 +16727,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 377 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -16721,7 +16791,7 @@ webpackJsonp([0],[
 
 	// transport
 	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(378) );
+	  module.exports = defineDocReady( __webpack_require__(377) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  // if RequireJS, then doc is already ready
@@ -16736,7 +16806,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 378 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -16824,7 +16894,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 379 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -17267,7 +17337,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 380 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -17355,7 +17425,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 381 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -17564,7 +17634,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(382) );
+	  module.exports = defineGetSize( __webpack_require__(381) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -17577,7 +17647,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 382 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -17638,7 +17708,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 383 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -17751,7 +17821,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 384 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18261,9 +18331,9 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
-	    __webpack_require__(379),
-	    __webpack_require__(381),
-	    __webpack_require__(385)
+	    __webpack_require__(378),
+	    __webpack_require__(380),
+	    __webpack_require__(384)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -18287,7 +18357,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 385 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -18348,7 +18418,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 386 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -18557,7 +18627,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(387) );
+	  module.exports = defineGetSize( __webpack_require__(386) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -18570,7 +18640,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 387 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -18631,7 +18701,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 388 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -18649,8 +18719,8 @@ webpackJsonp([0],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(389),
-	      __webpack_require__(390)
+	      __webpack_require__(388),
+	      __webpack_require__(389)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -18972,7 +19042,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 389 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -19450,7 +19520,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 390 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -19538,12 +19608,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 391 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isBrowser = (typeof window !== 'undefined');
-	var Packery = isBrowser ? window.Packery || __webpack_require__(392) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(410) : null;
+	var Packery = isBrowser ? window.Packery || __webpack_require__(391) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(409) : null;
 
 	function PackeryMixin() {
 	    return function(reference, options) {
@@ -19655,7 +19725,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 392 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -20108,12 +20178,12 @@ webpackJsonp([0],[
 	if ( true ) {
 	  // CommonJS
 	  module.exports = packeryDefinition(
+	    __webpack_require__(404),
+	    __webpack_require__(392),
+	    __webpack_require__(394),
 	    __webpack_require__(405),
-	    __webpack_require__(393),
-	    __webpack_require__(395),
 	    __webpack_require__(406),
-	    __webpack_require__(407),
-	    __webpack_require__(408)
+	    __webpack_require__(407)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -20142,7 +20212,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 393 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -20351,7 +20421,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(394) );
+	  module.exports = defineGetSize( __webpack_require__(393) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -20364,7 +20434,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 394 */
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -20425,7 +20495,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 395 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -21416,12 +21486,12 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(399),
-	    __webpack_require__(396),
 	    __webpack_require__(398),
-	    __webpack_require__(400),
-	    __webpack_require__(402),
-	    __webpack_require__(403)
+	    __webpack_require__(395),
+	    __webpack_require__(397),
+	    __webpack_require__(399),
+	    __webpack_require__(401),
+	    __webpack_require__(402)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -21450,7 +21520,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 396 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -21514,7 +21584,7 @@ webpackJsonp([0],[
 
 	// transport
 	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(397) );
+	  module.exports = defineDocReady( __webpack_require__(396) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  // if RequireJS, then doc is already ready
@@ -21529,7 +21599,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 397 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -21617,7 +21687,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 398 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -22060,7 +22130,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 399 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -22148,7 +22218,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 400 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -22357,7 +22427,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(401) );
+	  module.exports = defineGetSize( __webpack_require__(400) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -22370,7 +22440,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 401 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -22431,7 +22501,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 402 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -22544,7 +22614,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 403 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23054,9 +23124,9 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
-	    __webpack_require__(398),
-	    __webpack_require__(400),
-	    __webpack_require__(404)
+	    __webpack_require__(397),
+	    __webpack_require__(399),
+	    __webpack_require__(403)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -23080,7 +23150,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 404 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -23141,7 +23211,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 405 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -23232,7 +23302,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 406 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23399,7 +23469,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 407 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23559,7 +23629,7 @@ webpackJsonp([0],[
 	if ( true ) {
 	  // CommonJS
 	  module.exports = packerDefinition(
-	    __webpack_require__(406)
+	    __webpack_require__(405)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -23574,7 +23644,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 408 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23738,9 +23808,9 @@ webpackJsonp([0],[
 	if ( true ) {
 	  // CommonJS
 	  module.exports = itemDefinition(
-	    __webpack_require__(409),
-	    __webpack_require__(395),
-	    __webpack_require__(406)
+	    __webpack_require__(408),
+	    __webpack_require__(394),
+	    __webpack_require__(405)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -23763,7 +23833,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 409 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -23824,7 +23894,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 410 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -23842,8 +23912,8 @@ webpackJsonp([0],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(411),
-	      __webpack_require__(412)
+	      __webpack_require__(410),
+	      __webpack_require__(411)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -24165,7 +24235,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 411 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -24643,7 +24713,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 412 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -24731,10 +24801,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 413 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _extends = __webpack_require__(1)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -24748,6 +24820,18 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
+	var _storeVerifyStore = __webpack_require__(413);
+
+	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
+
+	var _storeAuthStore = __webpack_require__(345);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _actionsVerifyActions = __webpack_require__(347);
+
+	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
+
 	exports['default'] = _reactAddons2['default'].createClass({
 	  displayName: 'Verify',
 
@@ -24757,18 +24841,41 @@ webpackJsonp([0],[
 	    router: _reactAddons.PropTypes.object.isRequired
 	  },
 
+	  getInitialState: function getInitialState() {
+	    return _extends({
+	      auth: _storeAuthStore2['default'].getState().auth
+	    }, _storeVerifyStore2['default'].getState());
+	  },
+
 	  componentDidMount: function componentDidMount() {
 	    _reactAddons2['default'].findDOMNode(this.refs.code).focus();
+	    _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	    _storeVerifyStore2['default'].listen(this._onChangeVerifyStore);
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	    _storeVerifyStore2['default'].unlisten(this._onChangeVerifyStore);
+	  },
+
+	  _onChangeAuthStore: function _onChangeAuthStore(state) {
+	    this.setState({
+	      auth: state.auth
+	    });
+	  },
+
+	  _onChangeVerifyStore: function _onChangeVerifyStore(state) {
+	    this.setState(_extends({}, state));
 	  },
 
 	  componentDidUpdate: function componentDidUpdate() {
-	    if (this.props.verifyState) {
+	    if (this.state.verifyState) {
 	      this.onToNexPath();
 	    }
 	  },
 
 	  getCode: function getCode() {
-	    this.props.VerifyActions.getCode();
+	    _actionsVerifyActions2['default'].getCode();
 	  },
 
 	  render: function render() {
@@ -24778,6 +24885,7 @@ webpackJsonp([0],[
 	      _reactAddons2['default'].createElement(
 	        'div',
 	        { className: 'verify-body' },
+	        this.props.children,
 	        _reactAddons2['default'].createElement(
 	          'h4',
 	          null,
@@ -24787,7 +24895,7 @@ webpackJsonp([0],[
 	          'p',
 	          null,
 	          'Chúng tôi đã gửi một mã xác thực vào số điện thoại ',
-	          this.props.auth.get('mobilePhone'),
+	          this.state.auth.get('mobilePhone'),
 	          '.'
 	        ),
 	        _reactAddons2['default'].createElement(
@@ -24796,7 +24904,7 @@ webpackJsonp([0],[
 	          _reactAddons2['default'].createElement(
 	            'label',
 	            { className: 'text-danger' },
-	            this.props.verifyFaild.get('message') || this.props.codeFaild.get('message')
+	            this.state.verifyFaild.get('message') || this.state.codeFaild.get('message')
 	          ),
 	          _reactAddons2['default'].createElement('input', { ref: 'code', className: 'form-control', name: 'macode', placeholder: 'Mã xác thực', type: 'text' })
 	        ),
@@ -24808,7 +24916,7 @@ webpackJsonp([0],[
 	            { className: 'col-xs-5 col-md-5' },
 	            _reactAddons2['default'].createElement(
 	              'button',
-	              { className: 'btn btn-link', onClick: this.getCode, disabled: this.props.codeFaild.size > 0 ? true : false },
+	              { className: 'btn btn-link', onClick: this.getCode, disabled: this.state.codeFaild.size > 0 ? true : false },
 	              _reactAddons2['default'].createElement('i', { className: 'fa fa-refresh' }),
 	              'Send a new code.'
 	            )
@@ -24850,7 +24958,7 @@ webpackJsonp([0],[
 
 	  onVerify: function onVerify() {
 	    var code = _reactAddons2['default'].findDOMNode(this.refs.code).value;
-	    this.props.VerifyActions.getVerify(code);
+	    _actionsVerifyActions2['default'].getVerify(code);
 	  },
 
 	  onToNexPath: function onToNexPath() {
@@ -24875,6 +24983,88 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
+/* 413 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _immutable = __webpack_require__(343);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _actionsVerifyActions = __webpack_require__(347);
+
+	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
+
+	var VerifyStore = (function () {
+	  function VerifyStore() {
+	    _classCallCheck(this, VerifyStore);
+
+	    this.bindActions(_actionsVerifyActions2['default']); // getVerify, getVerifyFaild, getCode, getCodeFaild
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.codeFaild = new _immutable.Map({});
+	    this.verifyFaild = new _immutable.Map({});
+	    this.verifyState = false;
+	  }
+
+	  _createClass(VerifyStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].Map.isMap(this.codeFaild)) {
+	        this.codeFaild = _immutable2['default'].fromJS(this.codeFaild);
+	      }
+	      if (!_immutable2['default'].Map.isMap(this.verifyFaild)) {
+	        this.verifyFaild = _immutable2['default'].fromJS(this.verifyFaild);
+	      }
+	    }
+	  }, {
+	    key: 'onGetCode',
+	    value: function onGetCode(data) {
+	      console.log('onGetCode', data);
+	      this.codeFaild = new _immutable.Map({});
+	    }
+	  }, {
+	    key: 'onGetVerify',
+	    value: function onGetVerify(data) {
+	      console.log('onGetVerify', data);
+	      this.verifyState = true;
+	      this.verifyFaild = new _immutable.Map({});
+	      this.codeFaild = new _immutable.Map({});
+	    }
+	  }, {
+	    key: 'onGetCodeFaild',
+	    value: function onGetCodeFaild(err) {
+	      console.log('onGetCodeFaild', err);
+	      this.codeFaild = new _immutable.Map(err);
+	      this.verifyFaild = new _immutable.Map({});
+	    }
+	  }, {
+	    key: 'onGetVerifyFaild',
+	    value: function onGetVerifyFaild(err) {
+	      console.log('onGetVerifyFaild', err);
+	      this.verifyFaild = new _immutable.Map(err);
+	      this.verifyState = false;
+	    }
+	  }]);
+
+	  return VerifyStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(VerifyStore, 'VerifyStore');
+
+/***/ },
 /* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -24892,27 +25082,136 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	/* @Component */
-
 	var _reactRouter2 = _interopRequireDefault(_reactRouter);
 
-	var _altAltContainer = __webpack_require__(311);
+	var _storeAuthStore = __webpack_require__(345);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _storeBoxStore = __webpack_require__(339);
+
+	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
+
+	var _storeOrderStore = __webpack_require__(349);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
+
+	var _actionsAuthActions = __webpack_require__(346);
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
+
+	var _actionsBoxActions = __webpack_require__(315);
+
+	/**
+	 * @Component
+	 */
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
+
+	var _altAltContainer = __webpack_require__(262);
 
 	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
 
-	var _Header = __webpack_require__(415);
+	var _NavbarNavbar = __webpack_require__(351);
 
-	var _Header2 = _interopRequireDefault(_Header);
+	var _NavbarNavbar2 = _interopRequireDefault(_NavbarNavbar);
 
-	var _Navbar = __webpack_require__(416);
+	var _NavbarNavbarBox = __webpack_require__(415);
 
-	var _Navbar2 = _interopRequireDefault(_Navbar);
+	var _NavbarNavbarBox2 = _interopRequireDefault(_NavbarNavbarBox);
 
 	exports['default'] = _reactAddons2['default'].createClass({
-	  displayName: 'HeaderProduct',
+	  displayName: 'Box',
 
 	  contextTypes: {
 	    router: _reactAddons2['default'].PropTypes.instanceOf(_reactRouter2['default']).isRequired
+	  },
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      auth: _storeAuthStore2['default'].getState().auth,
+	      info: _storeBoxStore2['default'].getState().info,
+	      count: _storeOrderStore2['default'].getTotalSize()
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	    _storeBoxStore2['default'].listen(this._onChangeBoxStore);
+	    _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	    _storeBoxStore2['default'].unlisten(this._onChangeBoxStore);
+	    _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	  },
+
+	  _onChangeAuthStore: function _onChangeAuthStore(state) {
+	    this.setState({
+	      auth: state.auth
+	    });
+	  },
+
+	  _onChangeBoxStore: function _onChangeBoxStore(state) {
+	    this.setState({
+	      info: state.info
+	    });
+	  },
+
+	  _onChangeOrderStore: function _onChangeOrderStore(state) {
+	    this.setState({
+	      count: _storeOrderStore2['default'].getTotalSize()
+	    });
+	  },
+
+	  render: function render() {
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      { className: 'header-product' },
+	      _reactAddons2['default'].createElement(_NavbarNavbar2['default'], {
+	        count: this.state.count,
+	        AuthActions: _actionsAuthActions2['default'],
+	        auth: this.state.auth }),
+	      _reactAddons2['default'].createElement(_NavbarNavbarBox2['default'], {
+	        info: this.state.info,
+	        auth: this.state.auth,
+	        handleBoxLogin: this.props.handleBoxLogin,
+	        BoxActions: _actionsBoxActions2['default'] })
+	    );
+	  }
+
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 415 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(344);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'NavbarBox',
+
+	  propTypes: {
+	    name: _reactAddons2['default'].PropTypes.string,
+	    likesCount: _reactAddons2['default'].PropTypes.number
 	  },
 
 	  getInitialState: function getInitialState() {
@@ -24931,257 +25230,99 @@ webpackJsonp([0],[
 
 	  handleScroll: function handleScroll(e) {
 	    var scrollTop = window.scrollY;
-	    var hideHeader = scrollTop >= 33;
+	    var hideHeader = scrollTop >= 50;
 	    this.setState({
 	      hideHeader: hideHeader
 	    });
 	  },
 
 	  render: function render() {
+	    var classesNavbar = (0, _classnames2['default'])({
+	      "navbar": true,
+	      "navbar-default": true,
+	      "navbar-product": true,
+	      "navbar-static-top": true,
+	      "navbar-fixed-top": this.state.hideHeader,
+	      "position-top": !this.state.hideHeader
+	    }),
+	        type = null;
+
+	    switch (this.props.info.get('type')) {
+	      case "product":
+	        type = "Sản phẩm";
+	        break;
+	      case "article":
+	        type = "Bài viết";
+	        break;
+	      case "photo":
+	        type = "Ảnh";
+	        break;
+	    }
+
 	    return _reactAddons2['default'].createElement(
-	      'div',
-	      null,
-	      _reactAddons2['default'].createElement(_Header2['default'], {
-	        hideHeader: this.state.hideHeader }),
-	      _reactAddons2['default'].createElement(_Navbar2['default'], {
-	        info: this.props.info,
-	        auth: this.props.auth,
-	        handleBoxLogin: this.props.handleBoxLogin,
-	        BoxActions: this.props.BoxActions,
-	        hideHeader: this.state.hideHeader })
+	      'nav',
+	      { className: classesNavbar },
+	      _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'infoListProduct text-center' },
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'btn-group' },
+	          _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this.handleLikeBox, type: 'button', className: 'btn btn-default navbar-btn' },
+	            _reactAddons2['default'].createElement('i', { className: 'fa fa-heart gray' })
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'button',
+	            { type: 'button', className: 'btn btn-default count-like navbar-btn' },
+	            _reactAddons2['default'].createElement(
+	              'span',
+	              null,
+	              this.props.info.get('likesCount')
+	            )
+	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'nameinfoListProduct' },
+	          this.props.info.get('name')
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'span',
+	          { className: 'countListProduct' },
+	          this.props.info.get('postsCount'),
+	          ' ',
+	          type
+	        )
+	      )
 	    );
+	  },
+
+	  boxLogin: function boxLogin(cb) {
+	    if (!this.props.auth.get('access_token')) {
+	      this.props.handleBoxLogin('token');
+	    } else {
+	      if (!this.props.auth.get('isVerifyMobilePhone')) {
+	        this.props.handleBoxLogin('verify');
+	        return;
+	      }
+	      cb();
+	    }
+	  },
+
+	  handleLikeBox: function handleLikeBox() {
+	    var _this = this;
+
+	    var self = this;
+	    this.boxLogin(function () {
+	      var itemID = _this.props.info.get('id'),
+	          token = _this.props.auth.get('access_token');
+
+	      // actions like box
+	      self.props.BoxActions.like({ itemID: itemID, token: token });
+	    });
 	  }
-
-	});
-	module.exports = exports['default'];
-
-/***/ },
-/* 415 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* @jsx React.DOM */
-	"use strict";
-
-	var _extends = __webpack_require__(1)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-		value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _classnames = __webpack_require__(350);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _storeAuthStore = __webpack_require__(341);
-
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
-
-	var _actionsAuthActions = __webpack_require__(342);
-
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	exports['default'] = _reactAddons2['default'].createClass({
-		displayName: 'Header',
-
-		getInitialState: function getInitialState() {
-			return _extends({
-				hideHeader: false
-			}, _storeAuthStore2['default'].getState().auth.toJS());
-		},
-
-		componentDidMount: function componentDidMount() {
-			window.addEventListener('scroll', this.handleScroll);
-			_storeAuthStore2['default'].listen(this.handleAuthStore);
-		},
-
-		componentWillUnmount: function componentWillUnmount() {
-			window.removeEventListener('scroll', this.handleScroll);
-			_storeAuthStore2['default'].unlisten(this.handleAuthStore);
-		},
-
-		handleScroll: function handleScroll(e) {
-			var scrollTop = window.scrollY;
-			var hideHeader = scrollTop >= 33;
-			this.setState({
-				hideHeader: hideHeader
-			});
-		},
-
-		handleAuthStore: function handleAuthStore(state) {
-			this.setState(_extends({}, state.auth.toJS()));
-		},
-
-		render: function render() {
-			var classesNavbar = (0, _classnames2['default'])({
-				"navbar": true,
-				"navbar-default": true,
-				"navbar-fixed-top": true,
-				"headerHiden": this.state.hideHeader
-			});
-
-			if (!this.state.mobilePhone) {
-				return _reactAddons2['default'].createElement(
-					'header',
-					null,
-					_reactAddons2['default'].createElement(
-						'div',
-						{ className: 'container-fluid' },
-						_reactAddons2['default'].createElement(
-							'nav',
-							{ className: classesNavbar },
-							_reactAddons2['default'].createElement(
-								'div',
-								{ className: 'container-fluid' },
-								_reactAddons2['default'].createElement(
-									'div',
-									{ className: 'navbar-header' },
-									_reactAddons2['default'].createElement(
-										'button',
-										{ type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
-										_reactAddons2['default'].createElement(
-											'span',
-											{ className: 'sr-only' },
-											'Toggle navigation'
-										),
-										_reactAddons2['default'].createElement('span', { className: 'icon-bar' }),
-										_reactAddons2['default'].createElement('span', { className: 'icon-bar' }),
-										_reactAddons2['default'].createElement('span', { className: 'icon-bar' })
-									),
-									_reactAddons2['default'].createElement(
-										_reactRouter.Link,
-										{ to: '/', className: 'navbar-brand', href: '#' },
-										_reactAddons2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
-									),
-									_reactAddons2['default'].createElement(
-										'p',
-										{ className: 'navbar-text pull-left' },
-										'Tổ Cú'
-									)
-								),
-								_reactAddons2['default'].createElement(
-									'div',
-									{ className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
-									_reactAddons2['default'].createElement(
-										'div',
-										{ className: 'nav navbar-nav navbar-right' },
-										_reactAddons2['default'].createElement(
-											_reactRouter.Link,
-											{ to: '/signin', className: 'btn btn-sm btn-default navbar-btn' },
-											'Sign in'
-										),
-										_reactAddons2['default'].createElement(
-											_reactRouter.Link,
-											{ to: '/signup', className: 'btn btn-sm btn-primary navbar-btn' },
-											'Sign up'
-										)
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-
-			return _reactAddons2['default'].createElement(
-				'header',
-				null,
-				_reactAddons2['default'].createElement(
-					'div',
-					{ className: 'container-fluid' },
-					_reactAddons2['default'].createElement(
-						'nav',
-						{ className: classesNavbar },
-						_reactAddons2['default'].createElement(
-							'div',
-							{ className: 'container-fluid' },
-							_reactAddons2['default'].createElement(
-								'div',
-								{ className: 'navbar-header' },
-								_reactAddons2['default'].createElement(
-									'button',
-									{ type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
-									_reactAddons2['default'].createElement(
-										'span',
-										{ className: 'sr-only' },
-										'Toggle navigation'
-									),
-									_reactAddons2['default'].createElement('span', { className: 'icon-bar' }),
-									_reactAddons2['default'].createElement('span', { className: 'icon-bar' }),
-									_reactAddons2['default'].createElement('span', { className: 'icon-bar' })
-								),
-								_reactAddons2['default'].createElement(
-									_reactRouter.Link,
-									{ to: '/', className: 'navbar-brand', href: '#' },
-									_reactAddons2['default'].createElement('img', { alt: 'Brand', src: '/img/logo.png', width: '40', height: '40' })
-								),
-								_reactAddons2['default'].createElement(
-									'p',
-									{ className: 'navbar-text pull-left' },
-									'Tổ Cú'
-								)
-							),
-							_reactAddons2['default'].createElement(
-								'div',
-								{ className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
-								_reactAddons2['default'].createElement(
-									'div',
-									{ className: 'nav navbar-nav navbar-right' },
-									_reactAddons2['default'].createElement(
-										'span',
-										{ className: 'text-name' },
-										this.state.name
-									),
-									_reactAddons2['default'].createElement(
-										'div',
-										{ className: 'btn-group' },
-										_reactAddons2['default'].createElement(
-											'button',
-											{ type: 'button', className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-											_reactAddons2['default'].createElement('img', { alt: 'Brand', src: this.state.avatarUrl })
-										),
-										_reactAddons2['default'].createElement(
-											'ul',
-											{ className: 'dropdown-menu' },
-											_reactAddons2['default'].createElement(
-												'li',
-												null,
-												_reactAddons2['default'].createElement(
-													'a',
-													{ href: '#' },
-													'Settings'
-												)
-											),
-											_reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
-											_reactAddons2['default'].createElement(
-												'li',
-												null,
-												_reactAddons2['default'].createElement(
-													_reactRouter.Link,
-													{ to: '/signin', onClick: this.handleLogout },
-													'Log out'
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					)
-				)
-			);
-		},
-
-		handleLogout: function handleLogout() {
-			_actionsAuthActions2['default'].Logout(localStorage.access_token);
-		}
 
 	});
 	module.exports = exports['default'];
@@ -25204,136 +25345,7 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _classnames = __webpack_require__(350);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	exports['default'] = _reactAddons2['default'].createClass({
-	  displayName: 'Navbar',
-
-	  propTypes: {
-	    name: _reactAddons2['default'].PropTypes.string,
-	    likesCount: _reactAddons2['default'].PropTypes.number
-	  },
-
-	  getInitialState: function getInitialState() {
-	    return {};
-	  },
-
-	  render: function render() {
-	    var classesNavbar = (0, _classnames2['default'])({
-	      "navbar": true,
-	      "navbar-default": true,
-	      "navbar-product": true,
-	      "navbar-fixed-top": true,
-	      headerHiden: this.props.hideHeader
-	    }),
-	        type = null;
-
-	    switch (this.props.info.get('type')) {
-	      case "product":
-	        type = "Sản phẩm";
-	        break;
-	      case "article":
-	        type = "Bài viết";
-	        break;
-	      case "photo":
-	        type = "Ảnh";
-	        break;
-	    }
-
-	    return _reactAddons2['default'].createElement(
-	      'div',
-	      { className: 'container-fluid' },
-	      _reactAddons2['default'].createElement(
-	        'nav',
-	        { className: classesNavbar },
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'infoListProduct text-center' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'btn-group' },
-	            _reactAddons2['default'].createElement(
-	              'button',
-	              { onClick: this.handleLikeBox, type: 'button', className: 'btn btn-default navbar-btn' },
-	              _reactAddons2['default'].createElement('i', { className: 'fa fa-heart gray' })
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'button',
-	              { type: 'button', className: 'btn btn-default count-like navbar-btn' },
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                null,
-	                this.props.info.get('likesCount')
-	              )
-	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'nameinfoListProduct' },
-	            this.props.info.get('name')
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'span',
-	            { className: 'countListProduct' },
-	            this.props.info.get('postsCount'),
-	            ' ',
-	            type
-	          )
-	        )
-	      )
-	    );
-	  },
-
-	  boxLogin: function boxLogin(cb) {
-	    if (!this.props.auth.get('access_token')) {
-	      this.props.handleBoxLogin('token');
-	    } else {
-	      if (!this.props.auth.get('isVerifyMobilePhone')) {
-	        this.props.handleBoxLogin('verify');
-	        return;
-	      }
-	      cb();
-	    }
-	  },
-
-	  handleLikeBox: function handleLikeBox() {
-	    var _this = this;
-
-	    console.log('handleLikeBox');
-	    var self = this;
-	    this.boxLogin(function () {
-	      var itemID = _this.props.info.get('id'),
-	          token = _this.props.auth.get('access_token');
-
-	      // actions like box
-	      self.props.BoxActions.like({ itemID: itemID, token: token });
-	    });
-	  }
-
-	});
-	module.exports = exports['default'];
-
-/***/ },
-/* 417 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -25405,7 +25417,7 @@ webpackJsonp([0],[
 	/*<span className="price-list">153.000 VNĐ</span>*/
 
 /***/ },
-/* 418 */
+/* 417 */
 /***/ function(module, exports) {
 
 	function topPosition(domElt) {
@@ -25473,7 +25485,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 419 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25544,7 +25556,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 420 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25559,9 +25571,9 @@ webpackJsonp([0],[
 
 	var _extends = __webpack_require__(1)['default'];
 
-	var _regeneratorRuntime = __webpack_require__(262)['default'];
+	var _regeneratorRuntime = __webpack_require__(266)['default'];
 
-	var _Promise = __webpack_require__(292)['default'];
+	var _Promise = __webpack_require__(296)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -25575,65 +25587,33 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _decorators = __webpack_require__(257);
 
-	var _storeSanphamStore = __webpack_require__(345);
+	var _storeSanphamStore = __webpack_require__(350);
 
 	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
 
-	var _actionsSanphamActions = __webpack_require__(346);
+	var _actionsSanphamActions = __webpack_require__(336);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
-	var _storeAuthStore = __webpack_require__(341);
-
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
-
-	var _actionsAuthActions = __webpack_require__(342);
-
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _storeCityStore = __webpack_require__(421);
-
-	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
-
-	var _actionsCityActions = __webpack_require__(422);
+	var _actionsCityActions = __webpack_require__(420);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _storeOrderStore = __webpack_require__(347);
-
-	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
-
-	var _actionsOrderActions = __webpack_require__(348);
+	var _actionsOrderActions = __webpack_require__(337);
 
 	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
-	var _storeShipStore = __webpack_require__(423);
-
-	var _storeShipStore2 = _interopRequireDefault(_storeShipStore);
-
-	var _actionsShipActions = __webpack_require__(424);
-
-	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
-
-	var _storeVerifyStore = __webpack_require__(373);
-
-	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
-
-	var _actionsVerifyActions = __webpack_require__(343);
+	var _actionsVerifyActions = __webpack_require__(347);
 
 	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
-	var _storeSaleStore = __webpack_require__(425);
-
-	var _storeSaleStore2 = _interopRequireDefault(_storeSaleStore);
-
-	var _actionsSaleActions = __webpack_require__(426);
+	var _actionsSaleActions = __webpack_require__(421);
 
 	/**
 	 * @Component
@@ -25641,19 +25621,15 @@ webpackJsonp([0],[
 
 	var _actionsSaleActions2 = _interopRequireDefault(_actionsSaleActions);
 
-	var _altAltContainer = __webpack_require__(311);
+	var _componentsFormBoxSignIn = __webpack_require__(422);
 
-	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
+	var _componentsFormBoxSignIn2 = _interopRequireDefault(_componentsFormBoxSignIn);
 
-	var _componentsFormSignIn = __webpack_require__(356);
+	var _componentsFormBoxVerify = __webpack_require__(423);
 
-	var _componentsFormSignIn2 = _interopRequireDefault(_componentsFormSignIn);
+	var _componentsFormBoxVerify2 = _interopRequireDefault(_componentsFormBoxVerify);
 
-	var _componentsFormVerify = __webpack_require__(413);
-
-	var _componentsFormVerify2 = _interopRequireDefault(_componentsFormVerify);
-
-	var _componentsFormOrder = __webpack_require__(427);
+	var _componentsFormOrder = __webpack_require__(424);
 
 	var _componentsFormOrder2 = _interopRequireDefault(_componentsFormOrder);
 
@@ -25669,37 +25645,35 @@ webpackJsonp([0],[
 
 	var _componentsProductStatusOrder2 = _interopRequireDefault(_componentsProductStatusOrder);
 
-	var _componentsProductDetailHeader = __webpack_require__(415);
+	var _componentsHeaderProductID = __webpack_require__(530);
 
-	var _componentsProductDetailHeader2 = _interopRequireDefault(_componentsProductDetailHeader);
+	var _componentsHeaderProductID2 = _interopRequireDefault(_componentsHeaderProductID);
 
-	var _componentsProductDetailSidebar = __webpack_require__(530);
+	var _componentsProductSidebar = __webpack_require__(531);
 
-	var _componentsProductDetailSidebar2 = _interopRequireDefault(_componentsProductDetailSidebar);
+	var _componentsProductSidebar2 = _interopRequireDefault(_componentsProductSidebar);
 
-	var _componentsSale = __webpack_require__(531);
+	var _componentsSale = __webpack_require__(532);
 
 	var _componentsSale2 = _interopRequireDefault(_componentsSale);
 
-	var SanphamID = (function (_React$Component) {
-	  _inherits(SanphamID, _React$Component);
+	var ProductID = (function (_React$Component) {
+	  _inherits(ProductID, _React$Component);
 
-	  function SanphamID(props) {
-	    _classCallCheck(this, _SanphamID);
+	  function ProductID(props) {
+	    _classCallCheck(this, _ProductID);
 
-	    _get(Object.getPrototypeOf(_SanphamID.prototype), 'constructor', this).call(this, props);
-
-	    this._bind('onChangeSanphamStore', 'handleBoxLogin', 'Next', 'Prev', 'hideBoxLogin', 'renderBoxLogin', 'renderProductDetail', 'renderFormOrder', 'renderStatusOrder', 'hideBoxVerify');
+	    _get(Object.getPrototypeOf(_ProductID.prototype), 'constructor', this).call(this, props);
+	    this._bind('onChangeSanphamStore', 'handleBoxLogin', 'hideBoxLogin', 'renderBoxLogin', 'renderProductDetail', 'hideBoxVerify');
 
 	    this.state = _extends({
-	      hideHeader: false,
 	      boxLogin: false,
 	      boxVerify: false,
 	      current: 1
 	    }, _storeSanphamStore2['default'].getState().product.toJS());
 	  }
 
-	  _createClass(SanphamID, [{
+	  _createClass(ProductID, [{
 	    key: '_bind',
 	    value: function _bind() {
 	      var _this = this;
@@ -25721,17 +25695,12 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      // let { id } = this.props.params;
-	      // OrderActions.checkOrder({id});
-	      /*OrderActions.getListOrder();*/
 	      _storeSanphamStore2['default'].listen(this.onChangeSanphamStore);
-	      // OrderStore.listen(this.onChangeOrderStore);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      _storeSanphamStore2['default'].unlisten(this.onChangeSanphamStore);
-	      // OrderStore.unlisten(this.onChangeOrderStore);
 	    }
 	  }, {
 	    key: 'onChangeSanphamStore',
@@ -25739,18 +25708,12 @@ webpackJsonp([0],[
 	      this.setState(_extends({}, state.product.toJS()));
 	    }
 	  }, {
-	    key: 'onChangeOrderStore',
-	    value: function onChangeOrderStore(state) {
-	      // console.log('onChangeOrderStore', state);
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _reactAddons2['default'].createElement(
 	        'div',
 	        null,
-	        _reactAddons2['default'].createElement(_componentsProductDetailHeader2['default'], {
-	          hideHeader: this.state.hideHeader }),
+	        _reactAddons2['default'].createElement(_componentsHeaderProductID2['default'], null),
 	        _reactAddons2['default'].createElement(
 	          'section',
 	          { id: 'productDetail' },
@@ -25764,9 +25727,6 @@ webpackJsonp([0],[
 	                'div',
 	                { className: 'col-md-9 col-lg-9' },
 	                this.renderProductDetail(),
-	                this.renderPushListOrder(),
-	                this.renderFormOrder(),
-	                this.renderStatusOrder(),
 	                _reactAddons2['default'].createElement(
 	                  'div',
 	                  { className: 'row row-bottom-detail' },
@@ -26546,29 +26506,13 @@ webpackJsonp([0],[
 	                _reactAddons2['default'].createElement(
 	                  'div',
 	                  { className: 'row row-sidebar' },
-	                  _reactAddons2['default'].createElement(
-	                    _altAltContainer2['default'],
-	                    {
-	                      actions: { SanphamActions: _actionsSanphamActions2['default'] } },
-	                    _reactAddons2['default'].createElement(_componentsProductDetailSidebar2['default'], _extends({
-	                      boxId: this.state.BoxId
-	                    }, this.state.Box))
-	                  ),
+	                  _reactAddons2['default'].createElement(_componentsProductSidebar2['default'], _extends({
+	                    boxId: this.state.BoxId
+	                  }, this.state.Box)),
 	                  _reactAddons2['default'].createElement(
 	                    'div',
 	                    { className: 'col-md-12 col-lg-12' },
-	                    _reactAddons2['default'].createElement(
-	                      _altAltContainer2['default'],
-	                      {
-	                        stores: [_storeSaleStore2['default']],
-	                        actions: { SanphamActions: _actionsSanphamActions2['default'] },
-	                        inject: {
-	                          listSale: function listSale() {
-	                            return _storeSaleStore2['default'].getState().listSale;
-	                          }
-	                        } },
-	                      _reactAddons2['default'].createElement(_componentsSale2['default'], null)
-	                    )
+	                    _reactAddons2['default'].createElement(_componentsSale2['default'], null)
 	                  )
 	                )
 	              )
@@ -26581,180 +26525,18 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'renderProductDetail',
 	    value: function renderProductDetail() {
-	      if (this.state.current === 1) {
-	        return _reactAddons2['default'].createElement(
-	          _altAltContainer2['default'],
-	          {
-	            stores: [_storeAuthStore2['default'], _storeSanphamStore2['default'], _storeOrderStore2['default']],
-	            actions: { SanphamActions: _actionsSanphamActions2['default'], OrderActions: _actionsOrderActions2['default'] },
-	            inject: {
-	              auth: function auth() {
-	                return _storeAuthStore2['default'].getState().auth;
-	              },
-	              product: function product() {
-	                return _storeSanphamStore2['default'].getState().product;
-	              },
-	              listOrder: function listOrder() {
-	                return _storeOrderStore2['default'].getState().listOrder;
-	              }
-	            } },
-	          _reactAddons2['default'].createElement(_componentsProduct2['default'], {
-	            Next: this.Next,
-	            handleBoxLogin: this.handleBoxLogin,
-	            hideNavbar: this.state.hideHeader })
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'renderPushListOrder',
-	    value: function renderPushListOrder() {
-	      if (this.state.current === 2) {
-	        return _reactAddons2['default'].createElement(
-	          _altAltContainer2['default'],
-	          {
-	            stores: [_storeOrderStore2['default'], _storeSanphamStore2['default']],
-	            actions: { OrderActions: _actionsOrderActions2['default'] },
-	            inject: {
-	              product: function product() {
-	                return _storeSanphamStore2['default'].getState().product;
-	              },
-	              listOrder: function listOrder() {
-	                return _storeOrderStore2['default'].getState().listOrder;
-	              },
-	              itemPushOrder: function itemPushOrder() {
-	                return _storeOrderStore2['default'].getState().itemPushOrder;
-	              }
-	            } },
-	          _reactAddons2['default'].createElement(_componentsProductPushListOrder2['default'], {
-	            Prev: this.Prev,
-	            Next: this.Next })
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'renderFormOrder',
-	    value: function renderFormOrder() {
-	      if (this.state.current === 3) {
-	        return _reactAddons2['default'].createElement(
-	          _altAltContainer2['default'],
-	          {
-	            stores: [_storeCityStore2['default'], _storeSanphamStore2['default'], _storeShipStore2['default']],
-	            actions: { CityActions: _actionsCityActions2['default'], OrderActions: _actionsOrderActions2['default'], ShipActions: _actionsShipActions2['default'] },
-	            inject: {
-	              city: function city() {
-	                return _storeCityStore2['default'].getState().city;
-	              },
-	              district: function district() {
-	                return _storeCityStore2['default'].getState().district;
-	              },
-	              product: function product() {
-	                return _storeSanphamStore2['default'].getState().product;
-	              },
-	              phiship: function phiship() {
-	                return _storeShipStore2['default'].getState().phiship;
-	              }
-	            } },
-	          _reactAddons2['default'].createElement(_componentsFormOrder2['default'], {
-	            listOrder: [{ id: 1 }],
-	            Prev: this.Prev,
-	            Next: this.Next })
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'renderStatusOrder',
-	    value: function renderStatusOrder() {
-	      if (this.state.current === 4) {
-	        return _reactAddons2['default'].createElement(
-	          _altAltContainer2['default'],
-	          {
-	            stores: [_storeOrderStore2['default']],
-	            inject: {
-	              status: function status() {
-	                return _storeOrderStore2['default'].getState().createStatus;
-	              },
-	              order: function order() {
-	                return _storeOrderStore2['default'].getState().order;
-	              }
-	            } },
-	          _reactAddons2['default'].createElement(_componentsProductStatusOrder2['default'], {
-	            Prev: this.Prev })
-	        );
-	      }
+	      return _reactAddons2['default'].createElement(_componentsProduct2['default'], {
+	        handleBoxLogin: this.handleBoxLogin });
 	    }
 	  }, {
 	    key: 'renderBoxLogin',
 	    value: function renderBoxLogin() {
 	      if (this.state.boxLogin) {
-	        return _reactAddons2['default'].createElement(
-	          'div',
-	          { id: 'boxLogin' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'row' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { className: 'centrix' },
-	                _reactAddons2['default'].createElement(
-	                  _altAltContainer2['default'],
-	                  {
-	                    stores: [_storeAuthStore2['default']],
-	                    actions: { AuthActions: _actionsAuthActions2['default'] },
-	                    inject: {
-	                      loginState: function loginState(props) {
-	                        return _storeAuthStore2['default'].getState().loginState;
-	                      }
-	                    } },
-	                  _reactAddons2['default'].createElement(_componentsFormSignIn2['default'], { replaceWith: this.hideBoxLogin, nextPath: this.props.location.pathname })
-	                )
-	              )
-	            )
-	          )
-	        );
+	        return _reactAddons2['default'].createElement(_componentsFormBoxSignIn2['default'], { hideBoxLogin: this.hideBoxLogin, location: this.props.location });
 	      }
 
 	      if (this.state.boxVerify) {
-	        return _reactAddons2['default'].createElement(
-	          'div',
-	          { id: 'boxLogin' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'row' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { className: 'centrix' },
-	                _reactAddons2['default'].createElement(
-	                  _altAltContainer2['default'],
-	                  {
-	                    params: this.props.params,
-	                    stores: [_storeVerifyStore2['default'], _storeAuthStore2['default']],
-	                    actions: { VerifyActions: _actionsVerifyActions2['default'] },
-	                    inject: {
-	                      auth: function auth() {
-	                        return _storeAuthStore2['default'].getState().auth;
-	                      },
-	                      codeFaild: function codeFaild() {
-	                        return _storeVerifyStore2['default'].getState().codeFaild;
-	                      },
-	                      verifyFaild: function verifyFaild() {
-	                        return _storeVerifyStore2['default'].getState().verifyFaild;
-	                      },
-	                      verifyState: function verifyState() {
-	                        return _storeVerifyStore2['default'].getState().verifyState;
-	                      }
-	                    } },
-	                  _reactAddons2['default'].createElement(_componentsFormVerify2['default'], { hideBoxVerify: this.hideBoxVerify })
-	                )
-	              )
-	            )
-	          )
-	        );
+	        return _reactAddons2['default'].createElement(_componentsFormBoxVerify2['default'], { hideBoxVerify: this.hideBoxVerify });
 	      }
 	    }
 	  }, {
@@ -26786,36 +26568,10 @@ webpackJsonp([0],[
 	        boxVerify: false
 	      });
 	    }
-	  }, {
-	    key: 'Next',
-	    value: function Next(i) {
-	      if (i) {
-	        this.setState({
-	          current: this.state.current + i
-	        });
-	      } else {
-	        this.setState({
-	          current: this.state.current + 1
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'Prev',
-	    value: function Prev(i) {
-	      if (i) {
-	        this.setState({
-	          current: this.state.current - i
-	        });
-	      } else {
-	        this.setState({
-	          current: this.state.current - 1
-	        });
-	      }
-	    }
 	  }]);
 
-	  var _SanphamID = SanphamID;
-	  SanphamID = (0, _decorators.prepareRoute)(function callee$1$0(_ref) {
+	  var _ProductID = ProductID;
+	  ProductID = (0, _decorators.prepareRoute)(function callee$1$0(_ref) {
 	    var params = _ref.params;
 	    return _regeneratorRuntime.async(function callee$1$0$(context$2$0) {
 	      while (1) switch (context$2$0.prev = context$2$0.next) {
@@ -26831,17 +26587,17 @@ webpackJsonp([0],[
 	          return context$2$0.stop();
 	      }
 	    }, null, this);
-	  })(SanphamID) || SanphamID;
-	  return SanphamID;
+	  })(ProductID) || ProductID;
+	  return ProductID;
 	})(_reactAddons2['default'].Component);
 
-	exports['default'] = SanphamID;
+	exports['default'] = ProductID;
 	;
 	module.exports = exports['default'];
-	/* 6 box auto */
+	/* Header */ /* 6 box auto */ /* Sidebar */ /* Sale */
 
 /***/ },
-/* 421 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26850,7 +26606,7 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _Array$from = __webpack_require__(316)['default'];
+	var _regeneratorRuntime = __webpack_require__(266)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -26858,88 +26614,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _actionsCityActions = __webpack_require__(422);
-
-	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
-
-	var _immutable = __webpack_require__(340);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var CityStore = (function () {
-	  function CityStore() {
-	    _classCallCheck(this, CityStore);
-
-	    this.bindActions(_actionsCityActions2['default']); // getCity, getDistrict, getCityFailed, getDistrictFailed
-
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.city = _immutable2['default'].List();
-	    this.district = _immutable2['default'].List();
-	  }
-
-	  _createClass(CityStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].List.isList(this.city)) {
-	        this.city = _immutable2['default'].fromJS(this.city);
-	      }
-	      if (!_immutable2['default'].List.isList(this.district)) {
-	        this.district = _immutable2['default'].fromJS(this.district);
-	      }
-	    }
-	  }, {
-	    key: 'onGetCity',
-	    value: function onGetCity(data) {
-	      this.city = this.city.merge(_Array$from(data));
-	    }
-	  }, {
-	    key: 'onGetDistrict',
-	    value: function onGetDistrict(data) {
-	      this.district = _immutable2['default'].List(data);
-	    }
-	  }, {
-	    key: 'onGetCityFailed',
-	    value: function onGetCityFailed(err) {
-	      console.log('onGetCityFailed');
-	    }
-	  }, {
-	    key: 'onGetDistrictFailed',
-	    value: function onGetDistrictFailed(err) {
-	      // console.log(err);
-	      console.log('onGetDistrictFailed');
-	    }
-	  }]);
-
-	  return CityStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(CityStore, 'CityStore');
-
-/***/ },
-/* 422 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(262)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(320);
+	var _axios = __webpack_require__(316);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(339);
+	var _configSample = __webpack_require__(335);
 
 	var CityActions = (function () {
 	  function CityActions() {
@@ -27018,7 +26697,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(CityActions);
 
 /***/ },
-/* 423 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27027,59 +26706,7 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _immutable = __webpack_require__(340);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _actionsShipActions = __webpack_require__(424);
-
-	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
-
-	var ShipStore = (function () {
-	  function ShipStore() {
-	    _classCallCheck(this, ShipStore);
-
-	    this.bindActions(_actionsShipActions2['default']); // getPhiShip
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.phiship = new _immutable.Map();
-	  }
-
-	  _createClass(ShipStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].Map.isMap(this.phiship)) {
-	        this.phiship = _immutable2['default'].fromJS(this.phiship);
-	      }
-	    }
-	  }, {
-	    key: 'onGetPhiShip',
-	    value: function onGetPhiShip(data) {
-	      this.phiship = this.phiship.merge(data);
-	    }
-	  }]);
-
-	  return ShipStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(ShipStore, 'ShipStore');
-
-/***/ },
-/* 424 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
+	var _regeneratorRuntime = __webpack_require__(266)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -27087,132 +26714,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(320);
+	var _axios = __webpack_require__(316);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(339);
-
-	var ShipActions = (function () {
-	  function ShipActions() {
-	    _classCallCheck(this, ShipActions);
-	  }
-
-	  _createClass(ShipActions, [{
-	    key: 'getPhiShip',
-
-	    /**
-	     * tính toán phí ship
-	     * @param  {string} options.city     - tên tỉnh thành
-	     * @param  {string} options.district - tên quận huyện
-	     * @param  {number} options.weight   - trọng lượng hành ship
-	     * @dispatch {object}                  - phí ship và phương thức thanh toán
-	     */
-	    value: function getPhiShip(_ref) {
-	      var city = _ref.city;
-	      var district = _ref.district;
-	      var weight = _ref.weight;
-
-	      var self = this;
-
-	      _axios2['default'].get(_configSample.Api_URL + '/ship', {
-	        params: {
-	          city: city,
-	          district: district,
-	          weight: weight
-	        }
-	      }).then(function (res) {
-	        self.dispatch(res.data);
-	      })['catch'](function (res) {
-	        console.log('catch', res);
-	      });
-	    }
-	  }]);
-
-	  return ShipActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(ShipActions);
-
-/***/ },
-/* 425 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _Array$from = __webpack_require__(316)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _immutable = __webpack_require__(340);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _actionsSaleActions = __webpack_require__(426);
-
-	var _actionsSaleActions2 = _interopRequireDefault(_actionsSaleActions);
-
-	var SaleStore = (function () {
-	  function SaleStore() {
-	    _classCallCheck(this, SaleStore);
-
-	    this.bindActions(_actionsSaleActions2['default']); // getProductSale
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.listSale = _immutable2['default'].List();
-	  }
-
-	  _createClass(SaleStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].List.isList(this.listSale)) {
-	        this.listSale = _immutable2['default'].fromJS(this.listSale);
-	      }
-	    }
-	  }, {
-	    key: 'onGetProductSale',
-	    value: function onGetProductSale(data) {
-	      this.listSale = this.listSale.merge(_Array$from(data));
-	    }
-	  }]);
-
-	  return SaleStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(SaleStore, 'SaleStore');
-
-/***/ },
-/* 426 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(262)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(320);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(339);
+	var _configSample = __webpack_require__(335);
 
 	var SaleActions = (function () {
 			function SaleActions() {
@@ -27251,7 +26757,179 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(SaleActions);
 
 /***/ },
-/* 427 */
+/* 422 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(240);
+
+	/**
+	 * @Component
+	 */
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _SignIn = __webpack_require__(356);
+
+	var _SignIn2 = _interopRequireDefault(_SignIn);
+
+	var BoxsignIn = (function (_React$Component) {
+	  _inherits(BoxsignIn, _React$Component);
+
+	  function BoxsignIn(props) {
+	    _classCallCheck(this, BoxsignIn);
+
+	    _get(Object.getPrototypeOf(BoxsignIn.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {};
+	  }
+
+	  _createClass(BoxsignIn, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'boxLogin' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'centrix' },
+	              _react2['default'].createElement(
+	                _SignIn2['default'],
+	                { replaceWith: this.props.hideBoxLogin, nextPath: this.props.location.pathname },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { onClick: this.hideBoxLogin.bind(this), className: 'closeBox fa fa-times' },
+	                  _react2['default'].createElement('i', { 'class': 'fa fa-times' })
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'hideBoxLogin',
+	    value: function hideBoxLogin() {
+	      this.props.hideBoxLogin();
+	    }
+	  }]);
+
+	  return BoxsignIn;
+	})(_react2['default'].Component);
+
+	exports['default'] = BoxsignIn;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 423 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(240);
+
+	/**
+	 * @Component
+	 */
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Verify = __webpack_require__(412);
+
+	var _Verify2 = _interopRequireDefault(_Verify);
+
+	var BoxsignIn = (function (_React$Component) {
+	  _inherits(BoxsignIn, _React$Component);
+
+	  function BoxsignIn(props) {
+	    _classCallCheck(this, BoxsignIn);
+
+	    _get(Object.getPrototypeOf(BoxsignIn.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {};
+	  }
+
+	  _createClass(BoxsignIn, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'boxLogin' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'centrix' },
+	              _react2['default'].createElement(
+	                _Verify2['default'],
+	                { hideBoxVerify: this.props.hideBoxVerify },
+	                _react2['default'].createElement(
+	                  'div',
+	                  { onClick: this.hideBoxVerify.bind(this), className: 'closeBox fa fa-times' },
+	                  _react2['default'].createElement('i', { 'class': 'fa fa-times' })
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'hideBoxVerify',
+	    value: function hideBoxVerify() {
+	      this.props.hideBoxVerify();
+	    }
+	  }]);
+
+	  return BoxsignIn;
+	})(_react2['default'].Component);
+
+	exports['default'] = BoxsignIn;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27280,17 +26958,41 @@ webpackJsonp([0],[
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _storeShipStore = __webpack_require__(423);
+	var _storeShipStore = __webpack_require__(425);
+
+	var _storeShipStore2 = _interopRequireDefault(_storeShipStore);
+
+	var _actionsShipActions = __webpack_require__(426);
+
+	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
+
+	var _storeSanphamStore = __webpack_require__(350);
+
+	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
+
+	var _actionsSanphamActions = __webpack_require__(336);
+
+	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
+
+	var _storeCityStore = __webpack_require__(427);
+
+	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
+
+	var _actionsCityActions = __webpack_require__(420);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	var _actionsOrderActions = __webpack_require__(337);
 
 	/**
 	 * @Component
 	 */
 
-	var _storeShipStore2 = _interopRequireDefault(_storeShipStore);
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
 	var _FormInputValidation = __webpack_require__(361);
 
@@ -27319,7 +27021,7 @@ webpackJsonp([0],[
 	    _classCallCheck(this, FormOrder);
 
 	    _get(Object.getPrototypeOf(FormOrder.prototype), 'constructor', this).call(this, props);
-	    this._bind('handleClickHuy', 'handleClickDatMua', 'handleScroll', '_onChangeSelectCity', '_shipOnChange', '_ChangeDisable', '_ChangeVanchuyen', 'resetHinhthucVC', '_ChangeThanhtoan');
+	    this._bind('handleClickHuy', 'handleClickDatMua', 'handleScroll', '_onChangeSelectCity', '_onChangeShipStore', '_ChangeDisable', '_ChangeVanchuyen', 'resetHinhthucVC', '_ChangeThanhtoan', '_onChangeCityStore', '_onChangeSanphamStore');
 
 	    this.state = {
 	      disabled: true,
@@ -27329,7 +27031,11 @@ webpackJsonp([0],[
 	      shippingMethod: '',
 	      hinhthucVC: null,
 	      hideHeader: false,
-	      disabledBtnDatHang: true
+	      disabledBtnDatHang: true,
+	      city: _storeCityStore2['default'].getState().city,
+	      district: _storeCityStore2['default'].getState().district,
+	      product: _storeSanphamStore2['default'].getState().product,
+	      phiship: _storeShipStore2['default'].getState().phiship
 	    };
 	  }
 
@@ -27349,18 +27055,22 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      _storeShipStore2['default'].listen(this._shipOnChange);
 	      window.addEventListener('scroll', this.handleScroll);
+	      _storeShipStore2['default'].listen(this._onChangeShipStore);
+	      _storeCityStore2['default'].listen(this._onChangeCityStore);
+	      _storeSanphamStore2['default'].listen(this._onChangeSanphamStore);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      _storeShipStore2['default'].unlisten(this._shipOnChange);
 	      window.removeEventListener('scroll', this.handleScroll);
+	      _storeShipStore2['default'].unlisten(this._onChangeShipStore);
+	      _storeShipStore2['default'].unlisten(this._onChangeShipStore);
+	      _storeSanphamStore2['default'].unlisten(this._onChangeSanphamStore);
 	    }
 	  }, {
-	    key: '_shipOnChange',
-	    value: function _shipOnChange(state) {
+	    key: '_onChangeShipStore',
+	    value: function _onChangeShipStore(state) {
 	      this.setState(_extends({
 	        disabled: false
 	      }, state.phiship.toJS()));
@@ -27375,6 +27085,21 @@ webpackJsonp([0],[
 	          disabledBtnDatHang: true
 	        });
 	      }
+	    }
+	  }, {
+	    key: '_onChangeCityStore',
+	    value: function _onChangeCityStore(state) {
+	      this.setState({
+	        city: state.city,
+	        district: state.district
+	      });
+	    }
+	  }, {
+	    key: '_onChangeSanphamStore',
+	    value: function _onChangeSanphamStore(state) {
+	      this.setState({
+	        product: state.product
+	      });
 	    }
 	  }, {
 	    key: 'handleScroll',
@@ -27397,14 +27122,14 @@ webpackJsonp([0],[
 	          price = undefined,
 	          cost = undefined,
 	          amount = undefined;
-	      if (this.props.product.get('images').get(0)) {
-	        var url = this.props.product.get('images').get(0);
+	      if (this.state.product.get('images').get(0)) {
+	        var url = this.state.product.get('images').get(0);
 	        img_url = url.replace(/image\//gi, 'image/100x100/');
 	      }
 
-	      if (this.props.product.get('price')) {
-	        price = this.props.product.get('price').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
-	        this.state.amount = this.props.product.get('price') + this.state.cost;
+	      if (this.state.product.get('price')) {
+	        price = this.state.product.get('price').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
+	        this.state.amount = this.state.product.get('price') + this.state.cost;
 	        amount = this.state.amount.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
 	      }
 	      cost = this.state.cost.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
@@ -27458,9 +27183,9 @@ webpackJsonp([0],[
 	                _reactAddons2['default'].createElement(
 	                  'h3',
 	                  null,
-	                  this.props.product.get('boxName'),
+	                  this.state.product.get('boxName'),
 	                  ' - ',
-	                  this.props.product.get('code')
+	                  this.state.product.get('code')
 	                ),
 	                _reactAddons2['default'].createElement(
 	                  'span',
@@ -27494,9 +27219,9 @@ webpackJsonp([0],[
 	            ),
 	            _reactAddons2['default'].createElement(_formNguoiNhan2['default'], {
 	              ref: 'formNguoiNhan',
-	              city: this.props.city,
-	              district: this.props.district,
-	              product: this.props.product,
+	              city: this.state.city,
+	              district: this.state.district,
+	              product: this.state.product,
 	              onChangeTest: this.resetHinhthucVC,
 	              onChangeSelectCity: this._onChangeSelectCity,
 	              onChangeDisable: this._ChangeDisable }),
@@ -27545,7 +27270,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: '_onChangeSelectCity',
 	    value: function _onChangeSelectCity(citySelect) {
-	      this.props.CityActions.getDistrict({ city: citySelect });
+	      _actionsCityActions2['default'].getDistrict({ city: citySelect });
 	      this.setState({
 	        shippingMethod: ''
 	      });
@@ -27595,24 +27320,24 @@ webpackJsonp([0],[
 	        shippingMethod: this.state.shippingMethod === "COD" ? "cod" : "delivery",
 	        shippingCost: this.state.cost,
 	        paymentMethod: this.refs.hinhthucTT.getCheckbox(),
-	        total: this.props.product.get('price'),
+	        total: this.state.product.get('price'),
 	        percentageDiscount: 0,
 	        amount: this.state.amount,
-	        totalWeight: this.props.product.get('weight'),
+	        totalWeight: this.state.product.get('weight'),
 	        noteBySaleman: null,
 	        OrderLines: [{
 	          product: {
-	            id: this.props.product.get('id'),
+	            id: this.state.product.get('id'),
 	            onlineStore: true
 	          },
 	          quantity: 1,
-	          unitPrice: this.props.product.get('price'),
-	          amount: this.props.product.get('price'),
-	          weight: this.props.product.get('weight')
+	          unitPrice: this.state.product.get('price'),
+	          amount: this.state.product.get('price'),
+	          weight: this.state.product.get('weight')
 	        }]
 	      };
 
-	      this.props.OrderActions.createOrder(_extends({}, data));
+	      _actionsOrderActions2['default'].createOrder(_extends({}, data));
 	      this.props.Next();
 	    }
 	  }, {
@@ -27660,6 +27385,200 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
+/* 425 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _immutable = __webpack_require__(343);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _actionsShipActions = __webpack_require__(426);
+
+	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
+
+	var ShipStore = (function () {
+	  function ShipStore() {
+	    _classCallCheck(this, ShipStore);
+
+	    this.bindActions(_actionsShipActions2['default']); // getPhiShip
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.phiship = new _immutable.Map();
+	  }
+
+	  _createClass(ShipStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].Map.isMap(this.phiship)) {
+	        this.phiship = _immutable2['default'].fromJS(this.phiship);
+	      }
+	    }
+	  }, {
+	    key: 'onGetPhiShip',
+	    value: function onGetPhiShip(data) {
+	      this.phiship = this.phiship.merge(data);
+	    }
+	  }]);
+
+	  return ShipStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(ShipStore, 'ShipStore');
+
+/***/ },
+/* 426 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(316);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(335);
+
+	var ShipActions = (function () {
+	  function ShipActions() {
+	    _classCallCheck(this, ShipActions);
+	  }
+
+	  _createClass(ShipActions, [{
+	    key: 'getPhiShip',
+
+	    /**
+	     * tính toán phí ship
+	     * @param  {string} options.city     - tên tỉnh thành
+	     * @param  {string} options.district - tên quận huyện
+	     * @param  {number} options.weight   - trọng lượng hành ship
+	     * @dispatch {object}                  - phí ship và phương thức thanh toán
+	     */
+	    value: function getPhiShip(_ref) {
+	      var city = _ref.city;
+	      var district = _ref.district;
+	      var weight = _ref.weight;
+
+	      var self = this;
+
+	      _axios2['default'].get(_configSample.Api_URL + '/ship', {
+	        params: {
+	          city: city,
+	          district: district,
+	          weight: weight
+	        }
+	      }).then(function (res) {
+	        self.dispatch(res.data);
+	      })['catch'](function (res) {
+	        console.log('catch', res);
+	      });
+	    }
+	  }]);
+
+	  return ShipActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(ShipActions);
+
+/***/ },
+/* 427 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _Array$from = __webpack_require__(340)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _actionsCityActions = __webpack_require__(420);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	var _immutable = __webpack_require__(343);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var CityStore = (function () {
+	  function CityStore() {
+	    _classCallCheck(this, CityStore);
+
+	    this.bindActions(_actionsCityActions2['default']); // getCity, getDistrict, getCityFailed, getDistrictFailed
+
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.city = _immutable2['default'].List();
+	    this.district = _immutable2['default'].List();
+	  }
+
+	  _createClass(CityStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].List.isList(this.city)) {
+	        this.city = _immutable2['default'].fromJS(this.city);
+	      }
+	      if (!_immutable2['default'].List.isList(this.district)) {
+	        this.district = _immutable2['default'].fromJS(this.district);
+	      }
+	    }
+	  }, {
+	    key: 'onGetCity',
+	    value: function onGetCity(data) {
+	      this.city = this.city.merge(_Array$from(data));
+	    }
+	  }, {
+	    key: 'onGetDistrict',
+	    value: function onGetDistrict(data) {
+	      this.district = _immutable2['default'].List(data);
+	    }
+	  }, {
+	    key: 'onGetCityFailed',
+	    value: function onGetCityFailed(err) {
+	      console.log('onGetCityFailed');
+	    }
+	  }, {
+	    key: 'onGetDistrictFailed',
+	    value: function onGetDistrictFailed(err) {
+	      // console.log(err);
+	      console.log('onGetDistrictFailed');
+	    }
+	  }]);
+
+	  return CityStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(CityStore, 'CityStore');
+
+/***/ },
 /* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27675,7 +27594,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -27816,11 +27735,11 @@ webpackJsonp([0],[
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _actionsShipActions = __webpack_require__(424);
+	var _actionsShipActions = __webpack_require__(426);
 
 	/**
 	 * @Component
@@ -28114,7 +28033,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -28214,7 +28133,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -28355,7 +28274,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -28698,7 +28617,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -28887,28 +28806,48 @@ webpackJsonp([0],[
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
 	Object.defineProperty(exports, '__esModule', {
-			value: true
+	  value: true
 	});
 
 	var _reactAddons = __webpack_require__(16);
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storeSanphamStore = __webpack_require__(350);
+
+	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
+
+	var _storeAuthStore = __webpack_require__(345);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _storeOrderStore = __webpack_require__(349);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
+
+	var _actionsSanphamActions = __webpack_require__(336);
+
+	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
+
+	var _actionsOrderActions = __webpack_require__(337);
 
 	/**
 	 * @Component
 	 */
 
-	var _classnames2 = _interopRequireDefault(_classnames);
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
-	var _productDetailImgSlideProduct = __webpack_require__(435);
+	var _HeaderNavbarNavbarProductDetail = __webpack_require__(435);
 
-	var _productDetailImgSlideProduct2 = _interopRequireDefault(_productDetailImgSlideProduct);
+	var _HeaderNavbarNavbarProductDetail2 = _interopRequireDefault(_HeaderNavbarNavbarProductDetail);
 
-	var _productDetailNavbarProductID = __webpack_require__(437);
+	var _ImgSlideProduct = __webpack_require__(436);
 
-	var _productDetailNavbarProductID2 = _interopRequireDefault(_productDetailNavbarProductID);
+	var _ImgSlideProduct2 = _interopRequireDefault(_ImgSlideProduct);
 
 	var _InfoSanpham = __webpack_require__(438);
 
@@ -28923,64 +28862,104 @@ webpackJsonp([0],[
 	var _Mau2 = _interopRequireDefault(_Mau);
 
 	var Products = (function (_React$Component) {
-			_inherits(Products, _React$Component);
+	  _inherits(Products, _React$Component);
 
-			function Products(props) {
-					_classCallCheck(this, Products);
+	  function Products(props) {
+	    _classCallCheck(this, Products);
 
-					_get(Object.getPrototypeOf(Products.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(Products.prototype), 'constructor', this).call(this, props);
+	    this._onChangeAuthStore = this._onChangeAuthStore.bind(this);
+	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
+	    this._onChangeSanphamStore = this._onChangeSanphamStore.bind(this);
 
-					this.state = {};
-			}
+	    this.state = {
+	      auth: _storeAuthStore2['default'].getState().auth,
+	      product: _storeSanphamStore2['default'].getState().product,
+	      listOrder: _storeOrderStore2['default'].getState().listOrder
+	    };
+	  }
 
-			_createClass(Products, [{
-					key: 'render',
-					value: function render() {
-							return _reactAddons2['default'].createElement(
-									'div',
-									{ className: 'productDetail' },
-									_reactAddons2['default'].createElement(_productDetailNavbarProductID2['default'], {
-											Next: this.props.Next,
-											auth: this.props.auth,
-											product: this.props.product,
-											listOrder: this.props.listOrder,
-											SanphamActions: this.props.SanphamActions,
-											OrderActions: this.props.OrderActions,
-											handleBoxLogin: this.props.handleBoxLogin,
-											hideNavbar: this.state.hideHeader }),
-									_reactAddons2['default'].createElement(
-											'div',
-											{ className: 'product' },
-											_reactAddons2['default'].createElement(_productDetailImgSlideProduct2['default'], {
-													dataUrlImg: this.props.product.get('images') || [] }),
-											_reactAddons2['default'].createElement(
-													'div',
-													{ className: 'product-detail' },
-													_reactAddons2['default'].createElement(_Detail2['default'], {
-															product: this.props.product }),
-													_reactAddons2['default'].createElement(
-															'div',
-															{ className: 'row' },
-															_reactAddons2['default'].createElement(
-																	'div',
-																	{ className: 'col-md-6' },
-																	_reactAddons2['default'].createElement(_InfoSanpham2['default'], {
-																			product: this.props.product })
-															),
-															_reactAddons2['default'].createElement(
-																	'div',
-																	{ className: 'col-md-6' },
-																	_reactAddons2['default'].createElement(_Mau2['default'], {
-																			model: this.props.product.get('Model') })
-															)
-													)
-											)
-									)
-							);
-					}
-			}]);
+	  _createClass(Products, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	      _storeSanphamStore2['default'].listen(this._onChangeSanphamStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	      _storeSanphamStore2['default'].unlisten(this._onChangeSanphamStore);
+	    }
+	  }, {
+	    key: '_onChangeAuthStore',
+	    value: function _onChangeAuthStore(state) {
+	      this.setState({
+	        auth: state.auth
+	      });
+	    }
+	  }, {
+	    key: '_onChangeOrderStore',
+	    value: function _onChangeOrderStore(state) {
+	      this.setState({
+	        listOrder: state.listOrder
+	      });
+	    }
+	  }, {
+	    key: '_onChangeSanphamStore',
+	    value: function _onChangeSanphamStore(state) {
+	      this.setState({
+	        product: state.product
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'productDetail' },
+	        _reactAddons2['default'].createElement(_HeaderNavbarNavbarProductDetail2['default'], {
+	          auth: this.state.auth,
+	          product: this.state.product,
+	          listOrder: this.state.listOrder,
+	          SanphamActions: _actionsSanphamActions2['default'],
+	          OrderActions: _actionsOrderActions2['default'],
+	          handleBoxLogin: this.props.handleBoxLogin }),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'product' },
+	          _reactAddons2['default'].createElement(_ImgSlideProduct2['default'], {
+	            dataUrlImg: this.state.product.get('images') || [] }),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'product-detail' },
+	            _reactAddons2['default'].createElement(_Detail2['default'], {
+	              product: this.state.product }),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'row' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'col-md-6' },
+	                _reactAddons2['default'].createElement(_InfoSanpham2['default'], {
+	                  product: this.state.product })
+	              ),
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'col-md-6' },
+	                _reactAddons2['default'].createElement(_Mau2['default'], {
+	                  model: this.state.product.get('Model') })
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
 
-			return Products;
+	  return Products;
 	})(_reactAddons2['default'].Component);
 
 	exports['default'] = Products;
@@ -28991,7 +28970,232 @@ webpackJsonp([0],[
 /* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* @jsx React.DOM */
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(344);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var NavbarProductID = (function (_React$Component) {
+	  _inherits(NavbarProductID, _React$Component);
+
+	  function NavbarProductID(props) {
+	    _classCallCheck(this, NavbarProductID);
+
+	    _get(Object.getPrototypeOf(NavbarProductID.prototype), 'constructor', this).call(this, props);
+	    this._bind('Like', 'Share', 'Cart', 'handleScroll');
+
+	    this.state = {
+	      hideHeader: false
+	    };
+	  }
+
+	  _createClass(NavbarProductID, [{
+	    key: '_bind',
+	    value: function _bind() {
+	      var _this = this;
+
+	      for (var _len = arguments.length, methods = Array(_len), _key = 0; _key < _len; _key++) {
+	        methods[_key] = arguments[_key];
+	      }
+
+	      methods.forEach(function (method) {
+	        return _this[method] = _this[method].bind(_this);
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      window.addEventListener('scroll', this.handleScroll);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      window.removeEventListener('scroll', this.handleScroll);
+	    }
+	  }, {
+	    key: 'handleScroll',
+	    value: function handleScroll(e) {
+	      var scrollTop = window.scrollY;
+	      var hideHeader = scrollTop >= 80;
+	      this.setState({
+	        hideHeader: hideHeader
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var classesNavbar = (0, _classnames2['default'])({
+	        "navbar-product-detail": true,
+	        "sticky": this.state.hideHeader
+	      });
+
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        { className: classesNavbar },
+	        _reactAddons2['default'].createElement(
+	          'nav',
+	          { className: 'navbar navbar-tocu' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'navbar-header' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'btn-group' },
+	              _reactAddons2['default'].createElement(
+	                'button',
+	                { onClick: this.Like, type: 'button', className: 'btn btn-default navbar-btn' },
+	                _reactAddons2['default'].createElement(
+	                  'i',
+	                  { className: 'fa fa-heart gray' },
+	                  ' '
+	                ),
+	                ' Thích'
+	              ),
+	              _reactAddons2['default'].createElement(
+	                'button',
+	                { type: 'button', className: 'btn btn-default count-like navbar-btn' },
+	                _reactAddons2['default'].createElement(
+	                  'span',
+	                  null,
+	                  this.props.product.get('likesCount')
+	                )
+	              )
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'button',
+	              { onClick: this.Share, type: 'button', className: 'btn btn-default navbar-btn' },
+	              _reactAddons2['default'].createElement(
+	                'i',
+	                { className: 'fa fa-facebook-square gray' },
+	                '  '
+	              ),
+	              'Chia sẻ'
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'nav navbar-nav navbar-right' },
+	            this.renderBtn()
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'renderBtn',
+	    value: function renderBtn() {
+	      switch (this.props.product.get('status')) {
+	        case "available":
+	          return _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this.Cart, type: 'button', className: 'btn btn-primary navbar-btn' },
+	            _reactAddons2['default'].createElement(
+	              'i',
+	              { className: 'fa fa-shopping-cart gray' },
+	              '  '
+	            ),
+	            ' Mua'
+	          );
+	        case "suspended":
+	          return _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this.Cart, type: 'button', className: 'btn btn-warning navbar-btn' },
+	            _reactAddons2['default'].createElement(
+	              'i',
+	              { className: 'fa fa-clock-o gray' },
+	              '  '
+	            ),
+	            ' Mua'
+	          );
+	        default:
+	          return _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this.Cart, type: 'button', className: 'btn btn-primary navbar-btn' },
+	            _reactAddons2['default'].createElement(
+	              'i',
+	              { className: 'fa fa-shopping-cart gray' },
+	              '  '
+	            ),
+	            ' Mua'
+	          );
+	      }
+	    }
+	  }, {
+	    key: 'boxLogin',
+	    value: function boxLogin(cb) {
+	      if (!this.props.auth.get('access_token')) {
+	        this.props.handleBoxLogin('token');
+	      } else {
+	        if (!this.props.auth.get('isVerifyMobilePhone')) {
+	          this.props.handleBoxLogin('verify');
+	          return;
+	        }
+	        cb();
+	      }
+	    }
+	  }, {
+	    key: 'Like',
+	    value: function Like() {
+	      this.boxLogin((function () {
+	        var token = this.props.auth.get('access_token');
+	        var type = this.props.product.get('Box').get('type');
+	        var itemId = this.props.product.get('id');
+
+	        this.props.SanphamActions.like({ itemId: itemId, token: token, type: type });
+	      }).bind(this));
+	    }
+	  }, {
+	    key: 'Share',
+	    value: function Share() {
+	      this.boxLogin(function () {
+	        console.log('Share');
+	      });
+	    }
+	  }, {
+	    key: 'Cart',
+	    value: function Cart() {
+	      this.props.OrderActions.addToCart(this.props.product);
+	    }
+	  }], [{
+	    key: 'propTypes',
+	    value: {
+	      hideNavbar: _reactAddons2['default'].PropTypes.bool,
+	      countLike: _reactAddons2['default'].PropTypes.number
+	    },
+	    enumerable: true
+	  }]);
+
+	  return NavbarProductID;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = NavbarProductID;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 436 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	var _get = __webpack_require__(218)['default'];
@@ -29010,11 +29214,13 @@ webpackJsonp([0],[
 
 	var _reactAddons = __webpack_require__(16);
 
-	/* @jsx */
+	/**
+	 * @Component
+	 */
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _lightBoxSlideImg = __webpack_require__(436);
+	var _lightBoxSlideImg = __webpack_require__(437);
 
 	var _lightBoxSlideImg2 = _interopRequireDefault(_lightBoxSlideImg);
 
@@ -29158,10 +29364,9 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 436 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* @jsx React.DOM */
 	"use strict";
 
 	var _get = __webpack_require__(218)['default'];
@@ -29182,7 +29387,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -29303,241 +29508,6 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 437 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _classnames = __webpack_require__(350);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var NavbarProductID = (function (_React$Component) {
-	  _inherits(NavbarProductID, _React$Component);
-
-	  function NavbarProductID(props) {
-	    _classCallCheck(this, NavbarProductID);
-
-	    _get(Object.getPrototypeOf(NavbarProductID.prototype), 'constructor', this).call(this, props);
-	    this._bind('Like', 'Share', 'Cart', 'handleScroll');
-
-	    this.state = {
-	      hideHeader: false
-	    };
-	  }
-
-	  _createClass(NavbarProductID, [{
-	    key: '_bind',
-	    value: function _bind() {
-	      var _this = this;
-
-	      for (var _len = arguments.length, methods = Array(_len), _key = 0; _key < _len; _key++) {
-	        methods[_key] = arguments[_key];
-	      }
-
-	      methods.forEach(function (method) {
-	        return _this[method] = _this[method].bind(_this);
-	      });
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      window.addEventListener('scroll', this.handleScroll);
-	      /*if(this.props.auth.get('access_token')) {
-	        this.props.OrderActions.checkOrder({ id: this.props.product.get('id') });
-	      }*/
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      window.removeEventListener('scroll', this.handleScroll);
-	    }
-	  }, {
-	    key: 'handleScroll',
-	    value: function handleScroll(e) {
-	      var scrollTop = window.scrollY;
-	      var hideHeader = scrollTop >= 33;
-	      this.setState({
-	        hideHeader: hideHeader
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var classesNavbar = (0, _classnames2['default'])({
-	        "navbar-product-detail": true,
-	        "sticky": this.state.hideHeader
-	      });
-
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        { className: classesNavbar },
-	        _reactAddons2['default'].createElement(
-	          'nav',
-	          { className: 'navbar navbar-defaul' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'navbar-header' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'btn-group' },
-	              _reactAddons2['default'].createElement(
-	                'button',
-	                { onClick: this.Like, type: 'button', className: 'btn btn-default navbar-btn' },
-	                _reactAddons2['default'].createElement(
-	                  'i',
-	                  { className: 'fa fa-heart gray' },
-	                  ' '
-	                ),
-	                ' Thích'
-	              ),
-	              _reactAddons2['default'].createElement(
-	                'button',
-	                { type: 'button', className: 'btn btn-default count-like navbar-btn' },
-	                _reactAddons2['default'].createElement(
-	                  'span',
-	                  null,
-	                  this.props.product.get('likesCount')
-	                )
-	              )
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'button',
-	              { onClick: this.Share, type: 'button', className: 'btn btn-default navbar-btn' },
-	              _reactAddons2['default'].createElement(
-	                'i',
-	                { className: 'fa fa-facebook-square gray' },
-	                '  '
-	              ),
-	              'Chia sẻ'
-	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'nav navbar-nav navbar-right' },
-	            this.renderBtn()
-	          )
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'renderBtn',
-	    value: function renderBtn() {
-	      switch (this.props.product.get('status')) {
-	        case "available":
-	          return _reactAddons2['default'].createElement(
-	            'button',
-	            { onClick: this.Cart, type: 'button', className: 'btn btn-primary navbar-btn' },
-	            _reactAddons2['default'].createElement(
-	              'i',
-	              { className: 'fa fa-shopping-cart gray' },
-	              '  '
-	            ),
-	            ' Mua'
-	          );
-	        case "suspended":
-	          return _reactAddons2['default'].createElement(
-	            'button',
-	            { onClick: this.Cart, type: 'button', className: 'btn btn-warning navbar-btn' },
-	            _reactAddons2['default'].createElement(
-	              'i',
-	              { className: 'fa fa-clock-o gray' },
-	              '  '
-	            ),
-	            ' Mua'
-	          );
-	        default:
-	          return _reactAddons2['default'].createElement(
-	            'button',
-	            { onClick: this.Cart, type: 'button', className: 'btn btn-primary navbar-btn' },
-	            _reactAddons2['default'].createElement(
-	              'i',
-	              { className: 'fa fa-shopping-cart gray' },
-	              '  '
-	            ),
-	            ' Mua'
-	          );
-	      }
-	      console.log(this.props.product.toJS());
-	    }
-	  }, {
-	    key: 'boxLogin',
-	    value: function boxLogin(cb) {
-	      if (!this.props.auth.get('access_token')) {
-	        this.props.handleBoxLogin('token');
-	      } else {
-
-	        if (!this.props.auth.get('isVerifyMobilePhone')) {
-	          this.props.handleBoxLogin('verify');
-	          return;
-	        }
-	        cb();
-	      }
-	    }
-	  }, {
-	    key: 'Like',
-	    value: function Like() {
-	      this.boxLogin((function () {
-	        var token = this.props.auth.get('access_token');
-	        var type = this.props.product.get('Box').get('type');
-	        var itemId = this.props.product.get('id');
-
-	        this.props.SanphamActions.like({ itemId: itemId, token: token, type: type });
-	      }).bind(this));
-	    }
-	  }, {
-	    key: 'Share',
-	    value: function Share() {
-	      this.boxLogin(function () {
-	        console.log('Share');
-	      });
-	    }
-	  }, {
-	    key: 'Cart',
-	    value: function Cart() {
-	      this.boxLogin((function () {
-	        if (this.props.listOrder.size < 1) {
-	          this.props.Next(2);
-	        } else {
-	          this.props.Next();
-	        }
-	      }).bind(this));
-	    }
-	  }]);
-
-	  return NavbarProductID;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = NavbarProductID;
-	;
-
-	NavbarProductID.propTypes = {
-	  hideNavbar: _reactAddons2['default'].PropTypes.bool,
-	  countLike: _reactAddons2['default'].PropTypes.number
-	};
-	module.exports = exports['default'];
-
-/***/ },
 /* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29561,7 +29531,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _immutable = __webpack_require__(340);
+	var _immutable = __webpack_require__(343);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -29648,7 +29618,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _immutable = __webpack_require__(340);
+	var _immutable = __webpack_require__(343);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -29758,7 +29728,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _immutable = __webpack_require__(340);
+	var _immutable = __webpack_require__(343);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -29952,13 +29922,25 @@ webpackJsonp([0],[
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _moment = __webpack_require__(442);
 
 	var _moment2 = _interopRequireDefault(_moment);
+
+	var _storeOrderStore = __webpack_require__(349);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
+
+	var _storeSanphamStore = __webpack_require__(350);
+
+	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
+
+	var _actionsOrderActions = __webpack_require__(337);
+
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
 	var PushListOrder = (function (_React$Component) {
 	  _inherits(PushListOrder, _React$Component);
@@ -29971,24 +29953,33 @@ webpackJsonp([0],[
 	    this.renderListOrder = this.renderListOrder.bind(this);
 	    this.handleClickHuy = this.handleClickHuy.bind(this);
 	    this.handleClickDatMua = this.handleClickDatMua.bind(this);
+	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
+	    this._onChangeSanphamStore = this._onChangeSanphamStore.bind(this);
 
 	    this.state = {
 	      disabledBtnDatHang: true,
-	      selectOrder: false
+	      selectOrder: false,
+	      listOrder: _storeOrderStore2['default'].getState().listOrder,
+	      itemPushOrder: _storeOrderStore2['default'].getState().itemPushOrder,
+	      product: _storeSanphamStore2['default'].getState().product
 	    };
 	  }
 
 	  _createClass(PushListOrder, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.props.OrderActions.getListOrder();
-	      this.props.OrderActions.pushOrder({});
+	      _actionsOrderActions2['default'].getListOrder();
+	      _actionsOrderActions2['default'].pushOrder({});
 	      window.addEventListener('scroll', this.handleScroll);
+	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	      _storeSanphamStore2['default'].listen(this._onChangeSanphamStore);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      window.removeEventListener('scroll', this.handleScroll);
+	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	      _storeSanphamStore2['default'].unlisten(this._onChangeSanphamStore);
 	    }
 	  }, {
 	    key: 'handleScroll',
@@ -29997,6 +29988,21 @@ webpackJsonp([0],[
 	      var hideHeader = scrollTop >= 33;
 	      this.setState({
 	        hideHeader: hideHeader
+	      });
+	    }
+	  }, {
+	    key: '_onChangeOrderStore',
+	    value: function _onChangeOrderStore(state) {
+	      this.setState({
+	        listOrder: state.listOrder,
+	        itemPushOrder: state.itemPushOrder
+	      });
+	    }
+	  }, {
+	    key: '_onChangeSanphamStore',
+	    value: function _onChangeSanphamStore(state) {
+	      this.setState({
+	        product: state.product
 	      });
 	    }
 	  }, {
@@ -30075,7 +30081,7 @@ webpackJsonp([0],[
 	    value: function renderListOrder() {
 	      var _this = this;
 
-	      return this.props.listOrder.map(function (item, i) {
+	      return this.state.listOrder.map(function (item, i) {
 	        var day = (0, _moment2['default'])(item.get('updatedAt')).locale('vi').format("hh:mm dddd, DD/MM/YYYY");
 	        return _reactAddons2['default'].createElement(
 	          'div',
@@ -30095,7 +30101,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'selectOrder',
 	    value: function selectOrder(item, e) {
-	      this.props.OrderActions.pushOrder(item);
+	      _actionsOrderActions2['default'].pushOrder(item);
 	      this.setState({
 	        selectOrder: true,
 	        disabledBtnDatHang: false
@@ -30104,7 +30110,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'selectOrderNull',
 	    value: function selectOrderNull(e) {
-	      this.props.OrderActions.pushOrder({});
+	      _actionsOrderActions2['default'].pushOrder({});
 	      this.setState({
 	        selectOrder: false,
 	        disabledBtnDatHang: false
@@ -30118,22 +30124,22 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'handleClickDatMua',
 	    value: function handleClickDatMua() {
-	      if (!this.props.itemPushOrder.size) {
+	      if (!this.state.itemPushOrder.size) {
 	        this.props.Next(1);
 	      } else {
 	        var data = {
-	          OrderId: this.props.itemPushOrder.get('id'),
+	          OrderId: this.state.itemPushOrder.get('id'),
 	          product: {
-	            id: this.props.product.get('id'),
+	            id: this.state.product.get('id'),
 	            onlineStore: true
 	          },
-	          unitPrice: this.props.product.get('price'),
+	          unitPrice: this.state.product.get('price'),
 	          quantity: 1,
-	          amount: this.props.product.get('salePrice') ? this.props.product.get('salePrice') : this.props.product.get('price'),
-	          weight: this.props.product.get('weight')
+	          amount: this.state.product.get('salePrice') ? this.state.product.get('salePrice') : this.state.product.get('price'),
+	          weight: this.state.product.get('weight')
 	        };
 
-	        this.props.OrderActions.addOrder(_extends({}, data));
+	        _actionsOrderActions2['default'].addOrder(_extends({}, data));
 	        this.props.Next(2);
 
 	        /*{
@@ -33357,7 +33363,7 @@ webpackJsonp([0],[
 	    return _moment;
 
 	}));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(335)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(331)(module)))
 
 /***/ },
 /* 443 */
@@ -41616,6 +41622,8 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
+	var _extends = __webpack_require__(1)['default'];
+
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
 	Object.defineProperty(exports, '__esModule', {
@@ -41626,9 +41634,13 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storeOrderStore = __webpack_require__(349);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
 
 	var StatusOrder = (function (_React$Component) {
 	  _inherits(StatusOrder, _React$Component);
@@ -41637,22 +41649,38 @@ webpackJsonp([0],[
 	    _classCallCheck(this, StatusOrder);
 
 	    _get(Object.getPrototypeOf(StatusOrder.prototype), 'constructor', this).call(this, props);
+	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
 
-	    this.state = {};
+	    this.state = _extends({}, _storeOrderStore2['default'].getState());
 	  }
 
 	  _createClass(StatusOrder, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: '_onChangeOrderStore',
+	    value: function _onChangeOrderStore(state) {
+	      this.setState(_extends({}, state));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var classes = (0, _classnames2['default'])({
 	        "text-center": true,
 	        "status-check": true,
-	        success: this.props.status.get('status') === 'success',
-	        warning: this.props.status.get('status') === 'warning'
+	        success: this.state.createStatus.get('status') === 'success',
+	        warning: this.state.createStatus.get('status') === 'warning'
 	      });
 
-	      console.log(this.props.status.toJS());
-	      console.log(this.props.order.toJS());
+	      console.log(this.state.createStatus.toJS());
+	      console.log(this.state.order.toJS());
 
 	      return _reactAddons2['default'].createElement(
 	        'div',
@@ -41684,14 +41712,14 @@ webpackJsonp([0],[
 	            _reactAddons2['default'].createElement(
 	              'strong',
 	              null,
-	              this.props.status.get('messages')
+	              this.state.createStatus.get('messages')
 	            )
 	          ),
 	          _reactAddons2['default'].createElement(
 	            'p',
 	            { className: 'text-center' },
 	            'Mã đơn hàng: #',
-	            this.props.order.get('OrderId') || this.props.order.get('id')
+	            this.state.order.get('OrderId') || this.state.order.get('id')
 	          ),
 	          _reactAddons2['default'].createElement(
 	            'p',
@@ -41723,8 +41751,130 @@ webpackJsonp([0],[
 /* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	// var React = require('react');
+	/* @jsx React.DOM */
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(344);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storeAuthStore = __webpack_require__(345);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _storeOrderStore = __webpack_require__(349);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
+
+	var _actionsAuthActions = __webpack_require__(346);
+
+	/**
+	 * @Component
+	 */
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
+
+	var _NavbarNavbar = __webpack_require__(351);
+
+	var _NavbarNavbar2 = _interopRequireDefault(_NavbarNavbar);
+
+	var Home = (function (_React$Component) {
+	  _inherits(Home, _React$Component);
+
+	  function Home(props) {
+	    _classCallCheck(this, Home);
+
+	    _get(Object.getPrototypeOf(Home.prototype), 'constructor', this).call(this, props);
+	    this._onChangeAuthStore = this._onChangeAuthStore.bind(this);
+	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
+
+	    this.state = {
+	      auth: _storeAuthStore2['default'].getState().auth,
+	      listOrders: _storeOrderStore2['default'].getState().listOrders,
+	      totalCart: _storeOrderStore2['default'].getTotalCart(),
+	      totalCartSale: _storeOrderStore2['default'].getTotalCartSale(),
+	      count: _storeOrderStore2['default'].getTotalSize()
+	    };
+	  }
+
+	  _createClass(Home, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: '_onChangeAuthStore',
+	    value: function _onChangeAuthStore(state) {
+	      this.setState({
+	        auth: state.auth
+	      });
+	    }
+	  }, {
+	    key: '_onChangeOrderStore',
+	    value: function _onChangeOrderStore(state) {
+	      this.setState({
+	        listOrders: state.listOrders,
+	        totalCart: _storeOrderStore2['default'].getTotalCart(),
+	        totalCartSale: _storeOrderStore2['default'].getTotalCartSale(),
+	        count: _storeOrderStore2['default'].getTotalSize()
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      console.log(this.state);
+	      return _reactAddons2['default'].createElement(_NavbarNavbar2['default'], {
+	        count: this.state.count,
+	        totalCart: this.state.totalCart,
+	        AuthActions: _actionsAuthActions2['default'],
+	        auth: this.state.auth });
+	    }
+	  }], [{
+	    key: 'contextTypes',
+	    value: {
+	      router: _reactAddons2['default'].PropTypes.object.isRequired
+	    },
+	    enumerable: true
+	  }]);
+
+	  return Home;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Home;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 531 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
@@ -41733,16 +41883,20 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _axios = __webpack_require__(320);
+	var _actionsSanphamActions = __webpack_require__(336);
+
+	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
+
+	var _axios = __webpack_require__(316);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _configSample = __webpack_require__(339);
+	var _configSample = __webpack_require__(335);
 
 	var ReactAsync = __webpack_require__(368);
-	var MasonryMixin = __webpack_require__(374);
+	var MasonryMixin = __webpack_require__(373);
 
 	var masonryOptions = {
 	  transitionDuration: 0
@@ -41837,7 +41991,7 @@ webpackJsonp([0],[
 	  },
 
 	  handleViewSP: function handleViewSP(sp) {
-	    this.props.SanphamActions.actionSanphamID(sp);
+	    _actionsSanphamActions2['default'].actionSanphamID(sp);
 	  },
 
 	  renderIcon: function renderIcon() {
@@ -41857,7 +42011,7 @@ webpackJsonp([0],[
 	/* navbar sidebar */ /* Gird item */
 
 /***/ },
-/* 531 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41882,16 +42036,46 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
+	var _storeSaleStore = __webpack_require__(533);
+
+	var _storeSaleStore2 = _interopRequireDefault(_storeSaleStore);
+
+	var _actionsSanphamActions = __webpack_require__(336);
+
+	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
+
 	var Sale = (function (_React$Component) {
 	  _inherits(Sale, _React$Component);
 
-	  function Sale() {
+	  function Sale(props) {
 	    _classCallCheck(this, Sale);
 
-	    _get(Object.getPrototypeOf(Sale.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Sale.prototype), 'constructor', this).call(this, props);
+	    this._onChangeSaleStore = this._onChangeSaleStore.bind(this);
+
+	    this.state = {
+	      listSale: _storeSaleStore2['default'].getState().listSale
+	    };
 	  }
 
 	  _createClass(Sale, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeSaleStore2['default'].listen(this._onChangeSaleStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeSaleStore2['default'].unlisten(this._onChangeSaleStore);
+	    }
+	  }, {
+	    key: '_onChangeSaleStore',
+	    value: function _onChangeSaleStore(state) {
+	      this.setState({
+	        listSale: state.listSale
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this = this;
@@ -41907,7 +42091,7 @@ webpackJsonp([0],[
 	        _react2['default'].createElement(
 	          'div',
 	          { className: 'list-group' },
-	          this.props.listSale.map(function (item, i) {
+	          this.state.listSale.map(function (item, i) {
 	            var img_url = undefined,
 	                price = undefined,
 	                price_sale = undefined;
@@ -41968,7 +42152,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(sp) {
-	      this.props.SanphamActions.actionSanphamID(sp);
+	      _actionsSanphamActions2['default'].actionSanphamID(sp);
 	    }
 	  }]);
 
@@ -41980,7 +42164,63 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 532 */
+/* 533 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _Array$from = __webpack_require__(340)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _immutable = __webpack_require__(343);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _actionsSaleActions = __webpack_require__(421);
+
+	var _actionsSaleActions2 = _interopRequireDefault(_actionsSaleActions);
+
+	var SaleStore = (function () {
+	  function SaleStore() {
+	    _classCallCheck(this, SaleStore);
+
+	    this.bindActions(_actionsSaleActions2['default']); // getProductSale
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.listSale = _immutable2['default'].List();
+	  }
+
+	  _createClass(SaleStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].List.isList(this.listSale)) {
+	        this.listSale = _immutable2['default'].fromJS(this.listSale);
+	      }
+	    }
+	  }, {
+	    key: 'onGetProductSale',
+	    value: function onGetProductSale(data) {
+	      this.listSale = this.listSale.merge(_Array$from(data));
+	    }
+	  }]);
+
+	  return SaleStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(SaleStore, 'SaleStore');
+
+/***/ },
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42009,21 +42249,17 @@ webpackJsonp([0],[
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _storeAuthStore = __webpack_require__(341);
+	var _storeAuthStore = __webpack_require__(345);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
-	var _actionsAuthActions = __webpack_require__(342);
+	var _actionsAuthActions = __webpack_require__(346);
 
 	/**
 	 * @Component
 	 */
 
 	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _altAltContainer = __webpack_require__(311);
-
-	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
 
 	var _componentsFormSignIn = __webpack_require__(356);
 
@@ -42032,10 +42268,10 @@ webpackJsonp([0],[
 	var SignIn = (function (_React$Component) {
 	  _inherits(SignIn, _React$Component);
 
-	  function SignIn(props) {
+	  function SignIn(props, context) {
 	    _classCallCheck(this, SignIn);
 
-	    _get(Object.getPrototypeOf(SignIn.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(SignIn.prototype), 'constructor', this).call(this, props, context);
 	  }
 
 	  _createClass(SignIn, [{
@@ -42056,20 +42292,25 @@ webpackJsonp([0],[
 	          _reactAddons2['default'].createElement(
 	            'div',
 	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
-	            _reactAddons2['default'].createElement(_altAltContainer2['default'], {
-	              component: _componentsFormSignIn2['default'],
-	              stores: [_storeAuthStore2['default']],
-	              actions: { AuthActions: _actionsAuthActions2['default'] },
-	              inject: {
-	                loginState: function loginState(props) {
-	                  return _storeAuthStore2['default'].getState().loginState;
-	                }
-	              }
-	            })
+	            _reactAddons2['default'].createElement(_componentsFormSignIn2['default'], null)
 	          )
 	        )
 	      );
 	    }
+	  }], [{
+	    key: 'onEnter',
+	    value: function onEnter(next, transition) {
+	      var test = this.context.test;
+
+	      console.log('onEnter SignIn');
+	      console.log(test);
+	    }
+	  }, {
+	    key: 'contextTypes',
+	    value: {
+	      router: _reactAddons2['default'].PropTypes.object.isRequired
+	    },
+	    enumerable: true
 	  }]);
 
 	  return SignIn;
@@ -42077,18 +42318,10 @@ webpackJsonp([0],[
 
 	exports['default'] = SignIn;
 	;
-
-	SignIn.onEnter = function (next, transition) {
-	  console.log('onEnter SignIn');
-	};
-
-	SignIn.contextTypes = {
-	  router: _reactAddons2['default'].PropTypes.object.isRequired
-	};
 	module.exports = exports['default'];
 
 /***/ },
-/* 533 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42101,9 +42334,9 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _regeneratorRuntime = __webpack_require__(262)['default'];
+	var _regeneratorRuntime = __webpack_require__(266)['default'];
 
-	var _Promise = __webpack_require__(292)['default'];
+	var _Promise = __webpack_require__(296)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -42123,29 +42356,9 @@ webpackJsonp([0],[
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _storeAuthStore = __webpack_require__(341);
-
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
-
-	var _actionsAuthActions = __webpack_require__(342);
-
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _storeCityStore = __webpack_require__(421);
-
-	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
-
-	var _actionsCityActions = __webpack_require__(422);
+	var _actionsCityActions = __webpack_require__(420);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
-
-	var _storeVerifyStore = __webpack_require__(373);
-
-	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
-
-	var _actionsVerifyActions = __webpack_require__(343);
-
-	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
 	var _decorators = __webpack_require__(257);
 
@@ -42153,16 +42366,25 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _altAltContainer = __webpack_require__(311);
-
-	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
-
-	var _componentsFormSignUp = __webpack_require__(534);
+	var _componentsFormSignUp = __webpack_require__(536);
 
 	var _componentsFormSignUp2 = _interopRequireDefault(_componentsFormSignUp);
 
 	var SignUp = (function (_React$Component) {
 	  _inherits(SignUp, _React$Component);
+
+	  _createClass(SignUp, null, [{
+	    key: 'onEnter',
+	    value: function onEnter(next, transition) {
+	      console.log('onEnter SignUp');
+	    }
+	  }, {
+	    key: 'contextTypes',
+	    value: {
+	      router: _reactAddons2['default'].PropTypes.instanceOf(_reactRouter2['default']).isRequired
+	    },
+	    enumerable: true
+	  }]);
 
 	  function SignUp(props) {
 	    _classCallCheck(this, _SignUp);
@@ -42185,37 +42407,7 @@ webpackJsonp([0],[
 	        _reactAddons2['default'].createElement(
 	          'div',
 	          { className: 'row row-form' },
-	          _reactAddons2['default'].createElement(_altAltContainer2['default'], {
-	            params: this.props.params,
-	            component: _componentsFormSignUp2['default'],
-	            stores: [_storeCityStore2['default'], _storeAuthStore2['default'], _storeVerifyStore2['default']],
-	            actions: { CityActions: _actionsCityActions2['default'], AuthActions: _actionsAuthActions2['default'], VerifyActions: _actionsVerifyActions2['default'] },
-	            inject: {
-	              city: function city() {
-	                return _storeCityStore2['default'].getState().city;
-	              },
-	              district: function district() {
-	                return _storeCityStore2['default'].getState().district;
-	              },
-	              failedMessage: function failedMessage() {
-	                return _storeAuthStore2['default'].getState().failedCreateMessage;
-	              },
-	              createUseState: function createUseState() {
-	                return _storeAuthStore2['default'].getState().createUseState;
-	              },
-	              auth: function auth() {
-	                return _storeAuthStore2['default'].getState().auth;
-	              },
-	              codeFaild: function codeFaild() {
-	                return _storeVerifyStore2['default'].getState().codeFaild;
-	              },
-	              verifyFaild: function verifyFaild() {
-	                return _storeVerifyStore2['default'].getState().verifyFaild;
-	              },
-	              verifyState: function verifyState() {
-	                return _storeVerifyStore2['default'].getState().verifyState;
-	              }
-	            } })
+	          _reactAddons2['default'].createElement(_componentsFormSignUp2['default'], null)
 	        )
 	      );
 	    }
@@ -42244,30 +42436,15 @@ webpackJsonp([0],[
 
 	exports['default'] = SignUp;
 	;
-
-	SignUp.onEnter = function callee$0$0(next, transition) {
-	  return _regeneratorRuntime.async(function callee$0$0$(context$1$0) {
-	    while (1) switch (context$1$0.prev = context$1$0.next) {
-	      case 0:
-	        console.log('onEnter SignUp');
-
-	      case 1:
-	      case 'end':
-	        return context$1$0.stop();
-	    }
-	  }, null, this);
-	};
-
-	SignUp.contextTypes = {
-	  router: _reactAddons2['default'].PropTypes.instanceOf(_reactRouter2['default']).isRequired
-	};
 	module.exports = exports['default'];
 
 /***/ },
-/* 534 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _extends = __webpack_require__(1)['default'];
 
 	var _Object$keys = __webpack_require__(357)['default'];
 
@@ -42287,19 +42464,39 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _classnames = __webpack_require__(350);
+	var _classnames = __webpack_require__(344);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _storeAuthStore = __webpack_require__(341);
+	var _storeAuthStore = __webpack_require__(345);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _actionsAuthActions = __webpack_require__(346);
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
+
+	var _storeCityStore = __webpack_require__(427);
+
+	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
+
+	var _actionsCityActions = __webpack_require__(420);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	var _storeVerifyStore = __webpack_require__(413);
+
+	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
+
+	var _actionsVerifyActions = __webpack_require__(347);
 
 	/**
 	 * @Component
 	 */
 
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
-	var _altAltContainer = __webpack_require__(311);
+	var _altAltContainer = __webpack_require__(262);
 
 	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
 
@@ -42307,7 +42504,7 @@ webpackJsonp([0],[
 
 	var _select2 = _interopRequireDefault(_select);
 
-	var _Verify = __webpack_require__(413);
+	var _Verify = __webpack_require__(412);
 
 	var _Verify2 = _interopRequireDefault(_Verify);
 
@@ -42349,28 +42546,42 @@ webpackJsonp([0],[
 	  },
 
 	  getInitialState: function getInitialState() {
-	    return {
+	    return _extends({
 	      disabled: true,
 	      ValidationData: Validations,
 	      boxMaxacnhan: false
-	    };
+	    }, _storeAuthStore2['default'].getState(), _storeCityStore2['default'].getState(), _storeVerifyStore2['default'].getState());
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    _storeAuthStore2['default'].listen(this.onChangeAuthStore);
+	    _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	    _storeCityStore2['default'].listen(this._onChangeCityStore);
+	    _storeVerifyStore2['default'].listen(this._onChangeVerifyStore);
 	  },
 
 	  componentWillUnmount: function componentWillUnmount() {
-	    _storeAuthStore2['default'].unlisten(this.onChangeAuthStore);
+	    _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	    _storeCityStore2['default'].unlisten(this._onChangeCityStore);
+	    _storeVerifyStore2['default'].unlisten(this._onChangeVerifyStore);
 	  },
 
-	  onChangeAuthStore: function onChangeAuthStore(state) {
+	  _onChangeAuthStore: function _onChangeAuthStore(state) {
 	    if (state.createUseState === "success") {
-	      this.props.VerifyActions.getCode();
-	      this.setState({
+	      _actionsVerifyActions2['default'].getCode();
+	      this.setState(_extends({
 	        boxMaxacnhan: true
-	      });
+	      }, state));
+	      return;
 	    }
+	    this.setState(_extends({}, state));
+	  },
+
+	  _onChangeCityStore: function _onChangeCityStore(state) {
+	    this.setState(_extends({}, state));
+	  },
+
+	  _onChangeVerifyStore: function _onChangeVerifyStore(state) {
+	    this.setState(_extends({}, state));
 	  },
 
 	  render: function render() {
@@ -42413,10 +42624,10 @@ webpackJsonp([0],[
 	            { className: 'text-center title-form' },
 	            'Đăng Ký Tổ Cú'
 	          ),
-	          this.props.createUseState === "failed" && _reactAddons2['default'].createElement(
+	          this.state.createUseState === "failed" && _reactAddons2['default'].createElement(
 	            'p',
 	            { className: 'text-center text-danger' },
-	            this.props.failedMessage
+	            this.state.failedCreateMessage
 	          ),
 	          _reactAddons2['default'].createElement(
 	            'form',
@@ -42444,7 +42655,7 @@ webpackJsonp([0],[
 	                _reactAddons2['default'].createElement(_select2['default'], {
 	                  ref: 'city',
 	                  type: 'city',
-	                  List: this.props.city,
+	                  List: this.state.city,
 	                  onChange: this._onChangeSelectCity,
 	                  firstValue: 'Tỉnh Thành' })
 	              ),
@@ -42454,7 +42665,7 @@ webpackJsonp([0],[
 	                _reactAddons2['default'].createElement(_select2['default'], {
 	                  ref: 'district',
 	                  type: 'district',
-	                  List: this.props.district,
+	                  List: this.state.district,
 	                  firstValue: 'Quận Huyện' })
 	              )
 	            ),
@@ -42474,8 +42685,8 @@ webpackJsonp([0],[
 	                  onClick: this.CreateAuth,
 	                  type: 'submit',
 	                  disabled: this.state.disabled },
-	                this.props.createUseState !== "loading" && "Tạo Tài Khoản",
-	                this.props.createUseState === "loading" && _reactAddons2['default'].createElement('i', { className: 'fa fa-spinner fa-pulse' })
+	                this.state.createUseState !== "loading" && "Tạo Tài Khoản",
+	                this.state.createUseState === "loading" && _reactAddons2['default'].createElement('i', { className: 'fa fa-spinner fa-pulse' })
 	              )
 	            )
 	          )
@@ -42496,11 +42707,11 @@ webpackJsonp([0],[
 	  renderMaxacnhan: function renderMaxacnhan() {
 	    if (this.state.boxMaxacnhan) {
 	      return _reactAddons2['default'].createElement(_Verify2['default'], {
-	        auth: this.props.auth,
-	        codeFaild: this.props.codeFaild,
-	        verifyFaild: this.props.verifyFaild,
-	        verifyState: this.props.verifyState,
-	        VerifyActions: this.props.VerifyActions });
+	        auth: this.state.auth,
+	        codeFaild: this.state.codeFaild,
+	        verifyFaild: this.state.verifyFaild,
+	        verifyState: this.state.verifyState,
+	        VerifyActions: _actionsVerifyActions2['default'] });
 	    }
 	  },
 
@@ -42550,7 +42761,7 @@ webpackJsonp([0],[
 	  },
 
 	  _onChangeSelectCity: function _onChangeSelectCity(citySelect) {
-	    this.props.CityActions.getDistrict({ city: citySelect });
+	    _actionsCityActions2['default'].getDistrict({ city: citySelect });
 	  },
 
 	  CreateAuth: function CreateAuth(e) {
@@ -42561,14 +42772,14 @@ webpackJsonp([0],[
 	    var district = this.refs.district.getValue();
 	    var password = this.refs.password.getValue();
 
-	    this.props.AuthActions.CreateUser({ name: name, mobilePhone: mobilePhone, city: city, district: district, password: password });
+	    _actionsAuthActions2['default'].CreateUser({ name: name, mobilePhone: mobilePhone, city: city, district: district, password: password });
 	  }
 
 	});
 	module.exports = exports['default'];
 
 /***/ },
-/* 535 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42619,7 +42830,7 @@ webpackJsonp([0],[
 	module.exports = exports["default"];
 
 /***/ },
-/* 536 */
+/* 538 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42634,7 +42845,7 @@ webpackJsonp([0],[
 	  value: true
 	});
 
-	var _env = __webpack_require__(537);
+	var _env = __webpack_require__(539);
 
 	var _env2 = _interopRequireDefault(_env);
 
@@ -42691,7 +42902,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 537 */
+/* 539 */
 /***/ function(module, exports) {
 
 	'use strict';

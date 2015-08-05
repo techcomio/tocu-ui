@@ -88,7 +88,7 @@ export default async function (req, res, next) {
       let title = { 
         HeadParams: new HeadParams({})
       };
-      let iso   = new Iso();
+      let iso = new Iso();
 
       const body = React.renderToStaticMarkup(
        <Router {...{ ...title, routerState, location, history }} />

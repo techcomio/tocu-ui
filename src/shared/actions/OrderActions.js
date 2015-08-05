@@ -77,6 +77,10 @@ class OrderActions {
     });
   }
 
+  addToCart(product) {
+    this.dispatch(product);
+  }
+
   pushOrder(data) {
     this.dispatch(data);
   }

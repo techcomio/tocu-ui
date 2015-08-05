@@ -4,6 +4,12 @@ import React       from 'react/addons';
 import Validator   from 'validatorjs';
 import classNames  from 'classnames';
 import ShipStore   from '../../store/ShipStore';
+import ShipActions    from '../../actions/ShipActions';
+import SanphamStore   from '../../store/SanphamStore';
+import SanphamActions from '../../actions/SanphamActions';
+import CityStore      from '../../store/CityStore';
+import CityActions    from '../../actions/CityActions';
+import OrderActions    from '../../actions/OrderActions';
 /**
  * @Component
  */
@@ -18,7 +24,7 @@ export default class FormOrder extends React.Component {
 
   constructor(props) {
     super(props);
-    this._bind('handleClickHuy', 'handleClickDatMua', 'handleScroll', '_onChangeSelectCity', '_shipOnChange', '_ChangeDisable', '_ChangeVanchuyen', 'resetHinhthucVC', '_ChangeThanhtoan');
+    this._bind('handleClickHuy', 'handleClickDatMua', 'handleScroll', '_onChangeSelectCity', '_onChangeShipStore', '_ChangeDisable', '_ChangeVanchuyen', 'resetHinhthucVC', '_ChangeThanhtoan', '_onChangeCityStore', '_onChangeSanphamStore');
 
     this.state = {
       disabled: true,
@@ -29,6 +35,10 @@ export default class FormOrder extends React.Component {
       hinhthucVC: null,
       hideHeader: false,
       disabledBtnDatHang: true,
+      city: CityStore.getState().city,
+      district: CityStore.getState().district,
+      product: SanphamStore.getState().product,
+      phiship: ShipStore.getState().phiship,
     }
   }
 
@@ -37,16 +47,20 @@ export default class FormOrder extends React.Component {
   }
 
   componentDidMount() {
-    ShipStore.listen(this._shipOnChange);
     window.addEventListener('scroll', this.handleScroll);
+    ShipStore.listen(this._onChangeShipStore);
+    CityStore.listen(this._onChangeCityStore);
+    SanphamStore.listen(this._onChangeSanphamStore);
   }
 
   componentWillUnmount() {
-    ShipStore.unlisten(this._shipOnChange);
     window.removeEventListener('scroll', this.handleScroll);
+    ShipStore.unlisten(this._onChangeShipStore);
+    ShipStore.unlisten(this._onChangeShipStore);
+    SanphamStore.unlisten(this._onChangeSanphamStore);
   }
 
-  _shipOnChange(state) {
+  _onChangeShipStore(state) {
     this.setState({
       disabled: false,
       ...state.phiship.toJS()
@@ -64,6 +78,19 @@ export default class FormOrder extends React.Component {
     }
   }
 
+  _onChangeCityStore(state) {
+    this.setState({
+      city: state.city,
+      district: state.district,
+    });
+  }
+
+  _onChangeSanphamStore(state) {
+    this.setState({
+      product: state.product,
+    });
+  }
+
   handleScroll(e) {
     var scrollTop = window.scrollY;
     var hideHeader = scrollTop >= 33;
@@ -79,14 +106,14 @@ export default class FormOrder extends React.Component {
     });
 
     let img_url, price, cost, amount;
-    if(this.props.product.get('images').get(0)) {
-      let url = this.props.product.get('images').get(0);
+    if(this.state.product.get('images').get(0)) {
+      let url = this.state.product.get('images').get(0);
       img_url = url.replace(/image\//gi, 'image/100x100/');
     }
     
-    if(this.props.product.get('price')) {
-      price = this.props.product.get('price').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
-      this.state.amount = this.props.product.get('price') + this.state.cost;
+    if(this.state.product.get('price')) {
+      price = this.state.product.get('price').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
+      this.state.amount = this.state.product.get('price') + this.state.cost;
       amount = this.state.amount.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
     }
     cost = this.state.cost.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
@@ -110,7 +137,7 @@ export default class FormOrder extends React.Component {
                 <img src={img_url} alt="img" className="img-rounded" />
               </div>
               <div className="infoOrder-text">
-                <h3>{this.props.product.get('boxName')} - {this.props.product.get('code')}</h3>
+                <h3>{this.state.product.get('boxName')} - {this.state.product.get('code')}</h3>
                 <span>{price}đ (giá) + {cost}đ (ship) = {amount}đ</span>
               </div>
             </div>
@@ -122,9 +149,9 @@ export default class FormOrder extends React.Component {
             <p className="text-center">Điền đầy đủ thông tin người nhận hàng</p>
             <FormNguoiNhan
               ref="formNguoiNhan"
-              city={this.props.city}
-              district={this.props.district}
-              product={this.props.product}
+              city={this.state.city}
+              district={this.state.district}
+              product={this.state.product}
               onChangeTest={this.resetHinhthucVC}
               onChangeSelectCity={this._onChangeSelectCity}
               onChangeDisable={this._ChangeDisable} />
@@ -160,7 +187,7 @@ export default class FormOrder extends React.Component {
   }
 
   _onChangeSelectCity(citySelect) {
-    this.props.CityActions.getDistrict({city: citySelect});
+    CityActions.getDistrict({city: citySelect});
     this.setState({
       shippingMethod: '',
     });
@@ -206,24 +233,24 @@ export default class FormOrder extends React.Component {
       shippingMethod: this.state.shippingMethod === "COD" ? "cod" : "delivery",
       shippingCost: this.state.cost,
       paymentMethod: this.refs.hinhthucTT.getCheckbox(),
-      total: this.props.product.get('price'),
+      total: this.state.product.get('price'),
       percentageDiscount: 0,
       amount: this.state.amount,
-      totalWeight: this.props.product.get('weight'),
+      totalWeight: this.state.product.get('weight'),
       noteBySaleman: null,
       OrderLines: [{
         product: {
-          id: this.props.product.get('id'),
+          id: this.state.product.get('id'),
           onlineStore: true,
         },
         quantity: 1,
-        unitPrice: this.props.product.get('price'),
-        amount: this.props.product.get('price'),
-        weight: this.props.product.get('weight'),
+        unitPrice: this.state.product.get('price'),
+        amount: this.state.product.get('price'),
+        weight: this.state.product.get('weight'),
       }],
     };
 
-    this.props.OrderActions.createOrder({...data});
+    OrderActions.createOrder({...data});
     this.props.Next();
   }
 
