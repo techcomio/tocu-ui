@@ -11,7 +11,7 @@ import OrderActions   from '../actions/OrderActions';
  * @Component
  */
 import Header      from '../components/Header/Home';
-import BoxYeuThich from '../components/BoxYeuThich';
+// import BoxYeuThich from '../components/BoxYeuThich';
 import FormSignIn  from '../components/Form/SignIn';
 import Thumbnail   from '../components/Thumbnail';
 
@@ -56,7 +56,7 @@ export default class Home extends React.Component {
         <section id="content">
           <div className="container">
             {/* Box yeu thich */}
-            <BoxYeuThich />
+            {/*<BoxYeuThich />*/}
           
             {/* Thumbnail */}
             <Thumbnail handleBoxLogin={this.handleBoxLogin} />

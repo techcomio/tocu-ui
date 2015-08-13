@@ -76,12 +76,8 @@ export default React.createClass({
 
   boxLogin(cb) {
     if(!this.props.auth.get('access_token')) {
-      this.props.handleBoxLogin('token');
+      this.props.handleBoxLogin();
     } else {
-      if(!this.props.auth.get('isVerifyMobilePhone')) {
-        this.props.handleBoxLogin('verify');
-        return;
-      }
       cb();
     }
   },

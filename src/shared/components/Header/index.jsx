@@ -13,7 +13,7 @@ import AuthActions from '../../actions/AuthActions';
 import Navbar from './Navbar/navbar';
 
 
-export default class Home extends React.Component {
+export default class Nav extends React.Component {
 
   constructor(props) {
     super(props);
@@ -68,5 +68,5 @@ export default class Home extends React.Component {
         auth={this.state.auth} />
     );
   }
-  
+
 };

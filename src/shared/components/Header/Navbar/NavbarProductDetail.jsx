@@ -13,6 +13,7 @@ export default class NavbarProductID extends React.Component {
 
     this.state = {
       hideHeader: false,
+      NavbarWidth: null,
     };
   }
 
@@ -34,10 +35,12 @@ export default class NavbarProductID extends React.Component {
   }
 
   handleScroll(e) {
+    var offsetWidth = this.refs.navbar.getDOMNode().offsetWidth;
     var scrollTop = window.scrollY;
     var hideHeader = scrollTop >= 80;
     this.setState({
-      hideHeader: hideHeader
+      hideHeader: hideHeader,
+      NavbarWidth: offsetWidth,
     });
   }
   
@@ -48,19 +51,21 @@ export default class NavbarProductID extends React.Component {
     });
     
     return (
-      <div className={classesNavbar} >
-        <nav className="navbar navbar-tocu">
-          <div className="navbar-header">
-            <div className="btn-group">
-              <button onClick={this.Like} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray">&nbsp;</i> Thích</button>
-              <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.product.get('likesCount')}</span></button>
+      <div ref="navbar">
+        <div className={classesNavbar} style={{width: this.state.NavbarWidth}} >
+          <nav className="navbar navbar-tocu">
+            <div className="navbar-header">
+              <div className="btn-group">
+                <button onClick={this.Like} type="button" className="btn btn-default navbar-btn"><i className="fa fa-heart gray">&nbsp;</i> Thích</button>
+                <button type="button" className="btn btn-default count-like navbar-btn"><span>{this.props.product.get('likesCount')}</span></button>
+              </div>
+              <button onClick={this.Share} type="button" className="btn btn-default navbar-btn"><i className="fa fa-facebook-square gray">&nbsp; </i>Chia sẻ</button>
             </div>
-            <button onClick={this.Share} type="button" className="btn btn-default navbar-btn"><i className="fa fa-facebook-square gray">&nbsp; </i>Chia sẻ</button>
-          </div>
-          <div className="nav navbar-nav navbar-right">
-            {this.renderBtn()}
-          </div>
-        </nav>
+            <div className="nav navbar-nav navbar-right">
+              {this.renderBtn()}
+            </div>
+          </nav>
+        </div>
       </div>
     );
 	}
@@ -78,12 +83,8 @@ export default class NavbarProductID extends React.Component {
 
   boxLogin(cb) {
     if(!this.props.auth.get('access_token')) {
-      this.props.handleBoxLogin('token');
+      this.props.handleBoxLogin();
     } else {
-      if(!this.props.auth.get('isVerifyMobilePhone')) {
-        this.props.handleBoxLogin('verify');
-        return;
-      }
       cb();
     }
   }
@@ -99,9 +100,7 @@ export default class NavbarProductID extends React.Component {
   }
 
   Share() {
-    this.boxLogin(function() {
-      console.log('Share');
-    });
+    console.log('Share');
   }
 
   Cart() {

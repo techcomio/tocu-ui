@@ -18,12 +18,14 @@ export default class BoxsignIn extends React.Component {
   render() {
     return (
       <div className="boxLogin">
-        <div className="row">
-          <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
-            <div className="centrix">
-              <SignIn replaceWith={this.props.hideBoxLogin} nextPath={this.props.location.pathname} >
-                <div onClick={::this.hideBoxLogin} className="closeBox fa fa-times"><i class="fa fa-times"></i></div>
-              </SignIn>
+        <div className="container">
+          <div className="row row-form">
+            <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+              <div className="centrix">
+                <SignIn replaceWith={this.props.hideBoxLogin} nextPath={this.props.location.pathname} >
+                  <div onClick={::this.hideBoxLogin} className="closeBox fa fa-times"></div>
+                </SignIn>
+              </div>
             </div>
           </div>
         </div>

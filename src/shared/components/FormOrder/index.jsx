@@ -1,15 +1,15 @@
 'use strict';
 
-import React       from 'react/addons';
-import Validator   from 'validatorjs';
-import classNames  from 'classnames';
-import ShipStore   from '../../store/ShipStore';
+import React          from 'react/addons';
+import Validator      from 'validatorjs';
+import classNames     from 'classnames';
+import ShipStore      from '../../store/ShipStore';
 import ShipActions    from '../../actions/ShipActions';
 import SanphamStore   from '../../store/SanphamStore';
 import SanphamActions from '../../actions/SanphamActions';
 import CityStore      from '../../store/CityStore';
 import CityActions    from '../../actions/CityActions';
-import OrderActions    from '../../actions/OrderActions';
+import OrderActions   from '../../actions/OrderActions';
 /**
  * @Component
  */
@@ -110,7 +110,7 @@ export default class FormOrder extends React.Component {
       let url = this.state.product.get('images').get(0);
       img_url = url.replace(/image\//gi, 'image/100x100/');
     }
-    
+
     if(this.state.product.get('price')) {
       price = this.state.product.get('price').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
       this.state.amount = this.state.product.get('price') + this.state.cost;
@@ -226,7 +226,7 @@ export default class FormOrder extends React.Component {
 /*    console.log(this.refs.formNguoiNhan.getValue())
     console.log(this.state.shippingMethod)
     console.log(this.refs.hinhthucTT.getCheckbox())*/
-    
+
     let data = {
       store: 'ol',
       shippingInfo: this.refs.formNguoiNhan.getValue(),
@@ -257,7 +257,7 @@ export default class FormOrder extends React.Component {
   _ChangeDisable(value) {
     this.setState({
       disabled: value,
-    });    
+    });
   }
 
   _ChangeVanchuyen (value, checked) {

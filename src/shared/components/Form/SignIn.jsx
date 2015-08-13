@@ -81,7 +81,7 @@ export default React.createClass({
       <div className="form-signup">
         <div className="form-header">
           {this.props.children}
-          <div className="form-title text-center">Đăng nhập Tổ Cú</div>
+          <div className="form-title text-center">Đăng Nhập Tổ Cú</div>
         </div>
         <div className="form-body">
           <div className="form-group">

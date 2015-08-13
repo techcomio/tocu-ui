@@ -1,5 +1,4 @@
 'use strict';
-
 import React   from 'react/addons';
 import {Route} from 'react-router';
 /**
@@ -8,6 +7,7 @@ import {Route} from 'react-router';
 import App       from './handlers/App';
 import Home      from './handlers/Home';
 import Box       from './handlers/Box';
+import Cart      from './handlers/Cart';
 import Posts     from './handlers/Posts';
 import Album     from './handlers/Album';
 import ProductID from './handlers/Product_id';
@@ -20,6 +20,7 @@ export default (
 	<Route component={App}>
 		<Route component={Home}      name="home"      path="/"            onEnter={Home.onEnter}   />
 		<Route component={Box}       name="box"       path="/box/:id"     />
+		<Route component={Cart}      name="cart"      path="/cart"        />
 		<Route component={Posts}     name="posts"     path="/posts/:id"   />
 		<Route component={Album}     name="album"     path="/album/:id"   />
 		<Route component={ProductID} name="productID" path="/product/:id" />
@@ -28,4 +29,3 @@ export default (
 		<Route component={NotFound}  name="NotFound"  path="*"            />
 	</Route>
 );
-	

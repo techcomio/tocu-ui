@@ -22,7 +22,7 @@ export default class BoxsignIn extends React.Component {
           <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
             <div className="centrix">
               <Verify hideBoxVerify={this.props.hideBoxVerify} >
-                <div onClick={::this.hideBoxVerify} className="closeBox fa fa-times"><i class="fa fa-times"></i></div>
+                <div onClick={::this.hideBoxVerify} className="closeBox fa fa-times"></div>
               </Verify>
             </div>
           </div>

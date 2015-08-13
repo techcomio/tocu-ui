@@ -44,11 +44,42 @@
 	}
 	.form-body { 
 		.logo {
-			img {  width: 60px; height: 60px; }
+			img {  width: 60px; height: 60px; margin-bottom: 10px; }
 		}
 		.form-group { margin-bottom: 10px; }
 		.form-control {
 			&.btn { margin-top: 10px; }
 		}
+	}
+}
+
+
+
+
+
+body { height: 100%; position: absolute; }
+/**
+ * .boxLogin
+ */
+.boxLogin { position: fixed; margin: 0px; left: 0;top: 0; right: 0; bottom: 0; width: 100%; height: 100%; overflow: hidden; z-index: 9999; background: rgba(37,43,51, .96);
+	// [class^="col-"], [class*="col-"] { padding-left: 0px !important; padding-right: 0px !important; }
+	.row-form { height: 100%; position: relative; }
+	.container { height: 100%; }
+	.col-centered { float: none; margin: 0 auto; vertical-align: middle;  position: absolute; margin: auto; left: -50%; right: -50%; height: 100%;
+		.centrix { display: flex; flex-direction: column; margin: 0 auto; justify-content: center; height: 100%; }
+		.form-signin, .form-signup { width: 100%; height: auto; margin: auto; margin-top: 0; margin-bottom: 0; background: $body-bg; border-radius: $sign-border-radius; box-shadow: 0 1px 4px rgba(0,0,0, 0.2); position: relative; }
+		.form-body { padding: $sign-padding;
+			.logo { text-align: center; margin-bottom: 20px; }
+			.title-form { font-weight: 400; padding-bottom: 20px; }
+		}
+		.form-footer { padding: 20px 40px; border-top: 1px solid $sign-footer-border-top-color;
+			a { color: $gray-light; }
+		}
+	}
+	.verify {
+		.row { margin-right: 0px !important; margin-left: 0px !important; }
+	}
+	.closeBox { width: 26px; height: 26px; border-radius: 50%; display: block; background: #fff; position: absolute; right: -14px; top: -14px; text-align: center; line-height: 24px; font-size: 18px; padding: 0; margin: 0; color: $gray; 
+		&:hover { cursor: pointer; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.26); background: #eee; }
 	}
 }

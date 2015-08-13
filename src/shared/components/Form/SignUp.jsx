@@ -118,16 +118,17 @@ export default React.createClass({
 
       return (
         <div className={classNameFrom}>
+          <div className="form-header">
+            <div className="form-title text-center">Đăng Ký Tổ Cú</div>
+          </div>
           <div className="form-body">
             <div className="form-group">
               <div className="logo">
                 <Link to="/">
-                  <img src="/img/logo.png" style={{width: 50, height: 50}} />
+                  <img src="/img/logo.png" />
                 </Link>
               </div>
             </div>
-
-            <p className="text-center title-form">Đăng Ký Tổ Cú</p>
 
             {this.state.createUseState === "failed" && (
               <p className="text-center text-danger">{this.state.failedCreateMessage}</p>

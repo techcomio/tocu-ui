@@ -47,7 +47,7 @@ export default class Sale extends React.Component {
 			      price_sale = item.get('salePrice') !== null ? item.get('salePrice').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
 
         		return (
-        			<a onClick={this.handleClick.bind(this, item.toJS())} key={i} href={`/product/${item.get('id')}`} className="list-group-item">
+        			<Link to={`/product/${item.get('id')}`} onClick={this.handleClick.bind(this, item.toJS())} key={i} className="list-group-item">
 		            <div className="list-group-body-item">
 		              <div className="img">
 		                <span className="imgIcon">
@@ -62,7 +62,7 @@ export default class Sale extends React.Component {
 		                </div>
 		              </div>
 		            </div>
-		          </a>
+		          </Link>
         		);
         	})}
         </div>

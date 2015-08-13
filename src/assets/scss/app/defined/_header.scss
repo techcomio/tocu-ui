@@ -64,6 +64,28 @@ header { background: $body-bg; box-shadow: $header-shadow; position: relative;
 	}
 }
 
+.drop-menu { position: absolute; min-width: 400px; margin-top: 10px; padding: 0px; line-height: 1.4;
+	a { color: $gray;
+		&:hover { color: $link-hover-color; }
+	}
+	.tamgiac { right: 8px; top: -10px; position: absolute; width:0px; height:0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #ddd;
+		&:after { content: ''; width: 0px; height: 0px; top: 0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #fff; top: 1px; right: -10px; position: absolute; }
+	}
+	.drop-header { padding: 4px 10px; width: 100%; display: block;
+		.search { border: none; width: 100%; display: block; position: relative;
+			input { line-height: 1.4; width: 100%; border-radius: 20px; padding: 4px 10px; border: 1px solid #ddd;
+				&:focus { box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 4px rgba(102, 175, 233, 0.4); }
+			}
+			.fa { width: 25px; height: 25px; text-align: center; line-height: 23px; position: absolute; right: 5px; top: 2px; cursor: pointer; }
+		}
+	}
+	.drop-body, .drop-footer { border-top: 1px solid #ddd; padding: 8px 10px; }
+	.drop-body li { display: inline-block; width: 50%; }
+	.drop-footer li { display: inline-block;
+		&:nth-child(1n+2)::before { content: '·'; padding: 0 5px; }
+	}
+}
+
 .navbar-tocu { background-color: $navbar-default-bg; max-height: 50px; width: 100%; left: 0; @include transition-all(0.3s); box-shadow: none; border: none; border-bottom: 1px solid #eee;
 	.navbar-header { height: 50px; float: left;
 		.navbar-brand { padding: 7px 10px;

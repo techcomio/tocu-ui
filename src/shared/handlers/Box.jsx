@@ -7,7 +7,6 @@ import {Link}         from 'react-router';
 import {Api_URL}      from '../../../config-sample';
 import BoxActions     from '../actions/BoxActions';
 import SanphamActions from '../actions/SanphamActions';
-import VerifyActions  from '../actions/VerifyActions';
 import MasonryMixin   from 'react-masonry-mixin';
 import PackeryMixin   from 'react-packery-mixin';
 let InfiniteScroll   = require('react-infinite-scroll')(React);
@@ -15,7 +14,6 @@ let InfiniteScroll   = require('react-infinite-scroll')(React);
  * @Component
  */
 import FormSignIn from '../components/Form/SignIn';
-import Verify     from '../components/Form/Verify';
 import Header     from '../components/Header/Box';
 import BoxItem    from '../components/Box/BoxItem';
 
@@ -59,7 +57,6 @@ export default React.createClass({
         posts: [],
         hasMore: true,
         boxLogin: false,
-        boxVerify: false,
         skip: 0,
         limit: 15,
       });
@@ -72,7 +69,6 @@ export default React.createClass({
       posts: [],
       hasMore: true,
       boxLogin: false,
-      boxVerify: false,
       skip: 0,
       limit: 15,
     });
@@ -180,25 +176,15 @@ export default React.createClass({
   renderBoxLogin() {
     if(this.state.boxLogin) {
       return (
-        <div id="boxLogin">
-          <div className="row">
-            <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
-              <div className="centrix">
-                <FormSignIn replaceWith={this.hideBoxLogin} />
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    if(this.state.boxVerify) {
-      return (
-        <div id="boxLogin">
-          <div className="row">
-            <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
-              <div className="centrix">
-                <Verify hideBoxVerify={this.hideBoxVerify} />
+        <div className="boxLogin">
+          <div className="container">
+            <div className="row row-form">
+              <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+                <div className="centrix">
+                  <FormSignIn replaceWith={this.hideBoxLogin}>
+                    <div onClick={this.hideBoxLogin} className="closeBox fa fa-times"></div>
+                  </FormSignIn>
+                </div>
               </div>
             </div>
           </div>
@@ -211,19 +197,10 @@ export default React.createClass({
     SanphamActions.actionSanphamID(sp);
   },
 
-  handleBoxLogin(val) {
-    console.log('handleBoxLogin', val)
-    if(val === "token") {
-      this.setState({
-        boxLogin: true,
-      });
-    }
-    if(val === "verify") {
-      VerifyActions.getCode();
-      this.setState({
-        boxVerify: true,
-      });
-    }
+  handleBoxLogin() {
+    this.setState({
+      boxLogin: true,
+    });
   },
 
   hideBoxLogin() {
@@ -231,11 +208,5 @@ export default React.createClass({
       boxLogin: false,
     });
   },
-
-  hideBoxVerify() {
-    this.setState({
-      boxVerify: false,
-    });
-  }
 
 });

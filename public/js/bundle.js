@@ -661,7 +661,6 @@ webpackJsonp([0],[
 	var _alt2 = _interopRequireDefault(_alt);
 
 	'use trict';
-
 	exports['default'] = new _alt2['default']();
 	module.exports = exports['default'];
 
@@ -1114,27 +1113,31 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _handlersApp = __webpack_require__(260);
+	var _handlersApp = __webpack_require__(256);
 
 	var _handlersApp2 = _interopRequireDefault(_handlersApp);
 
-	var _handlersHome = __webpack_require__(261);
+	var _handlersHome = __webpack_require__(257);
 
 	var _handlersHome2 = _interopRequireDefault(_handlersHome);
 
-	var _handlersBox = __webpack_require__(367);
+	var _handlersBox = __webpack_require__(364);
 
 	var _handlersBox2 = _interopRequireDefault(_handlersBox);
 
-	var _handlersPosts = __webpack_require__(256);
+	var _handlersCart = __webpack_require__(413);
+
+	var _handlersCart2 = _interopRequireDefault(_handlersCart);
+
+	var _handlersPosts = __webpack_require__(416);
 
 	var _handlersPosts2 = _interopRequireDefault(_handlersPosts);
 
-	var _handlersAlbum = __webpack_require__(418);
+	var _handlersAlbum = __webpack_require__(417);
 
 	var _handlersAlbum2 = _interopRequireDefault(_handlersAlbum);
 
-	var _handlersProduct_id = __webpack_require__(419);
+	var _handlersProduct_id = __webpack_require__(418);
 
 	var _handlersProduct_id2 = _interopRequireDefault(_handlersProduct_id);
 
@@ -1155,6 +1158,7 @@ webpackJsonp([0],[
 		{ component: _handlersApp2['default'] },
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersHome2['default'], name: 'home', path: '/', onEnter: _handlersHome2['default'].onEnter }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersBox2['default'], name: 'box', path: '/box/:id' }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersCart2['default'], name: 'cart', path: '/cart' }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersPosts2['default'], name: 'posts', path: '/posts/:id' }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], name: 'album', path: '/album/:id' }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersProduct_id2['default'], name: 'productID', path: '/product/:id' }),
@@ -1166,179 +1170,6 @@ webpackJsonp([0],[
 
 /***/ },
 /* 256 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _decorators = __webpack_require__(257);
-
-	var Posts = (function (_React$Component) {
-	  _inherits(Posts, _React$Component);
-
-	  function Posts(props) {
-	    _classCallCheck(this, Posts);
-
-	    _get(Object.getPrototypeOf(Posts.prototype), 'constructor', this).call(this, props);
-	  }
-
-	  _createClass(Posts, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle("Posts | tocu.vn");
-	      this.props.HeadParams.setDescription("Posts | Description");
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        null,
-	        _reactAddons2['default'].createElement(
-	          'p',
-	          null,
-	          'Posts! ',
-	          this.props.params.id
-	        ),
-	        _reactAddons2['default'].createElement(
-	          _reactRouter.Link,
-	          { to: '/' },
-	          'to Home!'
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Posts;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = Posts;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 257 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequire = __webpack_require__(258)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _prepareRoute = __webpack_require__(259);
-
-	exports.prepareRoute = _interopRequire(_prepareRoute);
-
-/***/ },
-/* 258 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports["default"] = function (obj) {
-	  return obj && obj.__esModule ? obj["default"] : obj;
-	};
-
-	exports.__esModule = true;
-
-/***/ },
-/* 259 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	exports['default'] = prepareRoute;
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _reactRouter2 = _interopRequireDefault(_reactRouter);
-
-	function prepareRoute(prepareFn) {
-
-	  return function (DecoratedComponent) {
-	    return (function (_React$Component) {
-	      _inherits(PrepareRouteDecorator, _React$Component);
-
-	      function PrepareRouteDecorator() {
-	        _classCallCheck(this, PrepareRouteDecorator);
-
-	        _get(Object.getPrototypeOf(PrepareRouteDecorator.prototype), 'constructor', this).apply(this, arguments);
-	      }
-
-	      _createClass(PrepareRouteDecorator, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	          var _props = this.props;
-	          var params = _props.params;
-	          var location = _props.location;
-
-	          prepareFn({ params: params, location: location });
-	        }
-	      }, {
-	        key: 'render',
-	        value: function render() {
-	          return _reactAddons2['default'].createElement(DecoratedComponent, this.props);
-	        }
-	      }], [{
-	        key: 'contextTypes',
-	        value: {
-	          router: _reactAddons.PropTypes.instanceOf(_reactRouter2['default']).isRequired
-	        },
-	        enumerable: true
-	      }, {
-	        key: 'prepareRoute',
-	        value: prepareFn,
-	        enumerable: true
-	      }]);
-
-	      return PrepareRouteDecorator;
-	    })(_reactAddons2['default'].Component);
-	  };
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1393,7 +1224,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 261 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1406,9 +1237,9 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _regeneratorRuntime = __webpack_require__(266)['default'];
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
 
-	var _Promise = __webpack_require__(296)['default'];
+	var _Promise = __webpack_require__(288)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -1422,41 +1253,39 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _altAltContainer = __webpack_require__(262);
+	var _altAltContainer = __webpack_require__(307);
 
 	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
 
-	var _decorators = __webpack_require__(257);
+	var _decorators = __webpack_require__(311);
 
-	var _actionsBoxActions = __webpack_require__(315);
+	var _actionsBoxActions = __webpack_require__(314);
 
 	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
-	var _actionsSanphamActions = __webpack_require__(336);
+	var _actionsSanphamActions = __webpack_require__(335);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
-	var _actionsOrderActions = __webpack_require__(337);
+	var _actionsOrderActions = __webpack_require__(336);
+
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
-
-	var _componentsHeaderHome = __webpack_require__(338);
+	var _componentsHeaderHome = __webpack_require__(337);
 
 	var _componentsHeaderHome2 = _interopRequireDefault(_componentsHeaderHome);
 
-	var _componentsBoxYeuThich = __webpack_require__(354);
+	// import BoxYeuThich from '../components/BoxYeuThich';
 
-	var _componentsBoxYeuThich2 = _interopRequireDefault(_componentsBoxYeuThich);
-
-	var _componentsFormSignIn = __webpack_require__(356);
+	var _componentsFormSignIn = __webpack_require__(353);
 
 	var _componentsFormSignIn2 = _interopRequireDefault(_componentsFormSignIn);
 
-	var _componentsThumbnail = __webpack_require__(362);
+	var _componentsThumbnail = __webpack_require__(359);
 
 	var _componentsThumbnail2 = _interopRequireDefault(_componentsThumbnail);
 
@@ -1511,7 +1340,6 @@ webpackJsonp([0],[
 	          _reactAddons2['default'].createElement(
 	            'div',
 	            { className: 'container' },
-	            _reactAddons2['default'].createElement(_componentsBoxYeuThich2['default'], null),
 	            _reactAddons2['default'].createElement(_componentsThumbnail2['default'], { handleBoxLogin: this.handleBoxLogin })
 	          )
 	        ),
@@ -1581,302 +1409,10 @@ webpackJsonp([0],[
 	exports['default'] = Home;
 	;
 	module.exports = exports['default'];
-	/* Header home */ /* Box yeu thich */ /* Thumbnail */
+	/* Header home */ /* Box yeu thich */ /*<BoxYeuThich />*/ /* Thumbnail */
 
 /***/ },
-/* 262 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(263)
-
-
-/***/ },
-/* 263 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * AltContainer.
-	 *
-	 * There are many ways to use AltContainer.
-	 *
-	 * Using the `stores` prop.
-	 *
-	 * <AltContainer stores={{ FooStore: FooStore }}>
-	 *   children get this.props.FooStore.storeData
-	 * </AltContainer>
-	 *
-	 * You can also pass in functions.
-	 *
-	 * <AltContainer stores={{ FooStore: function () { return { storeData: true } } }}>
-	 *   children get this.props.FooStore.storeData
-	 * </AltContainer>
-	 *
-	 * Using the `store` prop.
-	 *
-	 * <AltContainer store={FooStore}>
-	 *   children get this.props.storeData
-	 * </AltContainer>
-	 *
-	 * Passing in `flux` because you're using alt instances
-	 *
-	 * <AltContainer flux={flux}>
-	 *   children get this.props.flux
-	 * </AltContainer>
-	 *
-	 * Using a custom render function.
-	 *
-	 * <AltContainer
-	 *   render={function (props) {
-	 *     return <div />;
-	 *   }}
-	 * />
-	 *
-	 * Using the `transform` prop.
-	 *
-	 * <AltContainer
-	 *   stores={{ FooStore: FooStore, BarStore: BarStore }}
-	 *   transform={function(stores) {
-	 *     var FooStore = stores.FooStore;
-	 *     var BarStore = stores.BarStore;
-	 *     var products =
-	 *       FooStore.products
-	 *         .slice(0, 10)
-	 *         .concat(BarStore.products);
-	 *     return { products: products };
-	 *   }}
-	 * >
-	 *   children get this.props.products
-	 * </AltContainer>
-	 *
-	 * Full docs available at http://goatslacker.github.io/alt/
-	 */
-	var React = __webpack_require__(16)
-	var mixinContainer = __webpack_require__(264)
-	var assign = __webpack_require__(208).assign
-
-	var AltContainer = React.createClass(assign({
-	  displayName: 'AltContainer',
-
-	  render: function () {
-	    return this.altRender('div')
-	  }
-	}, mixinContainer(React)))
-
-	module.exports = AltContainer
-
-
-/***/ },
-/* 264 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Subscribe = __webpack_require__(265)
-	var assign = __webpack_require__(208).assign
-
-	function id(it) {
-	  return it
-	}
-
-	function getStateFromStore(store, props) {
-	  return typeof store === 'function' ? store(props).value : store.getState()
-	}
-
-	function getStateFromKey(actions, props) {
-	  return typeof actions === 'function' ? actions(props) : actions
-	}
-
-	function mixinContainer(React) {
-	  var cloneWithProps = React.addons.cloneWithProps
-
-	  return {
-	    contextTypes: {
-	      flux: React.PropTypes.object
-	    },
-
-	    childContextTypes: {
-	      flux: React.PropTypes.object
-	    },
-
-	    getChildContext: function () {
-	      var flux = this.props.flux || this.context.flux
-	      return flux ? { flux: flux } : {}
-	    },
-
-	    getInitialState: function () {
-	      if (this.props.stores && this.props.store) {
-	        throw new ReferenceError('Cannot define both store and stores')
-	      }
-
-	      return this.reduceState(this.props)
-	    },
-
-	    componentWillReceiveProps: function (nextProps) {
-	      this.destroySubscriptions()
-	      this.setState(this.reduceState(nextProps))
-	      this.registerStores(nextProps)
-	    },
-
-	    componentDidMount: function () {
-	      this.registerStores(this.props)
-	    },
-
-	    componentWillUnmount: function () {
-	      this.destroySubscriptions()
-	    },
-
-	    registerStores: function (props) {
-	      var stores = props.stores
-	      Subscribe.create(this)
-
-	      if (props.store) {
-	        this.addSubscription(props.store)
-	      } else if (props.stores) {
-	        if (Array.isArray(stores)) {
-	          stores.forEach(function (store) {
-	            this.addSubscription(store)
-	          }, this)
-	        } else {
-	          Object.keys(stores).forEach(function (formatter) {
-	            this.addSubscription(stores[formatter])
-	          }, this)
-	        }
-	      }
-	    },
-
-	    destroySubscriptions: function () {
-	      Subscribe.destroy(this)
-	    },
-
-	    getStateFromStores: function (props) {
-	      var stores = props.stores
-	      if (props.store) {
-	        return getStateFromStore(props.store, props)
-	      } else if (props.stores) {
-	        // If you pass in an array of stores then we are just listening to them
-	        // it should be an object then the state is added to the key specified
-	        if (!Array.isArray(stores)) {
-	          return Object.keys(stores).reduce(function (obj, key) {
-	            obj[key] = getStateFromStore(stores[key], props)
-	            return obj
-	          }, {})
-	        }
-	      } else {
-	        return {}
-	      }
-	    },
-
-	    getStateFromActions: function (props) {
-	      if (props.actions) {
-	        return getStateFromKey(props.actions, props)
-	      } else {
-	        return {}
-	      }
-	    },
-
-	    getInjected: function (props) {
-	      if (props.inject) {
-	        return Object.keys(props.inject).reduce(function (obj, key) {
-	          obj[key] = getStateFromKey(props.inject[key], props)
-	          return obj
-	        }, {})
-	      } else {
-	        return {}
-	      }
-	    },
-
-	    reduceState: function (props) {
-	      return assign(
-	        {},
-	        this.getStateFromStores(props),
-	        this.getStateFromActions(props),
-	        this.getInjected(props)
-	      )
-	    },
-
-	    addSubscription: function (store) {
-	      if (typeof store === 'function') {
-	        Subscribe.add(this, store(this.props).store, this.altSetState)
-	      } else {
-	        Subscribe.add(this, store, this.altSetState)
-	      }
-	    },
-
-	    altSetState: function () {
-	      this.setState(this.reduceState(this.props))
-	    },
-
-	    getProps: function () {
-	      var flux = this.props.flux || this.context.flux
-	      var transform = typeof this.props.transform === 'function'
-	        ? this.props.transform
-	        : id
-	      return transform(assign(
-	        flux ? { flux: flux } : {},
-	        this.state
-	      ))
-	    },
-
-	    shouldComponentUpdate: function () {
-	      return this.props.shouldComponentUpdate
-	        ? this.props.shouldComponentUpdate(this.getProps())
-	        : true
-	    },
-
-	    altRender: function (Node) {
-	      var children = this.props.children
-	      // Custom rendering function
-	      if (typeof this.props.render === 'function') {
-	        return this.props.render(this.getProps())
-	      } else if (this.props.component) {
-	        return React.createElement(this.props.component, this.getProps())
-	      }
-
-	      // Does not wrap child in a div if we don't have to.
-	      if (Array.isArray(children)) {
-	        return React.createElement(Node, null, children.map(function (child, i) {
-	          return cloneWithProps(child, assign({ key: i }, this.getProps()))
-	        }, this))
-	      } else if (children) {
-	        return cloneWithProps(children, this.getProps())
-	      } else {
-	        return React.createElement(Node, this.getProps())
-	      }
-	    }
-	  }
-	}
-
-	module.exports = mixinContainer
-
-
-/***/ },
-/* 265 */
-/***/ function(module, exports) {
-
-	'use strict'
-
-	var Subscribe = {
-	  create: function (context) {
-	    context._AltMixinRegistry = context._AltMixinRegistry || []
-	  },
-
-	  add: function (context, store, handler) {
-	    context._AltMixinRegistry.push(store.listen(handler))
-	  },
-
-	  destroy: function (context) {
-	    context._AltMixinRegistry.forEach(function (f) { f() })
-	    context._AltMixinRegistry = []
-	  },
-
-	  listeners: function (context) {
-	    return context._AltMixinRegistry
-	  }
-	}
-
-	module.exports = Subscribe
-
-
-/***/ },
-/* 266 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// This method of obtaining a reference to the global object needs to be
@@ -1897,7 +1433,7 @@ webpackJsonp([0],[
 	// Force reevalutation of runtime.js.
 	g.regeneratorRuntime = undefined;
 
-	module.exports = __webpack_require__(267);
+	module.exports = __webpack_require__(259);
 
 	if (hadRuntime) {
 	  // Restore the original runtime.
@@ -1912,7 +1448,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 267 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {/**
@@ -1927,13 +1463,13 @@ webpackJsonp([0],[
 
 	"use strict";
 
-	var _Symbol = __webpack_require__(269)["default"];
+	var _Symbol = __webpack_require__(261)["default"];
 
-	var _Symbol$iterator = __webpack_require__(283)["default"];
+	var _Symbol$iterator = __webpack_require__(275)["default"];
 
 	var _Object$create = __webpack_require__(225)["default"];
 
-	var _Promise = __webpack_require__(296)["default"];
+	var _Promise = __webpack_require__(288)["default"];
 
 	!(function (global) {
 	  "use strict";
@@ -2541,10 +2077,10 @@ webpackJsonp([0],[
 	// object, this seems to be the most reliable technique that does not
 	// use indirect eval (which violates Content Security Policy).
 	typeof global === "object" ? global : typeof window === "object" ? window : typeof self === "object" ? self : undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(268)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(260)))
 
 /***/ },
-/* 268 */
+/* 260 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -2640,40 +2176,40 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 269 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(270), __esModule: true };
+	module.exports = { "default": __webpack_require__(262), __esModule: true };
 
 /***/ },
-/* 270 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(271);
+	__webpack_require__(263);
 	module.exports = __webpack_require__(7).Symbol;
 
 /***/ },
-/* 271 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// ECMAScript 6 symbols shim
 	var $              = __webpack_require__(14)
 	  , global         = __webpack_require__(6)
-	  , has            = __webpack_require__(272)
-	  , SUPPORT_DESC   = __webpack_require__(273)
+	  , has            = __webpack_require__(264)
+	  , SUPPORT_DESC   = __webpack_require__(265)
 	  , $def           = __webpack_require__(5)
-	  , $redef         = __webpack_require__(274)
-	  , shared         = __webpack_require__(277)
-	  , setTag         = __webpack_require__(278)
-	  , uid            = __webpack_require__(280)
-	  , wks            = __webpack_require__(279)
-	  , keyOf          = __webpack_require__(281)
+	  , $redef         = __webpack_require__(266)
+	  , shared         = __webpack_require__(269)
+	  , setTag         = __webpack_require__(270)
+	  , uid            = __webpack_require__(272)
+	  , wks            = __webpack_require__(271)
+	  , keyOf          = __webpack_require__(273)
 	  , $names         = __webpack_require__(223)
 	  , enumKeys       = __webpack_require__(13)
 	  , anObject       = __webpack_require__(231)
 	  , toObject       = __webpack_require__(9)
-	  , createDesc     = __webpack_require__(276)
+	  , createDesc     = __webpack_require__(268)
 	  , getDesc        = $.getDesc
 	  , setDesc        = $.setDesc
 	  , $create        = $.create
@@ -2785,7 +2321,7 @@ webpackJsonp([0],[
 	  $.getNames   = $names.get = getOwnPropertyNames;
 	  $.getSymbols = getOwnPropertySymbols;
 
-	  if(SUPPORT_DESC && !__webpack_require__(282)){
+	  if(SUPPORT_DESC && !__webpack_require__(274)){
 	    $redef(ObjectProto, 'propertyIsEnumerable', propertyIsEnumerable, true);
 	  }
 	}
@@ -2853,7 +2389,7 @@ webpackJsonp([0],[
 	setTag(global.JSON, 'JSON', true);
 
 /***/ },
-/* 272 */
+/* 264 */
 /***/ function(module, exports) {
 
 	var hasOwnProperty = {}.hasOwnProperty;
@@ -2862,7 +2398,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 273 */
+/* 265 */
 /***/ function(module, exports) {
 
 	// Thank's IE8 for his funny defineProperty
@@ -2873,18 +2409,18 @@ webpackJsonp([0],[
 	}();
 
 /***/ },
-/* 274 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(275);
+	module.exports = __webpack_require__(267);
 
 /***/ },
-/* 275 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $          = __webpack_require__(14)
-	  , createDesc = __webpack_require__(276);
-	module.exports = __webpack_require__(273) ? function(object, key, value){
+	  , createDesc = __webpack_require__(268);
+	module.exports = __webpack_require__(265) ? function(object, key, value){
 	  return $.setDesc(object, key, createDesc(1, value));
 	} : function(object, key, value){
 	  object[key] = value;
@@ -2892,7 +2428,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 276 */
+/* 268 */
 /***/ function(module, exports) {
 
 	module.exports = function(bitmap, value){
@@ -2905,7 +2441,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 277 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var global = __webpack_require__(6)
@@ -2916,30 +2452,30 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 278 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var has  = __webpack_require__(272)
-	  , hide = __webpack_require__(275)
-	  , TAG  = __webpack_require__(279)('toStringTag');
+	var has  = __webpack_require__(264)
+	  , hide = __webpack_require__(267)
+	  , TAG  = __webpack_require__(271)('toStringTag');
 
 	module.exports = function(it, tag, stat){
 	  if(it && !has(it = stat ? it : it.prototype, TAG))hide(it, TAG, tag);
 	};
 
 /***/ },
-/* 279 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var store  = __webpack_require__(277)('wks')
+	var store  = __webpack_require__(269)('wks')
 	  , Symbol = __webpack_require__(6).Symbol;
 	module.exports = function(name){
 	  return store[name] || (store[name] =
-	    Symbol && Symbol[name] || (Symbol || __webpack_require__(280))('Symbol.' + name));
+	    Symbol && Symbol[name] || (Symbol || __webpack_require__(272))('Symbol.' + name));
 	};
 
 /***/ },
-/* 280 */
+/* 272 */
 /***/ function(module, exports) {
 
 	var id = 0
@@ -2949,7 +2485,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 281 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $        = __webpack_require__(14)
@@ -2964,33 +2500,33 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 282 */
+/* 274 */
 /***/ function(module, exports) {
 
 	module.exports = true;
 
 /***/ },
-/* 283 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(284), __esModule: true };
+	module.exports = { "default": __webpack_require__(276), __esModule: true };
 
 /***/ },
-/* 284 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(285);
-	__webpack_require__(292);
-	module.exports = __webpack_require__(279)('iterator');
+	__webpack_require__(277);
+	__webpack_require__(284);
+	module.exports = __webpack_require__(271)('iterator');
 
 /***/ },
-/* 285 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $at  = __webpack_require__(286)(true);
+	var $at  = __webpack_require__(278)(true);
 
 	// 21.1.3.27 String.prototype[@@iterator]()
-	__webpack_require__(288)(String, 'String', function(iterated){
+	__webpack_require__(280)(String, 'String', function(iterated){
 	  this._t = String(iterated); // target
 	  this._i = 0;                // next index
 	// 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -3005,12 +2541,12 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 286 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// true  -> String#at
 	// false -> String#codePointAt
-	var toInteger = __webpack_require__(287)
+	var toInteger = __webpack_require__(279)
 	  , defined   = __webpack_require__(12);
 	module.exports = function(TO_STRING){
 	  return function(that, pos){
@@ -3028,7 +2564,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 287 */
+/* 279 */
 /***/ function(module, exports) {
 
 	// 7.1.4 ToInteger
@@ -3039,23 +2575,23 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 288 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var LIBRARY         = __webpack_require__(282)
+	var LIBRARY         = __webpack_require__(274)
 	  , $def            = __webpack_require__(5)
-	  , $redef          = __webpack_require__(274)
-	  , hide            = __webpack_require__(275)
-	  , has             = __webpack_require__(272)
-	  , SYMBOL_ITERATOR = __webpack_require__(279)('iterator')
-	  , Iterators       = __webpack_require__(289)
+	  , $redef          = __webpack_require__(266)
+	  , hide            = __webpack_require__(267)
+	  , has             = __webpack_require__(264)
+	  , SYMBOL_ITERATOR = __webpack_require__(271)('iterator')
+	  , Iterators       = __webpack_require__(281)
 	  , FF_ITERATOR     = '@@iterator'
 	  , KEYS            = 'keys'
 	  , VALUES          = 'values';
 	function returnThis(){ return this; }
 	module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE){
-	  __webpack_require__(290)(Constructor, NAME, next);
+	  __webpack_require__(282)(Constructor, NAME, next);
 	  function createMethod(kind){
 	    switch(kind){
 	      case KEYS: return function keys(){ return new Constructor(this, kind); };
@@ -3071,7 +2607,7 @@ webpackJsonp([0],[
 	  if(_native){
 	    var IteratorPrototype = __webpack_require__(14).getProto(_default.call(new Base));
 	    // Set @@toStringTag to native iterators
-	    __webpack_require__(278)(IteratorPrototype, TAG, true);
+	    __webpack_require__(270)(IteratorPrototype, TAG, true);
 	    // FF fix
 	    if(!LIBRARY && has(proto, FF_ITERATOR))hide(IteratorPrototype, SYMBOL_ITERATOR, returnThis);
 	  }
@@ -3088,18 +2624,18 @@ webpackJsonp([0],[
 	    };
 	    if(FORCE)for(key in methods){
 	      if(!(key in proto))$redef(proto, key, methods[key]);
-	    } else $def($def.P + $def.F * __webpack_require__(291), NAME, methods);
+	    } else $def($def.P + $def.F * __webpack_require__(283), NAME, methods);
 	  }
 	};
 
 /***/ },
-/* 289 */
+/* 281 */
 /***/ function(module, exports) {
 
 	module.exports = {};
 
 /***/ },
-/* 290 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3107,42 +2643,42 @@ webpackJsonp([0],[
 	  , IteratorPrototype = {};
 
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-	__webpack_require__(275)(IteratorPrototype, __webpack_require__(279)('iterator'), function(){ return this; });
+	__webpack_require__(267)(IteratorPrototype, __webpack_require__(271)('iterator'), function(){ return this; });
 
 	module.exports = function(Constructor, NAME, next){
-	  Constructor.prototype = $.create(IteratorPrototype, {next: __webpack_require__(276)(1,next)});
-	  __webpack_require__(278)(Constructor, NAME + ' Iterator');
+	  Constructor.prototype = $.create(IteratorPrototype, {next: __webpack_require__(268)(1,next)});
+	  __webpack_require__(270)(Constructor, NAME + ' Iterator');
 	};
 
 /***/ },
-/* 291 */
+/* 283 */
 /***/ function(module, exports) {
 
 	// Safari has buggy iterators w/o `next`
 	module.exports = 'keys' in [] && !('next' in [].keys());
 
 /***/ },
-/* 292 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(293);
-	var Iterators = __webpack_require__(289);
+	__webpack_require__(285);
+	var Iterators = __webpack_require__(281);
 	Iterators.NodeList = Iterators.HTMLCollection = Iterators.Array;
 
 /***/ },
-/* 293 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var setUnscope = __webpack_require__(294)
-	  , step       = __webpack_require__(295)
-	  , Iterators  = __webpack_require__(289)
+	var setUnscope = __webpack_require__(286)
+	  , step       = __webpack_require__(287)
+	  , Iterators  = __webpack_require__(281)
 	  , toObject   = __webpack_require__(9);
 
 	// 22.1.3.4 Array.prototype.entries()
 	// 22.1.3.13 Array.prototype.keys()
 	// 22.1.3.29 Array.prototype.values()
 	// 22.1.3.30 Array.prototype[@@iterator]()
-	__webpack_require__(288)(Array, 'Array', function(iterated, kind){
+	__webpack_require__(280)(Array, 'Array', function(iterated, kind){
 	  this._t = toObject(iterated); // target
 	  this._i = 0;                  // next index
 	  this._k = kind;               // kind
@@ -3168,13 +2704,13 @@ webpackJsonp([0],[
 	setUnscope('entries');
 
 /***/ },
-/* 294 */
+/* 286 */
 /***/ function(module, exports) {
 
 	module.exports = function(){ /* empty */ };
 
 /***/ },
-/* 295 */
+/* 287 */
 /***/ function(module, exports) {
 
 	module.exports = function(done, value){
@@ -3182,52 +2718,52 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 296 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(297), __esModule: true };
+	module.exports = { "default": __webpack_require__(289), __esModule: true };
 
 /***/ },
-/* 297 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(298);
-	__webpack_require__(285);
-	__webpack_require__(292);
-	__webpack_require__(299);
+	__webpack_require__(290);
+	__webpack_require__(277);
+	__webpack_require__(284);
+	__webpack_require__(291);
 	module.exports = __webpack_require__(7).Promise;
 
 /***/ },
-/* 298 */
+/* 290 */
 /***/ function(module, exports) {
 
 	
 
 /***/ },
-/* 299 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $          = __webpack_require__(14)
-	  , LIBRARY    = __webpack_require__(282)
+	  , LIBRARY    = __webpack_require__(274)
 	  , global     = __webpack_require__(6)
 	  , ctx        = __webpack_require__(232)
-	  , classof    = __webpack_require__(300)
+	  , classof    = __webpack_require__(292)
 	  , $def       = __webpack_require__(5)
 	  , isObject   = __webpack_require__(222)
 	  , anObject   = __webpack_require__(231)
 	  , aFunction  = __webpack_require__(233)
-	  , strictNew  = __webpack_require__(301)
-	  , forOf      = __webpack_require__(302)
+	  , strictNew  = __webpack_require__(293)
+	  , forOf      = __webpack_require__(294)
 	  , setProto   = __webpack_require__(230).set
-	  , same       = __webpack_require__(307)
-	  , species    = __webpack_require__(308)
-	  , SPECIES    = __webpack_require__(279)('species')
-	  , RECORD     = __webpack_require__(280)('record')
+	  , same       = __webpack_require__(299)
+	  , species    = __webpack_require__(300)
+	  , SPECIES    = __webpack_require__(271)('species')
+	  , RECORD     = __webpack_require__(272)('record')
 	  , PROMISE    = 'Promise'
 	  , process    = global.process
 	  , isNode     = classof(process) == 'process'
-	  , asap       = process && process.nextTick || __webpack_require__(309).set
+	  , asap       = process && process.nextTick || __webpack_require__(301).set
 	  , P          = global[PROMISE]
 	  , Wrapper;
 
@@ -3253,7 +2789,7 @@ webpackJsonp([0],[
 	      works = false;
 	    }
 	    // actual V8 bug, https://code.google.com/p/v8/issues/detail?id=4162
-	    if(works && __webpack_require__(273)){
+	    if(works && __webpack_require__(265)){
 	      var thenableThenGotten = false;
 	      P.resolve($.setDesc({}, 'then', {
 	        get: function(){ thenableThenGotten = true; }
@@ -3395,7 +2931,7 @@ webpackJsonp([0],[
 	      $reject.call(record, err);
 	    }
 	  };
-	  __webpack_require__(313)(P.prototype, {
+	  __webpack_require__(305)(P.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected){
 	      var S = anObject(anObject(this).constructor)[SPECIES];
@@ -3422,7 +2958,7 @@ webpackJsonp([0],[
 
 	// export
 	$def($def.G + $def.W + $def.F * !useNative, {Promise: P});
-	__webpack_require__(278)(P, PROMISE);
+	__webpack_require__(270)(P, PROMISE);
 	species(P);
 	species(Wrapper = __webpack_require__(7)[PROMISE]);
 
@@ -3440,7 +2976,7 @@ webpackJsonp([0],[
 	      ? x : new this(function(res){ res(x); });
 	  }
 	});
-	$def($def.S + $def.F * !(useNative && __webpack_require__(314)(function(iter){
+	$def($def.S + $def.F * !(useNative && __webpack_require__(306)(function(iter){
 	  P.all(iter)['catch'](function(){});
 	})), PROMISE, {
 	  // 25.4.4.1 Promise.all(iterable)
@@ -3472,11 +3008,11 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 300 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var cof = __webpack_require__(11)
-	  , TAG = __webpack_require__(279)('toStringTag')
+	  , TAG = __webpack_require__(271)('toStringTag')
 	  // ES3 wrong here
 	  , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 
@@ -3492,7 +3028,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 301 */
+/* 293 */
 /***/ function(module, exports) {
 
 	module.exports = function(it, Constructor, name){
@@ -3501,15 +3037,15 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 302 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var ctx         = __webpack_require__(232)
-	  , call        = __webpack_require__(303)
-	  , isArrayIter = __webpack_require__(304)
+	  , call        = __webpack_require__(295)
+	  , isArrayIter = __webpack_require__(296)
 	  , anObject    = __webpack_require__(231)
-	  , toLength    = __webpack_require__(305)
-	  , getIterFn   = __webpack_require__(306);
+	  , toLength    = __webpack_require__(297)
+	  , getIterFn   = __webpack_require__(298);
 	module.exports = function(iterable, entries, fn, that){
 	  var iterFn = getIterFn(iterable)
 	    , f      = ctx(fn, that, entries ? 2 : 1)
@@ -3525,7 +3061,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 303 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var anObject = __webpack_require__(231);
@@ -3543,34 +3079,34 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 304 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Iterators = __webpack_require__(289)
-	  , ITERATOR  = __webpack_require__(279)('iterator');
+	var Iterators = __webpack_require__(281)
+	  , ITERATOR  = __webpack_require__(271)('iterator');
 	module.exports = function(it){
 	  return ('Array' in Iterators ? Iterators.Array : Array.prototype[ITERATOR]) === it;
 	};
 
 /***/ },
-/* 305 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(287)
+	var toInteger = __webpack_require__(279)
 	  , min       = Math.min;
 	module.exports = function(it){
 	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 	};
 
 /***/ },
-/* 306 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(6)
-	  , classof   = __webpack_require__(300)
-	  , ITERATOR  = __webpack_require__(279)('iterator')
-	  , Iterators = __webpack_require__(289);
+	  , classof   = __webpack_require__(292)
+	  , ITERATOR  = __webpack_require__(271)('iterator')
+	  , Iterators = __webpack_require__(281);
 	module.exports = __webpack_require__(7).getIteratorMethod = function(it){
 	  var Symbol = global.Symbol;
 	  if(it != undefined){
@@ -3581,7 +3117,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 307 */
+/* 299 */
 /***/ function(module, exports) {
 
 	module.exports = Object.is || function is(x, y){
@@ -3589,27 +3125,27 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 308 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $       = __webpack_require__(14)
-	  , SPECIES = __webpack_require__(279)('species');
+	  , SPECIES = __webpack_require__(271)('species');
 	module.exports = function(C){
-	  if(__webpack_require__(273) && !(SPECIES in C))$.setDesc(C, SPECIES, {
+	  if(__webpack_require__(265) && !(SPECIES in C))$.setDesc(C, SPECIES, {
 	    configurable: true,
 	    get: function(){ return this; }
 	  });
 	};
 
 /***/ },
-/* 309 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var ctx                = __webpack_require__(232)
-	  , invoke             = __webpack_require__(311)
-	  , html               = __webpack_require__(312)
-	  , cel                = __webpack_require__(310)
+	  , invoke             = __webpack_require__(302)
+	  , html               = __webpack_require__(303)
+	  , cel                = __webpack_require__(304)
 	  , global             = __webpack_require__(6)
 	  , process            = global.process
 	  , setTask            = global.setImmediate
@@ -3683,19 +3219,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 310 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(222)
-	  , document = __webpack_require__(6).document
-	  // in old IE typeof document.createElement is 'object'
-	  , is = isObject(document) && isObject(document.createElement);
-	module.exports = function(it){
-	  return is ? document.createElement(it) : {};
-	};
-
-/***/ },
-/* 311 */
+/* 302 */
 /***/ function(module, exports) {
 
 	// Fast apply
@@ -3719,26 +3243,38 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 312 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(6).document && document.documentElement;
 
 /***/ },
-/* 313 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $redef = __webpack_require__(274);
+	var isObject = __webpack_require__(222)
+	  , document = __webpack_require__(6).document
+	  // in old IE typeof document.createElement is 'object'
+	  , is = isObject(document) && isObject(document.createElement);
+	module.exports = function(it){
+	  return is ? document.createElement(it) : {};
+	};
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $redef = __webpack_require__(266);
 	module.exports = function(target, src){
 	  for(var key in src)$redef(target, key, src[key]);
 	  return target;
 	};
 
 /***/ },
-/* 314 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SYMBOL_ITERATOR = __webpack_require__(279)('iterator')
+	var SYMBOL_ITERATOR = __webpack_require__(271)('iterator')
 	  , SAFE_CLOSING    = false;
 	try {
 	  var riter = [7][SYMBOL_ITERATOR]();
@@ -3759,7 +3295,401 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 315 */
+/* 307 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(308)
+
+
+/***/ },
+/* 308 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * AltContainer.
+	 *
+	 * There are many ways to use AltContainer.
+	 *
+	 * Using the `stores` prop.
+	 *
+	 * <AltContainer stores={{ FooStore: FooStore }}>
+	 *   children get this.props.FooStore.storeData
+	 * </AltContainer>
+	 *
+	 * You can also pass in functions.
+	 *
+	 * <AltContainer stores={{ FooStore: function () { return { storeData: true } } }}>
+	 *   children get this.props.FooStore.storeData
+	 * </AltContainer>
+	 *
+	 * Using the `store` prop.
+	 *
+	 * <AltContainer store={FooStore}>
+	 *   children get this.props.storeData
+	 * </AltContainer>
+	 *
+	 * Passing in `flux` because you're using alt instances
+	 *
+	 * <AltContainer flux={flux}>
+	 *   children get this.props.flux
+	 * </AltContainer>
+	 *
+	 * Using a custom render function.
+	 *
+	 * <AltContainer
+	 *   render={function (props) {
+	 *     return <div />;
+	 *   }}
+	 * />
+	 *
+	 * Using the `transform` prop.
+	 *
+	 * <AltContainer
+	 *   stores={{ FooStore: FooStore, BarStore: BarStore }}
+	 *   transform={function(stores) {
+	 *     var FooStore = stores.FooStore;
+	 *     var BarStore = stores.BarStore;
+	 *     var products =
+	 *       FooStore.products
+	 *         .slice(0, 10)
+	 *         .concat(BarStore.products);
+	 *     return { products: products };
+	 *   }}
+	 * >
+	 *   children get this.props.products
+	 * </AltContainer>
+	 *
+	 * Full docs available at http://goatslacker.github.io/alt/
+	 */
+	var React = __webpack_require__(16)
+	var mixinContainer = __webpack_require__(309)
+	var assign = __webpack_require__(210).assign
+
+	var AltContainer = React.createClass(assign({
+	  displayName: 'AltContainer',
+
+	  render: function () {
+	    return this.altRender('div')
+	  }
+	}, mixinContainer(React)))
+
+	module.exports = AltContainer
+
+
+/***/ },
+/* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Subscribe = __webpack_require__(310)
+	var assign = __webpack_require__(210).assign
+
+	function id(it) {
+	  return it
+	}
+
+	function getStateFromStore(store, props) {
+	  return typeof store === 'function' ? store(props).value : store.getState()
+	}
+
+	function getStateFromKey(actions, props) {
+	  return typeof actions === 'function' ? actions(props) : actions
+	}
+
+	function mixinContainer(React) {
+	  var cloneWithProps = React.addons.cloneWithProps
+
+	  return {
+	    contextTypes: {
+	      flux: React.PropTypes.object
+	    },
+
+	    childContextTypes: {
+	      flux: React.PropTypes.object
+	    },
+
+	    getChildContext: function () {
+	      var flux = this.props.flux || this.context.flux
+	      return flux ? { flux: flux } : {}
+	    },
+
+	    getInitialState: function () {
+	      if (this.props.stores && this.props.store) {
+	        throw new ReferenceError('Cannot define both store and stores')
+	      }
+
+	      return this.reduceState(this.props)
+	    },
+
+	    componentWillReceiveProps: function (nextProps) {
+	      this.destroySubscriptions()
+	      this.setState(this.reduceState(nextProps))
+	      this.registerStores(nextProps)
+	    },
+
+	    componentDidMount: function () {
+	      this.registerStores(this.props)
+	    },
+
+	    componentWillUnmount: function () {
+	      this.destroySubscriptions()
+	    },
+
+	    registerStores: function (props) {
+	      var stores = props.stores
+	      Subscribe.create(this)
+
+	      if (props.store) {
+	        this.addSubscription(props.store)
+	      } else if (props.stores) {
+	        if (Array.isArray(stores)) {
+	          stores.forEach(function (store) {
+	            this.addSubscription(store)
+	          }, this)
+	        } else {
+	          Object.keys(stores).forEach(function (formatter) {
+	            this.addSubscription(stores[formatter])
+	          }, this)
+	        }
+	      }
+	    },
+
+	    destroySubscriptions: function () {
+	      Subscribe.destroy(this)
+	    },
+
+	    getStateFromStores: function (props) {
+	      var stores = props.stores
+	      if (props.store) {
+	        return getStateFromStore(props.store, props)
+	      } else if (props.stores) {
+	        // If you pass in an array of stores then we are just listening to them
+	        // it should be an object then the state is added to the key specified
+	        if (!Array.isArray(stores)) {
+	          return Object.keys(stores).reduce(function (obj, key) {
+	            obj[key] = getStateFromStore(stores[key], props)
+	            return obj
+	          }, {})
+	        }
+	      } else {
+	        return {}
+	      }
+	    },
+
+	    getStateFromActions: function (props) {
+	      if (props.actions) {
+	        return getStateFromKey(props.actions, props)
+	      } else {
+	        return {}
+	      }
+	    },
+
+	    getInjected: function (props) {
+	      if (props.inject) {
+	        return Object.keys(props.inject).reduce(function (obj, key) {
+	          obj[key] = getStateFromKey(props.inject[key], props)
+	          return obj
+	        }, {})
+	      } else {
+	        return {}
+	      }
+	    },
+
+	    reduceState: function (props) {
+	      return assign(
+	        {},
+	        this.getStateFromStores(props),
+	        this.getStateFromActions(props),
+	        this.getInjected(props)
+	      )
+	    },
+
+	    addSubscription: function (store) {
+	      if (typeof store === 'function') {
+	        Subscribe.add(this, store(this.props).store, this.altSetState)
+	      } else {
+	        Subscribe.add(this, store, this.altSetState)
+	      }
+	    },
+
+	    altSetState: function () {
+	      this.setState(this.reduceState(this.props))
+	    },
+
+	    getProps: function () {
+	      var flux = this.props.flux || this.context.flux
+	      var transform = typeof this.props.transform === 'function'
+	        ? this.props.transform
+	        : id
+	      return transform(assign(
+	        flux ? { flux: flux } : {},
+	        this.state
+	      ))
+	    },
+
+	    shouldComponentUpdate: function () {
+	      return this.props.shouldComponentUpdate
+	        ? this.props.shouldComponentUpdate(this.getProps())
+	        : true
+	    },
+
+	    altRender: function (Node) {
+	      var children = this.props.children
+	      // Custom rendering function
+	      if (typeof this.props.render === 'function') {
+	        return this.props.render(this.getProps())
+	      } else if (this.props.component) {
+	        return React.createElement(this.props.component, this.getProps())
+	      }
+
+	      // Does not wrap child in a div if we don't have to.
+	      if (Array.isArray(children)) {
+	        return React.createElement(Node, null, children.map(function (child, i) {
+	          return cloneWithProps(child, assign({ key: i }, this.getProps()))
+	        }, this))
+	      } else if (children) {
+	        return cloneWithProps(children, this.getProps())
+	      } else {
+	        return React.createElement(Node, this.getProps())
+	      }
+	    }
+	  }
+	}
+
+	module.exports = mixinContainer
+
+
+/***/ },
+/* 310 */
+/***/ function(module, exports) {
+
+	'use strict'
+
+	var Subscribe = {
+	  create: function (context) {
+	    context._AltMixinRegistry = context._AltMixinRegistry || []
+	  },
+
+	  add: function (context, store, handler) {
+	    context._AltMixinRegistry.push(store.listen(handler))
+	  },
+
+	  destroy: function (context) {
+	    context._AltMixinRegistry.forEach(function (f) { f() })
+	    context._AltMixinRegistry = []
+	  },
+
+	  listeners: function (context) {
+	    return context._AltMixinRegistry
+	  }
+	}
+
+	module.exports = Subscribe
+
+
+/***/ },
+/* 311 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequire = __webpack_require__(312)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _prepareRoute = __webpack_require__(313);
+
+	exports.prepareRoute = _interopRequire(_prepareRoute);
+
+/***/ },
+/* 312 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports["default"] = function (obj) {
+	  return obj && obj.__esModule ? obj["default"] : obj;
+	};
+
+	exports.__esModule = true;
+
+/***/ },
+/* 313 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports['default'] = prepareRoute;
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+	function prepareRoute(prepareFn) {
+
+	  return function (DecoratedComponent) {
+	    return (function (_React$Component) {
+	      _inherits(PrepareRouteDecorator, _React$Component);
+
+	      function PrepareRouteDecorator() {
+	        _classCallCheck(this, PrepareRouteDecorator);
+
+	        _get(Object.getPrototypeOf(PrepareRouteDecorator.prototype), 'constructor', this).apply(this, arguments);
+	      }
+
+	      _createClass(PrepareRouteDecorator, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	          var _props = this.props;
+	          var params = _props.params;
+	          var location = _props.location;
+
+	          prepareFn({ params: params, location: location });
+	        }
+	      }, {
+	        key: 'render',
+	        value: function render() {
+	          return _reactAddons2['default'].createElement(DecoratedComponent, this.props);
+	        }
+	      }], [{
+	        key: 'contextTypes',
+	        value: {
+	          router: _reactAddons.PropTypes.instanceOf(_reactRouter2['default']).isRequired
+	        },
+	        enumerable: true
+	      }, {
+	        key: 'prepareRoute',
+	        value: prepareFn,
+	        enumerable: true
+	      }]);
+
+	      return PrepareRouteDecorator;
+	    })(_reactAddons2['default'].Component);
+	  };
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3768,7 +3698,7 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _regeneratorRuntime = __webpack_require__(266)['default'];
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -3776,11 +3706,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(316);
+	var _axios = __webpack_require__(315);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(335);
+	var _configSample = __webpack_require__(334);
 
 	var BoxActions = (function () {
 	  function BoxActions() {
@@ -3907,28 +3837,28 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(BoxActions);
 
 /***/ },
-/* 316 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(317);
+	module.exports = __webpack_require__(316);
 
 /***/ },
-/* 317 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(318);
-	var utils = __webpack_require__(319);
-	var deprecatedMethod = __webpack_require__(320);
-	var dispatchRequest = __webpack_require__(321);
-	var InterceptorManager = __webpack_require__(328);
+	var defaults = __webpack_require__(317);
+	var utils = __webpack_require__(318);
+	var deprecatedMethod = __webpack_require__(319);
+	var dispatchRequest = __webpack_require__(320);
+	var InterceptorManager = __webpack_require__(327);
 
 	// Polyfill ES6 Promise if needed
 	(function () {
 	  // webpack is being used to set es6-promise to the native Promise
 	  // for the standalone build. It's necessary to make sure polyfill exists.
-	  var P = __webpack_require__(329);
+	  var P = __webpack_require__(328);
 	  if (P && typeof P.polyfill === 'function') {
 	    P.polyfill();
 	  }
@@ -3991,7 +3921,7 @@ webpackJsonp([0],[
 	axios.all = function (promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(334);
+	axios.spread = __webpack_require__(333);
 
 	// Expose interceptors
 	axios.interceptors = {
@@ -4030,12 +3960,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 318 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(319);
+	var utils = __webpack_require__(318);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -4088,7 +4018,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 319 */
+/* 318 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4311,7 +4241,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 320 */
+/* 319 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4339,7 +4269,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 321 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -4356,11 +4286,11 @@ webpackJsonp([0],[
 	    try {
 	      // For browsers use XHR adapter
 	      if (typeof window !== 'undefined') {
-	        __webpack_require__(322)(resolve, reject, config);
+	        __webpack_require__(321)(resolve, reject, config);
 	      }
 	      // For node use HTTP adapter
 	      else if (typeof process !== 'undefined') {
-	        __webpack_require__(322)(resolve, reject, config);
+	        __webpack_require__(321)(resolve, reject, config);
 	      }
 	    } catch (e) {
 	      reject(e);
@@ -4369,23 +4299,23 @@ webpackJsonp([0],[
 	};
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(268)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(260)))
 
 /***/ },
-/* 322 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/*global ActiveXObject:true*/
 
-	var defaults = __webpack_require__(318);
-	var utils = __webpack_require__(319);
-	var buildUrl = __webpack_require__(323);
-	var cookies = __webpack_require__(324);
-	var parseHeaders = __webpack_require__(325);
-	var transformData = __webpack_require__(326);
-	var urlIsSameOrigin = __webpack_require__(327);
+	var defaults = __webpack_require__(317);
+	var utils = __webpack_require__(318);
+	var buildUrl = __webpack_require__(322);
+	var cookies = __webpack_require__(323);
+	var parseHeaders = __webpack_require__(324);
+	var transformData = __webpack_require__(325);
+	var urlIsSameOrigin = __webpack_require__(326);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  // Transform request data
@@ -4484,12 +4414,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 323 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(319);
+	var utils = __webpack_require__(318);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -4542,12 +4472,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 324 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(319);
+	var utils = __webpack_require__(318);
 
 	module.exports = {
 	  write: function write(name, value, expires, path, domain, secure) {
@@ -4585,12 +4515,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 325 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(319);
+	var utils = __webpack_require__(318);
 
 	/**
 	 * Parse headers into an object
@@ -4625,12 +4555,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 326 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(319);
+	var utils = __webpack_require__(318);
 
 	/**
 	 * Transform the data for a request or a response
@@ -4650,12 +4580,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 327 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(319);
+	var utils = __webpack_require__(318);
 	var msie = /(msie|trident)/i.test(navigator.userAgent);
 	var urlParsingNode = document.createElement('a');
 	var originUrl;
@@ -4708,12 +4638,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 328 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(319);
+	var utils = __webpack_require__(318);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -4766,7 +4696,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 329 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, setImmediate, global, module) {/*!
@@ -4905,7 +4835,7 @@ webpackJsonp([0],[
 	    function lib$es6$promise$asap$$attemptVertex() {
 	      try {
 	        var r = require;
-	        var vertx = __webpack_require__(332);
+	        var vertx = __webpack_require__(331);
 	        lib$es6$promise$asap$$vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	        return lib$es6$promise$asap$$useVertxTimer();
 	      } catch(e) {
@@ -5730,7 +5660,7 @@ webpackJsonp([0],[
 	    };
 
 	    /* global define:true module:true window: true */
-	    if ("function" === 'function' && __webpack_require__(333)['amd']) {
+	    if ("function" === 'function' && __webpack_require__(332)['amd']) {
 	      !(__WEBPACK_AMD_DEFINE_RESULT__ = function() { return lib$es6$promise$umd$$ES6Promise; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof module !== 'undefined' && module['exports']) {
 	      module['exports'] = lib$es6$promise$umd$$ES6Promise;
@@ -5742,13 +5672,13 @@ webpackJsonp([0],[
 	}).call(this);
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(268), __webpack_require__(330).setImmediate, (function() { return this; }()), __webpack_require__(331)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(260), __webpack_require__(329).setImmediate, (function() { return this; }()), __webpack_require__(330)(module)))
 
 /***/ },
-/* 330 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(268).nextTick;
+	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(260).nextTick;
 	var apply = Function.prototype.apply;
 	var slice = Array.prototype.slice;
 	var immediateIds = {};
@@ -5824,10 +5754,10 @@ webpackJsonp([0],[
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(330).setImmediate, __webpack_require__(330).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(329).setImmediate, __webpack_require__(329).clearImmediate))
 
 /***/ },
-/* 331 */
+/* 330 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -5843,20 +5773,20 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 332 */
+/* 331 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 333 */
+/* 332 */
 /***/ function(module, exports) {
 
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
 
 
 /***/ },
-/* 334 */
+/* 333 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -5889,7 +5819,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 335 */
+/* 334 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -5904,7 +5834,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 336 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5913,7 +5843,7 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _regeneratorRuntime = __webpack_require__(266)['default'];
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -5921,11 +5851,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(316);
+	var _axios = __webpack_require__(315);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(335);
+	var _configSample = __webpack_require__(334);
 
 	var SanphamActions = (function () {
 	  function SanphamActions() {
@@ -6047,7 +5977,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(SanphamActions);
 
 /***/ },
-/* 337 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6062,11 +5992,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(316);
+	var _axios = __webpack_require__(315);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(335);
+	var _configSample = __webpack_require__(334);
 
 	var OrderActions = (function () {
 	  function OrderActions() {
@@ -6171,7 +6101,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(OrderActions);
 
 /***/ },
-/* 338 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -6197,7 +6127,7 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -6205,35 +6135,35 @@ webpackJsonp([0],[
 
 	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
 
-	var _storeAuthStore = __webpack_require__(345);
+	var _storeAuthStore = __webpack_require__(344);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
-	var _storeOrderStore = __webpack_require__(349);
+	var _storeOrderStore = __webpack_require__(348);
 
 	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
 
-	var _storeSanphamStore = __webpack_require__(350);
+	var _storeSanphamStore = __webpack_require__(349);
 
 	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
 
-	var _actionsAuthActions = __webpack_require__(346);
+	var _actionsAuthActions = __webpack_require__(345);
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _NavbarNavbar = __webpack_require__(351);
+	var _NavbarNavbar = __webpack_require__(350);
 
 	var _NavbarNavbar2 = _interopRequireDefault(_NavbarNavbar);
 
-	var _HomeInfoBar = __webpack_require__(352);
+	var _HomeInfoBar = __webpack_require__(351);
 
 	var _HomeInfoBar2 = _interopRequireDefault(_HomeInfoBar);
 
-	var _HomeProfileInfo = __webpack_require__(353);
+	var _HomeProfileInfo = __webpack_require__(352);
 
 	var _HomeProfileInfo2 = _interopRequireDefault(_HomeProfileInfo);
 
@@ -6337,6 +6267,61 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
+/* 338 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+
+	(function () {
+		'use strict';
+
+		function classNames () {
+
+			var classes = '';
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if ('string' === argType || 'number' === argType) {
+					classes += ' ' + arg;
+
+				} else if (Array.isArray(arg)) {
+					classes += ' ' + classNames.apply(null, arg);
+
+				} else if ('object' === argType) {
+					for (var key in arg) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
+							classes += ' ' + key;
+						}
+					}
+				}
+			}
+
+			return classes.substr(1);
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true){
+			// AMD. Register as an anonymous module.
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+
+	}());
+
+
+/***/ },
 /* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -6354,7 +6339,7 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _actionsBoxActions = __webpack_require__(315);
+	var _actionsBoxActions = __webpack_require__(314);
 
 	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
@@ -6440,7 +6425,7 @@ webpackJsonp([0],[
 /* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(285);
+	__webpack_require__(277);
 	__webpack_require__(342);
 	module.exports = __webpack_require__(7).Array.from;
 
@@ -6451,11 +6436,11 @@ webpackJsonp([0],[
 	var ctx         = __webpack_require__(232)
 	  , $def        = __webpack_require__(5)
 	  , toObject    = __webpack_require__(9)
-	  , call        = __webpack_require__(303)
-	  , isArrayIter = __webpack_require__(304)
-	  , toLength    = __webpack_require__(305)
-	  , getIterFn   = __webpack_require__(306);
-	$def($def.S + $def.F * !__webpack_require__(314)(function(iter){ Array.from(iter); }), 'Array', {
+	  , call        = __webpack_require__(295)
+	  , isArrayIter = __webpack_require__(296)
+	  , toLength    = __webpack_require__(297)
+	  , getIterFn   = __webpack_require__(298);
+	$def($def.S + $def.F * !__webpack_require__(306)(function(iter){ Array.from(iter); }), 'Array', {
 	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
 	  from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
 	    var O       = toObject(arrayLike, true)
@@ -11417,61 +11402,6 @@ webpackJsonp([0],[
 /* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-
-	(function () {
-		'use strict';
-
-		function classNames () {
-
-			var classes = '';
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg;
-
-				if ('string' === argType || 'number' === argType) {
-					classes += ' ' + arg;
-
-				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
-
-				} else if ('object' === argType) {
-					for (var key in arg) {
-						if (arg.hasOwnProperty(key) && arg[key]) {
-							classes += ' ' + key;
-						}
-					}
-				}
-			}
-
-			return classes.substr(1);
-		}
-
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true){
-			// AMD. Register as an anonymous module.
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-
-	}());
-
-
-/***/ },
-/* 345 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	var _createClass = __webpack_require__(234)['default'];
@@ -11484,15 +11414,15 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _actionsAuthActions = __webpack_require__(346);
+	var _actionsAuthActions = __webpack_require__(345);
 
 	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
-	var _actionsVerifyActions = __webpack_require__(347);
+	var _actionsVerifyActions = __webpack_require__(346);
 
 	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
-	var _cookiesJs = __webpack_require__(348);
+	var _cookiesJs = __webpack_require__(347);
 
 	var _cookiesJs2 = _interopRequireDefault(_cookiesJs);
 
@@ -11593,7 +11523,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(AuthStore, 'AuthStore');
 
 /***/ },
-/* 346 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11608,11 +11538,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(316);
+	var _axios = __webpack_require__(315);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(335);
+	var _configSample = __webpack_require__(334);
 
 	var AuthActions = (function () {
 	  function AuthActions() {
@@ -11761,7 +11691,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(AuthActions);
 
 /***/ },
-/* 347 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11776,11 +11706,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(316);
+	var _axios = __webpack_require__(315);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(335);
+	var _configSample = __webpack_require__(334);
 
 	var VerifyActions = (function () {
 		function VerifyActions() {
@@ -11831,7 +11761,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(VerifyActions);
 
 /***/ },
-/* 348 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -11997,7 +11927,7 @@ webpackJsonp([0],[
 	})(typeof window === 'undefined' ? this : window);
 
 /***/ },
-/* 349 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12016,7 +11946,7 @@ webpackJsonp([0],[
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsOrderActions = __webpack_require__(337);
+	var _actionsOrderActions = __webpack_require__(336);
 
 	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
@@ -12147,7 +12077,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(OrderStore, 'OrderStore');
 
 /***/ },
-/* 350 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12166,7 +12096,7 @@ webpackJsonp([0],[
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsSanphamActions = __webpack_require__(336);
+	var _actionsSanphamActions = __webpack_require__(335);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
@@ -12233,7 +12163,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(SanphamStore, 'SanphamStore');
 
 /***/ },
-/* 351 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12258,7 +12188,7 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -12322,35 +12252,12 @@ webpackJsonp([0],[
 	              'div',
 	              { className: 'btn-group' },
 	              _reactAddons2['default'].createElement(
-	                'span',
-	                { className: 'icon cart-menu', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	                _reactRouter.Link,
+	                { to: '/cart', className: 'icon cart-menu' },
 	                _reactAddons2['default'].createElement(
 	                  'span',
 	                  { className: 'count' },
 	                  this.props.count
-	                )
-	              ),
-	              _reactAddons2['default'].createElement(
-	                'ul',
-	                { className: 'dropdown-menu dropdown-menu-right' },
-	                _reactAddons2['default'].createElement(
-	                  'li',
-	                  null,
-	                  _reactAddons2['default'].createElement(
-	                    'a',
-	                    { href: '#' },
-	                    'test'
-	                  )
-	                ),
-	                _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
-	                _reactAddons2['default'].createElement(
-	                  'li',
-	                  null,
-	                  _reactAddons2['default'].createElement(
-	                    'a',
-	                    { href: '#' },
-	                    'hihi'
-	                  )
 	                )
 	              )
 	            ),
@@ -12359,25 +12266,79 @@ webpackJsonp([0],[
 	              { className: 'btn-group' },
 	              _reactAddons2['default'].createElement('span', { className: 'icon menu-bars', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' }),
 	              _reactAddons2['default'].createElement(
-	                'ul',
-	                { className: 'dropdown-menu dropdown-menu-right' },
+	                'div',
+	                { className: 'dropdown-menu dropdown-menu-right drop-menu' },
+	                _reactAddons2['default'].createElement('span', { className: 'tamgiac' }),
 	                _reactAddons2['default'].createElement(
-	                  'li',
-	                  null,
+	                  'div',
+	                  { className: 'drop-header' },
 	                  _reactAddons2['default'].createElement(
-	                    'a',
-	                    { href: '#' },
-	                    'test'
+	                    'div',
+	                    { className: 'search' },
+	                    _reactAddons2['default'].createElement('input', { type: 'search', placeholder: 'Search' }),
+	                    _reactAddons2['default'].createElement('i', { className: 'fa fa-search' })
 	                  )
 	                ),
-	                _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
 	                _reactAddons2['default'].createElement(
-	                  'li',
-	                  null,
+	                  'div',
+	                  { className: 'drop-body' },
 	                  _reactAddons2['default'].createElement(
-	                    'a',
-	                    { href: '#' },
-	                    'hihi'
+	                    'li',
+	                    null,
+	                    _reactAddons2['default'].createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'test'
+	                    )
+	                  ),
+	                  _reactAddons2['default'].createElement(
+	                    'li',
+	                    null,
+	                    _reactAddons2['default'].createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'hihi'
+	                    )
+	                  ),
+	                  _reactAddons2['default'].createElement(
+	                    'li',
+	                    null,
+	                    _reactAddons2['default'].createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'test'
+	                    )
+	                  ),
+	                  _reactAddons2['default'].createElement(
+	                    'li',
+	                    null,
+	                    _reactAddons2['default'].createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'hihi'
+	                    )
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement(
+	                  'div',
+	                  { className: 'drop-footer' },
+	                  _reactAddons2['default'].createElement(
+	                    'li',
+	                    null,
+	                    _reactAddons2['default'].createElement(
+	                      _reactRouter.Link,
+	                      { to: '/about' },
+	                      'about'
+	                    )
+	                  ),
+	                  _reactAddons2['default'].createElement(
+	                    'li',
+	                    null,
+	                    _reactAddons2['default'].createElement(
+	                      _reactRouter.Link,
+	                      { to: '/chinhsachmuahang' },
+	                      'chính sách mua hàng'
+	                    )
 	                  )
 	                )
 	              )
@@ -12414,35 +12375,12 @@ webpackJsonp([0],[
 	            'div',
 	            { className: 'btn-group' },
 	            _reactAddons2['default'].createElement(
-	              'span',
-	              { className: 'icon cart-menu', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	              _reactRouter.Link,
+	              { to: '/cart', className: 'icon cart-menu' },
 	              _reactAddons2['default'].createElement(
 	                'span',
 	                { className: 'count' },
 	                this.props.count
-	              )
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'ul',
-	              { className: 'dropdown-menu dropdown-menu-right' },
-	              _reactAddons2['default'].createElement(
-	                'li',
-	                null,
-	                _reactAddons2['default'].createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'test'
-	                )
-	              ),
-	              _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
-	              _reactAddons2['default'].createElement(
-	                'li',
-	                null,
-	                _reactAddons2['default'].createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'hihi'
-	                )
 	              )
 	            )
 	          ),
@@ -12451,25 +12389,79 @@ webpackJsonp([0],[
 	            { className: 'btn-group' },
 	            _reactAddons2['default'].createElement('span', { className: 'icon menu-bars', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' }),
 	            _reactAddons2['default'].createElement(
-	              'ul',
-	              { className: 'dropdown-menu dropdown-menu-right' },
+	              'div',
+	              { className: 'dropdown-menu dropdown-menu-right drop-menu' },
+	              _reactAddons2['default'].createElement('span', { className: 'tamgiac' }),
 	              _reactAddons2['default'].createElement(
-	                'li',
-	                null,
+	                'div',
+	                { className: 'drop-header' },
 	                _reactAddons2['default'].createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'test'
+	                  'div',
+	                  { className: 'search' },
+	                  _reactAddons2['default'].createElement('input', { type: 'search', placeholder: 'Search' }),
+	                  _reactAddons2['default'].createElement('i', { className: 'fa fa-search' })
 	                )
 	              ),
-	              _reactAddons2['default'].createElement('li', { role: 'separator', className: 'divider' }),
 	              _reactAddons2['default'].createElement(
-	                'li',
-	                null,
+	                'div',
+	                { className: 'drop-body' },
 	                _reactAddons2['default'].createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'hihi'
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'test'
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'hihi'
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'test'
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'hihi'
+	                  )
+	                )
+	              ),
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'drop-footer' },
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    _reactRouter.Link,
+	                    { to: '/about' },
+	                    'about'
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement(
+	                  'li',
+	                  null,
+	                  _reactAddons2['default'].createElement(
+	                    _reactRouter.Link,
+	                    { to: '/chinhsachmuahang' },
+	                    'chính sách mua hàng'
+	                  )
 	                )
 	              )
 	            )
@@ -12524,7 +12516,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 352 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12666,7 +12658,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 353 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12781,18 +12773,12 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 354 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
+	var _Object$keys = __webpack_require__(354)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -12804,429 +12790,29 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _storeOrderStore = __webpack_require__(349);
-
-	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
-
-	var _actionsOrderActions = __webpack_require__(337);
-
-	/**
-	 * @Component
-	 */
-
-	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
-
-	var _BoxOrder = __webpack_require__(355);
-
-	var _BoxOrder2 = _interopRequireDefault(_BoxOrder);
-
-	var BoxYeuThich = (function (_React$Component) {
-	  _inherits(BoxYeuThich, _React$Component);
-
-	  function BoxYeuThich(props) {
-	    _classCallCheck(this, BoxYeuThich);
-
-	    _get(Object.getPrototypeOf(BoxYeuThich.prototype), 'constructor', this).call(this, props);
-	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
-
-	    this.state = {
-	      listOrder: _storeOrderStore2['default'].getState().listOrder
-	    };
-	  }
-
-	  _createClass(BoxYeuThich, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
-	    }
-	  }, {
-	    key: '_onChangeOrderStore',
-	    value: function _onChangeOrderStore(state) {
-	      this.setState({
-	        listOrder: state.listOrder
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _reactAddons2['default'].createElement('span', null);
-	      if (this.state.listOrder.size < 1) {}
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        null,
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'thumbnail' },
-	              _reactAddons2['default'].createElement(
-	                'a',
-	                { className: '', href: '/box/1' },
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'img-Wrapper' },
-	                  _reactAddons2['default'].createElement('img', { className: 'img-max-height', src: 'https://s-media-cache-ak0.pinimg.com/236x/90/22/fe/9022fe3e8e2c085f75ed73e60bbb20aa.jpg', alt: 'images' }),
-	                  _reactAddons2['default'].createElement('div', { className: 'divshowdow' })
-	                ),
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'thumbnail-list-news' },
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'list-news' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'list-item' },
-	                      _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'item' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'newsItem newCreditItem' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'newsImg' },
-	                            _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-heart' })
-	                          ),
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'newsText newsInfo' },
-	                            _reactAddons2['default'].createElement(
-	                              'p',
-	                              { className: 'creditTitle' },
-	                              'Cardigan'
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'p',
-	                              null,
-	                              _reactAddons2['default'].createElement(
-	                                'strong',
-	                                { className: 'creditCost' },
-	                                '150.000 đ'
-	                              )
-	                            )
-	                          )
-	                        )
-	                      )
-	                    ),
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'list-item', style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
-	                      _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'item' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'newsItem newCreditItem' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'newsImg' },
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'imgIcon imgIcon-list' },
-	                              _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
-	                            )
-	                          ),
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'newsText newsInfo' },
-	                            _reactAddons2['default'].createElement(
-	                              'p',
-	                              { className: 'creditTitle' },
-	                              'Cardigan dày'
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'p',
-	                              null,
-	                              _reactAddons2['default'].createElement(
-	                                'strong',
-	                                { className: 'creditCost' },
-	                                '130.000 đ'
-	                              )
-	                            )
-	                          )
-	                        )
-	                      )
-	                    )
-	                  )
-	                ),
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'thumbnail-info' },
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'infoItem' },
-	                    _reactAddons2['default'].createElement(
-	                      'span',
-	                      { className: 'titleItem' },
-	                      'Sơ mi xô Nhật Hàn'
-	                    ),
-	                    _reactAddons2['default'].createElement(
-	                      'span',
-	                      { className: 'countItem' },
-	                      '122 sản phẩm'
-	                    )
-	                  ),
-	                  _reactAddons2['default'].createElement('div', { className: 'socialItem' })
-	                )
-	              )
-	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
-	            _reactAddons2['default'].createElement(_BoxOrder2['default'], { listOrder: this.state.listOrder })
-	          )
-	        ),
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'block-related' },
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                null,
-	                _reactAddons2['default'].createElement(
-	                  'span',
-	                  { className: 'img' },
-	                  'img'
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return BoxYeuThich;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = BoxYeuThich;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 355 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var BoxOrder = (function (_React$Component) {
-	  _inherits(BoxOrder, _React$Component);
-
-	  function BoxOrder(props) {
-	    _classCallCheck(this, BoxOrder);
-
-	    _get(Object.getPrototypeOf(BoxOrder.prototype), 'constructor', this).call(this, props);
-	  }
-
-	  _createClass(BoxOrder, [{
-	    key: 'render',
-	    value: function render() {
-	      console.log(this.props.listOrder.toJS());
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        { className: 'thumbnail' },
-	        _reactAddons2['default'].createElement(
-	          'a',
-	          { className: '', href: '/box/1' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'img-Wrapper' },
-	            _reactAddons2['default'].createElement('img', { className: 'img-max-height', src: 'https://s-media-cache-ak0.pinimg.com/236x/90/22/fe/9022fe3e8e2c085f75ed73e60bbb20aa.jpg', alt: 'images' }),
-	            _reactAddons2['default'].createElement('div', { className: 'divshowdow' })
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'thumbnail-list-news' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'list-news' },
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { className: 'list-item' },
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'item' },
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'newsItem newCreditItem' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'newsImg' },
-	                      _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-blue imgIcon-bg-cart' })
-	                    ),
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'newsText newsInfo' },
-	                      _reactAddons2['default'].createElement(
-	                        'p',
-	                        { className: 'creditTitle' },
-	                        'Cardigan'
-	                      ),
-	                      _reactAddons2['default'].createElement(
-	                        'p',
-	                        null,
-	                        _reactAddons2['default'].createElement(
-	                          'strong',
-	                          { className: 'creditCost' },
-	                          '150.000 đ'
-	                        )
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { className: 'list-item', style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'item' },
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'newsItem newCreditItem' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'newsImg' },
-	                      _reactAddons2['default'].createElement(
-	                        'span',
-	                        { className: 'imgIcon imgIcon-list' },
-	                        _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
-	                      )
-	                    ),
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'newsText newsInfo' },
-	                      _reactAddons2['default'].createElement(
-	                        'p',
-	                        { className: 'creditTitle' },
-	                        'Cardigan dày'
-	                      ),
-	                      _reactAddons2['default'].createElement(
-	                        'p',
-	                        null,
-	                        _reactAddons2['default'].createElement(
-	                          'strong',
-	                          { className: 'creditCost' },
-	                          '130.000 đ'
-	                        )
-	                      )
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'thumbnail-info' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'infoItem' },
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                { className: 'titleItem' },
-	                'Sơ mi xô Nhật Hàn'
-	              ),
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                { className: 'countItem' },
-	                '122 sản phẩm'
-	              )
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'socialItem' },
-	              _reactAddons2['default'].createElement('span', { className: 'SmallIcon clockSmallIcon' }),
-	              _reactAddons2['default'].createElement('span', { className: 'socialMetaCount' })
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return BoxOrder;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = BoxOrder;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 356 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _Object$keys = __webpack_require__(357)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _validatorjs = __webpack_require__(359);
+	var _validatorjs = __webpack_require__(356);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _storeAuthStore = __webpack_require__(345);
+	var _storeAuthStore = __webpack_require__(344);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
-	var _actionsAuthActions = __webpack_require__(346);
+	var _actionsAuthActions = __webpack_require__(345);
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _select = __webpack_require__(360);
+	var _select = __webpack_require__(357);
 
 	var _select2 = _interopRequireDefault(_select);
 
-	var _inputValidationLabel = __webpack_require__(430);
+	var _inputValidationLabel = __webpack_require__(358);
 
 	var _inputValidationLabel2 = _interopRequireDefault(_inputValidationLabel);
 
@@ -13316,7 +12902,7 @@ webpackJsonp([0],[
 	        _reactAddons2['default'].createElement(
 	          'div',
 	          { className: 'form-title text-center' },
-	          'Đăng nhập Tổ Cú'
+	          'Đăng Nhập Tổ Cú'
 	        )
 	      ),
 	      _reactAddons2['default'].createElement(
@@ -13457,20 +13043,20 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 357 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(358), __esModule: true };
+	module.exports = { "default": __webpack_require__(355), __esModule: true };
 
 /***/ },
-/* 358 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(221);
 	module.exports = __webpack_require__(7).Object.keys;
 
 /***/ },
-/* 359 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! validatorjs - v1.3.2 - https://github.com/skaterdav85/validatorjs - 2015-02-11 */
@@ -13989,7 +13575,7 @@ webpackJsonp([0],[
 	})();
 
 /***/ },
-/* 360 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14004,7 +13590,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -14088,7 +13674,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 361 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -14104,12 +13690,12 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	exports['default'] = _reactAddons2['default'].createClass({
-	  displayName: 'inputValidation',
+	  displayName: 'inputValidationLabel',
 
 	  getInitialState: function getInitialState() {
 	    return {
@@ -14140,7 +13726,7 @@ webpackJsonp([0],[
 	      "input-lg": this.props.size === "lg"
 	    });
 
-	    var erros;
+	    var erros = _reactAddons2['default'].createElement('label', { className: 'control-label', htmlFor: this.props.name });
 
 	    if (this.props.validator.errorTextRequest !== "") {
 	      erros = _reactAddons2['default'].createElement(
@@ -14159,7 +13745,7 @@ webpackJsonp([0],[
 	    return _reactAddons2['default'].createElement(
 	      'div',
 	      { className: classes },
-	      this.props.validator.hasError && erros,
+	      erros,
 	      _reactAddons2['default'].createElement('input', {
 	        className: classesInput,
 	        type: this.props.type,
@@ -14189,7 +13775,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 362 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14216,15 +13802,15 @@ webpackJsonp([0],[
 
 	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
 
-	var _storeAuthStore = __webpack_require__(345);
+	var _storeAuthStore = __webpack_require__(344);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
 	/**
 	 * @Component
 	 */
 
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
-
-	var _ThumbItem = __webpack_require__(363);
+	var _ThumbItem = __webpack_require__(360);
 
 	var _ThumbItem2 = _interopRequireDefault(_ThumbItem);
 
@@ -14277,7 +13863,7 @@ webpackJsonp([0],[
 
 	      return _reactAddons2['default'].createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: 'row row-thumbnail' },
 	        this.state.boxs.map(function (box, i) {
 	          return _reactAddons2['default'].createElement(
 	            'div',
@@ -14297,7 +13883,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 363 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14328,23 +13914,23 @@ webpackJsonp([0],[
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsBoxActions = __webpack_require__(315);
+	var _actionsBoxActions = __webpack_require__(314);
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
-	var _ArticleItem = __webpack_require__(364);
+	var _ArticleItem = __webpack_require__(361);
 
 	var _ArticleItem2 = _interopRequireDefault(_ArticleItem);
 
-	var _AlbumItem = __webpack_require__(365);
+	var _AlbumItem = __webpack_require__(362);
 
 	var _AlbumItem2 = _interopRequireDefault(_AlbumItem);
 
-	var _ProductItem = __webpack_require__(366);
+	var _ProductItem = __webpack_require__(363);
 
 	var _ProductItem2 = _interopRequireDefault(_ProductItem);
 
@@ -14536,7 +14122,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 364 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -14598,7 +14184,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 365 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -14660,7 +14246,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 366 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14762,7 +14348,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 367 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14779,35 +14365,31 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _axios = __webpack_require__(316);
+	var _axios = __webpack_require__(315);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _reactAsync = __webpack_require__(368);
+	var _reactAsync = __webpack_require__(365);
 
 	var _reactAsync2 = _interopRequireDefault(_reactAsync);
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _configSample = __webpack_require__(335);
+	var _configSample = __webpack_require__(334);
 
-	var _actionsBoxActions = __webpack_require__(315);
+	var _actionsBoxActions = __webpack_require__(314);
 
 	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
 
-	var _actionsSanphamActions = __webpack_require__(336);
+	var _actionsSanphamActions = __webpack_require__(335);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
-	var _actionsVerifyActions = __webpack_require__(347);
-
-	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
-
-	var _reactMasonryMixin = __webpack_require__(373);
+	var _reactMasonryMixin = __webpack_require__(370);
 
 	var _reactMasonryMixin2 = _interopRequireDefault(_reactMasonryMixin);
 
-	var _reactPackeryMixin = __webpack_require__(390);
+	var _reactPackeryMixin = __webpack_require__(387);
 
 	var _reactPackeryMixin2 = _interopRequireDefault(_reactPackeryMixin);
 
@@ -14815,23 +14397,19 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _componentsFormSignIn = __webpack_require__(356);
+	var _componentsFormSignIn = __webpack_require__(353);
 
 	var _componentsFormSignIn2 = _interopRequireDefault(_componentsFormSignIn);
 
-	var _componentsFormVerify = __webpack_require__(412);
-
-	var _componentsFormVerify2 = _interopRequireDefault(_componentsFormVerify);
-
-	var _componentsHeaderBox = __webpack_require__(414);
+	var _componentsHeaderBox = __webpack_require__(409);
 
 	var _componentsHeaderBox2 = _interopRequireDefault(_componentsHeaderBox);
 
-	var _componentsBoxBoxItem = __webpack_require__(416);
+	var _componentsBoxBoxItem = __webpack_require__(411);
 
 	var _componentsBoxBoxItem2 = _interopRequireDefault(_componentsBoxBoxItem);
 
-	var InfiniteScroll = __webpack_require__(417)(_reactAddons2['default']);
+	var InfiniteScroll = __webpack_require__(412)(_reactAddons2['default']);
 
 	var createUniqueArray = (function () {
 	  return function (inputArray, sorter) {
@@ -14872,7 +14450,6 @@ webpackJsonp([0],[
 	        posts: [],
 	        hasMore: true,
 	        boxLogin: false,
-	        boxVerify: false,
 	        skip: 0,
 	        limit: 15
 	      });
@@ -14885,7 +14462,6 @@ webpackJsonp([0],[
 	      posts: [],
 	      hasMore: true,
 	      boxLogin: false,
-	      boxVerify: false,
 	      skip: 0,
 	      limit: 15
 	    });
@@ -15001,37 +14577,25 @@ webpackJsonp([0],[
 	    if (this.state.boxLogin) {
 	      return _reactAddons2['default'].createElement(
 	        'div',
-	        { id: 'boxLogin' },
+	        { className: 'boxLogin' },
 	        _reactAddons2['default'].createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: 'container' },
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	            { className: 'row row-form' },
 	            _reactAddons2['default'].createElement(
 	              'div',
-	              { className: 'centrix' },
-	              _reactAddons2['default'].createElement(_componentsFormSignIn2['default'], { replaceWith: this.hideBoxLogin })
-	            )
-	          )
-	        )
-	      );
-	    }
-
-	    if (this.state.boxVerify) {
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        { id: 'boxLogin' },
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'centrix' },
-	              _reactAddons2['default'].createElement(_componentsFormVerify2['default'], { hideBoxVerify: this.hideBoxVerify })
+	              { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'centrix' },
+	                _reactAddons2['default'].createElement(
+	                  _componentsFormSignIn2['default'],
+	                  { replaceWith: this.hideBoxLogin },
+	                  _reactAddons2['default'].createElement('div', { onClick: this.hideBoxLogin, className: 'closeBox fa fa-times' })
+	                )
+	              )
 	            )
 	          )
 	        )
@@ -15043,30 +14607,15 @@ webpackJsonp([0],[
 	    _actionsSanphamActions2['default'].actionSanphamID(sp);
 	  },
 
-	  handleBoxLogin: function handleBoxLogin(val) {
-	    console.log('handleBoxLogin', val);
-	    if (val === "token") {
-	      this.setState({
-	        boxLogin: true
-	      });
-	    }
-	    if (val === "verify") {
-	      _actionsVerifyActions2['default'].getCode();
-	      this.setState({
-	        boxVerify: true
-	      });
-	    }
+	  handleBoxLogin: function handleBoxLogin() {
+	    this.setState({
+	      boxLogin: true
+	    });
 	  },
 
 	  hideBoxLogin: function hideBoxLogin() {
 	    this.setState({
 	      boxLogin: false
-	    });
-	  },
-
-	  hideBoxVerify: function hideBoxVerify() {
-	    this.setState({
-	      boxVerify: false
 	    });
 	  }
 
@@ -15074,16 +14623,16 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 368 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var invariant               = __webpack_require__(21);
-	var Preloaded               = __webpack_require__(369);
-	var getComponentFingerprint = __webpack_require__(372);
-	var prefetchAsyncState      = __webpack_require__(370);
-	var isAsyncComponent        = __webpack_require__(371);
+	var invariant               = __webpack_require__(24);
+	var Preloaded               = __webpack_require__(366);
+	var getComponentFingerprint = __webpack_require__(369);
+	var prefetchAsyncState      = __webpack_require__(367);
+	var isAsyncComponent        = __webpack_require__(368);
 
 	var Mixin = {
 
@@ -15156,17 +14705,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 369 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var React               = __webpack_require__(240);
 	var cloneWithProps      = __webpack_require__(179);
-	var ReactUpdates        = __webpack_require__(18);
-	var emptyFunction       = __webpack_require__(31);
-	var prefetchAsyncState  = __webpack_require__(370);
-	var isAsyncComponent    = __webpack_require__(371);
+	var ReactUpdates        = __webpack_require__(43);
+	var emptyFunction       = __webpack_require__(33);
+	var prefetchAsyncState  = __webpack_require__(367);
+	var isAsyncComponent    = __webpack_require__(368);
 
 	var PreloaderMixin = {
 
@@ -15289,14 +14838,14 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 370 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var invariant         = __webpack_require__(21);
+	var invariant         = __webpack_require__(24);
 	var cloneWithProps    = __webpack_require__(179);
-	var isAsyncComponent  = __webpack_require__(371);
+	var isAsyncComponent  = __webpack_require__(368);
 
 	/**
 	 * Prefetch an async state for an unmounted async component instance.
@@ -15332,7 +14881,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 371 */
+/* 368 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15350,7 +14899,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 372 */
+/* 369 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15369,12 +14918,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 373 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isBrowser = (typeof window !== 'undefined');
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(374) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(387) : null;
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(371) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(384) : null;
 
 	function MasonryMixin() {
 	    return function(reference, options) {
@@ -15486,7 +15035,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 374 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -15680,8 +15229,8 @@ webpackJsonp([0],[
 	// -------------------------- transport -------------------------- //
 	if (true) {
 	  module.exports = masonryDefinition(
-	    __webpack_require__(375),
-	    __webpack_require__(385)
+	    __webpack_require__(372),
+	    __webpack_require__(382)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -15702,7 +15251,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 375 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -16693,12 +16242,12 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(379),
+	    __webpack_require__(373),
+	    __webpack_require__(374),
 	    __webpack_require__(376),
-	    __webpack_require__(378),
-	    __webpack_require__(380),
-	    __webpack_require__(382),
-	    __webpack_require__(383)
+	    __webpack_require__(377),
+	    __webpack_require__(379),
+	    __webpack_require__(380)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -16727,86 +16276,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 376 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*!
-	 * docReady v1.0.3
-	 * Cross browser DOMContentLoaded event emitter
-	 * MIT license
-	 */
-
-	/*jshint browser: true, strict: true, undef: true, unused: true*/
-	/*global define: false, require: false, module: false */
-
-	( function( window ) {
-	'use strict';
-
-	if (!window) return;
-
-	var document = window.document;
-	// collection of functions to be triggered on ready
-	var queue = [];
-
-	function docReady( fn ) {
-	  // throw out non-functions
-	  if ( typeof fn !== 'function' ) {
-	    return;
-	  }
-
-	  if ( docReady.isReady ) {
-	    // ready now, hit it
-	    fn();
-	  } else {
-	    // queue function when ready
-	    queue.push( fn );
-	  }
-	}
-
-	docReady.isReady = false;
-
-	// triggered on various doc ready events
-	function init( event ) {
-	  // bail if IE8 document is not ready just yet
-	  var isIE8NotReady = event.type === 'readystatechange' && document.readyState !== 'complete';
-	  if ( docReady.isReady || isIE8NotReady ) {
-	    return;
-	  }
-	  docReady.isReady = true;
-
-	  // process queue
-	  for ( var i=0, len = queue.length; i < len; i++ ) {
-	    var fn = queue[i];
-	    fn();
-	  }
-	}
-
-	function defineDocReady( eventie ) {
-	  eventie.bind( document, 'DOMContentLoaded', init );
-	  eventie.bind( document, 'readystatechange', init );
-	  eventie.bind( window, 'load', init );
-
-	  return docReady;
-	}
-
-	// transport
-	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(377) );
-	} else if ( typeof define === 'function' && define.amd ) {
-	  // AMD
-	  // if RequireJS, then doc is already ready
-	  docReady.isReady = typeof requirejs === 'function';
-	  define( [ 'eventie/eventie' ], defineDocReady );
-	} else {
-	  // browser global
-	  window.docReady = defineDocReady( window.eventie );
-	}
-
-	})( typeof window !== 'undefined' ? window : null );
-
-
-/***/ },
-/* 377 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -16894,7 +16364,174 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 378 */
+/* 374 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*!
+	 * docReady v1.0.3
+	 * Cross browser DOMContentLoaded event emitter
+	 * MIT license
+	 */
+
+	/*jshint browser: true, strict: true, undef: true, unused: true*/
+	/*global define: false, require: false, module: false */
+
+	( function( window ) {
+	'use strict';
+
+	if (!window) return;
+
+	var document = window.document;
+	// collection of functions to be triggered on ready
+	var queue = [];
+
+	function docReady( fn ) {
+	  // throw out non-functions
+	  if ( typeof fn !== 'function' ) {
+	    return;
+	  }
+
+	  if ( docReady.isReady ) {
+	    // ready now, hit it
+	    fn();
+	  } else {
+	    // queue function when ready
+	    queue.push( fn );
+	  }
+	}
+
+	docReady.isReady = false;
+
+	// triggered on various doc ready events
+	function init( event ) {
+	  // bail if IE8 document is not ready just yet
+	  var isIE8NotReady = event.type === 'readystatechange' && document.readyState !== 'complete';
+	  if ( docReady.isReady || isIE8NotReady ) {
+	    return;
+	  }
+	  docReady.isReady = true;
+
+	  // process queue
+	  for ( var i=0, len = queue.length; i < len; i++ ) {
+	    var fn = queue[i];
+	    fn();
+	  }
+	}
+
+	function defineDocReady( eventie ) {
+	  eventie.bind( document, 'DOMContentLoaded', init );
+	  eventie.bind( document, 'readystatechange', init );
+	  eventie.bind( window, 'load', init );
+
+	  return docReady;
+	}
+
+	// transport
+	if ( true ) {
+	  module.exports = defineDocReady( __webpack_require__(375) );
+	} else if ( typeof define === 'function' && define.amd ) {
+	  // AMD
+	  // if RequireJS, then doc is already ready
+	  docReady.isReady = typeof requirejs === 'function';
+	  define( [ 'eventie/eventie' ], defineDocReady );
+	} else {
+	  // browser global
+	  window.docReady = defineDocReady( window.eventie );
+	}
+
+	})( typeof window !== 'undefined' ? window : null );
+
+
+/***/ },
+/* 375 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*!
+	 * eventie v1.0.5
+	 * event binding helper
+	 *   eventie.bind( elem, 'click', myFn )
+	 *   eventie.unbind( elem, 'click', myFn )
+	 * MIT license
+	 */
+
+	/*jshint browser: true, undef: true, unused: true */
+	/*global define: false, module: false */
+
+	( function( window ) {
+	'use strict';
+
+	if (!window) return;
+
+	var docElem = document.documentElement;
+
+	var bind = function() {};
+
+	function getIEEvent( obj ) {
+	  var event = window.event;
+	  // add event.target
+	  event.target = event.target || event.srcElement || obj;
+	  return event;
+	}
+
+	if ( docElem.addEventListener ) {
+	  bind = function( obj, type, fn ) {
+	    obj.addEventListener( type, fn, false );
+	  };
+	} else if ( docElem.attachEvent ) {
+	  bind = function( obj, type, fn ) {
+	    obj[ type + fn ] = fn.handleEvent ?
+	      function() {
+	        var event = getIEEvent( obj );
+	        fn.handleEvent.call( fn, event );
+	      } :
+	      function() {
+	        var event = getIEEvent( obj );
+	        fn.call( obj, event );
+	      };
+	    obj.attachEvent( "on" + type, obj[ type + fn ] );
+	  };
+	}
+
+	var unbind = function() {};
+
+	if ( docElem.removeEventListener ) {
+	  unbind = function( obj, type, fn ) {
+	    obj.removeEventListener( type, fn, false );
+	  };
+	} else if ( docElem.detachEvent ) {
+	  unbind = function( obj, type, fn ) {
+	    obj.detachEvent( "on" + type, obj[ type + fn ] );
+	    try {
+	      delete obj[ type + fn ];
+	    } catch ( err ) {
+	      // can't delete window object properties
+	      obj[ type + fn ] = undefined;
+	    }
+	  };
+	}
+
+	var eventie = {
+	  bind: bind,
+	  unbind: unbind
+	};
+
+	// ----- module definition ----- //
+	if ( true ) {
+	  // CommonJS
+	  module.exports = eventie;
+	} else if ( typeof define === 'function' && define.amd ) {
+	  // AMD
+	  define( eventie );
+	} else {
+	  // browser global
+	  window.eventie = eventie;
+	}
+
+	})( typeof window !== 'undefined' ? window : null );
+
+
+/***/ },
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -17337,95 +16974,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 379 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*!
-	 * eventie v1.0.5
-	 * event binding helper
-	 *   eventie.bind( elem, 'click', myFn )
-	 *   eventie.unbind( elem, 'click', myFn )
-	 * MIT license
-	 */
-
-	/*jshint browser: true, undef: true, unused: true */
-	/*global define: false, module: false */
-
-	( function( window ) {
-	'use strict';
-
-	if (!window) return;
-
-	var docElem = document.documentElement;
-
-	var bind = function() {};
-
-	function getIEEvent( obj ) {
-	  var event = window.event;
-	  // add event.target
-	  event.target = event.target || event.srcElement || obj;
-	  return event;
-	}
-
-	if ( docElem.addEventListener ) {
-	  bind = function( obj, type, fn ) {
-	    obj.addEventListener( type, fn, false );
-	  };
-	} else if ( docElem.attachEvent ) {
-	  bind = function( obj, type, fn ) {
-	    obj[ type + fn ] = fn.handleEvent ?
-	      function() {
-	        var event = getIEEvent( obj );
-	        fn.handleEvent.call( fn, event );
-	      } :
-	      function() {
-	        var event = getIEEvent( obj );
-	        fn.call( obj, event );
-	      };
-	    obj.attachEvent( "on" + type, obj[ type + fn ] );
-	  };
-	}
-
-	var unbind = function() {};
-
-	if ( docElem.removeEventListener ) {
-	  unbind = function( obj, type, fn ) {
-	    obj.removeEventListener( type, fn, false );
-	  };
-	} else if ( docElem.detachEvent ) {
-	  unbind = function( obj, type, fn ) {
-	    obj.detachEvent( "on" + type, obj[ type + fn ] );
-	    try {
-	      delete obj[ type + fn ];
-	    } catch ( err ) {
-	      // can't delete window object properties
-	      obj[ type + fn ] = undefined;
-	    }
-	  };
-	}
-
-	var eventie = {
-	  bind: bind,
-	  unbind: unbind
-	};
-
-	// ----- module definition ----- //
-	if ( true ) {
-	  // CommonJS
-	  module.exports = eventie;
-	} else if ( typeof define === 'function' && define.amd ) {
-	  // AMD
-	  define( eventie );
-	} else {
-	  // browser global
-	  window.eventie = eventie;
-	}
-
-	})( typeof window !== 'undefined' ? window : null );
-
-
-/***/ },
-/* 380 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -17634,7 +17183,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(381) );
+	  module.exports = defineGetSize( __webpack_require__(378) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -17647,7 +17196,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 381 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -17708,7 +17257,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 382 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -17821,7 +17370,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 383 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18331,9 +17880,9 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
-	    __webpack_require__(378),
-	    __webpack_require__(380),
-	    __webpack_require__(384)
+	    __webpack_require__(376),
+	    __webpack_require__(377),
+	    __webpack_require__(381)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -18357,7 +17906,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 384 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -18418,7 +17967,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 385 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -18627,7 +18176,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(386) );
+	  module.exports = defineGetSize( __webpack_require__(383) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -18640,7 +18189,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 386 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -18701,7 +18250,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 387 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -18719,8 +18268,8 @@ webpackJsonp([0],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(388),
-	      __webpack_require__(389)
+	      __webpack_require__(385),
+	      __webpack_require__(386)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -19042,7 +18591,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 388 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -19520,7 +19069,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 389 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -19608,12 +19157,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 390 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isBrowser = (typeof window !== 'undefined');
-	var Packery = isBrowser ? window.Packery || __webpack_require__(391) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(409) : null;
+	var Packery = isBrowser ? window.Packery || __webpack_require__(388) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(406) : null;
 
 	function PackeryMixin() {
 	    return function(reference, options) {
@@ -19725,7 +19274,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 391 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -20178,12 +19727,12 @@ webpackJsonp([0],[
 	if ( true ) {
 	  // CommonJS
 	  module.exports = packeryDefinition(
-	    __webpack_require__(404),
+	    __webpack_require__(389),
+	    __webpack_require__(390),
 	    __webpack_require__(392),
-	    __webpack_require__(394),
-	    __webpack_require__(405),
-	    __webpack_require__(406),
-	    __webpack_require__(407)
+	    __webpack_require__(402),
+	    __webpack_require__(403),
+	    __webpack_require__(404)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -20212,7 +19761,98 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 392 */
+/* 389 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	 * classie v1.0.1
+	 * class helper functions
+	 * from bonzo https://github.com/ded/bonzo
+	 * MIT license
+	 * 
+	 * classie.has( elem, 'my-class' ) -> true/false
+	 * classie.add( elem, 'my-new-class' )
+	 * classie.remove( elem, 'my-unwanted-class' )
+	 * classie.toggle( elem, 'my-class' )
+	 */
+
+	/*jshint browser: true, strict: true, undef: true, unused: true */
+	/*global define: false, module: false */
+
+	( function( window ) {
+
+	'use strict';
+
+	// class helper functions from bonzo https://github.com/ded/bonzo
+
+	function classReg( className ) {
+	  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+	}
+
+	// classList support for class management
+	// altho to be fair, the api sucks because it won't accept multiple classes at once
+	var hasClass, addClass, removeClass;
+
+	if ( 'classList' in document.documentElement ) {
+	  hasClass = function( elem, c ) {
+	    return elem.classList.contains( c );
+	  };
+	  addClass = function( elem, c ) {
+	    elem.classList.add( c );
+	  };
+	  removeClass = function( elem, c ) {
+	    elem.classList.remove( c );
+	  };
+	}
+	else {
+	  hasClass = function( elem, c ) {
+	    return classReg( c ).test( elem.className );
+	  };
+	  addClass = function( elem, c ) {
+	    if ( !hasClass( elem, c ) ) {
+	      elem.className = elem.className + ' ' + c;
+	    }
+	  };
+	  removeClass = function( elem, c ) {
+	    elem.className = elem.className.replace( classReg( c ), ' ' );
+	  };
+	}
+
+	function toggleClass( elem, c ) {
+	  var fn = hasClass( elem, c ) ? removeClass : addClass;
+	  fn( elem, c );
+	}
+
+	var classie = {
+	  // full names
+	  hasClass: hasClass,
+	  addClass: addClass,
+	  removeClass: removeClass,
+	  toggleClass: toggleClass,
+	  // short names
+	  has: hasClass,
+	  add: addClass,
+	  remove: removeClass,
+	  toggle: toggleClass
+	};
+
+	// transport
+	if ( true ) {
+	  // AMD
+	  !(__WEBPACK_AMD_DEFINE_FACTORY__ = (classie), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else if ( typeof exports === 'object' ) {
+	  // CommonJS
+	  module.exports = classie;
+	} else {
+	  // browser global
+	  window.classie = classie;
+	}
+
+	})( window );
+
+
+/***/ },
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -20421,7 +20061,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(393) );
+	  module.exports = defineGetSize( __webpack_require__(391) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -20434,7 +20074,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 393 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -20495,7 +20135,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 394 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -21486,12 +21126,12 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(398),
-	    __webpack_require__(395),
+	    __webpack_require__(393),
+	    __webpack_require__(394),
+	    __webpack_require__(396),
 	    __webpack_require__(397),
 	    __webpack_require__(399),
-	    __webpack_require__(401),
-	    __webpack_require__(402)
+	    __webpack_require__(400)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -21520,86 +21160,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 395 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*!
-	 * docReady v1.0.3
-	 * Cross browser DOMContentLoaded event emitter
-	 * MIT license
-	 */
-
-	/*jshint browser: true, strict: true, undef: true, unused: true*/
-	/*global define: false, require: false, module: false */
-
-	( function( window ) {
-	'use strict';
-
-	if (!window) return;
-
-	var document = window.document;
-	// collection of functions to be triggered on ready
-	var queue = [];
-
-	function docReady( fn ) {
-	  // throw out non-functions
-	  if ( typeof fn !== 'function' ) {
-	    return;
-	  }
-
-	  if ( docReady.isReady ) {
-	    // ready now, hit it
-	    fn();
-	  } else {
-	    // queue function when ready
-	    queue.push( fn );
-	  }
-	}
-
-	docReady.isReady = false;
-
-	// triggered on various doc ready events
-	function init( event ) {
-	  // bail if IE8 document is not ready just yet
-	  var isIE8NotReady = event.type === 'readystatechange' && document.readyState !== 'complete';
-	  if ( docReady.isReady || isIE8NotReady ) {
-	    return;
-	  }
-	  docReady.isReady = true;
-
-	  // process queue
-	  for ( var i=0, len = queue.length; i < len; i++ ) {
-	    var fn = queue[i];
-	    fn();
-	  }
-	}
-
-	function defineDocReady( eventie ) {
-	  eventie.bind( document, 'DOMContentLoaded', init );
-	  eventie.bind( document, 'readystatechange', init );
-	  eventie.bind( window, 'load', init );
-
-	  return docReady;
-	}
-
-	// transport
-	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(396) );
-	} else if ( typeof define === 'function' && define.amd ) {
-	  // AMD
-	  // if RequireJS, then doc is already ready
-	  docReady.isReady = typeof requirejs === 'function';
-	  define( [ 'eventie/eventie' ], defineDocReady );
-	} else {
-	  // browser global
-	  window.docReady = defineDocReady( window.eventie );
-	}
-
-	})( typeof window !== 'undefined' ? window : null );
-
-
-/***/ },
-/* 396 */
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -21687,7 +21248,174 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 397 */
+/* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*!
+	 * docReady v1.0.3
+	 * Cross browser DOMContentLoaded event emitter
+	 * MIT license
+	 */
+
+	/*jshint browser: true, strict: true, undef: true, unused: true*/
+	/*global define: false, require: false, module: false */
+
+	( function( window ) {
+	'use strict';
+
+	if (!window) return;
+
+	var document = window.document;
+	// collection of functions to be triggered on ready
+	var queue = [];
+
+	function docReady( fn ) {
+	  // throw out non-functions
+	  if ( typeof fn !== 'function' ) {
+	    return;
+	  }
+
+	  if ( docReady.isReady ) {
+	    // ready now, hit it
+	    fn();
+	  } else {
+	    // queue function when ready
+	    queue.push( fn );
+	  }
+	}
+
+	docReady.isReady = false;
+
+	// triggered on various doc ready events
+	function init( event ) {
+	  // bail if IE8 document is not ready just yet
+	  var isIE8NotReady = event.type === 'readystatechange' && document.readyState !== 'complete';
+	  if ( docReady.isReady || isIE8NotReady ) {
+	    return;
+	  }
+	  docReady.isReady = true;
+
+	  // process queue
+	  for ( var i=0, len = queue.length; i < len; i++ ) {
+	    var fn = queue[i];
+	    fn();
+	  }
+	}
+
+	function defineDocReady( eventie ) {
+	  eventie.bind( document, 'DOMContentLoaded', init );
+	  eventie.bind( document, 'readystatechange', init );
+	  eventie.bind( window, 'load', init );
+
+	  return docReady;
+	}
+
+	// transport
+	if ( true ) {
+	  module.exports = defineDocReady( __webpack_require__(395) );
+	} else if ( typeof define === 'function' && define.amd ) {
+	  // AMD
+	  // if RequireJS, then doc is already ready
+	  docReady.isReady = typeof requirejs === 'function';
+	  define( [ 'eventie/eventie' ], defineDocReady );
+	} else {
+	  // browser global
+	  window.docReady = defineDocReady( window.eventie );
+	}
+
+	})( typeof window !== 'undefined' ? window : null );
+
+
+/***/ },
+/* 395 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*!
+	 * eventie v1.0.5
+	 * event binding helper
+	 *   eventie.bind( elem, 'click', myFn )
+	 *   eventie.unbind( elem, 'click', myFn )
+	 * MIT license
+	 */
+
+	/*jshint browser: true, undef: true, unused: true */
+	/*global define: false, module: false */
+
+	( function( window ) {
+	'use strict';
+
+	if (!window) return;
+
+	var docElem = document.documentElement;
+
+	var bind = function() {};
+
+	function getIEEvent( obj ) {
+	  var event = window.event;
+	  // add event.target
+	  event.target = event.target || event.srcElement || obj;
+	  return event;
+	}
+
+	if ( docElem.addEventListener ) {
+	  bind = function( obj, type, fn ) {
+	    obj.addEventListener( type, fn, false );
+	  };
+	} else if ( docElem.attachEvent ) {
+	  bind = function( obj, type, fn ) {
+	    obj[ type + fn ] = fn.handleEvent ?
+	      function() {
+	        var event = getIEEvent( obj );
+	        fn.handleEvent.call( fn, event );
+	      } :
+	      function() {
+	        var event = getIEEvent( obj );
+	        fn.call( obj, event );
+	      };
+	    obj.attachEvent( "on" + type, obj[ type + fn ] );
+	  };
+	}
+
+	var unbind = function() {};
+
+	if ( docElem.removeEventListener ) {
+	  unbind = function( obj, type, fn ) {
+	    obj.removeEventListener( type, fn, false );
+	  };
+	} else if ( docElem.detachEvent ) {
+	  unbind = function( obj, type, fn ) {
+	    obj.detachEvent( "on" + type, obj[ type + fn ] );
+	    try {
+	      delete obj[ type + fn ];
+	    } catch ( err ) {
+	      // can't delete window object properties
+	      obj[ type + fn ] = undefined;
+	    }
+	  };
+	}
+
+	var eventie = {
+	  bind: bind,
+	  unbind: unbind
+	};
+
+	// ----- module definition ----- //
+	if ( true ) {
+	  // CommonJS
+	  module.exports = eventie;
+	} else if ( typeof define === 'function' && define.amd ) {
+	  // AMD
+	  define( eventie );
+	} else {
+	  // browser global
+	  window.eventie = eventie;
+	}
+
+	})( typeof window !== 'undefined' ? window : null );
+
+
+/***/ },
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -22130,95 +21858,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 398 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*!
-	 * eventie v1.0.5
-	 * event binding helper
-	 *   eventie.bind( elem, 'click', myFn )
-	 *   eventie.unbind( elem, 'click', myFn )
-	 * MIT license
-	 */
-
-	/*jshint browser: true, undef: true, unused: true */
-	/*global define: false, module: false */
-
-	( function( window ) {
-	'use strict';
-
-	if (!window) return;
-
-	var docElem = document.documentElement;
-
-	var bind = function() {};
-
-	function getIEEvent( obj ) {
-	  var event = window.event;
-	  // add event.target
-	  event.target = event.target || event.srcElement || obj;
-	  return event;
-	}
-
-	if ( docElem.addEventListener ) {
-	  bind = function( obj, type, fn ) {
-	    obj.addEventListener( type, fn, false );
-	  };
-	} else if ( docElem.attachEvent ) {
-	  bind = function( obj, type, fn ) {
-	    obj[ type + fn ] = fn.handleEvent ?
-	      function() {
-	        var event = getIEEvent( obj );
-	        fn.handleEvent.call( fn, event );
-	      } :
-	      function() {
-	        var event = getIEEvent( obj );
-	        fn.call( obj, event );
-	      };
-	    obj.attachEvent( "on" + type, obj[ type + fn ] );
-	  };
-	}
-
-	var unbind = function() {};
-
-	if ( docElem.removeEventListener ) {
-	  unbind = function( obj, type, fn ) {
-	    obj.removeEventListener( type, fn, false );
-	  };
-	} else if ( docElem.detachEvent ) {
-	  unbind = function( obj, type, fn ) {
-	    obj.detachEvent( "on" + type, obj[ type + fn ] );
-	    try {
-	      delete obj[ type + fn ];
-	    } catch ( err ) {
-	      // can't delete window object properties
-	      obj[ type + fn ] = undefined;
-	    }
-	  };
-	}
-
-	var eventie = {
-	  bind: bind,
-	  unbind: unbind
-	};
-
-	// ----- module definition ----- //
-	if ( true ) {
-	  // CommonJS
-	  module.exports = eventie;
-	} else if ( typeof define === 'function' && define.amd ) {
-	  // AMD
-	  define( eventie );
-	} else {
-	  // browser global
-	  window.eventie = eventie;
-	}
-
-	})( typeof window !== 'undefined' ? window : null );
-
-
-/***/ },
-/* 399 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -22427,7 +22067,7 @@ webpackJsonp([0],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(400) );
+	  module.exports = defineGetSize( __webpack_require__(398) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -22440,7 +22080,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 400 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -22501,7 +22141,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 401 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -22614,7 +22254,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 402 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23124,9 +22764,9 @@ webpackJsonp([0],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
+	    __webpack_require__(396),
 	    __webpack_require__(397),
-	    __webpack_require__(399),
-	    __webpack_require__(403)
+	    __webpack_require__(401)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -23150,7 +22790,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 403 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -23211,98 +22851,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 404 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	 * classie v1.0.1
-	 * class helper functions
-	 * from bonzo https://github.com/ded/bonzo
-	 * MIT license
-	 * 
-	 * classie.has( elem, 'my-class' ) -> true/false
-	 * classie.add( elem, 'my-new-class' )
-	 * classie.remove( elem, 'my-unwanted-class' )
-	 * classie.toggle( elem, 'my-class' )
-	 */
-
-	/*jshint browser: true, strict: true, undef: true, unused: true */
-	/*global define: false, module: false */
-
-	( function( window ) {
-
-	'use strict';
-
-	// class helper functions from bonzo https://github.com/ded/bonzo
-
-	function classReg( className ) {
-	  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
-	}
-
-	// classList support for class management
-	// altho to be fair, the api sucks because it won't accept multiple classes at once
-	var hasClass, addClass, removeClass;
-
-	if ( 'classList' in document.documentElement ) {
-	  hasClass = function( elem, c ) {
-	    return elem.classList.contains( c );
-	  };
-	  addClass = function( elem, c ) {
-	    elem.classList.add( c );
-	  };
-	  removeClass = function( elem, c ) {
-	    elem.classList.remove( c );
-	  };
-	}
-	else {
-	  hasClass = function( elem, c ) {
-	    return classReg( c ).test( elem.className );
-	  };
-	  addClass = function( elem, c ) {
-	    if ( !hasClass( elem, c ) ) {
-	      elem.className = elem.className + ' ' + c;
-	    }
-	  };
-	  removeClass = function( elem, c ) {
-	    elem.className = elem.className.replace( classReg( c ), ' ' );
-	  };
-	}
-
-	function toggleClass( elem, c ) {
-	  var fn = hasClass( elem, c ) ? removeClass : addClass;
-	  fn( elem, c );
-	}
-
-	var classie = {
-	  // full names
-	  hasClass: hasClass,
-	  addClass: addClass,
-	  removeClass: removeClass,
-	  toggleClass: toggleClass,
-	  // short names
-	  has: hasClass,
-	  add: addClass,
-	  remove: removeClass,
-	  toggle: toggleClass
-	};
-
-	// transport
-	if ( true ) {
-	  // AMD
-	  !(__WEBPACK_AMD_DEFINE_FACTORY__ = (classie), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else if ( typeof exports === 'object' ) {
-	  // CommonJS
-	  module.exports = classie;
-	} else {
-	  // browser global
-	  window.classie = classie;
-	}
-
-	})( window );
-
-
-/***/ },
-/* 405 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23469,7 +23018,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 406 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23629,7 +23178,7 @@ webpackJsonp([0],[
 	if ( true ) {
 	  // CommonJS
 	  module.exports = packerDefinition(
-	    __webpack_require__(405)
+	    __webpack_require__(402)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -23644,7 +23193,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 407 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23808,9 +23357,9 @@ webpackJsonp([0],[
 	if ( true ) {
 	  // CommonJS
 	  module.exports = itemDefinition(
-	    __webpack_require__(408),
-	    __webpack_require__(394),
-	    __webpack_require__(405)
+	    __webpack_require__(405),
+	    __webpack_require__(392),
+	    __webpack_require__(402)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -23833,7 +23382,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 408 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -23894,7 +23443,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 409 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -23912,8 +23461,8 @@ webpackJsonp([0],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(410),
-	      __webpack_require__(411)
+	      __webpack_require__(407),
+	      __webpack_require__(408)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -24235,7 +23784,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 410 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -24713,7 +24262,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 411 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -24801,7 +24350,1509 @@ webpackJsonp([0],[
 
 
 /***/ },
+/* 409 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+	var _storeAuthStore = __webpack_require__(344);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _storeBoxStore = __webpack_require__(339);
+
+	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
+
+	var _storeOrderStore = __webpack_require__(348);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
+
+	var _actionsAuthActions = __webpack_require__(345);
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
+
+	var _actionsBoxActions = __webpack_require__(314);
+
+	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
+
+	/**
+	 * @Component
+	 */
+
+	var _altAltContainer = __webpack_require__(307);
+
+	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
+
+	var _NavbarNavbar = __webpack_require__(350);
+
+	var _NavbarNavbar2 = _interopRequireDefault(_NavbarNavbar);
+
+	var _NavbarNavbarBox = __webpack_require__(410);
+
+	var _NavbarNavbarBox2 = _interopRequireDefault(_NavbarNavbarBox);
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'Box',
+
+	  contextTypes: {
+	    router: _reactAddons2['default'].PropTypes.instanceOf(_reactRouter2['default']).isRequired
+	  },
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      auth: _storeAuthStore2['default'].getState().auth,
+	      info: _storeBoxStore2['default'].getState().info,
+	      count: _storeOrderStore2['default'].getTotalSize()
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	    _storeBoxStore2['default'].listen(this._onChangeBoxStore);
+	    _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	    _storeBoxStore2['default'].unlisten(this._onChangeBoxStore);
+	    _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	  },
+
+	  _onChangeAuthStore: function _onChangeAuthStore(state) {
+	    this.setState({
+	      auth: state.auth
+	    });
+	  },
+
+	  _onChangeBoxStore: function _onChangeBoxStore(state) {
+	    this.setState({
+	      info: state.info
+	    });
+	  },
+
+	  _onChangeOrderStore: function _onChangeOrderStore(state) {
+	    this.setState({
+	      count: _storeOrderStore2['default'].getTotalSize()
+	    });
+	  },
+
+	  render: function render() {
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      { className: 'header-product' },
+	      _reactAddons2['default'].createElement(_NavbarNavbar2['default'], {
+	        count: this.state.count,
+	        AuthActions: _actionsAuthActions2['default'],
+	        auth: this.state.auth }),
+	      _reactAddons2['default'].createElement(_NavbarNavbarBox2['default'], {
+	        info: this.state.info,
+	        auth: this.state.auth,
+	        handleBoxLogin: this.props.handleBoxLogin,
+	        BoxActions: _actionsBoxActions2['default'] })
+	    );
+	  }
+
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 410 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(338);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'NavbarBox',
+
+	  propTypes: {
+	    name: _reactAddons2['default'].PropTypes.string,
+	    likesCount: _reactAddons2['default'].PropTypes.number
+	  },
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      hideHeader: false
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    window.addEventListener('scroll', this.handleScroll);
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    window.removeEventListener('scroll', this.handleScroll);
+	  },
+
+	  handleScroll: function handleScroll(e) {
+	    var scrollTop = window.scrollY;
+	    var hideHeader = scrollTop >= 50;
+	    this.setState({
+	      hideHeader: hideHeader
+	    });
+	  },
+
+	  render: function render() {
+	    var classesNavbar = (0, _classnames2['default'])({
+	      "navbar": true,
+	      "navbar-default": true,
+	      "navbar-product": true,
+	      "navbar-static-top": true,
+	      "navbar-fixed-top": this.state.hideHeader,
+	      "position-top": !this.state.hideHeader
+	    }),
+	        type = null;
+
+	    switch (this.props.info.get('type')) {
+	      case "product":
+	        type = "Sản phẩm";
+	        break;
+	      case "article":
+	        type = "Bài viết";
+	        break;
+	      case "photo":
+	        type = "Ảnh";
+	        break;
+	    }
+
+	    return _reactAddons2['default'].createElement(
+	      'nav',
+	      { className: classesNavbar },
+	      _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'infoListProduct text-center' },
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'btn-group' },
+	          _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this.handleLikeBox, type: 'button', className: 'btn btn-default navbar-btn' },
+	            _reactAddons2['default'].createElement('i', { className: 'fa fa-heart gray' })
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'button',
+	            { type: 'button', className: 'btn btn-default count-like navbar-btn' },
+	            _reactAddons2['default'].createElement(
+	              'span',
+	              null,
+	              this.props.info.get('likesCount')
+	            )
+	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'nameinfoListProduct' },
+	          this.props.info.get('name')
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'span',
+	          { className: 'countListProduct' },
+	          this.props.info.get('postsCount'),
+	          ' ',
+	          type
+	        )
+	      )
+	    );
+	  },
+
+	  boxLogin: function boxLogin(cb) {
+	    if (!this.props.auth.get('access_token')) {
+	      this.props.handleBoxLogin();
+	    } else {
+	      cb();
+	    }
+	  },
+
+	  handleLikeBox: function handleLikeBox() {
+	    var _this = this;
+
+	    var self = this;
+	    this.boxLogin(function () {
+	      var itemID = _this.props.info.get('id'),
+	          token = _this.props.auth.get('access_token');
+
+	      // actions like box
+	      self.props.BoxActions.like({ itemID: itemID, token: token });
+	    });
+	  }
+
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 411 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(338);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'BoxItem',
+
+	  propTypes: {},
+
+	  render: function render() {
+	    var img_url = "/img/404.jpg";
+	    var price = this.props.price !== null ? this.props.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
+
+	    if (this.props.images) {
+	      var url = this.props.images[0];
+	      img_url = url.replace(/image\//gi, 'image/230x/');
+	    }
+
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      { onClick: this.handleClick, className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
+	      _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'thumbnail' },
+	        _reactAddons2['default'].createElement(
+	          _reactRouter.Link,
+	          { to: '/product/' + this.props.id },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'imgWrapper' },
+	            _reactAddons2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' })
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'infoSanpham' },
+	            _reactAddons2['default'].createElement(
+	              'span',
+	              { className: 'titleSanpham' },
+	              this.props.code
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'span',
+	              { className: 'price' },
+	              _reactAddons2['default'].createElement(
+	                'span',
+	                { className: 'price-sale' },
+	                price,
+	                ' VNĐ'
+	              )
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'infoBox' },
+	            _reactAddons2['default'].createElement(
+	              'span',
+	              { className: 'nameBox' },
+	              this.props.boxName
+	            )
+	          )
+	        )
+	      )
+	    );
+	  },
+	  handleClick: function handleClick() {
+	    this.props.onClick(this.props.data);
+	  }
+	});
+	module.exports = exports['default'];
+	/*<span className="price-list">153.000 VNĐ</span>*/
+
+/***/ },
 /* 412 */
+/***/ function(module, exports) {
+
+	function topPosition(domElt) {
+	  if (!domElt) {
+	    return 0;
+	  }
+	  return domElt.offsetTop + topPosition(domElt.offsetParent);
+	}
+
+	module.exports = function (React) {
+	  if (React.addons && React.addons.InfiniteScroll) {
+	    return React.addons.InfiniteScroll;
+	  }
+	  React.addons = React.addons || {};
+	  var InfiniteScroll = React.addons.InfiniteScroll = React.createClass({
+	    getDefaultProps: function () {
+	      return {
+	        pageStart: 0,
+	        hasMore: false,
+	        loadMore: function () {},
+	        threshold: 250
+	      };
+	    },
+	    componentDidMount: function () {
+	      this.pageLoaded = this.props.pageStart;
+	      this.attachScrollListener();
+	    },
+	    componentDidUpdate: function () {
+	      this.attachScrollListener();
+	    },
+	    render: function () {
+	      var props = this.props;
+	      return React.DOM.div(null, props.children, props.hasMore && (props.loader || InfiniteScroll._defaultLoader));
+	    },
+	    scrollListener: function () {
+	      var el = this.getDOMNode();
+	      var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+	      if (topPosition(el) + el.offsetHeight - scrollTop - window.innerHeight < Number(this.props.threshold)) {
+	        this.detachScrollListener();
+	        // call loadMore after detachScrollListener to allow
+	        // for non-async loadMore functions
+	        this.props.loadMore(this.pageLoaded += 1);
+	      }
+	    },
+	    attachScrollListener: function () {
+	      if (!this.props.hasMore) {
+	        return;
+	      }
+	      window.addEventListener('scroll', this.scrollListener);
+	      window.addEventListener('resize', this.scrollListener);
+	      this.scrollListener();
+	    },
+	    detachScrollListener: function () {
+	      window.removeEventListener('scroll', this.scrollListener);
+	      window.removeEventListener('resize', this.scrollListener);
+	    },
+	    componentWillUnmount: function () {
+	      this.detachScrollListener();
+	    }
+	  });
+	  InfiniteScroll.setDefaultLoader = function (loader) {
+	    InfiniteScroll._defaultLoader = loader;
+	  };
+	  return InfiniteScroll;
+	};
+
+/***/ },
+/* 413 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _decorators = __webpack_require__(311);
+
+	/**
+	 * @Component
+	 */
+
+	var _componentsHeader = __webpack_require__(414);
+
+	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
+
+	var _componentsFormOrderTest = __webpack_require__(415);
+
+	var _componentsFormOrderTest2 = _interopRequireDefault(_componentsFormOrderTest);
+
+	var Application = (function (_React$Component) {
+	  _inherits(Application, _React$Component);
+
+	  function Application() {
+	    _classCallCheck(this, Application);
+
+	    _get(Object.getPrototypeOf(Application.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(Application, [{
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        null,
+	        _reactAddons2['default'].createElement(_componentsHeader2['default'], null),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'container' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'row' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'col-md-9 col-lg-9' },
+	              _reactAddons2['default'].createElement(_componentsFormOrderTest2['default'], null)
+	            ),
+	            _reactAddons2['default'].createElement('div', { className: 'col-md-3 col-lg-3' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Application;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Application;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* @jsx React.DOM */
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(338);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storeAuthStore = __webpack_require__(344);
+
+	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
+
+	var _storeOrderStore = __webpack_require__(348);
+
+	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
+
+	var _actionsAuthActions = __webpack_require__(345);
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
+
+	/**
+	 * @Component
+	 */
+
+	var _NavbarNavbar = __webpack_require__(350);
+
+	var _NavbarNavbar2 = _interopRequireDefault(_NavbarNavbar);
+
+	var Nav = (function (_React$Component) {
+	  _inherits(Nav, _React$Component);
+
+	  function Nav(props) {
+	    _classCallCheck(this, Nav);
+
+	    _get(Object.getPrototypeOf(Nav.prototype), 'constructor', this).call(this, props);
+	    this._onChangeAuthStore = this._onChangeAuthStore.bind(this);
+	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
+
+	    this.state = {
+	      auth: _storeAuthStore2['default'].getState().auth,
+	      listOrders: _storeOrderStore2['default'].getState().listOrders,
+	      totalCart: _storeOrderStore2['default'].getTotalCart(),
+	      totalCartSale: _storeOrderStore2['default'].getTotalCartSale(),
+	      count: _storeOrderStore2['default'].getTotalSize()
+	    };
+	  }
+
+	  _createClass(Nav, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeAuthStore2['default'].listen(this._onChangeAuthStore);
+	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
+	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
+	    }
+	  }, {
+	    key: '_onChangeAuthStore',
+	    value: function _onChangeAuthStore(state) {
+	      this.setState({
+	        auth: state.auth
+	      });
+	    }
+	  }, {
+	    key: '_onChangeOrderStore',
+	    value: function _onChangeOrderStore(state) {
+	      this.setState({
+	        listOrders: state.listOrders,
+	        totalCart: _storeOrderStore2['default'].getTotalCart(),
+	        totalCartSale: _storeOrderStore2['default'].getTotalCartSale(),
+	        count: _storeOrderStore2['default'].getTotalSize()
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      console.log(this.state);
+	      return _reactAddons2['default'].createElement(_NavbarNavbar2['default'], {
+	        count: this.state.count,
+	        totalCart: this.state.totalCart,
+	        AuthActions: _actionsAuthActions2['default'],
+	        auth: this.state.auth });
+	    }
+	  }], [{
+	    key: 'contextTypes',
+	    value: {
+	      router: _reactAddons2['default'].PropTypes.object.isRequired
+	    },
+	    enumerable: true
+	  }]);
+
+	  return Nav;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Nav;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 415 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _classnames = __webpack_require__(338);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var FormOrder = (function (_React$Component) {
+	  _inherits(FormOrder, _React$Component);
+
+	  function FormOrder(props) {
+	    _classCallCheck(this, FormOrder);
+
+	    _get(Object.getPrototypeOf(FormOrder.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      hideHeader: false
+	    };
+	  }
+
+	  _createClass(FormOrder, [{
+	    key: 'render',
+	    value: function render() {
+	      var classNavbarOrder = (0, _classnames2['default'])({
+	        "navbar-product-detail": true,
+	        sticky: this.state.hideHeader
+	      });
+
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'productOrder' },
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: classNavbarOrder },
+	          _reactAddons2['default'].createElement(
+	            'nav',
+	            { className: 'navbar navbar-defaul' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'navbar-header' },
+	              _reactAddons2['default'].createElement(
+	                'button',
+	                { onClick: this.handleClickHuy, type: 'button', className: 'btn btn-default navbar-btn' },
+	                'Hủy'
+	              )
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'nav navbar-nav navbar-right' },
+	              _reactAddons2['default'].createElement(
+	                'button',
+	                { onClick: this.handleClickDatMua, type: 'button', className: 'btn btn-primary navbar-btn' },
+	                'Hoàn tất'
+	              )
+	            )
+	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'product' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'infoOrder' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'infoOrder-body' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'infoOrder-img' },
+	                _reactAddons2['default'].createElement('img', { src: '', alt: 'img', className: 'img-rounded' })
+	              ),
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'infoOrder-text' },
+	                _reactAddons2['default'].createElement('h3', null),
+	                _reactAddons2['default'].createElement('span', null)
+	              )
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'infoNguoiNhan' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'title-border' },
+	              _reactAddons2['default'].createElement(
+	                'p',
+	                null,
+	                'Thông tin người nhận'
+	              )
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'p',
+	              { className: 'text-center' },
+	              'Điền đầy đủ thông tin người nhận hàng'
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'title-border' },
+	              _reactAddons2['default'].createElement(
+	                'p',
+	                null,
+	                'Hình thức vận chuyển'
+	              )
+	            ),
+	            _reactAddons2['default'].createElement('div', { className: 'form-inline' }),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'title-border' },
+	              _reactAddons2['default'].createElement(
+	                'p',
+	                null,
+	                'Hình thức thanh toán'
+	              )
+	            ),
+	            _reactAddons2['default'].createElement('div', { className: 'form-inline' })
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'handleClickHuy',
+	    value: function handleClickHuy(e) {
+	      console.log('handleClickHuy');
+	    }
+	  }, {
+	    key: 'handleClickDatMua',
+	    value: function handleClickDatMua(e) {
+	      console.log('handleClickDatMua');
+	    }
+	  }]);
+
+	  return FormOrder;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = FormOrder;
+	module.exports = exports['default'];
+
+/***/ },
+/* 416 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _decorators = __webpack_require__(311);
+
+	var Posts = (function (_React$Component) {
+	  _inherits(Posts, _React$Component);
+
+	  function Posts(props) {
+	    _classCallCheck(this, Posts);
+
+	    _get(Object.getPrototypeOf(Posts.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _createClass(Posts, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.HeadParams.setTitle("Posts | tocu.vn");
+	      this.props.HeadParams.setDescription("Posts | Description");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        null,
+	        _reactAddons2['default'].createElement(
+	          'p',
+	          null,
+	          'Posts! ',
+	          this.props.params.id
+	        ),
+	        _reactAddons2['default'].createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          'to Home!'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Posts;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Posts;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 417 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _decorators = __webpack_require__(311);
+
+	var Album = (function (_React$Component) {
+	  _inherits(Album, _React$Component);
+
+	  function Album(props) {
+	    _classCallCheck(this, Album);
+
+	    _get(Object.getPrototypeOf(Album.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _createClass(Album, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.HeadParams.setTitle("Album | tocu.vn");
+	      this.props.HeadParams.setDescription("Album | Description");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        null,
+	        _reactAddons2['default'].createElement(
+	          'p',
+	          null,
+	          'Album! ',
+	          this.props.params.id
+	        ),
+	        _reactAddons2['default'].createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          'to Home!'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Album;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Album;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 418 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _extends = __webpack_require__(1)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
+
+	var _Promise = __webpack_require__(288)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(338);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _decorators = __webpack_require__(311);
+
+	var _storeSanphamStore = __webpack_require__(349);
+
+	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
+
+	var _actionsSanphamActions = __webpack_require__(335);
+
+	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
+
+	var _actionsCityActions = __webpack_require__(419);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	var _actionsOrderActions = __webpack_require__(336);
+
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
+
+	var _actionsVerifyActions = __webpack_require__(346);
+
+	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
+
+	var _actionsSaleActions = __webpack_require__(420);
+
+	var _actionsSaleActions2 = _interopRequireDefault(_actionsSaleActions);
+
+	/**
+	 * @Component
+	 */
+
+	var _componentsFormBoxSignIn = __webpack_require__(421);
+
+	var _componentsFormBoxSignIn2 = _interopRequireDefault(_componentsFormBoxSignIn);
+
+	var _componentsFormBoxVerify = __webpack_require__(422);
+
+	var _componentsFormBoxVerify2 = _interopRequireDefault(_componentsFormBoxVerify);
+
+	var _componentsFormOrder = __webpack_require__(425);
+
+	var _componentsFormOrder2 = _interopRequireDefault(_componentsFormOrder);
+
+	var _componentsProduct = __webpack_require__(435);
+
+	var _componentsProduct2 = _interopRequireDefault(_componentsProduct);
+
+	var _componentsProductPushListOrder = __webpack_require__(442);
+
+	var _componentsProductPushListOrder2 = _interopRequireDefault(_componentsProductPushListOrder);
+
+	var _componentsProductStatusOrder = __webpack_require__(530);
+
+	var _componentsProductStatusOrder2 = _interopRequireDefault(_componentsProductStatusOrder);
+
+	var _componentsHeader = __webpack_require__(414);
+
+	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
+
+	var _componentsProductSidebar = __webpack_require__(531);
+
+	var _componentsProductSidebar2 = _interopRequireDefault(_componentsProductSidebar);
+
+	var _componentsProductBoxAuto = __webpack_require__(540);
+
+	var _componentsProductBoxAuto2 = _interopRequireDefault(_componentsProductBoxAuto);
+
+	var _componentsSale = __webpack_require__(532);
+
+	var _componentsSale2 = _interopRequireDefault(_componentsSale);
+
+	var ProductID = (function (_React$Component) {
+	  _inherits(ProductID, _React$Component);
+
+	  function ProductID(props) {
+	    _classCallCheck(this, _ProductID);
+
+	    _get(Object.getPrototypeOf(_ProductID.prototype), 'constructor', this).call(this, props);
+	    this._bind('onChangeSanphamStore', 'handleBoxLogin', 'hideBoxLogin', 'renderBoxLogin', 'renderProductDetail');
+
+	    this.state = _extends({
+	      boxLogin: false,
+	      current: 1
+	    }, _storeSanphamStore2['default'].getState().product.toJS());
+	  }
+
+	  _createClass(ProductID, [{
+	    key: '_bind',
+	    value: function _bind() {
+	      var _this = this;
+
+	      for (var _len = arguments.length, methods = Array(_len), _key = 0; _key < _len; _key++) {
+	        methods[_key] = arguments[_key];
+	      }
+
+	      methods.forEach(function (method) {
+	        return _this[method] = _this[method].bind(_this);
+	      });
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.HeadParams.setTitle(this.state.code + ' | tocu.vn');
+	      this.props.HeadParams.setDescription('' + this.state.boxName);
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeSanphamStore2['default'].listen(this.onChangeSanphamStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeSanphamStore2['default'].unlisten(this.onChangeSanphamStore);
+	    }
+	  }, {
+	    key: 'onChangeSanphamStore',
+	    value: function onChangeSanphamStore(state) {
+	      this.setState(_extends({}, state.product.toJS()));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        null,
+	        _reactAddons2['default'].createElement(_componentsHeader2['default'], null),
+	        _reactAddons2['default'].createElement(
+	          'section',
+	          { id: 'productDetail' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'container' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'row' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'col-md-9 col-lg-9' },
+	                this.renderProductDetail(),
+	                _reactAddons2['default'].createElement(_componentsProductBoxAuto2['default'], null)
+	              ),
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'col-md-3 col-lg-3' },
+	                _reactAddons2['default'].createElement(
+	                  'div',
+	                  { className: 'row row-sidebar' },
+	                  _reactAddons2['default'].createElement(_componentsProductSidebar2['default'], _extends({
+	                    boxId: this.state.BoxId
+	                  }, this.state.Box)),
+	                  _reactAddons2['default'].createElement(
+	                    'div',
+	                    { className: 'col-md-12 col-lg-12' },
+	                    _reactAddons2['default'].createElement(_componentsSale2['default'], null)
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        this.renderBoxLogin()
+	      );
+	    }
+	  }, {
+	    key: 'renderProductDetail',
+	    value: function renderProductDetail() {
+	      return _reactAddons2['default'].createElement(_componentsProduct2['default'], {
+	        handleBoxLogin: this.handleBoxLogin });
+	    }
+	  }, {
+	    key: 'renderBoxLogin',
+	    value: function renderBoxLogin() {
+	      if (this.state.boxLogin) {
+	        return _reactAddons2['default'].createElement(_componentsFormBoxSignIn2['default'], { hideBoxLogin: this.hideBoxLogin, location: this.props.location });
+	      }
+	    }
+	  }, {
+	    key: 'handleBoxLogin',
+	    value: function handleBoxLogin(val) {
+	      this.setState({
+	        boxLogin: true
+	      });
+	    }
+	  }, {
+	    key: 'hideBoxLogin',
+	    value: function hideBoxLogin() {
+	      this.setState({
+	        boxLogin: false
+	      });
+	    }
+	  }]);
+
+	  var _ProductID = ProductID;
+	  ProductID = (0, _decorators.prepareRoute)(function callee$1$0(_ref) {
+	    var params = _ref.params;
+	    return _regeneratorRuntime.async(function callee$1$0$(context$2$0) {
+	      while (1) switch (context$2$0.prev = context$2$0.next) {
+	        case 0:
+	          context$2$0.next = 2;
+	          return _regeneratorRuntime.awrap(_Promise.all([_actionsSanphamActions2['default'].getSanphamID(params), _actionsSaleActions2['default'].getProductSale(), _actionsCityActions2['default'].getCity()]));
+
+	        case 2:
+	          return context$2$0.abrupt('return', context$2$0.sent);
+
+	        case 3:
+	        case 'end':
+	          return context$2$0.stop();
+	      }
+	    }, null, this);
+	  })(ProductID) || ProductID;
+	  return ProductID;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = ProductID;
+	;
+	module.exports = exports['default'];
+	/* Header */ /* 6 box auto */ /* Sidebar */ /* Sale */
+
+/***/ },
+/* 419 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(315);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(334);
+
+	var CityActions = (function () {
+	  function CityActions() {
+	    _classCallCheck(this, CityActions);
+	  }
+
+	  _createClass(CityActions, [{
+	    key: 'getCity',
+	    value: function getCity() {
+	      var self;
+	      return _regeneratorRuntime.async(function getCity$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            self = this;
+	            context$2$0.next = 3;
+	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/city').then(function (res) {
+	              self.dispatch(res.data);
+	            })['catch'](function (res) {
+	              self.actions.getCityFailed(res.data);
+	            }));
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+
+	    /**
+	     * tìm quận huyện theo tình thành
+	     * @param  {string} city [tên tỉnh/thành phố]
+	     * @dispatch {[quận huyện]}
+	     */
+	  }, {
+	    key: 'getDistrict',
+	    value: function getDistrict(_ref) {
+	      var city = _ref.city;
+
+	      var self = this;
+
+	      _axios2['default'].post(_configSample.Api_URL + '/district', {
+	        city: city
+	      }).then(function (res) {
+	        self.dispatch(res.data);
+	      })['catch'](function (res) {
+	        self.actions.getDistrictFailed(res.data);
+	      });
+	    }
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	  }, {
+	    key: 'getCityFailed',
+	    value: function getCityFailed(err) {
+	      this.dispatch(err);
+	    }
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	  }, {
+	    key: 'getDistrictFailed',
+	    value: function getDistrictFailed(err) {
+	      this.dispatch(err);
+	    }
+	  }]);
+
+	  return CityActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(CityActions);
+
+/***/ },
+/* 420 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(315);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(334);
+
+	var SaleActions = (function () {
+			function SaleActions() {
+					_classCallCheck(this, SaleActions);
+			}
+
+			_createClass(SaleActions, [{
+					key: 'getProductSale',
+					value: function getProductSale() {
+							var self;
+							return _regeneratorRuntime.async(function getProductSale$(context$2$0) {
+									while (1) switch (context$2$0.prev = context$2$0.next) {
+											case 0:
+													self = this;
+													context$2$0.next = 3;
+													return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product', {
+															params: {
+																	filters: 'salePrice!=null',
+																	limit: 5
+															}
+													}).then(function (res) {
+															self.dispatch(res.data);
+													}));
+
+											case 3:
+											case 'end':
+													return context$2$0.stop();
+									}
+							}, null, this);
+					}
+			}]);
+
+			return SaleActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(SaleActions);
+
+/***/ },
+/* 421 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(240);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	/**
+	 * @Component
+	 */
+
+	var _SignIn = __webpack_require__(353);
+
+	var _SignIn2 = _interopRequireDefault(_SignIn);
+
+	var BoxsignIn = (function (_React$Component) {
+	  _inherits(BoxsignIn, _React$Component);
+
+	  function BoxsignIn(props) {
+	    _classCallCheck(this, BoxsignIn);
+
+	    _get(Object.getPrototypeOf(BoxsignIn.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {};
+	  }
+
+	  _createClass(BoxsignIn, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'boxLogin' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'container' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'row row-form' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'centrix' },
+	                _react2['default'].createElement(
+	                  _SignIn2['default'],
+	                  { replaceWith: this.props.hideBoxLogin, nextPath: this.props.location.pathname },
+	                  _react2['default'].createElement('div', { onClick: this.hideBoxLogin.bind(this), className: 'closeBox fa fa-times' })
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'hideBoxLogin',
+	    value: function hideBoxLogin() {
+	      this.props.hideBoxLogin();
+	    }
+	  }]);
+
+	  return BoxsignIn;
+	})(_react2['default'].Component);
+
+	exports['default'] = BoxsignIn;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 422 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(240);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	/**
+	 * @Component
+	 */
+
+	var _Verify = __webpack_require__(423);
+
+	var _Verify2 = _interopRequireDefault(_Verify);
+
+	var BoxsignIn = (function (_React$Component) {
+	  _inherits(BoxsignIn, _React$Component);
+
+	  function BoxsignIn(props) {
+	    _classCallCheck(this, BoxsignIn);
+
+	    _get(Object.getPrototypeOf(BoxsignIn.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {};
+	  }
+
+	  _createClass(BoxsignIn, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'boxLogin' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'centrix' },
+	              _react2['default'].createElement(
+	                _Verify2['default'],
+	                { hideBoxVerify: this.props.hideBoxVerify },
+	                _react2['default'].createElement('div', { onClick: this.hideBoxVerify.bind(this), className: 'closeBox fa fa-times' })
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'hideBoxVerify',
+	    value: function hideBoxVerify() {
+	      this.props.hideBoxVerify();
+	    }
+	  }]);
+
+	  return BoxsignIn;
+	})(_react2['default'].Component);
+
+	exports['default'] = BoxsignIn;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 423 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24820,15 +25871,15 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _storeVerifyStore = __webpack_require__(413);
+	var _storeVerifyStore = __webpack_require__(424);
 
 	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
 
-	var _storeAuthStore = __webpack_require__(345);
+	var _storeAuthStore = __webpack_require__(344);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
-	var _actionsVerifyActions = __webpack_require__(347);
+	var _actionsVerifyActions = __webpack_require__(346);
 
 	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
@@ -24983,7 +26034,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 413 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25002,7 +26053,7 @@ webpackJsonp([0],[
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsVerifyActions = __webpack_require__(347);
+	var _actionsVerifyActions = __webpack_require__(346);
 
 	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
@@ -25065,1871 +26116,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(VerifyStore, 'VerifyStore');
 
 /***/ },
-/* 414 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _reactRouter2 = _interopRequireDefault(_reactRouter);
-
-	var _storeAuthStore = __webpack_require__(345);
-
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
-
-	var _storeBoxStore = __webpack_require__(339);
-
-	var _storeBoxStore2 = _interopRequireDefault(_storeBoxStore);
-
-	var _storeOrderStore = __webpack_require__(349);
-
-	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
-
-	var _actionsAuthActions = __webpack_require__(346);
-
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _actionsBoxActions = __webpack_require__(315);
-
-	/**
-	 * @Component
-	 */
-
-	var _actionsBoxActions2 = _interopRequireDefault(_actionsBoxActions);
-
-	var _altAltContainer = __webpack_require__(262);
-
-	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
-
-	var _NavbarNavbar = __webpack_require__(351);
-
-	var _NavbarNavbar2 = _interopRequireDefault(_NavbarNavbar);
-
-	var _NavbarNavbarBox = __webpack_require__(415);
-
-	var _NavbarNavbarBox2 = _interopRequireDefault(_NavbarNavbarBox);
-
-	exports['default'] = _reactAddons2['default'].createClass({
-	  displayName: 'Box',
-
-	  contextTypes: {
-	    router: _reactAddons2['default'].PropTypes.instanceOf(_reactRouter2['default']).isRequired
-	  },
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      auth: _storeAuthStore2['default'].getState().auth,
-	      info: _storeBoxStore2['default'].getState().info,
-	      count: _storeOrderStore2['default'].getTotalSize()
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _storeAuthStore2['default'].listen(this._onChangeAuthStore);
-	    _storeBoxStore2['default'].listen(this._onChangeBoxStore);
-	    _storeOrderStore2['default'].listen(this._onChangeOrderStore);
-	  },
-
-	  componentWillUnmount: function componentWillUnmount() {
-	    _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
-	    _storeBoxStore2['default'].unlisten(this._onChangeBoxStore);
-	    _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
-	  },
-
-	  _onChangeAuthStore: function _onChangeAuthStore(state) {
-	    this.setState({
-	      auth: state.auth
-	    });
-	  },
-
-	  _onChangeBoxStore: function _onChangeBoxStore(state) {
-	    this.setState({
-	      info: state.info
-	    });
-	  },
-
-	  _onChangeOrderStore: function _onChangeOrderStore(state) {
-	    this.setState({
-	      count: _storeOrderStore2['default'].getTotalSize()
-	    });
-	  },
-
-	  render: function render() {
-	    return _reactAddons2['default'].createElement(
-	      'div',
-	      { className: 'header-product' },
-	      _reactAddons2['default'].createElement(_NavbarNavbar2['default'], {
-	        count: this.state.count,
-	        AuthActions: _actionsAuthActions2['default'],
-	        auth: this.state.auth }),
-	      _reactAddons2['default'].createElement(_NavbarNavbarBox2['default'], {
-	        info: this.state.info,
-	        auth: this.state.auth,
-	        handleBoxLogin: this.props.handleBoxLogin,
-	        BoxActions: _actionsBoxActions2['default'] })
-	    );
-	  }
-
-	});
-	module.exports = exports['default'];
-
-/***/ },
-/* 415 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _classnames = __webpack_require__(344);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	exports['default'] = _reactAddons2['default'].createClass({
-	  displayName: 'NavbarBox',
-
-	  propTypes: {
-	    name: _reactAddons2['default'].PropTypes.string,
-	    likesCount: _reactAddons2['default'].PropTypes.number
-	  },
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      hideHeader: false
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    window.addEventListener('scroll', this.handleScroll);
-	  },
-
-	  componentWillUnmount: function componentWillUnmount() {
-	    window.removeEventListener('scroll', this.handleScroll);
-	  },
-
-	  handleScroll: function handleScroll(e) {
-	    var scrollTop = window.scrollY;
-	    var hideHeader = scrollTop >= 50;
-	    this.setState({
-	      hideHeader: hideHeader
-	    });
-	  },
-
-	  render: function render() {
-	    var classesNavbar = (0, _classnames2['default'])({
-	      "navbar": true,
-	      "navbar-default": true,
-	      "navbar-product": true,
-	      "navbar-static-top": true,
-	      "navbar-fixed-top": this.state.hideHeader,
-	      "position-top": !this.state.hideHeader
-	    }),
-	        type = null;
-
-	    switch (this.props.info.get('type')) {
-	      case "product":
-	        type = "Sản phẩm";
-	        break;
-	      case "article":
-	        type = "Bài viết";
-	        break;
-	      case "photo":
-	        type = "Ảnh";
-	        break;
-	    }
-
-	    return _reactAddons2['default'].createElement(
-	      'nav',
-	      { className: classesNavbar },
-	      _reactAddons2['default'].createElement(
-	        'div',
-	        { className: 'infoListProduct text-center' },
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'btn-group' },
-	          _reactAddons2['default'].createElement(
-	            'button',
-	            { onClick: this.handleLikeBox, type: 'button', className: 'btn btn-default navbar-btn' },
-	            _reactAddons2['default'].createElement('i', { className: 'fa fa-heart gray' })
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'button',
-	            { type: 'button', className: 'btn btn-default count-like navbar-btn' },
-	            _reactAddons2['default'].createElement(
-	              'span',
-	              null,
-	              this.props.info.get('likesCount')
-	            )
-	          )
-	        ),
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'nameinfoListProduct' },
-	          this.props.info.get('name')
-	        ),
-	        _reactAddons2['default'].createElement(
-	          'span',
-	          { className: 'countListProduct' },
-	          this.props.info.get('postsCount'),
-	          ' ',
-	          type
-	        )
-	      )
-	    );
-	  },
-
-	  boxLogin: function boxLogin(cb) {
-	    if (!this.props.auth.get('access_token')) {
-	      this.props.handleBoxLogin('token');
-	    } else {
-	      if (!this.props.auth.get('isVerifyMobilePhone')) {
-	        this.props.handleBoxLogin('verify');
-	        return;
-	      }
-	      cb();
-	    }
-	  },
-
-	  handleLikeBox: function handleLikeBox() {
-	    var _this = this;
-
-	    var self = this;
-	    this.boxLogin(function () {
-	      var itemID = _this.props.info.get('id'),
-	          token = _this.props.auth.get('access_token');
-
-	      // actions like box
-	      self.props.BoxActions.like({ itemID: itemID, token: token });
-	    });
-	  }
-
-	});
-	module.exports = exports['default'];
-
-/***/ },
-/* 416 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _classnames = __webpack_require__(344);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	exports['default'] = _reactAddons2['default'].createClass({
-	  displayName: 'BoxItem',
-
-	  propTypes: {},
-
-	  render: function render() {
-	    var img_url = "/img/404.jpg";
-	    var price = this.props.price !== null ? this.props.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
-
-	    if (this.props.images) {
-	      var url = this.props.images[0];
-	      img_url = url.replace(/image\//gi, 'image/230x/');
-	    }
-
-	    return _reactAddons2['default'].createElement(
-	      'div',
-	      { onClick: this.handleClick, className: 'col-xs-6 col-sm-4 col-md-3 col-lg-3' },
-	      _reactAddons2['default'].createElement(
-	        'div',
-	        { className: 'thumbnail' },
-	        _reactAddons2['default'].createElement(
-	          _reactRouter.Link,
-	          { to: '/product/' + this.props.id },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'imgWrapper' },
-	            _reactAddons2['default'].createElement('img', { className: 'img-rounded', 'data-holder-rendered': 'true', src: img_url, alt: 'images' })
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'infoSanpham' },
-	            _reactAddons2['default'].createElement(
-	              'span',
-	              { className: 'titleSanpham' },
-	              this.props.code
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'span',
-	              { className: 'price' },
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                { className: 'price-sale' },
-	                price,
-	                ' VNĐ'
-	              )
-	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'infoBox' },
-	            _reactAddons2['default'].createElement(
-	              'span',
-	              { className: 'nameBox' },
-	              this.props.boxName
-	            )
-	          )
-	        )
-	      )
-	    );
-	  },
-	  handleClick: function handleClick() {
-	    this.props.onClick(this.props.data);
-	  }
-	});
-	module.exports = exports['default'];
-	/*<span className="price-list">153.000 VNĐ</span>*/
-
-/***/ },
-/* 417 */
-/***/ function(module, exports) {
-
-	function topPosition(domElt) {
-	  if (!domElt) {
-	    return 0;
-	  }
-	  return domElt.offsetTop + topPosition(domElt.offsetParent);
-	}
-
-	module.exports = function (React) {
-	  if (React.addons && React.addons.InfiniteScroll) {
-	    return React.addons.InfiniteScroll;
-	  }
-	  React.addons = React.addons || {};
-	  var InfiniteScroll = React.addons.InfiniteScroll = React.createClass({
-	    getDefaultProps: function () {
-	      return {
-	        pageStart: 0,
-	        hasMore: false,
-	        loadMore: function () {},
-	        threshold: 250
-	      };
-	    },
-	    componentDidMount: function () {
-	      this.pageLoaded = this.props.pageStart;
-	      this.attachScrollListener();
-	    },
-	    componentDidUpdate: function () {
-	      this.attachScrollListener();
-	    },
-	    render: function () {
-	      var props = this.props;
-	      return React.DOM.div(null, props.children, props.hasMore && (props.loader || InfiniteScroll._defaultLoader));
-	    },
-	    scrollListener: function () {
-	      var el = this.getDOMNode();
-	      var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-	      if (topPosition(el) + el.offsetHeight - scrollTop - window.innerHeight < Number(this.props.threshold)) {
-	        this.detachScrollListener();
-	        // call loadMore after detachScrollListener to allow
-	        // for non-async loadMore functions
-	        this.props.loadMore(this.pageLoaded += 1);
-	      }
-	    },
-	    attachScrollListener: function () {
-	      if (!this.props.hasMore) {
-	        return;
-	      }
-	      window.addEventListener('scroll', this.scrollListener);
-	      window.addEventListener('resize', this.scrollListener);
-	      this.scrollListener();
-	    },
-	    detachScrollListener: function () {
-	      window.removeEventListener('scroll', this.scrollListener);
-	      window.removeEventListener('resize', this.scrollListener);
-	    },
-	    componentWillUnmount: function () {
-	      this.detachScrollListener();
-	    }
-	  });
-	  InfiniteScroll.setDefaultLoader = function (loader) {
-	    InfiniteScroll._defaultLoader = loader;
-	  };
-	  return InfiniteScroll;
-	};
-
-/***/ },
-/* 418 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _decorators = __webpack_require__(257);
-
-	var Album = (function (_React$Component) {
-	  _inherits(Album, _React$Component);
-
-	  function Album(props) {
-	    _classCallCheck(this, Album);
-
-	    _get(Object.getPrototypeOf(Album.prototype), 'constructor', this).call(this, props);
-	  }
-
-	  _createClass(Album, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle("Album | tocu.vn");
-	      this.props.HeadParams.setDescription("Album | Description");
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        null,
-	        _reactAddons2['default'].createElement(
-	          'p',
-	          null,
-	          'Album! ',
-	          this.props.params.id
-	        ),
-	        _reactAddons2['default'].createElement(
-	          _reactRouter.Link,
-	          { to: '/' },
-	          'to Home!'
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Album;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = Album;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 419 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _extends = __webpack_require__(1)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(266)['default'];
-
-	var _Promise = __webpack_require__(296)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _classnames = __webpack_require__(344);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _decorators = __webpack_require__(257);
-
-	var _storeSanphamStore = __webpack_require__(350);
-
-	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
-
-	var _actionsSanphamActions = __webpack_require__(336);
-
-	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
-
-	var _actionsCityActions = __webpack_require__(420);
-
-	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
-
-	var _actionsOrderActions = __webpack_require__(337);
-
-	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
-
-	var _actionsVerifyActions = __webpack_require__(347);
-
-	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
-
-	var _actionsSaleActions = __webpack_require__(421);
-
-	/**
-	 * @Component
-	 */
-
-	var _actionsSaleActions2 = _interopRequireDefault(_actionsSaleActions);
-
-	var _componentsFormBoxSignIn = __webpack_require__(422);
-
-	var _componentsFormBoxSignIn2 = _interopRequireDefault(_componentsFormBoxSignIn);
-
-	var _componentsFormBoxVerify = __webpack_require__(423);
-
-	var _componentsFormBoxVerify2 = _interopRequireDefault(_componentsFormBoxVerify);
-
-	var _componentsFormOrder = __webpack_require__(424);
-
-	var _componentsFormOrder2 = _interopRequireDefault(_componentsFormOrder);
-
-	var _componentsProduct = __webpack_require__(434);
-
-	var _componentsProduct2 = _interopRequireDefault(_componentsProduct);
-
-	var _componentsProductPushListOrder = __webpack_require__(441);
-
-	var _componentsProductPushListOrder2 = _interopRequireDefault(_componentsProductPushListOrder);
-
-	var _componentsProductStatusOrder = __webpack_require__(529);
-
-	var _componentsProductStatusOrder2 = _interopRequireDefault(_componentsProductStatusOrder);
-
-	var _componentsHeaderProductID = __webpack_require__(530);
-
-	var _componentsHeaderProductID2 = _interopRequireDefault(_componentsHeaderProductID);
-
-	var _componentsProductSidebar = __webpack_require__(531);
-
-	var _componentsProductSidebar2 = _interopRequireDefault(_componentsProductSidebar);
-
-	var _componentsSale = __webpack_require__(532);
-
-	var _componentsSale2 = _interopRequireDefault(_componentsSale);
-
-	var ProductID = (function (_React$Component) {
-	  _inherits(ProductID, _React$Component);
-
-	  function ProductID(props) {
-	    _classCallCheck(this, _ProductID);
-
-	    _get(Object.getPrototypeOf(_ProductID.prototype), 'constructor', this).call(this, props);
-	    this._bind('onChangeSanphamStore', 'handleBoxLogin', 'hideBoxLogin', 'renderBoxLogin', 'renderProductDetail', 'hideBoxVerify');
-
-	    this.state = _extends({
-	      boxLogin: false,
-	      boxVerify: false,
-	      current: 1
-	    }, _storeSanphamStore2['default'].getState().product.toJS());
-	  }
-
-	  _createClass(ProductID, [{
-	    key: '_bind',
-	    value: function _bind() {
-	      var _this = this;
-
-	      for (var _len = arguments.length, methods = Array(_len), _key = 0; _key < _len; _key++) {
-	        methods[_key] = arguments[_key];
-	      }
-
-	      methods.forEach(function (method) {
-	        return _this[method] = _this[method].bind(_this);
-	      });
-	    }
-	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.HeadParams.setTitle(this.state.code + ' | tocu.vn');
-	      this.props.HeadParams.setDescription('' + this.state.boxName);
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      _storeSanphamStore2['default'].listen(this.onChangeSanphamStore);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      _storeSanphamStore2['default'].unlisten(this.onChangeSanphamStore);
-	    }
-	  }, {
-	    key: 'onChangeSanphamStore',
-	    value: function onChangeSanphamStore(state) {
-	      this.setState(_extends({}, state.product.toJS()));
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        null,
-	        _reactAddons2['default'].createElement(_componentsHeaderProductID2['default'], null),
-	        _reactAddons2['default'].createElement(
-	          'section',
-	          { id: 'productDetail' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'container' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'row' },
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { className: 'col-md-9 col-lg-9' },
-	                this.renderProductDetail(),
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'row row-bottom-detail' },
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-6 col-sm-4 col-md-4 col-lg-4' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'thumbnail' },
-	                      _reactAddons2['default'].createElement(
-	                        'a',
-	                        { className: '', href: '/box/1' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'img-Wrapper' },
-	                          _reactAddons2['default'].createElement('img', { className: 'img-max-height', src: 'http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg', alt: 'images' }),
-	                          _reactAddons2['default'].createElement('div', { className: 'divshowdow' })
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-list-news' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'list-news' },
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item' },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store' })
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '150.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item', style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'span',
-	                                      { className: 'imgIcon imgIcon-list' },
-	                                      _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
-	                                    )
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan dày'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '130.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            )
-	                          )
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-info' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'infoItem' },
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'titleItem' },
-	                              'Sơ mi xô Nhật Hàn'
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'countItem' },
-	                              '122 sản phẩm'
-	                            )
-	                          ),
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'socialItem' },
-	                            _reactAddons2['default'].createElement('span', { className: 'SmallIcon likeSmallIcon' }),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'socialMetaCount' },
-	                              '132k'
-	                            )
-	                          )
-	                        )
-	                      )
-	                    )
-	                  ),
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-6 col-sm-4 col-md-4 col-lg-4' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'thumbnail' },
-	                      _reactAddons2['default'].createElement(
-	                        'a',
-	                        { className: '', href: '/box/1' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'img-Wrapper' },
-	                          _reactAddons2['default'].createElement('img', { className: 'img-max-height', src: 'http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg', alt: 'images' }),
-	                          _reactAddons2['default'].createElement('div', { className: 'divshowdow' })
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-list-news' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'list-news' },
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item' },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store' })
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '150.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item', style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'span',
-	                                      { className: 'imgIcon imgIcon-list' },
-	                                      _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
-	                                    )
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan dày'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '130.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            )
-	                          )
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-info' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'infoItem' },
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'titleItem' },
-	                              'Sơ mi xô Nhật Hàn'
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'countItem' },
-	                              '122 sản phẩm'
-	                            )
-	                          ),
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'socialItem' },
-	                            _reactAddons2['default'].createElement('span', { className: 'SmallIcon likeSmallIcon' }),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'socialMetaCount' },
-	                              '132k'
-	                            )
-	                          )
-	                        )
-	                      )
-	                    )
-	                  ),
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-6 col-sm-4 col-md-4 col-lg-4' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'thumbnail' },
-	                      _reactAddons2['default'].createElement(
-	                        'a',
-	                        { className: '', href: '/box/1' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'img-Wrapper' },
-	                          _reactAddons2['default'].createElement('img', { className: 'img-max-height', src: 'http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg', alt: 'images' }),
-	                          _reactAddons2['default'].createElement('div', { className: 'divshowdow' })
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-list-news' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'list-news' },
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item' },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store' })
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '150.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item', style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'span',
-	                                      { className: 'imgIcon imgIcon-list' },
-	                                      _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
-	                                    )
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan dày'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '130.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            )
-	                          )
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-info' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'infoItem' },
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'titleItem' },
-	                              'Sơ mi xô Nhật Hàn'
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'countItem' },
-	                              '122 sản phẩm'
-	                            )
-	                          ),
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'socialItem' },
-	                            _reactAddons2['default'].createElement('span', { className: 'SmallIcon likeSmallIcon' }),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'socialMetaCount' },
-	                              '132k'
-	                            )
-	                          )
-	                        )
-	                      )
-	                    )
-	                  ),
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-6 col-sm-4 col-md-4 col-lg-4' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'thumbnail' },
-	                      _reactAddons2['default'].createElement(
-	                        'a',
-	                        { className: '', href: '/box/1' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'img-Wrapper' },
-	                          _reactAddons2['default'].createElement('img', { className: 'img-max-height', src: 'http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg', alt: 'images' }),
-	                          _reactAddons2['default'].createElement('div', { className: 'divshowdow' })
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-list-news' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'list-news' },
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item' },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store' })
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '150.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item', style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'span',
-	                                      { className: 'imgIcon imgIcon-list' },
-	                                      _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
-	                                    )
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan dày'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '130.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            )
-	                          )
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-info' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'infoItem' },
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'titleItem' },
-	                              'Sơ mi xô Nhật Hàn'
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'countItem' },
-	                              '122 sản phẩm'
-	                            )
-	                          ),
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'socialItem' },
-	                            _reactAddons2['default'].createElement('span', { className: 'SmallIcon likeSmallIcon' }),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'socialMetaCount' },
-	                              '132k'
-	                            )
-	                          )
-	                        )
-	                      )
-	                    )
-	                  ),
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-6 col-sm-4 col-md-4 col-lg-4' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'thumbnail' },
-	                      _reactAddons2['default'].createElement(
-	                        'a',
-	                        { className: '', href: '/box/1' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'img-Wrapper' },
-	                          _reactAddons2['default'].createElement('img', { className: 'img-max-height', src: 'http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg', alt: 'images' }),
-	                          _reactAddons2['default'].createElement('div', { className: 'divshowdow' })
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-list-news' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'list-news' },
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item' },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store' })
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '150.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item', style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'span',
-	                                      { className: 'imgIcon imgIcon-list' },
-	                                      _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
-	                                    )
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan dày'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '130.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            )
-	                          )
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-info' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'infoItem' },
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'titleItem' },
-	                              'Sơ mi xô Nhật Hàn'
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'countItem' },
-	                              '122 sản phẩm'
-	                            )
-	                          ),
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'socialItem' },
-	                            _reactAddons2['default'].createElement('span', { className: 'SmallIcon likeSmallIcon' }),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'socialMetaCount' },
-	                              '132k'
-	                            )
-	                          )
-	                        )
-	                      )
-	                    )
-	                  ),
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'col-xs-6 col-sm-4 col-md-4 col-lg-4' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'thumbnail' },
-	                      _reactAddons2['default'].createElement(
-	                        'a',
-	                        { className: '', href: '/box/1' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'img-Wrapper' },
-	                          _reactAddons2['default'].createElement('img', { className: 'img-max-height', src: 'http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg', alt: 'images' }),
-	                          _reactAddons2['default'].createElement('div', { className: 'divshowdow' })
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-list-news' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'list-news' },
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item' },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement('span', { className: 'imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store' })
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '150.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'div',
-	                              { className: 'list-item', style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
-	                              _reactAddons2['default'].createElement(
-	                                'div',
-	                                { className: 'item' },
-	                                _reactAddons2['default'].createElement(
-	                                  'div',
-	                                  { className: 'newsItem newCreditItem' },
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsImg' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'span',
-	                                      { className: 'imgIcon imgIcon-list' },
-	                                      _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
-	                                    )
-	                                  ),
-	                                  _reactAddons2['default'].createElement(
-	                                    'div',
-	                                    { className: 'newsText newsInfo' },
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      { className: 'creditTitle' },
-	                                      'Cardigan dày'
-	                                    ),
-	                                    _reactAddons2['default'].createElement(
-	                                      'p',
-	                                      null,
-	                                      _reactAddons2['default'].createElement(
-	                                        'strong',
-	                                        { className: 'creditCost' },
-	                                        '130.000 đ'
-	                                      )
-	                                    )
-	                                  )
-	                                )
-	                              )
-	                            )
-	                          )
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'thumbnail-info' },
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'infoItem' },
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'titleItem' },
-	                              'Sơ mi xô Nhật Hàn'
-	                            ),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'countItem' },
-	                              '122 sản phẩm'
-	                            )
-	                          ),
-	                          _reactAddons2['default'].createElement(
-	                            'div',
-	                            { className: 'socialItem' },
-	                            _reactAddons2['default'].createElement('span', { className: 'SmallIcon likeSmallIcon' }),
-	                            _reactAddons2['default'].createElement(
-	                              'span',
-	                              { className: 'socialMetaCount' },
-	                              '132k'
-	                            )
-	                          )
-	                        )
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { className: 'col-md-3 col-lg-3' },
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'row row-sidebar' },
-	                  _reactAddons2['default'].createElement(_componentsProductSidebar2['default'], _extends({
-	                    boxId: this.state.BoxId
-	                  }, this.state.Box)),
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'col-md-12 col-lg-12' },
-	                    _reactAddons2['default'].createElement(_componentsSale2['default'], null)
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        this.renderBoxLogin()
-	      );
-	    }
-	  }, {
-	    key: 'renderProductDetail',
-	    value: function renderProductDetail() {
-	      return _reactAddons2['default'].createElement(_componentsProduct2['default'], {
-	        handleBoxLogin: this.handleBoxLogin });
-	    }
-	  }, {
-	    key: 'renderBoxLogin',
-	    value: function renderBoxLogin() {
-	      if (this.state.boxLogin) {
-	        return _reactAddons2['default'].createElement(_componentsFormBoxSignIn2['default'], { hideBoxLogin: this.hideBoxLogin, location: this.props.location });
-	      }
-
-	      if (this.state.boxVerify) {
-	        return _reactAddons2['default'].createElement(_componentsFormBoxVerify2['default'], { hideBoxVerify: this.hideBoxVerify });
-	      }
-	    }
-	  }, {
-	    key: 'handleBoxLogin',
-	    value: function handleBoxLogin(val) {
-	      if (val === 'token') {
-	        this.setState({
-	          boxLogin: true
-	        });
-	      }
-	      if (val === 'verify') {
-	        _actionsVerifyActions2['default'].getCode();
-	        this.setState({
-	          boxVerify: true
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'hideBoxLogin',
-	    value: function hideBoxLogin() {
-	      this.setState({
-	        boxLogin: false
-	      });
-	    }
-	  }, {
-	    key: 'hideBoxVerify',
-	    value: function hideBoxVerify() {
-	      this.setState({
-	        boxVerify: false
-	      });
-	    }
-	  }]);
-
-	  var _ProductID = ProductID;
-	  ProductID = (0, _decorators.prepareRoute)(function callee$1$0(_ref) {
-	    var params = _ref.params;
-	    return _regeneratorRuntime.async(function callee$1$0$(context$2$0) {
-	      while (1) switch (context$2$0.prev = context$2$0.next) {
-	        case 0:
-	          context$2$0.next = 2;
-	          return _regeneratorRuntime.awrap(_Promise.all([_actionsSanphamActions2['default'].getSanphamID(params), _actionsSaleActions2['default'].getProductSale(), _actionsCityActions2['default'].getCity()]));
-
-	        case 2:
-	          return context$2$0.abrupt('return', context$2$0.sent);
-
-	        case 3:
-	        case 'end':
-	          return context$2$0.stop();
-	      }
-	    }, null, this);
-	  })(ProductID) || ProductID;
-	  return ProductID;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = ProductID;
-	;
-	module.exports = exports['default'];
-	/* Header */ /* 6 box auto */ /* Sidebar */ /* Sale */
-
-/***/ },
-/* 420 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(266)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(316);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(335);
-
-	var CityActions = (function () {
-	  function CityActions() {
-	    _classCallCheck(this, CityActions);
-	  }
-
-	  _createClass(CityActions, [{
-	    key: 'getCity',
-	    value: function getCity() {
-	      var self;
-	      return _regeneratorRuntime.async(function getCity$(context$2$0) {
-	        while (1) switch (context$2$0.prev = context$2$0.next) {
-	          case 0:
-	            self = this;
-	            context$2$0.next = 3;
-	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/city').then(function (res) {
-	              self.dispatch(res.data);
-	            })['catch'](function (res) {
-	              self.actions.getCityFailed(res.data);
-	            }));
-
-	          case 3:
-	          case 'end':
-	            return context$2$0.stop();
-	        }
-	      }, null, this);
-	    }
-
-	    /**
-	     * tìm quận huyện theo tình thành
-	     * @param  {string} city [tên tỉnh/thành phố]
-	     * @dispatch {[quận huyện]}
-	     */
-	  }, {
-	    key: 'getDistrict',
-	    value: function getDistrict(_ref) {
-	      var city = _ref.city;
-
-	      var self = this;
-
-	      _axios2['default'].post(_configSample.Api_URL + '/district', {
-	        city: city
-	      }).then(function (res) {
-	        self.dispatch(res.data);
-	      })['catch'](function (res) {
-	        self.actions.getDistrictFailed(res.data);
-	      });
-	    }
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	  }, {
-	    key: 'getCityFailed',
-	    value: function getCityFailed(err) {
-	      this.dispatch(err);
-	    }
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	  }, {
-	    key: 'getDistrictFailed',
-	    value: function getDistrictFailed(err) {
-	      this.dispatch(err);
-	    }
-	  }]);
-
-	  return CityActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(CityActions);
-
-/***/ },
-/* 421 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(266)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(316);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(335);
-
-	var SaleActions = (function () {
-			function SaleActions() {
-					_classCallCheck(this, SaleActions);
-			}
-
-			_createClass(SaleActions, [{
-					key: 'getProductSale',
-					value: function getProductSale() {
-							var self;
-							return _regeneratorRuntime.async(function getProductSale$(context$2$0) {
-									while (1) switch (context$2$0.prev = context$2$0.next) {
-											case 0:
-													self = this;
-													context$2$0.next = 3;
-													return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/product', {
-															params: {
-																	filters: 'salePrice!=null',
-																	limit: 5
-															}
-													}).then(function (res) {
-															self.dispatch(res.data);
-													}));
-
-											case 3:
-											case 'end':
-													return context$2$0.stop();
-									}
-							}, null, this);
-					}
-			}]);
-
-			return SaleActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(SaleActions);
-
-/***/ },
-/* 422 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(240);
-
-	/**
-	 * @Component
-	 */
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _SignIn = __webpack_require__(356);
-
-	var _SignIn2 = _interopRequireDefault(_SignIn);
-
-	var BoxsignIn = (function (_React$Component) {
-	  _inherits(BoxsignIn, _React$Component);
-
-	  function BoxsignIn(props) {
-	    _classCallCheck(this, BoxsignIn);
-
-	    _get(Object.getPrototypeOf(BoxsignIn.prototype), 'constructor', this).call(this, props);
-
-	    this.state = {};
-	  }
-
-	  _createClass(BoxsignIn, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2['default'].createElement(
-	        'div',
-	        { className: 'boxLogin' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'centrix' },
-	              _react2['default'].createElement(
-	                _SignIn2['default'],
-	                { replaceWith: this.props.hideBoxLogin, nextPath: this.props.location.pathname },
-	                _react2['default'].createElement(
-	                  'div',
-	                  { onClick: this.hideBoxLogin.bind(this), className: 'closeBox fa fa-times' },
-	                  _react2['default'].createElement('i', { 'class': 'fa fa-times' })
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'hideBoxLogin',
-	    value: function hideBoxLogin() {
-	      this.props.hideBoxLogin();
-	    }
-	  }]);
-
-	  return BoxsignIn;
-	})(_react2['default'].Component);
-
-	exports['default'] = BoxsignIn;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 423 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(240);
-
-	/**
-	 * @Component
-	 */
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Verify = __webpack_require__(412);
-
-	var _Verify2 = _interopRequireDefault(_Verify);
-
-	var BoxsignIn = (function (_React$Component) {
-	  _inherits(BoxsignIn, _React$Component);
-
-	  function BoxsignIn(props) {
-	    _classCallCheck(this, BoxsignIn);
-
-	    _get(Object.getPrototypeOf(BoxsignIn.prototype), 'constructor', this).call(this, props);
-
-	    this.state = {};
-	  }
-
-	  _createClass(BoxsignIn, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2['default'].createElement(
-	        'div',
-	        { className: 'boxLogin' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'centrix' },
-	              _react2['default'].createElement(
-	                _Verify2['default'],
-	                { hideBoxVerify: this.props.hideBoxVerify },
-	                _react2['default'].createElement(
-	                  'div',
-	                  { onClick: this.hideBoxVerify.bind(this), className: 'closeBox fa fa-times' },
-	                  _react2['default'].createElement('i', { 'class': 'fa fa-times' })
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'hideBoxVerify',
-	    value: function hideBoxVerify() {
-	      this.props.hideBoxVerify();
-	    }
-	  }]);
-
-	  return BoxsignIn;
-	})(_react2['default'].Component);
-
-	exports['default'] = BoxsignIn;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 424 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26954,63 +26141,63 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _validatorjs = __webpack_require__(359);
+	var _validatorjs = __webpack_require__(356);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _storeShipStore = __webpack_require__(425);
+	var _storeShipStore = __webpack_require__(426);
 
 	var _storeShipStore2 = _interopRequireDefault(_storeShipStore);
 
-	var _actionsShipActions = __webpack_require__(426);
+	var _actionsShipActions = __webpack_require__(427);
 
 	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
 
-	var _storeSanphamStore = __webpack_require__(350);
+	var _storeSanphamStore = __webpack_require__(349);
 
 	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
 
-	var _actionsSanphamActions = __webpack_require__(336);
+	var _actionsSanphamActions = __webpack_require__(335);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
-	var _storeCityStore = __webpack_require__(427);
+	var _storeCityStore = __webpack_require__(428);
 
 	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
 
-	var _actionsCityActions = __webpack_require__(420);
+	var _actionsCityActions = __webpack_require__(419);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _actionsOrderActions = __webpack_require__(337);
+	var _actionsOrderActions = __webpack_require__(336);
+
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
-
-	var _FormInputValidation = __webpack_require__(361);
+	var _FormInputValidation = __webpack_require__(429);
 
 	var _FormInputValidation2 = _interopRequireDefault(_FormInputValidation);
 
-	var _FormSelectValidation = __webpack_require__(428);
+	var _FormSelectValidation = __webpack_require__(430);
 
 	var _FormSelectValidation2 = _interopRequireDefault(_FormSelectValidation);
 
-	var _formNguoiNhan = __webpack_require__(429);
+	var _formNguoiNhan = __webpack_require__(431);
 
 	var _formNguoiNhan2 = _interopRequireDefault(_formNguoiNhan);
 
-	var _hinhthucVanchuyen = __webpack_require__(432);
+	var _hinhthucVanchuyen = __webpack_require__(433);
 
 	var _hinhthucVanchuyen2 = _interopRequireDefault(_hinhthucVanchuyen);
 
-	var _hinhthucThanhtoan = __webpack_require__(433);
+	var _hinhthucThanhtoan = __webpack_require__(434);
 
 	var _hinhthucThanhtoan2 = _interopRequireDefault(_hinhthucThanhtoan);
 
@@ -27385,7 +26572,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 425 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27404,7 +26591,7 @@ webpackJsonp([0],[
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsShipActions = __webpack_require__(426);
+	var _actionsShipActions = __webpack_require__(427);
 
 	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
 
@@ -27439,7 +26626,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(ShipStore, 'ShipStore');
 
 /***/ },
-/* 426 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27454,11 +26641,11 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _axios = __webpack_require__(316);
+	var _axios = __webpack_require__(315);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _configSample = __webpack_require__(335);
+	var _configSample = __webpack_require__(334);
 
 	var ShipActions = (function () {
 	  function ShipActions() {
@@ -27502,7 +26689,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(ShipActions);
 
 /***/ },
-/* 427 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27519,7 +26706,7 @@ webpackJsonp([0],[
 
 	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _actionsCityActions = __webpack_require__(420);
+	var _actionsCityActions = __webpack_require__(419);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
@@ -27579,7 +26766,108 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(CityStore, 'CityStore');
 
 /***/ },
-/* 428 */
+/* 429 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* @jsx React.DOM */
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _classnames = __webpack_require__(338);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'inputValidation',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      value: this.props.defaultValue
+	    };
+	  },
+	  propTypes: {
+	    validation: _reactAddons2['default'].PropTypes.object,
+	    onChange: _reactAddons2['default'].PropTypes.func,
+	    placeholder: _reactAddons2['default'].PropTypes.string,
+	    name: _reactAddons2['default'].PropTypes.string,
+	    type: _reactAddons2['default'].PropTypes.string
+	  },
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      validation: { hasError: false },
+	      placeholder: '',
+	      type: 'text'
+	    };
+	  },
+	  render: function render() {
+	    var classes = (0, _classnames2['default'])({
+	      "form-group": true,
+	      "has-error": this.props.validator.hasError
+	    });
+	    var classesInput = (0, _classnames2['default'])({
+	      "form-control": true,
+	      "input-lg": this.props.size === "lg"
+	    });
+
+	    var erros;
+
+	    if (this.props.validator.errorTextRequest !== "") {
+	      erros = _reactAddons2['default'].createElement(
+	        'label',
+	        { className: 'control-label', htmlFor: this.props.name },
+	        this.props.validator.errorTextRequest
+	      );
+	    } else {
+	      erros = _reactAddons2['default'].createElement(
+	        'label',
+	        { className: 'control-label', htmlFor: this.props.name },
+	        this.props.validator.errorMessage
+	      );
+	    }
+
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      { className: classes },
+	      this.props.validator.hasError && erros,
+	      _reactAddons2['default'].createElement('input', {
+	        className: classesInput,
+	        type: this.props.type,
+	        value: this.state.value,
+	        name: this.props.name,
+	        onChange: this._onChange,
+	        onBlur: this._onBlur,
+	        placeholder: this.props.placeholder })
+	    );
+	  },
+	  _onChange: function _onChange(e) {
+	    var value = e.target.value;
+	    this.setValue(value);
+	    this.props.onChange(this.props.name, value);
+	  },
+	  _onBlur: function _onBlur(e) {
+	    var value = e.target.value;
+	    this.props.onChange(this.props.name, value);
+	  },
+	  setValue: function setValue(txt) {
+	    this.setState({ value: txt });
+	  },
+	  getValue: function getValue() {
+	    return this.state.value;
+	  }
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27594,7 +26882,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -27706,7 +26994,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 429 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27719,7 +27007,7 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _Object$keys = __webpack_require__(357)['default'];
+	var _Object$keys = __webpack_require__(354)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -27731,27 +27019,27 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _validatorjs = __webpack_require__(359);
+	var _validatorjs = __webpack_require__(356);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _actionsShipActions = __webpack_require__(426);
+	var _actionsShipActions = __webpack_require__(427);
+
+	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
-
-	var _FormInputValidationLabel = __webpack_require__(430);
+	var _FormInputValidationLabel = __webpack_require__(358);
 
 	var _FormInputValidationLabel2 = _interopRequireDefault(_FormInputValidationLabel);
 
-	var _FormSelectValidationLabel = __webpack_require__(431);
+	var _FormSelectValidationLabel = __webpack_require__(432);
 
 	var _FormSelectValidationLabel2 = _interopRequireDefault(_FormSelectValidationLabel);
 
@@ -28017,108 +27305,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 430 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* @jsx React.DOM */
-	'use strict';
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _classnames = __webpack_require__(344);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	exports['default'] = _reactAddons2['default'].createClass({
-	  displayName: 'inputValidationLabel',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      value: this.props.defaultValue
-	    };
-	  },
-	  propTypes: {
-	    validation: _reactAddons2['default'].PropTypes.object,
-	    onChange: _reactAddons2['default'].PropTypes.func,
-	    placeholder: _reactAddons2['default'].PropTypes.string,
-	    name: _reactAddons2['default'].PropTypes.string,
-	    type: _reactAddons2['default'].PropTypes.string
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      validation: { hasError: false },
-	      placeholder: '',
-	      type: 'text'
-	    };
-	  },
-	  render: function render() {
-	    var classes = (0, _classnames2['default'])({
-	      "form-group": true,
-	      "has-error": this.props.validator.hasError
-	    });
-	    var classesInput = (0, _classnames2['default'])({
-	      "form-control": true,
-	      "input-lg": this.props.size === "lg"
-	    });
-
-	    var erros = _reactAddons2['default'].createElement('label', { className: 'control-label', htmlFor: this.props.name });
-
-	    if (this.props.validator.errorTextRequest !== "") {
-	      erros = _reactAddons2['default'].createElement(
-	        'label',
-	        { className: 'control-label', htmlFor: this.props.name },
-	        this.props.validator.errorTextRequest
-	      );
-	    } else {
-	      erros = _reactAddons2['default'].createElement(
-	        'label',
-	        { className: 'control-label', htmlFor: this.props.name },
-	        this.props.validator.errorMessage
-	      );
-	    }
-
-	    return _reactAddons2['default'].createElement(
-	      'div',
-	      { className: classes },
-	      erros,
-	      _reactAddons2['default'].createElement('input', {
-	        className: classesInput,
-	        type: this.props.type,
-	        value: this.state.value,
-	        name: this.props.name,
-	        onChange: this._onChange,
-	        onBlur: this._onBlur,
-	        placeholder: this.props.placeholder })
-	    );
-	  },
-	  _onChange: function _onChange(e) {
-	    var value = e.target.value;
-	    this.setValue(value);
-	    this.props.onChange(this.props.name, value);
-	  },
-	  _onBlur: function _onBlur(e) {
-	    var value = e.target.value;
-	    this.props.onChange(this.props.name, value);
-	  },
-	  setValue: function setValue(txt) {
-	    this.setState({ value: txt });
-	  },
-	  getValue: function getValue() {
-	    return this.state.value;
-	  }
-	});
-	module.exports = exports['default'];
-
-/***/ },
-/* 431 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28133,7 +27320,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -28251,7 +27438,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 432 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28274,7 +27461,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -28594,7 +27781,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 433 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28617,7 +27804,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -28790,7 +27977,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 434 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28813,51 +28000,51 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _storeSanphamStore = __webpack_require__(350);
+	var _storeSanphamStore = __webpack_require__(349);
 
 	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
 
-	var _storeAuthStore = __webpack_require__(345);
+	var _storeAuthStore = __webpack_require__(344);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
-	var _storeOrderStore = __webpack_require__(349);
+	var _storeOrderStore = __webpack_require__(348);
 
 	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
 
-	var _actionsSanphamActions = __webpack_require__(336);
+	var _actionsSanphamActions = __webpack_require__(335);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
-	var _actionsOrderActions = __webpack_require__(337);
+	var _actionsOrderActions = __webpack_require__(336);
+
+	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
-
-	var _HeaderNavbarNavbarProductDetail = __webpack_require__(435);
+	var _HeaderNavbarNavbarProductDetail = __webpack_require__(436);
 
 	var _HeaderNavbarNavbarProductDetail2 = _interopRequireDefault(_HeaderNavbarNavbarProductDetail);
 
-	var _ImgSlideProduct = __webpack_require__(436);
+	var _ImgSlideProduct = __webpack_require__(437);
 
 	var _ImgSlideProduct2 = _interopRequireDefault(_ImgSlideProduct);
 
-	var _InfoSanpham = __webpack_require__(438);
+	var _InfoSanpham = __webpack_require__(439);
 
 	var _InfoSanpham2 = _interopRequireDefault(_InfoSanpham);
 
-	var _Detail = __webpack_require__(439);
+	var _Detail = __webpack_require__(440);
 
 	var _Detail2 = _interopRequireDefault(_Detail);
 
-	var _Mau = __webpack_require__(440);
+	var _Mau = __webpack_require__(441);
 
 	var _Mau2 = _interopRequireDefault(_Mau);
 
@@ -28967,7 +28154,7 @@ webpackJsonp([0],[
 	/* Slide image */ /* Detail */ /* Thong tin San pham */ /* Thong tin nguoi mau */
 
 /***/ },
-/* 435 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28992,7 +28179,7 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -29006,7 +28193,8 @@ webpackJsonp([0],[
 	    this._bind('Like', 'Share', 'Cart', 'handleScroll');
 
 	    this.state = {
-	      hideHeader: false
+	      hideHeader: false,
+	      NavbarWidth: null
 	    };
 	  }
 
@@ -29036,10 +28224,12 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'handleScroll',
 	    value: function handleScroll(e) {
+	      var offsetWidth = this.refs.navbar.getDOMNode().offsetWidth;
 	      var scrollTop = window.scrollY;
 	      var hideHeader = scrollTop >= 80;
 	      this.setState({
-	        hideHeader: hideHeader
+	        hideHeader: hideHeader,
+	        NavbarWidth: offsetWidth
 	      });
 	    }
 	  }, {
@@ -29052,51 +28242,55 @@ webpackJsonp([0],[
 
 	      return _reactAddons2['default'].createElement(
 	        'div',
-	        { className: classesNavbar },
+	        { ref: 'navbar' },
 	        _reactAddons2['default'].createElement(
-	          'nav',
-	          { className: 'navbar navbar-tocu' },
+	          'div',
+	          { className: classesNavbar, style: { width: this.state.NavbarWidth } },
 	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'navbar-header' },
+	            'nav',
+	            { className: 'navbar navbar-tocu' },
 	            _reactAddons2['default'].createElement(
 	              'div',
-	              { className: 'btn-group' },
+	              { className: 'navbar-header' },
 	              _reactAddons2['default'].createElement(
-	                'button',
-	                { onClick: this.Like, type: 'button', className: 'btn btn-default navbar-btn' },
+	                'div',
+	                { className: 'btn-group' },
 	                _reactAddons2['default'].createElement(
-	                  'i',
-	                  { className: 'fa fa-heart gray' },
-	                  ' '
+	                  'button',
+	                  { onClick: this.Like, type: 'button', className: 'btn btn-default navbar-btn' },
+	                  _reactAddons2['default'].createElement(
+	                    'i',
+	                    { className: 'fa fa-heart gray' },
+	                    ' '
+	                  ),
+	                  ' Thích'
 	                ),
-	                ' Thích'
+	                _reactAddons2['default'].createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-default count-like navbar-btn' },
+	                  _reactAddons2['default'].createElement(
+	                    'span',
+	                    null,
+	                    this.props.product.get('likesCount')
+	                  )
+	                )
 	              ),
 	              _reactAddons2['default'].createElement(
 	                'button',
-	                { type: 'button', className: 'btn btn-default count-like navbar-btn' },
+	                { onClick: this.Share, type: 'button', className: 'btn btn-default navbar-btn' },
 	                _reactAddons2['default'].createElement(
-	                  'span',
-	                  null,
-	                  this.props.product.get('likesCount')
-	                )
+	                  'i',
+	                  { className: 'fa fa-facebook-square gray' },
+	                  '  '
+	                ),
+	                'Chia sẻ'
 	              )
 	            ),
 	            _reactAddons2['default'].createElement(
-	              'button',
-	              { onClick: this.Share, type: 'button', className: 'btn btn-default navbar-btn' },
-	              _reactAddons2['default'].createElement(
-	                'i',
-	                { className: 'fa fa-facebook-square gray' },
-	                '  '
-	              ),
-	              'Chia sẻ'
+	              'div',
+	              { className: 'nav navbar-nav navbar-right' },
+	              this.renderBtn()
 	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'nav navbar-nav navbar-right' },
-	            this.renderBtn()
 	          )
 	        )
 	      );
@@ -29144,12 +28338,8 @@ webpackJsonp([0],[
 	    key: 'boxLogin',
 	    value: function boxLogin(cb) {
 	      if (!this.props.auth.get('access_token')) {
-	        this.props.handleBoxLogin('token');
+	        this.props.handleBoxLogin();
 	      } else {
-	        if (!this.props.auth.get('isVerifyMobilePhone')) {
-	          this.props.handleBoxLogin('verify');
-	          return;
-	        }
 	        cb();
 	      }
 	    }
@@ -29167,9 +28357,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'Share',
 	    value: function Share() {
-	      this.boxLogin(function () {
-	        console.log('Share');
-	      });
+	      console.log('Share');
 	    }
 	  }, {
 	    key: 'Cart',
@@ -29193,7 +28381,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 436 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29214,13 +28402,13 @@ webpackJsonp([0],[
 
 	var _reactAddons = __webpack_require__(16);
 
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
 	/**
 	 * @Component
 	 */
 
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _lightBoxSlideImg = __webpack_require__(437);
+	var _lightBoxSlideImg = __webpack_require__(438);
 
 	var _lightBoxSlideImg2 = _interopRequireDefault(_lightBoxSlideImg);
 
@@ -29364,7 +28552,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 437 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29387,7 +28575,7 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -29508,7 +28696,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 438 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29595,7 +28783,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 439 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29705,7 +28893,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 440 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29893,7 +29081,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 441 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29918,27 +29106,27 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _validatorjs = __webpack_require__(359);
+	var _validatorjs = __webpack_require__(356);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _moment = __webpack_require__(442);
+	var _moment = __webpack_require__(443);
 
 	var _moment2 = _interopRequireDefault(_moment);
 
-	var _storeOrderStore = __webpack_require__(349);
+	var _storeOrderStore = __webpack_require__(348);
 
 	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
 
-	var _storeSanphamStore = __webpack_require__(350);
+	var _storeSanphamStore = __webpack_require__(349);
 
 	var _storeSanphamStore2 = _interopRequireDefault(_storeSanphamStore);
 
-	var _actionsOrderActions = __webpack_require__(337);
+	var _actionsOrderActions = __webpack_require__(336);
 
 	var _actionsOrderActions2 = _interopRequireDefault(_actionsOrderActions);
 
@@ -30165,7 +29353,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 442 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -30436,7 +29624,7 @@ webpackJsonp([0],[
 	                module && module.exports) {
 	            try {
 	                oldLocale = globalLocale._abbr;
-	                __webpack_require__(443)("./" + name);
+	                __webpack_require__(444)("./" + name);
 	                // because defineLocale currently also sets the global locale, we
 	                // want to undo that for lazy loaded locales
 	                locale_locales__getSetGlobalLocale(oldLocale);
@@ -33363,183 +32551,183 @@ webpackJsonp([0],[
 	    return _moment;
 
 	}));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(331)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(330)(module)))
 
 /***/ },
-/* 443 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 444,
-		"./af.js": 444,
-		"./ar": 445,
-		"./ar-ma": 446,
-		"./ar-ma.js": 446,
-		"./ar-sa": 447,
-		"./ar-sa.js": 447,
-		"./ar-tn": 448,
-		"./ar-tn.js": 448,
-		"./ar.js": 445,
-		"./az": 449,
-		"./az.js": 449,
-		"./be": 450,
-		"./be.js": 450,
-		"./bg": 451,
-		"./bg.js": 451,
-		"./bn": 452,
-		"./bn.js": 452,
-		"./bo": 453,
-		"./bo.js": 453,
-		"./br": 454,
-		"./br.js": 454,
-		"./bs": 455,
-		"./bs.js": 455,
-		"./ca": 456,
-		"./ca.js": 456,
-		"./cs": 457,
-		"./cs.js": 457,
-		"./cv": 458,
-		"./cv.js": 458,
-		"./cy": 459,
-		"./cy.js": 459,
-		"./da": 460,
-		"./da.js": 460,
-		"./de": 461,
-		"./de-at": 462,
-		"./de-at.js": 462,
-		"./de.js": 461,
-		"./el": 463,
-		"./el.js": 463,
-		"./en-au": 464,
-		"./en-au.js": 464,
-		"./en-ca": 465,
-		"./en-ca.js": 465,
-		"./en-gb": 466,
-		"./en-gb.js": 466,
-		"./eo": 467,
-		"./eo.js": 467,
-		"./es": 468,
-		"./es.js": 468,
-		"./et": 469,
-		"./et.js": 469,
-		"./eu": 470,
-		"./eu.js": 470,
-		"./fa": 471,
-		"./fa.js": 471,
-		"./fi": 472,
-		"./fi.js": 472,
-		"./fo": 473,
-		"./fo.js": 473,
-		"./fr": 474,
-		"./fr-ca": 475,
-		"./fr-ca.js": 475,
-		"./fr.js": 474,
-		"./fy": 476,
-		"./fy.js": 476,
-		"./gl": 477,
-		"./gl.js": 477,
-		"./he": 478,
-		"./he.js": 478,
-		"./hi": 479,
-		"./hi.js": 479,
-		"./hr": 480,
-		"./hr.js": 480,
-		"./hu": 481,
-		"./hu.js": 481,
-		"./hy-am": 482,
-		"./hy-am.js": 482,
-		"./id": 483,
-		"./id.js": 483,
-		"./is": 484,
-		"./is.js": 484,
-		"./it": 485,
-		"./it.js": 485,
-		"./ja": 486,
-		"./ja.js": 486,
-		"./jv": 487,
-		"./jv.js": 487,
-		"./ka": 488,
-		"./ka.js": 488,
-		"./km": 489,
-		"./km.js": 489,
-		"./ko": 490,
-		"./ko.js": 490,
-		"./lb": 491,
-		"./lb.js": 491,
-		"./lt": 492,
-		"./lt.js": 492,
-		"./lv": 493,
-		"./lv.js": 493,
-		"./me": 494,
-		"./me.js": 494,
-		"./mk": 495,
-		"./mk.js": 495,
-		"./ml": 496,
-		"./ml.js": 496,
-		"./mr": 497,
-		"./mr.js": 497,
-		"./ms": 498,
-		"./ms-my": 499,
-		"./ms-my.js": 499,
-		"./ms.js": 498,
-		"./my": 500,
-		"./my.js": 500,
-		"./nb": 501,
-		"./nb.js": 501,
-		"./ne": 502,
-		"./ne.js": 502,
-		"./nl": 503,
-		"./nl.js": 503,
-		"./nn": 504,
-		"./nn.js": 504,
-		"./pl": 505,
-		"./pl.js": 505,
-		"./pt": 506,
-		"./pt-br": 507,
-		"./pt-br.js": 507,
-		"./pt.js": 506,
-		"./ro": 508,
-		"./ro.js": 508,
-		"./ru": 509,
-		"./ru.js": 509,
-		"./si": 510,
-		"./si.js": 510,
-		"./sk": 511,
-		"./sk.js": 511,
-		"./sl": 512,
-		"./sl.js": 512,
-		"./sq": 513,
-		"./sq.js": 513,
-		"./sr": 514,
-		"./sr-cyrl": 515,
-		"./sr-cyrl.js": 515,
-		"./sr.js": 514,
-		"./sv": 516,
-		"./sv.js": 516,
-		"./ta": 517,
-		"./ta.js": 517,
-		"./th": 518,
-		"./th.js": 518,
-		"./tl-ph": 519,
-		"./tl-ph.js": 519,
-		"./tr": 520,
-		"./tr.js": 520,
-		"./tzl": 521,
-		"./tzl.js": 521,
-		"./tzm": 522,
-		"./tzm-latn": 523,
-		"./tzm-latn.js": 523,
-		"./tzm.js": 522,
-		"./uk": 524,
-		"./uk.js": 524,
-		"./uz": 525,
-		"./uz.js": 525,
-		"./vi": 526,
-		"./vi.js": 526,
-		"./zh-cn": 527,
-		"./zh-cn.js": 527,
-		"./zh-tw": 528,
-		"./zh-tw.js": 528
+		"./af": 445,
+		"./af.js": 445,
+		"./ar": 446,
+		"./ar-ma": 447,
+		"./ar-ma.js": 447,
+		"./ar-sa": 448,
+		"./ar-sa.js": 448,
+		"./ar-tn": 449,
+		"./ar-tn.js": 449,
+		"./ar.js": 446,
+		"./az": 450,
+		"./az.js": 450,
+		"./be": 451,
+		"./be.js": 451,
+		"./bg": 452,
+		"./bg.js": 452,
+		"./bn": 453,
+		"./bn.js": 453,
+		"./bo": 454,
+		"./bo.js": 454,
+		"./br": 455,
+		"./br.js": 455,
+		"./bs": 456,
+		"./bs.js": 456,
+		"./ca": 457,
+		"./ca.js": 457,
+		"./cs": 458,
+		"./cs.js": 458,
+		"./cv": 459,
+		"./cv.js": 459,
+		"./cy": 460,
+		"./cy.js": 460,
+		"./da": 461,
+		"./da.js": 461,
+		"./de": 462,
+		"./de-at": 463,
+		"./de-at.js": 463,
+		"./de.js": 462,
+		"./el": 464,
+		"./el.js": 464,
+		"./en-au": 465,
+		"./en-au.js": 465,
+		"./en-ca": 466,
+		"./en-ca.js": 466,
+		"./en-gb": 467,
+		"./en-gb.js": 467,
+		"./eo": 468,
+		"./eo.js": 468,
+		"./es": 469,
+		"./es.js": 469,
+		"./et": 470,
+		"./et.js": 470,
+		"./eu": 471,
+		"./eu.js": 471,
+		"./fa": 472,
+		"./fa.js": 472,
+		"./fi": 473,
+		"./fi.js": 473,
+		"./fo": 474,
+		"./fo.js": 474,
+		"./fr": 475,
+		"./fr-ca": 476,
+		"./fr-ca.js": 476,
+		"./fr.js": 475,
+		"./fy": 477,
+		"./fy.js": 477,
+		"./gl": 478,
+		"./gl.js": 478,
+		"./he": 479,
+		"./he.js": 479,
+		"./hi": 480,
+		"./hi.js": 480,
+		"./hr": 481,
+		"./hr.js": 481,
+		"./hu": 482,
+		"./hu.js": 482,
+		"./hy-am": 483,
+		"./hy-am.js": 483,
+		"./id": 484,
+		"./id.js": 484,
+		"./is": 485,
+		"./is.js": 485,
+		"./it": 486,
+		"./it.js": 486,
+		"./ja": 487,
+		"./ja.js": 487,
+		"./jv": 488,
+		"./jv.js": 488,
+		"./ka": 489,
+		"./ka.js": 489,
+		"./km": 490,
+		"./km.js": 490,
+		"./ko": 491,
+		"./ko.js": 491,
+		"./lb": 492,
+		"./lb.js": 492,
+		"./lt": 493,
+		"./lt.js": 493,
+		"./lv": 494,
+		"./lv.js": 494,
+		"./me": 495,
+		"./me.js": 495,
+		"./mk": 496,
+		"./mk.js": 496,
+		"./ml": 497,
+		"./ml.js": 497,
+		"./mr": 498,
+		"./mr.js": 498,
+		"./ms": 499,
+		"./ms-my": 500,
+		"./ms-my.js": 500,
+		"./ms.js": 499,
+		"./my": 501,
+		"./my.js": 501,
+		"./nb": 502,
+		"./nb.js": 502,
+		"./ne": 503,
+		"./ne.js": 503,
+		"./nl": 504,
+		"./nl.js": 504,
+		"./nn": 505,
+		"./nn.js": 505,
+		"./pl": 506,
+		"./pl.js": 506,
+		"./pt": 507,
+		"./pt-br": 508,
+		"./pt-br.js": 508,
+		"./pt.js": 507,
+		"./ro": 509,
+		"./ro.js": 509,
+		"./ru": 510,
+		"./ru.js": 510,
+		"./si": 511,
+		"./si.js": 511,
+		"./sk": 512,
+		"./sk.js": 512,
+		"./sl": 513,
+		"./sl.js": 513,
+		"./sq": 514,
+		"./sq.js": 514,
+		"./sr": 515,
+		"./sr-cyrl": 516,
+		"./sr-cyrl.js": 516,
+		"./sr.js": 515,
+		"./sv": 517,
+		"./sv.js": 517,
+		"./ta": 518,
+		"./ta.js": 518,
+		"./th": 519,
+		"./th.js": 519,
+		"./tl-ph": 520,
+		"./tl-ph.js": 520,
+		"./tr": 521,
+		"./tr.js": 521,
+		"./tzl": 522,
+		"./tzl.js": 522,
+		"./tzm": 523,
+		"./tzm-latn": 524,
+		"./tzm-latn.js": 524,
+		"./tzm.js": 523,
+		"./uk": 525,
+		"./uk.js": 525,
+		"./uz": 526,
+		"./uz.js": 526,
+		"./vi": 527,
+		"./vi.js": 527,
+		"./zh-cn": 528,
+		"./zh-cn.js": 528,
+		"./zh-tw": 529,
+		"./zh-tw.js": 529
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -33552,11 +32740,11 @@ webpackJsonp([0],[
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 443;
+	webpackContext.id = 444;
 
 
 /***/ },
-/* 444 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -33564,7 +32752,7 @@ webpackJsonp([0],[
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -33633,7 +32821,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 445 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -33643,7 +32831,7 @@ webpackJsonp([0],[
 	//! Native plural forms: forabi https://github.com/forabi
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -33773,7 +32961,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 446 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -33782,7 +32970,7 @@ webpackJsonp([0],[
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -33836,7 +33024,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 447 */
+/* 448 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -33844,7 +33032,7 @@ webpackJsonp([0],[
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -33943,14 +33131,14 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 448 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  : Tunisian Arabic (ar-tn)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34004,7 +33192,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 449 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34012,7 +33200,7 @@ webpackJsonp([0],[
 	//! author : topchiyev : https://github.com/topchiyev
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34112,7 +33300,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 450 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34122,7 +33310,7 @@ webpackJsonp([0],[
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34263,7 +33451,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 451 */
+/* 452 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34271,7 +33459,7 @@ webpackJsonp([0],[
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34357,7 +33545,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 452 */
+/* 453 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34365,7 +33553,7 @@ webpackJsonp([0],[
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34474,7 +33662,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 453 */
+/* 454 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34482,7 +33670,7 @@ webpackJsonp([0],[
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34588,7 +33776,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 454 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34596,7 +33784,7 @@ webpackJsonp([0],[
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34699,7 +33887,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 455 */
+/* 456 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34708,7 +33896,7 @@ webpackJsonp([0],[
 	//! based on (hr) translation by Bojan Marković
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34844,7 +34032,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 456 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34852,7 +34040,7 @@ webpackJsonp([0],[
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34927,7 +34115,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 457 */
+/* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34935,7 +34123,7 @@ webpackJsonp([0],[
 	//! author : petrbela : https://github.com/petrbela
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35088,7 +34276,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 458 */
+/* 459 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35096,7 +34284,7 @@ webpackJsonp([0],[
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35155,7 +34343,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 459 */
+/* 460 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35163,7 +34351,7 @@ webpackJsonp([0],[
 	//! author : Robert Allen
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35238,7 +34426,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 460 */
+/* 461 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35246,7 +34434,7 @@ webpackJsonp([0],[
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35302,7 +34490,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 461 */
+/* 462 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35311,7 +34499,7 @@ webpackJsonp([0],[
 	//! author: Menelion Elensúle: https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35381,7 +34569,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 462 */
+/* 463 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35391,7 +34579,7 @@ webpackJsonp([0],[
 	//! author : Martin Groller : https://github.com/MadMG
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35461,7 +34649,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 463 */
+/* 464 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35469,7 +34657,7 @@ webpackJsonp([0],[
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35559,14 +34747,14 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 464 */
+/* 465 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : australian english (en-au)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35629,7 +34817,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 465 */
+/* 466 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35637,7 +34825,7 @@ webpackJsonp([0],[
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35696,7 +34884,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 466 */
+/* 467 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35704,7 +34892,7 @@ webpackJsonp([0],[
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35767,7 +34955,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 467 */
+/* 468 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35777,7 +34965,7 @@ webpackJsonp([0],[
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35844,7 +35032,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 468 */
+/* 469 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35852,7 +35040,7 @@ webpackJsonp([0],[
 	//! author : Julio Napurí : https://github.com/julionc
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35927,7 +35115,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 469 */
+/* 470 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35936,7 +35124,7 @@ webpackJsonp([0],[
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36011,7 +35199,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 470 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36019,7 +35207,7 @@ webpackJsonp([0],[
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36079,7 +35267,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 471 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36087,7 +35275,7 @@ webpackJsonp([0],[
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36188,7 +35376,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 472 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36196,7 +35384,7 @@ webpackJsonp([0],[
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36299,7 +35487,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 473 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36307,7 +35495,7 @@ webpackJsonp([0],[
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36363,7 +35551,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 474 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36371,7 +35559,7 @@ webpackJsonp([0],[
 	//! author : John Fischer : https://github.com/jfroffice
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36429,7 +35617,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 475 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36437,7 +35625,7 @@ webpackJsonp([0],[
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36491,7 +35679,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 476 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36499,7 +35687,7 @@ webpackJsonp([0],[
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36566,7 +35754,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 477 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36574,7 +35762,7 @@ webpackJsonp([0],[
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36645,7 +35833,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 478 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36655,7 +35843,7 @@ webpackJsonp([0],[
 	//! author : Tal Ater : https://github.com/TalAter
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36731,7 +35919,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 479 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36739,7 +35927,7 @@ webpackJsonp([0],[
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36858,7 +36046,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 480 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36866,7 +36054,7 @@ webpackJsonp([0],[
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37002,7 +36190,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 481 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37010,7 +36198,7 @@ webpackJsonp([0],[
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37115,7 +36303,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 482 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37123,7 +36311,7 @@ webpackJsonp([0],[
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37230,7 +36418,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 483 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37239,7 +36427,7 @@ webpackJsonp([0],[
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37317,7 +36505,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 484 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37325,7 +36513,7 @@ webpackJsonp([0],[
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37448,7 +36636,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 485 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37457,7 +36645,7 @@ webpackJsonp([0],[
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37522,7 +36710,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 486 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37530,7 +36718,7 @@ webpackJsonp([0],[
 	//! author : LI Long : https://github.com/baryon
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37591,7 +36779,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 487 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37600,7 +36788,7 @@ webpackJsonp([0],[
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37678,7 +36866,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 488 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37686,7 +36874,7 @@ webpackJsonp([0],[
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37785,7 +36973,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 489 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37793,7 +36981,7 @@ webpackJsonp([0],[
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37847,7 +37035,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 490 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37859,7 +37047,7 @@ webpackJsonp([0],[
 	//! - Jeeeyul Lee <jeeeyul@gmail.com>
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37919,7 +37107,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 491 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37927,7 +37115,7 @@ webpackJsonp([0],[
 	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38057,7 +37245,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 492 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38065,7 +37253,7 @@ webpackJsonp([0],[
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38186,7 +37374,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 493 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38195,7 +37383,7 @@ webpackJsonp([0],[
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38286,7 +37474,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 494 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38294,7 +37482,7 @@ webpackJsonp([0],[
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38399,7 +37587,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 495 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38407,7 +37595,7 @@ webpackJsonp([0],[
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38493,7 +37681,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 496 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38501,7 +37689,7 @@ webpackJsonp([0],[
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38568,7 +37756,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 497 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38576,7 +37764,7 @@ webpackJsonp([0],[
 	//! author : Harshad Kale : https://github.com/kalehv
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38693,7 +37881,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 498 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38701,7 +37889,7 @@ webpackJsonp([0],[
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38779,7 +37967,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 499 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38787,7 +37975,7 @@ webpackJsonp([0],[
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38865,7 +38053,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 500 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38873,7 +38061,7 @@ webpackJsonp([0],[
 	//! author : Squar team, mysquar.com
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38962,7 +38150,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 501 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38971,7 +38159,7 @@ webpackJsonp([0],[
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39027,7 +38215,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 502 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39035,7 +38223,7 @@ webpackJsonp([0],[
 	//! author : suvash : https://github.com/suvash
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39154,7 +38342,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 503 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39162,7 +38350,7 @@ webpackJsonp([0],[
 	//! author : Joris Röling : https://github.com/jjupiter
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39229,7 +38417,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 504 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39237,7 +38425,7 @@ webpackJsonp([0],[
 	//! author : https://github.com/mechuwind
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39293,7 +38481,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 505 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39301,7 +38489,7 @@ webpackJsonp([0],[
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39402,7 +38590,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 506 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39410,7 +38598,7 @@ webpackJsonp([0],[
 	//! author : Jefferson : https://github.com/jalex79
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39470,7 +38658,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 507 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39478,7 +38666,7 @@ webpackJsonp([0],[
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39534,7 +38722,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 508 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39543,7 +38731,7 @@ webpackJsonp([0],[
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39612,7 +38800,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 509 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39621,7 +38809,7 @@ webpackJsonp([0],[
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39780,7 +38968,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 510 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39788,7 +38976,7 @@ webpackJsonp([0],[
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39849,7 +39037,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 511 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39858,7 +39046,7 @@ webpackJsonp([0],[
 	//! based on work of petrbela : https://github.com/petrbela
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40011,7 +39199,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 512 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40019,7 +39207,7 @@ webpackJsonp([0],[
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40175,7 +39363,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 513 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40185,7 +39373,7 @@ webpackJsonp([0],[
 	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40248,7 +39436,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 514 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40256,7 +39444,7 @@ webpackJsonp([0],[
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40360,7 +39548,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 515 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40368,7 +39556,7 @@ webpackJsonp([0],[
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40472,7 +39660,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 516 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40480,7 +39668,7 @@ webpackJsonp([0],[
 	//! author : Jens Alm : https://github.com/ulmus
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40543,7 +39731,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 517 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40551,7 +39739,7 @@ webpackJsonp([0],[
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40642,7 +39830,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 518 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40650,7 +39838,7 @@ webpackJsonp([0],[
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40711,7 +39899,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 519 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40719,7 +39907,7 @@ webpackJsonp([0],[
 	//! author : Dan Hagman
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40777,7 +39965,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 520 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40786,7 +39974,7 @@ webpackJsonp([0],[
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40871,7 +40059,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 521 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40879,7 +40067,7 @@ webpackJsonp([0],[
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40960,7 +40148,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 522 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40968,7 +40156,7 @@ webpackJsonp([0],[
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41022,7 +40210,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 523 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41030,7 +40218,7 @@ webpackJsonp([0],[
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41084,7 +40272,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 524 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41093,7 +40281,7 @@ webpackJsonp([0],[
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41241,7 +40429,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 525 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41249,7 +40437,7 @@ webpackJsonp([0],[
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41303,7 +40491,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 526 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41311,7 +40499,7 @@ webpackJsonp([0],[
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41373,7 +40561,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 527 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41382,7 +40570,7 @@ webpackJsonp([0],[
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41504,7 +40692,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 528 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41512,7 +40700,7 @@ webpackJsonp([0],[
 	//! author : Ben : https://github.com/ben-lin
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(442)) :
+	    true ? factory(__webpack_require__(443)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41609,7 +40797,7 @@ webpackJsonp([0],[
 	}));
 
 /***/ },
-/* 529 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41634,11 +40822,11 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _storeOrderStore = __webpack_require__(349);
+	var _storeOrderStore = __webpack_require__(348);
 
 	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
 
@@ -41748,130 +40936,6 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 530 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* @jsx React.DOM */
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactRouter = __webpack_require__(238);
-
-	var _classnames = __webpack_require__(344);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _storeAuthStore = __webpack_require__(345);
-
-	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
-
-	var _storeOrderStore = __webpack_require__(349);
-
-	var _storeOrderStore2 = _interopRequireDefault(_storeOrderStore);
-
-	var _actionsAuthActions = __webpack_require__(346);
-
-	/**
-	 * @Component
-	 */
-
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _NavbarNavbar = __webpack_require__(351);
-
-	var _NavbarNavbar2 = _interopRequireDefault(_NavbarNavbar);
-
-	var Home = (function (_React$Component) {
-	  _inherits(Home, _React$Component);
-
-	  function Home(props) {
-	    _classCallCheck(this, Home);
-
-	    _get(Object.getPrototypeOf(Home.prototype), 'constructor', this).call(this, props);
-	    this._onChangeAuthStore = this._onChangeAuthStore.bind(this);
-	    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
-
-	    this.state = {
-	      auth: _storeAuthStore2['default'].getState().auth,
-	      listOrders: _storeOrderStore2['default'].getState().listOrders,
-	      totalCart: _storeOrderStore2['default'].getTotalCart(),
-	      totalCartSale: _storeOrderStore2['default'].getTotalCartSale(),
-	      count: _storeOrderStore2['default'].getTotalSize()
-	    };
-	  }
-
-	  _createClass(Home, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      _storeAuthStore2['default'].listen(this._onChangeAuthStore);
-	      _storeOrderStore2['default'].listen(this._onChangeOrderStore);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
-	      _storeOrderStore2['default'].unlisten(this._onChangeOrderStore);
-	    }
-	  }, {
-	    key: '_onChangeAuthStore',
-	    value: function _onChangeAuthStore(state) {
-	      this.setState({
-	        auth: state.auth
-	      });
-	    }
-	  }, {
-	    key: '_onChangeOrderStore',
-	    value: function _onChangeOrderStore(state) {
-	      this.setState({
-	        listOrders: state.listOrders,
-	        totalCart: _storeOrderStore2['default'].getTotalCart(),
-	        totalCartSale: _storeOrderStore2['default'].getTotalCartSale(),
-	        count: _storeOrderStore2['default'].getTotalSize()
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      console.log(this.state);
-	      return _reactAddons2['default'].createElement(_NavbarNavbar2['default'], {
-	        count: this.state.count,
-	        totalCart: this.state.totalCart,
-	        AuthActions: _actionsAuthActions2['default'],
-	        auth: this.state.auth });
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    value: {
-	      router: _reactAddons2['default'].PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  return Home;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = Home;
-	;
-	module.exports = exports['default'];
-
-/***/ },
 /* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41883,20 +40947,20 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _actionsSanphamActions = __webpack_require__(336);
+	var _actionsSanphamActions = __webpack_require__(335);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
-	var _axios = __webpack_require__(316);
+	var _axios = __webpack_require__(315);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _configSample = __webpack_require__(335);
+	var _configSample = __webpack_require__(334);
 
-	var ReactAsync = __webpack_require__(368);
-	var MasonryMixin = __webpack_require__(373);
+	var ReactAsync = __webpack_require__(365);
+	var MasonryMixin = __webpack_require__(370);
 
 	var masonryOptions = {
 	  transitionDuration: 0
@@ -42040,7 +41104,7 @@ webpackJsonp([0],[
 
 	var _storeSaleStore2 = _interopRequireDefault(_storeSaleStore);
 
-	var _actionsSanphamActions = __webpack_require__(336);
+	var _actionsSanphamActions = __webpack_require__(335);
 
 	var _actionsSanphamActions2 = _interopRequireDefault(_actionsSanphamActions);
 
@@ -42104,8 +41168,8 @@ webpackJsonp([0],[
 	            price_sale = item.get('salePrice') !== null ? item.get('salePrice').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
 
 	            return _react2['default'].createElement(
-	              'a',
-	              { onClick: _this.handleClick.bind(_this, item.toJS()), key: i, href: '/product/' + item.get('id'), className: 'list-group-item' },
+	              _reactRouter.Link,
+	              { to: '/product/' + item.get('id'), onClick: _this.handleClick.bind(_this, item.toJS()), key: i, className: 'list-group-item' },
 	              _react2['default'].createElement(
 	                'div',
 	                { className: 'list-group-body-item' },
@@ -42185,7 +41249,7 @@ webpackJsonp([0],[
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsSaleActions = __webpack_require__(421);
+	var _actionsSaleActions = __webpack_require__(420);
 
 	var _actionsSaleActions2 = _interopRequireDefault(_actionsSaleActions);
 
@@ -42245,23 +41309,23 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _validatorjs = __webpack_require__(359);
+	var _validatorjs = __webpack_require__(356);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _storeAuthStore = __webpack_require__(345);
+	var _storeAuthStore = __webpack_require__(344);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
-	var _actionsAuthActions = __webpack_require__(346);
+	var _actionsAuthActions = __webpack_require__(345);
+
+	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
-
-	var _componentsFormSignIn = __webpack_require__(356);
+	var _componentsFormSignIn = __webpack_require__(353);
 
 	var _componentsFormSignIn2 = _interopRequireDefault(_componentsFormSignIn);
 
@@ -42334,9 +41398,9 @@ webpackJsonp([0],[
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
-	var _regeneratorRuntime = __webpack_require__(266)['default'];
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
 
-	var _Promise = __webpack_require__(296)['default'];
+	var _Promise = __webpack_require__(288)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -42352,15 +41416,15 @@ webpackJsonp([0],[
 
 	var _reactRouter2 = _interopRequireDefault(_reactRouter);
 
-	var _validatorjs = __webpack_require__(359);
+	var _validatorjs = __webpack_require__(356);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _actionsCityActions = __webpack_require__(420);
+	var _actionsCityActions = __webpack_require__(419);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _decorators = __webpack_require__(257);
+	var _decorators = __webpack_require__(311);
 
 	/**
 	 * @Component
@@ -42446,7 +41510,7 @@ webpackJsonp([0],[
 
 	var _extends = __webpack_require__(1)['default'];
 
-	var _Object$keys = __webpack_require__(357)['default'];
+	var _Object$keys = __webpack_require__(354)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -42458,57 +41522,57 @@ webpackJsonp([0],[
 
 	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-	var _validatorjs = __webpack_require__(359);
+	var _validatorjs = __webpack_require__(356);
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _classnames = __webpack_require__(344);
+	var _classnames = __webpack_require__(338);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _storeAuthStore = __webpack_require__(345);
+	var _storeAuthStore = __webpack_require__(344);
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
-	var _actionsAuthActions = __webpack_require__(346);
+	var _actionsAuthActions = __webpack_require__(345);
 
 	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
-	var _storeCityStore = __webpack_require__(427);
+	var _storeCityStore = __webpack_require__(428);
 
 	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
 
-	var _actionsCityActions = __webpack_require__(420);
+	var _actionsCityActions = __webpack_require__(419);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _storeVerifyStore = __webpack_require__(413);
+	var _storeVerifyStore = __webpack_require__(424);
 
 	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
 
-	var _actionsVerifyActions = __webpack_require__(347);
+	var _actionsVerifyActions = __webpack_require__(346);
+
+	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
 	/**
 	 * @Component
 	 */
 
-	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
-
-	var _altAltContainer = __webpack_require__(262);
+	var _altAltContainer = __webpack_require__(307);
 
 	var _altAltContainer2 = _interopRequireDefault(_altAltContainer);
 
-	var _select = __webpack_require__(360);
+	var _select = __webpack_require__(357);
 
 	var _select2 = _interopRequireDefault(_select);
 
-	var _Verify = __webpack_require__(412);
+	var _Verify = __webpack_require__(423);
 
 	var _Verify2 = _interopRequireDefault(_Verify);
 
-	var _inputValidation = __webpack_require__(361);
+	var _inputValidation = __webpack_require__(429);
 
 	var _inputValidation2 = _interopRequireDefault(_inputValidation);
 
@@ -42605,6 +41669,15 @@ webpackJsonp([0],[
 	        { className: classNameFrom },
 	        _reactAddons2['default'].createElement(
 	          'div',
+	          { className: 'form-header' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'form-title text-center' },
+	            'Đăng Ký Tổ Cú'
+	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
 	          { className: 'form-body' },
 	          _reactAddons2['default'].createElement(
 	            'div',
@@ -42615,14 +41688,9 @@ webpackJsonp([0],[
 	              _reactAddons2['default'].createElement(
 	                _reactRouter.Link,
 	                { to: '/' },
-	                _reactAddons2['default'].createElement('img', { src: '/img/logo.png', style: { width: 50, height: 50 } })
+	                _reactAddons2['default'].createElement('img', { src: '/img/logo.png' })
 	              )
 	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'p',
-	            { className: 'text-center title-form' },
-	            'Đăng Ký Tổ Cú'
 	          ),
 	          this.state.createUseState === "failed" && _reactAddons2['default'].createElement(
 	            'p',
@@ -42911,6 +41979,824 @@ webpackJsonp([0],[
 	  CLIENT: typeof window !== 'undefined',
 	  SERVER: typeof window === 'undefined'
 	};
+
+/***/ },
+/* 540 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _get = __webpack_require__(218)["default"];
+
+	var _inherits = __webpack_require__(224)["default"];
+
+	var _createClass = __webpack_require__(234)["default"];
+
+	var _classCallCheck = __webpack_require__(237)["default"];
+
+	var _interopRequireDefault = __webpack_require__(15)["default"];
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var BoxAuto = (function (_React$Component) {
+	  _inherits(BoxAuto, _React$Component);
+
+	  function BoxAuto() {
+	    _classCallCheck(this, BoxAuto);
+
+	    _get(Object.getPrototypeOf(BoxAuto.prototype), "constructor", this).apply(this, arguments);
+	  }
+
+	  _createClass(BoxAuto, [{
+	    key: "render",
+	    value: function render() {
+	      return _reactAddons2["default"].createElement(
+	        "div",
+	        { className: "row row-bottom-detail" },
+	        _reactAddons2["default"].createElement(
+	          "div",
+	          { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	          _reactAddons2["default"].createElement(
+	            "div",
+	            { className: "thumbnail" },
+	            _reactAddons2["default"].createElement(
+	              "a",
+	              { className: "", href: "/box/1" },
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "img-Wrapper" },
+	                _reactAddons2["default"].createElement("img", { className: "img-max-height", src: "http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg", alt: "images" }),
+	                _reactAddons2["default"].createElement("div", { className: "divshowdow" })
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-list-news" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "list-news" },
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item" },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement("span", { className: "imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store" })
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "150.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item", style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement(
+	                            "span",
+	                            { className: "imgIcon imgIcon-list" },
+	                            _reactAddons2["default"].createElement("img", { src: "http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg" })
+	                          )
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan dày"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "130.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-info" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "infoItem" },
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "titleItem" },
+	                    "Sơ mi xô Nhật Hàn"
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "countItem" },
+	                    "122 sản phẩm"
+	                  )
+	                ),
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "socialItem" },
+	                  _reactAddons2["default"].createElement("span", { className: "SmallIcon likeSmallIcon" }),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "socialMetaCount" },
+	                    "132k"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _reactAddons2["default"].createElement(
+	          "div",
+	          { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	          _reactAddons2["default"].createElement(
+	            "div",
+	            { className: "thumbnail" },
+	            _reactAddons2["default"].createElement(
+	              "a",
+	              { className: "", href: "/box/1" },
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "img-Wrapper" },
+	                _reactAddons2["default"].createElement("img", { className: "img-max-height", src: "http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg", alt: "images" }),
+	                _reactAddons2["default"].createElement("div", { className: "divshowdow" })
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-list-news" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "list-news" },
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item" },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement("span", { className: "imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store" })
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "150.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item", style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement(
+	                            "span",
+	                            { className: "imgIcon imgIcon-list" },
+	                            _reactAddons2["default"].createElement("img", { src: "http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg" })
+	                          )
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan dày"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "130.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-info" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "infoItem" },
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "titleItem" },
+	                    "Sơ mi xô Nhật Hàn"
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "countItem" },
+	                    "122 sản phẩm"
+	                  )
+	                ),
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "socialItem" },
+	                  _reactAddons2["default"].createElement("span", { className: "SmallIcon likeSmallIcon" }),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "socialMetaCount" },
+	                    "132k"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _reactAddons2["default"].createElement(
+	          "div",
+	          { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	          _reactAddons2["default"].createElement(
+	            "div",
+	            { className: "thumbnail" },
+	            _reactAddons2["default"].createElement(
+	              "a",
+	              { className: "", href: "/box/1" },
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "img-Wrapper" },
+	                _reactAddons2["default"].createElement("img", { className: "img-max-height", src: "http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg", alt: "images" }),
+	                _reactAddons2["default"].createElement("div", { className: "divshowdow" })
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-list-news" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "list-news" },
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item" },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement("span", { className: "imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store" })
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "150.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item", style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement(
+	                            "span",
+	                            { className: "imgIcon imgIcon-list" },
+	                            _reactAddons2["default"].createElement("img", { src: "http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg" })
+	                          )
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan dày"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "130.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-info" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "infoItem" },
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "titleItem" },
+	                    "Sơ mi xô Nhật Hàn"
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "countItem" },
+	                    "122 sản phẩm"
+	                  )
+	                ),
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "socialItem" },
+	                  _reactAddons2["default"].createElement("span", { className: "SmallIcon likeSmallIcon" }),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "socialMetaCount" },
+	                    "132k"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _reactAddons2["default"].createElement(
+	          "div",
+	          { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	          _reactAddons2["default"].createElement(
+	            "div",
+	            { className: "thumbnail" },
+	            _reactAddons2["default"].createElement(
+	              "a",
+	              { className: "", href: "/box/1" },
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "img-Wrapper" },
+	                _reactAddons2["default"].createElement("img", { className: "img-max-height", src: "http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg", alt: "images" }),
+	                _reactAddons2["default"].createElement("div", { className: "divshowdow" })
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-list-news" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "list-news" },
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item" },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement("span", { className: "imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store" })
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "150.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item", style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement(
+	                            "span",
+	                            { className: "imgIcon imgIcon-list" },
+	                            _reactAddons2["default"].createElement("img", { src: "http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg" })
+	                          )
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan dày"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "130.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-info" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "infoItem" },
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "titleItem" },
+	                    "Sơ mi xô Nhật Hàn"
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "countItem" },
+	                    "122 sản phẩm"
+	                  )
+	                ),
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "socialItem" },
+	                  _reactAddons2["default"].createElement("span", { className: "SmallIcon likeSmallIcon" }),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "socialMetaCount" },
+	                    "132k"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _reactAddons2["default"].createElement(
+	          "div",
+	          { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	          _reactAddons2["default"].createElement(
+	            "div",
+	            { className: "thumbnail" },
+	            _reactAddons2["default"].createElement(
+	              "a",
+	              { className: "", href: "/box/1" },
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "img-Wrapper" },
+	                _reactAddons2["default"].createElement("img", { className: "img-max-height", src: "http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg", alt: "images" }),
+	                _reactAddons2["default"].createElement("div", { className: "divshowdow" })
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-list-news" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "list-news" },
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item" },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement("span", { className: "imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store" })
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "150.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item", style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement(
+	                            "span",
+	                            { className: "imgIcon imgIcon-list" },
+	                            _reactAddons2["default"].createElement("img", { src: "http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg" })
+	                          )
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan dày"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "130.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-info" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "infoItem" },
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "titleItem" },
+	                    "Sơ mi xô Nhật Hàn"
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "countItem" },
+	                    "122 sản phẩm"
+	                  )
+	                ),
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "socialItem" },
+	                  _reactAddons2["default"].createElement("span", { className: "SmallIcon likeSmallIcon" }),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "socialMetaCount" },
+	                    "132k"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _reactAddons2["default"].createElement(
+	          "div",
+	          { className: "col-xs-6 col-sm-4 col-md-4 col-lg-4" },
+	          _reactAddons2["default"].createElement(
+	            "div",
+	            { className: "thumbnail" },
+	            _reactAddons2["default"].createElement(
+	              "a",
+	              { className: "", href: "/box/1" },
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "img-Wrapper" },
+	                _reactAddons2["default"].createElement("img", { className: "img-max-height", src: "http://api.tocu.vn/image/220x220/be9645becb337e08394a-1-1.jpg", alt: "images" }),
+	                _reactAddons2["default"].createElement("div", { className: "divshowdow" })
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-list-news" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "list-news" },
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item" },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement("span", { className: "imgIcon imgIcon-list imgIcon-bg-red imgIcon-bg-store" })
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "150.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "div",
+	                    { className: "list-item", style: { backgroundImage: "url(http://api.tocu.vn/image/220x53/b8fa64ef4cef5471b9c5-11-2.jpg)" } },
+	                    _reactAddons2["default"].createElement(
+	                      "div",
+	                      { className: "item" },
+	                      _reactAddons2["default"].createElement(
+	                        "div",
+	                        { className: "newsItem newCreditItem" },
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsImg" },
+	                          _reactAddons2["default"].createElement(
+	                            "span",
+	                            { className: "imgIcon imgIcon-list" },
+	                            _reactAddons2["default"].createElement("img", { src: "http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg" })
+	                          )
+	                        ),
+	                        _reactAddons2["default"].createElement(
+	                          "div",
+	                          { className: "newsText newsInfo" },
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            { className: "creditTitle" },
+	                            "Cardigan dày"
+	                          ),
+	                          _reactAddons2["default"].createElement(
+	                            "p",
+	                            null,
+	                            _reactAddons2["default"].createElement(
+	                              "strong",
+	                              { className: "creditCost" },
+	                              "130.000 đ"
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _reactAddons2["default"].createElement(
+	                "div",
+	                { className: "thumbnail-info" },
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "infoItem" },
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "titleItem" },
+	                    "Sơ mi xô Nhật Hàn"
+	                  ),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "countItem" },
+	                    "122 sản phẩm"
+	                  )
+	                ),
+	                _reactAddons2["default"].createElement(
+	                  "div",
+	                  { className: "socialItem" },
+	                  _reactAddons2["default"].createElement("span", { className: "SmallIcon likeSmallIcon" }),
+	                  _reactAddons2["default"].createElement(
+	                    "span",
+	                    { className: "socialMetaCount" },
+	                    "132k"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return BoxAuto;
+	})(_reactAddons2["default"].Component);
+
+	exports["default"] = BoxAuto;
+	;
+	module.exports = exports["default"];
 
 /***/ }
 ]);
