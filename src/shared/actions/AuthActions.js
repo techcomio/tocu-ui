@@ -1,8 +1,10 @@
 'use strict';
 
-import Alt       from '../Alt';
-import Axios     from 'axios';
+import Alt from '../Alt';
+import Axios from 'axios';
 import {Api_URL} from '../../../config-sample';
+import Cookies from 'cookies-js';
+import CartActions from './CartActions';
 
 
 class AuthActions {
@@ -66,11 +68,15 @@ class AuthActions {
     self.actions.LoginStart();
 
     Axios.post(`${Api_URL}/token`, {
-        mobilePhone: mobilePhone,
-        password: password,
+        mobilePhone: mobilePhone
+        , password: password
+        , cart: Cookies.get('cart')
       })
       .then(function (res) {
         self.dispatch(res.data);
+        setTimeout(() => {
+          CartActions.getCart();
+        }, 1000);
       })
       .catch(function (res) {
         self.actions.LoginFailed(res.data);
@@ -88,6 +94,9 @@ class AuthActions {
     })
     .then((res) => {
       self.dispatch();
+      setTimeout(() => {
+        CartActions.empty();
+      }, 1000);
     })
     .catch((res) => {
       console.log('err Logout', res);

@@ -6,30 +6,24 @@ import classNames     from 'classnames';
 import {prepareRoute} from '../decorators';
 import SanphamStore   from '../store/SanphamStore';
 import SanphamActions from '../actions/SanphamActions';
-import CityActions    from '../actions/CityActions';
-import OrderActions   from '../actions/OrderActions';
 import VerifyActions  from '../actions/VerifyActions';
 import SaleActions    from '../actions/SaleActions';
 /**
  * @Component
  */
-import BoxSignIn     from '../components/Form/BoxSignIn';
-import BoxVerify     from '../components/Form/BoxVerify';
-import FormOrder     from '../components/FormOrder';
-import Product       from '../components/Product';
-import PushListOrder from '../components/Product/PushListOrder';
-import StatusOrder   from '../components/Product/StatusOrder';
-import Header        from '../components/Header';
-import Sidebar       from '../components/Product/Sidebar';
-import BoxAuto       from '../components/Product/BoxAuto';
-import Sale          from '../components/Sale';
+import BoxSignIn from '../components/Form/BoxSignIn';
+import BoxVerify from '../components/Form/BoxVerify';
+import Product from '../components/Product';
+import Header from '../components/Header';
+import Sidebar from '../components/Product/Sidebar';
+import BoxAuto from '../components/Product/BoxAuto';
+import Sale from '../components/Sale';
 
 
 @prepareRoute(async function ({ params }) {
   return await * [
     SanphamActions.getSanphamID(params),
     SaleActions.getProductSale(),
-    CityActions.getCity(),
   ];
 })
 
@@ -37,17 +31,12 @@ export default class ProductID extends React.Component {
 
   constructor (props) {
     super(props)
-    this._bind('onChangeSanphamStore', 'handleBoxLogin', 'hideBoxLogin', 'renderBoxLogin', 'renderProductDetail');
 
     this.state = {
       boxLogin: false,
       current: 1,
       ...SanphamStore.getState().product.toJS(),
     };
-  }
-
-  _bind(...methods) {
-    methods.forEach( (method) => this[method] = this[method].bind(this) );
   }
 
   componentWillMount () {
@@ -63,7 +52,7 @@ export default class ProductID extends React.Component {
     SanphamStore.unlisten(this.onChangeSanphamStore);
   }
 
-  onChangeSanphamStore(state) {
+  onChangeSanphamStore = (state) => {
     this.setState({
       ...state.product.toJS(),
     });
@@ -107,14 +96,14 @@ export default class ProductID extends React.Component {
     );
 	}
 
-  renderProductDetail() {
+  renderProductDetail = () => {
     return (
       <Product
         handleBoxLogin={this.handleBoxLogin} />
     );
   }
 
-  renderBoxLogin() {
+  renderBoxLogin = () => {
     if(this.state.boxLogin) {
       return (
         <BoxSignIn hideBoxLogin={this.hideBoxLogin} location={this.props.location} />
@@ -122,13 +111,13 @@ export default class ProductID extends React.Component {
     }
   }
 
-  handleBoxLogin(val) {
+  handleBoxLogin = (val) => {
     this.setState({
       boxLogin: true,
     });
   }
 
-  hideBoxLogin() {
+  hideBoxLogin = () => {
     this.setState({
       boxLogin: false,
     });

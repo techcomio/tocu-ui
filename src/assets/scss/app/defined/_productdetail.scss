@@ -11,8 +11,8 @@
 			&.sticky { position: fixed; top: 0; border-radius: 0; background: rgba(255, 255, 255, 1); }
 			.navbar { margin: 0px; padding: 0 10px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15); border: none; border-radius: 8px 8px 0 0;
 				.navbar-right { margin: 0; padding: 0; }
-				.btn { font-weight: bold; box-shadow: 0px 1px 1px #BABABA;
-					&.btn-default { background: $product-bg-btn-default; border: 1px solid $border-color; color: $gray; }
+				.btn { font-weight: bold;
+					&.btn-default { background: $product-bg-btn-default; color: $gray; }
 					i { font-size: 15px; }
 				}
 				.btn-group { margin-right: 10px;
@@ -150,7 +150,7 @@
 				.navbar-btn { margin-top: 11px; margin-bottom: 11px; }
 			}
 		}
-		.btn { font-weight: bold; box-shadow: 0px 1px 1px #BABABA; }
+		.btn { font-weight: bold; }
 		.infoOrder { border-bottom: 1px solid $border-color; padding: 70px 10px 20px 10px; 
 			.infoOrder-body { margin: auto; display: table;
 				.infoOrder-img { display: table-cell; float: left;
@@ -259,7 +259,7 @@
 
 .sidebar { overflow: hidden; background: #fff;
 	&.thumbnail { padding: 0px; border-width: 0px; border-radius: 8px; background: #fff; }
-	.navbar { margin-bottom: 5px; background: #fff; border-width: 0; border-bottom: 1px solid #ddd; z-index: 20; height: 50px; line-height: 50px;
+	.navbar { margin-bottom: 0px; background: #fff; border-width: 0; border-bottom: 1px solid #ddd; z-index: 20; height: 50px; line-height: 50px;
 		.navbar-text { margin-left: 0; margin-right: 0; font-size: 14px; font-weight: bold; margin-top: 9px; margin-bottom: 9px; display: block; width: 100%;
 			.icon-img { width: 23%; float: left; display: block;
 				.imgIcon { width: 32px; height: 32px; margin: auto; margin-top: 0px; position: relative; display: block; border-radius: 50%;
@@ -273,7 +273,7 @@
 			.titleBox-giamgia { width: 100%; float: left; display: block; padding: 5px 10px; line-height: 1.6; overflow:hidden; white-space: nowrap; text-overflow: ellipsis; }
 		}
 	}
-	.masonry-sidebar { height: auto; min-height: 100px; overflow-x: hidden; overflow: auto; padding: 0 3px 0 3px; background: #fff;
+	.masonry-sidebar { width: 100%; display: block; height: auto; min-height: 100px; overflow-x: hidden; padding: 6px 3px 7px 3px; background: #fff;
 		[class^="col-"], [class*="col-"] { padding-left: 2px !important; padding-right: 2px !important; }
 		.imgWrapper {
 			img { margin-bottom: 4px; width: 100%; min-height: auto; border-radius: 3px; opacity: 0.6;
@@ -302,7 +302,8 @@
 	}
 	.list-group {	padding-top: 5px; padding-bottom: 5px; min-height: 100px;
 		.list-group-item { border: none; border-width: 0px; padding: 0px 14px;
-			&.active { background: none !important; }
+			&.active { background: none !important; color: #555; }
+			&.active:focus, &.active:hover { color: #555; }
 			&:first-child { .list-group-body-item { border-top: none; } }
 			&:hover { background: #F2F2F2; }
 			.list-group-body-item { display: table; width: 100%; padding: 8px 0px; border-top: 1px solid #eee; box-sizing: border-box;
@@ -340,7 +341,7 @@
 	    min-height: 128px;
 			max-height: 128px;
 		} */
-		.btn { box-shadow: 0px 1px 3px #BABABA; border: none !important; }
+		.btn { border: none !important; }
 	}
 
 	@media all and (max-width: 768px) {

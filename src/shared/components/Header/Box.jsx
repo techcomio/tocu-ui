@@ -4,7 +4,7 @@ import React       from 'react/addons';
 import Router      from 'react-router';
 import AuthStore   from '../../store/AuthStore';
 import BoxStore    from '../../store/BoxStore';
-import OrderStore  from '../../store/OrderStore';
+import CartStore  from '../../store/CartStore';
 import AuthActions from '../../actions/AuthActions';
 import BoxActions  from '../../actions/BoxActions';
 /**
@@ -23,22 +23,22 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      auth: AuthStore.getState().auth,
-      info: BoxStore.getState().info,
-      count: OrderStore.getTotalSize(),
+      auth: AuthStore.getState().auth
+      , info: BoxStore.getState().info
+      , count: CartStore.getCountCart()
     }
   },
 
   componentDidMount() {
     AuthStore.listen(this._onChangeAuthStore);
     BoxStore.listen(this._onChangeBoxStore);
-    OrderStore.listen(this._onChangeOrderStore);
+    CartStore.listen(this._onChangeCartStore);
   },
 
   componentWillUnmount() {
     AuthStore.unlisten(this._onChangeAuthStore);
     BoxStore.unlisten(this._onChangeBoxStore);
-    OrderStore.unlisten(this._onChangeOrderStore);
+    CartStore.unlisten(this._onChangeCartStore);
   },
 
   _onChangeAuthStore(state) {
@@ -53,9 +53,9 @@ export default React.createClass({
     });
   },
 
-  _onChangeOrderStore(state) {
+  _onChangeCartStore(state) {
     this.setState({
-      count: OrderStore.getTotalSize(),
+      count: CartStore.getCountCart()
     });
   },
 

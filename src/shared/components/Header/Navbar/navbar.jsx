@@ -16,7 +16,6 @@ export default class Navbar extends React.Component {
   }
 
   render() {
-
     if(!this.props.auth.get('mobilePhone')) {
       return (
         <nav className="navbar navbar-tocu">
@@ -44,7 +43,7 @@ export default class Navbar extends React.Component {
                 <span className="tamgiac"></span>
                 <div className="drop-header">
                   <div className="search">
-                    <input type="search" placeholder="Search" />
+                    <input type="search" placeholder="Search" autofocus />
                     <i className="fa fa-search"></i>
                   </div>
                 </div>
@@ -87,7 +86,7 @@ export default class Navbar extends React.Component {
               <span className="tamgiac"></span>
               <div className="drop-header">
                 <div className="search">
-                  <input type="search" placeholder="Search" />
+                  <input type="search" placeholder="Search" autofocus />
                   <i className="fa fa-search"></i>
                 </div>
               </div>
@@ -110,7 +109,7 @@ export default class Navbar extends React.Component {
             <ul className="dropdown-menu dropdown-menu-right">
               <li><a href="#">Settings</a></li>
               <li role="separator" className="divider"></li>
-              <li><Link to="/signin" onClick={::this.handleLogout} >Log out</Link></li>
+              <li><Link to="/signin" onClick={this.handleLogout} >Log out</Link></li>
             </ul>
           </div>
         </div>
@@ -118,7 +117,7 @@ export default class Navbar extends React.Component {
     );
   }
 
-  handleLogout(e) {
+  handleLogout = (e) => {
     this.props.AuthActions.Logout();
   }
 

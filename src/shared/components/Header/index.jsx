@@ -1,11 +1,11 @@
  /* @jsx React.DOM */
 'use strict';
 
-import React       from 'react/addons';
-import { Link }    from 'react-router';
-import classNames  from 'classnames';
-import AuthStore   from '../../store/AuthStore';
-import OrderStore  from '../../store/OrderStore';
+import React from 'react/addons';
+import { Link } from 'react-router';
+import classNames from 'classnames';
+import AuthStore from '../../store/AuthStore';
+import CartStore from '../../store/CartStore';
 import AuthActions from '../../actions/AuthActions';
 /**
  * @Component
@@ -17,15 +17,10 @@ export default class Nav extends React.Component {
 
   constructor(props) {
     super(props);
-    this._onChangeAuthStore = this._onChangeAuthStore.bind(this);
-    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
 
     this.state = {
       auth: AuthStore.getState().auth,
-      listOrders: OrderStore.getState().listOrders,
-      totalCart: OrderStore.getTotalCart(),
-      totalCartSale: OrderStore.getTotalCartSale(),
-      count: OrderStore.getTotalSize(),
+      count: CartStore.getCountCart(),
     }
   }
 
@@ -35,26 +30,23 @@ export default class Nav extends React.Component {
 
   componentDidMount() {
     AuthStore.listen(this._onChangeAuthStore);
-    OrderStore.listen(this._onChangeOrderStore);
+    CartStore.listen(this._onChangeCartStore);
   }
 
   componentWillUnmount() {
     AuthStore.unlisten(this._onChangeAuthStore);
-    OrderStore.unlisten(this._onChangeOrderStore);
+    CartStore.unlisten(this._onChangeCartStore);
   }
 
-  _onChangeAuthStore(state) {
+  _onChangeAuthStore = (state) => {
     this.setState({
       auth: state.auth,
     });
   }
 
-  _onChangeOrderStore(state) {
+  _onChangeCartStore = (state) => {
     this.setState({
-      listOrders: state.listOrders,
-      totalCart: OrderStore.getTotalCart(),
-      totalCartSale: OrderStore.getTotalCartSale(),
-      count: OrderStore.getTotalSize(),
+      count: CartStore.getCountCart(),
     });
   }
 
@@ -63,7 +55,6 @@ export default class Nav extends React.Component {
     return (
       <Navbar
         count={this.state.count}
-        totalCart={this.state.totalCart}
         AuthActions={AuthActions}
         auth={this.state.auth} />
     );

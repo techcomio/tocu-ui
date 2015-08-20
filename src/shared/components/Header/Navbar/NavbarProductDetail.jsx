@@ -49,7 +49,7 @@ export default class NavbarProductID extends React.Component {
       "navbar-product-detail": true,
       "sticky": this.state.hideHeader
     });
-    
+
     return (
       <div ref="navbar">
         <div className={classesNavbar} style={{width: this.state.NavbarWidth}} >
@@ -75,9 +75,9 @@ export default class NavbarProductID extends React.Component {
       case "available":
         return <button onClick={this.Cart} type="button" className="btn btn-primary navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Mua</button>
       case "suspended":
-        return <button onClick={this.Cart} type="button" className="btn btn-warning navbar-btn"><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
+        return <button onClick={this.Cart} type="button" className="btn btn-warning navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
       default:
-        return <button onClick={this.Cart} type="button" className="btn btn-primary navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Mua</button>
+        return <button onClick={this.Cart} type="button" className="btn btn-warning navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
     }
   }
 
@@ -104,7 +104,13 @@ export default class NavbarProductID extends React.Component {
   }
 
   Cart() {
-    this.props.OrderActions.addToCart(this.props.product);
+    let {id, code, boxName, images, price, salePrice, weight, status} = this.props.product.toJS();
+
+    if(!this.props.cartId) {
+      this.props.CartActions.createCart({id, code, boxName, imageUrl: images[0], price, salePrice, weight, quantity: 1, status});
+    } else {
+      this.props.CartActions.pushToCart({id, code, boxName, imageUrl: images[0], price, salePrice, weight, quantity: 1, status}, this.props.cartId);
+    }
   }
 
 };

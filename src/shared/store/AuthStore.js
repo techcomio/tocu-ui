@@ -38,6 +38,7 @@ class AuthStore {
 
   onLogin(data) {
     Cookies.set('access_token', data.access_token, {expires: data.expires_in}); //  Expires in data.expires_in sec
+    Cookies.expire('cart'); //  Will expire the cookie with a path of '/' 
 
     this.loginState = "success";
     this.auth = this.auth.merge(data);
@@ -46,7 +47,8 @@ class AuthStore {
   }
 
   onLogout() {
-    Cookies.expire('access_token'); //  Will expire the cookie with a path of '/' 
+    Cookies.expire('access_token'); //  Will expire the cookie with a path of '/'
+    
     this.createUseState = "";
     this.loginState = "logout";
     this.auth = new Map({});

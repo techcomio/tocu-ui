@@ -24,25 +24,43 @@ export default async function (req, res, next) {
   const history  = new History(path);
 
   let token = req.cookies.access_token;
+  let cartId = req.cookies.cart;
 
   if(token) {
-    await Axios.get(`${Api_URL}/user/me`, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    })
-    .then((response) => {
-      let dataStore = {
-        AuthStore: {
-          auth: response.data,
-        }
-      };
-      Alt.bootstrap(JSON.stringify(dataStore));
-    }).catch((response) => {});
+    let dataStore = {};
+
+    await * [
+      Axios.get(`${Api_URL}/user/me`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      .then((response) => {
+        dataStore.AuthStore = {
+          auth: response.data
+        };
+      }).catch(() => {})
+      , Axios.get(`${Api_URL}/cart`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then((response) => {
+          dataStore.CartStore = {
+            cartId: null
+            , listCart: response.data
+          };
+        }).catch(() => {})
+      ];
+    Alt.bootstrap(JSON.stringify(dataStore));
   } else {
-    let dataStore = {
-        AuthStore: {
-          auth: {},
-        }
-      };
+    let dataStore = {};
+
+    if(cartId) {
+      await Axios.get(`${Api_URL}/cart/${cartId}`)
+        .then((response) => {
+          dataStore.CartStore = {
+            cartId: cartId
+            , listCart: response.data
+          };
+        }).catch(() => {});
+    }
     Alt.bootstrap(JSON.stringify(dataStore));
   }
 

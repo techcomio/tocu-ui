@@ -1,0 +1,51 @@
+
+.cart { background: #fff; border-radius: 8px; position: relative; width: 100%; box-shadow: $thumb-box-shadow; color: #7F6A6A;
+	.navbar { border-bottom: 1px solid #ddd; border-radius: 8px 8px 0px 0px; background: rgba(255, 255, 255, 1); position: absolute; width: 100%; z-index: 999; 
+		&.sticky { position: fixed; top: 0; border-radius: 0; }
+		.navbar-header, .navbar-right { margin: 0px; padding: 0 10px; }
+		.navbar-header > div { display: inline-block; float: left; padding: 12px 0; padding-right: 10px; }
+		.navbar-right {
+			.btn { margin-left: 10px; }
+		}
+		.btn { padding: 5px 10px; }
+		.icont-cart { width: 26px; height: 26px; display: block; background-position: center; background-image: url('/img/carts.png'); background-repeat: no-repeat; }
+		.title-nav-cart { font-size: 18px; font-weight: leight; }
+	}
+	.cart-table { width: 100%; display: block; padding: 70px 10px 10px 10px;
+		.imageIcon, .nameInfo { display: inline-block; position: relative; float: left;
+			img { border-radius: 4px; }
+		}
+		.delete { width: 42px;
+			.destroy { font-size: 18px; width: 25px; display: block; height: 13px; margin: auto; background-image: url('/img/delete.png'); background-repeat: no-repeat; background-position: center; background-size: 13px 13px; cursor: pointer; }
+		}
+		.sale { text-decoration: line-through; }
+		.nameInfo { padding: 0px 12px; float: left;
+			.code, .name { display: block; }
+			.code { font-weight: bold; margin-top: 6px; }
+			.name { font-size: 12px; margin-top: 2px; }
+		}
+		.disabled { opacity: 0.4; cursor: $cursor-disabled;
+			// .destroy { cursor: $cursor-disabled; }
+		}
+	}
+	.cart-form-ship {
+		width: 100%; display: block; padding: 70px 10px 10px 10px;
+	}
+	.table { margin-bottom: 0px;
+		td, th { vertical-align: middle; }
+		.sale { display: block; }
+		.td-sanpham { width: 55%; }
+		tfoot { border-top: 1px solid #ddd; background: #f5f5f5; }
+		tfoot tr > td { border-top: none; padding: 0 8px; }
+		.padT20 td { padding-top: 20px; }
+		.total { font-size: 16px; font-weight: bold; text-transform: uppercase;
+			td { padding-top: 20px; padding-bottom: 20px; }
+		}
+		.aright { text-align: right !important; padding-right: 25px; padding-left: 0; }
+		.acenter { text-align: center; }
+	}
+	@media all and (max-width: 768px) {
+		.navbar-header { float: left; }
+		.navbar-right { float: right; }
+	}
+}

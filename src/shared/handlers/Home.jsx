@@ -6,7 +6,7 @@ import AltContainer   from 'alt/AltContainer';
 import {prepareRoute} from '../decorators';
 import BoxActions     from '../actions/BoxActions';
 import SanphamActions from '../actions/SanphamActions';
-import OrderActions   from '../actions/OrderActions';
+// import OrderActions   from '../actions/OrderActions';
 /**
  * @Component
  */
@@ -27,15 +27,10 @@ export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
-    this._bind('handleBoxLogin', 'hideBoxLogin');
 
     this.state = {
       boxLogin: false,
     };
-  }
-
-  _bind(...methods) {
-    methods.forEach( (method) => this[method] = this[method].bind(this) );
   }
 
   componentWillMount() {
@@ -63,12 +58,12 @@ export default class Home extends React.Component {
           </div>
         </section>
 
-        {::this.renderBoxLogin()}
+        {this.renderBoxLogin()}
       </div>
     );
   }
 
-  renderBoxLogin() {
+  renderBoxLogin = () => {
     if(this.state.boxLogin) {
       return (
         <div id="boxLogin">
@@ -84,13 +79,13 @@ export default class Home extends React.Component {
     }
   }
 
-  handleBoxLogin() {
+  handleBoxLogin = () => {
     this.setState({
       boxLogin: true,
     });
   }
 
-  hideBoxLogin() {
+  hideBoxLogin = () => {
     this.setState({
       boxLogin: false,
     });

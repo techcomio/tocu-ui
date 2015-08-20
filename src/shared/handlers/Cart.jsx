@@ -1,14 +1,31 @@
 'use strict';
 import React from 'react/addons';
 import {prepareRoute} from '../decorators';
+import CityActions from '../actions/CityActions';
 /**
  * @Component
  */
-import Header    from '../components/Header';
+import Header from '../components/Header';
+import BoxSignIn from '../components/Form/BoxSignIn';
 import FormOrder from '../components/FormOrder/test';
 
 
+@prepareRoute(async function ({ params }) {
+  return await * [
+    CityActions.getCity(),
+  ];
+})
+
 export default class Application extends React.Component {
+
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      boxLogin: false,
+      current: 1,
+    };
+  }
 
   render() {
     return (
@@ -17,15 +34,35 @@ export default class Application extends React.Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-md-9 col-lg-9">
-              <FormOrder />
-            </div>
-            <div className="col-md-3 col-lg-3">
+            <div className="col-md-12 col-lg-12">
+              <FormOrder
+                handleBoxLogin={this.handleBoxLogin} />
             </div>
           </div>
         </div>
+        {this.renderBoxLogin()}
       </div>
     );
+  }
+
+  renderBoxLogin = () => {
+    if(this.state.boxLogin) {
+      return (
+        <BoxSignIn hideBoxLogin={this.hideBoxLogin} location={this.props.location} />
+      );
+    }
+  }
+
+  handleBoxLogin = () => {
+    this.setState({
+      boxLogin: true,
+    });
+  }
+
+  hideBoxLogin = () => {
+    this.setState({
+      boxLogin: false,
+    });
   }
 
 };

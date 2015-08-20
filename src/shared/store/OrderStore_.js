@@ -38,7 +38,6 @@ class OrderStore {
   }
 
   onCreateOrder(data) {
-    console.log('onCreateOrder', data);
     this.createStatus = new Map({messages: `Đặt hàng thành công`, status: 'success'});
     this.order = new Map(data);
   }
@@ -48,18 +47,15 @@ class OrderStore {
   }
 
   onAddOrder(data) {
-    console.log('onAddOrder', data);
     this.createStatus = new Map({messages: `Thêm vào đơn hàng #${data.id} thành công`, status: 'success'});
     this.order = new Map(data);
   }
 
   onAddToCart(product) {
     this.listOrders = this.listOrders.set(product.get('id'), product);
-    console.log('onAddToCart', this.listOrders.toJS());
   }
 
   onCheckOrder(data) {
-    console.log('onCheckOrder', data);
   }
 
   onPushOrder(data) {

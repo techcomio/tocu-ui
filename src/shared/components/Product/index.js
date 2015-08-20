@@ -1,64 +1,62 @@
 'use strict';
-import React          from 'react/addons';
-import classNames     from 'classnames';
-import SanphamStore   from '../../store/SanphamStore';
-import AuthStore      from '../../store/AuthStore';
-import OrderStore     from '../../store/OrderStore';
+
+import React from 'react/addons';
+import classNames from 'classnames';
+import AuthStore from '../../store/AuthStore';
+import CartStore from '../../store/CartStore';
+import CartActions from '../../actions/CartActions';
+import SanphamStore from '../../store/SanphamStore';
 import SanphamActions from '../../actions/SanphamActions';
-import OrderActions   from '../../actions/OrderActions';
 /**
  * @Component
  */
-import NavbarProduct   from '../Header/Navbar/NavbarProductDetail';
+import NavbarProduct from '../Header/Navbar/NavbarProductDetail';
 import ImgSlideProduct from './ImgSlideProduct';
-import InfoSanpham     from './InfoSanpham';
-import Detail          from './Detail';
-import Mau             from './Mau';
+import InfoSanpham from './InfoSanpham';
+import Detail from './Detail';
+import Mau from './Mau';
 
 
 export default class Products extends React.Component {
 
   constructor(props) {
     super(props);
-    this._onChangeAuthStore = this._onChangeAuthStore.bind(this);
-    this._onChangeOrderStore = this._onChangeOrderStore.bind(this);
-    this._onChangeSanphamStore = this._onChangeSanphamStore.bind(this);
 
     this.state = {
     	auth: AuthStore.getState().auth,
     	product: SanphamStore.getState().product,
-    	listOrder: OrderStore.getState().listOrder,
+      cartId: CartStore.getState().cartId,
     };
   }
 
   componentDidMount() {
     AuthStore.listen(this._onChangeAuthStore);
-    OrderStore.listen(this._onChangeOrderStore);
     SanphamStore.listen(this._onChangeSanphamStore);
+    CartStore.listen(this._onChangeCartStore);
   }
 
   componentWillUnmount() {
     AuthStore.unlisten(this._onChangeAuthStore);
-    OrderStore.unlisten(this._onChangeOrderStore);
     SanphamStore.unlisten(this._onChangeSanphamStore);
+    CartStore.unlisten(this._onChangeCartStore);
   }
 
-  _onChangeAuthStore(state) {
+  _onChangeAuthStore = (state) => {
   	this.setState({
   		auth: state.auth
   	});
   }
 
-  _onChangeOrderStore(state) {
-  	this.setState({
-  		listOrder: state.listOrder
-  	});
-  }
-
-  _onChangeSanphamStore(state) {
+  _onChangeSanphamStore = (state) => {
   	this.setState({
   		product: state.product
   	});
+  }
+
+  _onChangeCartStore = (state) => {
+    this.setState({
+      cartId: state.cartId,
+    });
   }
 
   render() {
@@ -67,9 +65,9 @@ export default class Products extends React.Component {
 	      <NavbarProduct
 	        auth={this.state.auth}
 	        product={this.state.product}
-	        listOrder={this.state.listOrder}
+          cartId={this.state.cartId}
 	        SanphamActions={SanphamActions}
-	        OrderActions={OrderActions}
+	        CartActions={CartActions}
 	        handleBoxLogin={this.props.handleBoxLogin} />
 	      
 	      <div className="product">

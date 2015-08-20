@@ -77,8 +77,18 @@ class OrderActions {
     });
   }
 
+  /**
+   * [createCart description]
+   * @param  {array} product
+   * @return {object}
+   */
+  createCart(product) {
+    console.log('createCart', product);
+  }
+
   addToCart(product) {
-    this.dispatch(product);
+    console.log('addToCart', product);
+    // this.dispatch(product);
   }
 
   pushOrder(data) {
