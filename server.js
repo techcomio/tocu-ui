@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(compress());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + "/public", {maxage: 8640000}));
+app.use(express.static(__dirname + "/public", {maxage: 864000}));
 
 app.get('*', render);
 

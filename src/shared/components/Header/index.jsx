@@ -51,7 +51,7 @@ export default class Nav extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state.auth.toJS());
     return (
       <Navbar
         count={this.state.count}

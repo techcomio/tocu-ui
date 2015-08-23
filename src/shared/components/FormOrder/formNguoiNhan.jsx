@@ -67,8 +67,9 @@ export default class FormOrder extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ship-address">
         <div className="row">
+          <h4 className="ship-address-title text-center">Địa chỉ người nhận</h4>
           <div className="col-sm-6 col-md-6">
             <InputValidation
               ref="name"
@@ -108,7 +109,7 @@ export default class FormOrder extends React.Component {
                 name="city"
                 List={this.props.city}
                 validator={this.state.ValidationData.city}
-                onChangeTest={this.props.onChangeTest}
+                onChangeTest={() => {}}
                 onChangeCity={this._onChangeSelectCity}
                 onChange={this._onChangeInputHandler}
                 firstValue="Tỉnh Thành" />
@@ -122,7 +123,7 @@ export default class FormOrder extends React.Component {
                 name="district"
                 List={this.props.district}
                 validator={this.state.ValidationData.district}
-                onChangeTest={this.props.onChangeTest}
+                onChangeTest={() => {}}
                 onChangeDistrict={this._onChangeSelectDistrict}
                 onChange={this._onChangeInputHandler}
                 firstValue="Quận Huyện" />
@@ -201,10 +202,11 @@ export default class FormOrder extends React.Component {
   _actionsShip() {
     let city = this.refs.city.getValues();
     let district = this.refs.district.getValues();
-    let weight = this.props.product.get('weight');
+    let weight = this.props.weight;
     if(city && district && weight) {
       ShipActions.getPhiShip({city: city, district: district, weight: weight});
     }
+    console.log('_actionsShip');
   }
 
   getValue() {

@@ -15,18 +15,35 @@ class CartActions {
    */
   createCart(product) {
   	let self = this;
-    Axios({
-    	method: 'post'
-		  , url: `${Api_URL}/cart`
-		  , data: [product]
-		  , headers: {}
-    })
-    .then((res) => {
-      self.dispatch(res.data);
-      self.actions.addToCart(product);
-    })
-    .catch((res) => {
-    });
+    if(localStorage.access_token) {
+      Axios({
+      	method: 'post'
+  		  , url: `${Api_URL}/cart`
+  		  , data: [product]
+  		  , headers: {
+          'Authorization': `Bearer ${localStorage.access_token}`
+        }
+      })
+      .then((res) => {
+        self.dispatch(res.data);
+        self.actions.addToCart(product);
+      })
+      .catch((res) => {
+      });
+    } else {
+      Axios({
+        method: 'post'
+        , url: `${Api_URL}/cart`
+        , data: [product]
+        , headers: {}
+      })
+      .then((res) => {
+        self.dispatch(res.data);
+        self.actions.addToCart(product);
+      })
+      .catch((res) => {
+      });
+    }
   }
 
   getCart() {

@@ -22,7 +22,7 @@ class ShipStore {
   }
 
   onGetPhiShip(data) {
-    this.phiship = this.phiship.merge(data);
+    this.phiship = new Map(data);
   }
 
 }

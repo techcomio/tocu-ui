@@ -21,28 +21,6 @@ class AuthActions {
   	let self = this;
     self.actions.CreateUserStart();
 
-/*    setTimeout(() => {
-      this.dispatch({
-        "isVerifyMobilePhone": false,
-        "level": 1,
-        "id": 4,
-        "name": "test",
-        "mobilePhone": "0989414660",
-        "city": "Tuyên Quang",
-        "district": "Sơn Dương",
-        "districtIsUrban": false,
-        "avatarUrl": "http://api.tocu.vn/image/egg-avatars/egg16.jpg",
-        "updatedAt": "2015-08-03T00:51:23.878Z",
-        "createdAt": "2015-08-03T00:51:23.878Z",
-        "company": null,
-        "address": null,
-        "NoteId": null,
-        "access_token": "djumkrkgu400c51hb88br0eb1ihum7176r1p0j4820ihk0ffmkd3",
-        "expires_in": 86400,
-        "_ts": "2015-08-03T00:51:23.979Z"
-      });
-    }, 100);*/
-
     Axios.post(`${Api_URL}/user`, {
         name: name,
         password: password,
@@ -70,7 +48,7 @@ class AuthActions {
     Axios.post(`${Api_URL}/token`, {
         mobilePhone: mobilePhone
         , password: password
-        , cart: Cookies.get('cart')
+        , cartId: Cookies.get('cart')
       })
       .then(function (res) {
         self.dispatch(res.data);

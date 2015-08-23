@@ -25,7 +25,6 @@ export default React.createClass({
   },
 
   componentWillUpdate() {
-    console.log('componentWillUpdate');
     if(this.props.status = "success") {
     }
   },

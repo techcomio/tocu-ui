@@ -13,7 +13,7 @@ import CityActions from '../../actions/CityActions';
  */
 import NavbarCart from '../Header/Navbar/NavbarCart';
 import NavbarCartShip from '../Header/Navbar/NavbarCartShip';
-import FormNguoiNhan     from './formNguoiNhan';
+import FormNguoiNhan from './formNguoiNhan';
 
 
 export default class FormOrder extends React.Component {

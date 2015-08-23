@@ -1,5 +1,4 @@
 'use strict';
-
 import React      from 'react/addons';
 import {Link}     from 'react-router';
 import classNames from 'classnames';
@@ -40,7 +39,7 @@ export default class NavbarCart extends React.Component {
       "navbar-defaul": true,
       "sticky": this.state.hideHeader,
     });
-    
+
     return (
       <div ref="navbar">
         <nav className={classesNavbar} style={{width: this.state.NavbarWidth}}>
@@ -49,7 +48,7 @@ export default class NavbarCart extends React.Component {
             <div><span className="title-nav-cart">Thông tin vận chuyển</span></div>
           </div>
           <div className="nav navbar-nav navbar-right">
-            <button onClick={this._onClickHoantat} type="button" className="btn btn-primary navbar-btn">Tiếp</button>
+            <button onClick={this._onClickHoantat} disabled={this.props.disabled} type="button" className="btn btn-primary navbar-btn">Tiếp</button>
           </div>
         </nav>
       </div>
@@ -57,7 +56,8 @@ export default class NavbarCart extends React.Component {
   }
 
   _onClickHoantat = (e) => {
-    console.log('_onClickHoantat', this);
+    console.log('_onClickTiep');
+    this.props.next();
   }
 
 };

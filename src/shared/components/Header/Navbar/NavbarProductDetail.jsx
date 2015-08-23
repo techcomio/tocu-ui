@@ -108,8 +108,10 @@ export default class NavbarProductID extends React.Component {
 
     if(!this.props.cartId) {
       this.props.CartActions.createCart({id, code, boxName, imageUrl: images[0], price, salePrice, weight, quantity: 1, status});
+      console.log('createCart')
     } else {
       this.props.CartActions.pushToCart({id, code, boxName, imageUrl: images[0], price, salePrice, weight, quantity: 1, status}, this.props.cartId);
+      console.log('pushToCart')
     }
   }
 
