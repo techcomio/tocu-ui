@@ -1,36 +1,36 @@
 'use strict';
 
-import React      from 'react/addons';
-import {Link}     from 'react-router';
+import React from 'react/addons';
+import { Link, Navigation } from 'react-router';
 import classNames from 'classnames';
 
 
-export default class NavbarCart extends React.Component {
+export default React.createClass({
 
-  constructor (props) {
-    super(props)
+  mixins: [ Navigation ],
 
-    this.state = {
+  getInitialState() {
+    return {
       hideHeader: false,
       NavbarWidth: null,
-    };
-  }
+    }
+  },
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-  }
+  },
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
-  }
+  },
 
   componentWillUpdate() {
     console.log('componentWillUpdate');
     if(this.props.status = "success") {
     }
-  }
+  },
 
-  handleScroll = (e) => {
+  handleScroll(e) {
     var offsetWidth = this.refs.navbar.getDOMNode().offsetWidth;
     var scrollTop = window.scrollY;
     var hideHeader = scrollTop >= 80;
@@ -38,7 +38,7 @@ export default class NavbarCart extends React.Component {
       hideHeader: hideHeader,
       NavbarWidth: offsetWidth,
     });
-  }
+  },
   
   render () {
     let classesNavbar = classNames({
@@ -61,24 +61,25 @@ export default class NavbarCart extends React.Component {
         </nav>
       </div>
     );
-  }
+  },
 
-  boxLogin = (cb) => {
+  boxLogin(cb) {
     if(!this.props.auth.get('access_token')) {
       this.props.handleBoxLogin();
     } else {
       cb();
     }
-  }
+  },
 
-  _onClickCapNhat = (e) => {
+  _onClickCapNhat(e) {
     this.props.CartActions.capnhatCart();
-  }
+  },
 
-  _onClickMua = (e) => {
+  _onClickMua(e) {
+    var self = this;
     this.boxLogin(() => {
-      this.props.next();
+      self.transitionTo('/cart/checkout');
     });
-  }
+  },
 
-};
+});

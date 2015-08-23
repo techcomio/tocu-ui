@@ -47,8 +47,8 @@ export default class FormOrder extends React.Component {
   componentWillUnmount() {
     CartStore.unlisten(this._onChangeCartStore);
     AuthStore.unlisten(this._onChangeAuthStore);
-    CityStore.unZlisten(this._onChangeCityStore);
-    ShipStore.unZlisten(this._onChangeShipStore);
+    CityStore.unlisten(this._onChangeCityStore);
+    ShipStore.unlisten(this._onChangeShipStore);
   }
 
   _onChangeCartStore = (state) => {

@@ -22,9 +22,9 @@ export default class SignIn extends React.Component {
   }
 
   static onEnter(next, transition) {
-    let {test} = this.context;
-    console.log('onEnter SignIn')
-    console.log(test)
+    // let {test} = this.context;
+    // console.log('onEnter SignIn')
+    // console.log(test)
   }
 
   componentWillMount () {

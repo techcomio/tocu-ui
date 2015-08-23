@@ -45,19 +45,15 @@ export default class NavbarCart extends React.Component {
       <div ref="navbar">
         <nav className={classesNavbar} style={{width: this.state.NavbarWidth}}>
           <div className="navbar-header">
-            <button onClick={this._onClickTrolai} type="button" className="btn btn-default navbar-btn">Trở lại</button>
+            <div><i className="icon icont-cart"></i></div>
+            <div><span className="title-nav-cart">Thông tin vận chuyển</span></div>
           </div>
           <div className="nav navbar-nav navbar-right">
-            <button onClick={this._onClickHoantat} type="button" className="btn btn-primary navbar-btn">Hoàn tất</button>
+            <button onClick={this._onClickHoantat} type="button" className="btn btn-primary navbar-btn">Tiếp</button>
           </div>
         </nav>
       </div>
     );
-  }
-
-  _onClickTrolai = (e) => {
-    console.log('_onClickTrolai', this);
-    this.props.prev();
   }
 
   _onClickHoantat = (e) => {

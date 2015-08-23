@@ -32,7 +32,7 @@ webpackJsonp([0],[
 
 	var _sharedRoutes2 = _interopRequireDefault(_sharedRoutes);
 
-	var _sharedLibHeadParams = __webpack_require__(444);
+	var _sharedLibHeadParams = __webpack_require__(449);
 
 	var _sharedLibHeadParams2 = _interopRequireDefault(_sharedLibHeadParams);
 
@@ -1129,42 +1129,50 @@ webpackJsonp([0],[
 
 	var _handlersCart2 = _interopRequireDefault(_handlersCart);
 
-	var _handlersPosts = __webpack_require__(418);
+	var _handlersPosts = __webpack_require__(425);
 
 	var _handlersPosts2 = _interopRequireDefault(_handlersPosts);
 
-	var _handlersAlbum = __webpack_require__(419);
+	var _handlersAlbum = __webpack_require__(426);
 
 	var _handlersAlbum2 = _interopRequireDefault(_handlersAlbum);
 
-	var _handlersProduct_id = __webpack_require__(420);
+	var _handlersProduct_id = __webpack_require__(427);
 
 	var _handlersProduct_id2 = _interopRequireDefault(_handlersProduct_id);
 
-	var _handlersSignIn = __webpack_require__(437);
+	var _handlersSignIn = __webpack_require__(443);
 
 	var _handlersSignIn2 = _interopRequireDefault(_handlersSignIn);
 
-	var _handlersSignUp = __webpack_require__(438);
+	var _handlersSignUp = __webpack_require__(444);
 
 	var _handlersSignUp2 = _interopRequireDefault(_handlersSignUp);
 
-	var _handlersNotFound = __webpack_require__(443);
+	var _handlersNotFound = __webpack_require__(447);
 
 	var _handlersNotFound2 = _interopRequireDefault(_handlersNotFound);
+
+	var _handlersCartCheckout = __webpack_require__(448);
+
+	var _handlersCartCheckout2 = _interopRequireDefault(_handlersCartCheckout);
 
 	exports['default'] = _reactAddons2['default'].createElement(
 		_reactRouter.Route,
 		{ component: _handlersApp2['default'] },
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersHome2['default'], name: 'home', path: '/', onEnter: _handlersHome2['default'].onEnter }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersBox2['default'], name: 'box', path: '/box/:id' }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersCart2['default'], name: 'cart', path: '/cart' }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersPosts2['default'], name: 'posts', path: '/posts/:id' }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], name: 'album', path: '/album/:id' }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersProduct_id2['default'], name: 'productID', path: '/product/:id' }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersSignIn2['default'], name: 'signin', path: '/signin', onEnter: _handlersSignIn2['default'].onEnter, context: { test: 'hi!' } }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersSignUp2['default'], name: 'signup', path: '/signup' }),
-		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersNotFound2['default'], name: 'NotFound', path: '*' })
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersHome2['default'], path: '/', onEnter: _handlersHome2['default'].onEnter }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersBox2['default'], path: '/box/:id' }),
+		_reactAddons2['default'].createElement(
+			_reactRouter.Route,
+			{ component: _handlersCart2['default'], path: '/cart' },
+			_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersCartCheckout2['default'], name: 'checkout', path: '/checkout' })
+		),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersPosts2['default'], path: '/posts/:id' }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], path: '/album/:id' }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersProduct_id2['default'], path: '/product/:id' }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersSignIn2['default'], path: '/signin', onEnter: _handlersSignIn2['default'].onEnter }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersSignUp2['default'], path: '/signup' }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersNotFound2['default'], path: '*' })
 	);
 	module.exports = exports['default'];
 
@@ -11774,9 +11782,7 @@ webpackJsonp([0],[
 	      }).then(function (res) {
 	        self.dispatch(res.data);
 	        self.actions.addToCart(product);
-	      })['catch'](function (res) {
-	        console.log('catch', res);
-	      });
+	      })['catch'](function (res) {});
 	    }
 	  }, {
 	    key: 'getCart',
@@ -11816,14 +11822,11 @@ webpackJsonp([0],[
 	        headers: {}
 	      }).then(function (res) {
 	        self.actions.addToCart(product);
-	      })['catch'](function (res) {
-	        console.log('catch', res);
-	      });
+	      })['catch'](function (res) {});
 	    }
 	  }, {
 	    key: 'destroyCart',
 	    value: function destroyCart(cartId, pId) {
-	      console.log('description', cartId, pId);
 	      var self = this,
 	          data = {};
 	      if (localStorage.access_token) {
@@ -11872,7 +11875,6 @@ webpackJsonp([0],[
 	      }
 
 	      (0, _axios2['default'])(data).then(function (res) {
-	        console.log('then', res.data);
 	        self.dispatch(res.data);
 	      })['catch'](function (res) {
 	        if (res.status === 304) {
@@ -11887,9 +11889,7 @@ webpackJsonp([0],[
 	    }
 	  }, {
 	    key: 'capnhatCarts',
-	    value: function capnhatCarts(cartId) {
-	      console.log('capnhatCarts', cartId);
-	    }
+	    value: function capnhatCarts(cartId) {}
 	  }, {
 	    key: 'capnhatCart304',
 	    value: function capnhatCart304() {
@@ -12028,27 +12028,23 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'onCreateCart',
 	    value: function onCreateCart(data) {
-	      console.log('onCreateCart', data.cartId);
 	      this.cartId = data.cartId;
 	      _cookiesJs2['default'].set('cart', data.cartId, { expires: 2592000 });
 	    }
 	  }, {
 	    key: 'onGetCart',
 	    value: function onGetCart(data) {
-	      console.log('onGetCart', data);
 	      this.listCart = _immutable2['default'].fromJS(data);
 	    }
 	  }, {
 	    key: 'onAddToCart',
 	    value: function onAddToCart(product) {
 	      this.listCart = this.listCart.push(_immutable2['default'].fromJS(product));
-	      console.log('onAddToCart', this.listCart.toJS());
 	    }
 	  }, {
 	    key: 'onDestroyCart',
 	    value: function onDestroyCart(data) {
 	      this.listCart = _immutable2['default'].fromJS(data);
-	      console.log('onDestroyCart', data);
 	    }
 	  }, {
 	    key: 'onCapnhatCart',
@@ -12060,7 +12056,6 @@ webpackJsonp([0],[
 	    key: 'onCapnhatCart304',
 	    value: function onCapnhatCart304() {
 	      this.status = "success";
-	      console.log('onCapnhatCart304');
 	    }
 	  }, {
 	    key: 'onEmpty',
@@ -24853,7 +24848,7 @@ webpackJsonp([0],[
 
 	var _decorators = __webpack_require__(311);
 
-	var _actionsCityActions = __webpack_require__(439);
+	var _actionsCityActions = __webpack_require__(414);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
@@ -24861,15 +24856,15 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _componentsHeader = __webpack_require__(414);
+	var _componentsHeader = __webpack_require__(415);
 
 	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
 
-	var _componentsFormBoxSignIn = __webpack_require__(422);
+	var _componentsFormBoxSignIn = __webpack_require__(416);
 
 	var _componentsFormBoxSignIn2 = _interopRequireDefault(_componentsFormBoxSignIn);
 
-	var _componentsFormOrderTest = __webpack_require__(415);
+	var _componentsFormOrderTest = __webpack_require__(417);
 
 	var _componentsFormOrderTest2 = _interopRequireDefault(_componentsFormOrderTest);
 
@@ -24882,6 +24877,18 @@ webpackJsonp([0],[
 	    _classCallCheck(this, _Application);
 
 	    _get(Object.getPrototypeOf(_Application.prototype), 'constructor', this).call(this, props);
+
+	    this.renderBody = function () {
+	      if (_this.props.location.pathname === "/cart") {
+	        return _reactAddons2['default'].createElement(_componentsFormOrderTest2['default'], {
+	          handleBoxLogin: _this.handleBoxLogin });
+	      }
+
+	      if (_this.props.location.pathname === "/cart/checkout") {
+	        return _this.props.children;
+	      }
+	      return _reactAddons2['default'].createElement('div', null);
+	    };
 
 	    this.renderBoxLogin = function () {
 	      if (_this.state.boxLogin) {
@@ -24923,8 +24930,7 @@ webpackJsonp([0],[
 	            _reactAddons2['default'].createElement(
 	              'div',
 	              { className: 'col-md-12 col-lg-12' },
-	              _reactAddons2['default'].createElement(_componentsFormOrderTest2['default'], {
-	                handleBoxLogin: this.handleBoxLogin })
+	              this.renderBody()
 	            )
 	          )
 	        ),
@@ -24960,6 +24966,106 @@ webpackJsonp([0],[
 
 /***/ },
 /* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(315);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(334);
+
+	var CityActions = (function () {
+	  function CityActions() {
+	    _classCallCheck(this, CityActions);
+	  }
+
+	  _createClass(CityActions, [{
+	    key: 'getCity',
+	    value: function getCity() {
+	      var self;
+	      return _regeneratorRuntime.async(function getCity$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            self = this;
+	            context$2$0.next = 3;
+	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/city').then(function (res) {
+	              self.dispatch(res.data);
+	            })['catch'](function (res) {
+	              self.actions.getCityFailed(res.data);
+	            }));
+
+	          case 3:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    }
+
+	    /**
+	     * tìm quận huyện theo tình thành
+	     * @param  {string} city [tên tỉnh/thành phố]
+	     * @dispatch {[quận huyện]}
+	     */
+	  }, {
+	    key: 'getDistrict',
+	    value: function getDistrict(_ref) {
+	      var city = _ref.city;
+
+	      var self = this;
+
+	      _axios2['default'].post(_configSample.Api_URL + '/district', {
+	        city: city
+	      }).then(function (res) {
+	        self.dispatch(res.data);
+	      })['catch'](function (res) {
+	        self.actions.getDistrictFailed(res.data);
+	      });
+	    }
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	  }, {
+	    key: 'getCityFailed',
+	    value: function getCityFailed(err) {
+	      this.dispatch(err);
+	    }
+
+	    /**
+	     * send lỗi cho Store
+	     * @param  {Error} err [Error request]
+	     * @dispatch {Error} [send Store]
+	     */
+	  }, {
+	    key: 'getDistrictFailed',
+	    value: function getDistrictFailed(err) {
+	      this.dispatch(err);
+	    }
+	  }]);
+
+	  return CityActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(CityActions);
+
+/***/ },
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -25074,7 +25180,93 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 415 */
+/* 416 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(240);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	/**
+	 * @Component
+	 */
+
+	var _SignIn = __webpack_require__(353);
+
+	var _SignIn2 = _interopRequireDefault(_SignIn);
+
+	var BoxsignIn = (function (_React$Component) {
+	  _inherits(BoxsignIn, _React$Component);
+
+	  function BoxsignIn(props) {
+	    _classCallCheck(this, BoxsignIn);
+
+	    _get(Object.getPrototypeOf(BoxsignIn.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {};
+	  }
+
+	  _createClass(BoxsignIn, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'boxLogin' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'container' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'row row-form' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
+	              _react2['default'].createElement(
+	                'div',
+	                { className: 'centrix' },
+	                _react2['default'].createElement(
+	                  _SignIn2['default'],
+	                  { replaceWith: this.props.hideBoxLogin, nextPath: this.props.location.pathname },
+	                  _react2['default'].createElement('div', { onClick: this.hideBoxLogin.bind(this), className: 'closeBox fa fa-times' })
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'hideBoxLogin',
+	    value: function hideBoxLogin() {
+	      this.props.hideBoxLogin();
+	    }
+	  }]);
+
+	  return BoxsignIn;
+	})(_react2['default'].Component);
+
+	exports['default'] = BoxsignIn;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25109,11 +25301,11 @@ webpackJsonp([0],[
 
 	var _storeAuthStore2 = _interopRequireDefault(_storeAuthStore);
 
-	var _storeCityStore = __webpack_require__(441);
+	var _storeCityStore = __webpack_require__(418);
 
 	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
 
-	var _storeShipStore = __webpack_require__(446);
+	var _storeShipStore = __webpack_require__(419);
 
 	var _storeShipStore2 = _interopRequireDefault(_storeShipStore);
 
@@ -25121,7 +25313,7 @@ webpackJsonp([0],[
 
 	var _actionsCartActions2 = _interopRequireDefault(_actionsCartActions);
 
-	var _actionsCityActions = __webpack_require__(439);
+	var _actionsCityActions = __webpack_require__(414);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
@@ -25129,15 +25321,15 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _HeaderNavbarNavbarCart = __webpack_require__(416);
+	var _HeaderNavbarNavbarCart = __webpack_require__(421);
 
 	var _HeaderNavbarNavbarCart2 = _interopRequireDefault(_HeaderNavbarNavbarCart);
 
-	var _HeaderNavbarNavbarCartShip = __webpack_require__(417);
+	var _HeaderNavbarNavbarCartShip = __webpack_require__(422);
 
 	var _HeaderNavbarNavbarCartShip2 = _interopRequireDefault(_HeaderNavbarNavbarCartShip);
 
-	var _formNguoiNhan = __webpack_require__(448);
+	var _formNguoiNhan = __webpack_require__(423);
 
 	var _formNguoiNhan2 = _interopRequireDefault(_formNguoiNhan);
 
@@ -25367,8 +25559,8 @@ webpackJsonp([0],[
 	    value: function componentWillUnmount() {
 	      _storeCartStore2['default'].unlisten(this._onChangeCartStore);
 	      _storeAuthStore2['default'].unlisten(this._onChangeAuthStore);
-	      _storeCityStore2['default'].unZlisten(this._onChangeCityStore);
-	      _storeShipStore2['default'].unZlisten(this._onChangeShipStore);
+	      _storeCityStore2['default'].unlisten(this._onChangeCityStore);
+	      _storeShipStore2['default'].unlisten(this._onChangeShipStore);
 	    }
 	  }, {
 	    key: 'render',
@@ -25532,156 +25724,329 @@ webpackJsonp([0],[
 	/* NavbarCart */
 
 /***/ },
-/* 416 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
 
 	var _createClass = __webpack_require__(234)['default'];
 
 	var _classCallCheck = __webpack_require__(237)['default'];
 
+	var _Array$from = __webpack_require__(339)['default'];
+
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
+	var _Alt = __webpack_require__(204);
 
-	var _reactAddons = __webpack_require__(16);
+	var _Alt2 = _interopRequireDefault(_Alt);
 
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+	var _actionsCityActions = __webpack_require__(414);
 
-	var _reactRouter = __webpack_require__(238);
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _classnames = __webpack_require__(337);
+	var _immutable = __webpack_require__(342);
 
-	var _classnames2 = _interopRequireDefault(_classnames);
+	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var NavbarCart = (function (_React$Component) {
-	  _inherits(NavbarCart, _React$Component);
+	var CityStore = (function () {
+	  function CityStore() {
+	    _classCallCheck(this, CityStore);
 
-	  function NavbarCart(props) {
-	    var _this = this;
+	    this.bindActions(_actionsCityActions2['default']); // getCity, getDistrict, getCityFailed, getDistrictFailed
 
-	    _classCallCheck(this, NavbarCart);
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
 
-	    _get(Object.getPrototypeOf(NavbarCart.prototype), 'constructor', this).call(this, props);
-
-	    this.handleScroll = function (e) {
-	      var offsetWidth = _this.refs.navbar.getDOMNode().offsetWidth;
-	      var scrollTop = window.scrollY;
-	      var hideHeader = scrollTop >= 80;
-	      _this.setState({
-	        hideHeader: hideHeader,
-	        NavbarWidth: offsetWidth
-	      });
-	    };
-
-	    this.boxLogin = function (cb) {
-	      if (!_this.props.auth.get('access_token')) {
-	        _this.props.handleBoxLogin();
-	      } else {
-	        cb();
-	      }
-	    };
-
-	    this._onClickCapNhat = function (e) {
-	      _this.props.CartActions.capnhatCart();
-	    };
-
-	    this._onClickMua = function (e) {
-	      _this.boxLogin(function () {
-	        _this.props.next();
-	      });
-	    };
-
-	    this.state = {
-	      hideHeader: false,
-	      NavbarWidth: null
-	    };
+	    this.city = _immutable2['default'].List();
+	    this.district = _immutable2['default'].List();
 	  }
 
-	  _createClass(NavbarCart, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      window.addEventListener('scroll', this.handleScroll);
+	  _createClass(CityStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].List.isList(this.city)) {
+	        this.city = _immutable2['default'].fromJS(this.city);
+	      }
+	      if (!_immutable2['default'].List.isList(this.district)) {
+	        this.district = _immutable2['default'].fromJS(this.district);
+	      }
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      window.removeEventListener('scroll', this.handleScroll);
+	    key: 'onGetCity',
+	    value: function onGetCity(data) {
+	      this.city = this.city.merge(_Array$from(data));
 	    }
 	  }, {
-	    key: 'componentWillUpdate',
-	    value: function componentWillUpdate() {
-	      console.log('componentWillUpdate');
-	      if (this.props.status = "success") {}
+	    key: 'onGetDistrict',
+	    value: function onGetDistrict(data) {
+	      this.district = _immutable2['default'].List(data);
 	    }
 	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var classesNavbar = (0, _classnames2['default'])({
-	        "navbar": true,
-	        "navbar-defaul": true,
-	        "sticky": this.state.hideHeader
-	      });
-
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        { ref: 'navbar' },
-	        _reactAddons2['default'].createElement(
-	          'nav',
-	          { className: classesNavbar, style: { width: this.state.NavbarWidth } },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'navbar-header' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              null,
-	              _reactAddons2['default'].createElement('i', { className: 'icon icont-cart' })
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              null,
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                { className: 'title-nav-cart' },
-	                'Cart'
-	              )
-	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'nav navbar-nav navbar-right' },
-	            _reactAddons2['default'].createElement(
-	              'button',
-	              { onClick: this._onClickCapNhat, type: 'button', className: 'btn btn-default navbar-btn' },
-	              'Cập nhật'
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'button',
-	              { onClick: this._onClickMua, type: 'button', className: 'btn btn-primary navbar-btn' },
-	              'Mua'
-	            )
-	          )
-	        )
-	      );
+	    key: 'onGetCityFailed',
+	    value: function onGetCityFailed(err) {
+	      console.log('onGetCityFailed');
+	    }
+	  }, {
+	    key: 'onGetDistrictFailed',
+	    value: function onGetDistrictFailed(err) {
+	      // console.log(err);
+	      console.log('onGetDistrictFailed');
 	    }
 	  }]);
 
-	  return NavbarCart;
-	})(_reactAddons2['default'].Component);
+	  return CityStore;
+	})();
 
-	exports['default'] = NavbarCart;
-	;
+	module.exports = _Alt2['default'].createStore(CityStore, 'CityStore');
+
+/***/ },
+/* 419 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _immutable = __webpack_require__(342);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _actionsShipActions = __webpack_require__(420);
+
+	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
+
+	var ShipStore = (function () {
+	  function ShipStore() {
+	    _classCallCheck(this, ShipStore);
+
+	    this.bindActions(_actionsShipActions2['default']); // getPhiShip
+	    this.on('init', this.bootstrap);
+	    this.on('bootstrap', this.bootstrap);
+
+	    this.phiship = new _immutable.Map();
+	  }
+
+	  _createClass(ShipStore, [{
+	    key: 'bootstrap',
+	    value: function bootstrap() {
+	      if (!_immutable2['default'].Map.isMap(this.phiship)) {
+	        this.phiship = _immutable2['default'].fromJS(this.phiship);
+	      }
+	    }
+	  }, {
+	    key: 'onGetPhiShip',
+	    value: function onGetPhiShip(data) {
+	      this.phiship = this.phiship.merge(data);
+	    }
+	  }]);
+
+	  return ShipStore;
+	})();
+
+	module.exports = _Alt2['default'].createStore(ShipStore, 'ShipStore');
+
+/***/ },
+/* 420 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	var _Alt = __webpack_require__(204);
+
+	var _Alt2 = _interopRequireDefault(_Alt);
+
+	var _axios = __webpack_require__(315);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _configSample = __webpack_require__(334);
+
+	var ShipActions = (function () {
+	  function ShipActions() {
+	    _classCallCheck(this, ShipActions);
+	  }
+
+	  _createClass(ShipActions, [{
+	    key: 'getPhiShip',
+
+	    /**
+	     * tính toán phí ship
+	     * @param  {string} options.city     - tên tỉnh thành
+	     * @param  {string} options.district - tên quận huyện
+	     * @param  {number} options.weight   - trọng lượng hành ship
+	     * @dispatch {object}                  - phí ship và phương thức thanh toán
+	     */
+	    value: function getPhiShip(_ref) {
+	      var city = _ref.city;
+	      var district = _ref.district;
+	      var weight = _ref.weight;
+
+	      var self = this;
+
+	      _axios2['default'].get(_configSample.Api_URL + '/ship', {
+	        params: {
+	          city: city,
+	          district: district,
+	          weight: weight
+	        }
+	      }).then(function (res) {
+	        self.dispatch(res.data);
+	      })['catch'](function (res) {
+	        console.log('catch', res);
+	      });
+	    }
+	  }]);
+
+	  return ShipActions;
+	})();
+
+	module.exports = _Alt2['default'].createActions(ShipActions);
+
+/***/ },
+/* 421 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(337);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'NavbarCart',
+
+	  mixins: [_reactRouter.Navigation],
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      hideHeader: false,
+	      NavbarWidth: null
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    window.addEventListener('scroll', this.handleScroll);
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    window.removeEventListener('scroll', this.handleScroll);
+	  },
+
+	  componentWillUpdate: function componentWillUpdate() {
+	    console.log('componentWillUpdate');
+	    if (this.props.status = "success") {}
+	  },
+
+	  handleScroll: function handleScroll(e) {
+	    var offsetWidth = this.refs.navbar.getDOMNode().offsetWidth;
+	    var scrollTop = window.scrollY;
+	    var hideHeader = scrollTop >= 80;
+	    this.setState({
+	      hideHeader: hideHeader,
+	      NavbarWidth: offsetWidth
+	    });
+	  },
+
+	  render: function render() {
+	    var classesNavbar = (0, _classnames2['default'])({
+	      "navbar": true,
+	      "navbar-defaul": true,
+	      "sticky": this.state.hideHeader
+	    });
+
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      { ref: 'navbar' },
+	      _reactAddons2['default'].createElement(
+	        'nav',
+	        { className: classesNavbar, style: { width: this.state.NavbarWidth } },
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'navbar-header' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            null,
+	            _reactAddons2['default'].createElement('i', { className: 'icon icont-cart' })
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            null,
+	            _reactAddons2['default'].createElement(
+	              'span',
+	              { className: 'title-nav-cart' },
+	              'Cart'
+	            )
+	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'nav navbar-nav navbar-right' },
+	          _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this._onClickCapNhat, type: 'button', className: 'btn btn-default navbar-btn' },
+	            'Cập nhật'
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this._onClickMua, type: 'button', className: 'btn btn-primary navbar-btn' },
+	            'Mua'
+	          )
+	        )
+	      )
+	    );
+	  },
+
+	  boxLogin: function boxLogin(cb) {
+	    if (!this.props.auth.get('access_token')) {
+	      this.props.handleBoxLogin();
+	    } else {
+	      cb();
+	    }
+	  },
+
+	  _onClickCapNhat: function _onClickCapNhat(e) {
+	    this.props.CartActions.capnhatCart();
+	  },
+
+	  _onClickMua: function _onClickMua(e) {
+	    var self = this;
+	    this.boxLogin(function () {
+	      self.transitionTo('/cart/checkout');
+	    });
+	  }
+
+	});
 	module.exports = exports['default'];
 
 /***/ },
-/* 417 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25728,11 +26093,6 @@ webpackJsonp([0],[
 	        hideHeader: hideHeader,
 	        NavbarWidth: offsetWidth
 	      });
-	    };
-
-	    this._onClickTrolai = function (e) {
-	      console.log('_onClickTrolai', _this);
-	      _this.props.prev();
 	    };
 
 	    this._onClickHoantat = function (e) {
@@ -25774,9 +26134,18 @@ webpackJsonp([0],[
 	            'div',
 	            { className: 'navbar-header' },
 	            _reactAddons2['default'].createElement(
-	              'button',
-	              { onClick: this._onClickTrolai, type: 'button', className: 'btn btn-default navbar-btn' },
-	              'Trở lại'
+	              'div',
+	              null,
+	              _reactAddons2['default'].createElement('i', { className: 'icon icont-cart' })
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              null,
+	              _reactAddons2['default'].createElement(
+	                'span',
+	                { className: 'title-nav-cart' },
+	                'Thông tin vận chuyển'
+	              )
 	            )
 	          ),
 	          _reactAddons2['default'].createElement(
@@ -25785,7 +26154,7 @@ webpackJsonp([0],[
 	            _reactAddons2['default'].createElement(
 	              'button',
 	              { onClick: this._onClickHoantat, type: 'button', className: 'btn btn-primary navbar-btn' },
-	              'Hoàn tất'
+	              'Tiếp'
 	            )
 	          )
 	        )
@@ -25801,7 +26170,451 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 418 */
+/* 423 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _Object$keys = __webpack_require__(354)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _validatorjs = __webpack_require__(356);
+
+	var _validatorjs2 = _interopRequireDefault(_validatorjs);
+
+	var _classnames = __webpack_require__(337);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _actionsShipActions = __webpack_require__(420);
+
+	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
+
+	/**
+	 * @Component
+	 */
+
+	var _FormInputValidationLabel = __webpack_require__(358);
+
+	var _FormInputValidationLabel2 = _interopRequireDefault(_FormInputValidationLabel);
+
+	var _FormSelectValidationLabel = __webpack_require__(424);
+
+	var _FormSelectValidationLabel2 = _interopRequireDefault(_FormSelectValidationLabel);
+
+	var Validations = {
+	  mobilePhone: {
+	    rules: { mobilePhone: ["required", "regex:/^([0-9]{10,11})$/"] },
+	    messages: { "required.mobilePhone": "Nhập số điện thoại của bạn!", "regex.mobilePhone": "Số điện thoại không hợp lệ!" },
+	    hasError: false,
+	    errorMessage: '',
+	    errorTextRequest: ''
+	  },
+	  name: {
+	    rules: { name: ["required"] },
+	    messages: { "required.name": "Nhập tên của bạn!" },
+	    hasError: false,
+	    errorMessage: '',
+	    errorTextRequest: ''
+	  },
+	  diachi: {
+	    rules: { diachi: ["required"] },
+	    messages: { "required.diachi": "Nhập địa chỉ của bạn!" },
+	    hasError: false,
+	    errorMessage: '',
+	    errorTextRequest: ''
+	  },
+	  city: {
+	    rules: { city: ["required"] },
+	    messages: { "required.city": "Chọn tỉnh thành của bạn!" },
+	    hasError: false,
+	    errorMessage: ''
+	  },
+	  district: {
+	    rules: { district: ["required"] },
+	    messages: { "required.district": "Chọn quận huyện của bạn!" },
+	    hasError: false,
+	    errorMessage: ''
+	  }
+	};
+
+	var FormOrder = (function (_React$Component) {
+	  _inherits(FormOrder, _React$Component);
+
+	  function FormOrder(props) {
+	    _classCallCheck(this, FormOrder);
+
+	    _get(Object.getPrototypeOf(FormOrder.prototype), 'constructor', this).call(this, props);
+	    this._bind('_onChangeInputHandler', '_setDisabledSubmit', '_setAndValidateInput', '_onChangeSelectCity', '_actionsShip', 'getValue', '_onChangeSelectDistrict');
+
+	    this.state = {
+	      ValidationData: Validations,
+	      disabled: true,
+	      cost: 0,
+	      shippingMethod: ''
+	    };
+	  }
+
+	  _createClass(FormOrder, [{
+	    key: '_bind',
+	    value: function _bind() {
+	      var _this = this;
+
+	      for (var _len = arguments.length, methods = Array(_len), _key = 0; _key < _len; _key++) {
+	        methods[_key] = arguments[_key];
+	      }
+
+	      methods.forEach(function (method) {
+	        return _this[method] = _this[method].bind(_this);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        null,
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-6 col-md-6' },
+	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
+	              ref: 'name',
+	              type: 'text',
+	              placeholder: 'Họ tên',
+	              name: 'name',
+	              validator: this.state.ValidationData.name,
+	              onChange: this._onChangeInputHandler })
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-6 col-md-6' },
+	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
+	              ref: 'mobilePhone',
+	              type: 'text',
+	              placeholder: 'Điện thoại',
+	              name: 'mobilePhone',
+	              validator: this.state.ValidationData.mobilePhone,
+	              onChange: this._onChangeInputHandler })
+	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-12 col-md-12' },
+	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
+	              ref: 'diachi',
+	              type: 'text',
+	              placeholder: 'Địa chỉ',
+	              name: 'diachi',
+	              validator: this.state.ValidationData.diachi,
+	              onChange: this._onChangeInputHandler })
+	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-6 col-md-6' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _reactAddons2['default'].createElement(_FormSelectValidationLabel2['default'], {
+	                ref: 'city',
+	                type: 'city',
+	                name: 'city',
+	                List: this.props.city,
+	                validator: this.state.ValidationData.city,
+	                onChangeTest: this.props.onChangeTest,
+	                onChangeCity: this._onChangeSelectCity,
+	                onChange: this._onChangeInputHandler,
+	                firstValue: 'Tỉnh Thành' })
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-6 col-md-6' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _reactAddons2['default'].createElement(_FormSelectValidationLabel2['default'], {
+	                ref: 'district',
+	                type: 'district',
+	                name: 'district',
+	                List: this.props.district,
+	                validator: this.state.ValidationData.district,
+	                onChangeTest: this.props.onChangeTest,
+	                onChangeDistrict: this._onChangeSelectDistrict,
+	                onChange: this._onChangeInputHandler,
+	                firstValue: 'Quận Huyện' })
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: '_setAndValidateInput',
+	    value: function _setAndValidateInput(name, value) {
+	      var ValidationData = this.state.ValidationData;
+	      var data = {};
+	      var _ValidationData$name = ValidationData[name];
+	      var rules = _ValidationData$name.rules;
+	      var messages = _ValidationData$name.messages;
+
+	      ValidationData[name].hasFocus = true;
+	      ValidationData[name].hasError = false;
+	      ValidationData[name].errorMessage = '';
+	      ValidationData[name].errorTextRequest = '';
+
+	      data[name] = value || '';
+
+	      var validation = new _validatorjs2['default'](data, rules, messages);
+
+	      if (validation.fails()) {
+	        ValidationData[name].hasError = true;
+	        ValidationData[name].errorMessage = validation.errors.first(name);
+	      }
+
+	      this.setState({ ValidationData: ValidationData });
+	    }
+	  }, {
+	    key: '_setDisabledSubmit',
+	    value: function _setDisabledSubmit() {
+	      var ValidationData = this.state.ValidationData,
+	          total = _Object$keys(ValidationData).length,
+	          done = 0,
+	          disabled = undefined;
+
+	      _Object$keys(ValidationData).forEach(function (key) {
+	        if (ValidationData[key].hasFocus && ValidationData[key].hasError === false) {
+	          done += 1;
+	        }
+	      });
+
+	      disabled = done === total ? false : true;
+
+	      this.setState({ disabled: disabled });
+
+	      if (this.state.disabled !== disabled) {
+	        this.props.onChangeDisable(disabled);
+	      }
+
+	      if (!disabled) {
+	        this._actionsShip();
+	      }
+	    }
+	  }, {
+	    key: '_onChangeInputHandler',
+	    value: function _onChangeInputHandler(name, value) {
+	      this._setAndValidateInput(name, value);
+	      this._setDisabledSubmit();
+	    }
+	  }, {
+	    key: '_onChangeSelectCity',
+	    value: function _onChangeSelectCity(citySelect) {
+	      this.refs.district.resetValue();
+	      this._setAndValidateInput('district', null);
+	      this.props.onChangeSelectCity(citySelect);
+	      this._setDisabledSubmit();
+	    }
+	  }, {
+	    key: '_onChangeSelectDistrict',
+	    value: function _onChangeSelectDistrict(districtSelect) {
+	      this._setAndValidateInput('district', districtSelect);
+	      this._setDisabledSubmit();
+	    }
+	  }, {
+	    key: '_actionsShip',
+	    value: function _actionsShip() {
+	      var city = this.refs.city.getValues();
+	      var district = this.refs.district.getValues();
+	      var weight = this.props.product.get('weight');
+	      if (city && district && weight) {
+	        _actionsShipActions2['default'].getPhiShip({ city: city, district: district, weight: weight });
+	      }
+	    }
+	  }, {
+	    key: 'getValue',
+	    value: function getValue() {
+	      var diachi = this.refs.diachi.getValue();
+	      var name = this.refs.name.getValue();
+	      var mobilePhone = this.refs.mobilePhone.getValue();
+	      var city = this.refs.city.getValues();
+	      var district = this.refs.district.getValues();
+	      return {
+	        name: name,
+	        address: diachi,
+	        phone: mobilePhone,
+	        city: city,
+	        district: district
+	      };
+	    }
+	  }]);
+
+	  return FormOrder;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = FormOrder;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 424 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _classnames = __webpack_require__(337);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'selectValidationLabel',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      value: ''
+	    };
+	  },
+	  propTypes: {
+	    firstValue: _reactAddons2['default'].PropTypes.string
+	  },
+	  // List: React.PropTypes.array,
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      firstValue: ''
+	    };
+	  },
+	  render: function render() {
+	    var classes = (0, _classnames2['default'])({
+	      "form-group": true,
+	      "has-error": this.props.validator.hasError
+	    });
+
+	    var erros = _reactAddons2['default'].createElement('label', { className: 'control-label', htmlFor: this.props.name });
+
+	    if (this.props.validator.errorTextRequest !== "") {
+	      erros = _reactAddons2['default'].createElement(
+	        'label',
+	        { className: 'control-label', htmlFor: this.props.name },
+	        this.props.validator.errorTextRequest
+	      );
+	    } else {
+	      erros = _reactAddons2['default'].createElement(
+	        'label',
+	        { className: 'control-label', htmlFor: this.props.name },
+	        this.props.validator.errorMessage
+	      );
+	    }
+
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      { className: classes },
+	      erros,
+	      this.renderSelect()
+	    );
+	  },
+
+	  renderSelect: function renderSelect() {
+	    if (this.props.type === "district") {
+	      return _reactAddons2['default'].createElement(
+	        'select',
+	        { ref: 'select', className: 'form-control', onChange: this._onChange },
+	        _reactAddons2['default'].createElement(
+	          'option',
+	          { value: '' },
+	          this.props.firstValue
+	        ),
+	        this.props.List && this.props.List.toJS().map(function (city, i) {
+	          return _reactAddons2['default'].createElement(
+	            'option',
+	            { key: i, value: city.name },
+	            city.name
+	          );
+	        })
+	      );
+	    } else {
+	      return _reactAddons2['default'].createElement(
+	        'select',
+	        { ref: 'select', className: 'form-control', onChange: this._onChange },
+	        _reactAddons2['default'].createElement(
+	          'option',
+	          { value: '' },
+	          this.props.firstValue
+	        ),
+	        this.props.List && this.props.List.toJS().map(function (city, i) {
+	          return _reactAddons2['default'].createElement(
+	            'option',
+	            { key: i, value: city },
+	            city
+	          );
+	        })
+	      );
+	    }
+	  },
+
+	  _onChange: function _onChange(e) {
+	    var value = e.target.value;
+	    this.setValues(value);
+	    if (this.props.onChangeCity) {
+	      this.props.onChangeCity(value);
+	    }
+	    if (this.props.onChangeDistrict) {
+	      this.props.onChangeDistrict(value);
+	    }
+	    this.props.onChange(this.props.name, value);
+	    this.props.onChangeTest();
+	  },
+	  setValues: function setValues(txt) {
+	    this.setState({ value: txt });
+	    this.value = txt;
+	  },
+	  resetValue: function resetValue() {
+	    this.setState({ value: '' });
+	    this.value = null;
+	    this.refs.select.getDOMNode()[0].selected = true;
+	    this.props.onChangeTest();
+	  },
+	  getValues: function getValues() {
+	    return this.value;
+	  }
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25872,7 +26685,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 419 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25943,7 +26756,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 420 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25992,7 +26805,7 @@ webpackJsonp([0],[
 
 	var _actionsVerifyActions2 = _interopRequireDefault(_actionsVerifyActions);
 
-	var _actionsSaleActions = __webpack_require__(421);
+	var _actionsSaleActions = __webpack_require__(428);
 
 	var _actionsSaleActions2 = _interopRequireDefault(_actionsSaleActions);
 
@@ -26000,31 +26813,31 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _componentsFormBoxSignIn = __webpack_require__(422);
+	var _componentsFormBoxSignIn = __webpack_require__(416);
 
 	var _componentsFormBoxSignIn2 = _interopRequireDefault(_componentsFormBoxSignIn);
 
-	var _componentsFormBoxVerify = __webpack_require__(423);
+	var _componentsFormBoxVerify = __webpack_require__(429);
 
 	var _componentsFormBoxVerify2 = _interopRequireDefault(_componentsFormBoxVerify);
 
-	var _componentsProduct = __webpack_require__(426);
+	var _componentsProduct = __webpack_require__(432);
 
 	var _componentsProduct2 = _interopRequireDefault(_componentsProduct);
 
-	var _componentsHeader = __webpack_require__(414);
+	var _componentsHeader = __webpack_require__(415);
 
 	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
 
-	var _componentsProductSidebar = __webpack_require__(433);
+	var _componentsProductSidebar = __webpack_require__(439);
 
 	var _componentsProductSidebar2 = _interopRequireDefault(_componentsProductSidebar);
 
-	var _componentsProductBoxAuto = __webpack_require__(434);
+	var _componentsProductBoxAuto = __webpack_require__(440);
 
 	var _componentsProductBoxAuto2 = _interopRequireDefault(_componentsProductBoxAuto);
 
-	var _componentsSale = __webpack_require__(435);
+	var _componentsSale = __webpack_require__(441);
 
 	var _componentsSale2 = _interopRequireDefault(_componentsSale);
 
@@ -26160,7 +26973,7 @@ webpackJsonp([0],[
 	/* Header */ /* 6 box auto */ /* Sidebar */ /* Sale */
 
 /***/ },
-/* 421 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26220,7 +27033,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createActions(SaleActions);
 
 /***/ },
-/* 422 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26247,93 +27060,7 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _SignIn = __webpack_require__(353);
-
-	var _SignIn2 = _interopRequireDefault(_SignIn);
-
-	var BoxsignIn = (function (_React$Component) {
-	  _inherits(BoxsignIn, _React$Component);
-
-	  function BoxsignIn(props) {
-	    _classCallCheck(this, BoxsignIn);
-
-	    _get(Object.getPrototypeOf(BoxsignIn.prototype), 'constructor', this).call(this, props);
-
-	    this.state = {};
-	  }
-
-	  _createClass(BoxsignIn, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2['default'].createElement(
-	        'div',
-	        { className: 'boxLogin' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'container' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'row row-form' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'col-xs-12 col-sm-7 col-md-5 col-centered' },
-	              _react2['default'].createElement(
-	                'div',
-	                { className: 'centrix' },
-	                _react2['default'].createElement(
-	                  _SignIn2['default'],
-	                  { replaceWith: this.props.hideBoxLogin, nextPath: this.props.location.pathname },
-	                  _react2['default'].createElement('div', { onClick: this.hideBoxLogin.bind(this), className: 'closeBox fa fa-times' })
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'hideBoxLogin',
-	    value: function hideBoxLogin() {
-	      this.props.hideBoxLogin();
-	    }
-	  }]);
-
-	  return BoxsignIn;
-	})(_react2['default'].Component);
-
-	exports['default'] = BoxsignIn;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 423 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _react = __webpack_require__(240);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	/**
-	 * @Component
-	 */
-
-	var _Verify = __webpack_require__(424);
+	var _Verify = __webpack_require__(430);
 
 	var _Verify2 = _interopRequireDefault(_Verify);
 
@@ -26388,7 +27115,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 424 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26407,7 +27134,7 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _storeVerifyStore = __webpack_require__(425);
+	var _storeVerifyStore = __webpack_require__(431);
 
 	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
 
@@ -26570,7 +27297,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 425 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26652,7 +27379,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(VerifyStore, 'VerifyStore');
 
 /***/ },
-/* 426 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26703,23 +27430,23 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _HeaderNavbarNavbarProductDetail = __webpack_require__(427);
+	var _HeaderNavbarNavbarProductDetail = __webpack_require__(433);
 
 	var _HeaderNavbarNavbarProductDetail2 = _interopRequireDefault(_HeaderNavbarNavbarProductDetail);
 
-	var _ImgSlideProduct = __webpack_require__(428);
+	var _ImgSlideProduct = __webpack_require__(434);
 
 	var _ImgSlideProduct2 = _interopRequireDefault(_ImgSlideProduct);
 
-	var _InfoSanpham = __webpack_require__(430);
+	var _InfoSanpham = __webpack_require__(436);
 
 	var _InfoSanpham2 = _interopRequireDefault(_InfoSanpham);
 
-	var _Detail = __webpack_require__(431);
+	var _Detail = __webpack_require__(437);
 
 	var _Detail2 = _interopRequireDefault(_Detail);
 
-	var _Mau = __webpack_require__(432);
+	var _Mau = __webpack_require__(438);
 
 	var _Mau2 = _interopRequireDefault(_Mau);
 
@@ -26825,7 +27552,7 @@ webpackJsonp([0],[
 	/* Slide image */ /* Detail */ /* Thong tin San pham */ /* Thong tin nguoi mau */
 
 /***/ },
-/* 427 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27067,7 +27794,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 428 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27094,7 +27821,7 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _lightBoxSlideImg = __webpack_require__(429);
+	var _lightBoxSlideImg = __webpack_require__(435);
 
 	var _lightBoxSlideImg2 = _interopRequireDefault(_lightBoxSlideImg);
 
@@ -27238,7 +27965,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 429 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27382,7 +28109,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 430 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27469,7 +28196,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 431 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27579,7 +28306,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 432 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27767,7 +28494,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 433 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27906,7 +28633,7 @@ webpackJsonp([0],[
 	/* navbar sidebar */ /* Gird item */
 
 /***/ },
-/* 434 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28724,7 +29451,7 @@ webpackJsonp([0],[
 	module.exports = exports["default"];
 
 /***/ },
-/* 435 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28749,7 +29476,7 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(238);
 
-	var _storeSaleStore = __webpack_require__(436);
+	var _storeSaleStore = __webpack_require__(442);
 
 	var _storeSaleStore2 = _interopRequireDefault(_storeSaleStore);
 
@@ -28877,7 +29604,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 436 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28898,7 +29625,7 @@ webpackJsonp([0],[
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _actionsSaleActions = __webpack_require__(421);
+	var _actionsSaleActions = __webpack_require__(428);
 
 	var _actionsSaleActions2 = _interopRequireDefault(_actionsSaleActions);
 
@@ -28933,7 +29660,7 @@ webpackJsonp([0],[
 	module.exports = _Alt2['default'].createStore(SaleStore, 'SaleStore');
 
 /***/ },
-/* 437 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28989,6 +29716,10 @@ webpackJsonp([0],[
 
 	  _createClass(SignIn, [{
 	    key: 'componentWillMount',
+
+	    // let {test} = this.context;
+	    // console.log('onEnter SignIn')
+	    // console.log(test)
 	    value: function componentWillMount() {
 	      this.props.HeadParams.setTitle("SignIn | tocu.vn");
 	      this.props.HeadParams.setDescription("SignIn tocu.vn");
@@ -29012,12 +29743,7 @@ webpackJsonp([0],[
 	    }
 	  }], [{
 	    key: 'onEnter',
-	    value: function onEnter(next, transition) {
-	      var test = this.context.test;
-
-	      console.log('onEnter SignIn');
-	      console.log(test);
-	    }
+	    value: function onEnter(next, transition) {}
 	  }, {
 	    key: 'contextTypes',
 	    value: {
@@ -29034,7 +29760,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 438 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29069,7 +29795,7 @@ webpackJsonp([0],[
 
 	var _validatorjs2 = _interopRequireDefault(_validatorjs);
 
-	var _actionsCityActions = __webpack_require__(439);
+	var _actionsCityActions = __webpack_require__(414);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
@@ -29079,7 +29805,7 @@ webpackJsonp([0],[
 	 * @Component
 	 */
 
-	var _componentsFormSignUp = __webpack_require__(440);
+	var _componentsFormSignUp = __webpack_require__(445);
 
 	var _componentsFormSignUp2 = _interopRequireDefault(_componentsFormSignUp);
 
@@ -29152,107 +29878,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 439 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _regeneratorRuntime = __webpack_require__(258)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(315);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(334);
-
-	var CityActions = (function () {
-	  function CityActions() {
-	    _classCallCheck(this, CityActions);
-	  }
-
-	  _createClass(CityActions, [{
-	    key: 'getCity',
-	    value: function getCity() {
-	      var self;
-	      return _regeneratorRuntime.async(function getCity$(context$2$0) {
-	        while (1) switch (context$2$0.prev = context$2$0.next) {
-	          case 0:
-	            self = this;
-	            context$2$0.next = 3;
-	            return _regeneratorRuntime.awrap(_axios2['default'].get(_configSample.Api_URL + '/city').then(function (res) {
-	              self.dispatch(res.data);
-	            })['catch'](function (res) {
-	              self.actions.getCityFailed(res.data);
-	            }));
-
-	          case 3:
-	          case 'end':
-	            return context$2$0.stop();
-	        }
-	      }, null, this);
-	    }
-
-	    /**
-	     * tìm quận huyện theo tình thành
-	     * @param  {string} city [tên tỉnh/thành phố]
-	     * @dispatch {[quận huyện]}
-	     */
-	  }, {
-	    key: 'getDistrict',
-	    value: function getDistrict(_ref) {
-	      var city = _ref.city;
-
-	      var self = this;
-
-	      _axios2['default'].post(_configSample.Api_URL + '/district', {
-	        city: city
-	      }).then(function (res) {
-	        self.dispatch(res.data);
-	      })['catch'](function (res) {
-	        self.actions.getDistrictFailed(res.data);
-	      });
-	    }
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	  }, {
-	    key: 'getCityFailed',
-	    value: function getCityFailed(err) {
-	      this.dispatch(err);
-	    }
-
-	    /**
-	     * send lỗi cho Store
-	     * @param  {Error} err [Error request]
-	     * @dispatch {Error} [send Store]
-	     */
-	  }, {
-	    key: 'getDistrictFailed',
-	    value: function getDistrictFailed(err) {
-	      this.dispatch(err);
-	    }
-	  }]);
-
-	  return CityActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(CityActions);
-
-/***/ },
-/* 440 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29289,15 +29915,15 @@ webpackJsonp([0],[
 
 	var _actionsAuthActions2 = _interopRequireDefault(_actionsAuthActions);
 
-	var _storeCityStore = __webpack_require__(441);
+	var _storeCityStore = __webpack_require__(418);
 
 	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
 
-	var _actionsCityActions = __webpack_require__(439);
+	var _actionsCityActions = __webpack_require__(414);
 
 	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
 
-	var _storeVerifyStore = __webpack_require__(425);
+	var _storeVerifyStore = __webpack_require__(431);
 
 	var _storeVerifyStore2 = _interopRequireDefault(_storeVerifyStore);
 
@@ -29317,11 +29943,11 @@ webpackJsonp([0],[
 
 	var _select2 = _interopRequireDefault(_select);
 
-	var _Verify = __webpack_require__(424);
+	var _Verify = __webpack_require__(430);
 
 	var _Verify2 = _interopRequireDefault(_Verify);
 
-	var _inputValidation = __webpack_require__(442);
+	var _inputValidation = __webpack_require__(446);
 
 	var _inputValidation2 = _interopRequireDefault(_inputValidation);
 
@@ -29596,84 +30222,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 441 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _Array$from = __webpack_require__(339)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _actionsCityActions = __webpack_require__(439);
-
-	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
-
-	var _immutable = __webpack_require__(342);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var CityStore = (function () {
-	  function CityStore() {
-	    _classCallCheck(this, CityStore);
-
-	    this.bindActions(_actionsCityActions2['default']); // getCity, getDistrict, getCityFailed, getDistrictFailed
-
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.city = _immutable2['default'].List();
-	    this.district = _immutable2['default'].List();
-	  }
-
-	  _createClass(CityStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].List.isList(this.city)) {
-	        this.city = _immutable2['default'].fromJS(this.city);
-	      }
-	      if (!_immutable2['default'].List.isList(this.district)) {
-	        this.district = _immutable2['default'].fromJS(this.district);
-	      }
-	    }
-	  }, {
-	    key: 'onGetCity',
-	    value: function onGetCity(data) {
-	      this.city = this.city.merge(_Array$from(data));
-	    }
-	  }, {
-	    key: 'onGetDistrict',
-	    value: function onGetDistrict(data) {
-	      this.district = _immutable2['default'].List(data);
-	    }
-	  }, {
-	    key: 'onGetCityFailed',
-	    value: function onGetCityFailed(err) {
-	      console.log('onGetCityFailed');
-	    }
-	  }, {
-	    key: 'onGetDistrictFailed',
-	    value: function onGetDistrictFailed(err) {
-	      // console.log(err);
-	      console.log('onGetDistrictFailed');
-	    }
-	  }]);
-
-	  return CityStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(CityStore, 'CityStore');
-
-/***/ },
-/* 442 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* @jsx React.DOM */
@@ -29774,7 +30323,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 443 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29825,7 +30374,341 @@ webpackJsonp([0],[
 	module.exports = exports["default"];
 
 /***/ },
-/* 444 */
+/* 448 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _storeCityStore = __webpack_require__(418);
+
+	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
+
+	var _actionsCityActions = __webpack_require__(414);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	/**
+	 * @Component
+	 */
+
+	var _componentsHeaderNavbarNavbarCartShip = __webpack_require__(422);
+
+	var _componentsHeaderNavbarNavbarCartShip2 = _interopRequireDefault(_componentsHeaderNavbarNavbarCartShip);
+
+	var _componentsFormOrderFormNguoiNhan = __webpack_require__(423);
+
+	var _componentsFormOrderFormNguoiNhan2 = _interopRequireDefault(_componentsFormOrderFormNguoiNhan);
+
+	var Checkout = (function (_React$Component) {
+	  _inherits(Checkout, _React$Component);
+
+	  function Checkout(props) {
+	    var _this = this;
+
+	    _classCallCheck(this, Checkout);
+
+	    _get(Object.getPrototypeOf(Checkout.prototype), 'constructor', this).call(this, props);
+
+	    this._onChangeCityStore = function (state) {
+	      _this.setState({
+	        city: _storeCityStore2['default'].getState().city,
+	        district: _storeCityStore2['default'].getState().district
+	      });
+	    };
+
+	    this._next = function (e) {};
+
+	    this._prev = function (e) {};
+
+	    this.resetHinhthucVC = function () {
+	      _this.setState({
+	        hinhthucVC: null
+	      });
+	    };
+
+	    this._onChangeSelectCity = function (citySelect) {
+	      _actionsCityActions2['default'].getDistrict({ city: citySelect });
+	      _this.setState({
+	        shippingMethod: ''
+	      });
+	    };
+
+	    this._ChangeDisable = function (value) {
+	      _this.setState({
+	        disabled: value
+	      });
+	    };
+
+	    this.state = {
+	      city: _storeCityStore2['default'].getState().city,
+	      district: _storeCityStore2['default'].getState().district
+	    };
+	  }
+
+	  _createClass(Checkout, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeCityStore2['default'].listen(this._onChangeCityStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeCityStore2['default'].unlisten(this._onChangeCityStore);
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.HeadParams.setTitle("Checkout | tocu.vn");
+	      this.props.HeadParams.setDescription("Checkout | Description");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'cart' },
+	        _reactAddons2['default'].createElement(_componentsHeaderNavbarNavbarCartShip2['default'], {
+	          next: this._next,
+	          prev: this._prev }),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'cart-checkout' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'sidebar' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'panel-group', id: 'accordion', role: 'tablist', 'aria-multiselectable': 'true' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'panel panel-default' },
+	                _reactAddons2['default'].createElement(
+	                  'div',
+	                  { className: 'panel-heading', role: 'tab', id: 'headingOne' },
+	                  _reactAddons2['default'].createElement(
+	                    'h4',
+	                    { className: 'panel-title' },
+	                    _reactAddons2['default'].createElement(
+	                      'a',
+	                      { role: 'button', 'data-toggle': 'collapse', href: '#collapseOne', 'aria-expanded': 'true', 'aria-controls': 'collapseOne' },
+	                      'GIỎ HÀNG ',
+	                      _reactAddons2['default'].createElement('i', { className: 'fa fa-angle-down pull-right' })
+	                    )
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement(
+	                  'div',
+	                  { 'aria-expanded': 'true', id: 'collapseOne', className: 'panel-collapse collapse in', role: 'tabpanel', 'aria-labelledby': 'headingOne' },
+	                  _reactAddons2['default'].createElement(
+	                    'div',
+	                    { className: 'panel-body' },
+	                    _reactAddons2['default'].createElement(
+	                      'ul',
+	                      { className: 'list-group' },
+	                      _reactAddons2['default'].createElement(
+	                        'li',
+	                        { className: 'list-group-item' },
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { className: 'list-group-body-item' },
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'img' },
+	                            _reactAddons2['default'].createElement(
+	                              'span',
+	                              { className: 'imgIcon' },
+	                              _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
+	                            )
+	                          ),
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'newsText' },
+	                            _reactAddons2['default'].createElement(
+	                              'div',
+	                              { className: 'title' },
+	                              'CV1'
+	                            ),
+	                            _reactAddons2['default'].createElement(
+	                              'div',
+	                              { className: 'price' },
+	                              _reactAddons2['default'].createElement(
+	                                'span',
+	                                { className: 'price-list' },
+	                                '123.000đ'
+	                              )
+	                            )
+	                          )
+	                        )
+	                      ),
+	                      _reactAddons2['default'].createElement(
+	                        'li',
+	                        { className: 'list-group-item' },
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { className: 'list-group-body-item' },
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'img' },
+	                            _reactAddons2['default'].createElement(
+	                              'span',
+	                              { className: 'imgIcon' },
+	                              _reactAddons2['default'].createElement('img', { src: 'http://api.tocu.vn/image/50x50/b8fa64ef4cef5471b9c5-11-2.jpg' })
+	                            )
+	                          ),
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'newsText' },
+	                            _reactAddons2['default'].createElement(
+	                              'div',
+	                              { className: 'title' },
+	                              'CV2'
+	                            ),
+	                            _reactAddons2['default'].createElement(
+	                              'div',
+	                              { className: 'price' },
+	                              _reactAddons2['default'].createElement(
+	                                'span',
+	                                { className: 'price-list' },
+	                                '123.000đ'
+	                              )
+	                            )
+	                          )
+	                        )
+	                      )
+	                    ),
+	                    _reactAddons2['default'].createElement(
+	                      'div',
+	                      { className: 'panel-footer' },
+	                      _reactAddons2['default'].createElement(
+	                        'div',
+	                        { className: 'panel-table' },
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { className: 'panel-key' },
+	                          'Tổng:'
+	                        ),
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { className: 'panel-val' },
+	                          '123.000đ'
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'panel panel-default' },
+	                _reactAddons2['default'].createElement(
+	                  'div',
+	                  { className: 'panel-heading', role: 'tab', id: 'headingTwo' },
+	                  _reactAddons2['default'].createElement(
+	                    'h4',
+	                    { className: 'panel-title' },
+	                    _reactAddons2['default'].createElement(
+	                      'a',
+	                      { className: '', role: 'button', 'data-toggle': 'collapse', href: '#collapseTwo', 'aria-expanded': 'true', 'aria-controls': 'collapseTwo' },
+	                      'VẬN CHUYỂN ',
+	                      _reactAddons2['default'].createElement('i', { className: 'fa fa-angle-down pull-right' })
+	                    )
+	                  )
+	                ),
+	                _reactAddons2['default'].createElement(
+	                  'div',
+	                  { 'aria-expanded': 'true', id: 'collapseTwo', className: 'panel-collapse collapse in', role: 'tabpanel', 'aria-labelledby': 'headingTwo' },
+	                  _reactAddons2['default'].createElement(
+	                    'div',
+	                    { className: 'panel-body panel-vanchuyen' },
+	                    _reactAddons2['default'].createElement(
+	                      'ul',
+	                      { className: 'list-group' },
+	                      _reactAddons2['default'].createElement(
+	                        'li',
+	                        { className: 'list-group-item' },
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { className: 'panel-list' },
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'panel-key' },
+	                            'Phí:'
+	                          ),
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'panel-val' },
+	                            '50.000đ'
+	                          )
+	                        )
+	                      ),
+	                      _reactAddons2['default'].createElement(
+	                        'li',
+	                        { className: 'list-group-item' },
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { className: 'panel-list' },
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'panel-key' },
+	                            'Thời gian:'
+	                          ),
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'panel-val' },
+	                            '3 ngày'
+	                          )
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'body-checkout' },
+	            _reactAddons2['default'].createElement(_componentsFormOrderFormNguoiNhan2['default'], {
+	              ref: 'formNguoiNhan',
+	              city: this.state.city,
+	              district: this.state.district,
+	              product: this.state.product,
+	              onChangeTest: this.resetHinhthucVC,
+	              onChangeSelectCity: this._onChangeSelectCity,
+	              onChangeDisable: this._ChangeDisable })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Checkout;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Checkout;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29840,7 +30723,7 @@ webpackJsonp([0],[
 	  value: true
 	});
 
-	var _env = __webpack_require__(445);
+	var _env = __webpack_require__(450);
 
 	var _env2 = _interopRequireDefault(_env);
 
@@ -29897,7 +30780,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 445 */
+/* 450 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29906,567 +30789,6 @@ webpackJsonp([0],[
 	  CLIENT: typeof window !== 'undefined',
 	  SERVER: typeof window === 'undefined'
 	};
-
-/***/ },
-/* 446 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _immutable = __webpack_require__(342);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _actionsShipActions = __webpack_require__(447);
-
-	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
-
-	var ShipStore = (function () {
-	  function ShipStore() {
-	    _classCallCheck(this, ShipStore);
-
-	    this.bindActions(_actionsShipActions2['default']); // getPhiShip
-	    this.on('init', this.bootstrap);
-	    this.on('bootstrap', this.bootstrap);
-
-	    this.phiship = new _immutable.Map();
-	  }
-
-	  _createClass(ShipStore, [{
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      if (!_immutable2['default'].Map.isMap(this.phiship)) {
-	        this.phiship = _immutable2['default'].fromJS(this.phiship);
-	      }
-	    }
-	  }, {
-	    key: 'onGetPhiShip',
-	    value: function onGetPhiShip(data) {
-	      this.phiship = this.phiship.merge(data);
-	    }
-	  }]);
-
-	  return ShipStore;
-	})();
-
-	module.exports = _Alt2['default'].createStore(ShipStore, 'ShipStore');
-
-/***/ },
-/* 447 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	var _Alt = __webpack_require__(204);
-
-	var _Alt2 = _interopRequireDefault(_Alt);
-
-	var _axios = __webpack_require__(315);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _configSample = __webpack_require__(334);
-
-	var ShipActions = (function () {
-	  function ShipActions() {
-	    _classCallCheck(this, ShipActions);
-	  }
-
-	  _createClass(ShipActions, [{
-	    key: 'getPhiShip',
-
-	    /**
-	     * tính toán phí ship
-	     * @param  {string} options.city     - tên tỉnh thành
-	     * @param  {string} options.district - tên quận huyện
-	     * @param  {number} options.weight   - trọng lượng hành ship
-	     * @dispatch {object}                  - phí ship và phương thức thanh toán
-	     */
-	    value: function getPhiShip(_ref) {
-	      var city = _ref.city;
-	      var district = _ref.district;
-	      var weight = _ref.weight;
-
-	      var self = this;
-
-	      _axios2['default'].get(_configSample.Api_URL + '/ship', {
-	        params: {
-	          city: city,
-	          district: district,
-	          weight: weight
-	        }
-	      }).then(function (res) {
-	        self.dispatch(res.data);
-	      })['catch'](function (res) {
-	        console.log('catch', res);
-	      });
-	    }
-	  }]);
-
-	  return ShipActions;
-	})();
-
-	module.exports = _Alt2['default'].createActions(ShipActions);
-
-/***/ },
-/* 448 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
-
-	var _Object$keys = __webpack_require__(354)['default'];
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _validatorjs = __webpack_require__(356);
-
-	var _validatorjs2 = _interopRequireDefault(_validatorjs);
-
-	var _classnames = __webpack_require__(337);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _actionsShipActions = __webpack_require__(447);
-
-	var _actionsShipActions2 = _interopRequireDefault(_actionsShipActions);
-
-	/**
-	 * @Component
-	 */
-
-	var _FormInputValidationLabel = __webpack_require__(358);
-
-	var _FormInputValidationLabel2 = _interopRequireDefault(_FormInputValidationLabel);
-
-	var _FormSelectValidationLabel = __webpack_require__(449);
-
-	var _FormSelectValidationLabel2 = _interopRequireDefault(_FormSelectValidationLabel);
-
-	var Validations = {
-	  mobilePhone: {
-	    rules: { mobilePhone: ["required", "regex:/^([0-9]{10,11})$/"] },
-	    messages: { "required.mobilePhone": "Nhập số điện thoại của bạn!", "regex.mobilePhone": "Số điện thoại không hợp lệ!" },
-	    hasError: false,
-	    errorMessage: '',
-	    errorTextRequest: ''
-	  },
-	  name: {
-	    rules: { name: ["required"] },
-	    messages: { "required.name": "Nhập tên của bạn!" },
-	    hasError: false,
-	    errorMessage: '',
-	    errorTextRequest: ''
-	  },
-	  diachi: {
-	    rules: { diachi: ["required"] },
-	    messages: { "required.diachi": "Nhập địa chỉ của bạn!" },
-	    hasError: false,
-	    errorMessage: '',
-	    errorTextRequest: ''
-	  },
-	  city: {
-	    rules: { city: ["required"] },
-	    messages: { "required.city": "Chọn tỉnh thành của bạn!" },
-	    hasError: false,
-	    errorMessage: ''
-	  },
-	  district: {
-	    rules: { district: ["required"] },
-	    messages: { "required.district": "Chọn quận huyện của bạn!" },
-	    hasError: false,
-	    errorMessage: ''
-	  }
-	};
-
-	var FormOrder = (function (_React$Component) {
-	  _inherits(FormOrder, _React$Component);
-
-	  function FormOrder(props) {
-	    _classCallCheck(this, FormOrder);
-
-	    _get(Object.getPrototypeOf(FormOrder.prototype), 'constructor', this).call(this, props);
-	    this._bind('_onChangeInputHandler', '_setDisabledSubmit', '_setAndValidateInput', '_onChangeSelectCity', '_actionsShip', 'getValue', '_onChangeSelectDistrict');
-
-	    this.state = {
-	      ValidationData: Validations,
-	      disabled: true,
-	      cost: 0,
-	      shippingMethod: ''
-	    };
-	  }
-
-	  _createClass(FormOrder, [{
-	    key: '_bind',
-	    value: function _bind() {
-	      var _this = this;
-
-	      for (var _len = arguments.length, methods = Array(_len), _key = 0; _key < _len; _key++) {
-	        methods[_key] = arguments[_key];
-	      }
-
-	      methods.forEach(function (method) {
-	        return _this[method] = _this[method].bind(_this);
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        null,
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-sm-6 col-md-6' },
-	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
-	              ref: 'name',
-	              type: 'text',
-	              placeholder: 'Họ tên',
-	              name: 'name',
-	              validator: this.state.ValidationData.name,
-	              onChange: this._onChangeInputHandler })
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-sm-6 col-md-6' },
-	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
-	              ref: 'mobilePhone',
-	              type: 'text',
-	              placeholder: 'Điện thoại',
-	              name: 'mobilePhone',
-	              validator: this.state.ValidationData.mobilePhone,
-	              onChange: this._onChangeInputHandler })
-	          )
-	        ),
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-sm-12 col-md-12' },
-	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
-	              ref: 'diachi',
-	              type: 'text',
-	              placeholder: 'Địa chỉ',
-	              name: 'diachi',
-	              validator: this.state.ValidationData.diachi,
-	              onChange: this._onChangeInputHandler })
-	          )
-	        ),
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-sm-6 col-md-6' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'form-group' },
-	              _reactAddons2['default'].createElement(_FormSelectValidationLabel2['default'], {
-	                ref: 'city',
-	                type: 'city',
-	                name: 'city',
-	                List: this.props.city,
-	                validator: this.state.ValidationData.city,
-	                onChangeTest: this.props.onChangeTest,
-	                onChangeCity: this._onChangeSelectCity,
-	                onChange: this._onChangeInputHandler,
-	                firstValue: 'Tỉnh Thành' })
-	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-sm-6 col-md-6' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'form-group' },
-	              _reactAddons2['default'].createElement(_FormSelectValidationLabel2['default'], {
-	                ref: 'district',
-	                type: 'district',
-	                name: 'district',
-	                List: this.props.district,
-	                validator: this.state.ValidationData.district,
-	                onChangeTest: this.props.onChangeTest,
-	                onChangeDistrict: this._onChangeSelectDistrict,
-	                onChange: this._onChangeInputHandler,
-	                firstValue: 'Quận Huyện' })
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }, {
-	    key: '_setAndValidateInput',
-	    value: function _setAndValidateInput(name, value) {
-	      var ValidationData = this.state.ValidationData;
-	      var data = {};
-	      var _ValidationData$name = ValidationData[name];
-	      var rules = _ValidationData$name.rules;
-	      var messages = _ValidationData$name.messages;
-
-	      ValidationData[name].hasFocus = true;
-	      ValidationData[name].hasError = false;
-	      ValidationData[name].errorMessage = '';
-	      ValidationData[name].errorTextRequest = '';
-
-	      data[name] = value || '';
-
-	      var validation = new _validatorjs2['default'](data, rules, messages);
-
-	      if (validation.fails()) {
-	        ValidationData[name].hasError = true;
-	        ValidationData[name].errorMessage = validation.errors.first(name);
-	      }
-
-	      this.setState({ ValidationData: ValidationData });
-	    }
-	  }, {
-	    key: '_setDisabledSubmit',
-	    value: function _setDisabledSubmit() {
-	      var ValidationData = this.state.ValidationData,
-	          total = _Object$keys(ValidationData).length,
-	          done = 0,
-	          disabled = undefined;
-
-	      _Object$keys(ValidationData).forEach(function (key) {
-	        if (ValidationData[key].hasFocus && ValidationData[key].hasError === false) {
-	          done += 1;
-	        }
-	      });
-
-	      disabled = done === total ? false : true;
-
-	      this.setState({ disabled: disabled });
-
-	      if (this.state.disabled !== disabled) {
-	        this.props.onChangeDisable(disabled);
-	      }
-
-	      if (!disabled) {
-	        this._actionsShip();
-	      }
-	    }
-	  }, {
-	    key: '_onChangeInputHandler',
-	    value: function _onChangeInputHandler(name, value) {
-	      this._setAndValidateInput(name, value);
-	      this._setDisabledSubmit();
-	    }
-	  }, {
-	    key: '_onChangeSelectCity',
-	    value: function _onChangeSelectCity(citySelect) {
-	      this.refs.district.resetValue();
-	      this._setAndValidateInput('district', null);
-	      this.props.onChangeSelectCity(citySelect);
-	      this._setDisabledSubmit();
-	    }
-	  }, {
-	    key: '_onChangeSelectDistrict',
-	    value: function _onChangeSelectDistrict(districtSelect) {
-	      this._setAndValidateInput('district', districtSelect);
-	      this._setDisabledSubmit();
-	    }
-	  }, {
-	    key: '_actionsShip',
-	    value: function _actionsShip() {
-	      var city = this.refs.city.getValues();
-	      var district = this.refs.district.getValues();
-	      var weight = this.props.product.get('weight');
-	      if (city && district && weight) {
-	        _actionsShipActions2['default'].getPhiShip({ city: city, district: district, weight: weight });
-	      }
-	    }
-	  }, {
-	    key: 'getValue',
-	    value: function getValue() {
-	      var diachi = this.refs.diachi.getValue();
-	      var name = this.refs.name.getValue();
-	      var mobilePhone = this.refs.mobilePhone.getValue();
-	      var city = this.refs.city.getValues();
-	      var district = this.refs.district.getValues();
-	      return {
-	        name: name,
-	        address: diachi,
-	        phone: mobilePhone,
-	        city: city,
-	        district: district
-	      };
-	    }
-	  }]);
-
-	  return FormOrder;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = FormOrder;
-	;
-	module.exports = exports['default'];
-
-/***/ },
-/* 449 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequireDefault = __webpack_require__(15)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _reactAddons = __webpack_require__(16);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _classnames = __webpack_require__(337);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	exports['default'] = _reactAddons2['default'].createClass({
-	  displayName: 'selectValidationLabel',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      value: ''
-	    };
-	  },
-	  propTypes: {
-	    firstValue: _reactAddons2['default'].PropTypes.string
-	  },
-	  // List: React.PropTypes.array,
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      firstValue: ''
-	    };
-	  },
-	  render: function render() {
-	    var classes = (0, _classnames2['default'])({
-	      "form-group": true,
-	      "has-error": this.props.validator.hasError
-	    });
-
-	    var erros = _reactAddons2['default'].createElement('label', { className: 'control-label', htmlFor: this.props.name });
-
-	    if (this.props.validator.errorTextRequest !== "") {
-	      erros = _reactAddons2['default'].createElement(
-	        'label',
-	        { className: 'control-label', htmlFor: this.props.name },
-	        this.props.validator.errorTextRequest
-	      );
-	    } else {
-	      erros = _reactAddons2['default'].createElement(
-	        'label',
-	        { className: 'control-label', htmlFor: this.props.name },
-	        this.props.validator.errorMessage
-	      );
-	    }
-
-	    return _reactAddons2['default'].createElement(
-	      'div',
-	      { className: classes },
-	      erros,
-	      this.renderSelect()
-	    );
-	  },
-
-	  renderSelect: function renderSelect() {
-	    if (this.props.type === "district") {
-	      return _reactAddons2['default'].createElement(
-	        'select',
-	        { ref: 'select', className: 'form-control', onChange: this._onChange },
-	        _reactAddons2['default'].createElement(
-	          'option',
-	          { value: '' },
-	          this.props.firstValue
-	        ),
-	        this.props.List && this.props.List.toJS().map(function (city, i) {
-	          return _reactAddons2['default'].createElement(
-	            'option',
-	            { key: i, value: city.name },
-	            city.name
-	          );
-	        })
-	      );
-	    } else {
-	      return _reactAddons2['default'].createElement(
-	        'select',
-	        { ref: 'select', className: 'form-control', onChange: this._onChange },
-	        _reactAddons2['default'].createElement(
-	          'option',
-	          { value: '' },
-	          this.props.firstValue
-	        ),
-	        this.props.List && this.props.List.toJS().map(function (city, i) {
-	          return _reactAddons2['default'].createElement(
-	            'option',
-	            { key: i, value: city },
-	            city
-	          );
-	        })
-	      );
-	    }
-	  },
-
-	  _onChange: function _onChange(e) {
-	    var value = e.target.value;
-	    this.setValues(value);
-	    if (this.props.onChangeCity) {
-	      this.props.onChangeCity(value);
-	    }
-	    if (this.props.onChangeDistrict) {
-	      this.props.onChangeDistrict(value);
-	    }
-	    this.props.onChange(this.props.name, value);
-	    this.props.onChangeTest();
-	  },
-	  setValues: function setValues(txt) {
-	    this.setState({ value: txt });
-	    this.value = txt;
-	  },
-	  resetValue: function resetValue() {
-	    this.setState({ value: '' });
-	    this.value = null;
-	    this.refs.select.getDOMNode()[0].selected = true;
-	    this.props.onChangeTest();
-	  },
-	  getValues: function getValues() {
-	    return this.value;
-	  }
-	});
-	module.exports = exports['default'];
 
 /***/ }
 ]);

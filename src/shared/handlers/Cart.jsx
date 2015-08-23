@@ -35,14 +35,27 @@ export default class Application extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12 col-lg-12">
-              <FormOrder
-                handleBoxLogin={this.handleBoxLogin} />
+            {this.renderBody()}
             </div>
           </div>
         </div>
         {this.renderBoxLogin()}
       </div>
     );
+  }
+
+  renderBody = () => {
+    if(this.props.location.pathname === "/cart") {
+      return (
+        <FormOrder
+          handleBoxLogin={this.handleBoxLogin} />
+      );
+    }
+
+    if(this.props.location.pathname === "/cart/checkout") {
+      return this.props.children;
+    }
+    return <div />
   }
 
   renderBoxLogin = () => {
