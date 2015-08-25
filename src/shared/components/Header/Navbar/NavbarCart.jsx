@@ -77,7 +77,7 @@ export default React.createClass({
   _onClickMua(e) {
     var self = this;
     this.boxLogin(() => {
-      self.transitionTo('/cart/checkout');
+      self.transitionTo('/checkout');
     });
   },
 

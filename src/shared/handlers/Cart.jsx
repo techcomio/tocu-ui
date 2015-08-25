@@ -52,7 +52,7 @@ export default class Application extends React.Component {
       );
     }
 
-    if(this.props.location.pathname === "/cart/checkout") {
+    if(this.props.location.pathname !== "/cart") {
       return this.props.children;
     }
     return <div />

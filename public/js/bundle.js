@@ -32,7 +32,7 @@ webpackJsonp([0],[
 
 	var _sharedRoutes2 = _interopRequireDefault(_sharedRoutes);
 
-	var _sharedLibHeadParams = __webpack_require__(449);
+	var _sharedLibHeadParams = __webpack_require__(453);
 
 	var _sharedLibHeadParams2 = _interopRequireDefault(_sharedLibHeadParams);
 
@@ -1153,19 +1153,34 @@ webpackJsonp([0],[
 
 	var _handlersNotFound2 = _interopRequireDefault(_handlersNotFound);
 
-	var _handlersCartCheckout = __webpack_require__(448);
+	var _handlersCheckout = __webpack_require__(448);
+
+	var _handlersCheckout2 = _interopRequireDefault(_handlersCheckout);
+
+	var _handlersCartCheckout = __webpack_require__(450);
 
 	var _handlersCartCheckout2 = _interopRequireDefault(_handlersCartCheckout);
+
+	var _handlersCartShipMethod = __webpack_require__(451);
+
+	var _handlersCartShipMethod2 = _interopRequireDefault(_handlersCartShipMethod);
+
+	var _handlersCheckoutPayMethod = __webpack_require__(452);
+
+	var _handlersCheckoutPayMethod2 = _interopRequireDefault(_handlersCheckoutPayMethod);
 
 	exports['default'] = _reactAddons2['default'].createElement(
 		_reactRouter.Route,
 		{ component: _handlersApp2['default'] },
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersHome2['default'], path: '/', onEnter: _handlersHome2['default'].onEnter }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersBox2['default'], path: '/box/:id' }),
+		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersCart2['default'], path: '/cart' }),
 		_reactAddons2['default'].createElement(
 			_reactRouter.Route,
-			{ component: _handlersCart2['default'], path: '/cart' },
-			_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersCartCheckout2['default'], name: 'checkout', path: '/checkout' })
+			{ component: _handlersCheckout2['default'] },
+			_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersCartCheckout2['default'], path: '/checkout' }),
+			_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersCartShipMethod2['default'], path: '/checkout-ship-method' }),
+			_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersCheckoutPayMethod2['default'], path: '/checkout-pay-method' })
 		),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersPosts2['default'], path: '/posts/:id' }),
 		_reactAddons2['default'].createElement(_reactRouter.Route, { component: _handlersAlbum2['default'], path: '/album/:id' }),
@@ -24876,7 +24891,7 @@ webpackJsonp([0],[
 	          handleBoxLogin: _this.handleBoxLogin });
 	      }
 
-	      if (_this.props.location.pathname === "/cart/checkout") {
+	      if (_this.props.location.pathname !== "/cart") {
 	        return _this.props.children;
 	      }
 	      return _reactAddons2['default'].createElement('div', null);
@@ -26029,7 +26044,7 @@ webpackJsonp([0],[
 	  _onClickMua: function _onClickMua(e) {
 	    var self = this;
 	    this.boxLogin(function () {
-	      self.transitionTo('/cart/checkout');
+	      self.transitionTo('/checkout');
 	    });
 	  }
 
@@ -26041,14 +26056,6 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
-	var _get = __webpack_require__(218)['default'];
-
-	var _inherits = __webpack_require__(224)['default'];
-
-	var _createClass = __webpack_require__(234)['default'];
-
-	var _classCallCheck = __webpack_require__(237)['default'];
 
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
@@ -26066,99 +26073,85 @@ webpackJsonp([0],[
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var NavbarCart = (function (_React$Component) {
-	  _inherits(NavbarCart, _React$Component);
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'NavbarCartShip',
 
-	  function NavbarCart(props) {
-	    var _this = this;
+	  mixins: [_reactRouter.Navigation],
 
-	    _classCallCheck(this, NavbarCart);
-
-	    _get(Object.getPrototypeOf(NavbarCart.prototype), 'constructor', this).call(this, props);
-
-	    this.handleScroll = function (e) {
-	      var offsetWidth = _this.refs.navbar.getDOMNode().offsetWidth;
-	      var scrollTop = window.scrollY;
-	      var hideHeader = scrollTop >= 80;
-	      _this.setState({
-	        hideHeader: hideHeader,
-	        NavbarWidth: offsetWidth
-	      });
-	    };
-
-	    this._onClickHoantat = function (e) {
-	      console.log('_onClickTiep');
-	      _this.props.next();
-	    };
-
-	    this.state = {
+	  getInitialState: function getInitialState() {
+	    return {
 	      hideHeader: false,
 	      NavbarWidth: null
 	    };
-	  }
+	  },
 
-	  _createClass(NavbarCart, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      window.addEventListener('scroll', this.handleScroll);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      window.removeEventListener('scroll', this.handleScroll);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var classesNavbar = (0, _classnames2['default'])({
-	        "navbar": true,
-	        "navbar-defaul": true,
-	        "sticky": this.state.hideHeader
-	      });
+	  componentDidMount: function componentDidMount() {
+	    window.addEventListener('scroll', this.handleScroll);
+	  },
 
-	      return _reactAddons2['default'].createElement(
-	        'div',
-	        { ref: 'navbar' },
+	  componentWillUnmount: function componentWillUnmount() {
+	    window.removeEventListener('scroll', this.handleScroll);
+	  },
+
+	  handleScroll: function handleScroll() {
+	    var offsetWidth = this.refs.navbar.getDOMNode().offsetWidth;
+	    var scrollTop = window.scrollY;
+	    var hideHeader = scrollTop >= 80;
+	    this.setState({
+	      hideHeader: hideHeader,
+	      NavbarWidth: offsetWidth
+	    });
+	  },
+
+	  render: function render() {
+	    var classesNavbar = (0, _classnames2['default'])({
+	      "navbar": true,
+	      "navbar-defaul": true,
+	      "sticky": this.state.hideHeader
+	    });
+
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      { ref: 'navbar' },
+	      _reactAddons2['default'].createElement(
+	        'nav',
+	        { className: classesNavbar, style: { width: this.state.NavbarWidth } },
 	        _reactAddons2['default'].createElement(
-	          'nav',
-	          { className: classesNavbar, style: { width: this.state.NavbarWidth } },
+	          'div',
+	          { className: 'navbar-header' },
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'navbar-header' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              null,
-	              _reactAddons2['default'].createElement('i', { className: 'icon icont-cart' })
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              null,
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                { className: 'title-nav-cart' },
-	                'Thông tin vận chuyển'
-	              )
-	            )
+	            null,
+	            _reactAddons2['default'].createElement('i', { className: 'icon icont-cart' })
 	          ),
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'nav navbar-nav navbar-right' },
+	            null,
 	            _reactAddons2['default'].createElement(
-	              'button',
-	              { onClick: this._onClickHoantat, disabled: this.props.disabled, type: 'button', className: 'btn btn-primary navbar-btn' },
-	              'Tiếp'
+	              'span',
+	              { className: 'title-nav-cart' },
+	              'Thông tin vận chuyển'
 	            )
 	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'nav navbar-nav navbar-right' },
+	          _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this._onClickHoantat, disabled: this.props.disabled, type: 'button', className: 'btn btn-primary navbar-btn' },
+	            'Tiếp'
+	          )
 	        )
-	      );
-	    }
-	  }]);
+	      )
+	    );
+	  },
 
-	  return NavbarCart;
-	})(_reactAddons2['default'].Component);
+	  _onClickHoantat: function _onClickHoantat(e) {
+	    this.transitionTo('/checkout-ship-method');
+	  }
 
-	exports['default'] = NavbarCart;
-	;
+	});
 	module.exports = exports['default'];
 
 /***/ },
@@ -26282,91 +26275,104 @@ webpackJsonp([0],[
 	    value: function render() {
 	      return _reactAddons2['default'].createElement(
 	        'div',
-	        { className: 'ship-address' },
+	        null,
 	        _reactAddons2['default'].createElement(
 	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'h4',
-	            { className: 'ship-address-title text-center' },
-	            'Địa chỉ người nhận'
-	          ),
+	          { className: 'ship-address' },
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'col-sm-6 col-md-6' },
-	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
-	              ref: 'name',
-	              type: 'text',
-	              placeholder: 'Họ tên',
-	              name: 'name',
-	              validator: this.state.ValidationData.name,
-	              onChange: this._onChangeInputHandler })
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-sm-6 col-md-6' },
-	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
-	              ref: 'mobilePhone',
-	              type: 'text',
-	              placeholder: 'Điện thoại',
-	              name: 'mobilePhone',
-	              validator: this.state.ValidationData.mobilePhone,
-	              onChange: this._onChangeInputHandler })
-	          )
-	        ),
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-sm-12 col-md-12' },
-	            _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
-	              ref: 'diachi',
-	              type: 'text',
-	              placeholder: 'Địa chỉ',
-	              name: 'diachi',
-	              validator: this.state.ValidationData.diachi,
-	              onChange: this._onChangeInputHandler })
-	          )
-	        ),
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'row' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'col-sm-6 col-md-6' },
+	            { className: 'row' },
+	            _reactAddons2['default'].createElement(
+	              'h4',
+	              { className: 'ship-address-title text-center' },
+	              'Thông tin người nhận'
+	            ),
 	            _reactAddons2['default'].createElement(
 	              'div',
-	              { className: 'form-group' },
-	              _reactAddons2['default'].createElement(_FormSelectValidationLabel2['default'], {
-	                ref: 'city',
-	                type: 'city',
-	                name: 'city',
-	                List: this.props.city,
-	                validator: this.state.ValidationData.city,
-	                onChangeTest: function () {},
-	                onChangeCity: this._onChangeSelectCity,
-	                onChange: this._onChangeInputHandler,
-	                firstValue: 'Tỉnh Thành' })
+	              { className: 'col-sm-6 col-md-6' },
+	              _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
+	                ref: 'name',
+	                type: 'text',
+	                placeholder: 'Họ tên',
+	                name: 'name',
+	                validator: this.state.ValidationData.name,
+	                onChange: this._onChangeInputHandler })
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'col-sm-6 col-md-6' },
+	              _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
+	                ref: 'mobilePhone',
+	                type: 'text',
+	                placeholder: 'Điện thoại',
+	                name: 'mobilePhone',
+	                validator: this.state.ValidationData.mobilePhone,
+	                onChange: this._onChangeInputHandler })
 	            )
 	          ),
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'col-sm-6 col-md-6' },
+	            { className: 'row' },
 	            _reactAddons2['default'].createElement(
 	              'div',
-	              { className: 'form-group' },
-	              _reactAddons2['default'].createElement(_FormSelectValidationLabel2['default'], {
-	                ref: 'district',
-	                type: 'district',
-	                name: 'district',
-	                List: this.props.district,
-	                validator: this.state.ValidationData.district,
-	                onChangeTest: function () {},
-	                onChangeDistrict: this._onChangeSelectDistrict,
-	                onChange: this._onChangeInputHandler,
-	                firstValue: 'Quận Huyện' })
+	              { className: 'col-sm-12 col-md-12' },
+	              _reactAddons2['default'].createElement(_FormInputValidationLabel2['default'], {
+	                ref: 'diachi',
+	                type: 'text',
+	                placeholder: 'Địa chỉ',
+	                name: 'diachi',
+	                validator: this.state.ValidationData.diachi,
+	                onChange: this._onChangeInputHandler })
 	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'row' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'col-sm-6 col-md-6' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'form-group' },
+	                _reactAddons2['default'].createElement(_FormSelectValidationLabel2['default'], {
+	                  ref: 'city',
+	                  type: 'city',
+	                  name: 'city',
+	                  List: this.props.city,
+	                  validator: this.state.ValidationData.city,
+	                  onChangeTest: function () {},
+	                  onChangeCity: this._onChangeSelectCity,
+	                  onChange: this._onChangeInputHandler,
+	                  firstValue: 'Tỉnh Thành' })
+	              )
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'col-sm-6 col-md-6' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'form-group' },
+	                _reactAddons2['default'].createElement(_FormSelectValidationLabel2['default'], {
+	                  ref: 'district',
+	                  type: 'district',
+	                  name: 'district',
+	                  List: this.props.district,
+	                  validator: this.state.ValidationData.district,
+	                  onChangeTest: function () {},
+	                  onChangeDistrict: this._onChangeSelectDistrict,
+	                  onChange: this._onChangeInputHandler,
+	                  firstValue: 'Quận Huyện' })
+	              )
+	            )
+	          )
+	        ),
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'btn-continue' },
+	          _reactAddons2['default'].createElement(
+	            'button',
+	            { onClick: this.props.next, disabled: this.state.disabled, type: 'button', className: 'btn btn-primary navbar-btn btn-block' },
+	            'Tiếp'
 	          )
 	        )
 	      );
@@ -26414,9 +26420,9 @@ webpackJsonp([0],[
 
 	      this.setState({ disabled: disabled });
 
-	      if (this.state.disabled !== disabled) {
-	        this.props.onChangeDisable(disabled);
-	      }
+	      // if(this.state.disabled !== disabled) {
+	      // this.props.onChangeDisable(disabled);
+	      // }
 
 	      if (!disabled) {
 	        this._actionsShip();
@@ -30379,6 +30385,489 @@ webpackJsonp([0],[
 
 	'use strict';
 
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _regeneratorRuntime = __webpack_require__(258)['default'];
+
+	var _Promise = __webpack_require__(288)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _decorators = __webpack_require__(311);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(337);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storeCityStore = __webpack_require__(418);
+
+	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
+
+	var _storeCartStore = __webpack_require__(348);
+
+	var _storeCartStore2 = _interopRequireDefault(_storeCartStore);
+
+	var _storeShipStore = __webpack_require__(419);
+
+	var _storeShipStore2 = _interopRequireDefault(_storeShipStore);
+
+	var _actionsCityActions = __webpack_require__(414);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	/**
+	 * @Component
+	 */
+
+	var _componentsHeaderNavbarNavbarCartShipMethod = __webpack_require__(449);
+
+	var _componentsHeaderNavbarNavbarCartShipMethod2 = _interopRequireDefault(_componentsHeaderNavbarNavbarCartShipMethod);
+
+	var Application = (function (_React$Component) {
+	  _inherits(Application, _React$Component);
+
+	  function Application(props) {
+	    var _this = this;
+
+	    _classCallCheck(this, _Application);
+
+	    _get(Object.getPrototypeOf(_Application.prototype), 'constructor', this).call(this, props);
+
+	    this._onChangeCityStore = function (state) {
+	      _this.setState({
+	        city: _storeCityStore2['default'].getState().city,
+	        district: _storeCityStore2['default'].getState().district
+	      });
+	    };
+
+	    this._onChangeCartStore = function (state) {
+	      _this.setState({
+	        listCart: _storeCartStore2['default'].getState().listCart,
+	        cartId: _storeCartStore2['default'].getState().cartId,
+	        totalCart: _storeCartStore2['default'].getTotalCart(),
+	        weightCart: _storeCartStore2['default'].getWeightCart()
+	      });
+	    };
+
+	    this._onChangeShipStore = function (state) {
+	      _this.setState({
+	        phiship: _storeShipStore2['default'].getState().phiship
+	      });
+	    };
+
+	    this.renderListCart = function () {
+	      return _this.state.listCart.map(function (cart, i) {
+	        var url = cart.get('imageUrl');
+	        var imgUrl = url.replace(/image\//gi, 'image/50x50/');
+
+	        var price = null;
+	        var salePrice = null;
+	        if (cart.get('price')) {
+	          price = _this.formatNumber(cart.get('price'));
+	        }
+	        if (cart.get('salePrice')) {
+	          salePrice = _this.formatNumber(cart.get('salePrice'));
+	        }
+
+	        var classer = (0, _classnames2['default'])({
+	          "list-group-item": true,
+	          disabled: cart.get('status') !== "available"
+	        });
+
+	        return _reactAddons2['default'].createElement(
+	          'li',
+	          { key: i, className: classer },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'list-group-body-item' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'img' },
+	              _reactAddons2['default'].createElement(
+	                'span',
+	                { className: 'imgIcon' },
+	                _reactAddons2['default'].createElement('img', { src: imgUrl })
+	              )
+	            ),
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'newsText' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'title' },
+	                cart.get('code')
+	              ),
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'price' },
+	                _reactAddons2['default'].createElement(
+	                  'span',
+	                  { className: 'price-list' },
+	                  salePrice || price,
+	                  'đ'
+	                )
+	              )
+	            )
+	          )
+	        );
+	      });
+	    };
+
+	    this.formatNumber = function (number) {
+	      if (typeof number === "number") {
+	        return number.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
+	      } else {
+	        return 0;
+	      }
+	    };
+
+	    this.state = {
+	      disabled: true,
+	      city: _storeCityStore2['default'].getState().city,
+	      district: _storeCityStore2['default'].getState().district,
+	      listCart: _storeCartStore2['default'].getState().listCart,
+	      cartId: _storeCartStore2['default'].getState().cartId,
+	      totalCart: _storeCartStore2['default'].getTotalCart(),
+	      weightCart: _storeCartStore2['default'].getWeightCart(),
+	      phiship: _storeShipStore2['default'].getState().phiship
+	    };
+	  }
+
+	  _createClass(Application, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _storeCityStore2['default'].listen(this._onChangeCityStore);
+	      _storeCartStore2['default'].listen(this._onChangeCartStore);
+	      _storeShipStore2['default'].listen(this._onChangeShipStore);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _storeCityStore2['default'].unlisten(this._onChangeCityStore);
+	      _storeCartStore2['default'].unlisten(this._onChangeCartStore);
+	      _storeShipStore2['default'].unlisten(this._onChangeShipStore);
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.HeadParams.setTitle("Checkout | tocu.vn");
+	      this.props.HeadParams.setDescription("Checkout | Description");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        { id: 'checkout' },
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'container' },
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'row' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'col-md-12 col-lg-12' },
+	              _reactAddons2['default'].createElement(
+	                'div',
+	                { className: 'checkout' },
+	                _reactAddons2['default'].createElement(_componentsHeaderNavbarNavbarCartShipMethod2['default'], {
+	                  disabled: this.state.disabled,
+	                  next: this._next,
+	                  prev: this._prev }),
+	                _reactAddons2['default'].createElement(
+	                  'div',
+	                  { className: 'checkout-body' },
+	                  _reactAddons2['default'].createElement(
+	                    'div',
+	                    { className: 'sidebar' },
+	                    _reactAddons2['default'].createElement(
+	                      'div',
+	                      { className: 'panel-group', id: 'accordion', role: 'tablist', 'aria-multiselectable': 'true' },
+	                      _reactAddons2['default'].createElement(
+	                        'div',
+	                        { className: 'panel panel-default' },
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { className: 'panel-heading', role: 'tab', id: 'headingOne' },
+	                          _reactAddons2['default'].createElement(
+	                            'h4',
+	                            { className: 'panel-title' },
+	                            _reactAddons2['default'].createElement(
+	                              'a',
+	                              { role: 'button', 'data-toggle': 'collapse', href: '#collapseOne', 'aria-expanded': 'true', 'aria-controls': 'collapseOne' },
+	                              'GIỎ HÀNG ',
+	                              _reactAddons2['default'].createElement('i', { className: 'fa fa-angle-down pull-right' })
+	                            )
+	                          )
+	                        ),
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { 'aria-expanded': 'true', id: 'collapseOne', className: 'panel-collapse collapse in', role: 'tabpanel', 'aria-labelledby': 'headingOne' },
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'panel-body' },
+	                            _reactAddons2['default'].createElement(
+	                              'ul',
+	                              { className: 'list-group' },
+	                              this.renderListCart()
+	                            ),
+	                            _reactAddons2['default'].createElement(
+	                              'div',
+	                              { className: 'panel-footer' },
+	                              _reactAddons2['default'].createElement(
+	                                'div',
+	                                { className: 'panel-table' },
+	                                _reactAddons2['default'].createElement(
+	                                  'div',
+	                                  { className: 'panel-key' },
+	                                  'Tổng:'
+	                                ),
+	                                _reactAddons2['default'].createElement(
+	                                  'div',
+	                                  { className: 'panel-val' },
+	                                  this.formatNumber(this.state.totalCart),
+	                                  'đ'
+	                                )
+	                              )
+	                            )
+	                          )
+	                        )
+	                      ),
+	                      _reactAddons2['default'].createElement(
+	                        'div',
+	                        { className: 'panel panel-default' },
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { className: 'panel-heading', role: 'tab', id: 'headingTwo' },
+	                          _reactAddons2['default'].createElement(
+	                            'h4',
+	                            { className: 'panel-title' },
+	                            _reactAddons2['default'].createElement(
+	                              'a',
+	                              { className: '', role: 'button', 'data-toggle': 'collapse', href: '#collapseTwo', 'aria-expanded': 'true', 'aria-controls': 'collapseTwo' },
+	                              'VẬN CHUYỂN ',
+	                              _reactAddons2['default'].createElement('i', { className: 'fa fa-angle-down pull-right' })
+	                            )
+	                          )
+	                        ),
+	                        _reactAddons2['default'].createElement(
+	                          'div',
+	                          { 'aria-expanded': 'true', id: 'collapseTwo', className: 'panel-collapse collapse in', role: 'tabpanel', 'aria-labelledby': 'headingTwo' },
+	                          _reactAddons2['default'].createElement(
+	                            'div',
+	                            { className: 'panel-body panel-vanchuyen' },
+	                            _reactAddons2['default'].createElement(
+	                              'ul',
+	                              { className: 'list-group' },
+	                              _reactAddons2['default'].createElement(
+	                                'li',
+	                                { className: 'list-group-item' },
+	                                _reactAddons2['default'].createElement(
+	                                  'div',
+	                                  { className: 'panel-list' },
+	                                  _reactAddons2['default'].createElement(
+	                                    'div',
+	                                    { className: 'panel-key' },
+	                                    'Phí:'
+	                                  ),
+	                                  _reactAddons2['default'].createElement(
+	                                    'div',
+	                                    { className: 'panel-val' },
+	                                    this.formatNumber(this.state.phiship.get('cost')),
+	                                    'đ'
+	                                  )
+	                                )
+	                              ),
+	                              _reactAddons2['default'].createElement(
+	                                'li',
+	                                { className: 'list-group-item' },
+	                                _reactAddons2['default'].createElement(
+	                                  'div',
+	                                  { className: 'panel-list' },
+	                                  _reactAddons2['default'].createElement(
+	                                    'div',
+	                                    { className: 'panel-key' },
+	                                    'Thời gian:'
+	                                  ),
+	                                  _reactAddons2['default'].createElement(
+	                                    'div',
+	                                    { className: 'panel-val' },
+	                                    '3 ngày'
+	                                  )
+	                                )
+	                              )
+	                            )
+	                          )
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _reactAddons2['default'].createElement(
+	                    'div',
+	                    { className: 'body-checkout' },
+	                    this.props.children
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  var _Application = Application;
+	  Application = (0, _decorators.prepareRoute)(function callee$1$0(_ref) {
+	    var params = _ref.params;
+	    return _regeneratorRuntime.async(function callee$1$0$(context$2$0) {
+	      while (1) switch (context$2$0.prev = context$2$0.next) {
+	        case 0:
+	          context$2$0.next = 2;
+	          return _regeneratorRuntime.awrap(_Promise.all([_actionsCityActions2['default'].getCity()]));
+
+	        case 2:
+	          return context$2$0.abrupt('return', context$2$0.sent);
+
+	        case 3:
+	        case 'end':
+	          return context$2$0.stop();
+	      }
+	    }, null, this);
+	  })(Application) || Application;
+	  return Application;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Application;
+	module.exports = exports['default'];
+
+/***/ },
+/* 449 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(218)['default'];
+
+	var _inherits = __webpack_require__(224)['default'];
+
+	var _createClass = __webpack_require__(234)['default'];
+
+	var _classCallCheck = __webpack_require__(237)['default'];
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(337);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var NavbarCart = (function (_React$Component) {
+	  _inherits(NavbarCart, _React$Component);
+
+	  function NavbarCart(props) {
+	    _classCallCheck(this, NavbarCart);
+
+	    _get(Object.getPrototypeOf(NavbarCart.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      hideHeader: false
+	    };
+	  }
+
+	  _createClass(NavbarCart, [{
+	    key: 'render',
+	    value: function render() {
+	      var classesNavbar = (0, _classnames2['default'])({
+	        "navbar": true,
+	        "navbar-defaul": true
+	      });
+
+	      return _reactAddons2['default'].createElement(
+	        'div',
+	        { ref: 'navbar' },
+	        _reactAddons2['default'].createElement(
+	          'ol',
+	          { className: 'breadcrumb' },
+	          _reactAddons2['default'].createElement(
+	            'li',
+	            null,
+	            _reactAddons2['default'].createElement(
+	              _reactRouter.Link,
+	              { to: '/cart' },
+	              'Cart'
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'li',
+	            null,
+	            _reactAddons2['default'].createElement(
+	              _reactRouter.Link,
+	              { to: '/checkout' },
+	              'Thông tin người nhận'
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'li',
+	            null,
+	            _reactAddons2['default'].createElement(
+	              _reactRouter.Link,
+	              { to: '/checkout-ship-method', className: 'active' },
+	              'PT vận chuyển'
+	            )
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'li',
+	            null,
+	            _reactAddons2['default'].createElement(
+	              _reactRouter.Link,
+	              { to: '/checkout-pay-method' },
+	              'PT thanh toán'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NavbarCart;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = NavbarCart;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 450 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _interopRequireDefault = __webpack_require__(15)['default'];
 
 	Object.defineProperty(exports, '__esModule', {
@@ -30430,7 +30919,6 @@ webpackJsonp([0],[
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      disabled: true,
 	      city: _storeCityStore2['default'].getState().city,
 	      district: _storeCityStore2['default'].getState().district,
 	      listCart: _storeCartStore2['default'].getState().listCart,
@@ -30445,9 +30933,6 @@ webpackJsonp([0],[
 	    _storeCityStore2['default'].listen(this._onChangeCityStore);
 	    _storeCartStore2['default'].listen(this._onChangeCartStore);
 	    _storeShipStore2['default'].listen(this._onChangeShipStore);
-	    // if(!this.state.cartId && this.) {
-	    //   this.transitionTo('/cart');
-	    // }
 	  },
 
 	  componentWillUnmount: function componentWillUnmount() {
@@ -30484,241 +30969,25 @@ webpackJsonp([0],[
 	  },
 
 	  render: function render() {
-	    return _reactAddons2['default'].createElement(
-	      'div',
-	      { className: 'cart' },
-	      _reactAddons2['default'].createElement(_componentsHeaderNavbarNavbarCartShip2['default'], {
-	        disabled: this.state.disabled,
-	        next: this._next,
-	        prev: this._prev }),
-	      _reactAddons2['default'].createElement(
-	        'div',
-	        { className: 'cart-checkout' },
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'sidebar' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'panel-group', id: 'accordion', role: 'tablist', 'aria-multiselectable': 'true' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'panel panel-default' },
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { className: 'panel-heading', role: 'tab', id: 'headingOne' },
-	                _reactAddons2['default'].createElement(
-	                  'h4',
-	                  { className: 'panel-title' },
-	                  _reactAddons2['default'].createElement(
-	                    'a',
-	                    { role: 'button', 'data-toggle': 'collapse', href: '#collapseOne', 'aria-expanded': 'true', 'aria-controls': 'collapseOne' },
-	                    'GIỎ HÀNG ',
-	                    _reactAddons2['default'].createElement('i', { className: 'fa fa-angle-down pull-right' })
-	                  )
-	                )
-	              ),
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { 'aria-expanded': 'true', id: 'collapseOne', className: 'panel-collapse collapse in', role: 'tabpanel', 'aria-labelledby': 'headingOne' },
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'panel-body' },
-	                  _reactAddons2['default'].createElement(
-	                    'ul',
-	                    { className: 'list-group' },
-	                    this.renderListCart()
-	                  ),
-	                  _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'panel-footer' },
-	                    _reactAddons2['default'].createElement(
-	                      'div',
-	                      { className: 'panel-table' },
-	                      _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'panel-key' },
-	                        'Tổng:'
-	                      ),
-	                      _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'panel-val' },
-	                        this.formatNumber(this.state.totalCart),
-	                        'đ'
-	                      )
-	                    )
-	                  )
-	                )
-	              )
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'panel panel-default' },
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { className: 'panel-heading', role: 'tab', id: 'headingTwo' },
-	                _reactAddons2['default'].createElement(
-	                  'h4',
-	                  { className: 'panel-title' },
-	                  _reactAddons2['default'].createElement(
-	                    'a',
-	                    { className: '', role: 'button', 'data-toggle': 'collapse', href: '#collapseTwo', 'aria-expanded': 'true', 'aria-controls': 'collapseTwo' },
-	                    'VẬN CHUYỂN ',
-	                    _reactAddons2['default'].createElement('i', { className: 'fa fa-angle-down pull-right' })
-	                  )
-	                )
-	              ),
-	              _reactAddons2['default'].createElement(
-	                'div',
-	                { 'aria-expanded': 'true', id: 'collapseTwo', className: 'panel-collapse collapse in', role: 'tabpanel', 'aria-labelledby': 'headingTwo' },
-	                _reactAddons2['default'].createElement(
-	                  'div',
-	                  { className: 'panel-body panel-vanchuyen' },
-	                  _reactAddons2['default'].createElement(
-	                    'ul',
-	                    { className: 'list-group' },
-	                    _reactAddons2['default'].createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'panel-list' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'panel-key' },
-	                          'Phí:'
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'panel-val' },
-	                          this.formatNumber(this.state.phiship.get('cost')),
-	                          'đ'
-	                        )
-	                      )
-	                    ),
-	                    _reactAddons2['default'].createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'panel-list' },
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'panel-key' },
-	                          'Thời gian:'
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                          'div',
-	                          { className: 'panel-val' },
-	                          '3 ngày'
-	                        )
-	                      )
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'body-checkout' },
-	          _reactAddons2['default'].createElement(_componentsFormOrderFormNguoiNhan2['default'], {
-	            ref: 'formNguoiNhan',
-	            city: this.state.city,
-	            district: this.state.district,
-	            weight: this.state.weightCart,
-	            onChangeSelectCity: this._onChangeSelectCity,
-	            onChangeDisable: this._ChangeDisable })
-	        )
-	      )
-	    );
-	  },
-
-	  renderListCart: function renderListCart() {
-	    var _this = this;
-
-	    return this.state.listCart.map(function (cart, i) {
-	      var url = cart.get('imageUrl');
-	      var imgUrl = url.replace(/image\//gi, 'image/50x50/');
-
-	      var price = null;
-	      var salePrice = null;
-	      if (cart.get('price')) {
-	        price = _this.formatNumber(cart.get('price'));
-	      }
-	      if (cart.get('salePrice')) {
-	        salePrice = _this.formatNumber(cart.get('salePrice'));
-	      }
-
-	      var classer = (0, _classnames2['default'])({
-	        "list-group-item": true,
-	        disabled: cart.get('status') !== "available"
-	      });
-
-	      return _reactAddons2['default'].createElement(
-	        'li',
-	        { key: i, className: classer },
-	        _reactAddons2['default'].createElement(
-	          'div',
-	          { className: 'list-group-body-item' },
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'img' },
-	            _reactAddons2['default'].createElement(
-	              'span',
-	              { className: 'imgIcon' },
-	              _reactAddons2['default'].createElement('img', { src: imgUrl })
-	            )
-	          ),
-	          _reactAddons2['default'].createElement(
-	            'div',
-	            { className: 'newsText' },
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'title' },
-	              cart.get('code')
-	            ),
-	            _reactAddons2['default'].createElement(
-	              'div',
-	              { className: 'price' },
-	              _reactAddons2['default'].createElement(
-	                'span',
-	                { className: 'price-list' },
-	                salePrice || price,
-	                'đ'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    });
-	  },
-
-	  formatNumber: function formatNumber(number) {
-	    if (typeof number === "number") {
-	      return number.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
-	    } else {
-	      return 0;
-	    }
+	    return _reactAddons2['default'].createElement(_componentsFormOrderFormNguoiNhan2['default'], {
+	      ref: 'formNguoiNhan',
+	      city: this.state.city,
+	      district: this.state.district,
+	      weight: this.state.weightCart,
+	      next: this._next,
+	      onChangeSelectCity: this._onChangeSelectCity });
 	  },
 
 	  _next: function _next(e) {
 	    console.log('_next');
 	    console.log(this.refs.formNguoiNhan.getValue());
+	    this.transitionTo('/checkout-ship-method');
 	  },
-
-	  _prev: function _prev(e) {},
 
 	  _onChangeSelectCity: function _onChangeSelectCity(citySelect) {
 	    _actionsCityActions2['default'].getDistrict({ city: citySelect });
 	    this.setState({
 	      shippingMethod: ''
-	    });
-	  },
-
-	  _ChangeDisable: function _ChangeDisable(value) {
-	    this.setState({
-	      disabled: value
 	    });
 	  }
 
@@ -30726,7 +30995,207 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 449 */
+/* 451 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(337);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storeCityStore = __webpack_require__(418);
+
+	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
+
+	var _storeCartStore = __webpack_require__(348);
+
+	var _storeCartStore2 = _interopRequireDefault(_storeCartStore);
+
+	var _storeShipStore = __webpack_require__(419);
+
+	var _storeShipStore2 = _interopRequireDefault(_storeShipStore);
+
+	var _actionsCityActions = __webpack_require__(414);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	/**
+	 * @Component
+	 */
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'Cart-shipMethod',
+
+	  mixins: [_reactRouter.Navigation],
+
+	  componentWillMount: function componentWillMount() {
+	    // this.props.HeadParams.setTitle("Checkout | tocu.vn");
+	    // this.props.HeadParams.setDescription("Checkout | Description");
+	  },
+
+	  render: function render() {
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      null,
+	      _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'ship-address' },
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _reactAddons2['default'].createElement(
+	            'h4',
+	            { className: 'ship-address-title' },
+	            'Phương thức vận chuyển'
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-12 col-md-12' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'radio' },
+	              _reactAddons2['default'].createElement(
+	                'label',
+	                null,
+	                _reactAddons2['default'].createElement('input', { type: 'radio', name: 'optionsRadios', value: 'option1' }),
+	                'Chuyển phát nhanh'
+	              )
+	            )
+	          )
+	        )
+	      ),
+	      _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'btn-continue' },
+	        _reactAddons2['default'].createElement(
+	          'button',
+	          { onClick: this._next, type: 'button', className: 'btn btn-primary navbar-btn btn-block' },
+	          'Tiếp'
+	        )
+	      )
+	    );
+	  },
+
+	  _next: function _next() {
+	    this.transitionTo('/checkout-pay-method');
+	  }
+
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 452 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(15)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _reactAddons = __webpack_require__(16);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactRouter = __webpack_require__(238);
+
+	var _classnames = __webpack_require__(337);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storeCityStore = __webpack_require__(418);
+
+	var _storeCityStore2 = _interopRequireDefault(_storeCityStore);
+
+	var _storeCartStore = __webpack_require__(348);
+
+	var _storeCartStore2 = _interopRequireDefault(_storeCartStore);
+
+	var _storeShipStore = __webpack_require__(419);
+
+	var _storeShipStore2 = _interopRequireDefault(_storeShipStore);
+
+	var _actionsCityActions = __webpack_require__(414);
+
+	var _actionsCityActions2 = _interopRequireDefault(_actionsCityActions);
+
+	/**
+	 * @Component
+	 */
+
+	exports['default'] = _reactAddons2['default'].createClass({
+	  displayName: 'Checkout-payMethod',
+
+	  mixins: [_reactRouter.Navigation],
+
+	  componentWillMount: function componentWillMount() {
+	    // this.props.HeadParams.setTitle("Checkout | tocu.vn");
+	    // this.props.HeadParams.setDescription("Checkout | Description");
+	  },
+
+	  render: function render() {
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      null,
+	      _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'ship-address' },
+	        _reactAddons2['default'].createElement(
+	          'div',
+	          { className: 'row' },
+	          _reactAddons2['default'].createElement(
+	            'h4',
+	            { className: 'ship-address-title' },
+	            'Phương thức thanh toán'
+	          ),
+	          _reactAddons2['default'].createElement(
+	            'div',
+	            { className: 'col-sm-12 col-md-12' },
+	            _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'radio' },
+	              _reactAddons2['default'].createElement(
+	                'label',
+	                null,
+	                _reactAddons2['default'].createElement('input', { type: 'radio', name: 'optionsRadios', value: 'option1' }),
+	                'Chuyển khoản nội địa'
+	              )
+	            )
+	          )
+	        )
+	      ),
+	      _reactAddons2['default'].createElement(
+	        'div',
+	        { className: 'btn-continue' },
+	        _reactAddons2['default'].createElement(
+	          'button',
+	          { type: 'button', className: 'btn btn-primary navbar-btn btn-block' },
+	          'Tiếp'
+	        )
+	      )
+	    );
+	  }
+
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 453 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30741,7 +31210,7 @@ webpackJsonp([0],[
 	  value: true
 	});
 
-	var _env = __webpack_require__(450);
+	var _env = __webpack_require__(454);
 
 	var _env2 = _interopRequireDefault(_env);
 
@@ -30798,7 +31267,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 450 */
+/* 454 */
 /***/ function(module, exports) {
 
 	'use strict';

@@ -1,29 +1,29 @@
 'use strict';
-import React      from 'react/addons';
-import {Link}     from 'react-router';
+import React from 'react/addons';
+import { Link, Navigation } from 'react-router';
 import classNames from 'classnames';
 
 
-export default class NavbarCart extends React.Component {
+export default React.createClass({
 
-  constructor (props) {
-    super(props)
+  mixins: [ Navigation ],
 
-    this.state = {
+  getInitialState() {
+    return {
       hideHeader: false,
       NavbarWidth: null,
-    };
-  }
+    }
+  },
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-  }
+  },
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
-  }
+  },
 
-  handleScroll = (e) => {
+  handleScroll() {
     var offsetWidth = this.refs.navbar.getDOMNode().offsetWidth;
     var scrollTop = window.scrollY;
     var hideHeader = scrollTop >= 80;
@@ -31,7 +31,7 @@ export default class NavbarCart extends React.Component {
       hideHeader: hideHeader,
       NavbarWidth: offsetWidth,
     });
-  }
+  },
   
   render () {
     let classesNavbar = classNames({
@@ -53,11 +53,10 @@ export default class NavbarCart extends React.Component {
         </nav>
       </div>
     );
-  }
+  },
 
-  _onClickHoantat = (e) => {
-    console.log('_onClickTiep');
-    this.props.next();
-  }
+  _onClickHoantat(e) {
+    this.transitionTo('/checkout-ship-method');
+  },
 
-};
+});

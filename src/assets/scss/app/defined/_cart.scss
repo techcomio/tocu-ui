@@ -44,7 +44,7 @@
 		.aright { text-align: right !important; padding-right: 25px; padding-left: 0; }
 		.acenter { text-align: center; }
 	}
-	.cart-checkout { width: 100%; padding-top: 50px; display: table;
+/* 	.cart-checkout { width: 100%; padding-top: 50px; display: table;
 		[class^="col-"], [class*="col-"] { padding-left: 0px; padding-right: 0px; }
 		.sidebar, .body-checkout { display: table-cell; }
 		.sidebar { width: 242px; border-bottom-left-radius: 5px; background: #f5f5f5; border-right: 1px solid #ddd; }
@@ -94,18 +94,19 @@
 		}
 		.body-checkout { padding: 0px 40px;
 			[class^="col-"], [class*="col-"] { padding-left: 15px; padding-right: 15px; }
-			.ship-address { padding-bottom: 120px; }
+			.ship-address { padding-bottom: 60px; }
 			.ship-address-title {  padding: 30px 0 10px 0; -moz-padding-top: 30px !important; display: block; }
 		}
-	}
+
+	} */
 	@media all and (max-width: 768px) {
 		.navbar-header { float: left; }
 		.navbar-right { float: right; }
-		.cart-checkout { width: 100%; display: block; padding-top: 50px; display: table;
+/* 		.cart-checkout { width: 100%; display: block; padding-top: 50px; display: table;
 			.sidebar, .body-checkout { display: block; }
 			.sidebar { width: 100%; }
 		}
 		.body-checkout { padding: 0px 10px !important;
-		}
+		} */
 	}
 }

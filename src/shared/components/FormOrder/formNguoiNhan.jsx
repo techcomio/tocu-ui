@@ -67,68 +67,73 @@ export default class FormOrder extends React.Component {
 
   render() {
     return (
-      <div className="ship-address">
-        <div className="row">
-          <h4 className="ship-address-title text-center">Địa chỉ người nhận</h4>
-          <div className="col-sm-6 col-md-6">
-            <InputValidation
-              ref="name"
-              type="text"
-              placeholder="Họ tên"
-              name="name"
-              validator={this.state.ValidationData.name}
-              onChange={this._onChangeInputHandler} />
-          </div>
-          <div className="col-sm-6 col-md-6">
-            <InputValidation
-              ref="mobilePhone"
-              type="text"
-              placeholder="Điện thoại"
-              name="mobilePhone"
-              validator={this.state.ValidationData.mobilePhone}
-              onChange={this._onChangeInputHandler} />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-12 col-md-12">
-            <InputValidation
-              ref="diachi"
-              type="text"
-              placeholder="Địa chỉ"
-              name="diachi"
-              validator={this.state.ValidationData.diachi}
-              onChange={this._onChangeInputHandler} />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-6 col-md-6">
-            <div className="form-group">
-              <SelectValidation
-                ref="city"
-                type="city"
-                name="city"
-                List={this.props.city}
-                validator={this.state.ValidationData.city}
-                onChangeTest={() => {}}
-                onChangeCity={this._onChangeSelectCity}
-                onChange={this._onChangeInputHandler}
-                firstValue="Tỉnh Thành" />
+      <div>
+        <div className="ship-address">
+          <div className="row">
+            <h4 className="ship-address-title text-center">Thông tin người nhận</h4>
+            <div className="col-sm-6 col-md-6">
+              <InputValidation
+                ref="name"
+                type="text"
+                placeholder="Họ tên"
+                name="name"
+                validator={this.state.ValidationData.name}
+                onChange={this._onChangeInputHandler} />
+            </div>
+            <div className="col-sm-6 col-md-6">
+              <InputValidation
+                ref="mobilePhone"
+                type="text"
+                placeholder="Điện thoại"
+                name="mobilePhone"
+                validator={this.state.ValidationData.mobilePhone}
+                onChange={this._onChangeInputHandler} />
             </div>
           </div>
-          <div className="col-sm-6 col-md-6">
-            <div className="form-group">
-              <SelectValidation
-                ref="district"
-                type="district"
-                name="district"
-                List={this.props.district}
-                validator={this.state.ValidationData.district}
-                onChangeTest={() => {}}
-                onChangeDistrict={this._onChangeSelectDistrict}
-                onChange={this._onChangeInputHandler}
-                firstValue="Quận Huyện" />
+          <div className="row">
+            <div className="col-sm-12 col-md-12">
+              <InputValidation
+                ref="diachi"
+                type="text"
+                placeholder="Địa chỉ"
+                name="diachi"
+                validator={this.state.ValidationData.diachi}
+                onChange={this._onChangeInputHandler} />
             </div>
           </div>
+          <div className="row">
+            <div className="col-sm-6 col-md-6">
+              <div className="form-group">
+                <SelectValidation
+                  ref="city"
+                  type="city"
+                  name="city"
+                  List={this.props.city}
+                  validator={this.state.ValidationData.city}
+                  onChangeTest={() => {}}
+                  onChangeCity={this._onChangeSelectCity}
+                  onChange={this._onChangeInputHandler}
+                  firstValue="Tỉnh Thành" />
+              </div>
+            </div>
+            <div className="col-sm-6 col-md-6">
+              <div className="form-group">
+                <SelectValidation
+                  ref="district"
+                  type="district"
+                  name="district"
+                  List={this.props.district}
+                  validator={this.state.ValidationData.district}
+                  onChangeTest={() => {}}
+                  onChangeDistrict={this._onChangeSelectDistrict}
+                  onChange={this._onChangeInputHandler}
+                  firstValue="Quận Huyện" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="btn-continue">
+          <button onClick={this.props.next} disabled={this.state.disabled} type="button" className="btn btn-primary navbar-btn btn-block">Tiếp</button>
         </div>
       </div>
     );
@@ -173,9 +178,9 @@ export default class FormOrder extends React.Component {
 
     this.setState({ disabled: disabled });
 
-    if(this.state.disabled !== disabled) {
-      this.props.onChangeDisable(disabled);
-    }
+    // if(this.state.disabled !== disabled) {
+      // this.props.onChangeDisable(disabled);
+    // }
 
     if(!disabled) {
       this._actionsShip();
