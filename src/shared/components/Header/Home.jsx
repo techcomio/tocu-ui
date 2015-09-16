@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar';
-import ProfileInfo from './home/ProfileInfo';
-import InfoBar from './home/InfoBar';
+import ProfileInfo from './home/profileInfo';
+import InfoBar from './home/infoBar';
 
 @connect(state => ({
   user: state.auth.get('user')
