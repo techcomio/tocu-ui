@@ -1,95 +1,42 @@
- /* @jsx React.DOM */
 'use strict';
+import React, { PropTypes } from 'react';
+import classNames from 'classnames';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import Navbar from '../Navbar';
+import ProfileInfo from './home/ProfileInfo';
+import InfoBar from './home/InfoBar';
 
-import React        from 'react/addons';
-import { Link }     from 'react-router';
-import classNames   from 'classnames';
-import BoxStore     from '../../store/BoxStore';
-import AuthStore    from '../../store/AuthStore';
-import CartStore from '../../store/CartStore';
-import SanphamStore from '../../store/SanphamStore';
-import AuthActions from '../../actions/AuthActions';
-/**
- * @Component
- */
-import Navbar      from './Navbar/navbar';
-import InfoBar     from './Home/infoBar';
-import ProfileInfo from './Home/profileInfo';
+@connect(state => ({
+  user: state.auth.get('user')
+  , boxs: state.box.get('boxs')
+  , productCount: state.product.get('productCount')
+}))
 
-
-export default class Home extends React.Component {
+export default class HeaderHome extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      auth: AuthStore.getState().auth,
-      countSanpham: SanphamStore.getState().count,
-      box: BoxStore.getState().boxs,
-      count: CartStore.getCountCart(),
+      transform: false
     }
   }
 
-  static contextTypes = {
-    router: React.PropTypes.object.isRequired,
-  }
-
-  componentDidMount() {
-    AuthStore.listen(this._onChangeAuthStore);
-    BoxStore.listen(this._onChangeBoxStore);
-    SanphamStore.listen(this._onChangeSanphamStore);
-    CartStore.listen(this._onChangeCartStore);
-  }
-
-  componentWillUnmount() {
-    AuthStore.unlisten(this._onChangeAuthStore);
-    BoxStore.unlisten(this._onChangeBoxStore);
-    SanphamStore.unlisten(this._onChangeSanphamStore);
-    CartStore.unlisten(this._onChangeCartStore);
-  }
-
-  _onChangeAuthStore = (state) => {
-    this.setState({
-      auth: state.auth
-    });
-  }
-
-  _onChangeSanphamStore = (state) => {
-    this.setState({
-      countSanpham: state.count
-    });
-  }
-
-  _onChangeBoxStore = (state) => {
-    this.setState({
-      box: state.boxs
-    });
-  }
-
-  _onChangeCartStore = (state) => {
-    this.setState({
-      count: CartStore.getCountCart()
-    });
-  }
-
   render() {
+    const { user, boxs, productCount } = this.props;
+
     return (
       <header>
-        <div className="container-fluid">
-          <Navbar
-            count={this.state.count}
-            AuthActions={AuthActions}
-            auth={this.state.auth} />
+        <Navbar />
 
-          <ProfileInfo />
+        <ProfileInfo />
 
-          <InfoBar
-            countSanpham={this.state.countSanpham}
-            Box={this.state.box} />
-
-        </div>
+        <InfoBar boxs={boxs}
+                productCount={productCount}/>
       </header>
     );
   }
-  
+
+
 };

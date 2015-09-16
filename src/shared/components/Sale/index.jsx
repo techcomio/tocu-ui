@@ -1,42 +1,25 @@
 "use strict";
+import React from 'react';
+import {Link} from 'react-router';
+import { connect } from 'react-redux';
 
-import React          from 'react';
-import {Link}         from 'react-router';
-import SaleStore      from '../../store/SaleStore';
-import SanphamActions from '../../actions/SanphamActions';
 
+@connect(state => ({
+  sales: state.sale.get('sales')
+}))
 
 export default class Sale extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this._onChangeSaleStore = this._onChangeSaleStore.bind(this);
-
-		this.state = {
-			listSale: SaleStore.getState().listSale,
-		};
 	}
-
-  componentDidMount() {
-    SaleStore.listen(this._onChangeSaleStore);
-  }
-
-  componentWillUnmount() {
-    SaleStore.unlisten(this._onChangeSaleStore);
-  }
-
-  _onChangeSaleStore(state) {
-  	this.setState({
-  		listSale: state.listSale,
-  	});
-  }
 
   render() {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">Giảm giá</div>
         <div className="list-group">
-        	{this.state.listSale.map((item, i) => {
+        	{this.props.sales.map((item, i) => {
         		let img_url, price, price_sale;
 
         		if(item.get('images').size) {
@@ -71,7 +54,7 @@ export default class Sale extends React.Component {
   }
 
   handleClick(sp) {
-  	SanphamActions.actionSanphamID(sp);
+    this.props.getProdID(sp);
   }
-  
+
 };

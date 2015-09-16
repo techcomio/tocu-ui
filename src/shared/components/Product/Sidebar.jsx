@@ -1,46 +1,40 @@
 'use strict';
+import React from 'react/addons';
+import Axios from 'axios';
+import { Link } from 'react-router';
+var ReactAsync = require('react-async');
+var MasonryMixin = require('react-masonry-mixin')(React);
+import { API_URL } from '../../../../config';
 
-import React          from 'react/addons';
-import SanphamActions from '../../actions/SanphamActions';
-var ReactAsync       = require('react-async');
-var MasonryMixin     = require('react-masonry-mixin');
 
-import Axios       from 'axios';
-import { Link }    from 'react-router';
-import { Api_URL } from '../../../../config-sample';
- 
 var masonryOptions = {
   transitionDuration: 0
 };
- 
-var Sidebar = React.createClass({
- 
-  mixins: [MasonryMixin('masonryContainer', masonryOptions)],
+
+export default React.createClass({
+
+  mixins: [MasonryMixin('masonryContainer', {})],
 
   getInitialState() {
     return {
-      page: 0,
-      hasMore: true,
-      skip: 0,
-      limit: 15,
       posts: [],
     }
   },
 
   componentDidMount() {
-    let self = this,
-      boxId = this.props.boxId;
+    const self = this,
+      boxId = this.props.Box.get('id');
 
-    Axios.get(`${Api_URL}/product/box/${boxId}?skip=${0}&limit=${15}`)
+    Axios.get(`${API_URL}/product/box/${boxId}?skip=${0}&limit=${15}`)
       .then((res) => {
-        self.setState({
-          posts: self.state.posts.concat(res.data),
+        this.setState({
+          posts: res.data
         });
-      });
+      }.bind(this));
   },
 
-
   render: function () {
+    const { Box } = this.props;
     return (
       <div className="col-md-12 col-lg-12">
         <div className="thumbnail sidebar">
@@ -51,7 +45,7 @@ var Sidebar = React.createClass({
                 {this.renderIcon()}
               </div>
               <div className="titleBox">
-                <span>{this.props.name}</span>
+                <span>{Box.get('name')}</span>
               </div>
             </div>
           </nav>
@@ -68,11 +62,11 @@ var Sidebar = React.createClass({
 
                 return (
                   <div onClick={this.handleViewSP.bind(null, element)} key={i} className='col-xs-4 col-sm-4'>
-                    <Link to={`/product/${element.id}`}>
+                    <a to={`/product/${element.id}`}>
                       <div className="imgWrapper">
                         <img className="img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
                       </div>
-                    </Link>
+                    </a>
                   </div>
                 );
               }.bind(this))}
@@ -84,11 +78,11 @@ var Sidebar = React.createClass({
   },
 
   handleViewSP(sp) {
-    SanphamActions.actionSanphamID(sp);
+    this.props.getProdID(sp);
   },
 
   renderIcon() {
-    switch(this.props.type) {
+    switch(this.props.Box.get('type')) {
       case "product":
         return <span className="imgIcon imgIcon-list imgIcon-store" />;
       case "article":
@@ -99,5 +93,3 @@ var Sidebar = React.createClass({
   }
 
 });
- 
-module.exports = Sidebar;

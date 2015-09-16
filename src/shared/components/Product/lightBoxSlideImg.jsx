@@ -1,6 +1,5 @@
 "use strict";
-
-import React      from 'react/addons';
+import React from 'react/addons';
 import classNames from 'classnames';
 
 

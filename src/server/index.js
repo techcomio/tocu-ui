@@ -1,129 +1,94 @@
 'use strict';
-
-import 'babel/polyfill';
-import Axios                   from 'axios';
-import React                   from 'react/addons';
-import {Router as ReactRouter} from 'react-router';
-import Location                from 'react-router/lib/Location';
-import History                 from 'react-router/lib/MemoryHistory';
-import Iso                     from 'iso';
-import Alt                     from '../shared/Alt';
-import routes                  from '../shared/routes';
-import {Api_URL}               from '../../config-sample';
-/**
- * @Component
- */
-import Router      from '../shared/components/Router';
-import HeadParams  from '../shared/lib/HeadParams';
-let HtmlComponent = React.createFactory(require('./html'));
+import Axios from 'axios';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import createLocation from 'history/lib/createLocation';
+import { Router } from 'react-router';
+import { RoutingContext, match } from 'react-router';
+import thunkMiddleware from "redux-thunk";
+import routers from '../shared/routers';
+import Reducers from '../shared/reducers';
+import { loadAuth } from '../shared/actions/auth';
+import { loadCard } from '../shared/actions/cart';
+import HtmlComponent from './Html';
+import { API_URL } from '../../config';
 
 
 export default async function (req, res, next) {
   const { path, query } = req;
-  const location = new Location(path, query);
-  const history  = new History(path);
+  let location = createLocation(req.url);
+  const token = req.cookies.access_token;
+  const cartId = req.cookies.cart;
+  const finalCreateStore = applyMiddleware(thunkMiddleware)(createStore);
+  const store = finalCreateStore(Reducers, {});
+  const routes = routers(store);
 
-  let token = req.cookies.access_token;
-  let cartId = req.cookies.cart;
-
+  /**
+   * handle actions first load
+   */
   if(token) {
-    let dataStore = {};
-
     await * [
-      Axios.get(`${Api_URL}/user/me`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-      })
-      .then((response) => {
-        dataStore.AuthStore = {
-          auth: response.data
-        };
-      }).catch(() => {})
-      , Axios.get(`${Api_URL}/cart`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        })
-        .then((response) => {
-          dataStore.CartStore = {
-            cartId: null
-            , listCart: response.data
-          };
-        }).catch(() => {})
-      ];
-    Alt.bootstrap(JSON.stringify(dataStore));
-  } else {
-    let dataStore = {};
-
-    if(cartId) {
-      await Axios.get(`${Api_URL}/cart/${cartId}`)
-        .then((response) => {
-          dataStore.CartStore = {
-            cartId: cartId
-            , listCart: response.data
-          };
-        }).catch(() => {});
-    }
-    Alt.bootstrap(JSON.stringify(dataStore));
+      store.dispatch(loadAuth({token}))
+      , store.dispatch(loadCard({token}))
+    ]
+  } else if(cartId) {
+    await * [store.dispatch(loadCard({cartId}))]
   }
 
-  
-  ReactRouter.run(routes, location, async (err, routerState, transition) => {
+  match({routes, location}, async (err, redirectLocation, routerState) => {
     try {
       if (err) {
         throw err;
       }
 
       /**
-       * [if Redirect "chuyển hướng"]
+       * if Redirect "chuyển hướng"
        * @param  {string} pathname
-       * @return {func} res.redirect [express]
+       * @return {func} res.redirect - express
        */
-      if(transition.redirectInfo) {
-        var { pathname, query, state } = transition.redirectInfo;
-        return res.redirect(pathname)
+      if(redirectLocation) {
+      // if(redirectLocation.redirectInfo) {
+        // var { pathname, query, state } = redirectLocation.redirectInfo;
+        // res.redirect(pathname);
+        res.redirect(301, redirectLocation.pathname + redirectLocation.search);
+        return;
       }
 
       /**
-       * [if name Router NotFound]
+       * if name Router NotFound
        * render page 404 NotFound
-       * @param  {string} routerState.branch[1].name [name Router path="*" react-router]
-       * @return {func} res.send.
+       * @param  {string} routerState.branch[1].name - name Router path="*" react-router
+       * @return {func} res.send
        */
-      if (routerState.branch[1].name === 'NotFound') {
+      if (routerState.routes[1].name === 'NotFound') {
         res.status(404);
-        return res.send('Not Found!');
+        // res.send('Not Found!');
+        // return;
       }
 
       const { params, location } = routerState;
       const prepareRouteMethods = routerState.components.map(component => component.prepareRoute);
-      
-      for (let prepareRoute of prepareRouteMethods) {
+      for(const prepareRoute of prepareRouteMethods) {
         if (!prepareRoute) {
           continue;
         }
 
-        await prepareRoute({ params, location });
+        await prepareRoute({ store, params, location });
       }
 
-      let title = { 
-        HeadParams: new HeadParams({})
-      };
-      let iso = new Iso();
-
-      const body = React.renderToStaticMarkup(
-       <Router {...{ ...title, routerState, location, history }} />
+     	var body = React.renderToString(
+        <Provider store={store}>
+          {() => <RoutingContext {...routerState} />}
+        </Provider>
       );
 
-      iso.add(body, Alt.flush());
+      const initialState = store.getState();
+      const html = React.renderToString(<HtmlComponent markup={body} state={JSON.stringify(initialState)} />);
 
-      let html  = React.renderToStaticMarkup(HtmlComponent({
-	      markup: iso.render(),
-        HeadParams: title.HeadParams,
-			}));
-
-			let doctype = '<!DOCTYPE html>';
-
-			return res.send(doctype + html);
+			res.send(`<!DOCTYPE html>` + html);
     } catch(err) {
       next(err);
     }
-	});
+  });
 }

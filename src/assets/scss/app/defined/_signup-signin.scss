@@ -1,24 +1,46 @@
 
 /* Sign In / Sign Up */
-.row-form { margin-left: 0px; margin-right: 0px; }
-.form-signin, .form-signup { height: auto; margin: auto; margin-top: 60px; margin-bottom: 40px; background: $body-bg; border-radius: $sign-border-radius; box-shadow: 0 1px 4px rgba(0,0,0, 0.2); 
-	.row { margin-left: -15px !important; margin-right: -15px !important; }
+.row-form { margin-left: 0px; margin-right: 0px;
+	.col-centered { padding: 0 20px; }
+}
+.form-signin, .form-signup { height: auto; margin: auto; margin-top: 60px; margin-bottom: 40px; background: $body-bg; border-radius: 8px; box-shadow: 0px 1px 2px rgba(43, 59, 93, 0.29);
 }
 
-.form-header { padding: 15px; border-bottom: 1px solid #ddd;
-	.form-title { font-weight: 400; font-size: $font-size-h4; }
+.form-header { padding: 15px; border-bottom: 1px solid #E1E8ED;
+	.form-title { font-weight: 400; font-size: 18px; }
 }
 
-.form-body { padding: $sign-padding;
-	.logo { text-align: center; }
-	.title-form { font-size: $font-size-h3; font-weight: 400; padding-bottom: 20px; }
+.form-body { padding: 40px;
+	.logo { text-align: center;
+		img {  width: 40px; height: 40px; margin-bottom: 6px; }
+	}
+	.text-danger { font-size: 14px; }
+	.form-group { margin-bottom: 2px;
+		.control-label { font-size: 12px; margin-bottom: 0px; line-height: 1; }
+		.checkbox { margin: 14px 0; }
+	}
+	.form-control {
+		&.btn { margin-top: 10px; }
+	}
+	.btn-signup { margin-top: 28px; }
 }
-.form-footer { padding: 20px 40px; border-top: 1px solid $sign-footer-border-top-color;
-	a { color: $gray-light; }
+.form-footer { padding: 15px 40px; height: 56px; border-top: 1px solid #E1E8ED;
+	a { color: $color-gray-1; font-size: 14px;
+		&:hover { color: $link-color; }
+	}
 }
 .col-centered {
   float: none;
   margin: 0 auto;
+}
+
+
+.form-signin, .form-signup { height: auto; margin: auto; margin-top: 60px; margin-bottom: 40px; background: $body-bg; border-radius: $sign-border-radius; box-shadow: 0px 1px 2px rgba(43, 59, 93, 0.29);
+}
+.form-signup {
+	.form-body { padding: 30px 40px;
+		.form-group { margin-bottom: 0px; line-height: 1.4; }
+	}
 }
 
 
@@ -36,28 +58,14 @@
 	// .row { margin-left: 0px !important; margin-right: 0px !important; }
 }
 
-
-.form-signin, .form-signup { height: auto; margin: auto; margin-top: 60px; margin-bottom: 40px; background: $body-bg; border-radius: $sign-border-radius; box-shadow: 0 1px 4px rgba(0,0,0, 0.2); 
-	.row { margin-left: -15px !important; margin-right: -15px !important; }
-	.form-header { padding: 15px; border-bottom: 1px solid #ddd;
-		.form-title { font-weight: 400; font-size: $font-size-h4; }
+@media all and (max-width: 768px) {
+	.row-form { margin-left: -1rem; margin-right: -1rem; }
+	.form-body { padding: 30px;
+		.row { margin-left: -16px; margin-right: -16px; }
 	}
-	.form-body { 
-		.logo {
-			img {  width: 60px; height: 60px; margin-bottom: 10px; }
-		}
-		.form-group { margin-bottom: 10px; }
-		.form-control {
-			&.btn { margin-top: 10px; }
-		}
-	}
+	.form-footer { padding: 15px 30px; }
 }
 
-
-
-
-
-body { height: 100%; position: absolute; }
 /**
  * .boxLogin
  */
@@ -67,19 +75,12 @@ body { height: 100%; position: absolute; }
 	.container { height: 100%; }
 	.col-centered { float: none; margin: 0 auto; vertical-align: middle;  position: absolute; margin: auto; left: -50%; right: -50%; height: 100%;
 		.centrix { display: flex; flex-direction: column; margin: 0 auto; justify-content: center; height: 100%; }
-		.form-signin, .form-signup { width: 100%; height: auto; margin: auto; margin-top: 0; margin-bottom: 0; background: $body-bg; border-radius: $sign-border-radius; box-shadow: 0 1px 4px rgba(0,0,0, 0.2); position: relative; }
-		.form-body { padding: $sign-padding;
-			.logo { text-align: center; margin-bottom: 20px; }
-			.title-form { font-weight: 400; padding-bottom: 20px; }
-		}
-		.form-footer { padding: 20px 40px; border-top: 1px solid $sign-footer-border-top-color;
-			a { color: $gray-light; }
-		}
+		.form-signin, .form-signup { width: 100%; height: auto; margin: auto; margin-top: 0; margin-bottom: 0; background: $body-bg; border-radius: $sign-border-radius; box-shadow: 0px 1px 2px rgba(43, 59, 93, 0.29); position: relative; }
 	}
 	.verify {
 		.row { margin-right: 0px !important; margin-left: 0px !important; }
 	}
-	.closeBox { width: 26px; height: 26px; border-radius: 50%; display: block; background: #fff; position: absolute; right: -14px; top: -14px; text-align: center; line-height: 24px; font-size: 18px; padding: 0; margin: 0; color: $gray; 
+	.closeBox { width: 26px; height: 26px; border-radius: 50%; display: block; background: #fff; position: absolute; right: -14px; top: -14px; text-align: center; line-height: 24px; font-size: 18px; padding: 0; margin: 0; color: $gray;
 		&:hover { cursor: pointer; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.26); background: #eee; }
 	}
 }

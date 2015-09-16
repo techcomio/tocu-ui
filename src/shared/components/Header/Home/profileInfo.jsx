@@ -1,6 +1,6 @@
 'use strict';
+import React from 'react';
 
-import React from 'react/addons';
 
 export default class ProfileInfo extends React.Component {
 

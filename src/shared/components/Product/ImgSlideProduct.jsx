@@ -1,9 +1,5 @@
 "use strict";
-
-import React from 'react/addons';
-/**
- * @Component
- */
+import React from 'react';
 import LightBoxSlideImg from './lightBoxSlideImg';
 
 
@@ -77,7 +73,7 @@ export default class ImgSlideProduct extends React.Component {
   renderLightBox() {
     if(this.state.showLightBox) {
       return (
-        <LightBoxSlideImg 
+        <LightBoxSlideImg
           dataUrlImg={this.props.dataUrlImg}
           current={this.state.current}
           showLightBox={this.state.showLightBox}

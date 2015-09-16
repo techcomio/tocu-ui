@@ -1,7 +1,6 @@
 "use strict";
-
 import React, { PropTypes } from 'react/addons';
-import Immutable            from 'immutable';
+import Immutable from 'immutable';
 
 
 export default class Detail extends React.Component {
@@ -9,7 +8,7 @@ export default class Detail extends React.Component {
   render() {
     return (
       <div className="detail">
-        <h1>{this.props.product.get('code')}</h1>
+        <h2>{this.props.product.get('code')}</h2>
         {this.renderPrice()}
       </div>
     );
@@ -28,23 +27,23 @@ export default class Detail extends React.Component {
     if(this.props.product.get('salePrice')) {
       salePrice = this.props.product.get('salePrice').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
     }
-    
+
     if(this.props.product.get('salePrice')) {
       return (
-        <h3 className="price">
+        <h4 className="price">
           <span className="price-list">{price} VNĐ</span>
           <span className="price-sale">{salePrice} VNĐ</span>
-        </h3>
+        </h4>
       )
     } else {
       return (
-        <h3 className="price">
+        <h4 className="price">
           <span className="price-sale">{price} VNĐ</span>
-        </h3>
+        </h4>
       );
     }
   }
-  
+
 };
 
 Detail.propTypes = {

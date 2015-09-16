@@ -1,17 +1,16 @@
 
-.cart { background: #fff; border-radius: 8px; position: relative; width: 100%; box-shadow: $thumb-box-shadow; color: #7F6A6A;
-	.navbar { border-bottom: 1px solid #ddd; border-radius: 8px 8px 0px 0px; background: rgba(255, 255, 255, 1); position: absolute; width: 100%; z-index: 999; 
-		&.sticky { position: fixed; top: 0; border-radius: 0; }
-		.navbar-header, .navbar-right { margin: 0px; padding: 0 10px; }
-		.navbar-header > div { display: inline-block; float: left; padding: 12px 0; padding-right: 10px; }
+.cart { background: #fff; border-radius: 8px; position: relative; width: 100%; box-shadow: $thumb-box-shadow; color: #7F6A6A; margin-bottom: 40px;
+	.navbar { border-bottom: 1px solid #ddd; border-radius: 8px 8px 0px 0px; background: rgba(255, 255, 255, 1); position: absolute; width: 100%; z-index: 999; padding: 8px 10px;
+		&.sticky { position: fixed; top: 50px; border-radius: 0; }
+		.navbar-header, .navbar-right { margin: 0px; }
+		.navbar-header > div { display: inline-block; float: left; padding-right: 10px; }
 		.navbar-right {
 			.btn { margin-left: 10px; }
 		}
-		.btn { padding: 5px 10px; }
-		.icont-cart { width: 26px; height: 26px; display: block; background-position: center; background-image: url('/img/carts.png'); background-repeat: no-repeat; }
-		.title-nav-cart { font-size: 18px; font-weight: leight; }
+		.icont-cart { width: 32px; height: 32px; display: block; background-position: center; background-image: url('/img/carts.png'); background-repeat: no-repeat; }
+		.title-nav-cart { font-size: 18px; line-height: 32px; font-weight: leight; }
 	}
-	.cart-table { width: 100%; display: block; padding: 70px 10px 10px 10px;
+	.cart-table { width: 100%; display: block; padding: 80px 10px 10px 10px;
 		.imageIcon, .nameInfo { display: inline-block; position: relative; float: left;
 			img { border-radius: 4px; }
 		}
@@ -21,12 +20,10 @@
 		.sale { text-decoration: line-through; }
 		.nameInfo { padding: 0px 12px; float: left;
 			.code, .name { display: block; }
-			.code { font-weight: bold; margin-top: 6px; }
+			.code { font-weight: bold; margin-top: 2px; }
 			.name { font-size: 12px; margin-top: 2px; }
 		}
-		.disabled { opacity: 0.4; cursor: $cursor-disabled;
-			// .destroy { cursor: $cursor-disabled; }
-		}
+		.disabled { opacity: 0.4; cursor: $cursor-disabled; }
 	}
 	.cart-form-ship {
 		width: 100%; display: block; padding: 70px 10px 10px 10px;
@@ -35,7 +32,7 @@
 		td, th { vertical-align: middle; }
 		.sale { display: block; }
 		.td-sanpham { width: 55%; }
-		tfoot { border-top: 1px solid #ddd; background: #f5f5f5; }
+		tfoot { border-top: 1px solid #ddd; }
 		tfoot tr > td { border-top: none; padding: 0 8px; }
 		.padT20 td { padding-top: 20px; }
 		.total { font-size: 16px; font-weight: bold; text-transform: uppercase;
@@ -44,69 +41,26 @@
 		.aright { text-align: right !important; padding-right: 25px; padding-left: 0; }
 		.acenter { text-align: center; }
 	}
-/* 	.cart-checkout { width: 100%; padding-top: 50px; display: table;
-		[class^="col-"], [class*="col-"] { padding-left: 0px; padding-right: 0px; }
-		.sidebar, .body-checkout { display: table-cell; }
-		.sidebar { width: 242px; border-bottom-left-radius: 5px; background: #f5f5f5; border-right: 1px solid #ddd; }
-		.panel { border-radius: 0px; border: 0px solid #fff; }
-		.panel-group { margin-bottom: 0px;
-			.panel-heading { padding: 15px 10px; color: #7F6A6A; background: none;
-				a { text-decoration: none !important; display: block; }
-			}
-			.panel + .panel { margin-top: 0px; border-top: 1px solid #ddd; }
-			.panel { border-radius: 0px; background: none; }
-			.panel-body { padding: 0px 10px; }
-			.list-group, ul, ol { margin-bottom: 0px; }
-			.list-group-item, .panel-footer { border: none; border-top: 1px solid #ddd; padding: 10px 0px; background: none;
-				&:first-child { border-top: none; }
-			}
-			.panel-footer { padding: 20px 0 40px 0;
 
-			}
-			.list-group-body-item { display: table; width: 100%; box-sizing: border-box;
-				.img { width: 44px; height: 44px; display: table-cell;
-					.imgIcon { width: 44px; height: 44px; background: #eee; display: inline-block; float: left; border-radius: 50%; 
-						img { width: 100%; height: 100%; border-radius: 4px; }
-					}
-				}
-				.newsText { width: 100%; float: left; display: table-cell; margin: 0; padding-left:10px;
-					.title { font-size: 15px; line-height: 1.65; overflow:hidden; white-space: nowrap; text-overflow: ellipsis; }
-					.price { font-size: 12px; line-height: 1.63; width: 100%; display: block;
-						.price-list { color: $gray-light; text-align: right; }
-						.price-sale { color: $brand-primary; font-weight: bold;
-							&:before { content: '·'; padding: 6px; color: $gray-light; }
-						}
-					}
-				}
-			}
-			.panel-vanchuyen { padding-bottom: 40px;
-				.list-group-item:last-child { border-bottom: 1px solid #ddd; }
-			}
-			.panel-table { display: table; width: 100%;
-				.panel-key, .panel-val { display: table-cell; }
-				.panel-key { font-weight: 700; }
-				.panel-val { text-align: right; }
-			}
-			.panel-list { width: 100%; padding: 5px 0px;
-				.panel-key, .panel-val { display: inline-block; }
-				.panel-key { font-weight: 700; padding-right: 10px; }
-			}
-		}
-		.body-checkout { padding: 0px 40px;
-			[class^="col-"], [class*="col-"] { padding-left: 15px; padding-right: 15px; }
-			.ship-address { padding-bottom: 60px; }
-			.ship-address-title {  padding: 30px 0 10px 0; -moz-padding-top: 30px !important; display: block; }
-		}
-
-	} */
 	@media all and (max-width: 768px) {
-		.navbar-header { float: left; }
-		.navbar-right { float: right; }
-/* 		.cart-checkout { width: 100%; display: block; padding-top: 50px; display: table;
-			.sidebar, .body-checkout { display: block; }
-			.sidebar { width: 100%; }
+		.navbar { height: 44px;
+			.icont-cart { width: 28px; height: 28px; }
+			.title-nav-cart { line-height: 28px; }
 		}
-		.body-checkout { padding: 0px 10px !important;
-		} */
+
+		.table { font-size: 10px;
+			tfoot tr > td { border-top: none; padding: 0 2px; }
+			.padT20 td { padding-top: 20px; }
+			.total { font-size: 14px; }
+		}
+		.imageIcon, .nameInfo {
+			img { width: 36px; height: 36px; }
+		}
+		.cart-table {
+			.nameInfo { padding: 0px 8px;
+				.name { font-size: 10px; }
+			}
+		}
+		.table td { padding: 8px; }
 	}
 }

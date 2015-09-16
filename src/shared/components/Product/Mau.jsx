@@ -1,7 +1,6 @@
 "use strict";
-
 import React, { PropTypes } from 'react/addons';
-import Immutable            from 'immutable';
+import Immutable from 'immutable';
 
 
 export default class Mau extends React.Component {
@@ -31,7 +30,7 @@ export default class Mau extends React.Component {
       );
     }
   }
-  
+
 };
 
 Mau.propTypes = {
