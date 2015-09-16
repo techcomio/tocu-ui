@@ -1,57 +1,11 @@
-# Tổ Cú UI
-mã nguồn phần UI website [tocu.vn](http://tocu.vn), tương tác với API [tocu-api](https://github.com/techcomio/tocu-api)
+### Examples
 
-## Tech stack:
-- [react](http://facebook.github.io/react/)
-- [react-router 1.0.0-beta](https://github.com/rackt/react-router)
-- [alt](https://github.com/goatslacker/alt)
-- [bootstrap](http://getbootstrap.com)
-- [axios](https://github.com/mzabriskie/axios)
-- [immutable](https://facebook.github.io/immutable-js)
-- [webpack](http://webpack.github.io)
-- [babel](https://babeljs.io)
-
-...and more
-
-## Start the app
-```
-$ npm install
-$ [sudo] npm install -g nodemon
-$ [sudo] npm install -g babel
-$ [sudo] npm install -g webpack
-$ [sudo] npm install -g gulp
-$ npm start
-```
-
-## App structure
-
-```bash
-.
-├── public        # Container for the static files. Cache-busted on build.
-│
-├── src     			# React's components container
-│   ├── assets
-│   │   ├── css           # Container for .css files
-│   │   ├── img           # Container for images files
-│   │   └── scss          # Container for .scss files
-│   │
-│   ├── server            # Server-side code
-│   │   ├── html.jsx      # Renders the whole HTML document server side (via server/index.js)
-│   │   └── index.js      # Send the server-rendered HTML document as response
-│   │
-│   ├── client            # Client-side code
-│   │   └── index.js      # Entry point for the browser: mounts the <Router /> component on document.body.
-│   │
-│   └── shared            # The root Application component
-│       ├── actions       # Alt Actions
-│       ├── components    # React components
-│       ├── handlers      # Contains components acting as "page" for each route
-│       ├── store         # Alt Store
-│       ├── Alt.js        # new Alt
-│       └── routes.js     # Routes config
-│
-├── server.js       # Run the express server
-│
-└── webpack.config.js    # Webpack config for the build task
-
-```
+* [flux-react-router-example](https://github.com/gaearon/flux-react-router-example)
+* [isomorphic-comments-app](https://github.com/alexfedoseev/isomorphic-comments-app)
+* [isomorphic-flux-boilerplate](https://github.com/iam4x/isomorphic-flux-boilerplate)
+* [react-isomorphic-bundle](https://github.com/lancetw/react-isomorphic-bundle)
+* [react-redux-isomorphic-example](https://github.com/coodoo/react-redux-isomorphic-example)
+* [react-redux-isomorphic-example](https://github.com/coodoo/react-redux-isomorphic-example)
+* [react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit)
+* [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
+* [redux-react-router-async-example](https://github.com/emmenko/redux-react-router-async-example)

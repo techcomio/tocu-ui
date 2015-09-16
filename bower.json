@@ -2,18 +2,18 @@
   "name": "tocu-ui",
   "version": "0.0.1",
   "authors": [
-    "devalphac <devalphac@outlook.com>"
+    "ngthong <ngthorg@gmail.com>"
   ],
   "license": "BSD",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ],
   "dependencies": {
     "bootstrap-sass-official": "~3.3.4",
-    "fontawesome": "~4.3.0"
+    "fontawesome": "~4.4.0",
+    "masonry": "~3.3.2",
+    "uikit": "~2.22.0"
   }
 }
