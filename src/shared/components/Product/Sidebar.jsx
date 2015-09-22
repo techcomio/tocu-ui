@@ -61,12 +61,12 @@ export default React.createClass({
                 }
 
                 return (
-                  <div onClick={this.handleViewSP.bind(null, element)} key={i} className='col-xs-4 col-sm-4'>
-                    <a to={`/product/${element.id}`}>
+                  <div key={i} className='col-xs-4 col-sm-4'>
+                    <Link to={`/product/${element.id}`}>
                       <div className="imgWrapper">
                         <img className="img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 );
               }.bind(this))}
@@ -75,10 +75,6 @@ export default React.createClass({
         </div>
       </div>
     );
-  },
-
-  handleViewSP(sp) {
-    this.props.getProdID(sp);
   },
 
   renderIcon() {

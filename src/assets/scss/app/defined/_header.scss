@@ -8,15 +8,16 @@ header { background: #fff;
 }
 .navbar-left { float: left; }
 .navbar-brand { padding: 0; }
-.navbar-brand img { width: 38px; height: 38px; float: left;  }
+.navbar-brand .btn-menu { float: left;  }
+.navbar-brand img { width: 38px; height: 38px; float: left; margin: 0 10px; }
 .navbar .title-inc { color: #55595C; font-size: 18px; margin-left: 10px; line-height: 40px; }
 .navbar-right { padding: 1px 0; }
-.icon-cart { padding: 0.25rem 0.75rem; }
+.icon-cart { padding: 0.25rem 0.5rem; }
 .cart-menu { position: relative; width: 28px; height: 28px; display: block; background-image: url('/img/carts.png'); background-repeat: no-repeat; background-position: center;
 	.count { right: -5px; top: -4px; position: absolute; padding: .2em .4em; }
 }
-.btn-menu { padding: .25em; text-decoration: none !important;
-	span { width: 24px; height: 24px; display: block; line-height: 1; font-size: 22px; color: #B2B2B2; padding: 0; margin: 0; text-decoration: none; }
+.btn-menu { width: 24px; height: 32px; padding: 3px 0px 0px; text-decoration: none !important; margin-top: 2px; cursor: pointer;
+	i { width: 24px; height: 24px; display: block; line-height: 1; font-size: 26px; color: #cecece; padding: 0; margin: 0; text-decoration: none; }
 }
 .btn-avata {
 	.btn { padding: 0px .5em; border: 0px solid #fff; background: none !important;
@@ -52,7 +53,8 @@ header { background: #fff;
 @media all and (max-width: 768px) {
 	body { font-size: 14px; }
 	header {
-		.navbar { padding: 6px .5em; }
+		.navbar { padding: 6px .75em; }
+		.navbar-brand img { margin: 0 8px; }
 	}
 	.navbar-nav { margin: 8px 0px; }
 	.infoBar {

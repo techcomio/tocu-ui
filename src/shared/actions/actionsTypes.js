@@ -4,7 +4,13 @@ export const BOX_LOAD_SUCCESS = 'BOX_LOAD_SUCCESS';
 export const BOX_LOAD_FAIL = 'BOX_LOAD_FAIL';
 export const BOX_ID_LOAD = 'BOX_ID_LOAD';
 export const BOX_ID_LOAD_SUCCESS = 'BOX_ID_LOAD_SUCCESS';
+export const BOX_ID_PUSH_LOAD = 'BOX_ID_PUSH_LOAD';
+export const BOX_ID_PUSH_SUCCESS = 'BOX_ID_PUSH_SUCCESS';
+export const BOX_ID_PUSH_FAIL = 'BOX_ID_PUSH_FAIL';
 export const BOX_ID_LOAD_FAIL = 'BOX_ID_LOAD_FAIL';
+export const BOX_ID_LOAD_INFO = 'BOX_ID_LOAD_INFO';
+export const BOX_ID_LOAD_INFO_SUCCESS = 'BOX_ID_LOAD_INFO_SUCCESS';
+export const BOX_ID_LOAD_INFO_FAIL = 'BOX_ID_LOAD_INFO_FAIL';
 // Auth
 export const LOAD_AUTH = 'LOAD_AUTH';
 export const CREATE_AUTH_LOAD = 'SIGNUP_LOAD';

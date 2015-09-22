@@ -8,7 +8,7 @@ import NavbarBox from '../Navbar/box';
 
 
 @connect(state => ({
-  boxId: state.box.get('boxId')
+  boxIdInfo: state.box.get('boxIdInfo')
 }))
 
 export default class HeaderBox extends React.Component {
@@ -18,13 +18,13 @@ export default class HeaderBox extends React.Component {
   }
 
   render() {
-    const { boxId } = this.props;
+    const { boxIdInfo } = this.props;
 
     return (
       <header>
         <Navbar />
 
-        <NavbarBox info={boxId} />
+        <NavbarBox info={boxIdInfo} />
       </header>
     );
   }

@@ -7,6 +7,7 @@ import Navbar from '../Navbar';
 import ProfileInfo from './home/profileInfo';
 import InfoBar from './home/infoBar';
 
+
 @connect(state => ({
   user: state.auth.get('user')
   , boxs: state.box.get('boxs')

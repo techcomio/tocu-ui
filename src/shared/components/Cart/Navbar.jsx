@@ -69,7 +69,7 @@ export default React.createClass({
       // } else {
       //   this.props.verifyShow();
       // }
-      this.history.pushState(null, '/checkout/from');
+      this.history.pushState(null, '/checkout');
       console.log('Enable verifyShow');
     } else {
       this.props.loginShow();

@@ -7,6 +7,12 @@ import {
   , BOX_ID_LOAD
   , BOX_ID_LOAD_SUCCESS
   , BOX_ID_LOAD_FAIL
+  , BOX_ID_PUSH_LOAD
+  , BOX_ID_PUSH_SUCCESS
+  , BOX_ID_PUSH_FAIL
+  , BOX_ID_LOAD_INFO
+  , BOX_ID_LOAD_INFO_SUCCESS
+  , BOX_ID_LOAD_INFO_FAIL
 } from './actionsTypes';
 import { API_URL } from '../../../config';
 
@@ -45,34 +51,113 @@ export function loadFail(err) {
 }
 
 
-export function getBoxId({id}) {
+export function getBoxIdInfo({id}) {
   return async (dispatch, getState) => {
     await Axios.get(`${API_URL}/box/${id}`)
       .then((res) => {
-        dispatch(loadIdSuccess(res.data));
+        dispatch(loadIdInfoSuccess(res.data));
       })
       .catch((res) => {
-        dispatch(loadIdFail(res.data));
+        dispatch(loadIdInfoFail(res.data));
       });
   }
 }
 
 export function loadId() {
   return {
-    type: BOX_ID_LOAD
+    type: BOX_ID_LOAD_INFO
   }
 }
 
-export function loadIdSuccess(data) {
+export function loadIdInfoSuccess(data) {
   return {
-    type: BOX_ID_LOAD_SUCCESS
+    type: BOX_ID_LOAD_INFO_SUCCESS
     , data
   }
 }
 
-export function loadIdFail(err) {
+export function loadIdInfoFail(err) {
 	return {
-		type: BOX_ID_LOAD_FAIL
+		type: BOX_ID_LOAD_INFO_FAIL
 		, err
 	}
+}
+
+
+export function getBoxId({id, skip, limit}) {
+  return async (dispatch, getState) => {
+    dispatch(getBoxIdLoad());
+    await Axios.get(`${API_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
+      .then((res) => {
+        res.data.length < limit
+          ? dispatch(getBoxIdSuccess(res.data, false, skip + limit))
+          : dispatch(getBoxIdSuccess(res.data, true, skip + limit));
+      })
+      .catch((res) => {
+        dispatch(getBoxIdFail(res.data, skip + limit));
+      });
+  }
+}
+
+export function getBoxIdLoad() {
+  return {
+    type: BOX_ID_LOAD
+  }
+}
+
+export function getBoxIdSuccess(data, hasMore, skip) {
+  return {
+    type: BOX_ID_LOAD_SUCCESS
+    , data
+    , hasMore
+    , skip
+  }
+}
+
+export function getBoxIdFail(err, skip) {
+  return {
+    type: BOX_ID_LOAD_FAIL
+    , err
+    , hasMore: false
+    , skip
+  }
+}
+
+
+export function getBoxIdPage({id, skip, limit}) {
+  return (dispatch, getState) => {
+    dispatch(getBoxIdPageLoad());
+    Axios.get(`${API_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
+      .then((res) => {
+        res.data.length < limit
+          ? dispatch(getBoxIdPageSuccess(res.data, false, skip + limit))
+          : dispatch(getBoxIdPageSuccess(res.data, true, skip + limit));
+      })
+      .catch((res) => {
+        dispatch(getBoxIdPageFail(res.data, skip + limit));
+      });
+  }
+}
+
+export function getBoxIdPageLoad() {
+  return {
+    type: BOX_ID_PUSH_LOAD
+  }
+}
+
+export function getBoxIdPageSuccess(data, hasMore, skip) {
+  return {
+    type: BOX_ID_PUSH_SUCCESS
+    , data
+    , hasMore
+    , skip
+  }
+}
+
+export function getBoxIdPageFail(err, skip) {
+  return {
+    type: BOX_ID_PUSH_FAIL
+    , err
+    , skip
+  }
 }

@@ -36,8 +36,7 @@ export default (store) => (
     </Route>
     <Route name="cart" path="cart" component={Cart} />
     <Route name="checkout" path="checkout" component={Checkout} onEnter={Checkout.onEnter(store)} >
-      <Route name="checkoutFrom" path="from" component={CheckoutForm} />
-      <Route name="CheckoutShipMethod" path="ship-method" component={CheckoutShipMethod} />
+      <IndexRoute component={CheckoutForm} />
       <Route name="CheckoutPayMethod" path="pay-method" component={CheckoutPayMethod} />
     </Route>
   	<Route name="NotFound" path="*" component={NotFound} />

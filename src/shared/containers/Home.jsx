@@ -66,7 +66,7 @@ export default class Home extends React.Component {
         <section id="home-content" className="container">
           <ThumbBox />
 
-          {box.get('boxLoad') && (
+          {box.get('boxsLoad') && (
             <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
               <div className='div-loading text-center'><i className='fa fa-spinner fa-pulse'></i></div>
             </div>

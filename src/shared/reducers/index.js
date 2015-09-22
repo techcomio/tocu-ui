@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import { notifReducer } from 're-notif';
 import box from './box';
 import cart from './cart';
 import auth from './auth';
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   , location
   , boxRequireAuth
   , form: formReducer
+  , notifs: notifReducer
 });
 
 export default rootReducer;

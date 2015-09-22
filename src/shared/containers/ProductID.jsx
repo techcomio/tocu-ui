@@ -1,12 +1,13 @@
 'use strict';
 import React, { PropTypes } from 'react';
 import DocumentMeta from 'react-document-meta';
+import { NotifsComponent } from 're-notif';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { prepareRoute } from '../decorators';
+import { prepareOnUpdate } from '../decorators';
 import { getProductID } from '../actions/product';
-import { get } from '../actions/sale';
+import { get as getSale } from '../actions/sale';
 import Navbar from '../components/Navbar';
 import Product from '../components/Product';
 import Sidebar from '../components/Product/Sidebar';
@@ -14,17 +15,15 @@ import Sale from '../components/Sale';
 import BoxRequireAuth from '../components/BoxRequireAuth';
 
 
-@prepareRoute(async function ({ store, params, location }) {
+@prepareOnUpdate(['id'], async function ({ store, params, location }) {
   return await * [
-    store.dispatch(getProductID(params)),
-    store.dispatch(get()),
+    store.dispatch(getProductID(params))
+    , store.dispatch(getSale())
   ];
 })
 
 @connect(state => ({
   product: state.product
-}), dispatch => ({
-  getProdID: (sp) => dispatch(getProductID(sp))
 }))
 
 export default class BoxID extends React.Component {
@@ -33,20 +32,8 @@ export default class BoxID extends React.Component {
     super(props, context);
   }
 
-  componentDidMount() {
-    console.log(this)
-    // const boxId = this.props.Box.get('id');
-    //
-    // Axios.get(`${API_URL}/product/box/${boxId}?skip=${0}&limit=${15}`)
-    //   .then((res) => {
-    //     this.setState({
-    //       posts: res.data
-    //     });
-    //   }.bind(this));
-  }
-
   render() {
-    const { product, dispatch, getProdID } = this.props;
+    const { product, dispatch } = this.props;
     const Box = product.getIn(['productId', 'Box']);
     const { params: { id } } = this.props;
     const title = product.getIn(['productId', 'boxName']);
@@ -78,6 +65,7 @@ export default class BoxID extends React.Component {
     return (
       <div>
         <DocumentMeta {...meta} />
+        <NotifsComponent/>
         <header>
           {/* Navbar */}
           <Navbar />
@@ -99,13 +87,10 @@ export default class BoxID extends React.Component {
 
                 <div className="col-lg-3">
                   <div className='row row-sidebar'>
-                    {Box && (
-                      <Sidebar getProdID={getProdID}
-                            Box={Box} />
-                    )}
+                    {Box && <Sidebar Box={Box} />}
 
                     <div className="col-md-12 col-lg-12">
-                      <Sale getProdID={getProdID} />
+                      <Sale />
                     </div>
                   </div>
                 </div>

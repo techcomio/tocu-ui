@@ -6,36 +6,35 @@ import { Router, IndexRoute } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import { devTools, persistState } from 'redux-devtools';
 import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
 import { DevTools, LogMonitor, DebugPanel } from 'redux-devtools/lib/react';
 import routers from '../shared/routers';
 import Reducers from '../shared/reducers';
 import immutifyState from '../shared/lib/immutifyState';
+import { getBox } from '../shared/actions/box';
+
 
 const history = new createBrowserHistory();
 const initialState = immutifyState(window.__State__);
 
-// let finalCreateStore;
-// if(__DEV__) {
-// 	const { devTools } = require('redux-devtools'),
-// 		createLogger = require('redux-logger'),
-// 		cs = compose(devTools(), createStore);
+let finalCreateStore;
+if(__DEV__) {
+	const cs = compose(devTools())(createStore);
 
-// 	finalCreateStore = applyMiddleware(thunkMiddleware, createLogger())(cs)
-// } else {
-// 	finalCreateStore = applyMiddleware(thunkMiddleware)(createStore)
-// }
-// const { devTools } = require('redux-devtools');
-
-const createLogger = require('redux-logger'),
 	finalCreateStore = applyMiddleware(thunkMiddleware, createLogger({
 	  transformer: (state) => {
 	    return Immutable.fromJS(state).toJS();
 	  }
-	}))(createStore);
+	}))(cs);
+} else {
+	finalCreateStore = applyMiddleware(thunkMiddleware)(createStore)
+}
+
 
 const store = finalCreateStore(Reducers, initialState);
-const routes = routers(store,);
+const routes = routers(store);
 
 function renderDevtools () {
 	return (
@@ -45,9 +44,14 @@ function renderDevtools () {
 	);
 }
 
+store.dispatch(getBox());
+
 React.render(
-	<Provider store={store}>
-  	{() => <Router history={history} children={routes} />}
-  </Provider>
+	<div>
+		<Provider store={store}>
+	  	{() => <Router history={history} children={routes} />}
+	  </Provider>
+		{__DEV__ && renderDevtools()}
+  </div>
   , document.getElementById('content')
 );

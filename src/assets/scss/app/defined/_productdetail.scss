@@ -121,7 +121,7 @@
 							}
 						}
 					}
-					.product-detail {
+					.product-detail { padding: 20px;
 						.detail {
 							h1 { font-size: 24px; }
 							h3 { font-size: 18px; }
@@ -216,38 +216,6 @@
 }
 
 
-.masonry {
-	// .row { margin-left: -10px; margin-right: -10px; }
-	[class^="col-"], [class*="col-"] { padding-left: 7px !important; padding-right: 7px !important; }
-	.thumbnail { border: none; padding: 0;
-		a { text-decoration: none; color: $gray-light; }
-		img { width: 100%; border-radius: 6px 6px 0 0; height: auto; border-bottom: 1px solid #ddd; }
-		.infoSanpham { padding: 10px 10px 8px 10px; font-size: 11px; line-height: 15px;
-			.titleSanpham { display: block; }
-			.price {
-				.price-list { text-decoration: line-through; padding-right: 10px; }
-				.price-sale { font-weight: bold; }
-			}
-		}
-		.infoBox { padding: 10px 10px; border-top: 1px solid #eee; line-height: 15px;
-			.nameBox { font-size: 11px; color: $gray-light; }
-		}
-	}
-	@media all and (max-width: 768px) {
-		.row { margin-left: -10px; margin-right: -10px; }
-		[class^="col-"], [class*="col-"] { padding-left: 4px !important; padding-right: 4px !important; }
-		.thumbnail { border-radius: 4px;
-			img { border-radius: 4px 4px 0 0; }
-			.infoSanpham { padding: 3px 6px;
-				.titleSanpham { font-size: 10px; }
-				.price { font-size: 10px; }
-			}
-		}
-	}
-	.div-loading i { font-size: 40px; }
-}
-
-
 .sidebar { overflow: hidden; background: #fff;
 	&.thumbnail { padding: 0px; border-width: 0px; border-radius: 8px; background: #fff; }
 	.navbar { margin-bottom: 0px; background: #fff; border-width: 0; border-bottom: 1px solid #ddd; border-radius: 8px 8px 0 0; padding: 8px 10px; z-index: 20; height: 50px; line-height: 50px;
@@ -264,7 +232,7 @@
 			.titleBox-giamgia { width: 100%; float: left; display: block; padding: 5px 10px; line-height: 1.6; overflow:hidden; white-space: nowrap; text-overflow: ellipsis; }
 		}
 	}
-	.masonry-sidebar { width: 100%; display: block; height: auto; min-height: 100px; overflow-x: hidden; padding: 6px 3px 7px 3px; background: #fff;
+	.masonry-sidebar { width: 100%; display: block; height: auto; min-height: 100px; max-height: 420px; overflow-x: hidden; padding: 6px 3px 7px 3px; background: #fff;
 		[class^="col-"], [class*="col-"] { padding-left: 2px !important; padding-right: 2px !important; }
 		.imgWrapper { display: block; cursor: pointer;
 			img { margin-bottom: 4px; width: 100%; min-height: auto; border-radius: 3px; opacity: 0.6;

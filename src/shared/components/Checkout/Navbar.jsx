@@ -20,8 +20,7 @@ export default class NavbarCheckout extends React.Component {
       <div>
         <ul className="breadcrumb">
           <li><Link to="/cart">Cart</Link></li>
-          <li><Link to="/checkout/from">Thông tin người nhận</Link></li>
-          <li><Link to="/checkout/ship-method">PT vận chuyển</Link></li>
+          <li><Link to="/checkout">Thông tin người nhận</Link></li>
           <li><Link to="/checkout/pay-method">PT thanh toán</Link></li>
         </ul>
       </div>

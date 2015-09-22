@@ -21,6 +21,7 @@ import {
 } from './actionsTypes';
 import { API_URL } from '../../../config';
 import { verifyShow } from './boxRequireAuth';
+import { notifActions } from 're-notif';
 
 
 export function loadCard({cartId, token}) {
@@ -190,9 +191,11 @@ export function pushCart(product) {
    Axios(data)
     .then((res) => {
       dispatch(pushCartSuccess(res.data));
+      dispatch(notifActions.notifSend({message: `Đã thêm SP ${product.code} vào Card!`, kind: 'success', dismissAfter: 2000}));
     })
     .catch((res) => {
-      dispatch(pushCartFail(res.data))
+      dispatch(pushCartFail(res.data));
+      dispatch(notifActions.notifSend({message: `SP ${product.code} đã có trong Card!`, kind: 'warning', dismissAfter: 2000}));
     });
   }
 }

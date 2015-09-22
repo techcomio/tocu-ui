@@ -8,18 +8,18 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
-import { devTools } from 'redux-devtools';
+import { devTools, persistState } from 'redux-devtools';
 import { DevTools, LogMonitor, DebugPanel } from 'redux-devtools/lib/react';
 import routers from '../shared/routers';
 import Reducers from '../shared/reducers';
 
 const history = new createBrowserHistory();
-const cs = compose(devTools(), createStore);
+const cs = compose(devTools())(createStore);
 const finalCreateStore = applyMiddleware(thunkMiddleware, createLogger({
   transformer: (state) => {
     return Immutable.fromJS(state).toJS();
   }
-}))(createStore);
+}))(cs);
 const store = finalCreateStore(Reducers);
 const routes = routers(store);
 
@@ -29,9 +29,9 @@ React.render(
 		<Provider store={store}>
 	  	{() => <Router history={history} children={routes} />}
 	  </Provider>
-		{/*<DebugPanel top right bottom >
+		<DebugPanel top right bottom >
       <DevTools store={store} monitor={LogMonitor} />
-    </DebugPanel>*/}
+    </DebugPanel>
   </div>
   , document.getElementById('content')
 );

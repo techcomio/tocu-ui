@@ -1,6 +1,6 @@
 'use strict';
-
 import React, { PropTypes } from 'react';
+
 
 export default function prepareRoute(prepareFn) {
 
@@ -12,12 +12,6 @@ export default function prepareRoute(prepareFn) {
       store: PropTypes.object.isRequired
     }
 
-    render() {
-      return (
-        <DecoratedComponent {...this.props} />
-      );
-    }
-
     componentDidMount() {
       const {
         context: { store },
@@ -26,5 +20,13 @@ export default function prepareRoute(prepareFn) {
 
       prepareFn({ store, params, location });
     }
+
+    render() {
+      return (
+        <DecoratedComponent {...this.props} />
+      );
+    }
+
   };
+
 }
