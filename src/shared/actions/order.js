@@ -22,7 +22,7 @@ export function getPhiShip({city, district, weight}) {
         dispatch(phiShipSuccess(res.data));
       })
       .catch((res) => {
-        dispatch(faiphiShipFaill(res.data));
+        dispatch(phiShipFail(res.data));
       });
   }
 }

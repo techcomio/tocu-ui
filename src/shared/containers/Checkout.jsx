@@ -6,16 +6,42 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { prepareRoute } from '../decorators';
 import { getCity } from '../actions/location';
+import { getPhiShip } from '../actions/order';
 
 
 const meta = {
   title: 'Checkout'
 };
 
+function getWeightCart(cart) {
+  let total = 0
+
+  if(cart.getIn(['Cart','lines'])) {
+    cart.getIn(['Cart','lines']).forEach((product, key) => {
+      if(product.get('status') === "available") {
+        total += product.get('weight');
+      }
+    });
+  }
+  return total;
+}
+
 @prepareRoute(async function ({ store, params, location }) {
-  return await * [
-    store.dispatch(getCity())
-  ];
+  const { cart } = store.getState();
+  const city = cart.getIn(["Cart", "shippingInfo", "city"]);
+  const district = cart.getIn(["Cart", "shippingInfo", "district"]);
+  const weight = getWeightCart(cart);
+  
+  if(city && district && weight) {
+    return await * [
+      store.dispatch(getCity())
+      , store.dispatch(getPhiShip({city, district, weight}))
+    ];
+  } else {
+    return await * [
+      store.dispatch(getCity())
+    ];
+  }
 })
 
 export default class Checkout extends React.Component {
