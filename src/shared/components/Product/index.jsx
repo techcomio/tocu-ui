@@ -10,7 +10,7 @@ import ImgSlideProduct from './ImgSlideProduct';
 import Detail from './Detail';
 import Info from './Info';
 import Mau from './Mau';
-
+import { notifActions } from 'redux-notif';
 
 @connect(state => ({
   user: state.auth.get('user')
@@ -19,6 +19,7 @@ import Mau from './Mau';
 }), dispatch => ({
   Create: (prod) => dispatch(createCart(prod))
   , Push: (prod) => dispatch(pushCart(prod))
+  , notif: (data) => dispatch(notifActions.notifSend(data))
 }))
 
 export default class ProductContent extends React.Component {
@@ -30,12 +31,13 @@ export default class ProductContent extends React.Component {
   }
 
   render() {
-    const { user, cart, product, Create, Push } = this.props;
+    const { user, cart, notif, product, Create, Push } = this.props;
 
     return (
       <div className="productDetail">
         <Navbar user={user}
                 cart={cart}
+                notif={notif}
                 product={product}
                 pushCart={Push}
                 createCart={Create} />

@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
-
+import { notifActions } from 'redux-notif';
 
 export default class NavbarProduct extends React.Component {
 
@@ -60,15 +60,15 @@ export default class NavbarProduct extends React.Component {
   renderBtn = () => {
     switch(this.props.product.get('status')) {
       case "available":
-        return <button onClick={this.Cart} type="button" className="btn btn-primary btn-sm navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Mua</button>
+        return <button onClick={::this.Cart} type="button" className="btn btn-primary btn-sm navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Mua</button>
       case "suspended":
-        return <button onClick={this.Cart} type="button" className="btn btn-warning btn-sm navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
+        return <button onClick={::this.Cart} type="button" className="btn btn-warning btn-sm navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
       default:
-        return <button onClick={this.Cart} type="button" className="btn btn-warning btn-sm navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
+        return <button onClick={::this.Cart} type="button" className="btn btn-warning btn-sm navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
     }
   }
 
-  Cart = () => {
+  Cart() {
     const { user, cart, pushCart, createCart, product } = this.props;
     const {id, code, boxName, images, price, salePrice, weight, status} = product.toJS();
     if(!cart.getIn(['Cart', 'lines']) && !cart.get('cartId')) {

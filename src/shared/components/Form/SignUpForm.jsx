@@ -109,7 +109,7 @@ export default class SignupForm extends React.Component {
                   <select className="form-control form-control-sm" {...district} >
                     <option value="">Quận Huyện</option>
                     {this.props.location.get('district').map(function(district, i) {
-        			      	return <option key={i} value={district.name}>{district.name}</option>
+        			      	return <option key={i} value={district.districtName}>{district.districtName}</option>
         			      })}
                   </select>
                 </div>

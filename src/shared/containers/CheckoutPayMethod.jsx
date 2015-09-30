@@ -1,9 +1,16 @@
 'use strict';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
 import Navbar from '../components/Checkout/Navbar';
 import Sidebar from '../components/Checkout/Sidebar';
+import PayMethodForm from '../components/Form/PayMethodForm';
+import { paymentMethod } from '../actions/cart';
+
+
+@connect(state => ({
+}))
 
 export default class CheckoutPayMethod extends React.Component {
 
@@ -11,30 +18,25 @@ export default class CheckoutPayMethod extends React.Component {
     super(props)
   }
 
-  render () {
+  static contextTypes = {
+  	history: PropTypes.object.isRequired,
+  }
 
+  render() {
     return (
       <div className="checkout">
-        <Navbar />
+        <div>
+          <ul className="breadcrumb">
+            <li><Link to="/cart">Cart</Link></li>
+            <li><Link to="/checkout">Thông tin người nhận</Link></li>
+            <li><Link to="/checkout/pay-method">PT thanh toán</Link></li>
+          </ul>
+        </div>
         <div className="checkout-body">
           <Sidebar />
 
           <div className="body-checkout">
-            <form className="checkout-form">
-              <div className="checkout-title text-center">Phương thức thanh toán</div>
-
-              <div className="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" value="option1" />
-                  Chuyển khoản nội địa
-                </label>
-              </div>
-
-
-              <div className="btn-continue">
-                <button type="submit" className="btn btn-primary navbar-btn btn-block">Tiếp</button>
-              </div>
-            </form>
+            <PayMethodForm onSubmit={this.handleSubmit.bind(this)} />
           </div>
 
         </div>
@@ -42,4 +44,19 @@ export default class CheckoutPayMethod extends React.Component {
     );
   }
 
+  handleSubmit(data) {
+    const self = this
+      , { dispatch, history } = this.props;
+    dispatch(paymentMethod(data.shipping));
+  }
 };
+
+
+CheckoutPayMethod.onEnter = (store) => {
+  return (nextState, replaceState) => {
+    const { auth, cart } = store.getState();
+    if (!cart.getIn(["Cart", "shippingInfo", "mobilePhone"])) {
+      replaceState(null, '/checkout');
+    }
+  };
+}

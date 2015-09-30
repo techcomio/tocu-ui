@@ -3,7 +3,7 @@
 #checkout{
 
 	.checkout { background: #fff; margin-top: 60px; border-radius: 8px; box-shadow: $thumb-box-shadow; margin-bottom: 60px; }
-	.breadcrumb { font-size: 14px; padding: 8px 10px; background: #fff; border-radius: 8px 8px 0px 0px; border-bottom: 1px solid #ddd; margin-bottom: 0px; }
+	.breadcrumb { font-size: 14px; padding: 8px 10px; background: #fff; border-radius: 8px 8px 0px 0px; border-bottom: 1px solid #e5e5e5; margin-bottom: 0px; }
 	.breadcrumb > li + li::before { content: ""; font-family: FontAwesome; }
 
 	.checkout-body { width: 100%;

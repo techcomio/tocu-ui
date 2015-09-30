@@ -13,8 +13,9 @@ const cookieParser = require('cookie-parser');
 const compress = require('compression');
 const render = require('./src/server');
 const app = express();
+const port = process.env.PORT || 8000;
 
-app.set('port', process.env.PORT || 8000);
+
 app.use(cookieParser());
 app.use(compress());
 app.use(express.static(__dirname + "/public", {maxage: 8640000}));
@@ -42,6 +43,6 @@ app.use(function(err, req, res, next) {
 	  res.send('Internal server error');
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Server listening on port ' + app.get('port'));
+app.listen(port, function() {
+  console.log('Server listening on port ' + port);
 });

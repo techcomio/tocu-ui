@@ -129,7 +129,7 @@
 	a { text-decoration: none; color: $gray-light; }
 	.imgWrapper { width: 100%; }
 	.description { padding: 10px; }
-	.infoProduct { padding: 8px 10px; border-top: 1px solid #e5e5e5; }
+	.infoProduct { padding: 8px 10px; }
 	.title, .price { line-height: 1.4; color: $color-gray-2; }
 	.price { font-weight: 500; font-size: 12px;
 		.price-list { color: $gray-light; text-decoration: line-through; }
@@ -141,6 +141,12 @@
 			}
 		}
 	}
+	.infoBox { padding: 8px 10px;
+		.nameBox { font-size: 12px; color: $gray-light;
+			&:hover { color: $link-color; }
+		}
+	}
+	.border-top { border-top: 1px solid #e5e5e5; }
 }
 
 

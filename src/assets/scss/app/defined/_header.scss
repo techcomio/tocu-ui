@@ -2,22 +2,24 @@
 
 .box-shadow-1-2 { box-shadow: 0 1px 2px rgba(26, 26, 26, .20); }
 header { background: #fff;
-	.navbar { background: #fff; height: 50px; padding: 6px 12px; box-shadow: 0 1px 2px rgba(26, 26, 26, .14);
+	.navbar { background: #fff; height: 50px; padding: 6px 10px; box-shadow: 0 1px 2px rgba(26, 26, 26, .14);
 		img { border-radius: 50%; }
 	}
 }
 .navbar-left { float: left; }
 .navbar-brand { padding: 0; }
 .navbar-brand .btn-menu { float: left;  }
-.navbar-brand img { width: 38px; height: 38px; float: left; margin: 0 10px; }
+.navbar-brand img { width: 38px; height: 38px; float: left; margin: 0 12px; }
 .navbar .title-inc { color: #55595C; font-size: 18px; margin-left: 10px; line-height: 40px; }
 .navbar-right { padding: 1px 0; }
 .icon-cart { padding: 0.25rem 0.5rem; }
 .cart-menu { position: relative; width: 28px; height: 28px; display: block; background-image: url('/img/carts.png'); background-repeat: no-repeat; background-position: center;
 	.count { right: -5px; top: -4px; position: absolute; padding: .2em .4em; }
 }
-.btn-menu { width: 24px; height: 32px; padding: 3px 0px 0px; text-decoration: none !important; margin-top: 2px; cursor: pointer;
-	i { width: 24px; height: 24px; display: block; line-height: 1; font-size: 26px; color: #cecece; padding: 0; margin: 0; text-decoration: none; }
+.btn-menu { width: 32px; height: 32px; padding: 4px 6px 0px; text-decoration: none !important; margin-top: 2px; cursor: pointer;
+	.icon-menu {
+		width: 22px; height: 22px; display: block; background-image: url("/img/icon-menu.png"); background-repeat: no-repeat; background-position: center 4px; background-size: 18px 16px;
+	}
 }
 .btn-avata {
 	.btn { padding: 0px .5em; border: 0px solid #fff; background: none !important;
@@ -41,19 +43,20 @@ header { background: #fff;
 	// .aboutText { font-size: 14px; }
 }
 .infoBar { height: 60px; border-top: 1px solid #e5e5e5; box-shadow: 0 1px 2px rgba(26, 26, 26, .14);
-	a { color: $color-gray-2; display: block; text-align: center; padding-top: 10px; padding-bottom: 10px; text-decoration: none;
+	a { color: $color-gray-2; display: block; text-align: center; height: 60px; padding-top: 10px; padding-bottom: 10px; text-decoration: none;
 		span { display: block;
 			&.value { font-weight: 700; font-size: 14px; }
 			&.labels { font-size: 12px; }
 		}
 		&:hover, &:focus { color: $link-color; text-decoration: none; }
+		&.active { border-bottom: 2px solid #1D84F5; color: #1D84F5; box-sizing: border-box; }
 	}
 }
 
 @media all and (max-width: 768px) {
 	body { font-size: 14px; }
 	header {
-		.navbar { padding: 6px .75em; }
+		.navbar { padding: 6px .5em; }
 		.navbar-brand img { margin: 0 8px; }
 	}
 	.navbar-nav { margin: 8px 0px; }

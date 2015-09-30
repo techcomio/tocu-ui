@@ -15,6 +15,7 @@ import { connectReduxForm } from 'redux-form';
 export default class SiderbarCheckout extends React.Component {
 
   render() {
+    const { order } = this.props;
     return (
       <div className="sidebars">
         <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -33,7 +34,7 @@ export default class SiderbarCheckout extends React.Component {
                 </ul>
                 <div className="panel-footer">
                   <div className="panel-table">
-                    <div className="panel-key">Tổng:</div>
+                    <div className="panel-key">Tạm tính:</div>
                     <div className="panel-val">{::this.getTotalCartSale()}đ</div>
                   </div>
                 </div>
@@ -60,7 +61,7 @@ export default class SiderbarCheckout extends React.Component {
                   <li className="list-group-item">
                     <div className="panel-list">
                       <div className="panel-key">Thời gian:</div>
-                      <div className="panel-val">3 ngày</div>
+                      <div className="panel-val">{order.getIn(['phiship', 'shippingDays']) || 0} ngày</div>
                     </div>
                   </li>
                 </ul>
@@ -138,8 +139,8 @@ export default class SiderbarCheckout extends React.Component {
   getPhiShip() {
     let phi = 0;
     const { order } = this.props;
-    if(order.getIn(['phiship', 'cost'])) {
-      phi = order.getIn(['phiship', 'cost']);
+    if(order.getIn(['phiship', 'shippingCost'])) {
+      phi = order.getIn(['phiship', 'shippingCost']);
     }
     return this.formatNumber(phi);
   }

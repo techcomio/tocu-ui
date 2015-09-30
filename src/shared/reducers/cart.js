@@ -17,6 +17,12 @@ import {
   , CART_CAPNHAT_FAIL
   , CLEAR_CART
   , ADD_CART_ID
+  , SHIP_PING_INFO
+  , SHIP_PING_INFO_SUCCESS
+  , SHIP_PING_INFO_FAIL
+  , PAYMENT_METHOD
+  , PAYMENT_METHOD_SUCCESS
+  , PAYMENT_METHOD_FAIL
 } from '../actions/actionsTypes';
 import Cookies from 'cookies-js';
 import Immutable, { Map, List } from 'immutable';
@@ -28,12 +34,16 @@ const initialState = new Immutable.fromJS({
   , pushLoad: false
   , destroyLoad: false
   , capnhatLoad: false
+  , shippingLoad: false
+  , paymentLoad: false
 	, Cart: Map()
 	, createErr: null
 	, getErr: null
 	, pushErr: null
 	, destroyErr: null
 	, capnhatErr: null
+	, shippingErr: null
+	, paymentErr: null
 });
 
 export default function counter(state = initialState, action) {
@@ -125,13 +135,45 @@ export default function counter(state = initialState, action) {
       , capnhatErr: action.err
     });
   case CLEAR_CART:
-    return  state.merge({
+    return state.merge({
       cartId: null
       , Cart: Map()
     });
   case ADD_CART_ID:
     return  state.merge({
       cartId: action.id
+    });
+  case SHIP_PING_INFO:
+    return state.merge({
+      shippingLoad: true
+      , shippingErr: null
+    });
+  case SHIP_PING_INFO_SUCCESS:
+    return state.merge({
+      shippingLoad: false
+      , Cart: Immutable.fromJS(action.data)
+      , shippingErr: null
+    });
+  case SHIP_PING_INFO_FAIL:
+    return state.merge({
+      shippingLoad: false
+      , shippingErr: action.err
+    });
+  case PAYMENT_METHOD:
+    return state.merge({
+      paymentLoad: true
+      , paymentErr: null
+    });
+  case PAYMENT_METHOD_SUCCESS:
+    return state.merge({
+      paymentLoad: false
+      , Cart: Immutable.fromJS(action.data)
+      , paymentErr: null
+    });
+  case PAYMENT_METHOD_FAIL:
+    return state.merge({
+      paymentLoad: false
+      , paymentErr: action.err
     });
   default:
     return state;

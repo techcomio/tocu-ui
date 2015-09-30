@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { prepareRoute } from '../decorators';
 import { getBox } from '../actions/box';
+import { count as countBox } from '../actions/box';
 import { count } from '../actions/product';
 import Header from '../components/Header/Home';
-import ThumbBox from '../components/Card/ThumbBox';
 
 
 const title = 'Tocu';
@@ -40,14 +40,10 @@ const meta = {
 
 @prepareRoute(async function ({ store, params, location }) {
   return await * [
-    store.dispatch(getBox())
+    store.dispatch(countBox())
     , store.dispatch(count())
   ];
 })
-
-@connect(state => ({
-  box: state.box
-}))
 
 export default class Home extends React.Component {
 
@@ -56,22 +52,11 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { box } = this.props;
-
     return (
       <div>
         <DocumentMeta {...meta} />
-        <Header />
 
-        <section id="home-content" className="container">
-          <ThumbBox />
-
-          {box.get('boxsLoad') && (
-            <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-              <div className='div-loading text-center'><i className='fa fa-spinner fa-pulse'></i></div>
-            </div>
-          )}
-        </section>
+        {this.props.children}
       </div>
     );
   }

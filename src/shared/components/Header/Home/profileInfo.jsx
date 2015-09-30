@@ -18,7 +18,7 @@ export default class ProfileInfo extends React.Component {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.facebook.com/thanhchamly" target="_blank" >
+                  <a href="https://www.facebook.com/tocu.vn" target="_blank" >
                     <i className="fa fa-facebook-square gray">&nbsp; facebook</i>
                   </a>
                 </li>

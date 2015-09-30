@@ -6,6 +6,10 @@ import { Router, Route, IndexRoute } from 'react-router';
  */
 import App from './containers/App';
 import Home from './containers/Home';
+import Box from './containers/Box';
+import Product from './containers/Product';
+import Album from './containers/Album';
+import Posts from './containers/Posts';
 import Demo from './containers/Demo';
 import BoxID from './containers/BoxID';
 import ProductID from './containers/ProductID';
@@ -23,8 +27,13 @@ import NotFound from './containers/NotFound';
 
 
 export default (store) => (
-  <Route path="/" component={App}>
-    <IndexRoute component={Home} />
+  <Route component={App}>
+    <Route path="/" component={Home}>
+      <IndexRoute component={Box} />
+      <Route path="product" component={Product} />
+      <Route path="album" component={Album} />
+      <Route path="post" component={Posts} />
+    </Route>
     <Route name="boxid" path="box/:id" component={BoxID} />
     <Route name="productid" path="product/:id" component={ProductID} />
   	<Route component={RequireLogin} onEnter={RequireLogin.onEnter(store)}>
@@ -37,7 +46,7 @@ export default (store) => (
     <Route name="cart" path="cart" component={Cart} />
     <Route name="checkout" path="checkout" component={Checkout} onEnter={Checkout.onEnter(store)} >
       <IndexRoute component={CheckoutForm} />
-      <Route name="CheckoutPayMethod" path="pay-method" component={CheckoutPayMethod} />
+      <Route name="CheckoutPayMethod" path="pay-method" component={CheckoutPayMethod} onEnter={CheckoutPayMethod.onEnter(store)} />
     </Route>
   	<Route name="NotFound" path="*" component={NotFound} />
   </Route>

@@ -24,7 +24,7 @@ export default React.createClass({
             <div className="description">
 							<span className="nameBox">{box.get('description')}</span>
             </div>
-            <div className="infoProduct">
+            <div className="infoProduct border-top">
               <span className="title">{box.get('code')}</span>
 							{salePrice ? (
 								<span className="price">

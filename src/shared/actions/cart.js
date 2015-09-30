@@ -18,10 +18,16 @@ import {
   , CART_CAPNHAT_FAIL
   , CLEAR_CART
   , ADD_CART_ID
+  , SHIP_PING_INFO
+  , SHIP_PING_INFO_SUCCESS
+  , SHIP_PING_INFO_FAIL
+  , PAYMENT_METHOD
+  , PAYMENT_METHOD_SUCCESS
+  , PAYMENT_METHOD_FAIL
 } from './actionsTypes';
 import { API_URL } from '../../../config';
 import { verifyShow } from './boxRequireAuth';
-import { notifActions } from 're-notif';
+import { notifActions } from 'redux-notif';
 
 
 export function loadCard({cartId, token}) {
@@ -191,11 +197,11 @@ export function pushCart(product) {
    Axios(data)
     .then((res) => {
       dispatch(pushCartSuccess(res.data));
-      dispatch(notifActions.notifSend({message: `Đã thêm SP ${product.code} vào Card!`, kind: 'success', dismissAfter: 2000}));
+      dispatch(notifActions.notifSend({message: `Đã thêm SP ${product.code} vào Card!`, kind: 'success', dismissAfter: 3000}));
     })
     .catch((res) => {
       dispatch(pushCartFail(res.data));
-      dispatch(notifActions.notifSend({message: `SP ${product.code} đã có trong Card!`, kind: 'warning', dismissAfter: 2000}));
+      dispatch(notifActions.notifSend({message: `SP ${product.code} đã có trong Card!`, kind: 'warning', dismissAfter: 3000}));
     });
   }
 }
@@ -333,5 +339,96 @@ export function addCartId(id) {
   return {
     type: ADD_CART_ID
     , id
+  }
+}
+
+
+export function shippingInfo(data, cb) {
+  return (dispatch, getState) => {
+    dispatch(shippingInfoLoad());
+    const { auth } = getState();
+    const access_token = auth.getIn(['user', 'access_token']);
+    Axios({
+      method: 'put'
+      , url: `${API_URL}/cart/checkout`
+      , data: {shippingInfo: data}
+      , headers: {
+        'Authorization': `Bearer ${access_token}`
+      }
+    })
+    .then((res) => {
+      dispatch(shippingInfoSucess(res.data));
+      cb();
+    })
+    .catch((res) => {
+      dispatch(shippingInfoFail(res.data));
+    });
+  }
+}
+
+export function shippingInfoLoad() {
+  return {
+    type: SHIP_PING_INFO
+  }
+}
+
+export function shippingInfoSucess(data) {
+  return {
+    type: SHIP_PING_INFO_SUCCESS
+    , data
+  }
+}
+
+export function shippingInfoFail(err) {
+  return {
+    type: SHIP_PING_INFO_FAIL
+    , err
+  }
+}
+
+
+/**
+ * [paymentMethod description]
+ * @param  {string} method [description]
+ */
+export function paymentMethod(method) {
+  return (dispatch, getState) => {
+    dispatch(paymentMethodLoad());
+    const { auth } = getState();
+    const access_token = auth.getIn(['user', 'access_token']);
+    Axios({
+      method: 'put'
+      , url: `${API_URL}/cart/checkout`
+      , data: {paymentMethod: method}
+      , headers: {
+        'Authorization': `Bearer ${access_token}`
+      }
+    })
+    .then((res) => {
+      dispatch(paymentMethodSucess(res.data));
+    })
+    .catch((res) => {
+      dispatch(paymentMethodFail(res.data));
+    });
+  }
+}
+
+export function paymentMethodLoad() {
+  return {
+    type: PAYMENT_METHOD
+  }
+}
+
+export function paymentMethodSucess(data) {
+  return {
+    type: PAYMENT_METHOD_SUCCESS
+    , data
+  }
+}
+
+export function paymentMethodFail(err) {
+  return {
+    type: PAYMENT_METHOD_FAIL
+    , err
   }
 }

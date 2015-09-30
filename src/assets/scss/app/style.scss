@@ -20,6 +20,24 @@ ul, li { list-style: none; }
 #product-content { margin-top: 80px; }
 #cart-content { margin-top: 100px; }
 
+// ReactCSSTransitionGroup
+.notif-enter {
+  opacity: .01;
+  transition: opacity .4s ease-in;
+}
+
+.notif-enter.notif-enter-active {
+  opacity: 1;
+}
+
+.notif-leave {
+  opacity: 1;
+  transition: opacity .6s ease-in;
+}
+
+.notif-leave.notif-leave-active {
+  opacity: .01;
+}
 
 // /* Components */
 // @import 'defined/header';

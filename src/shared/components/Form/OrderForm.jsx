@@ -36,14 +36,12 @@ export default class SignupForm extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    // dispatch(initialize('order', {
-    //   name: 'tets'
-    //   , mobilePhone: '0989414662'
-    //   , city: 'Hà Nội'
-    //   , district: 'Ba Đình'
-    //   , diachi: 'Ba Đình, HN'
-    // }));
+    const { dispatch, cart } = this.props;
+    const shippingInfo = cart.getIn(["Cart", "shippingInfo"]).toJS();
+
+    if(shippingInfo) {
+      dispatch(initialize('order', shippingInfo));
+    }
   }
 
   render() {
@@ -51,6 +49,7 @@ export default class SignupForm extends React.Component {
       fields: {name, mobilePhone, diachi, city, district}
       , handleSubmit
       , valid
+      , cart
     } = this.props;
 
     let classerName = classNames({
@@ -109,7 +108,7 @@ export default class SignupForm extends React.Component {
                 <select className="form-control" {...district} onChange={this.handleDistrictChange.bind(this, district)} >
                   <option value="">Quận Huyện</option>
                   {this.props.location.get('district').map(function(district, i) {
-                    return <option key={i} value={district.name}>{district.name}</option>
+                    return <option key={i} value={district.districtName}>{district.districtName}</option>
                   })}
                 </select>
               </div>
@@ -128,11 +127,14 @@ export default class SignupForm extends React.Component {
 
 
           <div className="btn-continue">
-            <button type="submit"
-                    className="btn btn-primary navbar-btn btn-block"
-                    onClick={handleSubmit}
-                    disabled={!valid} >
-                Tiếp
+            <button
+              type="submit"
+              className="btn btn-primary navbar-btn btn-block"
+              onClick={handleSubmit}
+              disabled={!valid || cart.get('shippingLoad')} >
+
+              {cart.get('shippingLoad') && <i className="fa fa-spinner fa-pulse"></i>} Tiếp
+              
             </button>
           </div>
         </form>

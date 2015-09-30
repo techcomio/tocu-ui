@@ -10,7 +10,7 @@ import InfoBar from './home/infoBar';
 
 @connect(state => ({
   user: state.auth.get('user')
-  , boxs: state.box.get('boxs')
+  , boxCount: state.box.get('boxCount')
   , productCount: state.product.get('productCount')
 }))
 
@@ -25,7 +25,7 @@ export default class HeaderHome extends React.Component {
   }
 
   render() {
-    const { user, boxs, productCount } = this.props;
+    const { user, boxCount, productCount } = this.props;
 
     return (
       <header>
@@ -33,7 +33,7 @@ export default class HeaderHome extends React.Component {
 
         <ProfileInfo />
 
-        <InfoBar boxs={boxs}
+        <InfoBar boxCount={boxCount}
                 productCount={productCount}/>
       </header>
     );

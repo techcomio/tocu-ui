@@ -1,20 +1,72 @@
 import {
-  PRODUCT_ID_LOAD
+  PRODUCT_COUNT
+  , PRODUCT_LOAD
+  , PRODUCT_LOAD_SUCCESS
+  , PRODUCT_LOAD_FAIL
+  , PRODUCT_PUSH
+  , PRODUCT_PUSH_SUCCESS
+  , PRODUCT_PUSH_FAIL
+  , PRODUCT_ID_LOAD
   , PRODUCT_ID_LOAD_SUCCESS
   , PRODUCT_ID_LOAD_FAIL
-  , PRODUCT_COUNT
 } from '../actions/actionsTypes';
 import Immutable, { Map, List } from 'immutable';
 
+
 const initialState = new Immutable.fromJS({
-  productIdLoad: false
+  productLoad: false
+  , productIdLoad: false
+	, product: List()
 	, productId: Map()
+  , pagination: Map({hasMore: false, skip: 0})
+	, productErr: null
 	, productIdErr: null
 	, productCount: 0
 });
 
 export default function counter(state = initialState, action) {
   switch (action.type) {
+  case PRODUCT_LOAD:
+    return state.merge({
+      productLoad: true
+      , product: List()
+      , pagination: Map({hasMore: false, skip: 0})
+      , productErr: null
+    });
+  case PRODUCT_LOAD_SUCCESS:
+    return state.merge({
+      productLoad: false
+      , product: Immutable.fromJS(action.data)
+      , pagination: Map({hasMore: action.hasMore, skip: action.skip})
+      , productErr: null
+    });
+  case PRODUCT_LOAD_FAIL:
+    return state.merge({
+      productLoad: false
+      , product: List()
+      , pagination: Map({hasMore: false, skip: action.skip})
+      , productErr: action.err
+    });
+  case PRODUCT_PUSH:
+    return state.merge({
+      productLoad: true
+      , pagination: Map({hasMore: false, skip: 0})
+      , productErr: null
+    });
+  case PRODUCT_PUSH_SUCCESS:
+    return state.merge({
+      productLoad: false
+      , product: state.get('product').toJS().concat(action.data)
+      , pagination: Map({hasMore: action.hasMore, skip: action.skip})
+      , productErr: null
+    });
+  case PRODUCT_PUSH_FAIL:
+    return state.merge({
+      productLoad: false
+      , product: List()
+      , pagination: Map({hasMore: false, skip: action.skip})
+      , productErr: action.err
+    });
   case PRODUCT_ID_LOAD:
 		return state.merge({
       productIdLoad: true

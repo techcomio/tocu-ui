@@ -13,8 +13,8 @@ export function getPhiShip({city, district, weight}) {
     dispatch(phiShipLoad())
     await Axios.get(`${API_URL}/ship`, {
         params: {
-          city: city
-          , district: district
+          provinceName: city
+          , districtName: district
           , weight: weight
         }
       })

@@ -1,11 +1,12 @@
 'use strict';
 import React from 'react';
+import { Link } from 'react-router';
 
 
 export default class InfoBar extends React.Component {
 
   render() {
-    const { boxs, productCount } = this.props;
+    const { boxCount, productCount } = this.props;
 
     return (
     	<div className="container-fluid infoBar">
@@ -14,24 +15,24 @@ export default class InfoBar extends React.Component {
           <div className="col-sm-8 col-md-6 col-lg-4">
             <div className="row">
               <div className="col-xs-3">
-                <a href="#" className="active">
-                  <span className="value">{boxs.size}</span> <span className="labels">Box</span>
-                </a>
+                <Link to="/" activeClassName="active" >
+                  <span className="value">{boxCount}</span> <span className="labels">Box</span>
+                </Link>
               </div>
               <div className="col-xs-3">
-                <a href="#" className="">
+                <Link to="/product" activeClassName="active" >
                   <span className="value">{productCount}</span> <span className="labels">Sản phẩm</span>
-                </a>
+                </Link>
               </div>
               <div className="col-xs-3">
-                <a href="#" className="">
+                <Link to="/album" activeClassName="active" >
                   <span className="value">0</span> <span className="labels">Ảnh</span>
-                </a>
+                </Link>
               </div>
               <div className="col-xs-3">
-                <a href="#" className="">
+                <Link to="/post" activeClassName="active" >
                   <span className="value">0</span> <span className="labels">Bài Viết</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

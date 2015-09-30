@@ -18,15 +18,15 @@ export default class NavLeft extends React.Component {
   }
 
   render() {
-    const { user, box } = this.props;
+    const { user } = this.props;
     const classerNavLeft = classNames({
-      'nav-left': true
-      , 'hide-s': this.state.hide
+      'hide-s': this.state.hide
       , 'notUser': !user.get('access_token')
     });
     return (
-      <div className={classerNavLeft} onClick={::this.navOnclick}>
-        <div className="side-nav" onClick={::this.sideOnclick}>
+      <div className={classerNavLeft} >
+        <div className="nav-left" onClick={::this.navOnclick} />
+        <div className="side-nav" >
           <div className="auth-nav">
             <div className="auth-body">
               <img className="avatar" alt="avatar" src={user.get('avatarUrl')} />
@@ -35,11 +35,10 @@ export default class NavLeft extends React.Component {
           </div>
           <div className="nav-left-body">
             <ul>
-              {box.get('boxs').toJS().map((item) => {
-                return (
-                  <li key={item.id}><Link to={`/box/${item.id}`}>{item.name}</Link></li>
-                )
-              })}
+              <li><Link activeClassName="active" to="/">Box</Link></li>
+              <li><Link activeClassName="active" to="/product">Sản phẩm</Link></li>
+              <li><Link activeClassName="active" to="/album">Ảnh</Link></li>
+              <li><Link activeClassName="active" to="/post">Bài Viết</Link></li>
             </ul>
           </div>
           <div className="nav-left-footer">
@@ -59,10 +58,6 @@ export default class NavLeft extends React.Component {
     });
   }
 
-  sideOnclick(e) {
-    e.stopPropagation();
-  }
-
   showNav = () => {
     this.setState({
       hide: false
@@ -70,3 +65,6 @@ export default class NavLeft extends React.Component {
   }
 
 };
+
+//
+// };

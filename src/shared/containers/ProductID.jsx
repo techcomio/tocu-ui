@@ -1,7 +1,7 @@
 'use strict';
 import React, { PropTypes } from 'react';
 import DocumentMeta from 'react-document-meta';
-import { NotifsComponent } from 're-notif';
+import { NotifsComponent } from 'redux-notif';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';

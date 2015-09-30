@@ -2,16 +2,19 @@
   width: 100%;
   height: 100%;
   top: 0;
+  opacity: 1;
   left: 0;
   position: fixed;
   z-index: 2000;
-  transition: width 0.2s ease-in;
-  transition: background-color 0.2s ease-in;
   background-color: rgba(37, 43, 51, 0.8);
+  transition: width .6s ease-out;
+  transition: opacity .6s ease-out;
 }
-.nav-left.hide-s {
-  width: 0%;
-  background-color: rgba(37, 43, 51, 0);
+.hide-s {
+  .nav-left {
+    width: 0%;
+    opacity: 0;
+  }
 }
 
 .side-nav {
@@ -20,12 +23,16 @@
   top: 0;
   height: 100%;
   background: #fff;
-  position: absolute;
-  transition: left 0.2s ease-in;
+  position: fixed;
+  z-index: 2001;
+  transition: all .4s ease-out;
+
 }
 
-.hide-s .side-nav {
-  left: -260px;
+.hide-s {
+  .side-nav {
+    left: -260px;
+  }
 }
 
 .auth-nav {

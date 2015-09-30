@@ -4,6 +4,10 @@ import DocumentMeta from 'react-document-meta';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { prepareRoute } from '../decorators';
+import { getBox } from '../actions/box';
+import { Seq } from 'immutable';
+
 
 const title = 'Test';
 const description = 'All the modern best practices in one example.';
@@ -40,9 +44,26 @@ const meta = {
 //   return {};
 // })
 
-@connect(state => ({
-  auth: state.auth
-}))
+@prepareRoute(async function ({ store, params, location }) {
+  return await * [
+    store.dispatch(getBox())
+  ];
+})
+
+// @connect(state => ({
+//   auth: state.auth
+// }))
+@connect(state => {
+
+  const { box } = state;
+
+  var test = box.get('boxs').filter(obj => obj.get('type') === 'product');
+
+  return {
+    auth: state.auth
+    , box: test
+  }
+})
 
 export default class Test extends React.Component {
 
@@ -51,16 +72,12 @@ export default class Test extends React.Component {
   }
 
   render() {
-    let { auth, dispatch } = this.props;
+    let { auth, box, dispatch } = this.props;
     // const Acti = bindActionCreators(CounterActions, dispatch);
-
+    // console.log(box)
     return (
       <div>
-        <DocumentMeta {...meta}/>
         Test
-        <Link to="/test/hihi" state={{ fromTest: true }}> to hihi</Link>
-
-        {this.props.children}
       </div>
     );
   }

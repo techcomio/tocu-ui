@@ -13,7 +13,6 @@ import { DevTools, LogMonitor, DebugPanel } from 'redux-devtools/lib/react';
 import routers from '../shared/routers';
 import Reducers from '../shared/reducers';
 import immutifyState from '../shared/lib/immutifyState';
-import { getBox } from '../shared/actions/box';
 
 
 const history = new createBrowserHistory();
@@ -44,14 +43,12 @@ function renderDevtools () {
 	);
 }
 
-store.dispatch(getBox());
-
 React.render(
 	<div>
 		<Provider store={store}>
 	  	{() => <Router history={history} children={routes} />}
 	  </Provider>
-		{__DEV__ && renderDevtools()}
   </div>
   , document.getElementById('content')
 );
+		// {__DEV__ && renderDevtools()}

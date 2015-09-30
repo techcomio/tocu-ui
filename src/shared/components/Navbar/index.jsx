@@ -11,7 +11,6 @@ import NavLeft from './NavLeft';
 @connect(state => ({
   user: state.auth.get('user')
   , cart: state.cart.get('Cart')
-  , box: state.box
 }))
 
 export default class Navbar extends React.Component {
@@ -21,7 +20,7 @@ export default class Navbar extends React.Component {
   }
 
   render() {
-    const { user, cart, box } = this.props;
+    const { user, cart } = this.props;
 
     if(!user.get('access_token')) {
       return (
@@ -29,7 +28,7 @@ export default class Navbar extends React.Component {
           <nav className="navbar navbar-fixed-top navbar-light bg-faded">
             <div className="navbar-header">
               <div className="navbar-brand">
-                <div className="btn-menu" onClick={::this.handleMenu}><i className="fa fa-bars"></i></div>
+                <div className="btn-menu" onClick={::this.handleMenu}><span className="icon-menu" /></div>
                 <Link to="/">
                   <img className="logo" alt="Brand" src="/img/logo.png" />
                   {/*<span className="title-inc">Tổ Cú</span> */}
@@ -46,7 +45,7 @@ export default class Navbar extends React.Component {
               <Link to="/signup" className="btn btn-sm btn-primary-outline">Đăng ký</Link>
             </div>
           </nav>
-          <NavLeft user={user} box={box} ref="NavLeft" />
+          <NavLeft user={user} ref="NavLeft" />
         </div>
       );
     }
@@ -56,7 +55,7 @@ export default class Navbar extends React.Component {
         <nav className="navbar navbar-fixed-top navbar-light bg-faded">
           <div className="navbar-header">
             <div className="navbar-brand">
-              <div className="btn-menu" onClick={::this.handleMenu}><i className="fa fa-bars"></i></div>
+              <div className="btn-menu" onClick={::this.handleMenu}><span className="icon-menu" /></div>
               <Link to="/">
                 <img className="logo" alt="Brand" src="/img/logo.png" />
                 {/*<span className="title-inc">Tổ Cú</span> */}
@@ -79,7 +78,7 @@ export default class Navbar extends React.Component {
             </div>
           </div>
         </nav>
-        <NavLeft user={user} box={box} ref="NavLeft" />
+        <NavLeft user={user} ref="NavLeft" />
       </div>
     );
   }

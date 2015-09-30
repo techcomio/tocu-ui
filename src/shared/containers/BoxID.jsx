@@ -6,18 +6,19 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { prepareOnUpdate } from '../decorators';
 import { getBoxIdInfo, getBoxId, getBoxIdPage } from '../actions/box';
-import BoxidContent from '../components/BoxId';
+import BoxidContent from '../components/Card/BoxId';
 import Header from '../components/Header/Box';
+import { SERVER } from '../lib/env';
+
 
 const limit = 15;
 
 @prepareOnUpdate(['id'], async function ({ store, params, location }) {
-  // SERVER
-  if(typeof window === 'undefined') {
+  if(SERVER) {
     return await * [
       store.dispatch(getBoxIdInfo(params))
     ];
-  } else {  // CLIENT
+  } else {
     return await * [
       store.dispatch(getBoxIdInfo(params))
       , store.dispatch(getBoxId({id: params.id, skip: 0, limit}))

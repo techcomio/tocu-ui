@@ -1,5 +1,6 @@
 import {
-	BOX_LOAD
+	BOX_COUNT
+	, BOX_LOAD
   , BOX_LOAD_SUCCESS
   , BOX_LOAD_FAIL
   , BOX_ID_LOAD
@@ -25,6 +26,7 @@ const initialState = new Immutable.fromJS({
 	, boxsErr: null
 	, boxsIdErr: null
 	, boxIdInfoErr: null
+	, boxCount: 0
 });
 
 export default function counter(state = initialState, action) {
@@ -105,6 +107,10 @@ export default function counter(state = initialState, action) {
 			boxIdInfoLoad: false
 			, boxIdInfo: Map()
 			, boxIdInfoErr: action.err
+		});
+	case BOX_COUNT:
+		return state.merge({
+			boxCount: action.data
 		});
   default:
     return state;

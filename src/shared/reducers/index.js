@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { notifReducer } from 're-notif';
+import { notifReducer } from 'redux-notif';
 import box from './box';
 import cart from './cart';
 import auth from './auth';

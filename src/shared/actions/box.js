@@ -1,7 +1,8 @@
 'use strict';
 import Axios from 'axios';
 import {
-  BOX_LOAD
+  BOX_COUNT
+  , BOX_LOAD
   , BOX_LOAD_SUCCESS
   , BOX_LOAD_FAIL
   , BOX_ID_LOAD
@@ -159,5 +160,25 @@ export function getBoxIdPageFail(err, skip) {
     type: BOX_ID_PUSH_FAIL
     , err
     , skip
+  }
+}
+
+
+export function count() {
+  return async (dispatch, getState) => {
+    await Axios.get(`${API_URL}/box/count`)
+      .then((res) => {
+        setTimeout(function() {
+          dispatch(countSuccess(res.data));
+        });
+      })
+      .catch((res) => {});
+  }
+}
+
+export function countSuccess(data) {
+  return {
+    type: BOX_COUNT
+    , data
   }
 }
