@@ -126,7 +126,7 @@ export default class SignupForm extends React.Component {
 
             <button type="submit"
                     className="btn btn-primary btn-sm btn-block btn-signup"
-                    disabled={!valid}
+                    disabled={!valid || auth.get('createLoad')}
                     onClick={handleSubmit} >
               {auth.get('createLoad') && <i className="fa fa-spinner fa-pulse"></i>} Tạo Tài Khoản
             </button>

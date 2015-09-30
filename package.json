@@ -43,7 +43,7 @@
     "gulp-uglify": "^1.4.0",
     "history": "^1.8.4",
     "immutable": "^3.7.5",
-    "node-sass": "^3.3.2",
+    "node-sass": "^3.3.3",
     "nodemon": "^1.4.1",
     "react": "^0.13.3",
     "react-async": "^2.1.0",
