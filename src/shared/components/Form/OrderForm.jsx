@@ -108,7 +108,7 @@ export default class SignupForm extends React.Component {
                 <select className="form-control" {...district} onChange={this.handleDistrictChange.bind(this, district)} >
                   <option value="">Quận Huyện</option>
                   {this.props.location.get('district').map(function(district, i) {
-                    return <option key={i} value={district.districtName}>{district.districtName}</option>
+                    return <option key={i} value={district.name}>{district.name}</option>
                   })}
                 </select>
               </div>
@@ -134,7 +134,7 @@ export default class SignupForm extends React.Component {
               disabled={!valid || cart.get('shippingLoad')} >
 
               {cart.get('shippingLoad') && <i className="fa fa-spinner fa-pulse"></i>} Tiếp
-              
+
             </button>
           </div>
         </form>

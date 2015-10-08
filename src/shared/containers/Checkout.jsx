@@ -31,7 +31,7 @@ function getWeightCart(cart) {
   const city = cart.getIn(["Cart", "shippingInfo", "city"]);
   const district = cart.getIn(["Cart", "shippingInfo", "district"]);
   const weight = getWeightCart(cart);
-  
+
   if(city && district && weight) {
     return await * [
       store.dispatch(getCity())

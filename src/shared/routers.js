@@ -13,6 +13,7 @@ import Posts from './containers/Posts';
 import Demo from './containers/Demo';
 import BoxID from './containers/BoxID';
 import ProductID from './containers/ProductID';
+import PostID from './containers/PostID';
 import RequireLogin from './containers/RequireLogin';
 import RequireVerify from './containers/RequireVerify';
 import SignIn from './containers/SignIn';
@@ -36,6 +37,7 @@ export default (store) => (
     </Route>
     <Route name="boxid" path="box/:id" component={BoxID} />
     <Route name="productid" path="product/:id" component={ProductID} />
+    <Route name="postid" path="post/:id" component={PostID} />
   	<Route component={RequireLogin} onEnter={RequireLogin.onEnter(store)}>
     	<Route name="signin" path="signin" component={SignIn} />
     	<Route name="signup" path="signup" component={SignUp} />

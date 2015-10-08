@@ -13,7 +13,7 @@ import {
 export function getCity() {
   return async (dispatch, getState) => {
     dispatch(cityLoad());
-    await Axios.get(`${API_URL}/city`)
+    await Axios.get(`${API_URL}/province`)
       .then((res) => {
         dispatch(citySuccess(res.data));
       })
@@ -47,7 +47,7 @@ export function cityFail(err) {
 export function getDistrict({city}) {
   return async (dispatch, getState) => {
     dispatch(districtLoad());
-    await Axios.get(`${API_URL}/district?provinceName=${city}`)
+    await Axios.get(`${API_URL}/district?province=${city}`)
     .then((res) => {
       dispatch(districtSuccess(res.data));
     })
