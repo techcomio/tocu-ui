@@ -1,8 +1,17 @@
 
 
 /* body! */
-$bg-body: #E8E8E8;
+// $bg-body: #E8E8E8;
+$bg-body: #F4F4F4;
 $font-family: Helvetica Neue,Helvetica,Arial,Verdana,Geneva,sans-serif;
+
+/* color */
+$color-gray-1: #7E8890;
+$color-gray-hover-1: darken($color-gray-1, 15%);
+$color-gray-2: #717A81;
+$color-gray-hover-2: darken($color-gray-2, 15%);
+$color-gray-3: #646C73;
+$color-gray-hover-3: darken($color-gray-3, 15%);
 
 
 /* all */
@@ -16,7 +25,7 @@ $navbar-btn-bg: #FCFCFC;
 
 
 /* header */
-$header-shadow: 0px 1px 2px 0px rgba(124,124,124,0.50);
+$header-shadow: 0px 1px 3px 0px rgba(124,124,124,0.40);
 
 
 /* .thumbnail */
@@ -30,16 +39,16 @@ $thumb-imgIcon-bg-blue: #317CF6;
 $thumb-imgIcon-bg-yellow: #F8CB2A;
 $thumb-btn-follow-bg: #FCFCFC;
 $thumb-btn-follow-bg-hover: #f5f5f5;
-	
+
 
 /* Sign In / Sign Up */
 $sign-border-radius: 6px;
 $sign-padding: 20px 40px 20px 40px;
-$sign-footer-border-top-color: #ccc;
+$sign-footer-border-top-color: #E1E8ED;
 
 
 /* product Detail */
-$product-padding-top: 100px;
+$product-padding-top: 60px;
 $product-padding-bottom: 20px;
 $product-bg-btn-default: #FCFCFC;
 $product-bg-slide-tabs: rgba(255, 255, 255, 0.6);

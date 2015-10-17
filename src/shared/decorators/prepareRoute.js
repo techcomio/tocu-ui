@@ -1,42 +1,32 @@
 'use strict';
-
-import React, {PropTypes} from 'react';
-import Router             from 'react-router';
+import React, { PropTypes } from 'react';
 
 
 export default function prepareRoute(prepareFn) {
 
-  return DecoratedComponent => React.createClass({
+  return DecoratedComponent => class PrepareRouteDecorator extends React.Component {
 
-    contextTypes: {
-      router: PropTypes.instanceOf(Router).isRequired
-    },
+    static prepareRoute = prepareFn
 
-    statics: {
-      prepareRoute: prepareFn
-    },
+    static contextTypes = {
+      store: PropTypes.object.isRequired
+    }
 
     componentDidMount() {
       const {
+        context: { store },
         props: { params, location }
       } = this;
 
-      prepareFn({ params, location });
-    },
+      prepareFn({ store, params, location });
+    }
 
     render() {
-      /**
-       * [contextTypes description]
-       * DecoratedComponent setting this.context.router
-       * @type {Object}
-       */
-      DecoratedComponent.contextTypes = {
-        router: PropTypes.instanceOf(Router).isRequired,
-      }
-      
-      return <DecoratedComponent {...this.props} />
-    },
+      return (
+        <DecoratedComponent {...this.props} />
+      );
+    }
 
-  });
+  };
 
 }

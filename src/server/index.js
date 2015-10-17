@@ -1,100 +1,87 @@
 'use strict';
-
-import 'babel/polyfill';
-import React                   from 'react';
-import {Router as ReactRouter} from 'react-router';
-import Location                from 'react-router/lib/Location';
-import History                 from 'react-router/lib/MemoryHistory';
-import Iso                     from 'iso';
-import Alt                     from '../shared/Alt';
-import routes                  from '../shared/routes';
-/**
- * @Component
- */
-import Router      from '../shared/components/Router';
-import HeadParams  from '../shared/lib/HeadParams';
-let HtmlComponent = React.createFactory(require('./html'));
+import Axios from 'axios';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { RoutingContext, match } from 'react-router';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunkMiddleware from "redux-thunk";
+import routers from '../shared/routers';
+import Reducers from '../shared/reducers';
+import { loadAuth } from '../shared/actions/auth';
+import { loadCard } from '../shared/actions/cart';
+import HtmlComponent from './Html';
+import { API_URL } from '../../config';
 
 
-export default function (req, res, next) {
-  const { path, query } = req;
-  const location = new Location(path, query);
-  const history  = new History(path);
-
+export default async function (req, res, next) {
+  const token = req.cookies.access_token;
+  const cartId = req.cookies.cart;
+  const finalCreateStore = applyMiddleware(thunkMiddleware)(createStore);
+  const store = finalCreateStore(Reducers, {});
 
   /**
-   * set auth to Store
-   * @auth cookie...
-   * @type {Object}
+   * handle actions first load
    */
-  let data = {
-    AppStore: {
-      auth: {id: 123, name: 'test'},
-      posts: [],
-    }
-  };
-  Alt.bootstrap(JSON.stringify(data));
-  
-  
-  ReactRouter.run(routes, location, async (err, routerState, transition) => {
+  if(token) {
+    await * [
+      store.dispatch(loadAuth({token}))
+      , store.dispatch(loadCard({token}))
+    ]
+  } else if(cartId) {
+    await * [store.dispatch(loadCard({cartId}))]
+  }
+
+  match({routes: routers(store), location: req.url}, async (err, redirectLocation, routerState) => {
     try {
       if (err) {
         throw err;
       }
 
       /**
-       * [if Redirect "chuyển hướng"]
+       * if Redirect "chuyển hướng"
        * @param  {string} pathname
-       * @return {func} res.redirect [express]
+       * @return {func} res.redirect - express
        */
-      if(transition.isCancelled) {
-        var { pathname, query, state } = transition.redirectInfo;
-        return res.redirect(pathname)
+      if(redirectLocation) {
+        res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+        return;
       }
 
       /**
-       * [if name Router NotFound]
+       * if name Router NotFound
        * render page 404 NotFound
-       * @param  {string} routerState.branch[1].name [name Router path="*" react-router]
-       * @return {func} res.send.
+       * @param  {string} routerState.branch[1].name - name Router path="*" react-router
+       * @return {func} res.send
        */
-      if (routerState.branch[1].name === 'NotFound') {
+      if (routerState.routes[1].name === 'NotFound') {
         res.status(404);
-        return res.send('Not Found!');
+        // res.send('Not Found!');
+        // return;
       }
 
       const { params, location } = routerState;
       const prepareRouteMethods = routerState.components.map(component => component.prepareRoute);
-      
-      for (let prepareRoute of prepareRouteMethods) {
+      for(const prepareRoute of prepareRouteMethods) {
         if (!prepareRoute) {
           continue;
         }
 
-        await prepareRoute({ params, location });
+        await prepareRoute({ store, params, location });
       }
 
-      let title = { 
-        HeadParams: new HeadParams({})
-      };
-      let iso   = new Iso();
-
-      const body = React.renderToStaticMarkup(
-       <Router {...{ ...title, routerState, location, history }} />
+      var body = renderToString(
+        <Provider store={store}>
+          <RoutingContext {...routerState} />
+        </Provider>
       );
 
-      iso.add(body, Alt.flush());
+      const initialState = store.getState();
+      const html = renderToString(<HtmlComponent markup={body} state={JSON.stringify(initialState)} />);
 
-      let html  = React.renderToStaticMarkup(HtmlComponent({
-	      markup: iso.render(),
-        HeadParams: title.HeadParams,
-			}));
-
-			let doctype = '<!DOCTYPE html>';
-
-			return res.send(doctype + html);
+			res.send(`<!DOCTYPE html>` + html);
     } catch(err) {
       next(err);
     }
-	});
+  });
 }

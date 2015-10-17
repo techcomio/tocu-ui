@@ -1,57 +1,60 @@
 # Tổ Cú UI
-mã nguồn phần UI website [tocu.vn](http://tocu.vn), tương tác với API [tocu-api](https://github.com/techcomio/tocu-api)
+Phần UI website [tocu.vn], tương tác với API [tocu-api]
 
 ## Tech stack:
-- [react](http://facebook.github.io/react/)
-- [react-router 1.0.0-beta](https://github.com/rackt/react-router)
-- [alt](https://github.com/goatslacker/alt)
-- [bootstrap](http://getbootstrap.com)
-- [axios](https://github.com/mzabriskie/axios)
-- [immutable](https://facebook.github.io/immutable-js)
-- [webpack](http://webpack.github.io)
-- [babel](https://babeljs.io)
+- [express]
+- [react]
+- [react-router]
+- [redux]
+- [axios]
+- [immutable]
+- [webpack]
+- [babel]
 
 ...and more
 
 ## Start the app
 ```
 $ npm install
-$ [sudo] npm install -g nodemon
-$ [sudo] npm install -g babel
-$ [sudo] npm install -g webpack
-$ [sudo] npm install -g gulp
-$ npm start
+$ npm run start
 ```
 
-## App structure
-
-```bash
-.
-├── public        # Container for the static files. Cache-busted on build.
-│
-├── src     			# React's components container
-│   ├── assets
-│   │   ├── css           # Container for .css files
-│   │   ├── img           # Container for images files
-│   │   └── scss          # Container for .scss files
-│   │
-│   ├── server            # Server-side code
-│   │   ├── html.jsx      # Renders the whole HTML document server side (via server/index.js)
-│   │   └── index.js      # Send the server-rendered HTML document as response
-│   │
-│   ├── client            # Client-side code
-│   │   └── index.js      # Entry point for the browser: mounts the <Router /> component on document.body.
-│   │
-│   └── shared            # The root Application component
-│       ├── actions       # Alt Actions
-│       ├── components    # React components
-│       ├── handlers      # Contains components acting as "page" for each route
-│       ├── store         # Alt Store
-│       ├── Alt.js        # new Alt
-│       └── routes.js     # Routes config
-│
-├── server.js       # Run the express server
-│
-└── webpack.config.js    # Webpack config for the build task
-
+### Doing Other Things
 ```
+$ npm run start-dev   # start dev uses redux-logger
+$ npm run dev         # live demo uses react-hot-loader
+$ npm run test        # runs unit tests with mocha
+$ npm run test:watch  # Same as npm run test, but will watch for changes and re-run tests.
+```
+
+
+### Thanks
+* [flux-react-router-example]
+* [isomorphic-comments-app]
+* [react-isomorphic-bundle]
+* [react-redux-isomorphic-example]
+* [react-redux-starter-kit]
+* [react-redux-universal-hot-example]
+* [redux-react-router-async-example]
+
+### License
+BSD
+
+
+[tocu.vn]:http://tocu.vn
+[tocu-api]:https://github.com/techcomio/tocu-api
+[express]:https://github.com/strongloop/express
+[react]:http://facebook.github.io/react
+[react-router]:https://github.com/rackt/react-router
+[redux]:https://github.com/rackt/redux
+[axios]:https://github.com/mzabriskie/axios
+[immutable]:https://facebook.github.io/immutable-js
+[webpack]:http://webpack.github.io
+[babel]:https://babeljs.io
+[flux-react-router-example]:https://github.com/gaearon/flux-react-router-example
+[isomorphic-comments-app]:https://github.com/alexfedoseev/isomorphic-comments-app
+[react-isomorphic-bundle]:https://github.com/lancetw/react-isomorphic-bundle
+[react-redux-isomorphic-example]:https://github.com/coodoo/react-redux-isomorphic-example
+[react-redux-starter-kit]:https://github.com/davezuko/react-redux-starter-kit
+[react-redux-universal-hot-example]:https://github.com/erikras/react-redux-universal-hot-example
+[redux-react-router-async-example]:https://github.com/emmenko/redux-react-router-async-example
