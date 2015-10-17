@@ -1,11 +1,10 @@
 'use strict';
 import Axios from 'axios';
 import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import createLocation from 'history/lib/createLocation';
-import { Router } from 'react-router';
+import { renderToString } from 'react-dom/server';
 import { RoutingContext, match } from 'react-router';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 import thunkMiddleware from "redux-thunk";
 import routers from '../shared/routers';
 import Reducers from '../shared/reducers';
@@ -16,13 +15,10 @@ import { API_URL } from '../../config';
 
 
 export default async function (req, res, next) {
-  const { path, query } = req;
-  let location = createLocation(req.url);
   const token = req.cookies.access_token;
   const cartId = req.cookies.cart;
   const finalCreateStore = applyMiddleware(thunkMiddleware)(createStore);
   const store = finalCreateStore(Reducers, {});
-  const routes = routers(store);
 
   /**
    * handle actions first load
@@ -36,7 +32,7 @@ export default async function (req, res, next) {
     await * [store.dispatch(loadCard({cartId}))]
   }
 
-  match({routes, location}, async (err, redirectLocation, routerState) => {
+  match({routes: routers(store), location: req.url}, async (err, redirectLocation, routerState) => {
     try {
       if (err) {
         throw err;
@@ -48,10 +44,7 @@ export default async function (req, res, next) {
        * @return {func} res.redirect - express
        */
       if(redirectLocation) {
-      // if(redirectLocation.redirectInfo) {
-        // var { pathname, query, state } = redirectLocation.redirectInfo;
-        // res.redirect(pathname);
-        res.redirect(301, redirectLocation.pathname + redirectLocation.search);
+        res.redirect(302, redirectLocation.pathname + redirectLocation.search);
         return;
       }
 
@@ -77,14 +70,14 @@ export default async function (req, res, next) {
         await prepareRoute({ store, params, location });
       }
 
-     	var body = React.renderToString(
+      var body = renderToString(
         <Provider store={store}>
-          {() => <RoutingContext {...routerState} />}
+          <RoutingContext {...routerState} />
         </Provider>
       );
 
       const initialState = store.getState();
-      const html = React.renderToString(<HtmlComponent markup={body} state={JSON.stringify(initialState)} />);
+      const html = renderToString(<HtmlComponent markup={body} state={JSON.stringify(initialState)} />);
 
 			res.send(`<!DOCTYPE html>` + html);
     } catch(err) {

@@ -1,6 +1,6 @@
 'use strict';
-import React from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
+import { Link, IndexLink } from 'react-router';
 
 
 export default class InfoBar extends React.Component {
@@ -15,9 +15,9 @@ export default class InfoBar extends React.Component {
           <div className="col-sm-8 col-md-6 col-lg-4">
             <div className="row">
               <div className="col-xs-3">
-                <Link to="/" activeClassName="active" >
+                <IndexLink to="/" activeClassName="active" >
                   <span className="value">{boxCount}</span> <span className="labels">Box</span>
-                </Link>
+                </IndexLink>
               </div>
               <div className="col-xs-3">
                 <Link to="/product" activeClassName="active" >

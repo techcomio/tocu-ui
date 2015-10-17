@@ -20,8 +20,8 @@ const meta = {
 
 export default class SignIn extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   static propTypes = {

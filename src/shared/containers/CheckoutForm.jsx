@@ -1,5 +1,5 @@
 'use strict';
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
@@ -54,7 +54,7 @@ export default class CheckoutForm extends React.Component {
         <div className="checkout-body">
           <Sidebar />
           <div className="body-checkout">
-            <OrderForm onSubmit={this.handleSubmit.bind(this)} />
+            <OrderForm onSubmit={::this.handleSubmit} />
           </div>
         </div>
       </div>

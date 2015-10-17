@@ -13,7 +13,6 @@
   "dependencies": {
     "bootstrap-sass-official": "~3.3.4",
     "fontawesome": "~4.4.0",
-    "masonry": "~3.3.2",
     "uikit": "~2.22.0"
   }
 }

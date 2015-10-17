@@ -46,8 +46,8 @@ function getWeightCart(cart) {
 
 export default class Checkout extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   render() {
@@ -67,7 +67,7 @@ export default class Checkout extends React.Component {
 }
 
 
-Checkout.onEnter = (store) => {
+Checkout.onEnter = store => {
   return (nextState, replaceState) => {
     const { auth, cart } = store.getState();
     if (!auth.getIn(['user', 'access_token']) || !(cart.getIn(['Cart', 'lines']) && cart.getIn(['Cart', 'lines']).size)) {

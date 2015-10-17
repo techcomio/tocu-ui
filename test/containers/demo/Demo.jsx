@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react/addons';
+import React, { PropTypes } from 'react';
 import TodoTextInput from './TodoTextInput';
 
 export default class Demo extends React.Component {

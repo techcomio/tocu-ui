@@ -10,8 +10,8 @@ import Navbar from '../components/Navbar';
 
 export default class PostID extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   render() {
@@ -98,7 +98,7 @@ export default class PostID extends React.Component {
                   </a>
                 </div>
               </div>
-              
+
               <div className="col-lg-4">
                 <div className="card card-related">
                   <a href="#">

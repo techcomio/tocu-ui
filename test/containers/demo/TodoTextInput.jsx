@@ -1,13 +1,22 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 
-class TodoTextInput extends Component {
-  
-  constructor(props, context) {
-    super(props, context);
+
+export default class TodoTextInput extends React.Component {
+
+  constructor(props) {
+    super(props);
     this.state = {
       text: this.props.text || ''
     };
+  }
+
+  static propTypes = {
+    onSave: PropTypes.func.isRequired,
+    text: PropTypes.string,
+    placeholder: PropTypes.string,
+    editing: PropTypes.bool,
+    newTodo: PropTypes.bool
   }
 
   handleSubmit(e) {
@@ -47,13 +56,3 @@ class TodoTextInput extends Component {
     );
   }
 }
-
-TodoTextInput.propTypes = {
-  onSave: PropTypes.func.isRequired,
-  text: PropTypes.string,
-  placeholder: PropTypes.string,
-  editing: PropTypes.bool,
-  newTodo: PropTypes.bool
-};
-
-export default TodoTextInput;

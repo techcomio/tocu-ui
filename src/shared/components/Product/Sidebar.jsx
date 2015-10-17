@@ -1,19 +1,11 @@
-'use strict';
-import React from 'react/addons';
+import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router';
-var ReactAsync = require('react-async');
-var MasonryMixin = require('react-masonry-mixin')(React);
+var Masonry = require('react-masonry-component')(React);
 import { API_URL } from '../../../../config';
 
 
-var masonryOptions = {
-  transitionDuration: 0
-};
-
 export default React.createClass({
-
-  mixins: [MasonryMixin('masonryContainer', {})],
 
   getInitialState() {
     return {
@@ -35,6 +27,24 @@ export default React.createClass({
 
   render: function () {
     const { Box } = this.props;
+    var childElements = this.state.posts.map(function(element, i){
+      let img_url = "/img/404.jpg";
+      if(element.images) {
+        let url = element.images[0];
+        img_url = url.replace(/image\//gi, 'image/100x/');
+      }
+
+      return (
+        <div key={i} className='col-xs-4 col-sm-4'>
+          <Link to={`/product/${element.id}`}>
+            <div className="imgWrapper">
+              <img className="img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
+            </div>
+          </Link>
+        </div>
+      );
+    });
+
     return (
       <div className="col-md-12 col-lg-12">
         <div className="thumbnail sidebar">
@@ -51,27 +61,17 @@ export default React.createClass({
           </nav>
 
           {/* Gird item */}
-          <div className="masonry-sidebar">
-            <div ref="masonryContainer">
-              {this.state.posts.map(function(element, i){
-                let img_url = "/img/404.jpg";
-                if(element.images) {
-                  let url = element.images[0];
-                  img_url = url.replace(/image\//gi, 'image/100x/');
-                }
+          <Masonry
+            className="masonry-sidebar" // default ''
+            options={{transitionDuration: 0}} // default {}
+            disableImagesLoaded={false} // default false
+            elementType="div" // default 'div'
+            >
 
-                return (
-                  <div key={i} className='col-xs-4 col-sm-4'>
-                    <Link to={`/product/${element.id}`}>
-                      <div className="imgWrapper">
-                        <img className="img-rounded" data-holder-rendered="true" src={img_url} alt="images" />
-                      </div>
-                    </Link>
-                  </div>
-                );
-              }.bind(this))}
-            </div>
-          </div>
+            {childElements}
+
+          </Masonry>
+
         </div>
       </div>
     );

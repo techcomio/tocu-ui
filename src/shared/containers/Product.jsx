@@ -55,8 +55,8 @@ const limit = 15;
 
 export default class Product extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   render() {

@@ -64,7 +64,7 @@ export function getBoxIdInfo({id}) {
   }
 }
 
-export function loadId() {
+export function loadIdInfo() {
   return {
     type: BOX_ID_LOAD_INFO
   }

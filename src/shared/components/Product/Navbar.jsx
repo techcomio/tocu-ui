@@ -1,5 +1,6 @@
 'use strict';
 import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import { notifActions } from 'redux-notif';
@@ -24,7 +25,7 @@ export default class NavbarProduct extends React.Component {
   }
 
   handleScroll = (e) => {
-    var offsetWidth = this.refs.navbar.getDOMNode().offsetWidth;
+    var offsetWidth = ReactDOM.findDOMNode(this.refs.navbar).offsetWidth;
     var scrollTop = window.scrollY;
     var hideHeader = scrollTop >= 30;
     this.setState({

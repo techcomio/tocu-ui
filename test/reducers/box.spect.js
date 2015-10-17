@@ -1,7 +1,8 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import box from '../../src/shared/reducers/box';
 import * as types from '../../src/shared/actions/actionsTypes';
-import Immutable, { Seq, Map, List } from 'immutable';
+import { fromJS, Map, List } from 'immutable';
+
 
 const data = [
   {
@@ -161,142 +162,193 @@ const data = [
   }
 ];
 
+// , BOX_ID_PUSH_FAIL
+
+// describe.only('reducers box', () => {
 describe('reducers box', () => {
 
   it('should handle box load', () => {
     expect(
-      box(Immutable.fromJS({}), {
+      box(fromJS({}), {
         type: types.BOX_LOAD
-      }).toJS()
-    ).toEqual(Immutable.fromJS({
+      })
+    ).to.equal(fromJS({
       boxsLoad: true
-			, boxs: List()
+			, boxs: []
 			, boxsErr: null
-    }).toJS());
+    }));
   });
 
-  // it('should handle box load success', () => {
-  //   expect(
-  //     box(Immutable.fromJS({}), {
-  //       type: types.BOX_LOAD_SUCCESS
-  //       , data
-  //     })
-  //   ).toEqual(Immutable.fromJS({
-  //     boxsLoad: false
-	// 		, boxs: Immutable.fromJS(data)
-	// 		, boxsErr: null
-  //   }));
-  // });
-  //
-  // it('should handle box load fail', () => {
-  //   const err = { message: 'Internal server error', status: 500 };
-  //   expect(
-  //     box(Immutable.fromJS({}), {
-  //       type: types.BOX_LOAD_FAIL
-  //       , err
-  //     })
-  //   ).toEqual(Immutable.fromJS({
-  //     boxsLoad: false
-	// 		, boxs: List()
-	// 		, boxsErr: err
-  //   }));
-  // });
-  //
-  //
-  // it('should handle boxId load', () => {
-  //   expect(
-  //     box(Immutable.fromJS({}), {
-  //       type: types.BOX_ID_LOAD
-  //     })
-  //   ).toEqual(Immutable.fromJS({
-  //     boxsIdLoad: true
-	// 		, boxsId: List()
-	// 		, boxsIdErr: null
-  //   }));
-  // });
-  //
-  // it('should handle boxId load success', () => {
-  //   expect(
-  //     box(Immutable.fromJS({}), {
-  //       type: types.BOX_ID_LOAD_SUCCESS
-  //       , data
-  //     })
-  //   ).toEqual(Immutable.fromJS({
-  //     boxsIdLoad: false
-	// 		, boxsId: Immutable.fromJS(data)
-	// 		, boxsIdPage: 1
-	// 		, boxsIdErr: null
-  //   }));
-  // });
-  //
-  // // it('should handle boxId push success', () => {
-  // //   var datas = Immutable.fromJS({boxsId: Immutable.fromJS([1, 2]), boxsIdPage: 1});
-  // //   expect(
-  // //     box(datas, {
-  // //       type: types.BOX_ID_PUSH_SUCCESS
-  // //       , data: 3
-  // //     })
-  // //   ).toEqual(Immutable.fromJS({
-	// // 		boxsId: [1, 2, 3]
-  // //     , boxsIdLoad: false
-	// // 		, boxsIdPage: 2
-	// // 		, boxsIdErr: null
-  // //   }));
-  // // });
-  //
-  // it('should handle boxId load Fail', () => {
-  //   const err = { message: 'Internal server error', status: 500 };
-  //   expect(
-  //     box(Immutable.fromJS({}), {
-  //       type: types.BOX_ID_LOAD_FAIL
-  //       , err
-  //     })
-  //   ).toEqual(Immutable.fromJS({
-  //     boxsIdLoad: false
-  //     , boxsId: List()
-  //     , boxsIdErr: err
-  //   }));
-  // });
-  //
-  //
-  // it('should handle boxId Info load', () => {
-  //   expect(
-  //     box(Immutable.fromJS({}), {
-  //       type: types.BOX_ID_LOAD_INFO
-  //     })
-  //   ).toEqual(Immutable.fromJS({
-  //     boxIdInfoLoad: true
-	// 		, boxIdInfo: Map()
-	// 		, boxIdInfoErr: null
-  //   }));
-  // });
-  //
-  // it('should handle boxId Info load success', () => {
-  //   const data = { id: 1, boxName: 'Sơ mi denim Hàn' };
-  //   expect(
-  //     box(Immutable.fromJS({}), {
-  //       type: types.BOX_ID_LOAD_INFO_SUCCESS
-  //       , data
-  //     })
-  //   ).toEqual(Immutable.fromJS({
-  //     boxIdInfoLoad: false
-	// 		, boxIdInfo: Map(data)
-	// 		, boxIdInfoErr: null
-  //   }));
-  // });
-  //
-  // it('should handle boxId Info load Fail', () => {
-  //   const err = { message: 'Internal server error', status: 500 };
-  //   expect(
-  //     box(Immutable.fromJS({}), {
-  //       type: types.BOX_ID_LOAD_INFO_FAIL
-  //       , err
-  //     })
-  //   ).toEqual(Immutable.fromJS({
-  //     boxIdInfoLoad: false
-  //     , boxIdInfo: Map()
-  //     , boxIdInfoErr: err
-  //   }));
-  // });
+  it('should handle box load success', () => {
+    const nexState = box(Map({}), {
+      type: types.BOX_LOAD_SUCCESS
+      , data
+    });
+    expect(nexState).to.equal(fromJS({
+      boxsLoad: false
+			, boxs: data
+			, boxsErr: null
+    }));
+  });
+
+  it('should handle box load fail', () => {
+    const err = { message: 'Internal server error', status: 500 };
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_LOAD_FAIL
+        , err
+      })
+    ).to.equal(fromJS({
+      boxsLoad: false
+			, boxs: List()
+			, boxsErr: err
+    }));
+  });
+
+
+  it('should handle boxId load', () => {
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_ID_LOAD
+      })
+    ).to.equal(fromJS({
+      boxsIdLoad: true
+			, boxsId: List()
+			, pagination: Map({hasMore: false, skip: 0})
+			, boxsIdErr: null
+    }));
+  });
+
+  it('should handle boxId load success', () => {
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_ID_LOAD_SUCCESS
+        , data
+        , hasMore: 0
+        , skip: 15
+      })
+    ).to.equal(fromJS({
+      boxsIdLoad: false
+			, boxsId: data
+			, pagination: Map({hasMore: 0, skip: 15})
+			, boxsIdErr: null
+    }));
+  });
+
+  it('should handle boxId push load', () => {
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_ID_PUSH_LOAD
+      })
+    ).to.equal(fromJS({
+      boxsIdLoad: true
+			, pagination: Map({hasMore: false, skip: 0})
+			, boxsIdErr: null
+    }));
+  });
+
+  it('should handle boxId push success', () => {
+    var datas = fromJS({boxsId: [1, 2]});
+    expect(
+      box(datas, {
+        type: types.BOX_ID_PUSH_SUCCESS
+        , data: 3
+        , hasMore: 0
+        , skip: 15
+      })
+    ).to.equal(fromJS({
+			boxsId: List([1, 2, 3])
+      , boxsIdLoad: false
+			, pagination: Map({hasMore: 0, skip: 15})
+			, boxsIdErr: null
+    }));
+  });
+
+  it('should handle boxId push fail', () => {
+    const err = { message: 'Internal server error', status: 500 };
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_ID_PUSH_FAIL
+        , err
+        , hasMore: 0
+        , skip: 15
+      })
+    ).to.equal(fromJS({
+      boxsIdLoad: false
+			, boxsId: List()
+			, pagination: Map({hasMore: false, skip: 15})
+			, boxsIdErr: err
+    }));
+  });
+
+  it('should handle boxId load Fail', () => {
+    const err = { message: 'Internal server error', status: 500 };
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_ID_LOAD_FAIL
+        , err
+        , hasMore: 0
+        , skip: 15
+      })
+    ).to.equal(fromJS({
+      boxsIdLoad: false
+      , boxsId: List()
+      , pagination: Map({hasMore: false, skip: 15})
+      , boxsIdErr: Map(err)
+    }));
+  });
+
+
+  it('should handle boxId Info load', () => {
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_ID_LOAD_INFO
+      })
+    ).to.equal(fromJS({
+      boxIdInfoLoad: true
+			, boxIdInfo: Map()
+			, boxIdInfoErr: null
+    }));
+  });
+
+  it('should handle boxId Info load success', () => {
+    const data = { id: 1, boxName: 'Sơ mi denim Hàn' };
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_ID_LOAD_INFO_SUCCESS
+        , data
+      })
+    ).to.equal(fromJS({
+      boxIdInfoLoad: false
+			, boxIdInfo: Map(data)
+			, boxIdInfoErr: null
+    }));
+  });
+
+  it('should handle boxId Info load Fail', () => {
+    const err = { message: 'Internal server error', status: 500 };
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_ID_LOAD_INFO_FAIL
+        , err
+      })
+    ).to.equal(fromJS({
+      boxIdInfoLoad: false
+      , boxIdInfo: Map()
+      , boxIdInfoErr: err
+    }));
+  });
+
+  it('should handle boxId Count', () => {
+    const data = 2;
+    expect(
+      box(fromJS({}), {
+        type: types.BOX_COUNT
+        , data
+      })
+    ).to.equal(fromJS({
+      boxCount: data
+    }));
+  });
 
 });

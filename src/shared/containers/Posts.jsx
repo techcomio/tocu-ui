@@ -40,12 +40,13 @@ const meta = {
 
 export default class Product extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   render() {
     const { product } = this.props;
+    
     return (
       <div>
         <DocumentMeta {...meta} />

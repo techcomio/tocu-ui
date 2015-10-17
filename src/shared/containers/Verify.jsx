@@ -19,8 +19,8 @@ const meta = {
 
 export default class Verify extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   static propTypes = {

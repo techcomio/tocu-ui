@@ -1,6 +1,5 @@
 'use strict';
-
-import React from 'react/addons';
+import React from 'react';
 import { Link, History } from 'react-router';
 import classNames from 'classnames';
 

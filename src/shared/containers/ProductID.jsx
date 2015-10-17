@@ -28,8 +28,8 @@ import BoxRequireAuth from '../components/BoxRequireAuth';
 
 export default class BoxID extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   render() {

@@ -9,6 +9,7 @@ import { getBoxIdInfo, getBoxId, getBoxIdPage } from '../actions/box';
 import BoxidContent from '../components/Card/BoxId';
 import Header from '../components/Header/Box';
 import { SERVER } from '../lib/env';
+import NotFound from './NotFound';
 
 
 const limit = 15;
@@ -34,8 +35,8 @@ const limit = 15;
 
 export default class BoxID extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   render() {

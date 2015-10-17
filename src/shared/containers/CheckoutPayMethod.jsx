@@ -36,7 +36,7 @@ export default class CheckoutPayMethod extends React.Component {
           <Sidebar />
 
           <div className="body-checkout">
-            <PayMethodForm onSubmit={this.handleSubmit.bind(this)} />
+            <PayMethodForm onSubmit={::this.handleSubmit} />
           </div>
 
         </div>

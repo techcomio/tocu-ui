@@ -1,5 +1,5 @@
 'use strict';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import Navbar from '../components/Checkout/Navbar';

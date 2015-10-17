@@ -1,6 +1,8 @@
 import expect from 'expect';
 import jsdom from 'mocha-jsdom';
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 /**
  * @Component
  */
@@ -8,8 +10,6 @@ import TodoTextInput from './demo/TodoTextInput';
 import Demo from './demo/Demo';
 import CheckboxWithLabel from './demo/CheckboxWithLabel';
 
-
-const { TestUtils } = React.addons;
 
 function setup() {
   let props = {
@@ -64,7 +64,7 @@ describe('Component', () => {
           <CheckboxWithLabel labelOn="On" labelOff="Off" />
         );
 
-        var checkboxNode = React.findDOMNode(checkbox);
+        var checkboxNode = ReactDOM.findDOMNode(checkbox);
 
         // Verify that it's Off by default
         expect(checkboxNode.textContent).toEqual('Off');

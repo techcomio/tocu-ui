@@ -47,8 +47,8 @@ const meta = {
 
 export default class Home extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   render() {

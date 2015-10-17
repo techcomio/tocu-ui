@@ -28,8 +28,8 @@ const meta = {
 
 export default class SignUp extends React.Component {
 
-	constructor(props, context) {
-    super(props, context);
+	constructor(props) {
+    super(props);
   }
 
   static propTypes = {

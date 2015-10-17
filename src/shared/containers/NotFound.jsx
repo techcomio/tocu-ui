@@ -1,5 +1,5 @@
 'use strict';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import DocumentMeta from 'react-document-meta';
 
@@ -8,6 +8,7 @@ const meta = {
 };
 
 export default class NotFound extends React.Component {
+
   render() {
     return (
       <div>
@@ -19,4 +20,5 @@ export default class NotFound extends React.Component {
       </div>
     );
   }
+
 }
