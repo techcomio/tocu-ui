@@ -70,24 +70,24 @@ describe('actions auth', () => {
   });
 
 
-  it('should logIn actions', async () => {
-    let data = {
-      "mobilePhone": "0989414660"
-      , "password": "pass sai"
-      , "rememberme": false
-    };
-    const expectedAction = {
-      type: types.LOGIN_FAIL
-      , err: 'Unauthorized'
-    };
-    const fn = authActions.logIn(data);
-    expect(fn).toBeA('function');
-    const dispatch = expect.createSpy();
-    const getState = () => ({ cart: Map({id: null}) });
-    await fn(dispatch, getState);
-
-    expect(dispatch).toHaveBeenCalledWith(expectedAction);
-  });
+  // it('should logIn actions', async () => {
+  //   let data = {
+  //     "mobilePhone": "0989414660"
+  //     , "password": "pass sai"
+  //     , "rememberme": false
+  //   };
+  //   const expectedAction = {
+  //     type: types.LOGIN_FAIL
+  //     , err: 'Unauthorized'
+  //   };
+  //   const fn = authActions.logIn(data);
+  //   expect(fn).toBeA('function');
+  //   const dispatch = expect.createSpy();
+  //   const getState = () => ({ cart: Map({id: null}) });
+  //   await fn(dispatch, getState);
+  //
+  //   expect(dispatch).toHaveBeenCalledWith(expectedAction);
+  // });
 
 /*
   it('should logIn actions', async () => {

@@ -6,6 +6,7 @@ import { RoutingContext, match } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from "redux-thunk";
+import serialize from "serialize-javascript";
 import routers from '../shared/routers';
 import Reducers from '../shared/reducers';
 import { loadAuth } from '../shared/actions/auth';
@@ -77,7 +78,7 @@ export default async function (req, res, next) {
       );
 
       const initialState = store.getState();
-      const html = renderToString(<HtmlComponent markup={body} state={JSON.stringify(initialState)} />);
+      const html = renderToString(<HtmlComponent markup={body} state={serialize(initialState)} />);
 
 			res.send(`<!DOCTYPE html>` + html);
     } catch(err) {

@@ -240,3 +240,29 @@
 		overflow: hidden;
 	}
 }
+
+
+.card-order-detail {
+	.card-block {
+		padding: 60px 80px 40px 80px;
+		& > .row {
+			margin-bottom: 20px;
+		}
+		p {
+			line-height: 2;
+			margin-bottom: 12px;
+		}
+		h2 {
+			font-size: 22px;
+			font-weight: 400;
+			padding-top: 1.4rem;
+			display: block;
+			margin-bottom: 26px;
+		}
+	}
+	.cart-table {
+		width: 100%;
+		display: block;
+		padding: 40px 10px 10px 10px;
+	}
+}

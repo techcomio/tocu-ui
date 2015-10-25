@@ -44,10 +44,10 @@ export function cityFail(err) {
 }
 
 
-export function getDistrict({city}) {
+export function getDistrict({province}) {
   return async (dispatch, getState) => {
     dispatch(districtLoad());
-    await Axios.get(`${API_URL}/district?province=${city}`)
+    await Axios.get(`${API_URL}/district?province=${province}`)
     .then((res) => {
       dispatch(districtSuccess(res.data));
     })

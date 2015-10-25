@@ -7,9 +7,12 @@ import Navbar from '../components/Checkout/Navbar';
 import Sidebar from '../components/Checkout/Sidebar';
 import PayMethodForm from '../components/Form/PayMethodForm';
 import { paymentMethod } from '../actions/cart';
+import { CreateOrder } from '../actions/order';
 
 
 @connect(state => ({
+  cart: state.cart,
+  auth: state.auth
 }))
 
 export default class CheckoutPayMethod extends React.Component {
@@ -46,8 +49,53 @@ export default class CheckoutPayMethod extends React.Component {
 
   handleSubmit(data) {
     const self = this
-      , { dispatch, history } = this.props;
-    dispatch(paymentMethod(data.shipping));
+      , { dispatch, history, cart, auth } = this.props;
+    // dispatch(paymentMethod(data.shipping));
+    var total = 0,
+      subTotal = 0,
+      totalWeight = 0,
+      OrderLines = cart.getIn(['Cart', 'lines']).toJS().map(function(item) {
+        total += item.salePrice || item.price;
+        subTotal += item.salePrice || item.price;
+        totalWeight += item.weight;
+
+        return {
+          product: {
+            id: item.id,
+            onlineStore: true,
+            code: item.code,
+            boxName: item.boxName,
+            imageUrl: item.imageUrl
+          },
+          unitPrice: item.salePrice || item.price,
+          quantity: 1,
+          amount: item.salePrice || item.price,
+          weight: item.weight
+        }
+      });
+
+    const dataOrder = {
+      "store": "ol",
+      "shippingInfo": cart.getIn(['Cart', 'shippingInfo']).toJS(),
+      "shippingCost": 20000,
+      "shippingDays": 3,
+      "status": "pending",
+      "subTotal": subTotal,
+      "percentageDiscount": 0,
+      "fixedDiscount": 0,
+      "totalDiscounts": 0,
+      "total": total + 20000,
+      "totalWeight": totalWeight,
+      "OrderLines": OrderLines
+    }
+
+    dispatch(CreateOrder(dataOrder, function(data) {
+      // client redirect `http://tocu-api-dev-tranduchieu.c9.io/onepay?vpc_OrderInfo=${data.id}&vpc_Amount=${data.total}&access_token=${user.get('tonken')}`
+      console.log('data res', data)
+      window.location.replace(`http://tocu-api-dev-tranduchieu.c9.io/onepay?vpc_OrderInfo=${data.id}&vpc_Amount=${data.total}&access_token=${auth.getIn(['user', 'access_token'])}`)
+    }, function() {
+      history.pushState(null, '/cart')
+    }));
   }
 };
 
@@ -55,7 +103,7 @@ export default class CheckoutPayMethod extends React.Component {
 CheckoutPayMethod.onEnter = (store) => {
   return (nextState, replaceState) => {
     const { auth, cart } = store.getState();
-    if (!cart.getIn(["Cart", "shippingInfo", "mobilePhone"])) {
+    if (!cart.getIn(["Cart", "shippingInfo", "phone"])) {
       replaceState(null, '/checkout');
     }
   };

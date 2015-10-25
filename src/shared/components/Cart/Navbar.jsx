@@ -1,5 +1,6 @@
 'use strict';
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import { Link, History } from 'react-router';
 import classNames from 'classnames';
 
@@ -24,7 +25,7 @@ export default React.createClass({
   },
 
   handleScroll(e) {
-    var offsetWidth = this.refs.navbar.getDOMNode().offsetWidth;
+    var offsetWidth = findDOMNode(this.refs.navbar).offsetWidth;
     var scrollTop = window.scrollY;
     var hideHeader = scrollTop >= 50;
     this.setState({

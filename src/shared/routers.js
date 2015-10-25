@@ -22,6 +22,8 @@ import Cart from './containers/Cart';
 import Checkout from './containers/Checkout';
 import CheckoutForm from './containers/CheckoutForm';
 import CheckoutPayMethod from './containers/CheckoutPayMethod';
+import CheckoutFinally from './containers/CheckoutFinally';
+import OrderDetail from './containers/OrderDetail';
 import NotFound from './containers/NotFound';
 
 
@@ -44,10 +46,12 @@ export default (store) => (
     	<Route name="verify" path="verify" component={Verify} />
     </Route>
     <Route name="cart" path="cart" component={Cart} />
+    <Route name="CheckoutFinally" path="checkout/finally" component={CheckoutFinally} />
     <Route name="checkout" path="checkout" component={Checkout} onEnter={Checkout.onEnter(store)} >
       <IndexRoute component={CheckoutForm} />
       <Route name="CheckoutPayMethod" path="pay-method" component={CheckoutPayMethod} onEnter={CheckoutPayMethod.onEnter(store)} />
     </Route>
+    <Route name="orderdetail" path="orderdetail" component={OrderDetail} />
   	<Route name="NotFound" path="*" component={NotFound} />
   </Route>
 );

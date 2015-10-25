@@ -12,7 +12,6 @@ var config = {
   publicDir: `./${process.env.PATH_GULP || 'public'}`,
 }
 
-console.log(process.env.NODE_ENV)
 
 gulp.task('icons', function() {
   return gulp.src(config.bowerDir + '/fontawesome/fonts/**/**.*')

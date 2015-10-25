@@ -11,7 +11,7 @@ import { orderValidate } from '../../validation/orderValidation'
 
 @connectReduxForm({
   form: 'order'
-  , fields: ['name', 'mobilePhone', 'diachi', 'city', 'district']
+  , fields: ['name', 'phone', 'address', 'province', 'district']
   , validate: orderValidate
 })
 
@@ -46,7 +46,7 @@ export default class SignupForm extends React.Component {
 
   render() {
     const {
-      fields: {name, mobilePhone, diachi, city, district}
+      fields: {name, phone, address, province, district}
       , handleSubmit
       , valid
       , cart
@@ -59,12 +59,12 @@ export default class SignupForm extends React.Component {
 
     let classerPhone = classNames({
       "form-group": true
-      , "has-error": mobilePhone.error && mobilePhone.touched
+      , "has-error": phone.error && phone.touched
     });
 
     let classerDiachi = classNames({
       "form-group": true
-      , "has-error": diachi.error && diachi.touched
+      , "has-error": address.error && address.touched
     });
 
     return (
@@ -83,12 +83,12 @@ export default class SignupForm extends React.Component {
             </div>
             <div className="col-sm-6 col-md-6">
               <div className={classerPhone}>
-                {mobilePhone.error && mobilePhone.touched ? <label className="control-label">{mobilePhone.error}</label> : <label />}
+                {phone.error && phone.touched ? <label className="control-label">{phone.error}</label> : <label />}
                 <input type="tel"
                       pattern="^([0-9]{10,11})$"
                       className="form-control"
                       placeholder="Số điện thoại"
-                      {...mobilePhone} />
+                      {...phone} />
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default class SignupForm extends React.Component {
             <label />
             <div className="row">
               <div className="col-xs-6">
-                <select className="form-control" {...city} onChange={this.handleCityChange.bind(this, city)} >
+                <select className="form-control" {...province} onChange={this.handleCityChange.bind(this, province)} >
                   <option value="">Tỉnh Thành</option>
                   {this.props.location.get('city').map(function(city, i) {
                     return <option key={i} value={city}>{city}</option>
@@ -117,11 +117,11 @@ export default class SignupForm extends React.Component {
 
 
           <div className={classerDiachi}>
-            {diachi.error && diachi.touched ? <label className="control-label">{diachi.error}</label> : <label />}
+            {address.error && address.touched ? <label className="control-label">{address.error}</label> : <label />}
             <input type="text"
                   className="form-control"
                   placeholder="Địa chỉ"
-                  {...diachi} required />
+                  {...address} required />
           </div>
 
 
@@ -142,8 +142,8 @@ export default class SignupForm extends React.Component {
     );
   }
 
-  handleCityChange(city, e) {
-    city.handleChange(e);
+  handleCityChange(province, e) {
+    province.handleChange(e);
     const { dispatch } = this.props;
     const text = e.target.value.trim();
     dispatch(getDistrict({city: text}));

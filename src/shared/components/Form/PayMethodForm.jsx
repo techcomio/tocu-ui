@@ -74,7 +74,7 @@ export default class SignupForm extends React.Component {
             onClick={handleSubmit}
             disabled={!valid || cart.get('paymentLoad')} >
 
-            {cart.get('paymentLoad') && <i className="fa fa-spinner fa-pulse"></i>} Tiếp
+            {cart.get('paymentLoad') && <i className="fa fa-spinner fa-pulse"></i>} Thanh Toán
 
           </button>
         </div>
