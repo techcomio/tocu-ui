@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getBox } from '../actions/box';
 import { prepareRoute } from '../decorators';
+import { CLIENT } from '../lib/env';
 import ThumbBox from '../components/Card/ThumbBox';
 import Header from '../components/Header/Home';
 
@@ -17,9 +18,12 @@ const meta = {
 };
 
 @prepareRoute(async function ({ store, params, location }) {
-  return await * [
-    store.dispatch(getBox())
-  ];
+  if(CLIENT) {
+    return await * [
+      store.dispatch(getBox())
+    ];
+  }
+  return;
 })
 
 @connect(state => ({

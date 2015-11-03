@@ -1,11 +1,11 @@
 'use strict';
 import {
-	CITY_LOAD
-	, CITY_SUCCESS
-	, CITY_FAIL
-  , DISTRICT_LOAD
-  , DISTRICT_SUCCESS
-  , DISTRICT_FAIL
+	GET_CITY_REQUEST
+	, GET_CITY
+	, GET_CITY_FAIL
+  , GET_DISTRICT_REQUEST
+  , GET_DISTRICT
+  , GET_DISTRICT_FAIL
 } from '../actions/actionsTypes';
 import Cookies from 'cookies-js';
 import Immutable, { Map, List } from 'immutable';
@@ -21,38 +21,38 @@ const initialState = new Immutable.fromJS({
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
-	  case CITY_LOAD:
+	  case GET_CITY_REQUEST:
 	    return state.merge({
 	    	cityLoad: true
 				, cityErr: null
 				, city: List()
 				, district: List([])
 	    });
-    case CITY_SUCCESS:
+    case GET_CITY:
 			return state.merge({
 				cityLoad: false
 				, cityErr: null
 				, city: List(action.data)
 			});
-		case CITY_FAIL:
+		case GET_CITY_FAIL:
 			return state.merge({
         cityLoad: false
 				, cityErr: action.err
 				, city: List()
 			});
-	  case DISTRICT_LOAD:
+	  case GET_DISTRICT_REQUEST:
 	    return state.merge({
 	    	districtLoad: true
 				, districtErr: null
 				, district: List()
 	    });
-    case DISTRICT_SUCCESS:
+    case GET_DISTRICT:
 			return state.merge({
 				districtLoad: false
 				, districtErr: null
 				, district: List(action.data)
 			});
-		case DISTRICT_FAIL:
+		case GET_DISTRICT_FAIL:
 			return state.merge({
         districtLoad: false
 				, districtErr: action.err

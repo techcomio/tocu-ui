@@ -7,29 +7,29 @@ import { Router } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { devTools, persistState } from 'redux-devtools';
 import { DevTools, LogMonitor, DebugPanel } from 'redux-devtools/lib/react';
+import promiseMiddleware from '../shared/lib/promiseMiddleware';
 import routers from '../shared/routers';
 import Reducers from '../shared/reducers';
 import immutifyState from '../shared/lib/immutifyState';
 
 
 const history = new createBrowserHistory();
-const initialState = immutifyState(window.__State__);
+const initialState = immutifyState(window.__INITIAL_STATE__);
 
 let finalCreateStore;
 if(__DEV__) {
 	const cs = compose(devTools())(createStore);
 
-	finalCreateStore = applyMiddleware(thunkMiddleware, createLogger({
+	finalCreateStore = applyMiddleware(promiseMiddleware, createLogger({
 	  transformer: (state) => {
 	    return Immutable.fromJS(state).toJS();
 	  }
 	}))(cs);
 } else {
-	finalCreateStore = applyMiddleware(thunkMiddleware)(createStore)
+	finalCreateStore = applyMiddleware(promiseMiddleware)(createStore)
 }
 
 

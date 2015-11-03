@@ -7,11 +7,11 @@ import {
   , CREATE_AUTH_LOAD
   , CREATE_AUTH_SUCCESS
   , CREATE_AUTH_FAIL
-  , LOGOUT_LOAD
-  , LOGOUT_SUCCESS
+  , LOGOUT_REQUEST
+  , LOGOUT
   , LOGOUT_FAIL
-	, GET_CODE_LOAD
-	, GET_CODE_SUCCESS
+	, GET_CODE_REQUEST
+	, GET_CODE
 	, GET_CODE_FAIL
 	, VERIFY_LOAD
 	, VERIFY_SUCCESS
@@ -86,12 +86,12 @@ export default function auth(state = initialState, action) {
 	    	, loginErr: action.err
 				, user: Map({})
 			});
-	  case LOGOUT_LOAD:
+	  case LOGOUT_REQUEST:
 	    return state.merge({
 	    	logoutLoad: true
 				, logoutErr: null
 	    });
-	  case LOGOUT_SUCCESS:
+	  case LOGOUT:
 			Cookies.expire('access_token'); //  Will expire the cookie with a path of '/'
 	    return state.merge({
 	    	logoutLoad: false
@@ -104,13 +104,13 @@ export default function auth(state = initialState, action) {
 	    	, logoutErr: action.err
 				, user: Map({})
 	    });
-		case GET_CODE_LOAD:
+		case GET_CODE_REQUEST:
 			return state.merge({
 				getcodeLoad: true
 				, getcodeErr: null
 				, verifyErr: null
 			});
-		case GET_CODE_SUCCESS:
+		case GET_CODE:
 			return state.merge({
 				getcodeLoad: false
 				, getcodeErr: null

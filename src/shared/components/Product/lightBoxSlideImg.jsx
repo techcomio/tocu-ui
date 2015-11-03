@@ -14,7 +14,7 @@ export default class lightBoxSlideImg extends React.Component {
   }
 
   render() {
-    var length = this.props.dataUrlImg.size;
+    var length = this.props.dataUrlImg.size || this.props.dataUrlImg.length;
     var phantram = 100 / length;
     var translateX = phantram * this.state.current;
     var PanesStyle = {

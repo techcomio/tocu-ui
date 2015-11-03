@@ -37,10 +37,10 @@ export default class SignupForm extends React.Component {
 
   componentDidMount() {
     const { dispatch, cart } = this.props;
-    const shippingInfo = cart.getIn(["Cart", "shippingInfo"]).toJS();
+    const shippingInfo = cart.getIn(["Cart", "shippingInfo"]);
 
     if(shippingInfo) {
-      dispatch(initialize('order', shippingInfo));
+      dispatch(initialize('order', shippingInfo.toJS()));
     }
   }
 
@@ -107,8 +107,8 @@ export default class SignupForm extends React.Component {
               <div className="col-xs-6">
                 <select className="form-control" {...district} onChange={this.handleDistrictChange.bind(this, district)} >
                   <option value="">Quận Huyện</option>
-                  {this.props.location.get('district').map(function(district, i) {
-                    return <option key={i} value={district.name}>{district.name}</option>
+                  {this.props.location.get('district').map(function(dist, i) {
+                    return <option key={i} value={dist.name}>{dist.name}</option>
                   })}
                 </select>
               </div>
@@ -146,15 +146,15 @@ export default class SignupForm extends React.Component {
     province.handleChange(e);
     const { dispatch } = this.props;
     const text = e.target.value.trim();
-    dispatch(getDistrict({city: text}));
+    dispatch(getDistrict({province: text}));
   }
 
   handleDistrictChange(districts, e) {
     districts.handleChange(e);
     const district = e.target.value.trim();
-    const { fields: { city }, dispatch} = this.props;
+    const { fields: { province }, dispatch} = this.props;
     const weight = this.getWeightCart();
-    dispatch(getPhiShip({city: city.value, district, weight}));
+    dispatch(getPhiShip({province: province.value, district, weight}));
   }
 
   getWeightCart() {

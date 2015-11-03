@@ -5,8 +5,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { createCart, pushCart } from '../../actions/cart';
+import * as cartaction from '../../actions/cart';
 import Navbar from './Navbar';
-import ImgSlideProduct from './ImgSlideProduct';
+import ImgSlide from './imgSlide';
 import Detail from './Detail';
 import Info from './Info';
 import Mau from './Mau';
@@ -17,9 +18,8 @@ import { notifActions } from 'redux-notif';
   , product: state.product.get('productId')
   , cart: state.cart
 }), dispatch => ({
-  Create: (prod) => dispatch(createCart(prod))
-  , Push: (prod) => dispatch(pushCart(prod))
-  , notif: (data) => dispatch(notifActions.notifSend(data))
+  cartActions: bindActionCreators(cartaction, dispatch)
+  , notiActions: bindActionCreators(notifActions, dispatch)
 }))
 
 export default class ProductContent extends React.Component {
@@ -31,21 +31,21 @@ export default class ProductContent extends React.Component {
   }
 
   render() {
-    const { user, cart, notif, product, Create, Push } = this.props;
+    const { user, cart, product, notiActions, cartActions } = this.props;
 
     return (
       <div className="productDetail">
         <Navbar user={user}
                 cart={cart}
-                notif={notif}
+                notif={notiActions.notifSend}
                 product={product}
-                pushCart={Push}
-                createCart={Create} />
+                pushCart={cartActions.pushCart}
+                createCart={cartActions.createCart} />
 
         <div className="product">
           {/* Slide image */}
-	        <ImgSlideProduct
-	          dataUrlImg={product.get('images') || []} />
+	        <ImgSlide
+	          images={product.get('images').toJS()} />
 
           <div className="product-detail">
             {/* Detail */}

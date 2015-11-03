@@ -6,10 +6,11 @@ import {
   , PRODUCT_PUSH
   , PRODUCT_PUSH_SUCCESS
   , PRODUCT_PUSH_FAIL
-  , PRODUCT_ID_LOAD
-  , PRODUCT_ID_LOAD_SUCCESS
-  , PRODUCT_ID_LOAD_FAIL
+  , GET_PRODUCT_ID_REQUEST
+  , GET_PRODUCT_ID
+  , GET_PRODUCT_ID_FAIL
 } from '../actions/actionsTypes';
+import { ProductId } from '../records/Records';
 import Immutable, { Map, List } from 'immutable';
 
 
@@ -17,7 +18,7 @@ const initialState = new Immutable.fromJS({
   productLoad: false
   , productIdLoad: false
 	, product: List()
-	, productId: Map()
+	, productId: Map({images: List()})
   , pagination: Map({hasMore: false, skip: 0})
 	, productErr: null
 	, productIdErr: null
@@ -67,19 +68,19 @@ export default function counter(state = initialState, action) {
       , pagination: Map({hasMore: false, skip: action.skip})
       , productErr: action.err
     });
-  case PRODUCT_ID_LOAD:
+  case GET_PRODUCT_ID_REQUEST:
 		return state.merge({
       productIdLoad: true
     	, productId: Map()
     	, productIdErr: null
 		});
-  case PRODUCT_ID_LOAD_SUCCESS:
+  case GET_PRODUCT_ID:
 		return state.merge({
       productIdLoad: false
     	, productId: Immutable.fromJS(action.data)
     	, productIdErr: null
 		});
-  case PRODUCT_ID_LOAD_FAIL:
+  case GET_PRODUCT_ID_FAIL:
 		return state.merge({
       productIdLoad: false
     	, productId: Map()

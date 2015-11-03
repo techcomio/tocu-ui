@@ -19,10 +19,10 @@ export default React.createClass({
 
     Axios.get(`${API_URL}/product/box/${boxId}?skip=${0}&limit=${15}`)
       .then((res) => {
-        this.setState({
+        self.setState({
           posts: res.data
         });
-      }.bind(this));
+      });
   },
 
   render: function () {

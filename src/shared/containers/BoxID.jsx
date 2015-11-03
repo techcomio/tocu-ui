@@ -40,7 +40,7 @@ export default class BoxID extends React.Component {
   }
 
   render() {
-    const { box } = this.props;
+    const { box, location } = this.props;
     const { params: { id } } = this.props;
     const title = box.getIn(['boxIdInfo', 'name']);
     const description = box.getIn(['boxIdInfo', 'name']);
@@ -72,7 +72,7 @@ export default class BoxID extends React.Component {
         <DocumentMeta {...meta} />
         <Header />
 
-        {title ? <BoxidContent boxId={id} box={box} limit={limit} getBoxIdPage={this.props.getBoxIdPage} /> : null}
+        {title ? <BoxidContent location={location} boxId={id} box={box} limit={limit} getBoxIdPage={this.props.getBoxIdPage} /> : null}
       </div>
     );
   }

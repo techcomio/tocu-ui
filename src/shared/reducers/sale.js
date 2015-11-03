@@ -1,7 +1,7 @@
 import {
-  SALE_GET_LOAD
-  , SALE_GET_SUCCESS
-  , SALE_GET_FAIL
+  GET_SALE_REQUEST
+  , GET_SALE
+  , GET_SALE_FAIL
 } from '../actions/actionsTypes';
 import Immutable, { Map, List } from 'immutable';
 
@@ -13,19 +13,19 @@ const initialState = new Immutable.fromJS({
 
 export default function counter(state = initialState, action) {
   switch (action.type) {
-  case SALE_GET_LOAD:
+  case GET_SALE_REQUEST:
 		return state.merge({
       saleLoad: true
     	, sales: List()
     	, saleErr: null
 		});
-  case SALE_GET_SUCCESS:
+  case GET_SALE:
 		return state.merge({
       saleLoad: false
     	, sales: Immutable.fromJS(action.data)
     	, saleErr: null
 		});
-  case SALE_GET_FAIL:
+  case GET_SALE_FAIL:
 		return state.merge({
       saleLoad: false
     	, sales: List()

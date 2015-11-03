@@ -1,10 +1,10 @@
 import {
-  PHISHIP_LOAD
-  , PHISHIP_SUCCESS
-  , PHISHIP_FAIL
-  , FINALLY_LOAD
-  , FINALLY_SUCCESS
-  , FINALLY_FAIL
+  GET_PHISHIP_REQUEST
+  , GET_PHISHIP
+  , GET_PHISHIP_FAIL
+  , GET_FINALLY_REQUEST
+  , GET_FINALLY
+  , GET_FINALLY_FAIL
 } from '../actions/actionsTypes';
 import Immutable, { Map, List } from 'immutable';
 
@@ -19,37 +19,37 @@ const initialState = new Immutable.fromJS({
 
 export default function counter(state = initialState, action) {
   switch (action.type) {
-  case PHISHIP_LOAD:
+  case GET_PHISHIP_REQUEST:
 		return state.merge({
       shipLoad: true
     	, phiship: Map()
     	, shipErr: null
 		});
-  case PHISHIP_SUCCESS:
+  case GET_PHISHIP:
 		return state.merge({
       shipLoad: false
     	, phiship: Immutable.fromJS(action.data)
     	, shipErr: null
 		});
-  case PHISHIP_FAIL:
+  case GET_PHISHIP_FAIL:
 		return state.merge({
       shipLoad: false
     	, phiship: Map()
     	, shipErr: action.err
 		});
-  case FINALLY_LOAD:
+  case GET_FINALLY_REQUEST:
 		return state.merge({
       finallyLoad: true
     	, finally: Map()
     	, finallyErr: null
 		});
-  case FINALLY_SUCCESS:
+  case GET_FINALLY:
 		return state.merge({
       finallyLoad: false
     	, finally: Map(action.data)
     	, finallyErr: null
 		});
-  case FINALLY_FAIL:
+  case GET_FINALLY_FAIL:
 		return state.merge({
       finallyLoad: false
     	, finally: Map()

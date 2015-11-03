@@ -45,7 +45,7 @@ export default class CartContent extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.renderItem()}
+                {::this.renderItem()}
               </tbody>
               <tfoot>
                 <tr className="padT20">
@@ -72,11 +72,13 @@ export default class CartContent extends React.Component {
     );
   }
 
-  renderItem = () => {
+  renderItem() {
     const { cart } = this.props;
-    if(cart.getIn(['Cart', 'lines'])) {
-      return cart.getIn(['Cart', 'lines']).map((item, i) => {
-        let url = item.get('imageUrl')
+    const lines = cart.getIn(['Cart', 'lines']);
+
+    if(lines) {
+      return lines.toJS().map((item, i) => {
+        let url = item.imageUrl
           , imgUrl;
         if(url) {
           imgUrl = url.replace(/image\//gi, 'image/50x50/');
@@ -84,15 +86,15 @@ export default class CartContent extends React.Component {
 
         let price = null;
         let salePrice = null;
-        if(item.get('price')) {
-          price = this.formatNumber(item.get('price'));
+        if(item.price) {
+          price = this.formatNumber(item.price);
         }
-        if(item.get('salePrice')) {
-          salePrice = this.formatNumber(item.get('salePrice'));
+        if(item.salePrice) {
+          salePrice = this.formatNumber(item.salePrice);
         }
 
         let classer = classNames({
-          disabled: item.get('status') !== "available"
+          disabled: item.status !== "available"
         });
 
         return (
@@ -101,16 +103,16 @@ export default class CartContent extends React.Component {
             <td>
               <div className="imageIcon"><img src={imgUrl} /></div>
               <div className="nameInfo">
-                <span className="code">{item.get('code')}</span>
-                <span className="name">{item.get('boxName')}</span>
+                <span className="code">{item.code}</span>
+                <span className="name">{item.boxName}</span>
               </div>
             </td>
             <td>{this.renderPrice(item, price, salePrice)}</td>
             <td className="hidden-sm-down hidden-xs-down acenter"><div>1</div></td>
             <td className="hidden-sm-down hidden-xs-down aright"><div>{salePrice || price}đ</div></td>
-            <td className="delete"><div><i onClick={this._onClickDestroy.bind(this, item.get('id'))} className="destroy"></i></div></td>
+            <td className="delete"><div><i onClick={this._onClickDestroy.bind(this, item.id)} className="destroy"></i></div></td>
           </tr>
-        );
+        )
       });
     } else {
       return (
@@ -130,7 +132,7 @@ export default class CartContent extends React.Component {
   }
 
   renderPrice = (item, price, salePrice) => {
-    if(item.get('salePrice')) {
+    if(item.salePrice) {
       return (
         <div>
           <span className="sale">{price}đ</span>

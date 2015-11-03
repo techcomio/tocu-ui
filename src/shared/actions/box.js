@@ -2,86 +2,31 @@
 import Axios from 'axios';
 import {
   BOX_COUNT
-  , BOX_LOAD
-  , BOX_LOAD_SUCCESS
-  , BOX_LOAD_FAIL
-  , BOX_ID_LOAD
-  , BOX_ID_LOAD_SUCCESS
-  , BOX_ID_LOAD_FAIL
-  , BOX_ID_PUSH_LOAD
-  , BOX_ID_PUSH_SUCCESS
+  , GET_BOX
+  , GET_BOX_ID_REQUEST
+  , GET_BOX_ID
+  , GET_BOX_ID_FAIL
+  , BOX_ID_PUSH_REQUEST
+  , BOX_ID_PUSH
   , BOX_ID_PUSH_FAIL
-  , BOX_ID_LOAD_INFO
-  , BOX_ID_LOAD_INFO_SUCCESS
-  , BOX_ID_LOAD_INFO_FAIL
+  , GET_BOXID_INFO
 } from './actionsTypes';
 import { API_URL } from '../../../config';
 
 
 export function getBox() {
-  return async (dispatch, getState) => {
-    dispatch(load())
-    await Axios.get(`${API_URL}/box`)
-      .then((res) => {
-        dispatch(loadSuccess(res.data));
-      })
-      .catch((res) => {
-        dispatch(loadFail(res.data));
-      });
-  }
-}
-
-export function load() {
   return {
-    type: BOX_LOAD
+    type: GET_BOX
+    , promise: Axios.get(`${API_URL}/box`)
   }
-}
-
-export function loadSuccess(data) {
-	return {
-    type: BOX_LOAD_SUCCESS
-    , data
-  };
-}
-
-export function loadFail(err) {
-	return {
-		type: BOX_LOAD_FAIL
-		, err
-	}
 }
 
 
 export function getBoxIdInfo({id}) {
-  return async (dispatch, getState) => {
-    await Axios.get(`${API_URL}/box/${id}`)
-      .then((res) => {
-        dispatch(loadIdInfoSuccess(res.data));
-      })
-      .catch((res) => {
-        dispatch(loadIdInfoFail(res.data));
-      });
-  }
-}
-
-export function loadIdInfo() {
   return {
-    type: BOX_ID_LOAD_INFO
+    type: GET_BOXID_INFO
+    , promise: Axios.get(`${API_URL}/box/${id}`)
   }
-}
-
-export function loadIdInfoSuccess(data) {
-  return {
-    type: BOX_ID_LOAD_INFO_SUCCESS
-    , data
-  }
-}
-
-export function loadIdInfoFail(err) {
-	return {
-		type: BOX_ID_LOAD_INFO_FAIL
-		, err
-	}
 }
 
 
@@ -102,13 +47,13 @@ export function getBoxId({id, skip, limit}) {
 
 export function getBoxIdLoad() {
   return {
-    type: BOX_ID_LOAD
+    type: GET_BOX_ID_REQUEST
   }
 }
 
 export function getBoxIdSuccess(data, hasMore, skip) {
   return {
-    type: BOX_ID_LOAD_SUCCESS
+    type: GET_BOX_ID
     , data
     , hasMore
     , skip
@@ -117,7 +62,7 @@ export function getBoxIdSuccess(data, hasMore, skip) {
 
 export function getBoxIdFail(err, skip) {
   return {
-    type: BOX_ID_LOAD_FAIL
+    type: GET_BOX_ID_FAIL
     , err
     , hasMore: false
     , skip
@@ -142,13 +87,13 @@ export function getBoxIdPage({id, skip, limit}) {
 
 export function getBoxIdPageLoad() {
   return {
-    type: BOX_ID_PUSH_LOAD
+    type: BOX_ID_PUSH_REQUEST
   }
 }
 
 export function getBoxIdPageSuccess(data, hasMore, skip) {
   return {
-    type: BOX_ID_PUSH_SUCCESS
+    type: BOX_ID_PUSH
     , data
     , hasMore
     , skip
@@ -165,20 +110,8 @@ export function getBoxIdPageFail(err, skip) {
 
 
 export function count() {
-  return async (dispatch, getState) => {
-    await Axios.get(`${API_URL}/box/count`)
-      .then((res) => {
-        setTimeout(function() {
-          dispatch(countSuccess(res.data));
-        });
-      })
-      .catch((res) => {});
-  }
-}
-
-export function countSuccess(data) {
   return {
     type: BOX_COUNT
-    , data
+    , promise: Axios.get(`${API_URL}/box/count`)
   }
 }

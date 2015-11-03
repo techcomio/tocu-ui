@@ -1,17 +1,17 @@
 import {
 	BOX_COUNT
-	, BOX_LOAD
-  , BOX_LOAD_SUCCESS
-  , BOX_LOAD_FAIL
-  , BOX_ID_LOAD
-  , BOX_ID_LOAD_SUCCESS
-  , BOX_ID_LOAD_FAIL
-  , BOX_ID_PUSH_LOAD
-  , BOX_ID_PUSH_SUCCESS
+	, GET_BOX_REQUEST
+  , GET_BOX
+  , GET_BOX_FAIL
+  , GET_BOX_ID_REQUEST
+  , GET_BOX_ID
+  , GET_BOX_ID_FAIL
+  , BOX_ID_PUSH_REQUEST
+  , BOX_ID_PUSH
   , BOX_ID_PUSH_FAIL
-  , BOX_ID_LOAD_INFO
-  , BOX_ID_LOAD_INFO_SUCCESS
-  , BOX_ID_LOAD_INFO_FAIL
+  , GET_BOXID_INFO_REQUEST
+  , GET_BOXID_INFO
+  , GET_BOXID_INFO_FAIL
 } from '../actions/actionsTypes';
 import Immutable, { Map, List } from 'immutable';
 
@@ -31,52 +31,52 @@ const initialState = new Immutable.fromJS({
 
 export default function counter(state = initialState, action) {
   switch (action.type) {
-  case BOX_LOAD:
+  case GET_BOX_REQUEST:
 		return state.merge({
 			boxsLoad: true
 			, boxs: List()
 			, boxsErr: null
 		});
-  case BOX_LOAD_SUCCESS:
+  case GET_BOX:
 		return state.merge({
 			boxsLoad: false
 			, boxs: Immutable.fromJS(action.data)
 			, boxsErr: null
 		});
-  case BOX_LOAD_FAIL:
+  case GET_BOX_FAIL:
 		return state.merge({
 			boxsLoad: false
 			, boxs: List()
 			, boxsErr: action.err
 		});
-	case BOX_ID_LOAD:
+	case GET_BOX_ID_REQUEST:
 		return state.merge({
 			boxsIdLoad: true
 			, boxsId: List()
 			, pagination: Map({hasMore: false, skip: 0})
 			, boxsIdErr: null
 		});
-	case BOX_ID_LOAD_SUCCESS:
+	case GET_BOX_ID:
 		return state.merge({
 			boxsIdLoad: false
 			, boxsId: Immutable.fromJS(action.data)
 			, pagination: Map({hasMore: action.hasMore, skip: action.skip})
 			, boxsIdErr: null
 		});
-	case BOX_ID_LOAD_FAIL:
+	case GET_BOX_ID_FAIL:
 		return state.merge({
 			boxsIdLoad: false
 			, boxsId: List()
 			, pagination: Map({hasMore: false, skip: action.skip})
 			, boxsIdErr: action.err
 		});
-	case BOX_ID_PUSH_LOAD:
+	case BOX_ID_PUSH_REQUEST:
 		return state.merge({
 			boxsIdLoad: true
 			, pagination: Map({hasMore: false, skip: 0})
 			, boxsIdErr: null
 		});
-	case BOX_ID_PUSH_SUCCESS:
+	case BOX_ID_PUSH:
 		return state.merge({
 			boxsIdLoad: false
 			, boxsId: state.get('boxsId').toJS().concat(action.data)
@@ -90,19 +90,19 @@ export default function counter(state = initialState, action) {
 			, pagination: Map({hasMore: false, skip: action.skip})
 			, boxsIdErr: action.err
 		});
-	case BOX_ID_LOAD_INFO:
+	case GET_BOXID_INFO_REQUEST:
 		return state.merge({
 			boxIdInfoLoad: true
 			, boxIdInfo: Map()
 			, boxIdInfoErr: null
 		});
-	case BOX_ID_LOAD_INFO_SUCCESS:
+	case GET_BOXID_INFO:
 		return state.merge({
 			boxIdInfoLoad: false
 			, boxIdInfo: Map(action.data)
 			, boxIdInfoErr: null
 		});
-	case BOX_ID_LOAD_INFO_FAIL:
+	case GET_BOXID_INFO_FAIL:
 		return state.merge({
 			boxIdInfoLoad: false
 			, boxIdInfo: Map()

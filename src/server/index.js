@@ -5,20 +5,20 @@ import { renderToString } from 'react-dom/server';
 import { RoutingContext, match } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from "redux-thunk";
 import serialize from "serialize-javascript";
+import promiseMiddleware from '../shared/lib/promiseMiddleware';
 import routers from '../shared/routers';
 import Reducers from '../shared/reducers';
 import { loadAuth } from '../shared/actions/auth';
 import { loadCard } from '../shared/actions/cart';
-import HtmlComponent from './Html';
+import HtmlComponent from './html';
 import { API_URL } from '../../config';
 
 
 export default async function (req, res, next) {
   const token = req.cookies.access_token;
   const cartId = req.cookies.cart;
-  const finalCreateStore = applyMiddleware(thunkMiddleware)(createStore);
+  const finalCreateStore = applyMiddleware(promiseMiddleware)(createStore);
   const store = finalCreateStore(Reducers, {});
 
   /**
@@ -30,7 +30,9 @@ export default async function (req, res, next) {
       , store.dispatch(loadCard({token}))
     ]
   } else if(cartId) {
-    await * [store.dispatch(loadCard({cartId}))]
+    await * [
+      store.dispatch(loadCard({cartId}))
+    ]
   }
 
   match({routes: routers(store), location: req.url}, async (err, redirectLocation, routerState) => {
@@ -41,8 +43,7 @@ export default async function (req, res, next) {
 
       /**
        * if Redirect "chuyển hướng"
-       * @param  {string} pathname
-       * @return {func} res.redirect - express
+       * @param  {redirectLocation} object redirect
        */
       if(redirectLocation) {
         res.redirect(302, redirectLocation.pathname + redirectLocation.search);
@@ -52,13 +53,9 @@ export default async function (req, res, next) {
       /**
        * if name Router NotFound
        * render page 404 NotFound
-       * @param  {string} routerState.branch[1].name - name Router path="*" react-router
-       * @return {func} res.send
        */
       if (routerState.routes[1].name === 'NotFound') {
         res.status(404);
-        // res.send('Not Found!');
-        // return;
       }
 
       const { params, location } = routerState;

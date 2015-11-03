@@ -6,15 +6,11 @@ import {
   , LOGIN_LOAD
   , LOGIN_SUCCESS
   , LOGIN_FAIL
-  , LOGOUT_LOAD
-  , LOGOUT_SUCCESS
-  , LOGOUT_FAIL
+  , LOGOUT
   , CREATE_AUTH_LOAD
   , CREATE_AUTH_SUCCESS
   , CREATE_AUTH_FAIL
-  , GET_CODE_LOAD
-  , GET_CODE_SUCCESS
-  , GET_CODE_FAIL
+  , GET_CODE
   , VERIFY_LOAD
   , VERIFY_SUCCESS
   , VERIFY_FAIL
@@ -23,13 +19,11 @@ import { getCart, clearCart } from './cart';
 
 
 export function loadAuth({token}) {
-  return async (dispatch) => {
-    await Axios.get(`${API_URL}/user/me`, {
+  return {
+    type: LOAD_AUTH
+    , promise: Axios.get(`${API_URL}/user/me`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
-      .then((res) => {
-        dispatch({type: LOAD_AUTH, data: res.data});
-      }).catch(() => {});
   }
 }
 
@@ -122,81 +116,29 @@ export function logInFail(err) {
 
 export function logOut() {
   return (dispatch, getState) => {
-    dispatch(logOutLoad());
     const { auth } = getState();
     const access_token = auth.getIn(['user', 'access_token']);
-
-    Axios.get(`${API_URL}/token/expire`, {
-        headers: { 'Authorization': `Bearer ${access_token}` }
-      })
-      .then((res) => {
-        dispatch(logOutSuccess(res.data));
-        dispatch(clearCart());
-      })
-      .catch((res) => {
-        dispatch(logOutFail(res.data));
-      });
-  }
-}
-
-export function logOutLoad() {
-  return {
-    type: LOGOUT_LOAD
-  }
-}
-
-export function logOutSuccess(data) {
-  return {
-    type: LOGOUT_SUCCESS
-    , data
-  }
-}
-
-export function logOutFail(err) {
-  return {
-    type: LOGOUT_FAIL
-    , err
+    dispatch({
+      type: LOGOUT
+      , promise: Axios.get(`${API_URL}/token/expire`, {
+          headers: { 'Authorization': `Bearer ${access_token}` }
+        })
+    });
+    dispatch(clearCart());
   }
 }
 
 
 export function getCode() {
-  return async (dispatch, getState) => {
-    dispatch(codeLoad());
+  return (dispatch, getState) => {
     const { auth } = getState();
     const access_token = auth.getIn(['user', 'access_token']);
-
-    if(access_token) {
-      await Axios.get(`${API_URL}/user/verify`, {
-        headers: { 'Authorization': `Bearer ${access_token}` }
-      })
-      .then((res) => {
-        dispatch(codeSuccess(res.data));
-      })
-      .catch((res) => {
-        dispatch(codeFail(res.data));
-      });
-    }
-  }
-}
-
-export function codeLoad() {
-  return {
-    type: GET_CODE_LOAD
-  }
-}
-
-export function codeSuccess(data) {
-  return {
-    type: GET_CODE_SUCCESS
-    , data
-  }
-}
-
-export function codeFail(err) {
-  return {
-    type: GET_CODE_FAIL
-    , err
+    dispatch({
+      type: GET_CODE
+      , promise: Axios.get(`${API_URL}/user/verify`, {
+          headers: { 'Authorization': `Bearer ${access_token}` }
+        })
+    })
   }
 }
 

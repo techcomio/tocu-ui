@@ -3,14 +3,10 @@ import React from 'react';
 import LightBoxSlideImg from './lightBoxSlideImg';
 
 
-export default class ImgSlideProduct extends React.Component {
+export default class ImgSlide extends React.Component {
 
   constructor(props) {
     super(props);
-    this.ShowLightBox = this.ShowLightBox.bind(this);
-    this.HideLightBox = this.HideLightBox.bind(this);
-    this.renderLightBox = this.renderLightBox.bind(this);
-    this.handleClickSlideTab = this.handleClickSlideTab.bind(this);
 
     this.state = {
       current: 0,
@@ -19,28 +15,30 @@ export default class ImgSlideProduct extends React.Component {
   }
 
   render() {
+    const { images } = this.props;
+    const { current } = this.state;
     return (
       <div className="imgProduct">
         <div className="imageContainer">
-          <div ref="test" className="gallerySlide">
+          <div className="gallerySlide">
             <ul>
-              {this.props.dataUrlImg.map((url, i) => {
+              {images.map((url, i) => {
                 var classSes = "";
-                if(this.state.current === i) {
+                if(current === i) {
                   classSes = "active";
                 }
                 let img_url = url.replace(/image\//gi, 'image/x468/');
                 return (
-                  <li key={i} className={classSes}><figure><img onClick={this.ShowLightBox.bind(this, i)} src={img_url} alt="" /></figure></li>
+                  <li key={i} className={classSes}><figure><img onClick={this.ShowLightBox.bind(this, i)} src={img_url} /></figure></li>
                 )
               })}
             </ul>
           </div>
           <div className="slide-tabs">
             <ul>
-              {this.props.dataUrlImg.map((url, i) => {
+              {this.props.images.map((url, i) => {
                 var classSes = "";
-                if(this.state.current === i) {
+                if(current === i) {
                   classSes = "active";
                 }
                 return (
@@ -52,14 +50,14 @@ export default class ImgSlideProduct extends React.Component {
         </div>
         <div className="imageSlide-tabs">
           <ul>
-            {this.props.dataUrlImg.map((url, i) => {
+            {this.props.images.map((url, i) => {
               var classSes = "";
-              if(this.state.current === i) {
+              if(current === i) {
                 classSes = "active";
               }
               let img_url = url.replace(/image\//gi, 'image/90x60/');
               return (
-                <li key={i} className={classSes}><figure><img src={img_url} onClick={this.handleClickSlideTab.bind(this, i)} alt="" /></figure></li>
+                <li key={i} className={classSes}><figure><img src={img_url} onClick={this.handleClickSlideTab.bind(this, i)}/></figure></li>
               )
             })}
           </ul>
@@ -70,11 +68,11 @@ export default class ImgSlideProduct extends React.Component {
     );
   }
 
-  renderLightBox() {
+  renderLightBox = () => {
     if(this.state.showLightBox) {
       return (
         <LightBoxSlideImg
-          dataUrlImg={this.props.dataUrlImg}
+          dataUrlImg={this.props.images}
           current={this.state.current}
           showLightBox={this.state.showLightBox}
           HideLightBox={this.HideLightBox}
@@ -84,13 +82,14 @@ export default class ImgSlideProduct extends React.Component {
   }
 
   ShowLightBox(i, e) {
+    console.log('ShowLightBox', i, e)
     this.setState({
       showLightBox: true,
       current: i
     });
   }
 
-  HideLightBox() {
+  HideLightBox = () => {
     this.setState({
       showLightBox: false,
     });
@@ -101,4 +100,5 @@ export default class ImgSlideProduct extends React.Component {
       current: i
     });
   }
-};
+
+}
