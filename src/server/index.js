@@ -1,17 +1,17 @@
 'use strict';
-import Axios from 'axios';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RoutingContext, match } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import serialize from "serialize-javascript";
-import promiseMiddleware from '../shared/lib/promiseMiddleware';
-import routers from '../shared/routers';
-import Reducers from '../shared/reducers';
-import { loadAuth } from '../shared/actions/auth';
-import { loadCard } from '../shared/actions/cart';
+import promiseMiddleware from 'universal/lib/promiseMiddleware';
+import routers from 'universal/routers';
+import Reducers from 'universal/reducers';
+import { loadAuth } from 'universal/actions/auth';
+import { loadCard } from 'universal/actions/cart';
 import HtmlComponent from './html';
+import HtmlComponentDev from './htmlDev';
 import { API_URL } from '../../config';
 
 
@@ -75,7 +75,7 @@ export default async function (req, res, next) {
       );
 
       const initialState = store.getState();
-      const html = renderToString(<HtmlComponent markup={body} state={serialize(initialState)} />);
+      const html = __DEV__ ? renderToString(<HtmlComponentDev markup={body} state={serialize(initialState)} />) : renderToString(<HtmlComponent markup={body} state={serialize(initialState)} />);
 
 			res.send(`<!DOCTYPE html>` + html);
     } catch(err) {

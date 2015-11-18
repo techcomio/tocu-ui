@@ -4,38 +4,38 @@ import React from 'react';
 import { render } from 'react-dom';
 import Immutable from 'immutable';
 import { Router } from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
-import { devTools, persistState } from 'redux-devtools';
-import { DevTools, LogMonitor, DebugPanel } from 'redux-devtools/lib/react';
-import promiseMiddleware from '../shared/lib/promiseMiddleware';
-import routers from '../shared/routers';
-import Reducers from '../shared/reducers';
-import immutifyState from '../shared/lib/immutifyState';
-
+import { createStore, applyMiddleware, compose } from 'redux';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+import promiseMiddleware from 'universal/lib/promiseMiddleware';
+import immutifyState from 'universal/lib/immutifyState';
+import routers from 'universal/routers';
+import Reducers from 'universal/reducers';
 
 const history = new createBrowserHistory();
 const initialState = immutifyState(window.__INITIAL_STATE__);
 
 let finalCreateStore;
 if(__DEV__) {
-	const cs = compose(devTools())(createStore);
-
 	finalCreateStore = applyMiddleware(promiseMiddleware, createLogger({
+		// development using redux-logger
 	  transformer: (state) => {
 	    return Immutable.fromJS(state).toJS();
 	  }
-	}))(cs);
+	}))(
+		/**
+		 * using redux-devtools-extension
+		 * https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
+		 */
+		window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore
+	);
 } else {
 	finalCreateStore = applyMiddleware(promiseMiddleware)(createStore)
 }
 
-
 const store = finalCreateStore(Reducers, initialState);
 const routes = routers(store);
-
 
 render(
 	<Provider store={store}>
@@ -43,16 +43,3 @@ render(
   </Provider>
   , document.getElementById('content')
 );
-
-
-// render(
-// 	<div>
-// 		<Provider store={store}>
-// 	  	<Router history={history} children={routes} />
-// 	  </Provider>
-// 		<DebugPanel top right bottom >
-//       <DevTools store={store} monitor={LogMonitor} />
-//     </DebugPanel>
-// 	</div>
-//   , document.getElementById('content')
-// );

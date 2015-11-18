@@ -12,7 +12,6 @@ var config = {
   publicDir: `./${process.env.PATH_GULP || 'public'}`,
 }
 
-
 gulp.task('icons', function() {
   return gulp.src(config.bowerDir + '/fontawesome/fonts/**/**.*')
     .pipe(gulp.dest(config.publicDir + '/fonts'));
@@ -33,21 +32,13 @@ gulp.task('favicon', function() {
     .pipe(gulp.dest(config.publicDir + '/'));
 });
 
-gulp.task('htmltest', function() {
-  if(!process.env.PATH_GULP) {
-    return;
-  }
-  return gulp.src(config.rootPath + '/index.html')
-    .pipe(gulp.dest(config.publicDir + '/'));
-});
-
 gulp.task('css', function() {
-  return sass(config.sassPath +  '/app/style.scss', {
+  return sass(config.sassPath +  '/style.scss', {
       sourcemap: false,
       style: "compressed",
       // compass:true,
       loadPath: [
-        config.sassPath + '/app',
+        config.sassPath,
         config.bowerDir + '/bootstrap-4.0.0-alpha/scss',
         config.bowerDir + '/fontawesome/scss',
       ]
@@ -61,9 +52,7 @@ gulp.task('css', function() {
 gulp.task('scripts', function(){
   return gulp.src([
       config.bowerDir + '/jquery/dist/jquery.js',
-      // config.bowerDir +'/bootstrap-sass-official/assets/javascripts/bootstrap.js',
       config.bowerDir +'/bootstrap-4.0.0-alpha/dist/js/bootstrap.js',
-      config.bowerDir +'/masonry/dist/masonry.pkgd.js',
       config.scriptPath + '/script.js',
     ])
     .pipe(concat('script.js'))
@@ -73,10 +62,10 @@ gulp.task('scripts', function(){
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-  gulp.watch(config.sassPath + '/app/**/**/*.scss', ['css']);
+  gulp.watch(config.sassPath + '/**/**/*.scss', ['css']);
   gulp.watch(config.imgPath + '/**/*.*', ['img']);
   gulp.watch(config.scriptPath + '/**/*.*', ['scripts']);
 });
 
 
-gulp.task('default', ['fonts', 'icons', 'img', 'favicon', 'htmltest', 'css', 'scripts']);
+gulp.task('default', ['fonts', 'icons', 'img', 'favicon', 'css', 'scripts']);

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import box from '../../src/shared/reducers/box';
-import * as types from '../../src/shared/actions/actionsTypes';
+import box from '../../src/universal/reducers/box';
+import * as types from '../../src/universal/actions/actionsTypes';
 import { fromJS, Map, List } from 'immutable';
 
 

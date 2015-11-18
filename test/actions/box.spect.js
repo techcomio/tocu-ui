@@ -1,8 +1,8 @@
 import expect from 'expect';
 import Axios from 'axios';
 import {API_URL} from '../../config';
-import * as boxActions from '../../src/shared/actions/box';
-import * as types from '../../src/shared/actions/actionsTypes';
+import * as boxActions from '../../src/universal/actions/box';
+import * as types from '../../src/universal/actions/actionsTypes';
 
 
 describe('actions box', () => {

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import auth from '../../src/shared/reducers/auth';
-import * as types from '../../src/shared/actions/actionsTypes';
+import auth from '../../src/universal/reducers/auth';
+import * as types from '../../src/universal/actions/actionsTypes';
 import { fromJS, Map, List } from 'immutable';
 
 

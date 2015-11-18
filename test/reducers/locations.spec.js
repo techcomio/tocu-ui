@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import location from '../../src/shared/reducers/location';
-import * as types from '../../src/shared/actions/actionsTypes';
+import location from '../../src/universal/reducers/location';
+import * as types from '../../src/universal/actions/actionsTypes';
 import { fromJS, Map, List } from 'immutable';
 
 const city = ["Hà Nội", "TP Hồ Chí Minh", "An Giang"];

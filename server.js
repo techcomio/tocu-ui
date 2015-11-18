@@ -1,21 +1,27 @@
-'use strict';
 require('babel/register')({
 	stage: 0,
-});
+})
 const env = process.env.NODE_ENV || 'development';
 global.__DEV__ = env !== "production";
-global.__CLIENT__ = false;
-global.__SERVER__ = true;
 
 
 const express = require('express');
-const cookieParser = require('cookie-parser');
+const webpack = require('webpack');
 const compress = require('compression');
+const cookieParser = require('cookie-parser');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const config = require('./webpack.config.dev');
 const render = require('./src/server');
 const app = express();
-const port = process.env.PORT || 8000;
+const compiler = webpack(config);
+const port = process.env.PORT || 3000;
 
 
+if(env === "development") {
+	app.use(webpackDevMiddleware(compiler, { noInfo: true }));
+	app.use(webpackHotMiddleware(compiler));
+}
 app.use(cookieParser());
 app.use(compress());
 app.use(express.static(__dirname + "/public", {maxage: 8640000}));
@@ -23,13 +29,13 @@ app.use(express.static(__dirname + "/public", {maxage: 8640000}));
 app.get('*', render);
 
 app.use(function(req, res, next) {
-  let err = new Error('Not Found!');
+  var err = new Error('Not Found!');
   err.status = 404;
   next(err);
-});
+})
 
 app.use(function(err, req, res, next) {
-  let status = err.status || 500;
+  var status = err.status || 500;
   res.status(status);
   if(env === "development") {
     res.json({
@@ -41,8 +47,13 @@ app.use(function(err, req, res, next) {
   err.status ?
 	  res.send(err.message) :
 	  res.send('Internal server error');
-});
+})
 
-app.listen(port, function() {
-  console.log('Server listening on port ' + port);
-});
+
+app.listen(port, function(error) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s in your browser.", port, port);
+  }
+})

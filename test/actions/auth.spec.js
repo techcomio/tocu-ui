@@ -1,8 +1,8 @@
 import expect from 'expect';
 import Axios from 'axios';
 import {API_URL} from '../../config';
-import * as authActions from '../../src/shared/actions/auth';
-import * as types from '../../src/shared/actions/actionsTypes';
+import * as authActions from '../../src/universal/actions/auth';
+import * as types from '../../src/universal/actions/actionsTypes';
 import Immutable, { Map, List } from 'immutable';
 
 

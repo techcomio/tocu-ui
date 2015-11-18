@@ -1,8 +1,8 @@
 import expect from 'expect';
 import Axios from 'axios';
 import {API_URL} from '../../config';
-import * as locationActions from '../../src/shared/actions/location';
-import * as types from '../../src/shared/actions/actionsTypes';
+import * as locationActions from '../../src/universal/actions/location';
+import * as types from '../../src/universal/actions/actionsTypes';
 import Immutable, { Map, List } from 'immutable';
 
 const city = [
