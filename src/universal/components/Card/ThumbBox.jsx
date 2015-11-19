@@ -18,9 +18,9 @@ export default class ThumbBox extends React.Component {
 
     return (
       <div className="row row-thumbnail">
-        {boxs.get('boxs').toJS().map((box, i) => (
+        {boxs.get('boxs').map((box, i) => (
           <div key={i} className="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <Thumbnail auth={user} box={boxs.getIn(['boxs', i])} />
+            <Thumbnail auth={user} box={box} />
           </div>
         ))}
       </div>

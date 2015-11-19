@@ -51,24 +51,23 @@ export default React.createClass({
       <section id="box-content">
         <div className="container">
           <div className='row row-thumbnail'>
-          <InfiniteScroll
-            loader={this.getLoaderElement()}
-            pageStart={this.state.page}
-            loadMore={this.loadMore}
-            hasMore={hasMore}
-            threshold={500}>
+            <InfiniteScroll
+              loader={this.getLoaderElement()}
+              pageStart={this.state.page}
+              loadMore={this.loadMore}
+              hasMore={hasMore}
+              threshold={500}>
 
-            <Masonry
-              className="masonry" // default ''
-              elementType="div" // default 'div'
-              options={{transitionDuration: 0}} // default {}
-              disableImagesLoaded={true} >
+              <Masonry
+                className="masonry" // default ''
+                elementType="div" // default 'div'
+                options={{transitionDuration: 0}} // default {}
+                disableImagesLoaded={true} >
+                {childElements}
+              </Masonry>
 
-              {childElements}
-            </Masonry>
-            {box.get('boxsIdLoad') && this.getLoaderElement()}
-          </InfiniteScroll>
-
+              {box.get('boxsIdLoad') && this.getLoaderElement()}
+            </InfiniteScroll>
           </div>
         </div>
       </section>

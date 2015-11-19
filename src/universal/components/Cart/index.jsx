@@ -13,7 +13,7 @@ import Navbar from './Navbar';
   cart: state.cart
   , auth: state.auth
 }), dispatch => ({
-  capnhatCart: () => dispatch(cartAction.capnhatCart())
+  capnhatCart: (cd) => dispatch(cartAction.capnhatCart(cd))
   , destroyCart: ({id}) => dispatch(cartAction.destroyCart({id}))
   , loginShow: () => dispatch(boxRequireAuth.loginShow())
   , verifyShow: () => dispatch(boxRequireAuth.verifyShow())

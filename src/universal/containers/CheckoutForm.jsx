@@ -7,7 +7,7 @@ import { prepareRoute } from '../decorators';
 import Navbar from '../components/Checkout/Navbar';
 import Sidebar from '../components/Checkout/Sidebar';
 import OrderForm from '../components/Form/OrderForm';
-import { shippingInfo } from '../actions/cart';
+import { shippingInfo, capnhatCart } from '../actions/cart';
 import { getDistrict } from '../actions/location';
 import { CLIENT } from '../lib/env';
 
@@ -64,8 +64,13 @@ export default class CheckoutForm extends React.Component {
   handleSubmit(data) {
     const self = this
       , { dispatch, history } = this.props;
-    dispatch(shippingInfo(data, function() {
-      history.pushState(null, '/checkout/pay-method')
+
+    dispatch(capnhatCart(function() {
+      dispatch(shippingInfo(data, function() {
+        history.pushState(null, '/checkout/pay-method')
+      }));
+    }, function() {
+      history.pushState(null, '/cart')
     }));
   }
 

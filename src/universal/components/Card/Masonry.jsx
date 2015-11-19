@@ -57,6 +57,7 @@ export default React.createClass({
             loadMore={this.loadMore}
             hasMore={hasMore}
             threshold={500}>
+            
               <Masonry
                 className="masonry" // default ''
                 elementType="div" // default 'div'

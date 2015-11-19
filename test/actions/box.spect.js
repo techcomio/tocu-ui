@@ -1,102 +1,113 @@
 import expect from 'expect';
 import Axios from 'axios';
-import {API_URL} from '../../config';
+import { applyMiddleware } from 'redux'
+import { API_URL } from '../../config';
 import * as boxActions from '../../src/universal/actions/box';
 import * as types from '../../src/universal/actions/actionsTypes';
+import promiseMiddleware from 'lib/promiseMiddleware';
+
+const middlewares = [ promiseMiddleware ];
+
+/**
+ * Creates a mock of Redux store with middleware.
+ */
+function mockStore(getState, expectedActions, done) {
+  if (!Array.isArray(expectedActions)) {
+    throw new Error('expectedActions should be an array of expected actions.')
+  }
+  if (typeof done !== 'undefined' && typeof done !== 'function') {
+    throw new Error('done should either be undefined or function.')
+  }
+
+  function mockStoreWithoutMiddleware() {
+    return {
+      getState() {
+        return typeof getState === 'function' ?
+          getState() :
+          getState;
+      },
+      dispatch(action) {
+        const expectedAction = expectedActions.shift();
+
+        try {
+          expect(action).toEqual(expectedAction);
+          if (done && !expectedActions.length) {
+            done();
+          }
+          return action
+        } catch (e) {
+          done(e);
+        }
+      }
+    };
+  }
+
+  const mockStoreWithMiddleware = applyMiddleware(
+    ...middlewares
+  )(mockStoreWithoutMiddleware);
+
+  return mockStoreWithMiddleware();
+}
 
 
-describe('actions box', () => {
-  it('should get all BOX action', async () => {
-    const fn = boxActions.getBox();
+
+describe.only('actions box', () => {
+
+  // it('should get all BOX action', async () => {
+  //   const fn = boxActions.getBox();
+  //   let data = {};
+  //   expect(fn).toBeA('function');
+  //   const dispatch = expect.createSpy();
+  //   const getState = () => ({ state: 'test' });
+  //   await fn(dispatch, getState);
+  //   await Axios.get(`${API_URL}/box`)
+  //     .then((res) => {
+  //       data = res.data;
+  //     })
+  //     .catch((res) => {
+  //       data = res.data;
+  //     });
+  //   expect(dispatch).toHaveBeenCalledWith({ type: types.BOX_LOAD_SUCCESS, data: data});
+  // });
+
+  it.only('should get all BOX action', async (done) => {
+    // const getState = () => ({ state: 'test' });
+    const getState = { state: 'test' };
     let data = {};
-    expect(fn).toBeA('function');
-    const dispatch = expect.createSpy();
-    const getState = () => ({ state: 'test' });
-    await fn(dispatch, getState);
     await Axios.get(`${API_URL}/box`)
       .then((res) => {
         data = res.data;
-      })
-      .catch((res) => {
-        data = res.data;
       });
-    expect(dispatch).toHaveBeenCalledWith({ type: types.BOX_LOAD_SUCCESS, data: data});
-  });
 
-  it('should load box action', () => {
-    const expectedAction = {
-      type: types.BOX_LOAD
-    };
-    expect(boxActions.load()).toEqual(expectedAction);
-  });
-
-  it('should loadSuccess action', () => {
-    const data = {test: 'hihi'};
-    const expectedAction = {
-      type: types.BOX_LOAD_SUCCESS
-      , data
-    };
-    expect(boxActions.loadSuccess(data)).toEqual(expectedAction);
-  });
-
-  it('should loadFail action', () => {
-    const err = { message: 'Internal server error', status: 500 };
-    const expectedAction = {
-      type: types.BOX_LOAD_FAIL
-      , err
-    };
-    expect(boxActions.loadFail(err)).toEqual(expectedAction);
+    const expectedActions = [
+      { type: types.GET_BOX_REQUEST },
+      { type: types.GET_BOX, status: 200, data }
+    ];
+    const storeRedux = mockStore(getState, expectedActions, done);
+    storeRedux.dispatch(boxActions.getBox());
   });
 
 
-  it('should get all BOX action', async () => {
-    const id = 1;
-    const fn = boxActions.getBoxIdInfo({id});
+  it('should get all BOX action', async (done) => {
+    const id = 1,
+      getState = { state: 'test' };
     let data = {};
-    expect(fn).toBeA('function');
-    const dispatch = expect.createSpy();
-    const getState = () => ({});
-    await fn(dispatch, getState);
     await Axios.get(`${API_URL}/box/${id}`)
       .then((res) => {
         data = res.data;
-      })
-      .catch((res) => {
-        data = res.data;
       });
-    expect(dispatch).toHaveBeenCalledWith({ type: types.BOX_ID_LOAD_INFO_SUCCESS, data});
-  });
 
-  it('should load boxId info action', () => {
-    const expectedAction = {
-      type: types.BOX_ID_LOAD_INFO
-    };
-    expect(boxActions.loadIdInfo()).toEqual(expectedAction);
-  });
-
-  it('should load boxId success action', () => {
-    const data = {test: 'hihi'};
-    const expectedAction = {
-      type: types.BOX_ID_LOAD_INFO_SUCCESS
-      , data
-    };
-    expect(boxActions.loadIdInfoSuccess(data)).toEqual(expectedAction);
-  });
-
-  it('should load boxId fail action', () => {
-    const err = { message: 'Internal server error', status: 500 };
-    const expectedAction = {
-      type: types.BOX_ID_LOAD_INFO_FAIL
-      , err
-    };
-    expect(boxActions.loadIdInfoFail(err)).toEqual(expectedAction);
+    const expectedActions = [
+      { type: types.GET_BOXID_INFO_REQUEST },
+      { type: types.GET_BOXID_INFO, status: 200, data }
+    ];
+    const storeRedux = mockStore(getState, expectedActions, done);
+    storeRedux.dispatch(boxActions.getBoxIdInfo({id}));
   });
 
 
   it('should get BOX skip action', async () => {
-    const id = 1;
-    const skip = 0;
-    const limit = 15;
+    const id = 1, skip = 0, limit = 15;
     const fn = boxActions.getBoxId({id, skip, limit});
     let data = {};
     let hasMore = null;
@@ -107,133 +118,35 @@ describe('actions box', () => {
     await Axios.get(`${API_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
       .then((res) => {
         data = res.data;
+        hasMore = res.data.length < limit ? false : true;
       })
       .catch((res) => {
         data = res.data;
       });
-    expect(dispatch).toHaveBeenCalledWith({type: types.BOX_ID_LOAD_SUCCESS, data: data, hasMore: false, skip: limit});
-  });
 
-  it('should load boxId skip load action', () => {
-    const expectedAction = {
-      type: types.BOX_ID_LOAD
-    };
-    expect(boxActions.getBoxIdLoad()).toEqual(expectedAction);
-  });
-
-  it('should load boxId skip success action', () => {
-    const data = {test: 'hihi'};
-    const skip = 0;
-    const hasMore = true;
-    const expectedAction = {
-      type: types.BOX_ID_LOAD_SUCCESS
-      , data
-      , skip
-      , hasMore
-    };
-    expect(boxActions.getBoxIdSuccess(data, hasMore, skip)).toEqual(expectedAction);
-  });
-
-  it('should load boxId skip fail action', () => {
-    const err = { message: 'Internal server error', status: 500 };
-    const skip = 0;
-    const expectedAction = {
-      type: types.BOX_ID_LOAD_FAIL
-      , err
-      , hasMore: false
-      , skip
-    };
-    expect(boxActions.getBoxIdFail(err, skip)).toEqual(expectedAction);
+    expect(dispatch).toHaveBeenCalledWith({type: types.GET_BOX_ID, data, hasMore, skip: limit});
   });
 
 
-  // it('should get boxId page action', async () => {
-  //   const id = 1;
-  //   const skip = 0;
-  //   const limit = 15;
-  //   const fn = boxActions.getBoxIdPage({id, skip, limit});
-  //   let data = {};
-  //   let hasMore = null;
-  //   expect(fn).toBeA('function');
-  //   const dispatch = expect.createSpy();
-  //   const getState = () => ({});
-  //   await fn(dispatch, getState);
-  //   await Axios.get(`${API_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
-  //     .then((res) => {
-  //       data = res.data;
-  //     })
-  //     .catch((res) => {
-  //       data = res.data;
-  //     });
-  //   expect(dispatch).toHaveBeenCalledWith({type: types.BOX_ID_PUSH_SUCCESS, data: data, hasMore: false, skip: limit});
-  // });
-
-  it('should load boxId page load action', () => {
-    const expectedAction = {
-      type: types.BOX_ID_PUSH_LOAD
-    };
-    expect(boxActions.getBoxIdPageLoad()).toEqual(expectedAction);
-  });
-
-  it('should load boxId page load success action', () => {
-    const data = {
-      "id": 3,
-      "name": "Áo ren, len móc Nhật",
-      "type": "product",
-      "priority": 3,
-      "createdAt": "2015-06-28T19:14:40.384Z",
-      "updatedAt": "2015-06-28T19:14:40.384Z",
-      "postsCount": 2,
-      "likesCount": 1
-    };
-    const skip = 0;
-    const hasMore = true;
-    const expectedAction = {
-      type: types.BOX_ID_PUSH_SUCCESS
-      , data
-      , skip
-      , hasMore
-    };
-    expect(boxActions.getBoxIdPageSuccess(data, hasMore, skip)).toEqual(expectedAction);
-  });
-
-  it('should load boxId page load fail action', () => {
-    const err = { message: 'Internal server error', status: 500 };
-    const skip = 0;
-    const expectedAction = {
-      type: types.BOX_ID_PUSH_FAIL
-      , err
-      , skip
-    };
-    expect(boxActions.getBoxIdPageFail(err, skip)).toEqual(expectedAction);
-  });
-
-
-  it('should count box action', async () => {
-    const fn = boxActions.count();
+  it('should get boxId page action', async () => {
+    const id = 1, skip = 0, limit = 15;
+    const fn = boxActions.getBoxIdPage({id, skip, limit});
     let data = {};
     let hasMore = null;
     expect(fn).toBeA('function');
     const dispatch = expect.createSpy();
     const getState = () => ({});
     await fn(dispatch, getState);
-    await await Axios.get(`${API_URL}/box/count`)
+    await Axios.get(`${API_URL}/product/box/${id}?skip=${skip}&limit=${limit}`)
       .then((res) => {
         data = res.data;
+        hasMore = res.data.length < limit ? false : true;
       })
       .catch((res) => {
         data = res.data;
       });
-    expect(dispatch).toHaveBeenCalledWith({type: types.BOX_COUNT, data: data});
-  });
 
-  it('should count box success action', () => {
-    const data = 15;
-    const expectedAction = {
-      type: types.BOX_COUNT
-      , data
-    };
-    expect(boxActions.countSuccess(data)).toEqual(expectedAction);
+    expect(dispatch).toHaveBeenCalledWith({type: types.BOX_ID_PUSH, data, hasMore, skip: limit});
   });
 
 });

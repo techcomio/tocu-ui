@@ -11,9 +11,9 @@ const renderer = createRenderer();
 import Test from 'components/Box/test';
 
 
-describe.only('components/test.jsx', () => {
+describe('components/test.jsx', () => {
 
-	it.only('works not salePrice', () => {
+	it('works not salePrice', () => {
 		let dataBox = fromJS({
 			id: 1,
 			description: 'test',

@@ -13,6 +13,7 @@ export default  class Item extends React.Component {
 		if(box.images && box.images[0]) {
 			img_url = box.images[0].replace(/image\//gi, 'image/230x/');
 		}
+		
 		return (
       <div className='col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3'>
         <div className="thumbnail thumbnail-masonry" >

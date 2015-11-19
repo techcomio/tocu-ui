@@ -8,6 +8,7 @@ import Sidebar from '../components/Checkout/Sidebar';
 import PayMethodForm from '../components/Form/PayMethodForm';
 import { paymentMethod } from '../actions/cart';
 import { CreateOrder } from '../actions/order';
+import { API_URL } from '../../../config';
 
 
 @connect(state => ({
@@ -93,7 +94,7 @@ export default class CheckoutPayMethod extends React.Component {
 
     dispatch(CreateOrder(dataOrder, function(data) {
       // client redirect `http://tocu-api-dev-tranduchieu.c9.io/onepay?vpc_OrderInfo=${data.id}&vpc_Amount=${data.total}&access_token=${user.get('tonken')}`
-      window.location.replace(`http://tocu-api-dev-tranduchieu.c9.io/onepay?vpc_OrderInfo=${data.id}&vpc_Amount=${data.total}&access_token=${auth.getIn(['user', 'access_token'])}`)
+      window.location.replace(`${API_URL}/onepay?vpc_OrderInfo=${data.id}&vpc_Amount=${data.total}&access_token=${auth.getIn(['user', 'access_token'])}`)
     }, function() {
       history.pushState(null, '/cart')
     }));

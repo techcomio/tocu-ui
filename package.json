@@ -11,7 +11,7 @@
     "dev": "NODE_ENV=development NODE_PATH=./src node ./server.js& npm run build:dev",
     "build:prod": "PATH_GULP=public gulp & webpack",
     "build:dev": "PATH_GULP=public gulp& gulp watch",
-    "test": "NODE_PATH=./src/universal mocha --compilers js:babel/register --require ./test/setup.js  --recursive",
+    "test": "NODE_PATH=./src/universal mocha --compilers js:babel-core/register --recursive --require ./test/setup.js",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
@@ -34,11 +34,12 @@
     "node-sass": "^3.4.1",
     "rc-chartjs": "^0.7.1",
     "react": "^0.14.2",
+    "react-addons-css-transition-group": "^0.14.2",
     "react-addons-update": "^0.14.2",
     "react-document-meta": "^2.0.0",
     "react-dom": "^0.14.2",
     "react-infinite-scroll2": "^0.1.8",
-    "react-masonry-component": "ngthorg/react-masonry-component#0514909a6344dae1ae8e5516d88864d8061a3c21",
+    "react-masonry-component": "^2.0.0",
     "react-redux": "^3.1.0",
     "react-router": "^1.0.0",
     "redux": "^3.0.4",

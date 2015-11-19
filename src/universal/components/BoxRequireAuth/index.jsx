@@ -39,7 +39,7 @@ export default class BoxRequireAuth extends React.Component {
         <div className="boxLogin">
           <div className="container">
             <div className="row row-form">
-              <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
+              <div className="col-xs-12 col-sm-7 col-md-6 col-centered" >
                 <div className="centrix">
                   <VerifyForm handleCancel={::this.hideBoxVerify}
                               onSubmit={::this.handleSubmitVerify} >

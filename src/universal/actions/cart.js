@@ -278,7 +278,7 @@ export function destroyFail(err) {
 }
 
 
-export function capnhatCart() {
+export function capnhatCart(cb, cbSuccess) {
   return (dispatch, getState) => {
     dispatch(capnhatLoad());
     const { cart, auth } = getState();
@@ -287,7 +287,7 @@ export function capnhatCart() {
     if(access_token) {
       data = {
         method: 'put'
-        , url: `${API_URL}/cart`
+        , url: `${API_URL}/cart/line`
         , headers: {
           'Authorization': `Bearer ${access_token}`
         }
@@ -301,9 +301,15 @@ export function capnhatCart() {
    Axios(data)
     .then((res) => {
       dispatch(capnhatCartSuccess(res.data));
+      if(cbSuccess) {
+        cbSuccess();
+      }
     })
     .catch((res) => {
-      dispatch(capnhatCartFail(res.data))
+      dispatch(capnhatCartFail(res.data));
+      if(cb) {
+        cb();
+      }
     });
   }
 }

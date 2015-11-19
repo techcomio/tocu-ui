@@ -62,18 +62,21 @@ export default React.createClass({
   },
 
   _onClickMua(e) {
-    const { auth } = this.props;
-    if(auth.getIn(['user', 'access_token'])) {
-      // if(auth.getIn(['user', 'isVerifyMobilePhone'])) {
-      //   this.history.pushState(null, '/checkout');
-      // } else {
-      //   this.props.verifyShow();
-      // }
-      this.history.pushState(null, '/checkout');
-      console.log('Enable verifyShow');
-    } else {
-      this.props.loginShow();
-    }
+    const self = this;
+    this.props.capnhatCart(function() {
+      const { auth } = self.props;
+      if(auth.getIn(['user', 'access_token'])) {
+        // if(auth.getIn(['user', 'isVerifyMobilePhone'])) {
+        //   self.history.pushState(null, '/checkout');
+        // } else {
+        //   self.props.verifyShow();
+        // }
+        self.history.pushState(null, '/checkout');
+        console.log('Enable verifyShow');
+      } else {
+        self.props.loginShow();
+      }
+    });
   },
 
 });
