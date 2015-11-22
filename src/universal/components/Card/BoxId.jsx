@@ -40,7 +40,10 @@ export default React.createClass({
 
   render() {
     const { box, location } = this.props;
-    const childElements = box.get('boxsId').toJS().map((post, i) => {
+    const boxs = box.get('boxsId').filter((item, i) => {
+      return item.get('status') === 'available' ? item : false;
+    })
+    const childElements = boxs.toJS().map((post, i) => {
       return (
         <BoxItem key={i} location={location} box={box.getIn(['boxsId', i])} />
       );

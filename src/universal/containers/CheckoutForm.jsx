@@ -13,12 +13,17 @@ import { CLIENT } from '../lib/env';
 
 
 @prepareRoute(async function ({ store, params, location }) {
-  const { cart } = store.getState();
+  const { cart, auth } = store.getState();
   const province = cart.getIn(["Cart", "shippingInfo", "province"]);
+  const provinceAuth = auth.getIn(['user', 'province']);
 
   if(province && CLIENT) {
     return await * [
       store.dispatch(getDistrict({province}))
+    ];
+  } else if(provinceAuth && CLIENT) {
+    return await * [
+      store.dispatch(getDistrict({province: provinceAuth}))
     ];
   }
 })

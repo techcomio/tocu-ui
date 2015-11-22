@@ -11,7 +11,7 @@ export function get() {
     type: GET_SALE
     , promise: Axios.get(`${API_URL}/product`, {
       params: {
-        filters: `salePrice!=null`,
+        filters: `salePrice!=null;status==available`,
         limit: 5
       }
     })

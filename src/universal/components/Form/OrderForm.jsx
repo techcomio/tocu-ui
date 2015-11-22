@@ -18,6 +18,7 @@ import { orderValidate } from '../../validation/orderValidation'
 @connect(state => ({
   location: state.location
   , cart: state.cart
+  , auth: state.auth
 }))
 
 export default class SignupForm extends React.Component {
@@ -36,11 +37,25 @@ export default class SignupForm extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch, cart } = this.props;
+    const { dispatch, cart, auth } = this.props;
     const shippingInfo = cart.getIn(["Cart", "shippingInfo"]);
 
     if(shippingInfo) {
-      dispatch(initialize('order', shippingInfo.toJS()));
+      setTimeout(() => {
+        dispatch(initialize('order', shippingInfo.toJS()));
+      }, 300);
+    } else {
+      const {
+        name,
+        mobilePhone,
+        province,
+        district,
+      } = auth.get('user').toJS();
+      setTimeout(() => {
+        const weight = this.getWeightCart();
+        dispatch(initialize('order', {name, phone: mobilePhone, province, district}));
+        dispatch(getPhiShip({province, district, weight}));
+      }, 300);
     }
   }
 

@@ -61,11 +61,11 @@ export default class NavbarProduct extends React.Component {
   renderBtn = () => {
     switch(this.props.product.get('status')) {
       case "available":
-        return <button onClick={::this.Cart} type="button" className="btn btn-primary btn-sm navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Mua</button>
+        return <button onClick={::this.Cart} type="button" className="btn btn-primary btn-sm navbar-btn"><i className="fa fa-shopping-cart gray">&nbsp; </i> Thêm vào giỏ</button>
       case "suspended":
-        return <button onClick={::this.Cart} type="button" className="btn btn-warning btn-sm navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
+        return <button onClick={::this.Cart} type="button" className="btn btn-warning btn-sm navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Thêm vào giỏ</button>
       default:
-        return <button onClick={::this.Cart} type="button" className="btn btn-warning btn-sm navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Mua</button>
+        return <button onClick={::this.Cart} type="button" className="btn btn-warning btn-sm navbar-btn" disabled><i className="fa fa-clock-o gray">&nbsp; </i> Thêm vào giỏ</button>
     }
   }
 

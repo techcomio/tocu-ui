@@ -40,7 +40,10 @@ export default React.createClass({
 
   render() {
     const { data, location } = this.props;
-    const childElements = data.get('product').toJS().map((post, i) => {
+    const products = data.get('product').filter((item, i) => {
+      return item.get('status') === 'available' ? item : false;
+    })
+    const childElements = products.toJS().map((post, i) => {
       return (
         <Item key={i} box={post} location={location} />
       );
@@ -57,7 +60,7 @@ export default React.createClass({
             loadMore={this.loadMore}
             hasMore={hasMore}
             threshold={500}>
-            
+
               <Masonry
                 className="masonry" // default ''
                 elementType="div" // default 'div'

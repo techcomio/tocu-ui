@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { prepareRoute } from '../decorators';
+import { CLIENT } from '../lib/env';
 import Navbar from '../components/Checkout/Navbar';
 import Sidebar from '../components/Checkout/Sidebar';
 import OrderForm from '../components/Form/OrderForm';
@@ -16,9 +17,11 @@ const meta = {
 };
 
 @prepareRoute(async function ({ store, params, location }) {
-  return await * [
-    store.dispatch(GetFinally(location.query))
-  ];
+  return CLIENT ?
+    await * [
+      store.dispatch(GetFinally(location.query))
+    ]
+    : [];
 })
 
 @connect(state => ({

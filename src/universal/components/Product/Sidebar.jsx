@@ -27,7 +27,10 @@ export default React.createClass({
 
   render: function () {
     const { Box } = this.props;
-    var childElements = this.state.posts.map(function(element, i){
+    const posts = this.state.posts.filter((item, i) => {
+      return item.status === "available" ? item : null;
+    })
+    var childElements = posts.map(function(element, i){
       let img_url = "/img/404.jpg";
       if(element.images) {
         let url = element.images[0];
