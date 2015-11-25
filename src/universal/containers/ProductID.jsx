@@ -65,7 +65,7 @@ export default class BoxID extends React.Component {
     return (
       <div>
         <DocumentMeta {...meta} />
-        <NotifsComponent/>
+        <NotifsComponent left bottom />
         <header>
           {/* Navbar */}
           <Navbar />
