@@ -28,6 +28,7 @@ export default class CheckoutPayMethod extends React.Component {
   }
 
   render() {
+    const { cart } = this.props;
     return (
       <div className="checkout">
         <div>
@@ -41,6 +42,13 @@ export default class CheckoutPayMethod extends React.Component {
           <Sidebar />
 
           <div className="body-checkout">
+            <div className="checkout-title text-center">Thông tin người nhận</div>
+            <p>{cart.getIn(['Cart', 'shippingInfo', 'name'])}</p>
+            <p>{cart.getIn(['Cart', 'shippingInfo', 'phone'])}</p>
+            <p>{cart.getIn(['Cart', 'shippingInfo', 'province'])}</p>
+            <p>{cart.getIn(['Cart', 'shippingInfo', 'district'])}</p>
+            <p>{cart.getIn(['Cart', 'shippingInfo', 'address'])}</p>
+            <p><Link to="/checkout">Sửa thông tin người nhận</Link></p>
             <PayMethodForm onSubmit={::this.handleSubmit} />
           </div>
 

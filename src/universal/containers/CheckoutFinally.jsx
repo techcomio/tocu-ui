@@ -30,7 +30,7 @@ const meta = {
 
 export default class CheckoutFinally extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
   }
 
@@ -71,7 +71,7 @@ export default class CheckoutFinally extends React.Component {
                 <h4 className="text-center">Đặt hàng thành công!</h4>
                 <div className="status text-center"><i className="fa fa-check-circle-o"></i></div>
                 <p className='finally-text text-center'>đơn hàng số #{order.getIn(['finally', 'id'])} đã được xác nhận.</p>
-                <p className='finally-text-link text-center'><Link to="/">về trang chủ.</Link></p>
+                <p className='finally-text-link text-center'><Link to="/">Về trang chủ</Link> · <Link to={`/order/${order.getIn(['finally', 'id'])}`}>Chi tiết đơn hàng</Link></p>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default class CheckoutFinally extends React.Component {
               <h4 className="text-center">Đặt hàng thất bại!</h4>
               <div className="status text-center"><i className="fa fa-times-circle-o"></i></div>
               <p className='finally-text text-center'>thanh toán không thành công.</p>
-              <p className='finally-text-link text-center'><Link to="/">về trang chủ</Link></p>
+              <p className='finally-text-link text-center'><Link to="/">Về trang chủ</Link></p>
             </div>
           </div>
         </div>

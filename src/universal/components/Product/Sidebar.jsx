@@ -66,7 +66,7 @@ export default React.createClass({
           {/* Gird item */}
           <Masonry
             className="masonry-sidebar" // default ''
-            options={{transitionDuration: 0}} // default {}
+            options={{transitionDuration: '500ms'}} // default {}
             disableImagesLoaded={false} // default false
             elementType="div" // default 'div'
             >

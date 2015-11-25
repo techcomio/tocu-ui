@@ -64,7 +64,9 @@ export default class Order extends React.Component {
                         </tr>
                       </thead>
                       <tbody>
-                        {order.getIn(['order']).map((item, i) => {
+                        {order.getIn(['order']).sortBy(item => item.get('id'), (a, b) => {
+                          return b - a;
+                        }).map((item, i) => {
                           let id = item.get('id');
                           let total = item.get('total') ? item.get('total').toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : null;
                           return (

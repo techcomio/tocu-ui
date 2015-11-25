@@ -95,13 +95,7 @@ export default class OrderDetail extends React.Component {
 												<p>{total} VNĐ</p>
 											</div>
 											<div className="col-xs-4 col-sm-3 col-md-2">
-												<p>Phí ship:</p>
-											</div>
-											<div className="col-xs-8 col-sm-9 col-md-10">
-												<p>{this.formatNumber(order.getIn(['orderID', 'shippingCost']))} VNĐ</p>
-											</div>
-											<div className="col-xs-4 col-sm-3 col-md-2">
-												<p>Thời gian:</p>
+												<p>Thời gian ship:</p>
 											</div>
 											<div className="col-xs-8 col-sm-9 col-md-10">
 												<p>{order.getIn(['orderID', 'shippingDays'])} ngày</p>

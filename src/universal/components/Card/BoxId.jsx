@@ -64,7 +64,7 @@ export default React.createClass({
               <Masonry
                 className="masonry" // default ''
                 elementType="div" // default 'div'
-                options={{transitionDuration: 0}} // default {}
+                options={{transitionDuration: '500ms'}} // default {}
                 disableImagesLoaded={true} >
                 {childElements}
               </Masonry>
