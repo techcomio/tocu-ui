@@ -31,12 +31,13 @@ export default class ProductContent extends React.Component {
   }
 
   render() {
-    const { user, cart, product, notiActions, cartActions } = this.props;
+    const { user, cart, product, notiActions, cartActions, href } = this.props;
 
     return (
       <div className="productDetail">
         <Navbar user={user}
                 cart={cart}
+                href={href}
                 notif={notiActions.notifSend}
                 product={product}
                 pushCart={cartActions.pushCart}

@@ -26,30 +26,34 @@ import BoxRequireAuth from '../components/BoxRequireAuth';
   product: state.product
 }))
 
-export default class BoxID extends React.Component {
+export default class ProductID extends React.Component {
 
 	constructor(props) {
     super(props);
   }
 
   render() {
-    const { product, dispatch } = this.props;
+    const { product, dispatch, params } = this.props;
     const Box = product.getIn(['productId', 'Box']);
     const { params: { id } } = this.props;
     const title = product.getIn(['productId', 'boxName']);
     const description = product.getIn(['productId', 'boxName']);
     const image = '';
+    const href = `http://www.tocu.vn/product/${params.id}`;
     const meta = {
       title,
       description,
       meta: {
         charSet: 'utf-8',
         property: {
+          'og:url': href,
           'og:site_name': title,
           'og:image': image,
           'og:locale': 'vi_VN',
           'og:title': title,
           'og:description': description,
+          'fb:app_id': '930339753700060',
+          'fb:admins': '100003135566240',
           'twitter:card': 'summary',
           'twitter:site': '@ngthorg',
           'twitter:creator': '@ngthorg',
@@ -80,7 +84,7 @@ export default class BoxID extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-lg-9">
-                  <Product />
+                  <Product href={href} />
 
                   {/* 6 box auto */}
                 </div>
@@ -95,10 +99,29 @@ export default class BoxID extends React.Component {
                   </div>
                 </div>
               </div>
+              <div className="row">
+                <div className="col-lg-9">
+                  <div className="productDetail" style={{padding: '10px'}}>
+                    <div className="fb-comments"
+                      data-href={href}
+                      data-width="100%"
+                      data-mobile="Auto-detected"
+                      data-colorscheme="light"
+                      data-numposts="5" />
+                  </div>
+                </div>
+              </div>
             </div>
-          ) }
-        </section>
-
+          )}
+          <div id="fb-root"></div>
+          <script dangerouslySetInnerHTML={{__html: `(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=930339753700060";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));`}} />
+          </section>
         <BoxRequireAuth />
       </div>
     );

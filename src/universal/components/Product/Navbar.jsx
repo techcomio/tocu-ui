@@ -35,7 +35,7 @@ export default class NavbarProduct extends React.Component {
   }
 
   render() {
-    const { user, product } = this.props;
+    const { user, product, href } = this.props;
     let classesNavbar = classNames({
         "navbar-product-detail": true,
         "sticky": this.state.hideHeader
@@ -46,8 +46,7 @@ export default class NavbarProduct extends React.Component {
         <div className={classesNavbar} style={{width: this.state.NavbarWidth}} >
           <nav className="navbar navbar-light navbar-tocu">
             <div className="navbar-header navbar-left">
-              <button type="button" className="btn btn-secondary btn-sm btn-like"><i className="fa fa-heart gray">&nbsp;&nbsp;</i>{this.props.product.get('likesCount')}</button>
-              <button type="button" className="btn btn-secondary btn-sm btn-share-facebook"><i className="fa fa-facebook-square gray">&nbsp;&nbsp;</i>0</button>
+              <div className="fb-share-button" data-href={href} data-layout="button_count"></div>
             </div>
             <div className="navbar-right pull-right">
               {this.renderBtn()}
