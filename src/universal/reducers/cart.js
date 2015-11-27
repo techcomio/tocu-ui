@@ -16,7 +16,6 @@ import {
   , CART_CAPNHAT_SUCCESS
   , CART_CAPNHAT_FAIL
   , CLEAR_CART
-  , ADD_CART_ID
   , SHIP_PING_INFO
   , SHIP_PING_INFO_SUCCESS
   , SHIP_PING_INFO_FAIL
@@ -28,8 +27,7 @@ import Cookies from 'cookies-js';
 import Immutable, { Map, List } from 'immutable';
 
 const initialState = new Immutable.fromJS({
-  cartId: null
-  , createLoad: false
+  createLoad: false
   , getLoad: false
   , pushLoad: false
   , destroyLoad: false
@@ -50,22 +48,21 @@ export default function counter(state = initialState, action) {
   switch (action.type) {
   case CART_CREATE_LOAD:
 		return state.merge({
-      cartId: null
-      , createLoad: true
+      createLoad: true
     	, Cart: Map()
     	, createErr: null
 		});
   case CART_CREATE_SUCCESS:
-    Cookies.set('cart', action.cartId, {expires: 2592000});
+    Cookies.set('cart', action.data.id, {expires: 2592000});
 		return state.merge({
-      cartId: action.cartId
-      , createLoad: false
+      createLoad: false
+      , Cart: Immutable.fromJS(action.data)
       , createErr: null
 		});
   case CART_CREATE_FAIL:
 		return state.merge({
-      cartId: null
-      , createLoad: false
+      createLoad: false
+      , Cart: Map()
       , createErr: action.err
 		});
   case CART_GET_LOAD:
@@ -136,12 +133,7 @@ export default function counter(state = initialState, action) {
     });
   case CLEAR_CART:
     return state.merge({
-      cartId: null
-      , Cart: Map()
-    });
-  case ADD_CART_ID:
-    return  state.merge({
-      cartId: action.id
+      Cart: Map()
     });
   case SHIP_PING_INFO:
     return state.merge({

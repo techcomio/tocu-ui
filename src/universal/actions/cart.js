@@ -17,7 +17,6 @@ import {
   , CART_CAPNHAT_SUCCESS
   , CART_CAPNHAT_FAIL
   , CLEAR_CART
-  , ADD_CART_ID
   , SHIP_PING_INFO
   , SHIP_PING_INFO_SUCCESS
   , SHIP_PING_INFO_FAIL
@@ -50,9 +49,6 @@ export function loadCard({cartId, token}) {
     await Axios(data)
       .then((res) => {
         dispatch(getCartSuccess(res.data));
-        if(cartId) {
-          dispatch(addCartId(cartId));
-        }
       })
       .catch((res) => {
         dispatch(getCartFail(res.data))
@@ -90,7 +86,7 @@ export function createCart(product) {
       })
       .then((res) => {
         dispatch(createCartSuccess(res.data));
-        dispatch(getCart());
+        dispatch(getCart({id: res.data.id}));
       })
       .catch((res) => {
         dispatch(createLoadFail(res.data));
@@ -108,7 +104,7 @@ export function createLoad() {
 export function createCartSuccess(data) {
 	return {
     type: CART_CREATE_SUCCESS
-    , cartId: data.cartId
+    , data: data
   };
 }
 
@@ -120,7 +116,7 @@ export function createLoadFail(err) {
 }
 
 
-export function getCart() {
+export function getCart({id}) {
   return (dispatch, getState) => {
     dispatch(getLoad());
     const { cart, auth } = getState();
@@ -138,7 +134,7 @@ export function getCart() {
     } else {
       data = {
         method: 'get'
-        , url: `${API_URL}/cart/${cart.get('cartId')}`
+        , url: `${API_URL}/cart/${id || cart.getIn(['Cart', 'id'])}`
       }
    }
    Axios(data)
@@ -177,32 +173,27 @@ export function pushCart(product) {
     dispatch(pushLoad());
     const { cart, auth } = getState();
     const access_token = auth.getIn(['user', 'access_token']);
-    let data = {};
-    if(access_token) {
-      data = {
-        method: 'post'
-        , url: `${API_URL}/cart/line`
-        , data: [product]
-        , headers: {
-          'Authorization': `Bearer ${access_token}`
-        }
+    let data = access_token ? {
+      method: 'post'
+      , url: `${API_URL}/cart/line`
+      , data: [product]
+      , headers: {
+        'Authorization': `Bearer ${access_token}`
       }
-    } else {
-      data = {
-        method: 'post'
-        , url: `${API_URL}/cart/line/${cart.get('cartId')}`
-        , data: [product]
-      }
-   }
-   Axios(data)
-    .then((res) => {
-      dispatch(pushCartSuccess(res.data));
-      dispatch(notifActions.notifSend({message: `Đã thêm SP ${product.code} vào Card!`, kind: 'success', dismissAfter: 3000}));
-    })
-    .catch((res) => {
-      dispatch(pushCartFail(res.data));
-      dispatch(notifActions.notifSend({message: `SP ${product.code} đã có trong Card!`, kind: 'warning', dismissAfter: 3000}));
-    });
+    } : {
+      method: 'post'
+      , url: `${API_URL}/cart/line/${cart.getIn(['Cart', 'id'])}`
+      , data: [product]
+    };
+    Axios(data)
+      .then((res) => {
+        dispatch(pushCartSuccess(res.data));
+        dispatch(notifActions.notifSend({message: `Đã thêm SP ${product.code} vào Cart!`, kind: 'success', dismissAfter: 3000}));
+      })
+      .catch((res) => {
+        dispatch(pushCartFail(res.data));
+        dispatch(notifActions.notifSend({message: `SP ${product.code} đã có trong Cart!`, kind: 'warning', dismissAfter: 3000}));
+      });
   }
 }
 
@@ -244,7 +235,7 @@ export function destroyCart({id}) {
     } else {
       data = {
         method: 'delete'
-        , url: `${API_URL}/cart/line/${id}/${cart.get('cartId')}`
+        , url: `${API_URL}/cart/line/${id}/${cart.getIn(['Cart', 'id'])}`
       }
    }
    Axios(data)
@@ -295,7 +286,7 @@ export function capnhatCart(cb, cbSuccess) {
     } else {
       data = {
         method: 'put'
-        , url: `${API_URL}/cart/line/${cart.get('cartId')}`
+        , url: `${API_URL}/cart/line/${cart.getIn(['Cart', 'id'])}`
       }
    }
    Axios(data)
@@ -338,13 +329,6 @@ export function capnhatCartFail(err) {
 export function clearCart() {
   return {
     type: CLEAR_CART
-  }
-}
-
-export function addCartId(id) {
-  return {
-    type: ADD_CART_ID
-    , id
   }
 }
 

@@ -72,7 +72,7 @@ export default class NavbarProduct extends React.Component {
   Cart() {
     const { user, cart, pushCart, createCart, product } = this.props;
     const {id, code, boxName, images, price, salePrice, weight, status} = product.toJS();
-    if(!cart.getIn(['Cart', 'lines']) && !cart.get('cartId')) {
+    if(!cart.getIn(['Cart', 'lines']) && !cart.getIn(['Cart', 'id'])) {
       createCart({id, code, boxName, imageUrl: images[0], price, salePrice, weight, quantity: 1, status});
     } else {
       pushCart({id, code, boxName, imageUrl: images[0], price, salePrice, weight, quantity: 1, status});

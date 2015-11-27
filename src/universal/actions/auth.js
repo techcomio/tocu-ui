@@ -80,7 +80,7 @@ export function logIn({mobilePhone, password, rememberme}, cb) {
         mobilePhone
         , password
         , rememberme
-        , cartId: cart.get('cartId')
+        , cartId: cart.getIn(['Cart', 'id'])
       })
       .then((res) => {
         dispatch(logInSuccess(res.data));
