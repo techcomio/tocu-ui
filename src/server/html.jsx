@@ -25,7 +25,6 @@ export default class Html extends React.Component {
           <div id="content" dangerouslySetInnerHTML={{__html: markup}}></div>
 
           <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${state};`}} />
-          <script src="/js/commons.bundle.js"></script>
           <script src="/js/bundle.js"></script>
           <script src="/js/script.js"></script>
         </body>

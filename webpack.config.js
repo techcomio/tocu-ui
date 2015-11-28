@@ -4,8 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	entry: {
-		bundle: "./src/client/index.js",
-		commons: ['react', 'react-router', 'react-redux', 'redux']
+		bundle: "./src/client/index.js"
 	},
 	output: {
 		path: __dirname + "/public",
@@ -36,7 +35,6 @@ module.exports = {
 		]
 	},
   plugins: [
-		new webpack.optimize.CommonsChunkPlugin("commons", "/js/commons.bundle.js"),
 		new ExtractTextPlugin("/css/[name].css"),
 	  new webpack.DefinePlugin({
 	  	'__DEV__': false,
