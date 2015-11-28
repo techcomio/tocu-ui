@@ -39,29 +39,21 @@ export default class ProductID extends React.Component {
     const title = product.getIn(['productId', 'boxName']);
     const description = product.getIn(['productId', 'boxName']);
     const image = '';
-    const href = `http://www.tocu.vn/product/${params.id}`;
+    const href = `http://tocu.vn/product/${params.id}`;
     const meta = {
       title,
       description,
       meta: {
         charSet: 'utf-8',
         property: {
-          'og:url': href,
-          'og:site_name': title,
+          'og:type': 'article',
+          'og:title': title,
           'og:image': image,
           'og:locale': 'vi_VN',
-          'og:title': title,
+          'og:site_name': 'Tổ Cú',
           'og:description': description,
           'fb:app_id': '930339753700060',
-          'fb:admins': '100003135566240',
-          'twitter:card': 'summary',
-          'twitter:site': '@ngthorg',
-          'twitter:creator': '@ngthorg',
-          'twitter:title': title,
-          'twitter:description': description,
-          'twitter:image': image,
-          'twitter:image:width': '200',
-          'twitter:image:height': '200'
+          'fb:admins': '100003135566240'
         }
       }
     };

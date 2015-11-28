@@ -11,12 +11,6 @@ import ThumbBox from '../components/Card/ThumbBox';
 import Header from '../components/Header/Home';
 
 
-const title = 'Tocu';
-
-const meta = {
-  title,
-};
-
 @prepareRoute(async function ({ store, params, location }) {
   if(CLIENT) {
     return await * [
@@ -41,10 +35,10 @@ export default class Box extends React.Component {
 
     return (
       <div>
-        <DocumentMeta {...meta} extend />
+        <DocumentMeta extend />
         <Header />
         <section id="home-content" className="container">
-          <ThumbBox />
+          <ThumbBox box={box} />
 
           {box.get('boxsLoad') && (
             <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>

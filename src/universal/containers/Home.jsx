@@ -21,15 +21,15 @@ const meta = {
   meta: {
     charSet: 'utf-8',
     property: {
-      'og:site_name': title,
+      'og:url': 'http://tocu.vn',
+      'og:type': 'website', // article
+      'og:title': title,
       'og:image': image,
       'og:locale': 'vi_VN',
-      'og:title': title,
+      'og:site_name': 'Tổ Cú',
       'og:description': description,
-      'og:price:amount': '2.50',
-      'og:price:currency': 'USD',
-      'twitter:site': '@ngthorg',
-      'twitter:title': title,
+      'fb:app_id': '930339753700060',
+      'fb:admins': '100003135566240',
     }
   }
 };

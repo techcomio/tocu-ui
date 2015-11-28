@@ -1,30 +1,29 @@
 'use strict';
-import React, { PropTypes } from 'react';
-import classNames from 'classnames';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import Thumbnail from './thumbnail';
 
 
-@connect(state => ({
-  boxs: state.box
-  , user: state.auth.get('user')
-}))
-
 export default class ThumbBox extends React.Component {
 
+  static propTypes = {
+    box: ImmutablePropTypes.shape({
+      boxs: ImmutablePropTypes.list.isRequired
+    }).isRequired
+  }
+
   render() {
-    const { boxs, user } = this.props;
+    const { box } = this.props;
 
     return (
       <div className="row row-thumbnail">
-        {boxs.get('boxs').map((box, i) => (
+        {box.get('boxs').map((item, i) => (
           <div key={i} className="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <Thumbnail auth={user} box={box} />
+            <Thumbnail box={item} />
           </div>
         ))}
       </div>
     );
   }
 
-};
+}

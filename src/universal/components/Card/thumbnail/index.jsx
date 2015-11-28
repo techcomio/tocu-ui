@@ -1,7 +1,7 @@
 'use strict';
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import Immutable from 'immutable';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import ArticleItem from './ArticleItem';
 import AlbumItem   from './AlbumItem';
 import ProductItem from './ProductItem';
@@ -10,14 +10,23 @@ import ProductItem from './ProductItem';
 export default class Thumbnail extends React.Component {
 
   static propTypes = {
-    box: PropTypes.instanceOf(Immutable.Map).isRequired
-    , auth: PropTypes.instanceOf(Immutable.Map).isRequired
+    // box: PropTypes.instanceOf(Immutable.Map).isRequired
+    box: ImmutablePropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      type: PropTypes.oneOf(['product', 'article', 'photo']),
+      latestPosts: ImmutablePropTypes.listOf(ImmutablePropTypes.shape({
+        code: PropTypes.string.isRequired,
+        images: ImmutablePropTypes.list.isRequired,
+        price: PropTypes.number.isRequired
+      }))
+    }).isRequired
   }
 
   render() {
     const { box } = this.props;
-    let img_url = "http://api.tocu.vn/image/220x220/404.jpg";
-    let type = "";
+    let img_url = 'http://api.tocu.vn/image/220x220/404.jpg';
+    let type = '';
     let ListPost = box.get('latestPosts').toJS().map((post, i) => {
       /**
        * lấy link ảnh của bài post đầu tiên
@@ -57,9 +66,7 @@ export default class Thumbnail extends React.Component {
               </div>
               <div className="newsText newsInfo">
                 <p className="creditTitle"></p>
-                <p>
-                  <strong className="creditCost"></strong>
-                </p>
+                <p><strong className="creditCost"></strong></p>
               </div>
             </div>
           </div>
@@ -82,7 +89,7 @@ export default class Thumbnail extends React.Component {
       <div className="thumbnail">
         <Link to={`/box/${box.get('id')}`}>
           <div className="img-Wrapper">
-            <img className="img-max-height" data-holder-rendered="true" src={img_url} alt="images" />
+            <img className="img-max-height" src={img_url} alt="images" />
             <div className="divshowdow"></div>
           </div>
           <div className="thumbnail-list-news">
