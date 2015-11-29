@@ -11,9 +11,9 @@ export default  class Item extends React.Component {
 		let price = box.price ? box.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';
 		let salePrice = box.salePrice ? box.salePrice.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : null;
 		if(box.images && box.images[0]) {
-			img_url = box.images[0].replace(/image\//gi, 'image/230x/');
+			img_url = box.images[0].replace(/\.(jpg|jpeg|png|gif)$/, '-230x.$1');
 		}
-		
+
 		return (
       <div className='col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3'>
         <div className="thumbnail thumbnail-masonry" >

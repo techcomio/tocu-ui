@@ -1,13 +1,14 @@
 'use strict';
 import React, { PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import Navbar from '../components/Checkout/Navbar';
 import Sidebar from '../components/Checkout/Sidebar';
 import PayMethodForm from '../components/Form/PayMethodForm';
-import { paymentMethod } from '../actions/cart';
-import { CreateOrder } from '../actions/order';
+import { capnhatCartExport } from '../actions/cart';
+import { CreateOrderExport } from '../actions/order';
 import { API_URL } from '../../../config';
 
 
@@ -15,6 +16,9 @@ import { API_URL } from '../../../config';
   cart: state.cart,
   auth: state.auth,
   order: state.order
+}), dispatch => ({
+  capnhatCartExport: bindActionCreators(capnhatCartExport, dispatch),
+  CreateOrderExport: bindActionCreators(CreateOrderExport, dispatch)
 }))
 
 export default class CheckoutPayMethod extends React.Component {
@@ -59,8 +63,8 @@ export default class CheckoutPayMethod extends React.Component {
 
   handleSubmit(data) {
     const self = this
-      , { dispatch, history, cart, auth, order } = this.props;
-    // dispatch(paymentMethod(data.shipping));
+      , { capnhatCartExport, CreateOrderExport, history, cart, auth, order } = this.props;
+
     var total = 0,
       subTotal = 0,
       totalWeight = 0,
@@ -100,12 +104,20 @@ export default class CheckoutPayMethod extends React.Component {
       "OrderLines": OrderLines
     }
 
-    dispatch(CreateOrder(dataOrder, function(data) {
-      // client redirect `http://tocu-api-dev-tranduchieu.c9.io/onepay?vpc_OrderInfo=${data.id}&vpc_Amount=${data.total}&access_token=${user.get('tonken')}`
-      window.location.replace(`${API_URL}/onepay?vpc_OrderInfo=${data.id}&vpc_Amount=${data.total}&access_token=${auth.getIn(['user', 'access_token'])}`)
-    }, function() {
-      history.pushState(null, '/cart')
-    }));
+    capnhatCartExport()
+      .then((res) => {
+        console.log('then capnhat Cart')
+      })
+      .catch((res) => {
+        CreateOrderExport(dataOrder)
+          .then((res) => {
+            // client redirect `http://tocu-api-dev-tranduchieu.c9.io/onepay?vpc_OrderInfo=${data.id}&vpc_Amount=${data.total}&access_token=${user.get('tonken')}`
+            window.location.replace(`${API_URL}/onepay?vpc_OrderInfo=${res.data.id}&vpc_Amount=${res.data.total}&access_token=${auth.getIn(['user', 'access_token'])}`);
+          })
+          .catch((res) => {
+            history.pushState(null, '/cart');
+          });
+      });
   }
 };
 

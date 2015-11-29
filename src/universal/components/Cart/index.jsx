@@ -1,5 +1,6 @@
 'use strict';
 import React, { PropTypes } from 'react';
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Link } from 'react-router';
@@ -13,8 +14,7 @@ import Navbar from './Navbar';
   cart: state.cart
   , auth: state.auth
 }), dispatch => ({
-  capnhatCart: (cd) => dispatch(cartAction.capnhatCart(cd))
-  , destroyCart: ({id}) => dispatch(cartAction.destroyCart({id}))
+  cartActions: bindActionCreators(cartAction, dispatch)
   , loginShow: () => dispatch(boxRequireAuth.loginShow())
   , verifyShow: () => dispatch(boxRequireAuth.verifyShow())
 }))
@@ -22,14 +22,14 @@ import Navbar from './Navbar';
 export default class CartContent extends React.Component {
 
   render() {
-    const { auth, capnhatCart, loginShow, verifyShow } = this.props;
+    const { auth, cartActions, loginShow, verifyShow } = this.props;
 
     return (
       <div className="cart">
         <Navbar auth={auth}
               loginShow={loginShow}
               verifyShow={verifyShow}
-              capnhatCart={capnhatCart} />
+              cartActions={cartActions} />
 
         <div className="cart-table">
           <div className="table-responsive">
@@ -81,7 +81,7 @@ export default class CartContent extends React.Component {
         let url = item.imageUrl
           , imgUrl;
         if(url) {
-          imgUrl = url.replace(/image\//gi, 'image/50x50/');
+          imgUrl = url.replace(/\.(jpg|jpeg|png|gif)$/, '-50x50.$1');
         }
 
         let price = null;
@@ -149,7 +149,7 @@ export default class CartContent extends React.Component {
   }
 
   _onClickDestroy(id) {
-    this.props.destroyCart({id});
+    this.props.cartActions.destroyCart({id});
   }
 
   getTotalCart() {

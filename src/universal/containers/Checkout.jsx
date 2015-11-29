@@ -73,7 +73,5 @@ Checkout.onEnter = store => {
     if (!auth.getIn(['user', 'access_token']) || !(cart.getIn(['Cart', 'lines']) && cart.getIn(['Cart', 'lines']).size)) {
       replaceState(null, '/cart');
     }
-    // console.log(cart.getIn(['Cart', 'lines']).toJS())
-    // console.log('onEnter');
   };
 }

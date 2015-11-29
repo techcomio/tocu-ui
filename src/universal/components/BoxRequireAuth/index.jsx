@@ -1,12 +1,15 @@
 'use strict';
+import Axios from 'axios';
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { logIn, getVerify } from '../../actions/auth';
+import { logInLoad, logInSuccess, logInFail, verifyLoad, verifySuccess, verifyFail } from '../../actions/auth';
+import { getCart } from '../../actions/cart';
 import { loginHide, verifyHide } from '../../actions/boxRequireAuth';
 import LoginForm from '../Form/LoginForm';
 import VerifyForm from '../Form/VerifyForm';
+import { API_URL } from '../../../../config';
 
 
 @connect(state => ({
@@ -58,10 +61,22 @@ export default class BoxRequireAuth extends React.Component {
 
   async handleSubmitLogin(data) {
     const { dispatch } = this.props;
-    await dispatch(logIn({...data}, function() {
-      // đăng nhập thành công thì Hide box login.
-      dispatch(loginHide());
-    }));
+    await dispatch(async (_, getState) => {
+      dispatch(logInLoad());
+      const { cart } = getState();
+      await Axios.post(`${API_URL}/token`, {
+          ...data
+          , cartId: cart.getIn(['Cart', 'id'])
+        })
+        .then((res) => {
+          dispatch(logInSuccess(res.data));
+          dispatch(getCart({}));
+          dispatch(loginHide());
+        })
+        .catch((res) => {
+          dispatch(logInFail(res.data));
+        });
+    });
     dispatch(initialize('login', {})); // clear form
   }
 
@@ -72,10 +87,23 @@ export default class BoxRequireAuth extends React.Component {
 
   handleSubmitVerify(data) {
     const { dispatch } = this.props;
-    dispatch(getVerify(data, function() {
-      // xác thực thành công thì Hide box Verify.
-      dispatch(verifyHide());
-    }));
+
+    dispatch((_, getState) => {
+      dispatch(verifyLoad());
+      const { auth } = getState();
+      const access_token = auth.getIn(['user', 'access_token']);
+      Axios.get(`${API_URL}/user/verify/${data.code}`, {
+        headers: { 'Authorization': `Bearer ${access_token}` }
+      })
+      .then((res) => {
+        dispatch(verifySuccess(res.data));
+        // xác thực thành công thì Hide box Verify.
+        dispatch(verifyHide());
+      })
+      .catch((res) => {
+        dispatch(verifyFail(res.data));
+      });
+    });
   }
 
   hideBoxVerify() {

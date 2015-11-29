@@ -28,28 +28,6 @@ export function loadAuth({token}) {
 }
 
 
-export function createAuth({name, password, mobilePhone, city, district}, cb) {
-  return async (dispatch, getState) => {
-    dispatch(createLoad());
-    await Axios.post(`${API_URL}/user`, {
-      name
-      , password
-      , mobilePhone
-      , city
-      , district
-    })
-    .then((res) => {
-      dispatch(createAuthSuccess(res.data));
-      if(cb) {
-        cb();
-      }
-    })
-    .catch((res) => {
-      dispatch(createAuthFail(res.data));
-    })
-  }
-}
-
 export function createLoad() {
   return {
     type: CREATE_AUTH_LOAD
@@ -70,28 +48,6 @@ export function createAuthFail(err) {
   }
 }
 
-
-export function logIn({mobilePhone, password, rememberme}, cb) {
-  return async (dispatch, getState) => {
-    dispatch(logInLoad());
-    const { cart } = getState();
-
-    await Axios.post(`${API_URL}/token`, {
-        mobilePhone
-        , password
-        , rememberme
-        , cartId: cart.getIn(['Cart', 'id'])
-      })
-      .then((res) => {
-        dispatch(logInSuccess(res.data));
-        cb();
-        dispatch(getCart());
-      })
-      .catch((res) => {
-        dispatch(logInFail(res.data));
-      });
-  }
-}
 
 export function logInLoad() {
   return {
@@ -142,24 +98,6 @@ export function getCode() {
   }
 }
 
-
-export function getVerify({code}, cb) {
-  return async (dispatch, getState) => {
-    dispatch(verifyLoad());
-    const { auth } = getState();
-    const access_token = auth.getIn(['user', 'access_token']);
-    await Axios.get(`${API_URL}/user/verify/${code}`, {
-      headers: { 'Authorization': `Bearer ${access_token}` }
-    })
-    .then((res) => {
-      dispatch(verifySuccess(res.data));
-      cb();
-    })
-    .catch((res) => {
-      dispatch(verifyFail(res.data));
-    });
-  }
-}
 
 export function verifyLoad() {
   return {

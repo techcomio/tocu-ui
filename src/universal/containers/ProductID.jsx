@@ -34,7 +34,7 @@ export default class ProductID extends React.Component {
 
   render() {
     const { product, dispatch, params } = this.props;
-    const Box = product.getIn(['productId', 'Box']);
+    const ProductId = product.getIn(['productId']);
     const { params: { id } } = this.props;
     const title = product.getIn(['productId', 'boxName']);
     const description = product.getIn(['productId', 'boxName']);
@@ -83,7 +83,7 @@ export default class ProductID extends React.Component {
 
                 <div className="col-lg-3">
                   <div className='row row-sidebar'>
-                    {Box && <Sidebar Box={Box} />}
+                    {ProductId && <Sidebar ProductId={ProductId} />}
 
                     <div className="col-md-12 col-lg-12">
                       <Sale />

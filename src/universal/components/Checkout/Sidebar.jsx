@@ -103,7 +103,7 @@ export default class SiderbarCheckout extends React.Component {
         let url = item.get('imageUrl')
           , imgUrl;
         if(url) {
-          imgUrl = url.replace(/image\//gi, 'image/50x50/');
+          imgUrl = url.replace(/\.(jpg|jpeg|png|gif)$/, '-50x50.$1');
         }
 
         let price = null;

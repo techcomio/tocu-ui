@@ -15,9 +15,9 @@ export default React.createClass({
 
   componentDidMount() {
     const self = this,
-      boxId = this.props.Box.get('id');
+      BoxId = this.props.ProductId.get('BoxId');
 
-    Axios.get(`${API_URL}/product/box/${boxId}?skip=${0}&limit=${15}`)
+    Axios.get(`${API_URL}/product/box/${BoxId}?skip=${0}&limit=${15}`)
       .then((res) => {
         self.setState({
           posts: res.data
@@ -26,7 +26,7 @@ export default React.createClass({
   },
 
   render: function () {
-    const { Box } = this.props;
+    const { ProductId } = this.props;
     const posts = this.state.posts.filter((item, i) => {
       return item.status === "available" ? item : null;
     })
@@ -34,7 +34,7 @@ export default React.createClass({
       let img_url = "/img/404.jpg";
       if(element.images) {
         let url = element.images[0];
-        img_url = url.replace(/image\//gi, 'image/100x/');
+        img_url = url.replace(/\.(jpg|jpeg|png|gif)$/, '-100x.$1');
       }
 
       return (
@@ -58,7 +58,7 @@ export default React.createClass({
                 {this.renderIcon()}
               </div>
               <div className="titleBox">
-                <span>{Box.get('name')}</span>
+                <span>{ProductId.get('boxName')}</span>
               </div>
             </div>
           </nav>
@@ -68,11 +68,8 @@ export default React.createClass({
             className="masonry-sidebar" // default ''
             options={{transitionDuration: '500ms'}} // default {}
             disableImagesLoaded={false} // default false
-            elementType="div" // default 'div'
-            >
-
+            elementType="div" >
             {childElements}
-
           </Masonry>
 
         </div>
@@ -81,7 +78,7 @@ export default React.createClass({
   },
 
   renderIcon() {
-    switch(this.props.Box.get('type')) {
+    switch(this.props.ProductId.get('type')) {
       case "product":
         return <span className="imgIcon imgIcon-list imgIcon-store" />;
       case "article":

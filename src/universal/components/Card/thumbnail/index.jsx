@@ -25,7 +25,7 @@ export default class Thumbnail extends React.Component {
 
   render() {
     const { box } = this.props;
-    let img_url = 'http://api.tocu.vn/image/220x220/404.jpg';
+    let img_url = 'https://image-server-tranduchieu.c9users.io/404-220x220.jpg';
     let type = '';
     let ListPost = box.get('latestPosts').toJS().map((post, i) => {
       /**
@@ -33,7 +33,7 @@ export default class Thumbnail extends React.Component {
        */
       if(i === 0 && post.images) {
         let url = post.images[0];
-        img_url = url.replace(/image\//gi, 'image/220x220/');
+        img_url = url.replace(/\.(jpg|jpeg|png|gif)$/, '-220x220.$1');
       }
       /**
        * format number to String 250000 => "250.000"

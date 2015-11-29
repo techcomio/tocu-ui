@@ -10,7 +10,7 @@ import { signupValidate } from '../../validation/signupValidation'
 
 @connectReduxForm({
   form: 'signup'
-  , fields: ['name', 'mobilePhone', 'password', 'city', 'district']
+  , fields: ['name', 'mobilePhone', 'password', 'province', 'district']
   , validate: signupValidate
 })
 
@@ -36,7 +36,7 @@ export default class SignupForm extends React.Component {
 
   render() {
     const {
-      fields: {name, mobilePhone, password, city, district}
+      fields: { name, mobilePhone, password, province, district }
       , handleSubmit
       , valid
       , auth
@@ -98,7 +98,7 @@ export default class SignupForm extends React.Component {
               <label />
               <div className="row">
                 <div className="col-xs-6">
-                  <select className="form-control form-control-sm" {...city} onChange={this.handleCityChange.bind(this, city)} >
+                  <select className="form-control form-control-sm" {...province} onChange={this.handleProvinceChange.bind(this, province)} >
                     <option value="">Tỉnh Thành</option>
                     {this.props.location.get('city').map(function(city, i) {
         			      	return <option key={i} value={city}>{city}</option>
@@ -140,10 +140,10 @@ export default class SignupForm extends React.Component {
     );
   }
 
-  handleCityChange(city, e) {
-    city.handleChange(e);
+  handleProvinceChange(province, e) {
+    province.handleChange(e);
     const { dispatch } = this.props;
     const text = e.target.value.trim();
-    dispatch(getDistrict({city: text}));
+    dispatch(getDistrict({province: text}));
   }
 }

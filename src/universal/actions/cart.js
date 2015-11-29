@@ -73,7 +73,7 @@ export function createCart(product) {
       })
       .then((res) => {
         dispatch(createCartSuccess(res.data));
-        dispatch(getCart());
+        dispatch(getCart({}));
       })
       .catch((res) => {
         dispatch(createLoadFail(res.data));
@@ -305,6 +305,38 @@ export function capnhatCart(cb, cbSuccess) {
   }
 }
 
+export function capnhatCartExport() {
+  return (dispatch, getState) => {
+    dispatch(capnhatLoad());
+    const { cart, auth } = getState();
+    const access_token = auth.getIn(['user', 'access_token']);
+    let data = {};
+    if(access_token) {
+      data = {
+        method: 'put'
+        , url: `${API_URL}/cart/line`
+        , headers: {
+          'Authorization': `Bearer ${access_token}`
+        }
+      }
+    } else {
+      data = {
+        method: 'put'
+        , url: `${API_URL}/cart/line/${cart.getIn(['Cart', 'id'])}`
+      }
+    }
+    return Axios(data)
+      .then((res) => {
+        dispatch(capnhatCartSuccess(res.data));
+        return res;
+      })
+      .catch((res) => {
+        dispatch(capnhatCartFail(res.data));
+        throw res;
+      });
+  }
+}
+
 export function capnhatLoad() {
   return {
     type: CART_CAPNHAT_LOAD
@@ -333,12 +365,12 @@ export function clearCart() {
 }
 
 
-export function shippingInfo(data, cb) {
+export function shippingInfoExport(data) {
   return (dispatch, getState) => {
     dispatch(shippingInfoLoad());
     const { auth } = getState();
     const access_token = auth.getIn(['user', 'access_token']);
-    Axios({
+    return Axios({
       method: 'put'
       , url: `${API_URL}/cart/checkout`
       , data: {shippingInfo: data}
@@ -348,10 +380,11 @@ export function shippingInfo(data, cb) {
     })
     .then((res) => {
       dispatch(shippingInfoSucess(res.data));
-      cb();
+      return res;
     })
     .catch((res) => {
       dispatch(shippingInfoFail(res.data));
+      throw res;
     });
   }
 }

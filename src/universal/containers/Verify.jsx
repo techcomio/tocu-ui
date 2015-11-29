@@ -1,16 +1,18 @@
 'use strict';
+import Axios from 'axios';
 import React, { PropTypes } from 'react';
 import DocumentMeta from 'react-document-meta';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { initialize } from 'redux-form';
 import { Link } from 'react-router';
-import { getVerify } from '../actions/auth';
+import { verifyLoad, verifySuccess, verifyFail } from '../actions/auth';
 import VerifyForm from '../components/Form/VerifyForm';
+import { API_URL } from '../../../config';
 
 
 const meta = {
-  title: 'Xác thực - Tocu'
+  title: 'Xác thực - Tổ Cú'
 };
 
 @connect(state => ({
@@ -34,10 +36,9 @@ export default class Verify extends React.Component {
 
         <div className="row row-form">
           <div className="col-xs-12 col-sm-7 col-md-5 col-centered" >
-
-            <VerifyForm handleCancel={this.handleCancel}
-                        onSubmit={::this.handleSubmit} />
-
+            <VerifyForm
+              handleCancel={this.handleCancel}
+              onSubmit={::this.handleSubmit} />
           </div>
         </div>
 
@@ -48,9 +49,22 @@ export default class Verify extends React.Component {
   handleSubmit(data) {
     const self = this;
     const { dispatch } = this.props;
-    dispatch(getVerify(data, function() {
-      self.handleCancel();
-    }));
+
+    dispatch((_, getState) => {
+      dispatch(verifyLoad());
+      const { auth } = getState();
+      const access_token = auth.getIn(['user', 'access_token']);
+      Axios.get(`${API_URL}/user/verify/${data.code}`, {
+        headers: { 'Authorization': `Bearer ${access_token}` }
+      })
+      .then((res) => {
+        dispatch(verifySuccess(res.data));
+        self.handleCancel();
+      })
+      .catch((res) => {
+        dispatch(verifyFail(res.data));
+      });
+    });
   }
 
   handleCancel = () => {

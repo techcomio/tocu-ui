@@ -26,13 +26,13 @@ export function getPhiShip({province, district, weight}) {
 }
 
 
-export function CreateOrder(data, cb, cbErr) {
-  return async (dispatch, getState) => {
+export function CreateOrderExport(data) {
+  return (dispatch, getState) => {
     dispatch(orderLoad());
     const { auth } = getState();
     const access_token = auth.getIn(['user', 'access_token']);
 
-    await Axios({
+    return Axios({
         method: 'post'
         , url: `${API_URL}/order`
         , data: data
@@ -42,11 +42,11 @@ export function CreateOrder(data, cb, cbErr) {
       })
       .then((res) => {
         dispatch(orderSuccess(res.data));
-        if(cb) cb(res.data);
+        return res;
       })
       .catch((res) => {
         dispatch(orderFail(res.data));
-        if(cbErr) cbErr();
+        throw res;
       });
   }
 }

@@ -2,12 +2,13 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { prepareRoute } from '../decorators';
 import Navbar from '../components/Checkout/Navbar';
 import Sidebar from '../components/Checkout/Sidebar';
 import OrderForm from '../components/Form/OrderForm';
-import { shippingInfo, capnhatCart } from '../actions/cart';
+import * as cartAction from '../actions/cart';
 import { getDistrict } from '../actions/location';
 import { CLIENT } from '../lib/env';
 
@@ -30,6 +31,8 @@ import { CLIENT } from '../lib/env';
 
 @connect(state => ({
   cart: state.cart
+}), dispatch => ({
+  cartActions: bindActionCreators(cartAction, dispatch)
 }))
 
 export default class CheckoutForm extends React.Component {
@@ -68,15 +71,21 @@ export default class CheckoutForm extends React.Component {
 
   handleSubmit(data) {
     const self = this
-      , { dispatch, history } = this.props;
+      , { cartActions, history } = this.props;
 
-    dispatch(capnhatCart(function() {
-      dispatch(shippingInfo(data, function() {
-        history.pushState(null, '/checkout/pay-method')
-      }));
-    }, function() {
-      history.pushState(null, '/cart')
-    }));
+    cartActions.capnhatCartExport()
+      .then((res) => {
+        history.pushState(null, '/cart');
+      })
+      .catch((res) => {
+        cartActions.shippingInfoExport(data)
+          .then((res) => {
+            history.pushState(null, '/checkout/pay-method');
+          })
+          .catch((res) => {
+            console.error('catch shippingInfo');
+          });
+      });
   }
 
 };

@@ -27,7 +27,7 @@ export default class ImgSlide extends React.Component {
                 if(current === i) {
                   classSes = "active";
                 }
-                let img_url = url.replace(/image\//gi, 'image/x468/');
+                let img_url = url.replace(/\.(jpg|jpeg|png|gif)$/, '-x468.$1');
                 return (
                   <li key={i} className={classSes}><figure><img onClick={this.ShowLightBox.bind(this, i)} src={img_url} /></figure></li>
                 )
@@ -55,7 +55,7 @@ export default class ImgSlide extends React.Component {
               if(current === i) {
                 classSes = "active";
               }
-              let img_url = url.replace(/image\//gi, 'image/90x60/');
+              let img_url = url.replace(/\.(jpg|jpeg|png|gif)$/, '-90x60.$1');
               return (
                 <li key={i} className={classSes}><figure><img src={img_url} onClick={this.handleClickSlideTab.bind(this, i)}/></figure></li>
               )

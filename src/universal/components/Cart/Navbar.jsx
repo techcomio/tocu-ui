@@ -58,25 +58,45 @@ export default React.createClass({
   },
 
   onClickCapNhat(e) {
-    this.props.capnhatCart();
+    this.props.cartActions.capnhatCart();
   },
 
   _onClickMua(e) {
     const self = this;
-    this.props.capnhatCart(function() {
-      const { auth } = self.props;
-      if(auth.getIn(['user', 'access_token'])) {
-        // if(auth.getIn(['user', 'isVerifyMobilePhone'])) {
-        //   self.history.pushState(null, '/checkout');
-        // } else {
-        //   self.props.verifyShow();
-        // }
-        self.history.pushState(null, '/checkout');
-        console.log('Enable verifyShow');
-      } else {
-        self.props.loginShow();
-      }
-    });
+    // this.props.capnhatCart(function() {
+    //   const { auth } = self.props;
+    //   if(auth.getIn(['user', 'access_token'])) {
+    //     // if(auth.getIn(['user', 'isVerifyMobilePhone'])) {
+    //     //   self.history.pushState(null, '/checkout');
+    //     // } else {
+    //     //   self.props.verifyShow();
+    //     // }
+    //     self.history.pushState(null, '/checkout');
+    //     console.log('Enable verifyShow');
+    //   } else {
+    //     self.props.loginShow();
+    //   }
+    // });
+    this.props.cartActions.capnhatCartExport()
+      .then((res) => {
+      })
+      .catch((res) => {
+        const { auth } = self.props;
+        if(res.status === 304) {
+          if(auth.getIn(['user', 'access_token'])) {
+            // if(auth.getIn(['user', 'isVerifyMobilePhone'])) {
+            //   self.history.pushState(null, '/checkout');
+            // } else {
+            //   self.props.verifyShow();
+            // }
+            self.history.pushState(null, '/checkout');
+            console.log('Enable verifyShow');
+          } else {
+            self.props.loginShow();
+          }
+        }
+        // this.props.cartActions.capnhatCartFail(res.data);
+      });
   },
 
 });

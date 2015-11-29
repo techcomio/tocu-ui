@@ -24,7 +24,7 @@ export default class Sale extends React.Component {
 
         		if(item.images[0]) {
 			        let url = item.images[0];
-			        img_url = url.replace(/image\//gi, 'image/50x50/');
+			        img_url = url.replace(/\.(jpg|jpeg|png|gif)$/, '-50x50.$1');
 			      }
 			      price = item.price.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.');
 			      price_sale = item.salePrice ? item.salePrice.toString().replace(/(?:(^\d{1,3})(?=(?:\d{3})*$)|(\d{3}))(?!$)/mg, '$1$2.') : '0';

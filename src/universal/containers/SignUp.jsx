@@ -1,4 +1,5 @@
 'use strict';
+import Axios from 'axios';
 import React, { PropTypes } from 'react';
 import DocumentMeta from 'react-document-meta';
 import { bindActionCreators } from 'redux';
@@ -7,9 +8,9 @@ import { initialize } from 'redux-form';
 import { Link } from 'react-router';
 import { prepareRoute } from '../decorators';
 import { getCity } from '../actions/location';
-import { createAuth } from '../actions/auth';
+import { createLoad, createAuthSuccess, createAuthFail } from '../actions/auth';
 import SignUpForm from '../components/Form/SignUpForm';
-
+import { API_URL } from '../../../config';
 
 const meta = {
   title: 'SignUp - Tocu'
@@ -55,14 +56,24 @@ export default class SignUp extends React.Component {
 
   async handleSubmit(data) {
     const { dispatch, location, history } = this.props;
-    await dispatch(createAuth(data, function() {
-      // nếu đăng ký thành công, chuyển hướng đến xác thực!
-      if (location.query && location.query.NextPath) {
-        history.replaceState({NextPath: location.query.NextPath}, '/verify');
-      } else {
-        history.replaceState(null, '/verify');
-      }
-    }));
+    await dispatch(async (_, getState) => {
+      dispatch(createLoad());
+      await Axios.post(`${API_URL}/user`, {
+        ...data
+      })
+      .then((res) => {
+        dispatch(createAuthSuccess(res.data));
+        // nếu đăng ký thành công, chuyển hướng đến xác thực!
+        if (location.query && location.query.NextPath) {
+          history.replaceState({NextPath: location.query.NextPath}, '/verify');
+        } else {
+          history.replaceState(null, '/verify');
+        }
+      })
+      .catch((res) => {
+        dispatch(createAuthFail(res.data));
+      });
+    });
     dispatch(initialize('signup', {...data, password: ''})); // clear password
   }
 

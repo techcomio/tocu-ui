@@ -15,7 +15,7 @@ export default class ProductItem extends React.Component {
     let images = null;
     if(this.props.i !== 0 && this.props.images) {
       const url = this.props.images[0];
-      const img_url = url.replace(/image\//gi, 'image/50x50/');
+      const img_url = url.replace(/\.(jpg|jpeg|png|gif)$/, '-50x50.$1');
       images = <img src={img_url} />
     }
 
