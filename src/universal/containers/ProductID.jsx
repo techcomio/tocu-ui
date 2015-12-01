@@ -92,7 +92,15 @@ export default class ProductID extends React.Component {
                 <div className="col-lg-9">
                   <Product href={href} />
 
-                  {/* 6 box auto */}
+                  {/* facebook comments plugin */}
+                  <div className="productDetail" style={{padding: '10px'}}>
+                    <div className="fb-comments"
+                      data-href={href}
+                      data-width="100%"
+                      data-mobile="Auto-detected"
+                      data-colorscheme="light"
+                      data-numposts="5" />
+                  </div>
                 </div>
 
                 <div className="col-lg-3">
@@ -102,18 +110,6 @@ export default class ProductID extends React.Component {
                     <div className="col-md-12 col-lg-12">
                       <Sale />
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-9">
-                  <div className="productDetail" style={{padding: '10px'}}>
-                    <div className="fb-comments"
-                      data-href={href}
-                      data-width="100%"
-                      data-mobile="Auto-detected"
-                      data-colorscheme="light"
-                      data-numposts="5" />
                   </div>
                 </div>
               </div>
