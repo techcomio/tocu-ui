@@ -47,7 +47,6 @@ export default class NavbarProduct extends React.Component {
           <nav className="navbar navbar-light navbar-tocu">
             <div className="navbar-header navbar-left">
               <div className="fb-share-button" data-href={href} data-layout="button_count"></div>
-              <Link to={`https://www.facebook.com/sharer/sharer.php?u=${href}/`} className="btn btn-secondary btn-sm btn-share-facebook"><i className="fa fa-facebook-square gray"></i></Link>
             </div>
             <div className="navbar-right pull-right">
               {this.renderBtn()}
