@@ -74,7 +74,7 @@ export default async function (req, res, next) {
       );
 
       const initialState = store.getState();
-      const html = renderToString(<HtmlComponent markup={body} state={serialize(initialState)} />);
+      const html = renderToString(<HtmlComponent markup={body} state={serialize(JSON.stringify(initialState))} />);
 
 			res.send(`<!DOCTYPE html>` + html);
     } catch(err) {

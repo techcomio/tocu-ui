@@ -13,9 +13,15 @@ import Product from '../components/Product';
 import Sidebar from '../components/Product/Sidebar';
 import Sale from '../components/Sale';
 import BoxRequireAuth from '../components/BoxRequireAuth';
+import { CLIENT } from '../lib/env';
 
 
 @prepareOnUpdate(['id'], async function ({ store, params, location }) {
+  if(CLIENT && window.FB) {
+    setTimeout(function() {
+      window.FB.XFBML.parse();
+    }, 400);
+  }
   return await * [
     store.dispatch(getProductID(params))
     , store.dispatch(getSale())
@@ -30,6 +36,14 @@ export default class ProductID extends React.Component {
 
 	constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    if(window.FB) {
+      setTimeout(function() {
+        window.FB.XFBML.parse();
+      }, 400);
+    }
   }
 
   render() {
@@ -105,14 +119,6 @@ export default class ProductID extends React.Component {
               </div>
             </div>
           )}
-          <div id="fb-root"></div>
-          <script dangerouslySetInnerHTML={{__html: `(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=930339753700060";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));`}} />
           </section>
         <BoxRequireAuth />
       </div>

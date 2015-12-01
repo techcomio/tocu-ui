@@ -43,9 +43,9 @@ export default React.createClass({
     const boxs = box.get('boxsId').filter((item, i) => {
       return item.get('status') === 'available' ? item : false;
     })
-    const childElements = boxs.toJS().map((post, i) => {
+    const childElements = boxs.map((post, i) => {
       return (
-        <BoxItem key={i} location={location} box={box.getIn(['boxsId', i])} />
+        <BoxItem key={i} location={location} box={post} />
       );
     });
     var hasMore = box.getIn(['pagination', 'hasMore']);

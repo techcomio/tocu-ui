@@ -22,7 +22,8 @@ export default React.createClass({
         self.setState({
           posts: res.data
         });
-      });
+      })
+      .catch((res) => {});
   },
 
   render: function () {

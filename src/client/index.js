@@ -14,7 +14,7 @@ import routers from 'universal/routers';
 import Reducers from 'universal/reducers';
 
 const history = new createBrowserHistory();
-const initialState = immutifyState(window.__INITIAL_STATE__);
+const initialState = immutifyState(JSON.parse(window.__INITIAL_STATE__));
 
 let finalCreateStore;
 if(__DEV__) {
