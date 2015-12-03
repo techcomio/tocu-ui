@@ -66,7 +66,7 @@ export default class ProductID extends React.Component {
           'og:locale': 'vi_VN',
           'og:site_name': 'Tổ Cú',
           'og:description': description,
-          'fb:app_id': '930339753700060',
+          'fb:app_id': '933500330050669',
           'fb:admins': '100003135566240'
         }
       }
