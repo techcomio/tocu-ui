@@ -58,7 +58,7 @@ export default class BoxID extends React.Component {
           'og:site_name': 'Tổ Cú',
           'og:description': description,
           'fb:app_id': '933500330050669',
-          'fb:admins': '100003135566240'
+          'fb:admins': ['100003135566240', '1010730268950231'],
         }
       }
     };
