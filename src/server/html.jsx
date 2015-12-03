@@ -28,13 +28,22 @@ export default class Html extends React.Component {
           <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${state};`}} />
           <script src="/js/bundle.js"></script>
           <script src="/js/script.js"></script>
-          <script dangerouslySetInnerHTML={{__html: `(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=933500330050669";
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));`}} />
+          <script dangerouslySetInnerHTML={{__html: `
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId      : '933500330050669',
+                xfbml      : true,
+                version    : 'v2.5'
+              });
+            };
+
+            (function(d, s, id){
+               var js, fjs = d.getElementsByTagName(s)[0];
+               if (d.getElementById(id)) {return;}
+               js = d.createElement(s); js.id = id;
+               js.src = "//connect.facebook.net/vi_VN/sdk.js";
+               fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));`}} />
         </body>
       </html>
     );

@@ -53,7 +53,7 @@ export default class ProductID extends React.Component {
     const title = product.getIn(['productId', 'boxName']);
     const description = product.getIn(['productId', 'boxName']);
     const image = '';
-    const href = `http://tocu.vn/product/${params.id}`;
+    const href = `http://demo.tocu.vn/product/${params.id}`;
     const meta = {
       title,
       description,
