@@ -44,6 +44,8 @@ export default class Html extends React.Component {
                js.src = "//connect.facebook.net/vi_VN/sdk.js";
                fjs.parentNode.insertBefore(js, fjs);
              }(document, 'script', 'facebook-jssdk'));`}} />
+          <script dangerouslySetInnerHTML={{__html: `
+            (function(d,s,id){var z=d.createElement(s);z.type="text/javascript";z.id=id;z.async=true;z.src="//static.zotabox.com/7/6/76ca0d3a9ae58730cc1116a256dbbc46/widgets.js";var sz=d.getElementsByTagName(s)[0];sz.parentNode.insertBefore(z,sz)}(document,"script","zb-embed-code"));`}} />
         </body>
       </html>
     );

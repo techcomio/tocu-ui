@@ -60,6 +60,7 @@ export default class ProductID extends React.Component {
       meta: {
         charSet: 'utf-8',
         property: {
+          'og:url': href,
           'og:type': 'article',
           'og:title': title,
           'og:image': image,
