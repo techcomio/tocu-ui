@@ -1,6 +1,8 @@
 'use strict';
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import FbMessage from '../components/FB-message';
+
 
 const Modal = React.createClass({
   styles: {
@@ -71,6 +73,7 @@ export default class App extends React.Component {
             {this.props.children}
           </Modal>
         )}
+        <FbMessage />
       </div>
     )
   }
